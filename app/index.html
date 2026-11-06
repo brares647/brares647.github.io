@@ -3771,6 +3771,228 @@ Salas is comparing this manager with others in a peer group classified by active
  ["closet indexer","diversified stock picker","concentrated stock picker"],
  1,"High active share with low active risk means holdings differ a lot from the benchmark but the differences are spread over many stocks with little net factor exposure: a diversified stock picker. A closet indexer has low active share and low active risk; a concentrated stock picker has both high."]
 ]);
+/* Level II, third batch (2026-11-07): eight item sets on topics where the fixed mocks had used up most of the
+   bank, so a third full mock can keep the official weights. Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-08",
+`Ravi Chandra, CFA, is head of research at Lockhart Securities.
+
+**Report 1.** An analyst's report on Brixton Retail states: "Brixton's earnings will grow 20% next year as its new stores open." The report gives no qualification.
+
+**Report 2.** A second report ranks utility stocks with a quantitative model. The model was tested only on US companies, and its back-test excludes 2008. The report presents the rankings without mentioning either point.
+
+**Report 3.** A junior analyst, Mia Torres, CFA, worked on a group report that rates Hallam Energy a buy. She thinks the rating is too optimistic but agrees that the research process was thorough and had a reasonable basis. She asks Chandra whether she must have her name removed.
+
+**Marketing.** Lockhart's marketing brochure shows ten-year returns for a "Dynamic Allocation" strategy. The firm launched the strategy two years ago; the earlier returns were produced by applying the strategy's rules to past data. The brochure does not say so.`,
+[
+["Report 1 **most** likely violates the Standard relating to:",
+ ["communication with clients","diligence and reasonable basis","market manipulation"],
+ 0,"Standard V(B) requires members to distinguish between fact and opinion. Presenting a growth forecast as a certainty breaks that rule. Nothing suggests the analysis lacked a reasonable basis, and an opinion stated as fact is not an attempt to distort prices."],
+["Report 2 **most** likely:",
+ ["complies with the Standards, because clients do not need the details of a quantitative model.","violates Standard V(A), because a model used in research must be developed in-house.","violates Standard V(B), because it omits significant limitations of the model."],
+ 2,"V(B) requires members to disclose the basic format and general principles of the investment process and its significant limitations and risks. A model tested only on US companies and without 2008 in its back-test has limitations clients should know about. Models need not be built in-house."],
+["Regarding Report 3, Torres **most** likely:",
+ ["must have her name removed from the report to avoid violating Standard V(A).","may keep her name on it, given the research has a reasonable basis.","must tell the report's readers that she disagrees with the rating."],
+ 1,"A member who disagrees with a group's conclusion need not dissociate from the report if she believes the process was objective and had a reasonable basis; she may document her view. Dissociation is needed only when she believes the research lacks a reasonable basis, and the Standards do not require telling clients about internal disagreement."],
+["The brochure **most** likely violates the Standard relating to:",
+ ["performance presentation","record retention","communication with clients and prospective clients"],
+ 0,"Standard III(D) requires performance information to be fair, accurate, and complete. Simulated (back-tested) results must be clearly labelled as such; showing them as ten years of actual returns misleads prospective clients. Record retention concerns keeping research records, and V(B) is about how the investment process and recommendations are described rather than the presentation of performance."]
+]);
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-09",
+`Olu Bankole, CFA, is a portfolio manager at Sterling Asset Management.
+
+**Event 1.** Bankole joins the board of Kestrel Foods, a private company, for an annual fee of 30,000 paid in Kestrel shares. The work takes about two days a month. He mentions the role to his assistant but not to anyone at Sterling with authority over him.
+
+**Event 2.** Shortly before quarter-end, Bankole buys small amounts of a thinly traded corporate bond held in several client portfolios at prices above recent trades, so that the quarter-end valuation of the bond will be higher.
+
+**Event 3.** Bankole's spouse is chief financial officer of Ardent Logistics. Bankole recommends Ardent shares to his clients without mentioning this.
+
+**Event 4.** After large medical expenses, Bankole files for personal bankruptcy. He has been honest with his creditors throughout.`,
+[
+["Event 1 **most** likely violates the Standard relating to:",
+ ["independence and objectivity","additional compensation arrangements","priority of transactions"],
+ 1,"Standard IV(B) requires members to obtain written consent from their employer before accepting compensation or benefits that may conflict with the employer's interest. A paid board seat that takes his time and pays him in shares needs that consent; telling an assistant is not enough. It is not about research independence or personal trading ahead of clients."],
+["Event 2 **most** likely violates the Standard relating to:",
+ ["market manipulation","fair dealing","material nonpublic information"],
+ 0,"Trading to push up the price of a thinly traded security so that portfolio valuations look better is transaction-based manipulation under Standard II(B). Bankole has no inside information, and the issue is distorting prices rather than how clients are treated against each other."],
+["Event 3 **most** likely violates the Standard relating to:",
+ ["suitability","priority of transactions","disclosure of conflicts"],
+ 2,"Standard VI(A) requires full disclosure of matters that could reasonably impair objectivity, such as a spouse's senior role at a recommended company. The recommendation may be suitable; the violation is the missing disclosure. No personal trade is involved."],
+["Regarding Event 4, Bankole **most** likely:",
+ ["violates Standard I(D), because a bankruptcy reflects poorly on his professional reputation.","violates Standard IV(A), because he must first inform his employer of his finances.","does not violate Standard I(D), because the bankruptcy involves no dishonesty or fraud."],
+ 2,"Standard I(D) Misconduct covers conduct involving dishonesty, fraud, or deceit, or acts that reflect adversely on professional competence. A personal bankruptcy caused by medical costs, handled honestly, is not misconduct. Loyalty to the employer does not require disclosing personal finances."]
+]);
+
+CFA_DATA.set(2,"Quantitative Methods","L2-QM-06",
+`Elena Moretti models the quarterly earnings growth rate of a consumer company (in %) with an AR(1) model:
+
+x(t) = 1.20 + 0.60 × x(t − 1)
+
+The latest observed value is x = 4.0. The model's residual autocorrelations are small at lags 1 to 3, but the lag 4 autocorrelation is 0.42 with a t-statistic of 3.25.
+
+Moretti also regresses the squared residuals on their own first lag:
+
+ε²(t) = 0.10 + 0.35 × ε²(t − 1), with a t-statistic of 2.90 on the slope coefficient.`,
+[
+["The mean-reverting level of the earnings growth rate is **closest** to:",
+ ["2.00","3.00","4.00"],
+ 1,"Mean-reverting level = b0/(1 − b1) = 1.20/(1 − 0.60) = 3.00. Dividing by b1 gives 2.00, and 4.00 is the latest observation, not the long-run level.",true],
+["The two-quarter-ahead forecast of the earnings growth rate is **closest** to:",
+ ["3.36","3.60","4.00"],
+ 0,"One quarter ahead: 1.20 + 0.60 × 4.0 = 3.60. Two quarters ahead: 1.20 + 0.60 × 3.60 = 3.36. 3.60 stops after one step, and 4.00 is the current value.",true],
+["The significant residual autocorrelation at lag 4 **most** likely indicates that Moretti should:",
+ ["add a seasonal lag, x(t − 4), to the model.","first-difference the series, because it has a unit root.","drop the AR(1) term, because the series is a random walk."],
+ 0,"For quarterly data, significant autocorrelation at the fourth lag signals seasonality; adding a lag-4 term corrects it. Small autocorrelations at lags 1 to 3 and a slope of 0.60 (well below 1) give no sign of a unit root or a random walk."],
+["The regression of squared residuals **most** likely indicates that:",
+ ["the coefficient estimates of the AR(1) model are biased.","the error variance depends on the previous squared error.","the model's errors are serially correlated at the first lag."],
+ 1,"A significant slope in the regression of squared residuals on their lag is evidence of ARCH(1): the error variance in one period depends on the squared error in the previous period. Coefficients remain unbiased but their standard errors are unreliable; ARCH concerns the variance, not correlation of the errors themselves."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-08",
+`Halcrow plc reports under IFRS. At year-end it holds three portfolios of securities bought at the start of the year:
+
+**Exhibit 1: Securities (millions)**
+
+| Portfolio | Classification | Cost | Fair value at year-end |
+|---|---|---|---|
+| A: bonds | Amortized cost | 50.0 | 48.6 |
+| B: bonds | Fair value through OCI | 30.0 | 31.2 |
+| C: equities | Fair value through profit or loss | 20.0 | 23.5 |
+
+Assume the bonds were bought at par, so their amortized cost equals cost, and ignore interest income and impairment.
+
+Halcrow also owns 40% of Marlow Ltd and accounts for it with the equity method. Next year Halcrow plans to buy a further 30%, giving it control.`,
+[
+["The effect of the year's fair value changes on Halcrow's profit or loss is **closest** to:",
+ ["+2.1 million","+3.5 million","+4.7 million"],
+ 1,"Only portfolio C (fair value through profit or loss) puts its 3.5 million gain in profit. B's 1.2 million gain goes to other comprehensive income, and A is carried at amortized cost, so its 1.4 million fall in fair value is not recognized. +2.1 million nets A's loss in, and +4.7 million adds B's gain.",true],
+["The total carrying amount of the three portfolios on Halcrow's balance sheet is **closest** to:",
+ ["100.0 million","103.3 million","104.7 million"],
+ 2,"Carrying amounts: A at amortized cost 50.0 + B at fair value 31.2 + C at fair value 23.5 = 104.7 million. 103.3 million measures A at fair value, and 100.0 million uses cost for all three.",true],
+["Compared with the equity method, consolidating Marlow after obtaining control will **most** likely:",
+ ["raise net income attributable to Halcrow's shareholders, because all of Marlow's profit is included.","raise revenue and total assets, leaving net income attributable to Halcrow unchanged.","leave revenue unchanged and raise Halcrow's net profit margin."],
+ 1,"Consolidation adds all of Marlow's revenue, expenses, assets, and liabilities, with a noncontrolling interest for the share Halcrow does not own; the method itself does not change net income attributable to the parent. Higher revenue with the same attributable income usually lowers the net profit margin."],
+["If the recoverable amount of Halcrow's equity-method investment in Marlow falls below its carrying amount, Halcrow will **most** likely:",
+ ["recognize an impairment loss for the difference in profit or loss.","only disclose the decline in the notes until the investment is sold.","write down its share of Marlow's individual assets on its own balance sheet."],
+ 0,"Under IFRS, an equity-method investment is tested for impairment as a single asset when there is objective evidence; a loss equal to the excess of carrying amount over recoverable amount is recognized in profit or loss. Disclosure alone is not enough, and the investor does not carry the investee's individual assets."]
+]);
+
+CFA_DATA.set(2,"Equities","L2-EQ-08",
+`Kenji Arai is valuing Selvan Industries against peers and is building a four-stock portfolio with equal amounts invested in each stock.
+
+**Exhibit 1: Peer portfolio**
+
+| Stock | P/E |
+|---|---|
+| W | 10 |
+| X | 20 |
+| Y | 25 |
+| Z | 50 |
+
+**Exhibit 2: Selvan Industries (millions, except per share)**
+
+| Item | Value |
+|---|---|
+| Market capitalization | 1,200 |
+| Debt | 450 |
+| Cash | 150 |
+| EBITDA | 250 |
+| Share price | 36.00 |
+| Reported EPS (includes a one-time gain of 0.40 per share) | 2.40 |`,
+[
+["The P/E of Arai's equal-weighted portfolio, measured as the harmonic mean, is **closest** to:",
+ ["19.05","22.50","26.25"],
+ 0,"Harmonic mean = 4/(1/10 + 1/20 + 1/25 + 1/50) = 4/0.21 = 19.05. It is the right average for a portfolio with equal amounts invested. 22.50 is the median and 26.25 the arithmetic mean, which is pulled up by the outlier of 50.",true],
+["Selvan's EV/EBITDA multiple is **closest** to:",
+ ["4.8","6.0","7.2"],
+ 1,"Enterprise value = market capitalization + debt − cash = 1,200 + 450 − 150 = 1,500 million; 1,500/250 = 6.0. 4.8 uses equity value alone, and 7.2 adds cash instead of subtracting it.",true],
+["Selvan's trailing P/E based on underlying (recurring) earnings is **closest** to:",
+ ["12.9","15.0","18.0"],
+ 2,"Underlying EPS = 2.40 − 0.40 = 2.00, so P/E = 36.00/2.00 = 18.0. 15.0 uses reported EPS including the one-time gain, and 12.9 adds the gain instead of removing it.",true],
+["The method of comparables **most** likely:",
+ ["gives a relative valuation that assumes similar assets should trade at similar multiples.","gives each company's intrinsic value, because peer multiples reflect fundamentals.","requires no adjustment for differences in expected growth between peers."],
+ 0,"The method of comparables applies the law of one price: similar assets should sell at similar multiples, so it shows whether a stock is cheap or dear relative to peers, not its intrinsic value. If the whole peer group is mispriced, so is the estimate, and differences in growth and risk should be adjusted for."]
+]);
+
+CFA_DATA.set(2,"Fixed Income","L2-FI-08",
+`Zara Okafor holds a seven-year A-rated corporate bond with a spread of 1.50% over government bonds and a spread duration of 5.8. She estimates one-year rating transitions and the spread change that would follow each:
+
+**Exhibit 1: One-year rating outlook**
+
+| Rating after one year | Probability | Spread change |
+|---|---|---|
+| AA | 2% | −40 bps |
+| A | 90% | 0 bps |
+| BBB | 7% | +60 bps |
+| BB | 1% | +250 bps |
+
+Her expected credit loss on the bond over the year is 0.10%.
+
+A colleague is analysing a high-yield issuer in financial distress.`,
+[
+["The expected percentage price change from rating migration over the year is **closest** to:",
+ ["−3.42%","−0.39%","−0.34%"],
+ 2,"Expected spread change = 0.02 × (−0.40%) + 0.07 × 0.60% + 0.01 × 2.50% = 0.059%. Price change ≈ −5.8 × 0.059% = −0.34%. Ignoring the upgrade gives −0.39%, and −3.42% misplaces the decimal.",true],
+["The bond's expected excess return over government bonds for the year is **closest** to:",
+ ["1.06%","1.16%","1.40%"],
+ 0,"Expected excess return ≈ spread − expected credit loss + expected price change from migration = 1.50% − 0.10% − 0.34% = 1.06%. 1.40% ignores migration, and 1.16% ignores the expected credit loss.",true],
+["The credit spread curve of the distressed high-yield issuer is **most** likely:",
+ ["upward sloping, because default risk always grows with maturity.","flat, because default risk does not depend on maturity.","inverted, because the near-term default risk is highest."],
+ 2,"For a distressed issuer, the probability of default is concentrated in the near term; investors who survive that period face lower conditional default risk, so short-term spreads exceed long-term ones. Upward-sloping curves are typical of high-quality issuers."],
+["The bond's spread is larger than its expected credit loss **most** likely because investors require compensation for:",
+ ["the government bond yield, which is included in the spread.","uncertainty about credit losses and the bond's lower liquidity.","a downgrade that is certain to occur within the year."],
+ 1,"The credit spread covers expected loss plus premiums for the uncertainty of losses and for liquidity. It is measured over the government yield, so it does not include it, and Exhibit 1 shows a downgrade is only possible, not certain."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-08",
+`Hugo Brandt manages a 200 million multi-asset portfolio: 120 million in equities with a beta of 1.10 and 80 million in bonds with a modified duration of 6.5.
+
+The risk committee asks for a hypothetical scenario in which the equity market falls 15% and interest rates rise 100 bps in a parallel shift (ignore convexity), and for a review of the portfolio's risk limits, which include a stop-loss limit and position limits.`,
+[
+["The portfolio's loss in the hypothetical scenario is **closest** to:",
+ ["−25.0 million","−23.2 million","−19.8 million"],
+ 0,"Equities: 120 × 1.10 × (−15%) = −19.8 million. Bonds: −80 × 6.5 × 1% = −5.2 million. Total = −25.0 million. −23.2 million ignores the equity beta, and −19.8 million leaves out the bonds.",true],
+["Compared with value at risk, this hypothetical scenario analysis **most** likely:",
+ ["shows the loss at a stated confidence level over a set horizon.","relies only on the historical distribution of portfolio returns.","shows the loss in one chosen adverse event but gives no probability for it."],
+ 2,"A hypothetical scenario applies the analyst's chosen shocks and shows their effect, which is useful for events not seen in history, but it says nothing about how likely they are. A loss at a stated confidence level is VaR, and relying on past returns describes historical simulation."],
+["The money duration (basis point value) of the bond portfolio is **closest** to:",
+ ["5,200","52,000","520,000"],
+ 1,"BPV = market value × modified duration × 0.0001 = 80,000,000 × 6.5 × 0.0001 = 52,000 per basis point. The other figures misplace the decimal.",true],
+["A stop-loss limit is **best** described as a rule that:",
+ ["caps the notional size of each position in the portfolio.","sets a maximum value at risk for the portfolio as a whole.","forces a position to be cut at a set loss."],
+ 2,"A stop-loss limit forces a position to be cut once its losses reach a predetermined level. A cap on position size is a position limit, and a maximum VaR is a risk budget."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-09",
+`Leila Haddad uses a two-factor macroeconomic model in which returns respond to surprises in GDP growth and inflation:
+
+R = E(R) + b_GDP × (GDP surprise) + b_INF × (inflation surprise) + ε
+
+**Exhibit 1: Stock data**
+
+| Stock | Expected return | b_GDP | b_INF |
+|---|---|---|---|
+| Arlo | 9.0% | 1.20 | −0.80 |
+| Breck | 7.0% | 0.50 | 0.20 |
+
+Over the year, consensus forecasts were 2.5% for GDP growth and 2.0% for inflation; actual GDP growth was 3.0% and inflation 3.0%. Arlo also had a company-specific surprise of +1.5%.
+
+Haddad holds 60% Arlo and 40% Breck.`,
+[
+["Arlo's realized return for the year is **closest** to:",
+ ["8.80%","10.30%","11.90%"],
+ 1,"Surprises: GDP +0.5%, inflation +1.0%. R = 9.0% + 1.20 × 0.5% − 0.80 × 1.0% + 1.5% = 10.30%. 8.80% leaves out the company-specific surprise, and 11.90% reverses the sign of the inflation effect.",true],
+["The inflation sensitivity of Haddad's portfolio is **closest** to:",
+ ["−0.60","−0.40","−0.30"],
+ 1,"Portfolio sensitivity is the weighted average: 0.60 × (−0.80) + 0.40 × 0.20 = −0.40. −0.60 adds the sensitivities, and −0.30 is their simple average.",true],
+["In a macroeconomic factor model, the factors are **best** described as:",
+ ["surprises in macroeconomic variables (actual minus expected).","the levels of macroeconomic variables.","returns on portfolios built from company attributes such as size and value."],
+ 0,"Expected values of macro variables are already in prices, so returns respond to the unexpected part. Factors built from company attributes belong to fundamental factor models."],
+["If Haddad expects GDP growth above the consensus forecast, she should **most** appropriately:",
+ ["leave factor exposures unchanged, because surprises average zero.","reduce the portfolio's GDP sensitivity, because expected growth is already in prices.","tilt the portfolio toward stocks with higher GDP sensitivity."],
+ 2,"A view that GDP will beat consensus is a forecast of a positive surprise; raising exposure to the GDP factor positions the portfolio to benefit. Consensus growth is in prices, but her view differs from consensus, so leaving exposures unchanged gives up the bet."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
@@ -5829,6 +6051,144 @@ Novak's client asks how the strategy's results differ from those of a long-only 
  ["earns the market return plus the alpha of both books.","isolates the alpha of both books from market moves, but carries short-specific costs and risks.","has lower risk in all conditions, because the short book always offsets losses on the long book."],
  1,"A beta-neutral long/short portfolio removes most market exposure, so returns come from the alpha of the long and the short books, minus borrowing costs and dividends owed, with risks such as short squeezes and recalls. It does not earn the market return, and the books can lose together if the stock selection is wrong."]
 ]);
+/* Level III, third batch (2026-11-07): four constructed-response sets and two Portfolio Management pathway item
+   sets, so a third fixed mock can keep the official weights. Topic names written out (constants live elsewhere). */
+
+CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR06",
+`Sofia Marin, age 40, is a tenured civil servant. Her salary next year will be 123,600 and is expected to grow 3% a year until she retires in 25 years. Her adviser discounts her future earnings at 6% a year (a 3% risk-free rate plus a 3% premium for the risk of her income).
+
+**Exhibit 1: Marin's financial position**
+
+| Item | Value |
+|---|---|
+| Investment portfolio | 600,000 |
+| Home | 500,000 |
+| Mortgage | 300,000 |
+
+For simplicity, treat salary as received at the end of each year and ignore taxes and the present value of her future consumption.`,
+[
+["**A.** Calculate the present value of Marin's human capital.",
+ "Human capital is the present value of a growing annuity: HC = 123,600/(0.06 − 0.03) × [1 − (1.03/1.06)^25] = 4,120,000 × (1 − 0.4879) = 4,120,000 × 0.5121 ≈ 2,110,000.",
+ [["Uses the growing annuity formula with next year's salary, 6% and 3%",1],["Present value of about 2,110,000",1]],true],
+["**B.** Calculate Marin's economic net worth based on Exhibit 1 and Part A.",
+ "Economic net worth = human capital + financial capital − liabilities = 2,110,000 + 600,000 + 500,000 − 300,000 ≈ 2,910,000.",
+ [["Includes human capital, investments and home, less the mortgage",1],["Economic net worth of about 2,910,000",1]],true],
+["**C.** Recommend whether Marin's investment portfolio should hold a higher or lower share of equities than that of a commission-based stockbroker of the same age and wealth. Justify your recommendation.",
+ "Higher. Marin's human capital is her largest asset and, as a tenured civil servant, her earnings are stable and weakly correlated with the stock market, so her human capital behaves like a bond. The stockbroker's income moves with equity markets, so his human capital is equity-like. To diversify total wealth, Marin can hold more equities in her financial portfolio, while the broker should hold more bonds.",
+ [["Recommends a higher equity share",1],["Explains that her human capital is bond-like (stable, low correlation with equities)",1],["Contrasts with the broker's equity-like human capital and the need to diversify total wealth",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Construction","L3-PC-CR06",
+`The Arden County pension plan holds an index fund and is adding two active equity managers. The committee expects the following:
+
+**Exhibit 1: Managers**
+
+| Manager | Expected information ratio |
+|---|---|
+| Manager 1 | 0.50 |
+| Manager 2 | 0.30 |
+
+The managers' active returns are expected to be uncorrelated. The committee has set a total active risk budget of 2.0% for the equity allocation and wants to allocate it between the two managers to maximize the expected information ratio of the combined allocation.`,
+[
+["**A.** Calculate the highest expected information ratio the committee can achieve by combining the two managers.",
+ "With uncorrelated active returns, the maximum combined information ratio is IR = √(IR₁² + IR₂²) = √(0.50² + 0.30²) = √0.34 ≈ 0.583.",
+ [["Square-root-of-the-sum-of-squares formula",1],["IR of about 0.58",1]],true],
+["**B.** Calculate the active risk the committee should give each manager, and the expected active return of the combined allocation.",
+ "Active risk is allocated in proportion to each manager's information ratio: σ₁ = 2.0% × 0.50/0.583 ≈ 1.71% and σ₂ = 2.0% × 0.30/0.583 ≈ 1.03% (check: √(1.71² + 1.03²) ≈ 2.0%). Expected active return = 0.583 × 2.0% ≈ 1.17% (equivalently 0.50 × 1.71% + 0.30 × 1.03%).",
+ [["Allocates active risk in proportion to the IRs",1],["About 1.71% to Manager 1 and 1.03% to Manager 2",1],["Expected active return of about 1.17%",1]],true],
+["**C.** Explain why the committee should not give all of its active risk budget to Manager 1, and state the key assumption behind your answer to Part A.",
+ "Giving all 2.0% to Manager 1 yields an IR of 0.50, below the 0.58 of the combination, because Manager 2's uncorrelated active returns diversify active risk: each additional uncorrelated source of alpha raises the return per unit of active risk. The result assumes the managers' active returns are uncorrelated; if they were positively correlated, the combined IR and the benefit of adding Manager 2 would be lower.",
+ [["Combination gives a higher IR than Manager 1 alone because uncorrelated active returns diversify",1],["States the uncorrelated active returns assumption and its effect",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR10",
+`Tomás Vidal runs an enhanced index fund tracking a bond index. He matches the index's overall duration but makes sector bets.
+
+**Exhibit 1: Index and portfolio**
+
+| Sector | Index weight | Index duration | Portfolio weight | Portfolio duration |
+|---|---|---|---|---|
+| Government | 50% | 6.0 | 45% | 6.2 |
+| Corporate | 35% | 7.0 | 42% | 6.6 |
+| Mortgage-backed | 15% | 4.0 | 13% | 3.8 |
+
+The corporate bonds' spread durations are 6.8 in the index and 6.4 in the portfolio.`,
+[
+["**A.** Calculate the duration of the index and the duration of the portfolio.",
+ "Index duration = 0.50 × 6.0 + 0.35 × 7.0 + 0.15 × 4.0 = 3.00 + 2.45 + 0.60 = 6.05. Portfolio duration = 0.45 × 6.2 + 0.42 × 6.6 + 0.13 × 3.8 = 2.79 + 2.772 + 0.494 = 6.056 ≈ 6.06. The two are matched.",
+ [["Index duration of 6.05",1],["Portfolio duration of about 6.06",1]],true],
+["**B.** Calculate the contribution to spread duration from corporate bonds in the index and in the portfolio, and the approximate return of the portfolio relative to the index if corporate spreads widen by 50 bps (other spreads and yields unchanged).",
+ "Index: 0.35 × 6.8 = 2.38. Portfolio: 0.42 × 6.4 = 2.688. Mismatch = +0.308. Relative return ≈ −0.308 × 0.50% ≈ −0.15%: the portfolio underperforms by about 0.15%.",
+ [["Contributions of 2.38 and about 2.69",1],["Relative return of about −0.15%",1]],true],
+["**C.** Explain why matching the index's overall duration is not enough to keep tracking error low.",
+ "Matching overall duration protects only against small parallel shifts in yields. Tracking error also comes from differences in key rate exposures (non-parallel curve moves), sector and spread-duration contributions (as Part B shows), credit quality, and cash flow characteristics such as prepayment risk in mortgage-backed securities. Each of these must be matched, or deliberately chosen, to control tracking.",
+ [["Duration matching covers only parallel shifts",1],["Names other sources: key rates, sector/spread duration, quality or prepayment risk",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR11",
+`A quantitative equity team at Larch Capital scores each stock on three factors, standardized as z-scores across the universe, and combines them with fixed weights: value 40%, momentum 30%, quality 30%.
+
+Stock Q has a value z-score of 1.2, a momentum z-score of −0.4, and a quality z-score of 0.8.
+
+The team converts composite scores into expected alpha with the formula: alpha = IC × σ × composite score, where IC is the information coefficient (0.05) and σ is the cross-sectional volatility of stock-specific returns (20%).`,
+[
+["**A.** Calculate Stock Q's composite score.",
+ "Composite = 0.40 × 1.2 + 0.30 × (−0.4) + 0.30 × 0.8 = 0.48 − 0.12 + 0.24 = 0.60.",
+ [["Composite score of 0.60, with the negative momentum score included",1]],true],
+["**B.** Calculate Stock Q's expected alpha, and state what the information coefficient measures.",
+ "Alpha = 0.05 × 20% × 0.60 = 0.60%. The information coefficient is the correlation between the team's forecasts (scores) and the subsequent realized returns: a measure of forecasting skill.",
+ [["Expected alpha of 0.60%",1],["IC is the correlation between forecasts and realized returns (skill)",1]],true],
+["**C.** Describe two risks specific to the team's quantitative process.",
+ "First, model or data-mining risk: factors and weights chosen because they worked in back-tests may not hold out of sample. Second, crowding: many managers using similar value, momentum, and quality signals can hold the same positions, leading to sharp losses when they unwind together. (Also acceptable: factor returns decaying over time, poor data quality, or the model missing events that fundamental analysis would catch.)",
+ [["First risk described (e.g. overfitting or data mining)",1],["Second risk described (e.g. crowding, factor decay or data quality)",1]]]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-10",
+`Inga Solberg compares two corporate bonds for a credit portfolio. She expects default losses to occur over the coming year at the probabilities shown, with the stated recovery rates.
+
+**Exhibit 1: Bonds**
+
+| Bond | Rating | Spread | Probability of default | Recovery rate | Spread duration |
+|---|---|---|---|---|---|
+| X | BBB | 1.80% | 1.0% | 40% | 6.0 |
+| Y | BB | 3.60% | 3.5% | 35% | 4.0 |
+
+Solberg's economics team believes the credit cycle has entered its late phase.`,
+[
+["Bond X's expected credit loss over the year is **closest** to:",
+ ["0.40%","0.60%","1.00%"],
+ 1,"Expected loss = probability of default × (1 − recovery rate) = 1.0% × 0.60 = 0.60%. 1.00% ignores recovery, and 0.40% multiplies by the recovery rate instead of the loss rate.",true],
+["Bond Y's spread net of expected credit loss is **closest** to:",
+ ["1.33%","2.28%","3.60%"],
+ 0,"Expected loss = 3.5% × (1 − 0.35) = 2.275%. Spread net of expected loss = 3.60% − 2.275% ≈ 1.33%. 2.28% is the expected loss itself, and 3.60% is the full spread.",true],
+["If Bond X's spread tightens by 30 bps over the year, its excess return over government bonds is **closest** to:",
+ ["1.20%","1.80%","3.00%"],
+ 2,"Excess return ≈ spread − expected loss − spread duration × Δspread = 1.80% − 0.60% − 6.0 × (−0.30%) = 1.20% + 1.80% = 3.00%. 1.20% leaves out the price gain, and 1.80% counts only the gain.",true],
+["Given the late phase of the credit cycle, Solberg should **most** appropriately:",
+ ["add high-yield bonds such as Bond Y to capture their wider spreads.","increase the portfolio's spread duration.","shift toward higher-quality credits and reduce spread duration."],
+ 2,"Late in the credit cycle, leverage is high and defaults are about to rise, so spreads tend to widen, especially for lower-quality issuers. Moving up in quality and cutting spread duration limits losses; the other actions add exposure just before spreads widen."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-11",
+`Malik Osei runs an event-driven equity strategy. Bexley Group has agreed to acquire Calder Ltd for 0.80 Bexley shares per Calder share. Bexley trades at 50.00 and Calder at 37.00. The deal is expected to close in six months.
+
+Osei buys 10,000 Calder shares and sells short 8,000 Bexley shares.
+
+Ignore dividends, borrowing costs, and transaction costs.`,
+[
+["The gross arbitrage spread, as a percentage of Calder's price, is **closest** to:",
+ ["6.00%","7.50%","8.11%"],
+ 2,"Value of the offer per Calder share = 0.80 × 50.00 = 40.00, so the spread is 40.00 − 37.00 = 3.00, or 3.00/37.00 = 8.11% of the amount invested. Dividing by the offer value gives 7.50%, and dividing by Bexley's price gives 6.00%.",true],
+["If the deal closes as expected, the simple annualized return on the spread is **closest** to:",
+ ["8.11%","16.22%","16.87%"],
+ 1,"The 8.11% is earned over six months; simple annualization doubles it to 16.22%. 16.88% compounds it, and 8.11% is not annualized.",true],
+["If the deal fails and Calder falls to 30.00 while Bexley rises to 52.00, Osei's total profit or loss is **closest** to:",
+ ["−86,000","−70,000","−54,000"],
+ 0,"Long Calder: 10,000 × (30.00 − 37.00) = −70,000. Short Bexley: 8,000 × (50.00 − 52.00) = −16,000. Total = −86,000. −70,000 ignores the short, and −54,000 treats the short as a gain.",true],
+["The main risk of Osei's position is **best** described as:",
+ ["deal failure risk, which gives the strategy a payoff like that of a short put option.","interest rate risk, because the deal takes six months to close.","currency risk, because the two companies report in different currencies."],
+ 0,"Merger arbitrage earns a small, likely gain if the deal closes and suffers a large loss if it fails, much like writing a put. The vignette gives no currency difference, and six months of interest rate exposure is minor compared with deal risk."]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -6092,7 +6452,8 @@ CFA_DATA.formulas(2,"Financial Statement Analysis","F2-FSA",[
 ["Insurer combined ratio","Combined ratio = loss ratio + expense ratio","Below 100% means an underwriting profit.","combined ratio"],
 ["Accruals ratios","Balance-sheet: (NOA_end − NOA_beg) / average NOA;  cash-flow: (NI − CFO − CFI) / average NOA","Higher accruals mean lower earnings quality.","accruals ratio"],
 ["DuPont analysis","ROE = (NI/EBT) × (EBT/EBIT) × (EBIT/Revenue) × (Revenue/Assets) × (Assets/Equity)","Tax burden × interest burden × EBIT margin × asset turnover × leverage.","dupont|return on equity|interest burden|tax burden"],
-["Share-based compensation expense","Expense per year = number of awards × grant-date fair value ÷ vesting period (years)","Equity-settled awards are measured at grant-date fair value and not remeasured; restricted shares use the grant-date share price.","share-based|stock options|restricted shares|compensation expense"]
+["Share-based compensation expense","Expense per year = number of awards × grant-date fair value ÷ vesting period (years)","Equity-settled awards are measured at grant-date fair value and not remeasured; restricted shares use the grant-date share price.","share-based|stock options|restricted shares|compensation expense"],
+["IFRS 9 measurement of financial assets","Amortized cost: carried at amortized cost, fair value changes not recognized;  FVOCI: fair value on the balance sheet, changes in OCI;  FVPL: fair value on the balance sheet, changes in profit or loss","Classification depends on the business model and whether cash flows are solely principal and interest.","fair value through|amortized cost|carrying amount of the three"]
 ]);
 CFA_DATA.formulas(2,"Corporate Finance","F2-CI",[
 ["Share repurchase with borrowed funds","New EPS = (NI − after-tax interest on new debt) / (shares − shares repurchased);  shares repurchased = amount / price","EPS rises if the earnings yield (E/P) exceeds the after-tax cost of debt.","repurchase|buyback"],
@@ -6124,7 +6485,10 @@ CFA_DATA.formulas(2,"Equities","F2-EQ",[
 ["Private company valuation discounts","DLOC = 1 − 1/(1 + control premium);  total discount = 1 − (1 − DLOC)(1 − DLOM)","Discounts combine multiplicatively, not additively.","lack of control|lack of marketability|control premium|dloc|dlom"],
 ["Normalized earnings","Normalized EBITDA = reported EBITDA + excess owner compensation + non-operating costs − non-recurring gains","Adjust a private company's earnings to what a buyer would earn.","normalized"],
 ["Revenue from market size and share","Revenue = market size × (1 + market growth) × company market share","Forecast the market first, then the company's share of it.","market size|market share"],
-["Degree of operating leverage","DOL = contribution margin / operating income = %Δ operating income / %Δ revenue","Contribution margin = revenue − variable costs. Higher fixed costs mean higher DOL.","operating leverage|operating income will rise"]
+["Degree of operating leverage","DOL = contribution margin / operating income = %Δ operating income / %Δ revenue","Contribution margin = revenue − variable costs. Higher fixed costs mean higher DOL.","operating leverage|operating income will rise"],
+["Harmonic mean P/E","Harmonic mean = n / Σ(1/P/E_i)","The right average for a portfolio with equal amounts invested; less affected by large outliers than the arithmetic mean.","harmonic"],
+["EV/EBITDA","EV = market value of equity + debt + preferred + noncontrolling interest − cash;  multiple = EV / EBITDA","Compares companies with different capital structures.","ev/ebitda|enterprise value"],
+["P/E on underlying earnings","Underlying EPS = reported EPS − one-time gains + one-time losses;  P/E = price / underlying EPS","Remove nonrecurring items before comparing P/Es.","underlying|recurring|one-time"]
 ]);
 CFA_DATA.formulas(2,"Fixed Income","F2-FI",[
 ["Forward rates from spot rates","(1 + S_T)^T = (1 + S_A)^A × [1 + f(A, T − A)]^(T − A)","f(A, B) = rate for B years starting A years from now.","forward rate|f\\(1"],
@@ -6139,7 +6503,8 @@ CFA_DATA.formulas(2,"Fixed Income","F2-FI",[
 ["CDS upfront premium","Upfront premium ≈ (credit spread − fixed coupon) × effective spread duration × notional","Negative means the protection seller pays the buyer.","upfront"],
 ["CDS payout and price change","Payout = notional × (1 − recovery rate);  profit to protection buyer ≈ Δspread × duration × notional","Protection buyers gain when spreads widen.","payout|protection|spread widens"],
 ["G-spread and I-spread","G-spread = bond yield − interpolated government yield;  I-spread = bond yield − swap rate of the same maturity","Interpolate linearly between benchmark maturities.","g-spread|i-spread|interpolat"],
-["One-sided durations","Up-duration = (PV0 − PV+) / (PV0 × Δcurve);  down-duration = (PV− − PV0) / (PV0 × Δcurve)","For bonds with embedded options the two differ: a callable bond has a lower down-duration, a putable bond a lower up-duration.","one-sided"]
+["One-sided durations","Up-duration = (PV0 − PV+) / (PV0 × Δcurve);  down-duration = (PV− − PV0) / (PV0 × Δcurve)","For bonds with embedded options the two differ: a callable bond has a lower down-duration, a putable bond a lower up-duration.","one-sided"],
+["Rating migration and expected excess return","Expected Δspread = Σ p_i × Δspread_i;  migration return ≈ −spread duration × expected Δspread;  excess return ≈ spread − expected loss + migration return","Downgrades widen spreads more than upgrades narrow them, so migration usually lowers expected return.","rating migration|migration|transition"]
 ]);
 CFA_DATA.formulas(2,"Derivatives and Risk Management","F2-DER",[
 ["Equity forward price","F0 = S0 × [(1 + r)/(1 + q)]^T  (annual yields);  F0 = (S0 − PV(D)) × (1 + r)^T  (discrete dividends);  F0 = S0 e^((r − q)T)","Dividends lower the forward price.","forward price|index forward|no-arbitrage price of the"],
@@ -6177,7 +6542,10 @@ CFA_DATA.formulas(2,"Portfolio Construction","F2-PM",[
 ["Implementation shortfall","IS = paper portfolio return − actual portfolio return (including delay, execution, opportunity cost and fees)","Express as a percentage of the paper portfolio's value.","implementation shortfall"],
 ["Breakeven inflation","Breakeven inflation ≈ nominal yield − real (inflation-linked) yield","Includes an inflation risk premium.","breakeven inflation"],
 ["Active share","Active share = ½ × Σ |w_portfolio,i − w_benchmark,i|","0% = the benchmark; 100% = no holdings in common.","active share"],
-["Active risk decomposition","Active risk² = active factor risk² + active specific risk²","Share of active variance from factors = factor risk² / active risk².","active factor risk|active specific risk|active variance|total active risk"]
+["Active risk decomposition","Active risk² = active factor risk² + active specific risk²","Share of active variance from factors = factor risk² / active risk².","active factor risk|active specific risk|active variance|total active risk"],
+["Scenario loss with beta and duration","Equity P&L ≈ value × beta × market move;  bond P&L ≈ −value × modified duration × Δyield","A scenario shows a chosen event's impact but gives no probability.","hypothetical scenario|scenario"],
+["Basis point value","BPV = market value × modified duration × 0.0001","Money change in value for a one basis point change in yield.","basis point value|money duration"],
+["Macro factor model with surprises","R = E(R) + Σ b_k × (actual_k − expected_k) + ε;  portfolio b = Σ w_i × b_i","Only the unexpected part of a macro variable moves returns.","surprise|sensitivity of haddad"]
 ]);
 /* Level III formulas. Row: [name, formula, terms and when to use it, link pattern] (see l1.js) */
 CFA_DATA.formulas(3,"Asset Allocation","F3-AA",[
@@ -6192,7 +6560,8 @@ CFA_DATA.formulas(3,"Asset Allocation","F3-AA",[
 ["Sharpe ratio","Sharpe = (R − Rf) / σ","Compare strategic and tactical allocations on a risk-adjusted basis.","strategic:|taa:"],
 ["Expected real estate return","E(R) ≈ cap rate + NOI growth − %Δ cap rate (annualized)","A rising cap rate lowers the expected return; express its change as an annual percentage change.","cap rate|core office property"],
 ["Relative purchasing power parity","Expected % change in a foreign currency ≈ (1 + domestic inflation)/(1 + foreign inflation) − 1","The higher-inflation currency is expected to depreciate.","purchasing power parity|\bppp\b"],
-["Gordon growth model for equity returns","E(R_e) = D1/P0 + g","g is long-run nominal growth in earnings and dividends.","gordon growth"]
+["Gordon growth model for equity returns","E(R_e) = D1/P0 + g","g is long-run nominal growth in earnings and dividends.","gordon growth"],
+["Human capital and economic net worth","HC = salary₁/(r − g) × [1 − ((1 + g)/(1 + r))^N];  economic net worth = HC + financial capital − liabilities","Stable, bond-like income supports more equities in the financial portfolio; equity-like income supports fewer.","human capital|economic net worth"]
 ]);
 CFA_DATA.formulas(3,"Portfolio Construction","F3-PC",[
 ["Active share","Active share = ½ × Σ |w_portfolio,i − w_benchmark,i|","0% = index fund, 100% = no overlap with the benchmark.","active share"],
@@ -6205,7 +6574,8 @@ CFA_DATA.formulas(3,"Portfolio Construction","F3-PC",[
 ["Swap notional to close a BPV gap","Notional = BPV gap / swap BPV per unit of notional","Receive-fixed swaps add duration; pay-fixed swaps remove it.","swap bpv|notional ="],
 ["Return objective","Additive: spending + inflation + costs;  multiplicative: (1 + s)(1 + π)(1 + c) − 1","The multiplicative version is needed to preserve real value exactly.","return objective|spending rate|additive|multiplicative"],
 ["Leverage-adjusted duration gap","LADG = D_A − (L / A) × D_L;  Δ equity ≈ −LADG × A × Δy","A positive gap means rising rates reduce the value of equity.","leverage-adjusted duration"],
-["Risk contributions (MCTR and ACTR)","MCTR_i = β_i × σ_p;  ACTR_i = w_i × MCTR_i;  Σ ACTR_i = σ_p","Sharpe-optimal when (E(R_i) − R_f)/MCTR_i is equal for all assets; risk parity sets equal ACTRs.","mctr|actr|contribution to (the portfolio's )?total risk|share of total portfolio risk|absolute contribution"]
+["Risk contributions (MCTR and ACTR)","MCTR_i = β_i × σ_p;  ACTR_i = w_i × MCTR_i;  Σ ACTR_i = σ_p","Sharpe-optimal when (E(R_i) − R_f)/MCTR_i is equal for all assets; risk parity sets equal ACTRs.","mctr|actr|contribution to (the portfolio's )?total risk|share of total portfolio risk|absolute contribution"],
+["Combining active managers","IR_combined = √(Σ IR_i²) for uncorrelated active returns;  active risk_i = total active risk × IR_i / IR_combined","Allocate active risk in proportion to each manager's information ratio.","combining the two managers|give each manager|combined allocation"]
 ]);
 CFA_DATA.formulas(3,"Performance Measurement","F3-PM",[
 ["Portfolio and excess return","R_P = Σ w_i R_i;  excess return = R_P − R_B","Weights at the start of the period.","portfolio return =|excess return ="],
@@ -6255,7 +6625,11 @@ CFA_DATA.formulas(3,"Portfolio Management Pathway","F3-PMP",[
 ["Endowment spending rules","Rolling average: rate × average of past values;  hybrid: w × prior spending × (1 + π) + (1 − w) × rate × current value","Smoothing makes spending less volatile than a fixed share of the latest value.","spending ="],
 ["Private equity capital calls","Expected calls = call rate × (commitments − capital already called)","Plan liquidity for spending plus expected calls.","unfunded commitments|expected calls"],
 ["Contingent immunization cushion","Cushion = assets − required terminal value / (1 + current yield)^T","Active management may continue while the cushion is positive.","cushion"],
-["Beta-neutral long/short sizing","Short value = long value × β_long / β_short;  net beta exposure = Σ long × β − Σ short × β","Dollar neutral is not beta neutral when the books have different betas. Shorts also cost a borrowing fee and owed dividends.","beta neutral|beta-neutral|net beta exposure|borrowing fee"]
+["Beta-neutral long/short sizing","Short value = long value × β_long / β_short;  net beta exposure = Σ long × β − Σ short × β","Dollar neutral is not beta neutral when the books have different betas. Shorts also cost a borrowing fee and owed dividends.","beta neutral|beta-neutral|net beta exposure|borrowing fee"],
+["Duration and spread-duration contributions","Contribution = sector weight × sector duration;  relative return ≈ −(portfolio − index contribution) × Δspread","Matching total duration still leaves sector, spread and key rate mismatches.","duration of the index|contribution to spread duration"],
+["Composite factor score and alpha","Composite = Σ w_k × z_k;  alpha = IC × σ × composite score","IC is the correlation between forecasts and realized returns.","composite score|expected alpha"],
+["Expected credit loss","Expected loss = probability of default × (1 − recovery rate);  spread net of expected loss = spread − expected loss","The rest of the spread compensates for uncertainty and liquidity.","expected credit loss|net of expected credit loss"],
+["Merger arbitrage spread","Spread = exchange ratio × acquirer price − target price;  return = spread / target price;  hedge = short exchange ratio × target shares of the acquirer","The payoff resembles a short put: small gain if the deal closes, large loss if it fails.","arbitrage spread|deal fails|annualized return on the spread"]
 ]);
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
@@ -6632,7 +7006,10 @@ CFA_DATA.mockForms = {
    s2:["L2-DER-02","L2-ALT-05","L2-ECON-03","L2-FI-04","L2-ETH-07","L2-FSA-05","L2-FI-02","L2-ETH-06","L2-ECON-01","L2-EQ-04","L2-PM-02"]},
   {id:"L2-M2", name:"Mock 2",
    s1:["L2-EQ-03","L2-QM-01","L2-FSA-06","L2-EQ-07","L2-FI-06","L2-PM-05","L2-PM-04","L2-FSA-03","L2-PM-07","L2-FI-05","L2-FSA-07"],
-   s2:["L2-ETH-04","L2-ETH-02","L2-ALT-04","L2-QM-04","L2-CI-03","L2-DER-01","L2-ETH-01","L2-ECON-05","L2-ECON-02","L2-FI-07","L2-EQ-01"]}
+   s2:["L2-ETH-04","L2-ETH-02","L2-ALT-04","L2-QM-04","L2-CI-03","L2-DER-01","L2-ETH-01","L2-ECON-05","L2-ECON-02","L2-FI-07","L2-EQ-01"]},
+  {id:"L2-M3", name:"Mock 3",
+   s1:["L2-CI-04","L2-ECON-04","L2-DER-03","L2-CI-01","L2-DER-04","L2-EQ-05","L2-ETH-08","L2-FSA-08","L2-QM-05","L2-FSA-04","L2-ETH-03"],
+   s2:["L2-QM-06","L2-FI-08","L2-ETH-09","L2-ALT-03","L2-PM-09","L2-CI-02","L2-EQ-08","L2-FI-03","L2-ALT-01","L2-PM-01","L2-PM-08"]}
  ],
  3: [
   {id:"L3-M1", name:"Mock 1",
@@ -6640,7 +7017,10 @@ CFA_DATA.mockForms = {
    s2:["L3-AA-04","L3-PC-CR01","L3-PMP-09","L3-PMP-06","L3-PMP-CR05","L3-PM-03","L3-PM-CR01","L3-PC-08","L3-AA-CR01","L3-PC-03","L3-AA-CR03"]},
   {id:"L3-M2", name:"Mock 2",
    s1:["L3-PM-CR03","L3-AA-CR04","L3-PC-07","L3-PC-CR03","L3-PMP-02","L3-PMP-01","L3-AA-07","L3-ETH-CR01","L3-PMP-CR07","L3-PC-02","L3-PMP-CR09"],
-   s2:["L3-ETH-02","L3-DR-06","L3-AA-01","L3-PC-CR05","L3-AA-CR02","L3-PMP-CR08","L3-DR-CR02","L3-PMP-04","L3-PMP-08","L3-PM-02","L3-PMP-CR01"]}
+   s2:["L3-ETH-02","L3-DR-06","L3-AA-01","L3-PC-CR05","L3-AA-CR02","L3-PMP-CR08","L3-DR-CR02","L3-PMP-04","L3-PMP-08","L3-PM-02","L3-PMP-CR01"]},
+  {id:"L3-M3", name:"Mock 3",
+   s1:["L3-PC-04","L3-AA-CR06","L3-PM-CR02","L3-PC-01","L3-PC-CR04","L3-PC-CR06","L3-DR-04","L3-AA-03","L3-DR-CR04","L3-AA-CR05","L3-PMP-10"],
+   s2:["L3-PMP-CR11","L3-PMP-11","L3-AA-05","L3-PMP-CR10","L3-ETH-06","L3-PMP-CR04","L3-PMP-03","L3-DR-01","L3-DR-CR03","L3-PM-05","L3-ETH-CR03"]}
  ]
 };
 /* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
