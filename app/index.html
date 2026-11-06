@@ -200,6 +200,13 @@ textarea::placeholder,.search input::placeholder{color:var(--text-3)}
 .home-hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:8px 0}
 .pill{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-height:32px;padding:4px 12px;border-radius:999px;border:1px solid var(--border-2);font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
 .pill .faint{font-weight:400}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px}
+.pill--exam{gap:8px;border-color:transparent;background:var(--accent-soft);color:var(--accent-text);font-family:inherit;cursor:pointer;transition:background .14s cubic-bezier(.2,.8,.2,1)}
+.pill--exam .ic{width:14px;height:14px}
+.pill--exam b{font-weight:500}
+.pill--exam span{font-weight:400}
+.pill--set{background:none;border:1px dashed var(--border-2);color:var(--text-2)}
+.pill--set:hover{color:var(--accent-text);border-color:var(--accent)}
 .home-hero__copy p{font-size:18px;line-height:1.55;color:var(--text-2);max-width:56ch}
 .home-hero__copy .row{margin-top:8px}
 .home-hero__frame{background:var(--ground);border-radius:var(--r-xl);padding:32px;display:flex;align-items:center;justify-content:center}
@@ -6373,12 +6380,16 @@ function toast(msg){
 /* =========================== chrome ============================ */
 const NAV = [['home','Home','home'],['practice','Practice','book'],['exam','Mock exam','timer'],['review','Review','review'],['formulas','Formulas','sigma'],['progress','Progress','chart']];
 function examRunning(){ return !!(S.exam && S.exam.phase==='running'); }
+/* the mock clock stops while the candidate is away from the exam screen and restarts on return */
+const examLeft = ex => (ex.endAt - (ex.pausedAt || Date.now()))/1000;
+function pauseExam(ex){ if(!ex || ex.phase!=='running' || ex.pausedAt) return; paceTick(ex, true); ex.pausedAt = Date.now(); clearInterval(timerHandle); timerHandle = null; }
+function resumeExam(ex){ if(!ex || !ex.pausedAt) return; const d = Date.now()-ex.pausedAt; ex.endAt += d; ex.sessStart += d; ex.pausedAt = null; }
 function paintChrome(){
   const lv = LV(); const st = levelStats(lv);
   const seg = [1,2,3].map(l=>`<button class="${lv===l?'on':''}" data-setlvl="${l}" title="${LEVELS[l]}" aria-pressed="${lv===l}">${ROMAN[l]}</button>`).join('');
   $('#lvlSide').innerHTML = [1,2,3].map(l=>`<button class="${lv===l?'on':''}" data-setlvl="${l}" aria-pressed="${lv===l}">${LEVELS[l]}</button>`).join('');
   $('#lvlTop').innerHTML = seg;
-  const left = examRunning() ? fmtTime((S.exam.endAt-Date.now())/1000) : '';
+  const left = examRunning() ? fmtTime(examLeft(S.exam)) : '';
   $('#navSide').innerHTML = NAV.map(([k,l,ic])=>{
     let extra = '';
     if(k==='exam' && left) extra = `<span class="nav-timer" id="navTimer">${left}</span>`;
@@ -6410,8 +6421,9 @@ function setLevel(l){
 const isFocus = ()=> (S.view==='practice' && !!S.practice && S.practice.pos<S.practice.sets.length) || (S.view==='exam' && !!S.exam && (S.exam.phase==='running'||S.exam.phase==='review'));
 async function go(v){
   if(S.view==='exam' && examRunning() && v!=='exam'){
-    const ok = await modal({title:'Leave the exam?', body:'Your answers are kept and the timer keeps running. Come back any time from Mock exam.', ok:'Leave', cancel:'Stay'});
+    const ok = await modal({title:'Leave the exam?', body:'Your answers are kept and the clock pauses until you come back from Mock exam. Closing or reloading the page ends the exam.', ok:'Leave', cancel:'Stay'});
     if(!ok) return;
+    pauseExam(S.exam);
   }
   S.view=v; render(true); window.scrollTo(0,0);
 }
@@ -6687,6 +6699,14 @@ function rerenderSet(set, states, mode, num, bind){
 /* =========================== HOME ============================ */
 /* Exam year the bank follows; update together with the questions when CFA Institute publishes a new curriculum. */
 const CURRICULUM_YEAR = 2027;
+/* days left to the exam date of this level's study plan; without a plan, a button to set the date */
+function examChip(l){
+  const p = DB.plans && DB.plans[l];
+  if(!p) return `<button type="button" class="pill pill--exam pill--set" data-plan>${icon('calendar')}Set your exam date</button>`;
+  const d = dayOfISO(p.exam) - today(); if(d < 0) return `<button type="button" class="pill pill--exam pill--set" data-plan>${icon('calendar')}Set your next exam date</button>`;
+  const when = d===0 ? 'Exam today' : d===1 ? 'Exam tomorrow' : `Exam in ${d} days`;
+  return `<button type="button" class="pill pill--exam" data-plan title="Change your exam date">${icon('calendar')}<b>${when}</b><span>${fmtDayNum(dayOfISO(p.exam))}</span></button>`;
+}
 function vHome(app){
   const l = LV(), st = levelStats(l), ts = topicStats(l);
   const sets = SETS.filter(s=>s.level===l);
@@ -6706,7 +6726,7 @@ function vHome(app){
   app.innerHTML = `<div class="content">
     <div class="home-hero">
       <div class="home-hero__copy">
-        <span class="pill">${LEVELS[l]} · ${CURRICULUM_YEAR} curriculum<span class="faint">${l===3 ? 'Core + Portfolio Management pathway · ' : ''}${fmt}</span></span>
+        <div class="pill-row"><span class="pill">${LEVELS[l]} · ${CURRICULUM_YEAR} curriculum<span class="faint">${l===3 ? 'Core + Portfolio Management pathway · ' : ''}${fmt}</span></span>${examChip(l)}</div>
         <h1>${title}</h1><p>${text}</p>
         <div class="row">
           ${dueSets.length?`<button class="btn primary lg" id="due">${icon('review')}Review due <span class="num">${dueSets.length}</span></button>`:''}
@@ -7276,7 +7296,7 @@ function examHelp(){
     <div>${icon('pen')}<span><b>Highlight</b>Select text in a case or question, then choose Highlight. Select a highlight again to remove it.</span></div>
     <div>${icon('layers')}<span><b>Sessions</b>A full mock runs as two sessions with an optional break. Ending a session locks its answers.</span></div>
     <div>${icon('check')}<span><b>Finish</b>Before you end a session or submit, you see every open and flagged question and can jump straight to it.</span></div>
-    <div>${icon('exit')}<span><b>Leaving</b>You can leave and come back, but the timer keeps running.</span></div>
+    <div>${icon('exit')}<span><b>Leaving</b>Leave from the top left and the clock pauses until you return. Closing or reloading the page ends the exam.</span></div>
   </div></div>`);
 }
 function openNavigator(){ sheet(navPanel(S.exam), (ov,close)=>bindPal(ov,close)); }
@@ -7372,13 +7392,14 @@ function bindHl(app, editable){
   });
 }
 function examRun(app){
+  resumeExam(S.exam);
   const ex = S.exam; const set = SETMAP[ex.sets[ex.pos]]; const ql = sessQuestions(ex);
   const answered = ql.filter(({q})=>isAnswered(q,ex.states[q.qid])).length;
   const rail = ex.level===1; const left = (ex.endAt-Date.now())/1000;
   const [lo,hi] = sessRange(ex);
   const what = `<span class="hide-sm">${ex.sessions ? `Session ${ex.sess+1} of 2 · ` : ''}${ex.level===1 ? 'Question' : 'Set'} ${ex.pos-lo+1} of ${hi-lo}</span><span class="show-sm">${ex.sessions ? `S${ex.sess+1} · ` : ''}${ex.pos-lo+1} / ${hi-lo}</span>`;
   app.innerHTML = sessHead(
-      `<button class="btn ghost icon sm" id="leave" title="Leave exam (timer keeps running)">${icon('exit')}</button><span class="sess-title hide-sm">${LEVELS[ex.level]} mock</span><span class="sess-pos">${what}</span>`,
+      `<button class="btn ghost icon sm" id="leave" title="Leave exam (the clock pauses)">${icon('exit')}</button><span class="sess-title hide-sm">${LEVELS[ex.level]} mock</span><span class="sess-pos">${what}</span>`,
       `<span class="live hide-sm"><b id="hdrAnswered">${answered} / ${ql.length}</b> answered</span><span class="timer ${left<300?'low':''}" id="timer">${icon('clock')}<span id="timerTxt">${fmtTime(left)}</span></span><button class="btn sm navbtn ${rail?'has-rail':''}" id="navBtn" aria-label="Navigator">${icon('grid')}<span class="hide-sm">Navigator</span></button><button class="btn primary sm" id="submitTop">${moreSessions(ex)?'End session':'Submit'}</button>`,
       pct(answered,ql.length), rail)
     + `<div class="content wide${rail?' stage':''}"><div class="exam-grid ${rail?'has-rail':''}"><div id="setbox">${renderSet(set,startNumOf(ex),ex.states,'exam')}</div>${rail?`<aside class="rail panel">${navPanel(ex)}</aside>`:''}</div></div>`
@@ -7461,6 +7482,7 @@ function paintPace(ex){
 }
 function tick(){
   const ex = S.exam; if(!ex || ex.phase!=='running'){ clearInterval(timerHandle); timerHandle=null; return; }
+  if(ex.pausedAt) return;
   paceTick(ex); paintPace(ex);
   const left = (ex.endAt-Date.now())/1000; const txt = fmtTime(left);
   const t=$('#timer'); if(t){ $('#timerTxt').textContent=txt; t.classList.toggle('low',left<300); }
