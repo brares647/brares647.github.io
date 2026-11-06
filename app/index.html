@@ -480,6 +480,42 @@ label.rub:hover{background:var(--surface-2)}
 .help-list > div{display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;font-size:15px;line-height:1.5;color:var(--text-2)}
 .help-list .ic{width:18px;height:18px;margin-top:2px;color:var(--accent-text)}
 .help-list b{display:block;color:var(--text);font-weight:500}
+/* on-screen BA II Plus */
+.foot-l{display:flex;align-items:center;gap:8px}
+.btn.icon[data-calc][aria-pressed="true"]{color:var(--accent-text);border-color:var(--accent)}
+.calc{position:fixed;right:24px;bottom:88px;z-index:150;width:356px;max-height:calc(100vh - 24px);overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-3);padding:12px;display:flex;flex-direction:column;gap:12px;outline:0}
+.calc[hidden]{display:none}
+.calc-h{display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:grab;user-select:none;touch-action:none}
+.calc-h b{font-size:14px;font-weight:500;padding-left:4px}
+.calc-h span{font-size:13px;color:var(--text-3);margin-left:8px}
+.cd{background:var(--ground);border-radius:12px;padding:8px 12px 12px;color:var(--text);font-family:var(--mono)}
+.cd-ind{display:flex;gap:8px;min-height:18px;font:500 13px/18px var(--mono);color:var(--text-2)}
+.cd-ind span{visibility:hidden}
+.cd-ind span.on{visibility:visible}
+.cd-main{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:4px;min-height:36px}
+.cd-label{font-size:15px;white-space:nowrap}
+.cd-val{font-size:28px;line-height:36px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:clip;text-align:right;flex:1;min-width:0}
+.cd-flag{display:inline-block;width:16px;text-align:center;font-size:15px}
+.cd-err{min-height:18px;font:13px/18px var(--font);color:var(--text-2)}
+.ckeys{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.ck{height:44px;padding:2px 0;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;font:500 15px/1 var(--font);transition:background .1s,transform .09s;touch-action:manipulation}
+.ck:hover{background:var(--surface-3)}
+.ck:active{transform:scale(.97)}
+.ck .ck2{font:400 13px/1 var(--font);color:var(--accent-text);white-space:nowrap;letter-spacing:-.02em}
+.ck .ck2:empty{display:none}
+.ck.num{background:var(--surface);border-color:var(--border-2);font-size:17px}
+.ck.eq{grid-row:span 2;height:auto}
+.ck.k2nd{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.calc.is-2nd .ck.k2nd{background:var(--accent-btn);color:var(--on-accent)}
+.calc.is-2nd .ck .ck2{font-weight:600}
+.calc.is-2nd .ck:has(.ck2:not(:empty)){border-color:var(--accent)}
+@media (max-width:600px){
+  .calc{left:0;right:0;bottom:0;width:auto;max-height:92vh;border-radius:16px 16px 0 0;padding:12px 8px calc(12px + env(safe-area-inset-bottom))}
+  .ckeys{gap:4px}
+  .calc-h{cursor:default}
+  .ck{height:42px}
+  .cd-val{font-size:24px}
+}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--text-2);margin-top:16px}
 .legend span{display:inline-flex;align-items:center;gap:8px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:4px;border:1px solid var(--border-2)}
@@ -6148,6 +6184,341 @@ window.CFA_LINKS = {
 window.CFA_LINK_TITLES = {"articles/financial-theory/08/core-satellite-investing.asp":"Core-Satellite Investing Strategy","articles/investing/111413/commonsize-analysis-financial-statements.asp":"Common-Size Analysis for Financial Statements","articles/mutualfund/07/active-share.asp":"Active Share","ask/answers/012615/whats-difference-between-rsquared-and-adjusted-rsquared.asp":"R-Squared vs. Adjusted R-Squared","terms/a/absoluteadvantage.asp":"Absolute Advantage","terms/a/accrualaccounting.asp":"Accrual Accounting","terms/a/accruedinterest.asp":"Accrued Interest","terms/a/activemanagement.asp":"Active Management","terms/a/adr.asp":"American Depositary Receipts (ADRs)","terms/a/aggregatedemand.asp":"Aggregate Demand","terms/a/alternative_investment.asp":"Alternative Investments","terms/a/altman.asp":"Altman Z-Score","terms/a/anchoring.asp":"Anchoring Bias","terms/a/anova.asp":"Analysis of Variance (ANOVA)","terms/a/apt.asp":"Arbitrage Pricing Theory","terms/a/arbitrage.asp":"Arbitrage","terms/a/asset-backedsecurity.asp":"Asset-Backed Securities (ABS)","terms/a/attribution-analysis.asp":"Performance Attribution","terms/a/autocorrelation.asp":"Autocorrelation","terms/a/autoregressive.asp":"Autoregressive Models","terms/b/barbell.asp":"Barbell Strategy","terms/b/basisrisk.asp":"Basis Risk in Hedging","terms/b/bayes-theorem.asp":"Bayes' Theorem","terms/b/behavioralfinance.asp":"Behavioral Finance","terms/b/benchmark.asp":"Investment Benchmarks","terms/b/beneishmodel.asp":"Beneish Model","terms/b/beta.asp":"Beta","terms/b/big-data.asp":"Big Data","terms/b/binomial_tree.asp":"Binomial Trees","terms/b/binomialdistribution.asp":"Binomial Distribution","terms/b/binomialoptionpricing.asp":"Binomial Option Pricing Model","terms/b/blackscholes.asp":"Black-Scholes Model","terms/b/blockchain.asp":"Blockchain","terms/b/bond.asp":"Bonds","terms/b/bondladder.asp":"Bond Ladder","terms/b/bop.asp":"Balance of Payments","terms/b/bottomupinvesting.asp":"Bottom-Up vs. Top-Down Investing","terms/b/bullspread.asp":"Bull Spread Strategy","terms/b/businesscycle.asp":"Business Cycles","terms/b/businessmodel.asp":"Business Model","terms/c/callablebond.asp":"Callable Bonds","terms/c/calloption.asp":"Call Option","terms/c/camelrating.asp":"CAMELS Rating","terms/c/cap.asp":"Interest Rate Cap","terms/c/capitaladequacyratio.asp":"Capital Adequacy Ratio (CAR)","terms/c/capitalbudgeting.asp":"Capital Budgeting","terms/c/capitalizationrate.asp":"Capitalization Rate","terms/c/capitalizationweightedindex.asp":"Capitalization-Weighted Indexes","terms/c/capitalizedcost.asp":"Capitalized Cost","terms/c/capitallease.asp":"Capital (Finance) Leases","terms/c/capm.asp":"CAPM","terms/c/carriedinterest.asp":"Carried Interest","terms/c/cashconversioncycle.asp":"Cash Conversion Cycle (CCC)","terms/c/cashflowstatement.asp":"Cash Flow Statement","terms/c/central_limit_theorem.asp":"Central Limit Theorem (CLT)","terms/c/chi-square-statistic.asp":"Chi-Square (χ2) Statistic","terms/c/cml.asp":"Capital Market Line (CML)","terms/c/coefficientofvariation.asp":"Coefficient of Variation","terms/c/combinedratio.asp":"Combined Ratio","terms/c/commodity.asp":"Commodities","terms/c/comparativeadvantage.asp":"Comparative Advantage","terms/c/comprehensiveincome.asp":"Comprehensive Income","terms/c/conditional_probability.asp":"Conditional Probability","terms/c/conditional_value_at_risk.asp":"Conditional Value at Risk (CVaR)","terms/c/confidenceinterval.asp":"Confidence Interval","terms/c/confirmation-bias.asp":"Confirmation Bias","terms/c/consumer_surplus.asp":"Consumer Surplus","terms/c/consumerpriceindex.asp":"Consumer Price Index (CPI)","terms/c/contango.asp":"Contango","terms/c/contingentliability.asp":"Contingent Liabilities","terms/c/continuouscompounding.asp":"Continuous Compounding","terms/c/convertiblebond.asp":"Convertible Bonds","terms/c/convexity.asp":"Convexity in Bonds","terms/c/corporategovernance.asp":"Corporate Governance","terms/c/correlationcoefficient.asp":"Correlation Coefficient","terms/c/costofcarry.asp":"Cost of Carry","terms/c/costofdebt.asp":"Cost of Debt","terms/c/costofequity.asp":"Cost of Equity","terms/c/country-risk-premium.asp":"Country Risk Premium","terms/c/covariance.asp":"Covariance","terms/c/covered-interest-rate-parity.asp":"Covered Interest Rate Parity","terms/c/coveredcall.asp":"Covered Call","terms/c/creditanalysis.asp":"Credit Analysis","terms/c/creditdefaultswap.asp":"Credit Default Swap","terms/c/creditrating.asp":"Credit Ratings","terms/c/creditspread.asp":"Credit Spread","terms/c/cross-elasticity-demand.asp":"Cross Price Elasticity","terms/c/crossrate.asp":"Cross Rates","terms/c/crowdingouteffect.asp":"Crowding Out Effect","terms/c/cryptocurrency.asp":"Cryptocurrency","terms/c/currencycarrytrade.asp":"Currency Carry Trade","terms/c/currencyrisk.asp":"Currency Risk","terms/c/currencyswap.asp":"Currency Swaps","terms/c/currentaccount.asp":"Current Account","terms/c/currentratemethod.asp":"Current Rate Method","terms/c/currentratio.asp":"Current Ratio","terms/c/currentyield.asp":"Current Yield","terms/d/ddm.asp":"Dividend Discount Model","terms/d/debtequityratio.asp":"Debt-to-Equity (D/E) Ratio","terms/d/defaultprobability.asp":"Default Probability","terms/d/deferredtaxasset.asp":"Deferred Tax Asset","terms/d/deferredtaxliability.asp":"Deferred Tax Liability","terms/d/definedbenefitpensionplan.asp":"Defined-Benefit Plan","terms/d/degreeofoperatingleverage.asp":"Degree of Operating Leverage (DOL)","terms/d/deltahedging.asp":"Delta Hedging Strategy","terms/d/depreciation.asp":"Depreciation","terms/d/dfl.asp":"Degree of Financial Leverage (DFL)","terms/d/dilutedeps.asp":"Diluted EPS","terms/d/dirtyprice.asp":"Dirty Bond Pricing","terms/d/diversification.asp":"Diversification","terms/d/dividendpayoutratio.asp":"Dividend Payout Ratio","terms/d/dividendpolicy.asp":"Dividend Policies","terms/d/dlom.asp":"Discount for Lack of Marketability (DLOM)","terms/d/double-declining-balance-depreciation-method.asp":"Double-Declining Balance (DDB) Depreciation Method","terms/d/dupontanalysis.asp":"DuPont Analysis","terms/d/duration.asp":"Duration","terms/d/durbin-watson-statistic.asp":"Durbin Watson Test","terms/e/economiesofscale.asp":"Economies of Scale","terms/e/effectiveduration.asp":"Effective Duration","terms/e/effectiveinterest.asp":"Effective Annual Interest Rate","terms/e/effectivetaxrate.asp":"Effective Tax Rate","terms/e/efficientfrontier.asp":"Efficient Frontier","terms/e/efficientmarkethypothesis.asp":"Efficient Market Hypothesis (EMH)","terms/e/endowment.asp":"Endowments","terms/e/enterprisevalue.asp":"Enterprise Value (EV)","terms/e/environmental-social-and-governance-esg-criteria.asp":"Environmental, Social, and Governance (ESG) Investing","terms/e/eps.asp":"Earnings Per Share (EPS)","terms/e/equitymethod.asp":"Equity Method Accounting","terms/e/equityriskpremium.asp":"Equity Risk Premium","terms/e/equityswap.asp":"Equity Swaps","terms/e/eso.asp":"Employee Stock Options","terms/e/ev-ebitda.asp":"Enterprise Multiple (EV/EBITDA)","terms/e/eva.asp":"Economic Value Added (EVA)","terms/e/exchangerate.asp":"Exchange Rates","terms/e/expectationstheory.asp":"Expectations Theory","terms/e/expected-value.asp":"Expected Value","terms/f/factor-investing.asp":"Factor Investing","terms/f/fairvalue.asp":"Fair Value","terms/f/famaandfrenchthreefactormodel.asp":"Fama French Three Factor Model","terms/f/fifo.asp":"FIFO","terms/f/fiscalpolicy.asp":"Fiscal Policy","terms/f/fishereffect.asp":"Fisher Effect","terms/f/forwardcontract.asp":"Forward Contracts","terms/f/forwardpremium.asp":"Forward Premiums","terms/f/forwardrate.asp":"Forward Rates","terms/f/fra.asp":"Forward Rate Agreement (FRA)","terms/f/freecashflow.asp":"Free Cash Flow (FCF)","terms/f/freecashflowtoequity.asp":"Free Cash Flow to Equity (FCFE)","terms/f/frn.asp":"Floating-Rate Note (FRN)","terms/f/frontrunning.asp":"Front-Running","terms/f/fundsfromoperation.asp":"Funds From Operations (FFO)","terms/f/futures.asp":"Futures","terms/g/gdp.asp":"Gross Domestic Product (GDP)","terms/g/geometricmean.asp":"Geometric Mean","terms/g/gips.asp":"Global Investment Performance Standards (GIPS)","terms/g/goodwill.asp":"Goodwill","terms/g/gordongrowthmodel.asp":"Gordon Growth Model","terms/g/greeks.asp":"Option Greeks","terms/g/grossmargin.asp":"Gross Margin","terms/h/harmonicaverage.asp":"Harmonic Mean","terms/h/hedge.asp":"Hedging","terms/h/hedgefund.asp":"Hedge Fund","terms/h/heteroskedasticity.asp":"Heteroscedasticity","terms/h/hhi.asp":"Herfindahl-Hirschman Index (HHI)","terms/h/highwatermark.asp":"High-Water Mark","terms/h/holdingperiodreturn-yield.asp":"Holding Period Return","terms/h/hypothesistesting.asp":"Hypothesis Testing","terms/i/ife.asp":"International Fisher Effect","terms/i/ifrs.asp":"IFRS","terms/i/immunization.asp":"Immunization Strategy","terms/i/impairment.asp":"Impairment","terms/i/implementation-shortfall.asp":"Implementation Shortfall","terms/i/incomeelasticityofdemand.asp":"Income Elasticity of Demand","terms/i/indenture.asp":"Indentures","terms/i/indifferencecurve.asp":"Indifference Curves","terms/i/inflation.asp":"Inflation","terms/i/information-coefficient.asp":"Information Coefficient","terms/i/informationratio.asp":"Information Ratio","terms/i/infrastructure.asp":"Infrastructure","terms/i/intangibleasset.asp":"Intangible Assets","terms/i/interestcoverageratio.asp":"Interest Coverage Ratio","terms/i/interestraterisk.asp":"Interest Rate Risk","terms/i/interestrateswap.asp":"Interest Rate Swaps","terms/i/intrinsicvalue.asp":"Intrinsic Value","terms/i/inventoryturnover.asp":"Inventory Turnover Ratio","terms/i/ipo.asp":"IPO","terms/i/ips.asp":"Investment Policy Statement (IPS)","terms/i/irr.asp":"Internal Rate of Return (IRR)","terms/i/iv.asp":"Implied Volatility","terms/j/jcurve.asp":"J Curve","terms/j/jensensmeasure.asp":"Jensen's Alpha","terms/k/keyrateduration.asp":"Key Rate Duration","terms/k/kurtosis.asp":"Kurtosis","terms/l/ldi.asp":"Liability-Driven Investments","terms/l/leadingindicator.asp":"Leading Indicators","terms/l/leveragedbuyout.asp":"Leveraged Buyouts (LBOs)","terms/l/lifo-reserve.asp":"LIFO Reserve","terms/l/lifo.asp":"LIFO","terms/l/lifoliquidation.asp":"LIFO Liquidation","terms/l/limitorder.asp":"Limit Orders in Trading","terms/l/log-normal-distribution.asp":"Log-Normal Distribution","terms/l/lossgivendefault.asp":"Loss Given Default","terms/m/macaulayduration.asp":"Macaulay Duration","terms/m/machine-learning.asp":"Machine Learning","terms/m/margin.asp":"Margin Trading","terms/m/marginalcostofproduction.asp":"Marginal Cost","terms/m/margincall.asp":"Margin Calls","terms/m/marktomarket.asp":"Mark to Market (MTM)","terms/m/mbs.asp":"Mortgage-Backed Securities","terms/m/mentalaccounting.asp":"Mental Accounting","terms/m/mergersandacquisitions.asp":"Mergers & Acquisitions (M&A)","terms/m/mlr.asp":"Multiple Linear Regression (MLR)","terms/m/modernportfoliotheory.asp":"Modern Portfolio Theory","terms/m/modifiedduration.asp":"Modified Duration","terms/m/modigliani-millertheorem.asp":"Modigliani-Miller Theorem","terms/m/monetarypolicy.asp":"Monetary Policy","terms/m/money-weighted-return.asp":"Money-Weighted Rate of Return","terms/m/moneymarket.asp":"Money Markets","terms/m/monopolisticmarket.asp":"Monopolistic Competition","terms/m/monopoly.asp":"Monopoly","terms/m/montecarlosimulation.asp":"Monte Carlo Simulation","terms/m/mosaictheory.asp":"Mosaic Theory","terms/m/movingaverage.asp":"Moving Average (MA)","terms/m/multicollinearity.asp":"Multicollinearity","terms/m/multifactor-model.asp":"Multi-Factor Models","terms/n/negative_convexity.asp":"Negative Convexity","terms/n/neoclassical-growth-theory.asp":"Neoclassical Growth Theory","terms/n/neuralnetwork.asp":"Neural Networks","terms/n/noi.asp":"Net Operating Income (NOI)","terms/n/noncontrolling_interest.asp":"Non-Controlling Interest","terms/n/nonparametric-statistics.asp":"Nonparametric Statistics","terms/n/normaldistribution.asp":"Normal Distribution","terms/n/npv.asp":"Net Present Value (NPV)","terms/o/oligopoly.asp":"Oligopolies","terms/o/operatingcashflow.asp":"Operating Cash Flow (OCF)","terms/o/operatinglease.asp":"Operating Lease","terms/o/operatingmargin.asp":"Operating Margin","terms/o/optionadjustedspread.asp":"Option-Adjusted Spread (OAS)","terms/o/overfitting.asp":"Overfitting","terms/p/p-value.asp":"P-Value","terms/p/passivemanagement.asp":"Passive Management","terms/p/paybackperiod.asp":"Payback Period","terms/p/pbo.asp":"Projected Benefit Obligation","terms/p/pegratio.asp":"Price/Earnings-to-Growth (PEG) Ratio","terms/p/perfectcompetition.asp":"Perfect Competition","terms/p/permutation.asp":"Permutations","terms/p/perpetuity.asp":"Perpetuity","terms/p/politicalrisk.asp":"Political Risk","terms/p/porter.asp":"Porter's Five Forces","terms/p/portfolio-variance.asp":"Portfolio Variance","terms/p/preferredstock.asp":"Preferred Stock","terms/p/prepaymentrisk.asp":"Prepayment Risk","terms/p/price-earningsratio.asp":"Price-to-Earnings (P/E) Ratio","terms/p/price-to-bookratio.asp":"Price-to-Book (P/B) Ratio","terms/p/price-to-salesratio.asp":"Price-to-Sales (P/S) Ratio","terms/p/priceelasticity.asp":"Price Elasticity of Demand","terms/p/priceweightedindex.asp":"Price-Weighted Index","terms/p/principal-agent-problem.asp":"Principal-Agent Problem","terms/p/privateequity.asp":"Private Equity","terms/p/prospecttheory.asp":"Prospect Theory","terms/p/protective-put.asp":"Protective Put Options","terms/p/putbond.asp":"Put Bonds","terms/p/putcallparity.asp":"Put-Call Parity","terms/p/putoption.asp":"Put Option","terms/p/pvbp.asp":"Price Value of a Basis Point (PVBP)","terms/q/qualifiedopinion.asp":"Qualified Opinion","terms/q/qualityofearnings.asp":"Quality of Earnings","terms/q/quantity_theory_of_money.asp":"Quantity Theory of Money","terms/q/quickratio.asp":"Quick Ratio","terms/r/r-squared.asp":"R-Squared","terms/r/randomwalktheory.asp":"Random Walk Theory","terms/r/realasset.asp":"Real Assets","terms/r/realoption.asp":"Real Options","terms/r/rebalancing.asp":"Rebalancing Your Portfolio","terms/r/receivableturnoverratio.asp":"Receivables Turnover Ratio","terms/r/regression.asp":"Regression","terms/r/regulatory-capture.asp":"Regulatory Capture","terms/r/reinvestmentrisk.asp":"Reinvestment Risk","terms/r/reit.asp":"REITs","terms/r/repurchaseagreement.asp":"Repurchase Agreements","terms/r/residualincome.asp":"Residual Income","terms/r/returnonequity.asp":"Return on Equity (ROE)","terms/r/revenuerecognition.asp":"Revenue Recognition","terms/r/ridingtheyieldcurve.asp":"Yield Curve Strategies","terms/r/risk-parity.asp":"Risk Parity","terms/r/riskaverse.asp":"Risk Aversion","terms/r/riskmanagement.asp":"Risk Management","terms/r/risktolerance.asp":"Risk Tolerance","terms/r/roboadvisor-roboadviser.asp":"Robo-Advisor","terms/r/roll-yield.asp":"Roll Yield","terms/s/sampling.asp":"Sampling","terms/s/seasonality.asp":"Seasonality","terms/s/securitization.asp":"Securitization","terms/s/sharerepurchase.asp":"Share Repurchase","terms/s/sharperatio.asp":"Sharpe Ratio","terms/s/shortselling.asp":"Short Selling","terms/s/skewness.asp":"Skewness","terms/s/smart-beta.asp":"Smart Beta","terms/s/sml.asp":"Security Market Line","terms/s/softdollars.asp":"Soft Dollars","terms/s/solow-residual.asp":"Solow Residual","terms/s/sortinoratio.asp":"Sortino Ratio","terms/s/sovereign-debt.asp":"Sovereign Debt","terms/s/spot_rate.asp":"Spot Rates","terms/s/stakeholder.asp":"Stakeholders","terms/s/standard-error.asp":"Standard Error (SE)","terms/s/standarddeviation.asp":"Standard Deviation","terms/s/stockdividend.asp":"Stock Dividends","terms/s/stocksplit.asp":"Stock Split","terms/s/stoporder.asp":"Stop Orders","terms/s/straddle.asp":"Straddle Options Strategy","terms/s/strategicassetallocation.asp":"Strategic Asset Allocation","terms/s/stresstesting.asp":"Stress Testing","terms/s/sustainablegrowthrate.asp":"Sustainable Growth Rate (SGR)","terms/s/swap.asp":"Swaps","terms/s/swaption.asp":"Swaptions","terms/s/systematicrisk.asp":"Systematic Risk","terms/t/tacticalassetallocation.asp":"Tactical Asset Allocation","terms/t/tariff.asp":"Tariffs","terms/t/taylorsrule.asp":"Taylor Rule","terms/t/tdistribution.asp":"T-Distribution","terms/t/temporalmethod.asp":"Temporal Method in Currency Translation","terms/t/time-weightedror.asp":"Time-Weighted Rate of Return (TWR)","terms/t/timevalueofmoney.asp":"Time Value of Money","terms/t/tips.asp":"Treasury Inflation-Protected Securities (TIPS)","terms/t/trackingerror.asp":"Tracking Error","terms/t/trade-credit.asp":"Trade Credit","terms/t/treynorratio.asp":"Treynor Ratio","terms/t/trilemma.asp":"Economic Trilemma","terms/t/type-ii-error.asp":"Type II Error","terms/u/uncoveredinterestrateparity.asp":"Uncovered Interest Rate Parity","terms/u/unemployment.asp":"Unemployment","terms/u/unleveredbeta.asp":"Unlevered Beta","terms/v/var.asp":"Value at Risk (VaR)","terms/v/vwap.asp":"Volume-Weighted Average Price (VWAP)","terms/w/wacc.asp":"WACC","terms/w/workingcapital.asp":"Working Capital","terms/y/yieldcurve.asp":"Yield Curve","terms/y/yieldtomaturity.asp":"Yield to Maturity (YTM)","terms/y/yieldtoworst.asp":"Yield to Worst (YTW)","terms/z/zspread.asp":"Zero-Volatility Spread (Z-Spread)","updates/purchasing-power-parity-ppp/":"Purchasing Power Parity (PPP)",
 "terms/r/roys-safety-first-criterion.asp":"Roy's Safety-First Criterion","terms/a/allowancefordoubtfulaccounts.asp":"Allowance for Doubtful Accounts","terms/b/baddebt.asp":"Bad Debt","terms/l/llc.asp":"Limited Liability Company (LLC)","terms/g/generalpartnership.asp":"General Partnership","terms/i/international-capm.asp":"International CAPM","terms/t/target-payout-ratio.asp":"Target Payout Ratio","terms/t/technicalanalysis.asp":"Technical Analysis","terms/r/resistance.asp":"Resistance Levels in Trading","terms/a/asset-based-approach.asp":"Asset-Based Valuation","terms/b/bond-valuation.asp":"Bond Valuation","terms/l/leverage.asp":"Financial Leverage","terms/v/venturecapital.asp":"Venture Capital","terms/p/premoneyvaluation.asp":"Pre-Money Valuation","terms/p/performance-fee.asp":"Performance Fees","terms/n/net-exposure.asp":"Net Exposure","terms/m/meanvariance-analysis.asp":"Mean-Variance Analysis","terms/e/etf.asp":"Exchange-Traded Fund (ETF)","terms/a/authorizedparticipant.asp":"Authorized Participants in ETFs","terms/s/securitieslending.asp":"Securities Lending","terms/t/target-date_fund.asp":"Target-Date Funds","terms/d/definedcontributionplan.asp":"Defined Contribution Plans",
 "terms/m/managementfee.asp":"Management Fee","terms/f/fulcrumfee.asp":"Fulcrum Fee","terms/d/duediligence.asp":"Due Diligence","terms/s/styledrift.asp":"Style Drift","terms/c/collar.asp":"Collar Options Strategy","terms/t/totalreturnswap.asp":"Total Return Swaps","terms/b/bearspread.asp":"Bear Spreads","terms/s/strangle.asp":"Strangle Options Strategy","terms/h/homebias.asp":"Home Bias"};
+/* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
+   Covers what the CFA exam uses: chain/AOS arithmetic, memories, TVM with P/Y, C/Y and BGN, AMORT, cash flows
+   (NPV, IRR), DATA/STAT (1-V, LIN, Ln, EXP, PWR), ICONV, Δ%, FORMAT and RESET. BOND, DEPR, DATE, BRKEVN, PROFIT
+   and trigonometry are not built and say so on the display.
+   Key ids: cpt enter up down onoff 2nd cf npv irr back n iy pv pmt fv pct sqrt sq inv1x div inv lp rp pow mul
+            ln 7 8 9 sub sto 4 5 6 add rcl 1 2 3 eq ce 0 dot neg */
+const BACalc = (function(){
+  const SECOND = {cpt:'quit', enter:'set', up:'del', down:'ins', n:'xpy', iy:'py', pv:'amort', pmt:'bgn', fv:'clrtvm',
+    ln:'ex', mul:'fact', sub:'npr', add:'ncr', '7':'data', '8':'stat', '9':'bond', '4':'depr', '5':'dpct', '6':'brkevn',
+    '1':'date', '2':'iconv', '3':'profit', '0':'mem', dot:'format', neg:'reset', eq:'ans', ce:'clrwork'};
+  const LABEL2 = {quit:'QUIT', set:'SET', del:'DEL', ins:'INS', xpy:'xP/Y', py:'P/Y', amort:'AMORT', bgn:'BGN', clrtvm:'CLR TVM',
+    ex:'eˣ', fact:'x!', npr:'nPr', ncr:'nCr', data:'DATA', stat:'STAT', bond:'BOND', depr:'DEPR', dpct:'Δ%', brkevn:'BRKEVN',
+    date:'DATE', iconv:'ICONV', profit:'PROFIT', mem:'MEM', format:'FORMAT', reset:'RESET', ans:'ANS', clrwork:'CLR WORK'};
+  const STAT_METHODS = ['LIN','Ln','EXP','PWR','1-V'];
+  const PREC = {add:0, sub:0, mul:1, div:1, npr:2, ncr:2, pow:3, root:3};
+  const ERR = {1:'Overflow', 2:'Invalid argument', 3:'Too many pending operations', 5:'No solution exists', 7:'Iteration limit exceeded'};
+  class CalcError extends Error { constructor(code){ super('Error '+code); this.code = code; } }
+  const chk = v => { if(!isFinite(v) || Math.abs(v) > 9.9999999999999e99) throw new CalcError(1); return Math.abs(v) < 1e-99 ? 0 : v; };
+  const fact = n => { if(n<0 || n>69 || n!==Math.floor(n)) throw new CalcError(2); let r=1; for(let i=2;i<=n;i++) r*=i; return r; };
+  function binop(op, a, b){
+    switch(op){
+      case 'add': return chk(a+b); case 'sub': return chk(a-b); case 'mul': return chk(a*b);
+      case 'div': if(b===0) throw new CalcError(1); return chk(a/b);
+      case 'pow': if(a<0 && b!==Math.floor(b) && (1/b)!==Math.floor(1/b)) throw new CalcError(2); return chk(a<0 && (1/b)%2===1 ? -Math.pow(-a,b) : Math.pow(a,b));
+      case 'root': if(b===0) throw new CalcError(1); return binop('pow', a, 1/b);
+      case 'npr': if(b>a) throw new CalcError(2); return chk(fact(a)/fact(a-b));
+      case 'ncr': if(b>a) throw new CalcError(2); return chk(fact(a)/(fact(b)*fact(a-b)));
+    }
+  }
+  const fresh = () => ({
+    dec:2, aos:false, mem:[0,0,0,0,0,0,0,0,0,0], ans:0,
+    tvm:{N:0, IY:0, PV:0, PMT:0, FV:0, PY:1, CY:1, BGN:false}, amort:{P1:1, P2:1},
+    cf:{CF0:0, flows:[], I:0}, data:[], statMethod:0, iconv:{NOM:0, EFF:0, CY:1}, dpct:{OLD:0, NEW:0, PCT:0, PD:1}
+  });
+
+  /* ---------------- finance ---------------- */
+  function periodRate(t, iy){ const r = (iy==null ? t.IY : iy)/100; return t.CY===t.PY ? r/t.PY : Math.pow(1 + r/t.CY, t.CY/t.PY) - 1; }
+  function annualFromPeriod(t, i){ return 100 * (t.CY===t.PY ? i*t.PY : t.CY*(Math.pow(1+i, t.PY/t.CY) - 1)); }
+  function tvmResidual(t, i, N){ // PV(1+i)^N + PMT(1+i·b)((1+i)^N−1)/i + FV
+    const b = t.BGN ? 1 : 0;
+    if(Math.abs(i) < 1e-12) return t.PV + t.PMT*N + t.FV;
+    const g = Math.pow(1+i, N); return t.PV*g + t.PMT*(1+i*b)*(g-1)/i + t.FV;
+  }
+  function solveTVM(t, v){
+    const i = periodRate(t), b = t.BGN ? 1 : 0, N = t.N, zero = Math.abs(i) < 1e-12;
+    const g = zero ? 1 : Math.pow(1+i, N), a = zero ? N : (1+i*b)*(g-1)/i;
+    if(v==='FV') return chk(-(t.PV*g + t.PMT*a));
+    if(v==='PV'){ if(g===0) throw new CalcError(5); return chk(-(t.PMT*a + t.FV)/g); }
+    if(v==='PMT'){ if(a===0) throw new CalcError(5); return chk(-(t.PV*g + t.FV)/a); }
+    if(v==='N'){
+      if(zero){ if(t.PMT===0) throw new CalcError(5); return chk(-(t.PV + t.FV)/t.PMT); }
+      const k = t.PMT*(1+i*b)/i, num = k - t.FV, den = k + t.PV;
+      if(num/den <= 0 || den===0) throw new CalcError(5);
+      return chk(Math.log(num/den)/Math.log(1+i));
+    }
+    if(v==='IY'){
+      const f = x => tvmResidual(t, x, N);
+      const x = solveRate(f, 0.01, -0.9999, 10);
+      return chk(annualFromPeriod(t, x));
+    }
+  }
+  function solveRate(f, guess, lo, hi){ // Newton from the guess, then a bisection scan as a fallback
+    let x = guess;
+    for(let k=0;k<60;k++){
+      const y = f(x), h = 1e-7*Math.max(1,Math.abs(x)), d = (f(x+h)-y)/h;
+      if(!isFinite(y) || !isFinite(d) || d===0) break;
+      const nx = x - y/d; if(!isFinite(nx)) break;
+      if(Math.abs(nx-x) < 1e-12){ if(nx>lo && nx<hi) return nx; break; }
+      x = Math.max(lo+1e-9, Math.min(hi, nx));
+    }
+    const steps = 2000; let px = lo + 1e-9, py = f(px);
+    for(let s=1;s<=steps;s++){
+      const cx = lo + (hi-lo)*Math.pow(s/steps, 3), cy = f(cx);
+      if(isFinite(py) && isFinite(cy) && (py===0 || py*cy < 0)){
+        let a=px, b=cx, fa=py;
+        for(let k=0;k<200;k++){ const m=(a+b)/2, fm=f(m); if(fm===0 || (b-a)/2 < 1e-14) return m; if(fa*fm<0){ b=m; } else { a=m; fa=fm; } }
+        return (a+b)/2;
+      }
+      px = cx; py = cy;
+    }
+    throw new CalcError(5);
+  }
+  const cfList = cf => { const out=[cf.CF0]; cf.flows.forEach(({c,f})=>{ for(let k=0;k<f;k++) out.push(c); }); return out; };
+  const npvAt = (list, r) => list.reduce((a,c,t)=>a + c/Math.pow(1+r, t), 0);
+  function solveIRR(cf){
+    const list = cfList(cf); if(!list.some(c=>c>0) || !list.some(c=>c<0)) throw new CalcError(5);
+    return chk(100*solveRate(r=>npvAt(list, r), 0.1, -0.9999, 100));
+  }
+  function amortize(t, p1, p2){
+    if(p1<1 || p2<p1 || p1!==Math.floor(p1) || p2!==Math.floor(p2)) throw new CalcError(4);
+    const i = periodRate(t); let bal = t.PV, prn = 0, int = 0;
+    for(let k=1;k<=p2;k++){
+      const interest = (t.BGN && k===1) ? 0 : -(bal*i);
+      const principal = t.PMT - interest; // PMT and balance have opposite signs (cash flow convention)
+      const nb = bal + principal;
+      if(k>=p1){ prn += principal; int += interest; }
+      bal = nb;
+    }
+    return {BAL:chk(bal), PRN:chk(prn), INT:chk(int)};
+  }
+  function stats(data, method){
+    const one = STAT_METHODS[method]==='1-V'; const tx = ['Ln','PWR'].includes(STAT_METHODS[method]), ty = ['EXP','PWR'].includes(STAT_METHODS[method]);
+    let n=0, sx=0, sx2=0, sy=0, sy2=0, sxy=0;
+    for(const d of data){
+      if(one){ const w=d.y==null?1:d.y; n+=w; sx+=w*d.x; sx2+=w*d.x*d.x; continue; }
+      if((tx && d.x<=0) || (ty && d.y<=0)) throw new CalcError(2);
+      const x = tx?Math.log(d.x):d.x, y = ty?Math.log(d.y):(d.y==null?1:d.y);
+      n++; sx+=x; sx2+=x*x; sy+=y; sy2+=y*y; sxy+=x*y;
+    }
+    if(!n) return {};
+    const mx = sx/n, vx = sx2/n - mx*mx;
+    const o = {n, mx, Sx: n>1 ? Math.sqrt(Math.max(0,(sx2 - n*mx*mx)/(n-1))) : 0, sgx: Math.sqrt(Math.max(0,vx)), Sum_x:sx, Sum_x2:sx2};
+    if(one) return o;
+    const my = sy/n, vy = sy2/n - my*my, cov = sxy/n - mx*my;
+    Object.assign(o, {my, Sy: n>1 ? Math.sqrt(Math.max(0,(sy2 - n*my*my)/(n-1))) : 0, sgy: Math.sqrt(Math.max(0,vy)), Sum_y:sy, Sum_y2:sy2, Sum_xy:sxy});
+    if(vx<=0) throw new CalcError(1);
+    o.b = cov/vx; o.a = my - o.b*mx; o.r = vy>0 ? cov/Math.sqrt(vx*vy) : 0;
+    if(ty) o.a = Math.exp(o.a);
+    return o;
+  }
+
+  /* ---------------- the calculator ---------------- */
+  function create(saved){
+    const S = Object.assign(fresh(), saved||{});
+    let x = 0, entry = null, second = false, inv = false, stoPending = null, cptPending = false;
+    let frames = [{vals:[], ops:[]}], err = null, ws = null, wsIdx = 0, label = '', flag = '', note = '', resetAsk = false, opJust = false, lastKeyOp = false;
+    const save = () => JSON.parse(JSON.stringify(S));
+
+    /* entry */
+    const cur = () => entry!=null ? parseFloat(entry==='' || entry==='-' ? '0' : entry) : x;
+    function commit(){ if(entry!=null){ x = parseFloat(entry==='' || entry==='-' ? '0' : entry); entry = null; } return x; }
+    function digit(d){
+      if(entry==null){ entry = ''; flag = ''; if(ws==null) label = ''; }
+      const digits = entry.replace(/[-.]/g,'').length; if(digits >= 10) return;
+      if(d==='.'){ if(!entry.includes('.')) entry = (entry==='' || entry==='-' ? entry+'0' : entry) + '.'; return; }
+      entry = (entry==='0' ? '' : entry==='-0' ? '-' : entry) + d;
+    }
+    /* arithmetic: one frame per open parenthesis; chain mode treats every operator alike */
+    const prec = op => S.aos ? PREC[op] : 0;
+    function reduce(f, p){
+      while(f.ops.length && prec(f.ops[f.ops.length-1]) >= p){
+        const op=f.ops.pop(), b=f.vals.pop(), a=f.vals.pop(); f.vals.push(binop(op,a,b));
+      }
+    }
+    function operator(op){
+      const f = frames[frames.length-1];
+      if(lastKeyOp && entry==null && f.ops.length){ f.ops[f.ops.length-1] = op; return; } // a second operator replaces the first
+      const v = commit();
+      f.vals.push(v); reduce(f, prec(op)); f.ops.push(op);
+      if(f.ops.length > 8) throw new CalcError(3);
+      x = f.vals[f.vals.length-1]; label = '';
+    }
+    function equals(){
+      commit();
+      for(let k=frames.length-1;k>=0;k--){ const f=frames[k]; f.vals.push(k===frames.length-1 ? x : x); reduce(f, -1); x = f.vals.pop(); }
+      frames = [{vals:[], ops:[]}]; S.ans = x; label = ''; flag = '';
+    }
+    function lparen(){ if(frames.length >= 15) throw new CalcError(3); commit(); frames.push({vals:[], ops:[]}); entry = null; x = 0; }
+    function rparen(){ if(frames.length < 2){ commit(); return; } const f = frames.pop(); commit(); f.vals.push(x); reduce(f, -1); x = f.vals.pop(); }
+    function unary(fn){ const v = commit(); x = chk(fn(v)); S.ans = x; }
+    function percent(){
+      const v = commit(); const f = frames[frames.length-1]; const op = f.ops[f.ops.length-1];
+      x = (op==='add' || op==='sub') && f.vals.length ? chk(f.vals[f.vals.length-1]*v/100) : chk(v/100);
+    }
+
+    /* worksheets: a list of variables, each with a label, a getter and what it allows */
+    function sheet(){
+      const t = S.tvm;
+      if(ws==='py') return [{l:'P/Y', g:()=>t.PY, s:v=>{ if(v<=0) throw new CalcError(4); t.PY=v; t.CY=v; }}, {l:'C/Y', g:()=>t.CY, s:v=>{ if(v<=0) throw new CalcError(4); t.CY=v; }}];
+      if(ws==='bgn') return [{l:t.BGN?'BGN':'END', g:null, set:()=>{ t.BGN=!t.BGN; }}];
+      if(ws==='amort'){ const r = ()=>amortize(t, S.amort.P1, S.amort.P2);
+        return [{l:'P1', g:()=>S.amort.P1, s:v=>{ S.amort.P1=v; }}, {l:'P2', g:()=>S.amort.P2, s:v=>{ S.amort.P2=v; }},
+                {l:'BAL', g:()=>r().BAL, auto:true}, {l:'PRN', g:()=>r().PRN, auto:true}, {l:'INT', g:()=>r().INT, auto:true}]; }
+      if(ws==='cf'){ const c=S.cf; const out=[{l:'CF0', g:()=>c.CF0, s:v=>{ c.CF0=v; }}];
+        const n = Math.min(24, c.flows.length+1);
+        for(let k=0;k<n;k++){ const id=String(k+1).padStart(2,'0');
+          out.push({l:'C'+id, g:()=>c.flows[k]?c.flows[k].c:0, s:v=>{ c.flows[k]=c.flows[k]||{c:0,f:1}; c.flows[k].c=v; }, del:()=>c.flows.splice(k,1), ins:()=>c.flows.splice(k,0,{c:0,f:1})});
+          if(c.flows[k]) out.push({l:'F'+id, g:()=>c.flows[k].f, s:v=>{ if(v<1 || v>9999 || v!==Math.floor(v)) throw new CalcError(4); c.flows[k].f=v; }});
+        }
+        return out; }
+      if(ws==='npv') return [{l:'I', g:()=>S.cf.I, s:v=>{ S.cf.I=v; }}, {l:'NPV', g:()=>S.cf._npv, cpt:()=>{ S.cf._npv = chk(npvAt(cfList(S.cf), S.cf.I/100)); return S.cf._npv; }}];
+      if(ws==='irr') return [{l:'IRR', g:()=>S.cf._irr, cpt:()=>{ S.cf._irr = solveIRR(S.cf); return S.cf._irr; }}];
+      if(ws==='data'){ const d=S.data, out=[]; const n=Math.min(50, d.length+1);
+        for(let k=0;k<n;k++){ const id=String(k+1).padStart(2,'0');
+          out.push({l:'X'+id, g:()=>d[k]?d[k].x:0, s:v=>{ d[k]=d[k]||{x:0,y:1}; d[k].x=v; }, del:()=>d.splice(k,1), ins:()=>d.splice(k,0,{x:0,y:1})});
+          out.push({l:'Y'+id, g:()=>d[k]?d[k].y:1, s:v=>{ d[k]=d[k]||{x:0,y:1}; d[k].y=v; }});
+        }
+        return out; }
+      if(ws==='stat'){ const r = ()=>stats(S.data, S.statMethod); const one = STAT_METHODS[S.statMethod]==='1-V';
+        const v = (l,k)=>({l, g:()=>{ const o=r(); return o[k]==null?0:o[k]; }, auto:true});
+        const out = [{l:STAT_METHODS[S.statMethod], g:null, set:()=>{ S.statMethod=(S.statMethod+1)%STAT_METHODS.length; }},
+          v('n','n'), v('x̄','mx'), v('Sx','Sx'), v('σx','sgx')];
+        if(!one) out.push(v('ȳ','my'), v('Sy','Sy'), v('σy','sgy'), v('a','a'), v('b','b'), v('r','r'));
+        out.push(v('ΣX','Sum_x'), v('ΣX²','Sum_x2'));
+        if(!one) out.push(v('ΣY','Sum_y'), v('ΣY²','Sum_y2'), v('ΣXY','Sum_xy'));
+        return out; }
+      if(ws==='iconv'){ const c=S.iconv;
+        return [{l:'NOM', g:()=>c.NOM, s:v=>{ c.NOM=v; }, cpt:()=>{ if(c.CY<=0) throw new CalcError(4); c.NOM = chk(100*c.CY*(Math.pow(1+c.EFF/100, 1/c.CY)-1)); return c.NOM; }},
+                {l:'EFF', g:()=>c.EFF, s:v=>{ c.EFF=v; }, cpt:()=>{ if(c.CY<=0) throw new CalcError(4); c.EFF = chk(100*(Math.pow(1+c.NOM/100/c.CY, c.CY)-1)); return c.EFF; }},
+                {l:'C/Y', g:()=>c.CY, s:v=>{ if(v<=0) throw new CalcError(4); c.CY=v; }}]; }
+      if(ws==='dpct'){ const p=S.dpct;
+        return [{l:'OLD', g:()=>p.OLD, s:v=>{ p.OLD=v; }, cpt:()=>{ p.OLD = chk(p.NEW/Math.pow(1+p.PCT/100, p.PD)); return p.OLD; }},
+                {l:'NEW', g:()=>p.NEW, s:v=>{ p.NEW=v; }, cpt:()=>{ p.NEW = chk(p.OLD*Math.pow(1+p.PCT/100, p.PD)); return p.NEW; }},
+                {l:'%CH', g:()=>p.PCT, s:v=>{ p.PCT=v; }, cpt:()=>{ if(p.OLD===0) throw new CalcError(1); p.PCT = chk(100*(Math.pow(p.NEW/p.OLD, 1/p.PD)-1)); return p.PCT; }},
+                {l:'#PD', g:()=>p.PD, s:v=>{ p.PD=v; }, cpt:()=>{ if(p.OLD===0 || p.PCT<=-100) throw new CalcError(5); p.PD = chk(Math.log(p.NEW/p.OLD)/Math.log(1+p.PCT/100)); return p.PD; }}]; }
+      if(ws==='mem') return S.mem.map((m,k)=>({l:'M'+k, g:()=>S.mem[k], s:v=>{ S.mem[k]=v; }}));
+      if(ws==='format') return [{l:'DEC', g:()=>S.dec, s:v=>{ if(v<0 || v>9 || v!==Math.floor(v)) throw new CalcError(2); S.dec=v; }},
+                                {l:S.aos?'AOS':'Chn', g:null, set:()=>{ S.aos=!S.aos; }}];
+      return [];
+    }
+    function showVar(){
+      const list = sheet(); if(!list.length) return;
+      wsIdx = Math.max(0, Math.min(wsIdx, list.length-1)); const v = list[wsIdx];
+      entry = null; label = v.l + (v.g ? '=' : ''); flag = v.auto ? '=' : '';
+      try{ x = v.g ? (v.g()==null ? 0 : v.g()) : 0; }catch(e){ if(e instanceof CalcError){ x = 0; flag=''; } else throw e; }
+    }
+    function openSheet(name){ ws = name; wsIdx = 0; frames = [{vals:[], ops:[]}]; showVar(); }
+    function quit(){ ws = null; entry = null; label = ''; flag = ''; x = 0; frames = [{vals:[], ops:[]}]; }
+
+    /* TVM keys work straight from the keyboard, as on the calculator */
+    const TVM = {n:'N', iy:'IY', pv:'PV', pmt:'PMT', fv:'FV'};
+    const TVM_LABEL = {N:'N', IY:'I/Y', PV:'PV', PMT:'PMT', FV:'FV'};
+    function tvmKey(k, recall){ // a TVM key stores the displayed number; CPT first computes it; RCL first recalls it
+      const v = TVM[k];
+      if(ws!==null && ws!=='tvm') quit();
+      if(recall){ entry = null; x = S.tvm[v]; flag = ''; }
+      else if(cptPending){ cptPending = false; S.tvm[v] = solveTVM(S.tvm, v); x = S.tvm[v]; flag = '*'; }
+      else { S.tvm[v] = commit(); x = S.tvm[v]; flag = '='; }
+      ws = 'tvm'; label = TVM_LABEL[v] + '='; entry = null; frames = [{vals:[], ops:[]}];
+    }
+
+    function press(key){
+      note = '';
+      if(err && key!=='ce' && key!=='onoff'){ return; }
+      if(resetAsk){ resetAsk = false; if(key==='enter'){ Object.assign(S, fresh()); quit(); note = 'RST'; } else quit(); return; }
+      if(key==='2nd'){ second = !second; return; }
+      let k = key;
+      if(second){ second = false; k = SECOND[key] || key; }
+      const wasOp = ['add','sub','mul','div','npr','ncr','pow'].includes(k); const prevOp = opJust; opJust = false;
+      try{
+        if(stoPending){ const mode = stoPending; stoPending = null;
+          if(/^\d$/.test(k)){ if(mode==='sto') S.mem[+k] = cur(); else { x = S.mem[+k]; entry = null; } }
+          else if(TVM[k]) tvmKey(k, mode==='rcl');
+          return; }
+        lastKeyOp = prevOp;
+        if(inv && !['ln','pow','inv'].includes(k)) inv = false;
+        switch(k){
+          case 'onoff': quit(); err = null; second = false; inv = false; cptPending = false; opJust = false; return;
+          case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': digit(k); return;
+          case 'dot': digit('.'); return;
+          case 'neg': if(entry!=null){ entry = entry.startsWith('-') ? entry.slice(1) : '-'+entry; } else x = -x || 0; return;
+          case 'back': if(entry!=null && entry.length) entry = entry.slice(0,-1); return;
+          case 'ce': if(err){ err = null; return; } if(entry!=null){ entry = null; x = 0; return; }
+                     if(ws && ws!=='tvm'){ x = 0; return; } frames = [{vals:[], ops:[]}]; x = 0; label=''; flag=''; cptPending=false; if(ws==='tvm') ws=null; return;
+          case 'add': case 'sub': case 'mul': case 'div': case 'npr': case 'ncr': operator(k); opJust = true; return;
+          case 'pow': if(inv){ inv=false; operator('root'); } else operator('pow'); opJust = true; return;
+          case 'eq': equals(); return;
+          case 'lp': lparen(); return;
+          case 'rp': rparen(); return;
+          case 'sq': unary(v=>v*v); return;
+          case 'sqrt': unary(v=>{ if(v<0) throw new CalcError(2); return Math.sqrt(v); }); return;
+          case 'inv1x': unary(v=>{ if(v===0) throw new CalcError(1); return 1/v; }); return;
+          case 'ln': if(inv){ inv=false; unary(v=>Math.exp(v)); } else unary(v=>{ if(v<=0) throw new CalcError(2); return Math.log(v); }); return;
+          case 'ex': unary(v=>Math.exp(v)); return;
+          case 'fact': unary(fact); return;
+          case 'pct': percent(); return;
+          case 'inv': inv = !inv; return;
+          case 'sto': case 'rcl': commit(); stoPending = k; return;
+          case 'ans': entry = null; x = S.ans; return;
+          case 'xpy': unary(v=>v*S.tvm.PY); return;
+          case 'clrtvm': Object.assign(S.tvm, {N:0, IY:0, PV:0, PMT:0, FV:0}); if(ws==='tvm') quit(); note = 'CLR TVM'; return;
+          case 'n': case 'iy': case 'pv': case 'pmt': case 'fv': tvmKey(k); return;
+          case 'cpt':
+            if(ws && ws!=='tvm'){ const v = sheet()[wsIdx]; if(v && v.cpt){ x = v.cpt(); entry = null; flag = '*'; } return; }
+            cptPending = true; return;
+          case 'cf': openSheet('cf'); return;
+          case 'npv': openSheet('npv'); return;
+          case 'irr': openSheet('irr'); return;
+          case 'py': case 'bgn': case 'amort': case 'data': case 'stat': case 'iconv': case 'dpct': case 'mem': case 'format': openSheet(k); return;
+          case 'quit': quit(); return;
+          case 'up': case 'down':
+            if(!ws || ws==='tvm') return;
+            { const n = sheet().length; wsIdx = (wsIdx + (k==='down' ? 1 : -1) + n) % n; showVar(); }
+            return;
+          case 'enter':
+            if(!ws || ws==='tvm'){ commit(); return; }
+            { const v = sheet()[wsIdx]; if(v && v.s){ v.s(commit()); flag = '='; label = v.l + '='; x = v.g(); entry = null; } }
+            return;
+          case 'set': if(ws){ const v = sheet()[wsIdx]; if(v && v.set){ v.set(); showVar(); } } return;
+          case 'del': if(ws){ const v = sheet()[wsIdx]; if(v && v.del){ v.del(); showVar(); } } return;
+          case 'ins': if(ws){ const v = sheet()[wsIdx]; if(v && v.ins){ v.ins(); showVar(); } } return;
+          case 'clrwork':
+            if(ws==='cf' || ws==='npv' || ws==='irr'){ S.cf = {CF0:0, flows:[], I:0}; }
+            else if(ws==='data' || ws==='stat'){ S.data = []; }
+            else if(ws==='iconv'){ S.iconv = {NOM:0, EFF:0, CY:1}; }
+            else if(ws==='dpct'){ S.dpct = {OLD:0, NEW:0, PCT:0, PD:1}; }
+            else if(ws==='amort'){ S.amort = {P1:1, P2:1}; }
+            else if(ws==='mem'){ S.mem = S.mem.map(()=>0); }
+            else if(ws==='py'){ S.tvm.PY = 1; S.tvm.CY = 1; }
+            else if(ws==='bgn'){ S.tvm.BGN = false; }
+            else if(ws==='format'){ S.dec = 2; S.aos = false; }
+            if(ws){ wsIdx = 0; showVar(); } return;
+          case 'reset': resetAsk = true; return;
+          case 'bond': case 'depr': case 'brkevn': case 'date': case 'profit': note = 'n/a'; return;
+          default: return;
+        }
+      }catch(e){
+        if(e instanceof CalcError){ err = e.code; entry = null; frames = [{vals:[], ops:[]}]; cptPending = false; stoPending = null; return; }
+        throw e;
+      }
+    }
+
+    function fmt(v){
+      if(v==null || !isFinite(v)) return '0';
+      const abs = Math.abs(v);
+      if(abs !== 0 && (abs >= 1e10 || abs < 1e-9)){ const e = Math.floor(Math.log10(abs)); const m = v/Math.pow(10,e); return `${parseFloat(m.toFixed(6))} E${e}`; }
+      if(S.dec === 9){ const intLen = Math.max(1, Math.floor(abs).toString().length); const s = v.toFixed(Math.max(0, 10-intLen)).replace(/\.?0+$/,''); return Number(s).toLocaleString('en-US', {maximumFractionDigits: 10}); }
+      return v.toLocaleString('en-US', {minimumFractionDigits: S.dec, maximumFractionDigits: S.dec});
+    }
+    function display(){
+      let value;
+      if(err) value = `Error ${err}`;
+      else if(resetAsk) value = 'RST ?';
+      else if(note === 'n/a') value = 'Not built';
+      else if(note) value = note;
+      else if(entry!=null){ const neg = entry.startsWith('-'); const body = neg ? entry.slice(1) : entry; const [i, d] = body.split('.'); value = (neg?'-':'') + Number(i||'0').toLocaleString('en-US') + (d!=null ? '.'+d : ''); }
+      else if(ws && sheet()[wsIdx] && !sheet()[wsIdx].g) value = '';
+      else value = fmt(x);
+      return { label: err ? '' : label, value, second, inv, bgn: S.tvm.BGN, compute: cptPending, flag, aos: S.aos, err: err ? ERR[err] || '' : '', ws };
+    }
+    return { press, display, save, get x(){ return entry!=null ? cur() : x; } };
+  }
+  return { create, SECOND, LABEL2, solveTVM, npvAt, cfList, stats };
+})();
+if(typeof module !== 'undefined') module.exports = BACalc;
 </script>
 <script>
 /* =========================== App ============================ */
@@ -6376,6 +6747,86 @@ function toast(msg){
   const t = document.createElement('div'); t.className='toast'; t.setAttribute('role','status'); t.textContent=msg; document.body.appendChild(t);
   setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),260); },2600);
 }
+
+/* =========================== calculator (BA II Plus) ============================ */
+/* the engine is src/calc.js (BACalc); this is the keypad, laid out like the calculator: 9 rows of 5 keys, = over
+   the last two rows; second functions above each key in the accent colour */
+const CALC_KEY = 'cfa-practice-calc';
+const CALC_ROWS = [
+  [['cpt','CPT'],['enter','ENTER'],['up','↑'],['down','↓'],['onoff','ON|OFF']],
+  [['2nd','2ND'],['cf','CF'],['npv','NPV'],['irr','IRR'],['back','→']],
+  [['n','N'],['iy','I/Y'],['pv','PV'],['pmt','PMT'],['fv','FV']],
+  [['pct','%'],['sqrt','√x'],['sq','x²'],['inv1x','1/x'],['div','÷']],
+  [['inv','INV'],['lp','('],['rp',')'],['pow','yˣ'],['mul','×']],
+  [['ln','LN'],['7','7'],['8','8'],['9','9'],['sub','−']],
+  [['sto','STO'],['4','4'],['5','5'],['6','6'],['add','+']],
+  [['rcl','RCL'],['1','1'],['2','2'],['3','3'],['eq','=']],
+  [['ce','CE|C'],['0','0'],['dot','.'],['neg','+|−']]
+];
+let CALC = null, calcEl = null, calcPos = null;
+const calcOpen = ()=> !!(calcEl && !calcEl.hidden);
+function calcBtn(){ return `<button type="button" class="btn icon" data-calc aria-pressed="${calcOpen()}" aria-label="Calculator" title="Calculator (BA II Plus)">${icon('calc')}</button>`; }
+function calcBuild(){
+  let saved = null; try{ saved = JSON.parse(localStorage.getItem(CALC_KEY)||'null'); }catch(e){}
+  CALC = BACalc.create(saved);
+  calcEl = document.createElement('div'); calcEl.className = 'calc'; calcEl.hidden = true; calcEl.tabIndex = -1;
+  calcEl.setAttribute('role','dialog'); calcEl.setAttribute('aria-label','BA II Plus calculator');
+  const key = ([id,l])=>{ const s2 = BACalc.LABEL2[BACalc.SECOND[id]]||''; const cls = /^\d$|^dot$/.test(id)?' num':id==='eq'?' eq':id==='2nd'?' k2nd':'';
+    return `<button type="button" class="ck${cls}" data-ck="${id}" aria-label="${esc(l)}${s2?`, second function ${esc(s2)}`:''}"><span class="ck2">${esc(s2)}</span><span>${esc(l)}</span></button>`; };
+  calcEl.innerHTML = `<div class="calc-h"><b>BA II Plus</b><button type="button" class="btn ghost icon sm" data-calc-x aria-label="Close calculator">${icon('x')}</button></div>
+    <div class="cd" aria-live="polite"><div class="cd-ind"><span data-ind="second">2ND</span><span data-ind="inv">INV</span><span data-ind="compute">COMPUTE</span><span data-ind="bgn">BGN</span><span data-ind="aos">AOS</span></div>
+      <div class="cd-main"><span class="cd-label"></span><span class="cd-val"></span><span class="cd-flag"></span></div><div class="cd-err"></div></div>
+    <div class="ckeys">${CALC_ROWS.flat().map(key).join('')}</div>`;
+  document.body.appendChild(calcEl);
+  calcEl.addEventListener('click', e=>{
+    if(e.target.closest('[data-calc-x]')) return toggleCalc(false);
+    const b = e.target.closest('[data-ck]'); if(!b) return;
+    calcPress(b.dataset.ck);
+  });
+  // typing goes to the calculator only while it has focus, so the A/B/C answer keys keep working elsewhere
+  const KEYS = {'+':'add','-':'sub','*':'mul','x':'mul','/':'div','=':'eq','Enter':'eq','.':'dot',',':'dot','(':'lp',')':'rp','^':'pow','%':'pct','Backspace':'back','Delete':'ce'};
+  calcEl.addEventListener('keydown', e=>{
+    if(e.ctrlKey || e.metaKey || e.altKey) return;
+    if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); return toggleCalc(false); }
+    const k = /^\d$/.test(e.key) ? e.key : KEYS[e.key];
+    if(!k) return;
+    if(e.key==='Enter' && e.target.closest('button')) { e.preventDefault(); }
+    e.preventDefault(); e.stopPropagation(); calcPress(k);
+  });
+  // drag by the title bar on a desktop
+  const head = $('.calc-h', calcEl);
+  head.addEventListener('pointerdown', e=>{
+    if(e.target.closest('button') || matchMedia('(max-width:600px)').matches) return;
+    const r = calcEl.getBoundingClientRect(), dx = e.clientX - r.left, dy = e.clientY - r.top;
+    head.setPointerCapture(e.pointerId); head.style.cursor = 'grabbing';
+    const move = ev=>{ const x = Math.max(8, Math.min(innerWidth - r.width - 8, ev.clientX - dx)), y = Math.max(8, Math.min(innerHeight - 60, ev.clientY - dy));
+      calcPos = {x, y}; Object.assign(calcEl.style, {left:x+'px', top:y+'px', right:'auto', bottom:'auto'}); };
+    const up = ()=>{ head.removeEventListener('pointermove', move); head.removeEventListener('pointerup', up); head.style.cursor = ''; };
+    head.addEventListener('pointermove', move); head.addEventListener('pointerup', up);
+  });
+}
+function calcPress(k){
+  CALC.press(k);
+  try{ localStorage.setItem(CALC_KEY, JSON.stringify(CALC.save())); }catch(e){}
+  calcPaint();
+}
+function calcPaint(){
+  const d = CALC.display();
+  $('.cd-label', calcEl).textContent = d.label;
+  $('.cd-val', calcEl).textContent = d.value;
+  $('.cd-flag', calcEl).textContent = d.flag;
+  $('.cd-err', calcEl).textContent = d.err;
+  [['second',d.second],['inv',d.inv],['compute',d.compute],['bgn',d.bgn],['aos',d.aos]].forEach(([k,on])=>$(`[data-ind="${k}"]`, calcEl).classList.toggle('on', !!on));
+  calcEl.classList.toggle('is-2nd', !!d.second);
+}
+function toggleCalc(force){
+  if(!calcEl) calcBuild();
+  const open = force==null ? calcEl.hidden : force;
+  calcEl.hidden = !open;
+  if(open){ calcPaint(); calcEl.focus({preventScroll:true}); }
+  $$('[data-calc]').forEach(b=>b.setAttribute('aria-pressed', open));
+}
+document.addEventListener('click', e=>{ if(e.target.closest('[data-calc]')) toggleCalc(); });
 
 /* =========================== chrome ============================ */
 const NAV = [['home','Home','home'],['practice','Practice','book'],['exam','Mock exam','timer'],['review','Review','review'],['formulas','Formulas','sigma'],['progress','Progress','chart']];
@@ -7050,7 +7501,7 @@ function practiceSession(app){
       `<button class="btn ghost icon sm" id="quit" title="End session">${icon('x')}</button><span class="sess-title">Practice</span><span class="tag hide-sm">${LEVELS[p.level]}</span><span class="sess-pos">${p.pos+1} / ${p.sets.length}</span>`,
       `${p.timed?`<span class="timer" id="ptimer" title="Time left at exam pace">${icon('clock')}<span id="ptimerTxt"></span></span>`:''}<span class="live" id="scoreSoFar">${liveScore(p)}</span>`, practiceProgress(p), stage)
     + `<div class="content wide${stage?' stage':''}"><div class="exam-grid${stage?' has-rail':''}"><div id="setbox">${renderSet(set,practiceNum(p),p.states,'practice')}</div>${stage?`<aside class="rail panel" id="prail">${practiceRail(p)}</aside>`:''}</div></div>`
-    + sessFoot(`<button class="btn" id="prev" aria-label="Previous" ${p.pos===0?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button><div class="foot-hint"><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd> answer · <kbd>←</kbd><kbd>→</kbd> move</div><button class="btn primary" id="next">${last?'Finish':'Next'} ${last?icon('check'):icon('arrowR')}</button>`, stage);
+    + sessFoot(`<div class="foot-l"><button class="btn" id="prev" aria-label="Previous" ${p.pos===0?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button>${calcBtn()}</div><div class="foot-hint"><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd> answer · <kbd>←</kbd><kbd>→</kbd> move</div><button class="btn primary" id="next">${last?'Finish':'Next'} ${last?icon('check'):icon('arrowR')}</button>`, stage);
   bindPracticeSet(); practicePaceSlot(p);
   if(stage){
     $('#prail').onclick = e=>{ const b=e.target.closest('[data-pi]'); if(!b) return; p.pos=+b.dataset.pi; render(true); window.scrollTo(0,0); };
@@ -7403,7 +7854,7 @@ function examRun(app){
       `<span class="live hide-sm"><b id="hdrAnswered">${answered} / ${ql.length}</b> answered</span><span class="timer ${left<300?'low':''}" id="timer">${icon('clock')}<span id="timerTxt">${fmtTime(left)}</span></span><button class="btn sm navbtn ${rail?'has-rail':''}" id="navBtn" aria-label="Navigator">${icon('grid')}<span class="hide-sm">Navigator</span></button><button class="btn primary sm" id="submitTop">${moreSessions(ex)?'End session':'Submit'}</button>`,
       pct(answered,ql.length), rail)
     + `<div class="content wide${rail?' stage':''}"><div class="exam-grid ${rail?'has-rail':''}"><div id="setbox">${renderSet(set,startNumOf(ex),ex.states,'exam')}</div>${rail?`<aside class="rail panel">${navPanel(ex)}</aside>`:''}</div></div>`
-    + sessFoot(`<button class="btn" id="prev" aria-label="Previous" ${ex.pos===lo?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button><button class="btn ${ex.flags[set.id]?'':'ghost'}" id="flag" aria-pressed="${!!ex.flags[set.id]}">${icon('flag')}${ex.flags[set.id]?'Flagged':'Flag'}</button><button class="btn primary" id="next" ${ex.pos===hi-1?'disabled':''}>Next ${icon('arrowR')}</button>`, rail);
+    + sessFoot(`<div class="foot-l"><button class="btn" id="prev" aria-label="Previous" ${ex.pos===lo?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button>${calcBtn()}</div><button class="btn ${ex.flags[set.id]?'':'ghost'}" id="flag" aria-pressed="${!!ex.flags[set.id]}">${icon('flag')}${ex.flags[set.id]?'Flagged':'Flag'}</button><button class="btn primary" id="next" ${ex.pos===hi-1?'disabled':''}>Next ${icon('arrowR')}</button>`, rail);
   if(rail) placeStage();
   if(ex.flags[set.id]) $('#flag .ic').style.color='var(--warn)';
   bindPal(app); bindHl(app, true);
@@ -7573,7 +8024,7 @@ function examReview(app){
       `<span class="score ${barCls(ex.result.score)}">${ex.result.score}%</span><button class="btn sm navbtn ${rail?'has-rail':''}" id="navBtn" aria-label="Navigator">${icon('grid')}<span class="hide-sm">Navigator</span></button>`,
       pct(ex.pos+1,ex.sets.length), rail)
     + `<div class="content wide${rail?' stage':''}"><div class="exam-grid ${rail?'has-rail':''}"><div id="setbox">${renderSet(set,startNumOf(ex),ex.states,'review')}</div>${rail?`<aside class="rail panel">${navPanel(ex)}</aside>`:''}</div></div>`
-    + sessFoot(`<button class="btn" id="prev" aria-label="Previous" ${ex.pos===0?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button><div class="foot-hint"><kbd>←</kbd><kbd>→</kbd> move</div><button class="btn primary" id="next" ${ex.pos===ex.sets.length-1?'disabled':''}>Next ${icon('arrowR')}</button>`, rail);
+    + sessFoot(`<div class="foot-l"><button class="btn" id="prev" aria-label="Previous" ${ex.pos===0?'disabled':''}>${icon('chevL')}<span class="hide-sm">Previous</span></button>${calcBtn()}</div><div class="foot-hint"><kbd>←</kbd><kbd>→</kbd> move</div><button class="btn primary" id="next" ${ex.pos===ex.sets.length-1?'disabled':''}>Next ${icon('arrowR')}</button>`, rail);
   bindPal(app); bindHl(app, false);
   if(rail) placeStage();
   $('#back').onclick=()=>{ ex.phase='report'; render(true); window.scrollTo(0,0); };
