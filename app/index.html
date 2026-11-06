@@ -101,6 +101,8 @@ p{margin:0}
 #themeSide button{padding:0 8px;font-size:13px;gap:4px}
 #themeSide .ic{width:14px;height:14px}
 .side-note{font-size:13px;line-height:1.45;color:var(--text-3);padding:0 8px}
+.side-note a{display:block;margin-top:8px;color:var(--accent-text);font-weight:500;text-decoration:none}
+.side-note a:hover{text-decoration:underline;text-underline-offset:4px}
 .mainwrap{flex:1;min-width:0;display:flex;flex-direction:column}
 #app{flex:1;display:flex;flex-direction:column;min-width:0}
 .content{width:100%;max-width:1060px;margin:0 auto;padding:32px 32px 64px}
@@ -637,7 +639,7 @@ label.rub:hover{background:var(--surface-2)}
     <nav class="side-nav" id="navSide"></nav>
     <div class="grow"></div>
     <div class="side-sec"><div class="side-label">Appearance</div><div class="seg" id="themeSide" role="group" aria-label="Theme"></div></div>
-    <p class="side-note">Original practice questions, not CFA Institute material. Progress stays in this browser.</p>
+    <p class="side-note">Original practice questions, not CFA Institute material. Progress stays in this browser. <a href="/?home">About CFA Practice</a></p>
   </aside>
   <div class="mainwrap">
     <header class="mtop">
@@ -6739,7 +6741,7 @@ function vHome(app){
         </div>
       </div>
     </div>
-    <p class="notice">These questions were written independently for practice and are not official CFA Institute materials. CFA® and Chartered Financial Analyst® are registered trademarks owned by CFA Institute, which does not endorse or sponsor this app. Your progress is stored only in this browser.</p>
+    <p class="notice">These questions were written independently for practice and are not official CFA Institute materials. CFA® and Chartered Financial Analyst® are registered trademarks owned by CFA Institute, which does not endorse or sponsor this app. Your progress is stored only in this browser. <a href="/?home">About CFA Practice</a></p>
   </div>`;
   if(dueSets.length) $('#due').onclick = ()=>startPractice({level:l}, shuffle(dueSets.map(s=>s.id)).slice(0,40));
   $('#quick').onclick = ()=>startQuick();
