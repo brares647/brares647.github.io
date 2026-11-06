@@ -458,6 +458,21 @@ label.rub:hover{background:var(--surface-2)}
 .pal button.wrongp{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
 .pal button.flag::after{content:"";position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:var(--warn)}
 .pal button.cur{box-shadow:0 0 0 2px var(--accent);border-color:transparent}
+.pal-f{margin-bottom:12px}
+.pal-f button{padding:0 8px}
+.pal[data-f="open"] > button:not(.open),.pal[data-f="flag"] > button:not(.flag),.pal[data-f="wrong"] > button:not(.wrongp){display:none}
+.np-help{display:inline-flex;margin-top:12px;border:0;background:none;padding:4px 0;font:500 14px/1.4 var(--font);color:var(--accent-text);cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px}
+.np-help:hover{text-decoration-color:currentColor}
+.go-list{display:block;margin-top:16px}
+.go-list b{display:block;font-size:13px;font-weight:500;color:var(--text-2);margin-bottom:8px}
+.go-list .go-btns{display:flex;flex-wrap:wrap;gap:8px}
+.go-list button{min-width:44px;height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--border-2);background:var(--surface);font:500 14px/1 var(--font);color:var(--text);cursor:pointer;font-variant-numeric:tabular-nums}
+.go-list button:hover{border-color:var(--accent);color:var(--accent-text)}
+.go-list .more{font-size:13px;color:var(--text-3);align-self:center}
+.help-list{display:grid;gap:16px;margin:16px 0 8px}
+.help-list > div{display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;font-size:15px;line-height:1.5;color:var(--text-2)}
+.help-list .ic{width:18px;height:18px;margin-top:2px;color:var(--accent-text)}
+.help-list b{display:block;color:var(--text);font-weight:500}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--text-2);margin-top:16px}
 .legend span{display:inline-flex;align-items:center;gap:8px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:4px;border:1px solid var(--border-2)}
@@ -6307,7 +6322,7 @@ function modal(o){
     const prev = document.activeElement;
     const close = v=>{ ov.remove(); document.removeEventListener('keydown',onKey,true); MODAL_OPEN=false; try{ if(prev&&prev.focus&&document.contains(prev)) prev.focus({preventScroll:true}); }catch(e){} res(v); };
     const onKey = e=>{ if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); close(false); } else if(e.key==='Enter'){ e.preventDefault(); e.stopPropagation(); close(true); } };
-    ov.addEventListener('click',e=>{ if(e.target===ov) return close(false); const b=e.target.closest('[data-r]'); if(b) close(b.dataset.r==='1'); });
+    ov.addEventListener('click',e=>{ if(e.target===ov) return close(false); const b=e.target.closest('[data-r]'); if(b) close(b.dataset.go!=null ? {go:+b.dataset.go} : b.dataset.r==='1'); });
     document.addEventListener('keydown',onKey,true); MODAL_OPEN=true;
     document.body.appendChild(ov); $('[data-r="1"]',ov).focus();
   });
@@ -7220,22 +7235,49 @@ function palHTML(ex){
     if(si<lo || si>=hi) return '';
     const st = ex.states[q.qid]; const cls=[]; let title=short(q.topic);
     if(review){ const ok=qCorrect(q,st); cls.push(ok?'right':'wrongp'); title+=ok?' · correct':' · incorrect'; }
-    else { if(isAnswered(q,st)) cls.push('ans'); if(ex.flags[ex.sets[si]]){ cls.push('flag'); title+=' · flagged'; } }
+    else { cls.push(isAnswered(q,st)?'ans':'open'); if(ex.flags[ex.sets[si]]){ cls.push('flag'); title+=' · flagged'; } }
     if(si===ex.pos) cls.push('cur');
     return `<button class="${cls.join(' ')}" data-si="${si}" title="${esc(title)}">${i+1}</button>`;
   }).join('');
+}
+/* navigator filters, as on the exam's Section Review grid */
+function palFilter(ex){ const ok = ex.phase==='review' ? ['all','wrong'] : ['all','open','flag']; if(!ok.includes(S.palF)) S.palF='all'; return S.palF; }
+function palCounts(ex){
+  const review = ex.phase==='review'; const ql = review ? examQuestionList(ex) : sessQuestions(ex);
+  return review ? {all:ql.length, wrong:ql.filter(({q})=>!qCorrect(q,ex.states[q.qid])).length}
+                : {all:ql.length, open:ql.filter(({q})=>!isAnswered(q,ex.states[q.qid])).length, flag:ql.filter(({si})=>ex.flags[ex.sets[si]]).length};
+}
+function palFilterRow(ex){
+  const f = palFilter(ex), n = palCounts(ex);
+  const opts = ex.phase==='review' ? [['all','All'],['wrong','Incorrect']] : [['all','All'],['open','Open'],['flag','Flagged']];
+  return `<div class="seg pal-f" role="group" aria-label="Show questions">${opts.map(([k,l])=>`<button type="button" data-pf="${k}" class="${f===k?'on':''}" aria-pressed="${f===k}">${l} <span class="cnt" data-pfc="${k}">${n[k]}</span></button>`).join('')}</div>`;
 }
 function navPanel(ex){
   const review = ex.phase==='review'; const ql = review ? examQuestionList(ex) : sessQuestions(ex);
   const count = review ? `${ql.filter(({q})=>qCorrect(q,ex.states[q.qid])).length} / ${ql.length} correct` : `${ql.filter(({q})=>isAnswered(q,ex.states[q.qid])).length} / ${ql.length} answered`;
   const head = ex.sessions && !review ? `Session ${ex.sess+1} of 2` : 'Navigator';
-  return `<div class="np"><div class="np-head"><h3>${head}</h3><span class="np-count" data-answered>${count}</span></div><div class="pal" data-pal>${palHTML(ex)}</div>
+  return `<div class="np"><div class="np-head"><h3>${head}</h3><span class="np-count" data-answered>${count}</span></div>${palFilterRow(ex)}<div class="pal" data-pal data-f="${palFilter(ex)}">${palHTML(ex)}</div>
     <div class="legend">${review?'<span><i class="l-ok"></i>Correct</span><span><i class="l-bad"></i>Incorrect</span>':'<span><i class="l-ans"></i>Answered</span><span><i></i>Open</span><span><i class="l-flag"></i>Flagged</span>'}</div>
-    ${review?'':`<button class="btn primary" data-submit style="width:100%;margin-top:16px">${icon('check')}${endLabel(ex)}</button>`}</div>`;
+    ${review?'':`<button class="btn primary" data-submit style="width:100%;margin-top:16px">${icon('check')}${endLabel(ex)}</button><button type="button" class="np-help" data-help>How the mock works</button>`}</div>`;
 }
 function bindPal(root, after){
   $$('[data-pal]',root).forEach(p=>p.onclick=e=>{ const b=e.target.closest('[data-si]'); if(!b) return; after&&after(); S.exam.pos=+b.dataset.si; S.vigCollapsed=null; render(true); window.scrollTo(0,0); });
   $$('[data-submit]',root).forEach(b=>b.onclick=()=>{ after&&after(); askSubmit(); });
+  $$('[data-help]',root).forEach(b=>b.onclick=()=>{ after&&after(); examHelp(); });
+  $$('[data-pf]',root).forEach(b=>b.onclick=()=>{ S.palF=b.dataset.pf; $$('[data-pal]').forEach(p=>p.dataset.f=S.palF); $$('[data-pf]').forEach(x=>{ const on=x.dataset.pf===S.palF; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on); }); });
+}
+function examHelp(){
+  const l = S.exam ? S.exam.level : LV(), unit = l===1 ? 'question' : 'set';
+  sheet(`<div class="np"><div class="np-head"><h3>How the mock works</h3></div><div class="help-list">
+    <div>${icon('clock')}<span><b>Timer</b>The clock at the top counts down the session, and the small clock beside each ${unit} shows the time spent on it. The exam submits itself at zero.</span></div>
+    <div>${icon('grid')}<span><b>Navigator</b>Numbers in blue are answered. Show only Open or Flagged questions with the filters, and select a number to jump to it.</span></div>
+    <div>${icon('flag')}<span><b>Flag</b>Flag a ${unit} you want to come back to. Flags show as an orange dot in the navigator.</span></div>
+    <div>${icon('x')}<span><b>Strike out</b>Use the × beside an option to cross out a choice you have ruled out.</span></div>
+    <div>${icon('pen')}<span><b>Highlight</b>Select text in a case or question, then choose Highlight. Select a highlight again to remove it.</span></div>
+    <div>${icon('layers')}<span><b>Sessions</b>A full mock runs as two sessions with an optional break. Ending a session locks its answers.</span></div>
+    <div>${icon('check')}<span><b>Finish</b>Before you end a session or submit, you see every open and flagged question and can jump straight to it.</span></div>
+    <div>${icon('exit')}<span><b>Leaving</b>You can leave and come back, but the timer keeps running.</span></div>
+  </div></div>`);
 }
 function openNavigator(){ sheet(navPanel(S.exam), (ov,close)=>bindPal(ov,close)); }
 const moreSessions = ex => !!ex.sessions && ex.sess < ex.sessions.length-1;
@@ -7244,6 +7286,7 @@ function paintPalette(){
   const ex = S.exam; if(!ex) return;
   const ql = sessQuestions(ex); const answered = ql.filter(({q})=>isAnswered(q,ex.states[q.qid])).length;
   $$('[data-pal]').forEach(p=>p.innerHTML=palHTML(ex));
+  const pc = palCounts(ex); $$('[data-pfc]').forEach(x=>x.textContent=pc[x.dataset.pfc]);
   if(ex.phase==='running'){
     $$('[data-answered]').forEach(x=>x.textContent=`${answered} / ${ql.length} answered`);
     const hc=$('#hdrAnswered'); if(hc) hc.textContent=`${answered} / ${ql.length}`;
@@ -7359,8 +7402,14 @@ async function askSubmit(){
   const ql = sessQuestions(ex); const un = ql.filter(({q})=>!isAnswered(q,ex.states[q.qid])).length;
   const [lo,hi] = sessRange(ex); const fl = Object.keys(ex.flags).filter(id=>{ const i=ex.sets.indexOf(id); return i>=lo && i<hi; }).length;
   const more = moreSessions(ex);
-  const body = (un ? `${plural(un,'question')} ${un>1?'are':'is'} still unanswered.` : 'Every question has an answer.') + (fl ? ` ${fl} flagged.` : '') + (more ? ` You cannot return to session ${ex.sess+1} after ending it.` : ' You cannot change answers after submitting.');
+  const all = examQuestionList(ex).map((x,i)=>Object.assign({n:i+1},x)).filter(x=>x.si>=lo && x.si<hi);
+  const goList = (label, list)=>{ if(!list.length) return ''; const btns=list.slice(0,24).map(x=>`<button type="button" data-r="0" data-go="${x.si}" title="Go to question ${x.n}">${x.n}</button>`);
+    return `<span class="go-list"><b>${label}</b><span class="go-btns">${btns.join('')}${list.length>btns.length?`<span class="more">+${list.length-btns.length} more</span>`:''}</span></span>`; };
+  const open = all.filter(({q})=>!isAnswered(q,ex.states[q.qid])), flagged = all.filter(({si})=>ex.flags[ex.sets[si]]);
+  const body = (un ? `${plural(un,'question')} ${un>1?'are':'is'} still unanswered.` : 'Every question has an answer.') + (fl ? ` ${fl} flagged.` : '') + (more ? ` You cannot return to session ${ex.sess+1} after ending it.` : ' You cannot change answers after submitting.')
+    + goList('Unanswered · select a number to go to it', open) + goList('Flagged', flagged);
   const ok = await modal({title: more ? `End session ${ex.sess+1}?` : 'Submit the exam?', body, ok: more ? 'End session' : 'Submit', cancel:'Keep working'});
+  if(ok && ok.go!=null){ if(S.exam===ex && ex.phase==='running'){ ex.pos=ok.go; S.vigCollapsed=null; render(true); window.scrollTo(0,0); } return; }
   if(ok && S.exam===ex && ex.phase==='running') (more ? endSession() : submitExam());
 }
 /* close the current session; the break screen lets the candidate start the next one when ready */
