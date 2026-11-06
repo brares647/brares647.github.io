@@ -207,7 +207,11 @@ textarea::placeholder,.search input::placeholder{color:var(--text-3)}
 @media (min-width:1600px){
   .content.home:not(.wide),.content.exam-setup:not(.wide){max-width:1480px}
   .home-grid,.setup-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start}
-  .home-main,.home-aside,.setup-main,.setup-aside{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .home-main,.home-aside,.setup-main,.setup-aside{display:flex;flex-direction:column;gap:16px;min-width:0;position:sticky;top:24px}
+  .hm-topics .tlist{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hm-topics .tlist .trow:nth-child(2){border-top:0}
+  .hm-topics .tlist .trow:nth-child(odd){border-right:1px solid var(--border)}
+  .hm-topics .tlist .trow{grid-template-columns:minmax(0,1fr) 64px 40px 12px;gap:12px}
   .home-aside .plan{margin-bottom:0}
   .home-aside .trow{grid-template-columns:minmax(0,1fr) 48px 40px;gap:12px}
   .home-aside .trow .chev{display:none}
@@ -7740,6 +7744,22 @@ function render(anim){
   app.classList.toggle('anim', !!anim);
   ({home:vHome,practice:vPractice,exam:vExam,review:vReview,formulas:vFormulas,progress:vProgress}[S.view])(app);
   ensureTimer();
+  watchColumns();
+}
+/* Wide screens: the two columns of Home and the Mock exam setup are sticky. A column shorter than the window stays
+   24px from the top; a taller one scrolls until its bottom is 24px from the window's bottom, then stays. So whichever
+   column ends first keeps filling its side instead of leaving an empty band. */
+const colRO = window.ResizeObserver ? new ResizeObserver(()=>fitColumns()) : null;
+function watchColumns(){
+  if(!colRO) return;
+  colRO.disconnect();
+  $$('.home-main,.home-aside,.setup-main,.setup-aside').forEach(el=>colRO.observe(el));
+  fitColumns();
+}
+function fitColumns(){
+  $$('.home-main,.home-aside,.setup-main,.setup-aside').forEach(el=>{
+    el.style.top = Math.min(24, Math.round(innerHeight - el.offsetHeight - 24)) + 'px';
+  });
 }
 
 /* =========================== shared UI ============================ */
@@ -8061,7 +8081,7 @@ function vHome(app){
     <div class="hm-notes">${topicNotice(l, ts, st)}${backupNotice()}</div>
       <div class="panel hm-topics">
         <div class="panel-head"><div><h2>Topics</h2><p>Select a topic to practice it. After ${READY_MIN} answers a topic is rated against the 70% target: Ready from 70%, At risk from 60%, Gap below.</p></div></div>
-        <div>${TOPICS[l].map(t=>{ const v=ts[t]; const p=pct(v.score,v.attempted); return topicRow(t, `${v.attempted} / ${v.total} answered`, p, v.attempted>0, {attr:`data-topic="${esc(t)}" title="Practice ${esc(t)}"`, tag: readyTag(v)}); }).join('')}</div>
+        <div class="tlist">${TOPICS[l].map(t=>{ const v=ts[t]; const p=pct(v.score,v.attempted); return topicRow(t, `${v.attempted} / ${v.total} answered`, p, v.attempted>0, {attr:`data-topic="${esc(t)}" title="Practice ${esc(t)}"`, tag: readyTag(v)}); }).join('')}</div>
       </div>
     </div><aside class="home-aside">
       ${planPanel(l, ts)}
@@ -9125,7 +9145,7 @@ function drawChart(){
   });
 }
 let resizeT=null;
-window.addEventListener('resize',()=>{ clearTimeout(resizeT); resizeT=setTimeout(()=>{ if(S.view==='progress') drawChart(); placeStage(); },120); });
+window.addEventListener('resize',()=>{ clearTimeout(resizeT); resizeT=setTimeout(()=>{ if(S.view==='progress') drawChart(); placeStage(); fitColumns(); },120); });
 
 /* =========================== global events ============================ */
 document.addEventListener('click',e=>{
