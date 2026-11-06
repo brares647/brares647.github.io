@@ -78,7 +78,7 @@ try { if (localStorage.getItem('cfa-practice-v1') && !/[?&]home\b/.test(location
   .cpq__opts--row .cpo { align-items: center; }
   .cpx { margin: 0; font-size: 15px; line-height: 1.6; color: #111; }
   .cpx b { display: block; font-weight: 500; font-size: 14px; color: var(--sub); margin-bottom: 4px; }
-  @media (max-width: 1279px) { .hero__window .cp-wide { display: none; } }
+  @media (min-width: 1024px) and (max-width: 1279px) { .hero__window .cp-wide { display: none; } }
 
   /* app frame: the Review list beside the open question (sections-library app-frame) */
   .app.ui { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); margin-top: var(--s-7); background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; box-shadow: 0 16px 48px rgba(17, 17, 17, .08); overflow: hidden; }
@@ -200,9 +200,7 @@ try { if (localStorage.getItem('cfa-practice-v1') && !/[?&]home\b/.test(location
   <section class="hero hero--centred" aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text">
       <div class="hero__c">
-        <span class="pill"><span>2027 curriculum</span><span class="muted">Levels I, II and III</span></span>
         <h1 id="hero-h">CFA exam practice, Levels I to III</h1>
-        <p class="hero__lead">792 original questions with an explanation for every answer, timed mock exams at the 2027 topic weights, and Level III essays with grading rubrics. Free, no account.</p>
         <div class="btn-row"><a class="btn btn--primary" href="/app/">Start practicing</a><a class="btn btn--secondary" href="#mocks">See the mock exams</a></div>
       </div>
       <div class="hero__window" role="img" aria-label="A Level I quantitative methods question answered correctly, with its explanation">
