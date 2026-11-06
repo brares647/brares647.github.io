@@ -3511,6 +3511,266 @@ Okoro's assistant suggests that the strategy's optimal level of active risk shou
  ["a percent-of-volume (participation) algorithm that trades alongside market volume.","an arrival price algorithm that trades aggressively at the start.","a market order, executed immediately to avoid the risk of prices moving away."],
  0,"Participation and scheduled algorithms (POV, VWAP, TWAP) spread execution over time to reduce impact when urgency is low. Arrival price algorithms front-load trading to reduce delay cost, appropriate when the trader expects adverse price movement."]
 ]);
+/* Level II, second batch (2026-11-07): one new item set per topic, on subjects the first 50 sets do not cover.
+   Topic names are written out because the per-topic constants (T2E, T2Q...) are declared in the other files. */
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-07",
+`Lucía Fernández, CFA, is a research analyst at Corvid Partners covering specialty chemical companies.
+
+**Channel checks.** To forecast quarterly sales at Velmora Chemicals, Fernández interviews 14 independent distributors, counts truck departures at Velmora's main plant over six weeks, and buys satellite images of the plant's parking lots from a commercial data vendor that sells them to any client. She concludes that Velmora's sales will fall short of consensus and downgrades the stock to sell.
+
+**Expert network.** Through a paid expert network, Fernández speaks with two people. The first is a procurement manager who left Velmora two years ago and describes general purchasing practices in the industry. The second is a current Velmora plant supervisor who mentions that the company will announce the closure of its Rotterdam plant next week; the closure has not been disclosed. Fernández does not trade, but adds to her report: "We expect Velmora to rationalize European capacity shortly."
+
+**Screening model.** Fernández buys a quantitative ranking model from a well-known vendor and publishes its rankings in her monthly report, crediting the vendor by name. She has not reviewed the model's inputs, assumptions, or back-test because "the vendor is reputable."
+
+**Biography.** Her biography on Corvid's website reads: "As a CFA charterholder, Lucía consistently delivers superior returns for her clients."`,
+[
+["Fernández's sell recommendation based on her channel checks and the satellite images most likely:",
+ ["complies with Standard II(A) under the mosaic theory.","violates Standard II(A), because satellite images of a company's plant are material nonpublic information.","violates Standard V(A), because channel checks are not a reasonable and adequate basis for a recommendation."],
+ 0,"Analysts may reach conclusions from public information and nonmaterial nonpublic information, even when the conclusion would be material if disclosed by the company (mosaic theory). The satellite images are sold to any client, so they are not inside information. Diligent channel checks across 14 distributors are a reasonable basis, so neither alternative violation applies."],
+["Regarding the information from the current plant supervisor, Fernández most likely:",
+ ["complied with Standard II(A), because she did not trade on the information.","complied with Standard II(A), because information obtained through an expert network falls under the mosaic theory.","violated Standard II(A), because she used material nonpublic information in her report."],
+ 2,"An undisclosed plant closure is material and nonpublic. Standard II(A) prohibits acting on, or causing others to act on, such information; publishing a hint in a report that clients will trade on is acting on it, even without a personal trade. The source being an expert network does not turn inside information into part of a legitimate mosaic."],
+["Publishing the vendor model's rankings without reviewing the model most likely:",
+ ["violates Standard V(A), because she did not review the model before using it.","complies with the Standards, because she may rely on third-party research from a reputable vendor.","violates Standard I(C), because the rankings are the vendor's work rather than her own."],
+ 0,"Members may rely on third-party research only after making reasonable and diligent efforts to judge its soundness; for a quantitative model this means understanding its inputs, assumptions, and limitations. A vendor's reputation alone is not enough. Because she credits the vendor, there is no misrepresentation under I(C)."],
+["The statement in Fernández's biography most likely:",
+ ["complies with Standard VII(B), because she has earned the right to use the CFA designation.","violates Standard VII(B), because it implies superior returns from the designation.","violates Standard VII(A), because it misrepresents the content of the CFA Program."],
+ 1,"Members may state that they hold the designation and describe what it requires, but may not imply that charterholders achieve better investment results. The statement concerns her performance, not the CFA Program or exam conduct, so VII(A) is not the relevant Standard."]
+]);
+
+CFA_DATA.set(2,"Quantitative Methods","L2-QM-05",
+`Rahul Mehta studies the monthly excess returns of a small-cap fund over 60 months. He regresses the fund's excess return (in %) on the market excess return (MKT, in %) and a dummy variable JAN that equals 1 in January and 0 otherwise.
+
+**Exhibit 1: Regression results (n = 60)**
+
+| Variable | Coefficient | Standard error |
+|---|---|---|
+| Intercept | 0.20 | 0.15 |
+| MKT | 1.10 | 0.08 |
+| JAN | 1.80 | 0.60 |
+
+Regression sum of squares (RSS) = 468.0; sum of squared errors (SSE) = 132.0.
+
+Mehta also estimates a logistic regression for the probability that a high-yield issuer defaults within one year:
+
+ln[p/(1 − p)] = −3.0 + 0.9 × (Debt/EBITDA) − 0.5 × (Interest coverage)
+
+He applies it to Corlay Industries, which has debt/EBITDA of 2.0 and interest coverage of 1.5.`,
+[
+["The predicted fund excess return for a January in which MKT is 1.5% is **closest** to:",
+ ["1.85%","3.45%","3.65%"],
+ 2,"Prediction = 0.20 + 1.10 × 1.5 + 1.80 × 1 = 3.65%. Leaving out the January dummy gives 1.85%, and leaving out the intercept gives 3.45%.",true],
+["The F-statistic for the joint significance of MKT and JAN is **closest** to:",
+ ["101.0","102.8","202.1"],
+ 0,"F = (RSS/k)/[SSE/(n − k − 1)] = (468.0/2)/(132.0/57) = 234.0/2.316 = 101.0. Using n − k = 58 degrees of freedom gives 102.8, and not dividing RSS by k gives 202.1.",true],
+["The coefficient on JAN is **best** interpreted as:",
+ ["the fund's average excess return in January, whatever the market return that month.","the extra January excess return, holding MKT constant; significant at 5%.","an effect that is not significant, because its standard error is larger than that of the intercept."],
+ 1,"A dummy coefficient measures the shift in the intercept for the category: January excess returns are 1.80 percentage points higher than in other months for the same market return. Its t-statistic is 1.80/0.60 = 3.0, above the 5% critical value of about 2.0. It is not the total January return, and significance depends on the coefficient relative to its own standard error."],
+["The estimated probability that Corlay defaults within one year is **closest** to:",
+ ["12.5%","14.2%","87.5%"],
+ 0,"Log odds = −3.0 + 0.9 × 2.0 − 0.5 × 1.5 = −1.95. p = 1/(1 + e^1.95) = 1/(1 + 7.03) = 12.5%. Treating the odds e^−1.95 = 0.142 as the probability gives 14.2%; 87.5% is 1 − p.",true]
+]);
+
+CFA_DATA.set(2,"Economics","L2-ECON-05",
+`Anton Reyes is treasurer of a US company. Six months ago he sold EUR 10,000,000 forward for delivery in one year at a forward rate of 1.1200 USD/EUR to hedge a euro receivable.
+
+**Exhibit 1: Current market data (mid rates)**
+
+| Item | Value |
+|---|---|
+| Spot USD/EUR | 1.0950 |
+| Six-month forward points | +45 pips |
+| USD interest rate (all maturities, annual, actual/360) | 4.80% |
+| EUR interest rate (all maturities, annual, actual/360) | 2.60% |
+| Spot JPY/USD | 150.00 |
+| A dealer's JPY/EUR quote | 166.00 |
+
+Assume six months is 180 days and ignore bid–offer spreads.
+
+Reyes's colleague is preparing a report on currency vulnerability in emerging markets.`,
+[
+["The current mark-to-market value of Reyes's forward contract, in USD, is **closest** to:",
+ ["195,611","200,195","205,000"],
+ 1,"The offsetting six-month forward rate is 1.0950 + 0.0045 = 1.0995. Reyes sold euros at 1.1200, so he gains (1.1200 − 1.0995) × 10,000,000 = 205,000 at settlement. Discounting for 180 days at the USD rate: 205,000/(1 + 0.048 × 180/360) = 200,195. 205,000 is undiscounted, and 195,611 discounts for a full year.",true],
+["Under uncovered interest rate parity, the expected USD/EUR spot rate in one year is **closest** to:",
+ ["1.0720","1.0950","1.1185"],
+ 2,"Under uncovered interest rate parity the higher-yielding currency (USD) is expected to depreciate: expected spot = 1.0950 × (1.048/1.026) = 1.1185 USD/EUR. Inverting the rate ratio gives 1.0720, and an unchanged spot ignores the interest differential.",true],
+["Starting with USD 1,000,000 and using the dealer's JPY/EUR quote, the triangular arbitrage profit, in USD, is **closest** to:",
+ ["10,542","10,654","11,667"],
+ 1,"The implied cross rate is 1.0950 × 150.00 = 164.25 JPY/EUR, below the dealer's 166.00, so euros are overpriced at the dealer. Buy EUR 913,242 with USD 1,000,000, sell them to the dealer for JPY 151,598,174, and convert at 150 to USD 1,010,654: a profit of about USD 10,654. The other figures come from scaling the 1.75 yen gap by the wrong rate.",true],
+["Which combination of indicators is **most** consistent with an elevated risk of a currency crisis?",
+ ["A current account surplus financed mainly by rising foreign direct investment.","An overvalued real exchange rate after rapid credit growth, with falling reserves.","Steadily falling inflation together with rising foreign exchange reserves and moderate export growth."],
+ 1,"Studies of currency crises find that they are often preceded by an overvalued real exchange rate, rapid domestic credit growth, and declining foreign reserves, which reduce the central bank's capacity to defend the currency. A current account surplus and rising reserves point to lower vulnerability."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-07",
+`On 1 January of Year 1, Corlan Systems granted 400,000 stock options to its executives. The options have an exercise price of 30, equal to the share price on the grant date, and vest at the end of Year 3 (cliff vesting, service condition only). The grant-date fair value is 6.00 per option. Corlan expects no forfeitures.
+
+On the same date, Corlan granted 50,000 restricted shares to senior managers, vesting evenly over Year 1 and Year 2. The share price on the grant date was 30.
+
+By the end of Year 2, Corlan's share price has risen to 45. An analyst, Mei Takahashi, is assessing the effect of these awards on Corlan's earnings and on potential dilution for shareholders.`,
+[
+["Corlan's Year 1 compensation expense for the stock options is **closest** to:",
+ ["800,000","1,200,000","2,400,000"],
+ 0,"The grant-date fair value of 400,000 × 6.00 = 2,400,000 is expensed over the three-year vesting period: 800,000 a year. Expensing the full amount at grant gives 2,400,000; spreading it over two years gives 1,200,000.",true],
+["Corlan's total share-based compensation expense in Year 1 (options and restricted shares) is **closest** to:",
+ ["800,000","1,550,000","2,300,000"],
+ 1,"Restricted shares: 50,000 × 30 = 1,500,000 over two years = 750,000 in Year 1. Total = 800,000 + 750,000 = 1,550,000. 800,000 leaves out the restricted shares; 2,300,000 expenses the restricted shares in full in Year 1.",true],
+["Because the share price rose to 45, Corlan's Year 2 expense for the stock options will **most likely** be:",
+ ["unchanged at 800,000, because equity-settled awards are measured at grant-date fair value.","higher, because the options' intrinsic value has increased to 15 per option.","lower, because fewer options will be exercised now that they are in the money."],
+ 0,"For equity-settled awards, both IFRS and US GAAP measure the expense at grant-date fair value and do not remeasure it for later share-price changes. The higher intrinsic value affects dilution, not the expense, and in-the-money options are more, not less, likely to be exercised."],
+["To assess the potential dilution from Corlan's options, Takahashi should rely **most** on:",
+ ["the compensation expense recognized each year, because it equals the cash the company will pay.","the number of options outstanding, their exercise prices, and their remaining lives.","the grant-date fair value per option, because it equals the dilution per share."],
+ 1,"Dilution depends on how many shares may be issued and at what price, so the disclosures of options outstanding, exercise prices, and remaining terms (used, for example, in the treasury stock method) matter most. The expense is a noncash allocation of grant-date value, and fair value per option does not measure dilution per share."]
+]);
+
+CFA_DATA.set(2,"Corporate Finance","L2-CI-05",
+`Orsa Industrial is an all-equity company with expected EBIT of 12 million a year in perpetuity. Its unlevered cost of equity is 10%, and the corporate tax rate is 25%. Orsa plans to issue 40 million of perpetual debt at a pre-tax cost of 5% and use the proceeds to repurchase shares.
+
+Assume the Modigliani–Miller propositions with corporate taxes hold, with no costs of financial distress.
+
+The CFO tells the board: "Under the static trade-off theory, we should keep adding debt for as long as the tax shield keeps growing."`,
+[
+["After the recapitalization, the value of Orsa is **closest** to:",
+ ["90.0 million","100.0 million","130.0 million"],
+ 1,"Unlevered value = EBIT × (1 − t)/r0 = 12 × 0.75/0.10 = 90 million. With taxes, VL = VU + tD = 90 + 0.25 × 40 = 100 million. 90 million ignores the tax shield; 130 million adds the full amount of debt.",true],
+["After the recapitalization, Orsa's cost of equity is **closest** to:",
+ ["9.00%","12.50%","13.33%"],
+ 1,"Equity = 100 − 40 = 60 million. With taxes, re = r0 + (r0 − rd)(1 − t)(D/E) = 10% + (10% − 5%)(0.75)(40/60) = 12.50%. 13.33% applies the no-tax proposition (no (1 − t) term); 9.00% is the weighted average cost of capital.",true],
+["After the recapitalization, Orsa's weighted average cost of capital is **closest** to:",
+ ["9.00%","10.00%","10.50%"],
+ 0,"WACC = rd(1 − t)(D/V) + re(E/V) = 5% × 0.75 × 0.40 + 12.50% × 0.60 = 1.50% + 7.50% = 9.00%, which equals r0 × (1 − t × D/V) = 10% × 0.90. With corporate taxes, WACC falls as leverage rises, so it cannot stay at 10% or rise.",true],
+["The CFO's statement is **best** described as:",
+ ["correct, because with corporate taxes firm value rises with every additional unit of debt.","incorrect, because the pecking order theory states that companies should prefer new equity to debt.","incorrect, because distress costs eventually outweigh the marginal tax benefit."],
+ 2,"The static trade-off theory balances the tax benefit of debt against expected costs of financial distress, which rise with leverage; the optimal structure is where the two marginal effects are equal, not where the tax shield is largest. Unlimited debt follows only from MM with taxes and no distress costs, and the pecking order ranks internal funds, then debt, then equity."]
+]);
+
+CFA_DATA.set(2,"Equities","L2-EQ-07",
+`Petra Lind is forecasting results for Halvar Beverages, a soft-drink producer.
+
+**Market.** The national soft-drink market is worth 12.0 billion this year and is expected to grow 4% next year. Halvar's market share is 15% and is expected to reach 16% next year as a new low-sugar line gains distribution.
+
+**Costs.** Halvar's revenue this year is 1.80 billion. Its fixed operating costs are 300 million, and variable costs are 55% of revenue.
+
+**Industry.** Three large brands hold most of the market and spend heavily on advertising. Halvar sells mainly through four national supermarket chains, which account for 70% of its sales. Aluminium and sugar are bought from many suppliers on short contracts.
+
+**New product.** Market research suggests that 40% of the new low-sugar line's sales will come from customers who would otherwise have bought Halvar's existing drinks.`,
+[
+["Halvar's revenue next year, based on market size and share, is **closest** to:",
+ ["1.87 billion","1.92 billion","2.00 billion"],
+ 2,"Revenue = market size × growth × share = 12.0 × 1.04 × 16% = 2.00 billion. Keeping the 15% share gives 1.87 billion; ignoring market growth gives 1.92 billion.",true],
+["If Halvar's revenue rises 10% with its cost structure unchanged, its operating income will rise by **closest** to:",
+ ["10.0%","15.9%","27.0%"],
+ 1,"Contribution margin = 1.80 × 45% = 0.81 billion; operating income = 0.81 − 0.30 = 0.51 billion. Degree of operating leverage = 0.81/0.51 = 1.59, so a 10% revenue increase raises operating income by about 15.9%. 27.0% uses contribution margin over fixed costs instead of over operating income.",true],
+["Which of Porter's forces **most** likely limits Halvar's ability to raise prices?",
+ ["The bargaining power of buyers","The threat of new entrants","The bargaining power of suppliers"],
+ 0,"Four supermarket chains take 70% of Halvar's sales, so these concentrated buyers have strong bargaining power. Strong brands and heavy advertising make entry hard, and many suppliers on short contracts have little power."],
+["In forecasting the revenue contribution of the new low-sugar line, Lind should **most** appropriately:",
+ ["count all of the new line's sales as additional revenue, because they are recorded in a separate product line.","count about 60% of the new line's sales as additional revenue, because 40% replaces sales of existing products.","leave the new line out of the forecast until it reaches the scale of Halvar's existing products."],
+ 1,"Cannibalization means part of a new product's sales replaces sales the company would have made anyway. Only the incremental 60% adds to company revenue. Counting all of it overstates growth; leaving it out ignores an expected change in share."]
+]);
+
+CFA_DATA.set(2,"Fixed Income","L2-FI-07",
+`Inês Duarte manages a corporate bond portfolio. Using a binomial interest rate model, she values a callable bond at 101.20 per 100 of par. Shifting the benchmark yield curve up by 25 bps gives a value of 99.70, and shifting it down by 25 bps gives 102.30. The call option limits the price rise when rates fall.
+
+Her portfolio's key rate durations are as follows:
+
+| Maturity | 2-year | 5-year | 10-year | 30-year |
+|---|---|---|---|---|
+| Key rate duration | 0.8 | 1.9 | 2.6 | 0.7 |
+
+A colleague is choosing between the Vasicek and the Cox–Ingersoll–Ross (CIR) models for a risk report.`,
+[
+["The callable bond's effective duration is **closest** to:",
+ ["4.35","5.14","5.93"],
+ 1,"Effective duration = (PV− − PV+)/(2 × PV0 × Δcurve) = (102.30 − 99.70)/(2 × 101.20 × 0.0025) = 2.60/0.506 = 5.14. 4.35 and 5.93 are the one-sided durations for a fall and a rise in rates.",true],
+["The callable bond's one-sided down-duration (for a fall in rates) is **closest** to:",
+ ["4.35","5.14","5.93"],
+ 0,"One-sided down-duration = (PV− − PV0)/(PV0 × Δcurve) = (102.30 − 101.20)/(101.20 × 0.0025) = 4.35. It is lower than the up-duration (5.93) because the call option caps the price gain when rates fall; 5.14 is the two-sided average.",true],
+["If the 10-year rate rises by 20 bps and other key rates are unchanged, the portfolio's value will change by approximately:",
+ ["−1.20%","−0.52%","−0.14%"],
+ 1,"Change ≈ −key rate duration × Δrate = −2.6 × 0.20% = −0.52%. Using the total duration of 6.0 (−1.20%) assumes a parallel shift, and −0.14% applies the 30-year key rate duration.",true],
+["Compared with the Vasicek model, the Cox–Ingersoll–Ross model **most** likely:",
+ ["assumes constant volatility of interest rates, so rates can become negative.","makes volatility rise with the level of rates, keeping rates non-negative.","is an arbitrage-free model calibrated to match today's yield curve exactly."],
+ 1,"Both are equilibrium models with mean reversion. In CIR, volatility is proportional to the square root of the rate, so it shrinks as rates approach zero and rates stay non-negative. Constant volatility with possible negative rates describes Vasicek, and exact fitting of today's curve describes arbitrage-free models such as Ho–Lee."]
+]);
+
+CFA_DATA.set(2,"Derivatives and Risk Management","L2-DER-05",
+`Velden Logistics has a 50 million floating-rate loan at the market reference rate (MRR) plus 1.50%, reset quarterly and paid in arrears. Each quarter is treated as 90/360. To limit its interest cost, Velden buys an interest rate cap with a strike of 4.50% on MRR and the same reset dates. Its treasurer is also considering selling a floor with a 3.00% strike to create a collar.
+
+Ignore the premiums on the cap and the floor.`,
+[
+["If MRR is set at 5.30% for a quarter, the caplet payoff for that quarter is **closest** to:",
+ ["100,000","287,500","400,000"],
+ 0,"Caplet payoff = notional × max(0, MRR − strike) × 90/360 = 50,000,000 × 0.80% × 0.25 = 100,000. 400,000 uses a full year; 287,500 compares the all-in loan rate of 6.80% with the strike.",true],
+["With the cap in place and MRR at 5.30%, Velden's effective annualized borrowing rate for the quarter is **closest** to:",
+ ["4.50%","6.00%","6.80%"],
+ 1,"Velden pays MRR + 1.50% = 6.80% on the loan and receives 0.80% on the caplet, so the net rate is 4.50% + 1.50% = 6.00%. The cap limits MRR at 4.50%, not the all-in rate, and 6.80% ignores the cap payoff.",true],
+["If Velden uses the collar and MRR is set at 2.40%, its effective annualized borrowing rate for the quarter is **closest** to:",
+ ["3.90%","4.50%","6.00%"],
+ 1,"Below the 3.00% floor strike, Velden pays the floor holder 3.00% − 2.40% = 0.60%, so its net rate is 3.00% + 1.50% = 4.50%. 3.90% ignores the short floor, and 6.00% is the rate when the cap is in the money.",true],
+["A long cap and a short floor with the same strike, notional, and reset dates are equivalent to:",
+ ["a payer swap, paying a fixed rate equal to the strike and receiving MRR.","a receiver swap, receiving a fixed rate equal to the strike and paying MRR.","a long straddle on MRR, which gains whenever rates move away from the strike."],
+ 0,"By put–call parity for interest rate options, cap − floor = payer swap: each period the position receives MRR − strike, whether positive or negative. A receiver swap is the reverse position, and a straddle would combine a long cap and a long floor."]
+]);
+
+CFA_DATA.set(2,"Alternative Investments","L2-ALT-05",
+`Grete Holm manages a fully collateralized long position in crude oil futures and rolls it every month. Today the expiring contract trades at 72.00 and the next contract at 74.40; spot crude is 71.50. The collateral is held in Treasury bills.
+
+**Exhibit 1: Return estimates for the coming year**
+
+| Component | Estimate |
+|---|---|
+| Change in spot price | +5.0% |
+| Roll return | −8.0% |
+| Collateral return | +4.0% |
+
+Airlines have been buying crude oil futures heavily to hedge fuel costs, while producers have hedged little this year.`,
+[
+["The roll return from rolling the position today is **closest** to:",
+ ["−3.33%","−3.23%","+3.33%"],
+ 0,"Roll return = (price of expiring contract − price of new contract)/price of expiring contract = (72.00 − 74.40)/72.00 = −3.33%. Dividing by the new contract's price gives −3.23%; the positive sign would apply to a market in backwardation.",true],
+["Using Exhibit 1, the expected total return on Holm's position for the coming year is **closest** to:",
+ ["−3.00%","+1.00%","+9.00%"],
+ 1,"Total return on a collateralized futures position ≈ spot return + roll return + collateral return = 5.0% − 8.0% + 4.0% = +1.0%. Leaving out the collateral return gives −3.0%, and ignoring the roll return gives +9.0%.",true],
+["The current shape of the crude oil futures curve, given the hedging activity described, is **best** explained by the:",
+ ["insurance theory, because producers pay speculators a premium to hedge.","hedging pressure hypothesis, given heavy hedging by consumers.","theory of storage, because low inventories and a high convenience yield raise spot prices."],
+ 1,"The curve is in contango (72.00 below 74.40). Under the hedging pressure hypothesis, when consumers hedge more than producers, their long hedging demand raises futures prices relative to expected spot. Producer hedging under the insurance theory would push toward backwardation, and a high convenience yield also implies backwardation."],
+["If crude oil inventories fall sharply, the futures curve will **most** likely:",
+ ["move deeper into contango, because storage costs rise.","move toward backwardation, because the convenience yield of holding oil rises.","remain unchanged, because futures prices depend only on interest rates."],
+ 1,"Under the theory of storage, scarce inventories raise the convenience yield of holding the physical commodity, which lowers futures prices relative to spot and pushes the curve toward backwardation. Storage costs matter less when there is little to store, and futures prices depend on storage costs and convenience yield as well as interest rates."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-07",
+`Mateo Salas evaluates an active manager against a four-stock benchmark.
+
+**Exhibit 1: Weights**
+
+| Stock | Benchmark | Portfolio |
+|---|---|---|
+| A | 40% | 30% |
+| B | 30% | 20% |
+| C | 20% | 30% |
+| D | 10% | 20% |
+
+A multifactor risk model estimates the portfolio's active factor risk at 2.4% and its active specific risk at 3.2% (both annualized standard deviations).
+
+Salas is comparing this manager with others in a peer group classified by active share and active risk.`,
+[
+["The manager's active share is **closest** to:",
+ ["10%","20%","40%"],
+ 1,"Active share = ½ × Σ|portfolio weight − benchmark weight| = ½ × (10% + 10% + 10% + 10%) = 20%. 40% omits the one-half, and 10% is a single position's difference.",true],
+["The portfolio's total active risk is **closest** to:",
+ ["3.2%","4.0%","5.6%"],
+ 1,"Active factor risk and active specific risk are uncorrelated, so active risk = √(2.4² + 3.2²) = √16.00 = 4.0%. Adding the two standard deviations gives 5.6%, and 3.2% counts only specific risk.",true],
+["The share of active variance that comes from active factor exposures is **closest** to:",
+ ["36%","43%","64%"],
+ 0,"Active variance = 16.00; factor variance = 2.4² = 5.76, which is 36% of the total. 43% divides the standard deviations (2.4/5.6), and 64% is the specific-risk share.",true],
+["A manager with high active share but low active risk is **best** described as a:",
+ ["closet indexer","diversified stock picker","concentrated stock picker"],
+ 1,"High active share with low active risk means holdings differ a lot from the benchmark but the differences are spread over many stocks with little net factor exposure: a diversified stock picker. A closet indexer has low active share and low active risk; a concentrated stock picker has both high."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
@@ -5414,6 +5674,161 @@ Six months later, after rates rise, the portfolio is worth 97 million, and the i
  "He must immunize the portfolio at the prevailing rate: match its duration to the remaining horizon and stop active strategies, so that the portfolio grows to the required 115 million.",
  [["Switch to an immunized portfolio and stop active management",1],["Explains that this locks in the required terminal value",1]]]
 ]);
+/* Level III, second batch (2026-11-07): one new item set per core topic and one for the Portfolio Management
+   pathway, on subjects the existing sets do not cover. Topic names are written out (constants live in other files). */
+
+CFA_DATA.set(3,"Asset Allocation","L3-AA-09",
+`Hélène Moreau sets capital market expectations for an insurer's investment committee.
+
+**Real estate.** Core office property in the insurer's market trades at a 5.2% cap rate. Moreau expects net operating income to grow 2.0% a year and the cap rate to rise to 5.6% over the next five years.
+
+**Currency.** Inflation is expected to be 2.5% a year at home and 5.0% a year in Valoria, a country where the insurer holds bonds.
+
+**Equities.** The domestic equity market's dividend yield is 2.4%, and Moreau expects long-run nominal earnings and dividend growth of 4.6% a year.
+
+A committee member asks whether Moreau should replace her checklist approach to the economic outlook with an econometric model.`,
+[
+["Moreau's expected annual return on core office property over the next five years is **closest** to:",
+ ["5.71%","6.80%","7.20%"],
+ 0,"Expected return ≈ cap rate + NOI growth − annualized percentage change in the cap rate. The cap rate rises from 5.2% to 5.6%, a change of (5.6/5.2)^(1/5) − 1 = 1.49% a year, so 5.2% + 2.0% − 1.49% = 5.71%. Ignoring the cap rate change gives 7.20%; subtracting the 0.40-point level change once gives 6.80%.",true],
+["Using relative purchasing power parity, the expected annual change in the value of Valoria's currency against the domestic currency is **closest** to:",
+ ["−2.50%","−2.38%","+2.44%"],
+ 1,"Relative PPP: the higher-inflation currency depreciates. Expected change = (1.025/1.050) − 1 = −2.38%. −2.50% is the simple inflation difference, and +2.44% is the change in the domestic currency's value against Valoria's.",true],
+["Using the Gordon growth model, Moreau's expected long-run return on domestic equities is **closest** to:",
+ ["2.40%","4.60%","7.00%"],
+ 2,"Expected equity return = dividend yield + long-run growth = 2.4% + 4.6% = 7.0%. The other answers use only one of the two components.",true],
+["Compared with her checklist approach, an econometric model would **most** likely:",
+ ["remove the need for judgment, because the model's equations capture all relevant relationships.","quantify relationships among variables but be complex and possibly misspecified.","be simpler and quicker to update, because it uses fewer inputs than a checklist."],
+ 1,"Econometric models give quantified, internally consistent forecasts, but they need many inputs, can be complex, and may be misspecified or fail when relationships change, so judgment is still needed. A checklist is the simpler, more flexible approach."]
+]);
+
+CFA_DATA.set(3,"Portfolio Construction","L3-PC-09",
+`Kofi Asante uses risk budgeting to review a multi-asset portfolio whose annualized standard deviation is 10%.
+
+**Exhibit 1: Portfolio**
+
+| Asset class | Weight | Beta with the portfolio | Expected excess return |
+|---|---|---|---|
+| Equities | 60% | 1.30 | 6.0% |
+| Bonds | 30% | 0.20 | 1.5% |
+| Commodities | 10% | 1.60 | 4.0% |
+
+The marginal contribution to total risk (MCTR) of an asset equals its beta with the portfolio times the portfolio's standard deviation, and its absolute contribution (ACTR) equals its weight times its MCTR.
+
+A trustee suggests changing the weights until every asset class contributes the same amount of risk.`,
+[
+["The absolute contribution of equities to the portfolio's total risk is **closest** to:",
+ ["6.0%","7.8%","13.0%"],
+ 1,"ACTR = weight × beta × portfolio standard deviation = 0.60 × 1.30 × 10% = 7.8% of the 10% total, i.e. 78% of portfolio risk. 6.0% is weight × σp, and 13.0% is the MCTR.",true],
+["The marginal contribution to total risk of commodities is **closest** to:",
+ ["1.6%","10.0%","16.0%"],
+ 2,"MCTR = beta × σp = 1.60 × 10% = 16.0%. 1.6% is the ACTR (0.10 × 16.0%), and 10.0% is the portfolio's standard deviation.",true],
+["The share of total portfolio risk that comes from bonds is **closest** to:",
+ ["6%","20%","30%"],
+ 0,"ACTR of bonds = 0.30 × 0.20 × 10% = 0.6%, which is 6% of the 10% total. 30% is the bond weight and 20% is the beta.",true],
+["Asante's allocation would be optimal for maximizing the Sharpe ratio when:",
+ ["each asset class contributes the same share of total risk.","each asset class has the same weight in the portfolio.","the ratio of excess return to MCTR is equal for all asset classes."],
+ 2,"A portfolio maximizes its Sharpe ratio when every asset offers the same excess return per unit of marginal risk; otherwise moving weight toward the asset with the higher ratio improves the portfolio. Equal risk contributions describe risk parity (the trustee's idea), which is optimal only if all those ratios happen to be equal."]
+]);
+
+CFA_DATA.set(3,"Performance Measurement","L3-PM-07",
+`Arjun Patel evaluates the Calder Equity Fund using the Carhart four-factor model. Last year the fund returned 11.2%, and the risk-free rate was 3.0%.
+
+**Exhibit 1: Factor exposures and factor returns**
+
+| Factor | Fund exposure | Factor return |
+|---|---|---|
+| Market (excess return) | 1.10 | 7.0% |
+| SMB (small minus big) | 0.40 | 2.0% |
+| HML (high minus low book-to-market) | −0.20 | 1.5% |
+| WML (winners minus losers) | 0.30 | 3.0% |
+
+Patel's colleague suggests that this analysis shows which of the manager's stock purchases added value.`,
+[
+["The contribution of the HML factor to the fund's return last year is **closest** to:",
+ ["−0.30%","+0.30%","+1.50%"],
+ 0,"Contribution = exposure × factor return = −0.20 × 1.5% = −0.30%. The positive answers ignore the sign of the exposure or use the factor return alone.",true],
+["The fund's alpha for the year is **closest** to:",
+ ["−1.50%","−0.90%","+2.10%"],
+ 1,"Return explained by factors = 1.10 × 7.0% + 0.40 × 2.0% − 0.20 × 1.5% + 0.30 × 3.0% = 9.1%. The fund's excess return = 11.2% − 3.0% = 8.2%, so alpha = 8.2% − 9.1% = −0.90%. Forgetting the risk-free rate gives +2.10%; adding the HML term with the wrong sign gives −1.50%.",true],
+["The fund's negative HML exposure **most** likely indicates a tilt toward:",
+ ["value stocks","growth stocks","small-cap stocks"],
+ 1,"HML is long high book-to-market (value) and short low book-to-market (growth) stocks, so a negative exposure means a growth tilt. Size is captured by SMB, where the fund has a positive (small-cap) exposure."],
+["The colleague's suggestion is **best** described as:",
+ ["incorrect, because returns-based factor attribution does not show which holdings produced the results.","correct, because factor exposures are estimated from the fund's individual holdings.","correct, because alpha in a factor model equals the sum of the security selection effects."],
+ 0,"A returns-based factor model explains the fund's returns through exposures estimated from its return series; it cannot identify individual purchases or decisions, which needs holdings-based attribution. Alpha is the return not explained by the factors, not a sum of security-level effects."]
+]);
+
+CFA_DATA.set(3,"Derivatives and Risk Management","L3-DR-08",
+`Ravi Menon is treasurer of Corvane Holdings, which has a 100 million three-year loan at the market reference rate (MRR) plus 1.20%, reset and paid annually. MRR is currently 3.00%. Menon is considering three hedges:
+
+**Hedge 1.** A three-year pay-fixed interest rate swap at a fixed rate of 3.60% against MRR.
+
+**Hedge 2.** A three-year interest rate cap at a 4.00% strike, with a premium equivalent to 0.35% a year.
+
+**Hedge 3.** A collar: buy the 4.00% cap and sell a 2.50% floor, with a net premium equivalent to 0.10% a year.
+
+Corvane also expects to take out a new floating-rate loan in one year. Menon wants protection against higher rates on that loan but wants to benefit if rates fall.`,
+[
+["With Hedge 1, Corvane's all-in annual borrowing cost is **closest** to:",
+ ["3.60%","4.20%","4.80%"],
+ 2,"Corvane pays MRR + 1.20% on the loan, receives MRR on the swap, and pays 3.60% fixed: all-in = 3.60% + 1.20% = 4.80%. 3.60% leaves out the loan spread, and 4.20% is today's unhedged cost at MRR of 3.00%.",true],
+["With Hedge 2, if MRR rises to 5.00%, Corvane's all-in annual borrowing cost is **closest** to:",
+ ["5.20%","5.55%","6.55%"],
+ 1,"The cap limits MRR at 4.00%: all-in = 4.00% + 1.20% + 0.35% premium = 5.55%. 5.20% ignores the premium, and 6.55% ignores the cap payoff.",true],
+["With Hedge 3, if MRR falls to 2.00%, Corvane's all-in annual borrowing cost is **closest** to:",
+ ["3.80%","4.05%","5.30%"],
+ 0,"Below the 2.50% floor, the short floor makes Corvane pay the difference, so its effective MRR is 2.50%: all-in = 2.50% + 1.20% + 0.10% = 3.80%. 4.05% uses the cap-only premium, and 5.30% uses the cap strike instead of the floor.",true],
+["For the loan Corvane expects to take out in one year, Menon should **most** appropriately:",
+ ["buy a payer swaption.","buy a receiver swaption.","enter a forward-starting receive-fixed swap."],
+ 0,"A payer swaption gives the right to pay fixed: Corvane exercises it if rates rise and lets it lapse if rates fall, keeping the benefit of lower rates. A receiver swaption profits when rates fall, and a receive-fixed swap would add to, not hedge, the exposure to rising rates."]
+]);
+
+CFA_DATA.set(3,"Ethical and Professional Standards","L3-ETH-07",
+`Selin Aydın, CFA, is a portfolio manager at Northgate Capital, which requires employees to pre-clear personal trades and imposes a blackout period of three days before and after client trades.
+
+**Event 1.** On Monday, Aydın buys 2,000 shares of Corvex for her own account. On Tuesday, she places a block order to buy Corvex for her clients' accounts. She did not seek pre-clearance.
+
+**Event 2.** Northgate receives a small allocation of a heavily oversubscribed IPO. Aydın allocates all of it to her five largest clients, although the issue is suitable for 40 of her clients.
+
+**Event 3.** Aydın's supervisor, Marcus Lee, CFA, learns of Event 1. He tells Aydın verbally not to repeat it and takes no further action. Northgate's procedures require written reports to compliance and a review of the trader's recent activity.
+
+**Event 4.** A colleague, Ivo Brandt, is a Level III candidate. After the exam, he posts on a public forum which specific topics appeared in the essay section.`,
+[
+["Event 1 **most** likely violates:",
+ ["Standard VI(B) Priority of Transactions","Standard III(B) Fair Dealing","Standard II(A) Material Nonpublic Information"],
+ 0,"Buying for her own account ahead of a client block trade, inside the blackout period and without pre-clearance, puts her interest ahead of clients' and violates VI(B). Fair dealing concerns treating clients fairly among themselves, and a planned client order is not material nonpublic information about the issuer."],
+["Event 2 **most** likely violates:",
+ ["Standard III(A) Loyalty, Prudence, and Care","Standard III(B) Fair Dealing","Standard VI(A) Disclosure of Conflicts"],
+ 1,"Allocating a hot IPO only to the largest clients, when it is suitable for many others, favors some clients over others and violates III(B); oversubscribed issues should be allocated pro rata or by another fair method. The problem is fairness among clients rather than prudence toward one client or an undisclosed conflict."],
+["Regarding Event 3, Lee **most** likely:",
+ ["violated Standard IV(C) Responsibilities of Supervisors, because he did not take reasonable steps after learning of the violation.","complied with the Standards, because a verbal warning is a sufficient response to a first violation.","violated Standard I(A) Knowledge of the Law, because he must report the violation to regulators."],
+ 0,"A supervisor who learns of a violation must respond promptly and follow the firm's procedures, such as reporting to compliance and reviewing the employee's activity. A verbal warning alone is not reasonable supervision. Reporting to regulators is not generally required by the Standards."],
+["Event 4 **most** likely violates:",
+ ["Standard VII(A) Conduct as Participants in CFA Institute Programs","Standard VII(B) Reference to CFA Institute and the CFA Designation","No Standard, because the exam has already taken place"],
+ 0,"Candidates may not disclose the specific topics or questions on the exam, even after it has taken place, because this compromises the integrity of the exam; this falls under VII(A). VII(B) concerns how members and candidates refer to the designation and the Program."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-09",
+`Dalia Novak runs a market-neutral long/short equity portfolio. Her long book is worth 100 million with an average beta of 1.20. The stocks she has chosen to sell short have an average beta of 0.90.
+
+Her prime broker charges a borrowing fee of 0.40% a year on the value of the shorts, and the short positions owe dividends equal to 2.00% of their value a year.
+
+Novak's client asks how the strategy's results differ from those of a long-only portfolio managed with the same stock-selection skill.`,
+[
+["If Novak shorts 100 million of stocks (dollar neutral), the portfolio's net beta exposure relative to 100 million of capital is **closest** to:",
+ ["0.00","0.30","0.90"],
+ 1,"Beta-weighted exposure = 100 × 1.20 − 100 × 0.90 = 30 million, or 0.30 relative to 100 million of capital. Dollar neutrality does not make the portfolio beta neutral when the two books have different betas.",true],
+["To make the portfolio beta neutral, the value of the short book should be **closest** to:",
+ ["75.0 million","100.0 million","133.3 million"],
+ 2,"Beta neutrality requires 100 × 1.20 = S × 0.90, so S = 133.3 million. 100 million is dollar neutral, and 75.0 million inverts the beta ratio.",true],
+["With the beta-neutral short book, the annual borrowing fee is **closest** to:",
+ ["0.40 million","0.53 million","3.20 million"],
+ 1,"Borrowing fee = 0.40% × 133.3 million = 0.53 million. 0.40 million applies the fee to a 100 million short book, and 3.20 million adds the 2.00% dividend obligation to the fee.",true],
+["Compared with a long-only portfolio managed with the same skill, Novak's portfolio **most** likely:",
+ ["earns the market return plus the alpha of both books.","isolates the alpha of both books from market moves, but carries short-specific costs and risks.","has lower risk in all conditions, because the short book always offsets losses on the long book."],
+ 1,"A beta-neutral long/short portfolio removes most market exposure, so returns come from the alpha of the long and the short books, minus borrowing costs and dividends owed, with risks such as short squeezes and recalls. It does not earn the market return, and the books can lose together if the stock selection is wrong."]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -5676,7 +6091,8 @@ CFA_DATA.formulas(2,"Financial Statement Analysis","F2-FSA",[
 ["Bank capital and liquidity ratios","CET1 ratio = CET1 capital / risk-weighted assets;  LCR = HQLA / net cash outflows over 30 days;  NSFR = available / required stable funding","Minimum LCR and NSFR are 100%.","cet1|tier 1|liquidity coverage|risk-weighted"],
 ["Insurer combined ratio","Combined ratio = loss ratio + expense ratio","Below 100% means an underwriting profit.","combined ratio"],
 ["Accruals ratios","Balance-sheet: (NOA_end − NOA_beg) / average NOA;  cash-flow: (NI − CFO − CFI) / average NOA","Higher accruals mean lower earnings quality.","accruals ratio"],
-["DuPont analysis","ROE = (NI/EBT) × (EBT/EBIT) × (EBIT/Revenue) × (Revenue/Assets) × (Assets/Equity)","Tax burden × interest burden × EBIT margin × asset turnover × leverage.","dupont|return on equity|interest burden|tax burden"]
+["DuPont analysis","ROE = (NI/EBT) × (EBT/EBIT) × (EBIT/Revenue) × (Revenue/Assets) × (Assets/Equity)","Tax burden × interest burden × EBIT margin × asset turnover × leverage.","dupont|return on equity|interest burden|tax burden"],
+["Share-based compensation expense","Expense per year = number of awards × grant-date fair value ÷ vesting period (years)","Equity-settled awards are measured at grant-date fair value and not remeasured; restricted shares use the grant-date share price.","share-based|stock options|restricted shares|compensation expense"]
 ]);
 CFA_DATA.formulas(2,"Corporate Finance","F2-CI",[
 ["Share repurchase with borrowed funds","New EPS = (NI − after-tax interest on new debt) / (shares − shares repurchased);  shares repurchased = amount / price","EPS rises if the earnings yield (E/P) exceeds the after-tax cost of debt.","repurchase|buyback"],
@@ -5684,11 +6100,12 @@ CFA_DATA.formulas(2,"Corporate Finance","F2-CI",[
 ["Target payout adjustment model","Expected dividend = D0 + (expected EPS × target payout − D0) × adjustment factor","Adjustment factor = 1 / years to reach the target payout.","target payout|adjustment factor"],
 ["Effective tax rate on dividends","Double taxation: 1 − (1 − t_c)(1 − t_d)","Split-rate and imputation systems lower the effective rate.","effective tax rate|double taxation"],
 ["Country risk premium","CRP = sovereign yield spread × (σ_equity / σ_sovereign bond)","Added to the cost of equity for developing-market exposure.","country risk premium|sovereign"],
-["Cost of equity: CAPM and adjustments","r_e = Rf + β × ERP (+ CRP);  build-up: Rf + ERP + size premium + industry + specific risk","Build-up is used for private companies without a beta.","build-up|cost of equity"],
+["Cost of equity: CAPM and adjustments","r_e = Rf + β × ERP (+ CRP);  build-up: Rf + ERP + size premium + industry + specific risk","Build-up is used for private companies without a beta.","build-up|capm|cost of equity for the|cost of equity would be"],
 ["Bond yield plus risk premium","r_e = yield on the company's long-term debt + risk premium","The premium is typically 3%–5%.","bond yield plus"],
-["Unlevered and relevered beta","β_A = β_E / [1 + (1 − t)D/E];  β_E = β_A × [1 + (1 − t)D/E]","Pure-play method for projects outside the company's usual business.","unlever|asset beta|pure-play|relever"],
+["Unlevered and relevered beta","β_A = β_E / [1 + (1 − t)D/E];  β_E = β_A × [1 + (1 − t)D/E]","Pure-play method for projects outside the company's usual business.","unlevered beta|unlever the|asset beta|pure-play|relever"],
 ["Weighted average cost of capital","WACC = w_d × r_d × (1 − t) + w_p × r_p + w_e × r_e","Use target market-value weights.","weighted average cost|wacc"],
-["Merger premium and synergy split","Premium = (offer value − target pre-deal value) / pre-deal value;  combined value = V_A + V_T + synergies","With a stock offer, target shareholders share in synergies through the shares they receive.","premium offered|synergy|exchange ratio|combined value"]
+["Merger premium and synergy split","Premium = (offer value − target pre-deal value) / pre-deal value;  combined value = V_A + V_T + synergies","With a stock offer, target shareholders share in synergies through the shares they receive.","premium offered|synergy|exchange ratio|combined value"],
+["MM propositions with corporate taxes","V_L = V_U + tD;  r_e = r_0 + (r_0 − r_d)(1 − t)(D/E);  WACC = r_0 × (1 − t × D/V)","V_U = EBIT(1 − t)/r_0 for a perpetuity. Without taxes: V_L = V_U and r_e = r_0 + (r_0 − r_d)(D/E).","recapitali[sz]ation|tax shield|modigliani|mm propositions|perpetual debt"]
 ]);
 CFA_DATA.formulas(2,"Equities","F2-EQ",[
 ["Blume-adjusted beta","Adjusted β = 1/3 + 2/3 × raw β","Reflects the tendency of betas to drift toward 1.0.","blume|adjusted beta"],
@@ -5705,21 +6122,24 @@ CFA_DATA.formulas(2,"Equities","F2-EQ",[
 ["Residual income valuation","V0 = B0 + Σ PV(RI_t);  single-stage: V0 = B0 + (ROE − r)B0 / (r − g)","Value is book value plus the present value of expected residual income.","residual income model|single-stage residual"],
 ["Residual income with persistence","Continuing value at T−1 = RI_T / (1 + r − ω)","ω = persistence factor (0 = RI ends after T, 1 = RI continues unchanged).","persistence"],
 ["Private company valuation discounts","DLOC = 1 − 1/(1 + control premium);  total discount = 1 − (1 − DLOC)(1 − DLOM)","Discounts combine multiplicatively, not additively.","lack of control|lack of marketability|control premium|dloc|dlom"],
-["Normalized earnings","Normalized EBITDA = reported EBITDA + excess owner compensation + non-operating costs − non-recurring gains","Adjust a private company's earnings to what a buyer would earn.","normalized"]
+["Normalized earnings","Normalized EBITDA = reported EBITDA + excess owner compensation + non-operating costs − non-recurring gains","Adjust a private company's earnings to what a buyer would earn.","normalized"],
+["Revenue from market size and share","Revenue = market size × (1 + market growth) × company market share","Forecast the market first, then the company's share of it.","market size|market share"],
+["Degree of operating leverage","DOL = contribution margin / operating income = %Δ operating income / %Δ revenue","Contribution margin = revenue − variable costs. Higher fixed costs mean higher DOL.","operating leverage|operating income will rise"]
 ]);
 CFA_DATA.formulas(2,"Fixed Income","F2-FI",[
 ["Forward rates from spot rates","(1 + S_T)^T = (1 + S_A)^A × [1 + f(A, T − A)]^(T − A)","f(A, B) = rate for B years starting A years from now.","forward rate|f\\(1"],
 ["Arbitrage-free bond price","P = Σ CF_t / (1 + S_t)^t","Discount each cash flow at the spot rate for its maturity.","arbitrage-free price|spot rate"],
 ["Binomial interest rate tree","Node value = ½ × [(V_up + C) + (V_down + C)] / (1 + r_node)","Callable: cap each node at the call price. Putable: floor each node at the put price.","binomial|tree|up node|down node"],
-["Value of embedded options","V_callable = V_straight − V_call;  V_putable = V_straight + V_put","The issuer owns the call; the investor owns the put.","embedded|callable bond|putable|put option"],
-["Effective duration and convexity","EffDur = (PV− − PV+) / (2 × Δcurve × PV0);  EffCon = (PV− + PV+ − 2PV0) / (Δcurve² × PV0)","Use for bonds with embedded options.","effective duration of the (callable|putable|bond)|effective convexity|curve shift"],
+["Value of embedded options","V_callable = V_straight − V_call;  V_putable = V_straight + V_put","The issuer owns the call; the investor owns the put.","embedded|value of the callable|callable and putable|putable|put option"],
+["Effective duration and convexity","EffDur = (PV− − PV+) / (2 × Δcurve × PV0);  EffCon = (PV− + PV+ − 2PV0) / (Δcurve² × PV0)","Use for bonds with embedded options.","effective duration of the|bond.s effective duration|effective convexity|curve shift"],
 ["Key rate duration","%ΔP ≈ −Σ KRD_i × Δy_i","The sum of key rate durations equals effective duration.","key rate|krd"],
 ["Convertible bond values","Conversion value = conversion ratio × share price;  market conversion price = bond price / conversion ratio;  premium per share = market conversion price − share price","Minimum value = greater of conversion value and straight value.","conversion"],
 ["Expected loss and CVA","Expected loss = PD × LGD;  LGD = exposure × (1 − recovery);  CVA = Σ PV(expected loss_t)","Probability of default each year is conditional on survival to that year.","expected loss|cva|credit valuation adjustment"],
 ["Credit spread approximation","Credit spread ≈ PD × LGD (annual)","Spread compensates investors for expected loss.","credit spread approximation|annual (probability of )?default|spread compensat"],
 ["CDS upfront premium","Upfront premium ≈ (credit spread − fixed coupon) × effective spread duration × notional","Negative means the protection seller pays the buyer.","upfront"],
 ["CDS payout and price change","Payout = notional × (1 − recovery rate);  profit to protection buyer ≈ Δspread × duration × notional","Protection buyers gain when spreads widen.","payout|protection|spread widens"],
-["G-spread and I-spread","G-spread = bond yield − interpolated government yield;  I-spread = bond yield − swap rate of the same maturity","Interpolate linearly between benchmark maturities.","g-spread|i-spread|interpolat"]
+["G-spread and I-spread","G-spread = bond yield − interpolated government yield;  I-spread = bond yield − swap rate of the same maturity","Interpolate linearly between benchmark maturities.","g-spread|i-spread|interpolat"],
+["One-sided durations","Up-duration = (PV0 − PV+) / (PV0 × Δcurve);  down-duration = (PV− − PV0) / (PV0 × Δcurve)","For bonds with embedded options the two differ: a callable bond has a lower down-duration, a putable bond a lower up-duration.","one-sided"]
 ]);
 CFA_DATA.formulas(2,"Derivatives and Risk Management","F2-DER",[
 ["Equity forward price","F0 = S0 × [(1 + r)/(1 + q)]^T  (annual yields);  F0 = (S0 − PV(D)) × (1 + r)^T  (discrete dividends);  F0 = S0 e^((r − q)T)","Dividends lower the forward price.","forward price|index forward|no-arbitrage price of the"],
@@ -5731,7 +6151,8 @@ CFA_DATA.formulas(2,"Derivatives and Risk Management","F2-DER",[
 ["Black–Scholes–Merton","c = S N(d1) − X e^(−rT) N(d2);  p = X e^(−rT) N(−d2) − S N(−d1);  d1 = [ln(S/X) + (r + σ²/2)T]/(σ√T);  d2 = d1 − σ√T","With a dividend yield q, replace S with S e^(−qT).","bsm|black|d1"],
 ["Put-call parity (continuous)","p = c − S + X e^(−rT)","Holds for European options on non-dividend-paying stocks.","put-call parity|corresponding put"],
 ["Delta hedging","Call delta = N(d1);  put delta = N(d1) − 1;  shares to hedge = −(number of options × delta)","Gamma: Δc ≈ delta × ΔS + ½ × gamma × ΔS².","delta|gamma"],
-["Binomial option pricing","π = (1 + r − d)/(u − d);  value = [π V_up + (1 − π) V_down]/(1 + r)","American options: at each node, take the greater of continuation value and exercise value.","risk-neutral probability|binomial|american put|terminal prices|c_up"]
+["Binomial option pricing","π = (1 + r − d)/(u − d);  value = [π V_up + (1 − π) V_down]/(1 + r)","American options: at each node, take the greater of continuation value and exercise value.","risk-neutral probability|binomial|american put|terminal prices|c_up"],
+["Caplet and floorlet payoffs","Caplet = notional × max(0, MRR − cap rate) × days/360;  floorlet = notional × max(0, floor rate − MRR) × days/360","Paid in arrears. Long cap − short floor at the same strike = payer swap. A collar limits the borrower's rate between the floor and the cap.","caplet|interest rate cap|cap in place|collar|floor"]
 ]);
 CFA_DATA.formulas(2,"Alternative Investments","F2-ALT",[
 ["Direct capitalization","Value = NOI1 / cap rate;  cap rate = discount rate − growth","NOI excludes financing costs and depreciation.","direct capitalization|cap rate"],
@@ -5743,17 +6164,20 @@ CFA_DATA.formulas(2,"Alternative Investments","F2-ALT",[
 ["New shares and price per share","New shares = existing shares × f/(1 − f);  price per share = investment / new shares","Gives the investor the required ownership fraction.","new shares|price per share"],
 ["Private equity returns","MOIC = exit equity / equity invested;  IRR = MOIC^(1/n) − 1 (no interim cash flows);  TVPI = DPI + RVPI","Exit equity = exit enterprise value − net debt.","moic|multiple of invested|dpi|rvpi|tvpi"],
 ["Hedge fund fees with a hurdle","Incentive fee = rate × (NAV after management fee − hurdle value), if positive","Check whether the hurdle is hard (fee on the excess) or soft (fee on the whole gain).","incentive fee|hurdle|management fee|net nav"],
-["Gross and net exposure","Gross exposure = long + short;  net exposure = long − short","Solve the two equations for the long and short weights.","gross exposure|net exposure"]
+["Gross and net exposure","Gross exposure = long + short;  net exposure = long − short","Solve the two equations for the long and short weights.","gross exposure|net exposure"],
+["Commodity futures returns","Total return ≈ spot return + roll return + collateral return;  roll return = (P_expiring − P_new) / P_expiring","Contango (new contract dearer) gives a negative roll return; backwardation a positive one.","roll return|collateral return|collateralized"]
 ]);
 CFA_DATA.formulas(2,"Portfolio Construction","F2-PM",[
 ["Multifactor model (APT)","E(R) = Rf + β1 λ1 + β2 λ2 + … + βk λk","λ = factor risk premium.","arbitrage pricing|two-factor|factor model"],
 ["Active return from factor tilts","Active return from factors = Σ (β_portfolio,i − β_benchmark,i) × λ_i","The remainder of active return comes from security selection.","factor tilts|active return attributable"],
-["Information ratio","IR = active return / active risk;  active risk = √(factor active risk² + specific risk²)","Active risk is the tracking error.","information ratio|active risk"],
+["Information ratio","IR = active return / active risk;  active risk = √(factor active risk² + specific risk²)","Active risk is the tracking error.","information ratio"],
 ["Fundamental law of active management","IR ≈ TC × IC × √BR","TC = transfer coefficient, IC = information coefficient, BR = breadth (independent bets per year).","fundamental law|transfer coefficient|breadth"],
 ["Optimal active risk","σ_active* = (IR / SR_benchmark) × σ_benchmark;  SR_P² = SR_B² + IR²","Adding the optimal amount of active risk maximizes the portfolio's Sharpe ratio.","optimal level of active risk|optimal active"],
 ["Parametric value at risk","VaR = −(μ − z × σ) × portfolio value","z = 1.65 for 5%, 2.33 for 1%. Scale σ by √T for T days.","value at risk|var for|parametric"],
 ["Implementation shortfall","IS = paper portfolio return − actual portfolio return (including delay, execution, opportunity cost and fees)","Express as a percentage of the paper portfolio's value.","implementation shortfall"],
-["Breakeven inflation","Breakeven inflation ≈ nominal yield − real (inflation-linked) yield","Includes an inflation risk premium.","breakeven inflation"]
+["Breakeven inflation","Breakeven inflation ≈ nominal yield − real (inflation-linked) yield","Includes an inflation risk premium.","breakeven inflation"],
+["Active share","Active share = ½ × Σ |w_portfolio,i − w_benchmark,i|","0% = the benchmark; 100% = no holdings in common.","active share"],
+["Active risk decomposition","Active risk² = active factor risk² + active specific risk²","Share of active variance from factors = factor risk² / active risk².","active factor risk|active specific risk|active variance|total active risk"]
 ]);
 /* Level III formulas. Row: [name, formula, terms and when to use it, link pattern] (see l1.js) */
 CFA_DATA.formulas(3,"Asset Allocation","F3-AA",[
@@ -5765,7 +6189,10 @@ CFA_DATA.formulas(3,"Asset Allocation","F3-AA",[
 ["After-tax return and risk","r_AT = r × (1 − t);  σ_AT = σ × (1 − t)","Taxes absorb part of both the return and the volatility.","after-tax return|after-tax standard deviation"],
 ["After-tax rebalancing corridor","After-tax corridor = pre-tax corridor / (1 − t)","Taxable accounts can use wider corridors, which also reduces taxable trading.","corridor"],
 ["Surplus duration exposure","Δ surplus ≈ −(D_A × A − D_L × L) × Δy","A liability duration above the asset duration hurts the surplus when rates fall.","surplus|duration of 3 and liabilities"],
-["Sharpe ratio","Sharpe = (R − Rf) / σ","Compare strategic and tactical allocations on a risk-adjusted basis.","strategic:|taa:"]
+["Sharpe ratio","Sharpe = (R − Rf) / σ","Compare strategic and tactical allocations on a risk-adjusted basis.","strategic:|taa:"],
+["Expected real estate return","E(R) ≈ cap rate + NOI growth − %Δ cap rate (annualized)","A rising cap rate lowers the expected return; express its change as an annual percentage change.","cap rate|core office property"],
+["Relative purchasing power parity","Expected % change in a foreign currency ≈ (1 + domestic inflation)/(1 + foreign inflation) − 1","The higher-inflation currency is expected to depreciate.","purchasing power parity|\bppp\b"],
+["Gordon growth model for equity returns","E(R_e) = D1/P0 + g","g is long-run nominal growth in earnings and dividends.","gordon growth"]
 ]);
 CFA_DATA.formulas(3,"Portfolio Construction","F3-PC",[
 ["Active share","Active share = ½ × Σ |w_portfolio,i − w_benchmark,i|","0% = index fund, 100% = no overlap with the benchmark.","active share"],
@@ -5777,7 +6204,8 @@ CFA_DATA.formulas(3,"Portfolio Construction","F3-PC",[
 ["Futures to close a duration gap","N = (BPV_target − BPV_portfolio) / BPV_futures","Positive N: buy futures to add duration; negative: sell.","contracts =|number of contracts|bpv gap"],
 ["Swap notional to close a BPV gap","Notional = BPV gap / swap BPV per unit of notional","Receive-fixed swaps add duration; pay-fixed swaps remove it.","swap bpv|notional ="],
 ["Return objective","Additive: spending + inflation + costs;  multiplicative: (1 + s)(1 + π)(1 + c) − 1","The multiplicative version is needed to preserve real value exactly.","return objective|spending rate|additive|multiplicative"],
-["Leverage-adjusted duration gap","LADG = D_A − (L / A) × D_L;  Δ equity ≈ −LADG × A × Δy","A positive gap means rising rates reduce the value of equity.","leverage-adjusted duration"]
+["Leverage-adjusted duration gap","LADG = D_A − (L / A) × D_L;  Δ equity ≈ −LADG × A × Δy","A positive gap means rising rates reduce the value of equity.","leverage-adjusted duration"],
+["Risk contributions (MCTR and ACTR)","MCTR_i = β_i × σ_p;  ACTR_i = w_i × MCTR_i;  Σ ACTR_i = σ_p","Sharpe-optimal when (E(R_i) − R_f)/MCTR_i is equal for all assets; risk parity sets equal ACTRs.","mctr|actr|contribution to (the portfolio's )?total risk|share of total portfolio risk|absolute contribution"]
 ]);
 CFA_DATA.formulas(3,"Performance Measurement","F3-PM",[
 ["Portfolio and excess return","R_P = Σ w_i R_i;  excess return = R_P − R_B","Weights at the start of the period.","portfolio return =|excess return ="],
@@ -5787,7 +6215,8 @@ CFA_DATA.formulas(3,"Performance Measurement","F3-PM",[
 ["Sortino ratio","Sortino = (R_P − MAR) / downside deviation","Penalizes only returns below the minimum acceptable return.","sortino"],
 ["Capture ratio","Capture ratio = upside capture / downside capture","Above 1: the fund gains more in up markets than it loses in down markets.","capture"],
 ["Performance-based fee","Fee = base fee + participation rate × excess return (subject to cap, high-water mark)","Compare with a flat fee at the expected level of outperformance.","base|performance-based|flat fee|0\\.20% \\+"],
-["Multi-period excess return","Cumulative return = Π(1 + R_t) − 1;  excess = cumulative R_P − cumulative R_B","Arithmetic excess returns do not add across periods.","cumulative"]
+["Multi-period excess return","Cumulative return = Π(1 + R_t) − 1;  excess = cumulative R_P − cumulative R_B","Arithmetic excess returns do not add across periods.","cumulative"],
+["Carhart four-factor attribution","R_p − R_f = α + β_mkt(R_m − R_f) + β_SMB·SMB + β_HML·HML + β_WML·WML;  factor contribution = exposure × factor return","Negative HML = growth tilt; positive SMB = small-cap tilt; WML = momentum.","carhart|hml|smb|wml|alpha for the year"]
 ]);
 CFA_DATA.formulas(3,"Derivatives and Risk Management","F3-DR",[
 ["Covered call","Max profit = (X − S0) + c0;  breakeven = S0 − c0;  max loss = S0 − c0","Income in exchange for giving up the upside above X.","covered call"],
@@ -5805,7 +6234,8 @@ CFA_DATA.formulas(3,"Derivatives and Risk Management","F3-DR",[
 ["Currency forward hedge result","Hedged value = amount × forward rate;  hedge gain = (F − S_T) × amount","The forward locks in the rate regardless of the spot rate at maturity.","forward locked|hedged versus|forward:"],
 ["Minimum-variance hedge ratio","Hedge ratio = regression slope (β) of the exposure on the hedge instrument;  hedge size = ratio × exposure","Cross hedges leave basis risk.","minimum-variance hedge"],
 ["Variance swap","Variance notional = vega notional / (2 × strike volatility);  payoff = variance notional × (σ_realized² − σ_strike²)","Payoff is convex in volatility.","variance notional|variance swap|vega notional"],
-["Overlay exposure changes","Equity futures to sell = exposure to remove / contract value;  bond futures to buy = BPV to add / BPV per contract","Shifts the asset allocation without trading the physical holdings.","physical portfolio is unchanged|exposures are shifted|of equity exposure"]
+["Overlay exposure changes","Equity futures to sell = exposure to remove / contract value;  bond futures to buy = BPV to add / BPV per contract","Shifts the asset allocation without trading the physical holdings.","physical portfolio is unchanged|exposures are shifted|of equity exposure"],
+["Floating-rate loan with a swap, cap or collar","Swap: fixed rate + spread;  cap: min(MRR, cap) + spread + premium;  collar: min(max(MRR, floor), cap) + spread + net premium","A payer swaption hedges future floating borrowing while keeping the benefit of lower rates.","all-in annual borrowing cost|swaption"]
 ]);
 CFA_DATA.formulas(3,"Ethical and Professional Standards","F3-ETH",[
 ["GIPS time-weighted return with a cash flow","Sub-period return = V_end / (V_start + CF at start) − 1;  TWR = Π(1 + r_sub) − 1","Revalue the portfolio at each large external cash flow; GIPS requires time-weighted returns.","sub-period|time-weighted"]
@@ -5824,7 +6254,8 @@ CFA_DATA.formulas(3,"Portfolio Management Pathway","F3-PMP",[
 ["Implementation shortfall","Paper portfolio = shares × decision price;  execution cost = filled × (execution − decision price);  opportunity cost = unfilled × (close − decision price);  total = execution + opportunity + commissions","Express as a percentage of the paper portfolio.","paper portfolio|opportunity cost|execution cost"],
 ["Endowment spending rules","Rolling average: rate × average of past values;  hybrid: w × prior spending × (1 + π) + (1 − w) × rate × current value","Smoothing makes spending less volatile than a fixed share of the latest value.","spending ="],
 ["Private equity capital calls","Expected calls = call rate × (commitments − capital already called)","Plan liquidity for spending plus expected calls.","unfunded commitments|expected calls"],
-["Contingent immunization cushion","Cushion = assets − required terminal value / (1 + current yield)^T","Active management may continue while the cushion is positive.","cushion"]
+["Contingent immunization cushion","Cushion = assets − required terminal value / (1 + current yield)^T","Active management may continue while the cushion is positive.","cushion"],
+["Beta-neutral long/short sizing","Short value = long value × β_long / β_short;  net beta exposure = Σ long × β − Σ short × β","Dollar neutral is not beta neutral when the books have different betas. Shorts also cost a borrowing fee and owed dividends.","beta neutral|beta-neutral|net beta exposure|borrowing fee"]
 ]);
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
@@ -6184,6 +6615,34 @@ window.CFA_LINKS = {
 window.CFA_LINK_TITLES = {"articles/financial-theory/08/core-satellite-investing.asp":"Core-Satellite Investing Strategy","articles/investing/111413/commonsize-analysis-financial-statements.asp":"Common-Size Analysis for Financial Statements","articles/mutualfund/07/active-share.asp":"Active Share","ask/answers/012615/whats-difference-between-rsquared-and-adjusted-rsquared.asp":"R-Squared vs. Adjusted R-Squared","terms/a/absoluteadvantage.asp":"Absolute Advantage","terms/a/accrualaccounting.asp":"Accrual Accounting","terms/a/accruedinterest.asp":"Accrued Interest","terms/a/activemanagement.asp":"Active Management","terms/a/adr.asp":"American Depositary Receipts (ADRs)","terms/a/aggregatedemand.asp":"Aggregate Demand","terms/a/alternative_investment.asp":"Alternative Investments","terms/a/altman.asp":"Altman Z-Score","terms/a/anchoring.asp":"Anchoring Bias","terms/a/anova.asp":"Analysis of Variance (ANOVA)","terms/a/apt.asp":"Arbitrage Pricing Theory","terms/a/arbitrage.asp":"Arbitrage","terms/a/asset-backedsecurity.asp":"Asset-Backed Securities (ABS)","terms/a/attribution-analysis.asp":"Performance Attribution","terms/a/autocorrelation.asp":"Autocorrelation","terms/a/autoregressive.asp":"Autoregressive Models","terms/b/barbell.asp":"Barbell Strategy","terms/b/basisrisk.asp":"Basis Risk in Hedging","terms/b/bayes-theorem.asp":"Bayes' Theorem","terms/b/behavioralfinance.asp":"Behavioral Finance","terms/b/benchmark.asp":"Investment Benchmarks","terms/b/beneishmodel.asp":"Beneish Model","terms/b/beta.asp":"Beta","terms/b/big-data.asp":"Big Data","terms/b/binomial_tree.asp":"Binomial Trees","terms/b/binomialdistribution.asp":"Binomial Distribution","terms/b/binomialoptionpricing.asp":"Binomial Option Pricing Model","terms/b/blackscholes.asp":"Black-Scholes Model","terms/b/blockchain.asp":"Blockchain","terms/b/bond.asp":"Bonds","terms/b/bondladder.asp":"Bond Ladder","terms/b/bop.asp":"Balance of Payments","terms/b/bottomupinvesting.asp":"Bottom-Up vs. Top-Down Investing","terms/b/bullspread.asp":"Bull Spread Strategy","terms/b/businesscycle.asp":"Business Cycles","terms/b/businessmodel.asp":"Business Model","terms/c/callablebond.asp":"Callable Bonds","terms/c/calloption.asp":"Call Option","terms/c/camelrating.asp":"CAMELS Rating","terms/c/cap.asp":"Interest Rate Cap","terms/c/capitaladequacyratio.asp":"Capital Adequacy Ratio (CAR)","terms/c/capitalbudgeting.asp":"Capital Budgeting","terms/c/capitalizationrate.asp":"Capitalization Rate","terms/c/capitalizationweightedindex.asp":"Capitalization-Weighted Indexes","terms/c/capitalizedcost.asp":"Capitalized Cost","terms/c/capitallease.asp":"Capital (Finance) Leases","terms/c/capm.asp":"CAPM","terms/c/carriedinterest.asp":"Carried Interest","terms/c/cashconversioncycle.asp":"Cash Conversion Cycle (CCC)","terms/c/cashflowstatement.asp":"Cash Flow Statement","terms/c/central_limit_theorem.asp":"Central Limit Theorem (CLT)","terms/c/chi-square-statistic.asp":"Chi-Square (χ2) Statistic","terms/c/cml.asp":"Capital Market Line (CML)","terms/c/coefficientofvariation.asp":"Coefficient of Variation","terms/c/combinedratio.asp":"Combined Ratio","terms/c/commodity.asp":"Commodities","terms/c/comparativeadvantage.asp":"Comparative Advantage","terms/c/comprehensiveincome.asp":"Comprehensive Income","terms/c/conditional_probability.asp":"Conditional Probability","terms/c/conditional_value_at_risk.asp":"Conditional Value at Risk (CVaR)","terms/c/confidenceinterval.asp":"Confidence Interval","terms/c/confirmation-bias.asp":"Confirmation Bias","terms/c/consumer_surplus.asp":"Consumer Surplus","terms/c/consumerpriceindex.asp":"Consumer Price Index (CPI)","terms/c/contango.asp":"Contango","terms/c/contingentliability.asp":"Contingent Liabilities","terms/c/continuouscompounding.asp":"Continuous Compounding","terms/c/convertiblebond.asp":"Convertible Bonds","terms/c/convexity.asp":"Convexity in Bonds","terms/c/corporategovernance.asp":"Corporate Governance","terms/c/correlationcoefficient.asp":"Correlation Coefficient","terms/c/costofcarry.asp":"Cost of Carry","terms/c/costofdebt.asp":"Cost of Debt","terms/c/costofequity.asp":"Cost of Equity","terms/c/country-risk-premium.asp":"Country Risk Premium","terms/c/covariance.asp":"Covariance","terms/c/covered-interest-rate-parity.asp":"Covered Interest Rate Parity","terms/c/coveredcall.asp":"Covered Call","terms/c/creditanalysis.asp":"Credit Analysis","terms/c/creditdefaultswap.asp":"Credit Default Swap","terms/c/creditrating.asp":"Credit Ratings","terms/c/creditspread.asp":"Credit Spread","terms/c/cross-elasticity-demand.asp":"Cross Price Elasticity","terms/c/crossrate.asp":"Cross Rates","terms/c/crowdingouteffect.asp":"Crowding Out Effect","terms/c/cryptocurrency.asp":"Cryptocurrency","terms/c/currencycarrytrade.asp":"Currency Carry Trade","terms/c/currencyrisk.asp":"Currency Risk","terms/c/currencyswap.asp":"Currency Swaps","terms/c/currentaccount.asp":"Current Account","terms/c/currentratemethod.asp":"Current Rate Method","terms/c/currentratio.asp":"Current Ratio","terms/c/currentyield.asp":"Current Yield","terms/d/ddm.asp":"Dividend Discount Model","terms/d/debtequityratio.asp":"Debt-to-Equity (D/E) Ratio","terms/d/defaultprobability.asp":"Default Probability","terms/d/deferredtaxasset.asp":"Deferred Tax Asset","terms/d/deferredtaxliability.asp":"Deferred Tax Liability","terms/d/definedbenefitpensionplan.asp":"Defined-Benefit Plan","terms/d/degreeofoperatingleverage.asp":"Degree of Operating Leverage (DOL)","terms/d/deltahedging.asp":"Delta Hedging Strategy","terms/d/depreciation.asp":"Depreciation","terms/d/dfl.asp":"Degree of Financial Leverage (DFL)","terms/d/dilutedeps.asp":"Diluted EPS","terms/d/dirtyprice.asp":"Dirty Bond Pricing","terms/d/diversification.asp":"Diversification","terms/d/dividendpayoutratio.asp":"Dividend Payout Ratio","terms/d/dividendpolicy.asp":"Dividend Policies","terms/d/dlom.asp":"Discount for Lack of Marketability (DLOM)","terms/d/double-declining-balance-depreciation-method.asp":"Double-Declining Balance (DDB) Depreciation Method","terms/d/dupontanalysis.asp":"DuPont Analysis","terms/d/duration.asp":"Duration","terms/d/durbin-watson-statistic.asp":"Durbin Watson Test","terms/e/economiesofscale.asp":"Economies of Scale","terms/e/effectiveduration.asp":"Effective Duration","terms/e/effectiveinterest.asp":"Effective Annual Interest Rate","terms/e/effectivetaxrate.asp":"Effective Tax Rate","terms/e/efficientfrontier.asp":"Efficient Frontier","terms/e/efficientmarkethypothesis.asp":"Efficient Market Hypothesis (EMH)","terms/e/endowment.asp":"Endowments","terms/e/enterprisevalue.asp":"Enterprise Value (EV)","terms/e/environmental-social-and-governance-esg-criteria.asp":"Environmental, Social, and Governance (ESG) Investing","terms/e/eps.asp":"Earnings Per Share (EPS)","terms/e/equitymethod.asp":"Equity Method Accounting","terms/e/equityriskpremium.asp":"Equity Risk Premium","terms/e/equityswap.asp":"Equity Swaps","terms/e/eso.asp":"Employee Stock Options","terms/e/ev-ebitda.asp":"Enterprise Multiple (EV/EBITDA)","terms/e/eva.asp":"Economic Value Added (EVA)","terms/e/exchangerate.asp":"Exchange Rates","terms/e/expectationstheory.asp":"Expectations Theory","terms/e/expected-value.asp":"Expected Value","terms/f/factor-investing.asp":"Factor Investing","terms/f/fairvalue.asp":"Fair Value","terms/f/famaandfrenchthreefactormodel.asp":"Fama French Three Factor Model","terms/f/fifo.asp":"FIFO","terms/f/fiscalpolicy.asp":"Fiscal Policy","terms/f/fishereffect.asp":"Fisher Effect","terms/f/forwardcontract.asp":"Forward Contracts","terms/f/forwardpremium.asp":"Forward Premiums","terms/f/forwardrate.asp":"Forward Rates","terms/f/fra.asp":"Forward Rate Agreement (FRA)","terms/f/freecashflow.asp":"Free Cash Flow (FCF)","terms/f/freecashflowtoequity.asp":"Free Cash Flow to Equity (FCFE)","terms/f/frn.asp":"Floating-Rate Note (FRN)","terms/f/frontrunning.asp":"Front-Running","terms/f/fundsfromoperation.asp":"Funds From Operations (FFO)","terms/f/futures.asp":"Futures","terms/g/gdp.asp":"Gross Domestic Product (GDP)","terms/g/geometricmean.asp":"Geometric Mean","terms/g/gips.asp":"Global Investment Performance Standards (GIPS)","terms/g/goodwill.asp":"Goodwill","terms/g/gordongrowthmodel.asp":"Gordon Growth Model","terms/g/greeks.asp":"Option Greeks","terms/g/grossmargin.asp":"Gross Margin","terms/h/harmonicaverage.asp":"Harmonic Mean","terms/h/hedge.asp":"Hedging","terms/h/hedgefund.asp":"Hedge Fund","terms/h/heteroskedasticity.asp":"Heteroscedasticity","terms/h/hhi.asp":"Herfindahl-Hirschman Index (HHI)","terms/h/highwatermark.asp":"High-Water Mark","terms/h/holdingperiodreturn-yield.asp":"Holding Period Return","terms/h/hypothesistesting.asp":"Hypothesis Testing","terms/i/ife.asp":"International Fisher Effect","terms/i/ifrs.asp":"IFRS","terms/i/immunization.asp":"Immunization Strategy","terms/i/impairment.asp":"Impairment","terms/i/implementation-shortfall.asp":"Implementation Shortfall","terms/i/incomeelasticityofdemand.asp":"Income Elasticity of Demand","terms/i/indenture.asp":"Indentures","terms/i/indifferencecurve.asp":"Indifference Curves","terms/i/inflation.asp":"Inflation","terms/i/information-coefficient.asp":"Information Coefficient","terms/i/informationratio.asp":"Information Ratio","terms/i/infrastructure.asp":"Infrastructure","terms/i/intangibleasset.asp":"Intangible Assets","terms/i/interestcoverageratio.asp":"Interest Coverage Ratio","terms/i/interestraterisk.asp":"Interest Rate Risk","terms/i/interestrateswap.asp":"Interest Rate Swaps","terms/i/intrinsicvalue.asp":"Intrinsic Value","terms/i/inventoryturnover.asp":"Inventory Turnover Ratio","terms/i/ipo.asp":"IPO","terms/i/ips.asp":"Investment Policy Statement (IPS)","terms/i/irr.asp":"Internal Rate of Return (IRR)","terms/i/iv.asp":"Implied Volatility","terms/j/jcurve.asp":"J Curve","terms/j/jensensmeasure.asp":"Jensen's Alpha","terms/k/keyrateduration.asp":"Key Rate Duration","terms/k/kurtosis.asp":"Kurtosis","terms/l/ldi.asp":"Liability-Driven Investments","terms/l/leadingindicator.asp":"Leading Indicators","terms/l/leveragedbuyout.asp":"Leveraged Buyouts (LBOs)","terms/l/lifo-reserve.asp":"LIFO Reserve","terms/l/lifo.asp":"LIFO","terms/l/lifoliquidation.asp":"LIFO Liquidation","terms/l/limitorder.asp":"Limit Orders in Trading","terms/l/log-normal-distribution.asp":"Log-Normal Distribution","terms/l/lossgivendefault.asp":"Loss Given Default","terms/m/macaulayduration.asp":"Macaulay Duration","terms/m/machine-learning.asp":"Machine Learning","terms/m/margin.asp":"Margin Trading","terms/m/marginalcostofproduction.asp":"Marginal Cost","terms/m/margincall.asp":"Margin Calls","terms/m/marktomarket.asp":"Mark to Market (MTM)","terms/m/mbs.asp":"Mortgage-Backed Securities","terms/m/mentalaccounting.asp":"Mental Accounting","terms/m/mergersandacquisitions.asp":"Mergers & Acquisitions (M&A)","terms/m/mlr.asp":"Multiple Linear Regression (MLR)","terms/m/modernportfoliotheory.asp":"Modern Portfolio Theory","terms/m/modifiedduration.asp":"Modified Duration","terms/m/modigliani-millertheorem.asp":"Modigliani-Miller Theorem","terms/m/monetarypolicy.asp":"Monetary Policy","terms/m/money-weighted-return.asp":"Money-Weighted Rate of Return","terms/m/moneymarket.asp":"Money Markets","terms/m/monopolisticmarket.asp":"Monopolistic Competition","terms/m/monopoly.asp":"Monopoly","terms/m/montecarlosimulation.asp":"Monte Carlo Simulation","terms/m/mosaictheory.asp":"Mosaic Theory","terms/m/movingaverage.asp":"Moving Average (MA)","terms/m/multicollinearity.asp":"Multicollinearity","terms/m/multifactor-model.asp":"Multi-Factor Models","terms/n/negative_convexity.asp":"Negative Convexity","terms/n/neoclassical-growth-theory.asp":"Neoclassical Growth Theory","terms/n/neuralnetwork.asp":"Neural Networks","terms/n/noi.asp":"Net Operating Income (NOI)","terms/n/noncontrolling_interest.asp":"Non-Controlling Interest","terms/n/nonparametric-statistics.asp":"Nonparametric Statistics","terms/n/normaldistribution.asp":"Normal Distribution","terms/n/npv.asp":"Net Present Value (NPV)","terms/o/oligopoly.asp":"Oligopolies","terms/o/operatingcashflow.asp":"Operating Cash Flow (OCF)","terms/o/operatinglease.asp":"Operating Lease","terms/o/operatingmargin.asp":"Operating Margin","terms/o/optionadjustedspread.asp":"Option-Adjusted Spread (OAS)","terms/o/overfitting.asp":"Overfitting","terms/p/p-value.asp":"P-Value","terms/p/passivemanagement.asp":"Passive Management","terms/p/paybackperiod.asp":"Payback Period","terms/p/pbo.asp":"Projected Benefit Obligation","terms/p/pegratio.asp":"Price/Earnings-to-Growth (PEG) Ratio","terms/p/perfectcompetition.asp":"Perfect Competition","terms/p/permutation.asp":"Permutations","terms/p/perpetuity.asp":"Perpetuity","terms/p/politicalrisk.asp":"Political Risk","terms/p/porter.asp":"Porter's Five Forces","terms/p/portfolio-variance.asp":"Portfolio Variance","terms/p/preferredstock.asp":"Preferred Stock","terms/p/prepaymentrisk.asp":"Prepayment Risk","terms/p/price-earningsratio.asp":"Price-to-Earnings (P/E) Ratio","terms/p/price-to-bookratio.asp":"Price-to-Book (P/B) Ratio","terms/p/price-to-salesratio.asp":"Price-to-Sales (P/S) Ratio","terms/p/priceelasticity.asp":"Price Elasticity of Demand","terms/p/priceweightedindex.asp":"Price-Weighted Index","terms/p/principal-agent-problem.asp":"Principal-Agent Problem","terms/p/privateequity.asp":"Private Equity","terms/p/prospecttheory.asp":"Prospect Theory","terms/p/protective-put.asp":"Protective Put Options","terms/p/putbond.asp":"Put Bonds","terms/p/putcallparity.asp":"Put-Call Parity","terms/p/putoption.asp":"Put Option","terms/p/pvbp.asp":"Price Value of a Basis Point (PVBP)","terms/q/qualifiedopinion.asp":"Qualified Opinion","terms/q/qualityofearnings.asp":"Quality of Earnings","terms/q/quantity_theory_of_money.asp":"Quantity Theory of Money","terms/q/quickratio.asp":"Quick Ratio","terms/r/r-squared.asp":"R-Squared","terms/r/randomwalktheory.asp":"Random Walk Theory","terms/r/realasset.asp":"Real Assets","terms/r/realoption.asp":"Real Options","terms/r/rebalancing.asp":"Rebalancing Your Portfolio","terms/r/receivableturnoverratio.asp":"Receivables Turnover Ratio","terms/r/regression.asp":"Regression","terms/r/regulatory-capture.asp":"Regulatory Capture","terms/r/reinvestmentrisk.asp":"Reinvestment Risk","terms/r/reit.asp":"REITs","terms/r/repurchaseagreement.asp":"Repurchase Agreements","terms/r/residualincome.asp":"Residual Income","terms/r/returnonequity.asp":"Return on Equity (ROE)","terms/r/revenuerecognition.asp":"Revenue Recognition","terms/r/ridingtheyieldcurve.asp":"Yield Curve Strategies","terms/r/risk-parity.asp":"Risk Parity","terms/r/riskaverse.asp":"Risk Aversion","terms/r/riskmanagement.asp":"Risk Management","terms/r/risktolerance.asp":"Risk Tolerance","terms/r/roboadvisor-roboadviser.asp":"Robo-Advisor","terms/r/roll-yield.asp":"Roll Yield","terms/s/sampling.asp":"Sampling","terms/s/seasonality.asp":"Seasonality","terms/s/securitization.asp":"Securitization","terms/s/sharerepurchase.asp":"Share Repurchase","terms/s/sharperatio.asp":"Sharpe Ratio","terms/s/shortselling.asp":"Short Selling","terms/s/skewness.asp":"Skewness","terms/s/smart-beta.asp":"Smart Beta","terms/s/sml.asp":"Security Market Line","terms/s/softdollars.asp":"Soft Dollars","terms/s/solow-residual.asp":"Solow Residual","terms/s/sortinoratio.asp":"Sortino Ratio","terms/s/sovereign-debt.asp":"Sovereign Debt","terms/s/spot_rate.asp":"Spot Rates","terms/s/stakeholder.asp":"Stakeholders","terms/s/standard-error.asp":"Standard Error (SE)","terms/s/standarddeviation.asp":"Standard Deviation","terms/s/stockdividend.asp":"Stock Dividends","terms/s/stocksplit.asp":"Stock Split","terms/s/stoporder.asp":"Stop Orders","terms/s/straddle.asp":"Straddle Options Strategy","terms/s/strategicassetallocation.asp":"Strategic Asset Allocation","terms/s/stresstesting.asp":"Stress Testing","terms/s/sustainablegrowthrate.asp":"Sustainable Growth Rate (SGR)","terms/s/swap.asp":"Swaps","terms/s/swaption.asp":"Swaptions","terms/s/systematicrisk.asp":"Systematic Risk","terms/t/tacticalassetallocation.asp":"Tactical Asset Allocation","terms/t/tariff.asp":"Tariffs","terms/t/taylorsrule.asp":"Taylor Rule","terms/t/tdistribution.asp":"T-Distribution","terms/t/temporalmethod.asp":"Temporal Method in Currency Translation","terms/t/time-weightedror.asp":"Time-Weighted Rate of Return (TWR)","terms/t/timevalueofmoney.asp":"Time Value of Money","terms/t/tips.asp":"Treasury Inflation-Protected Securities (TIPS)","terms/t/trackingerror.asp":"Tracking Error","terms/t/trade-credit.asp":"Trade Credit","terms/t/treynorratio.asp":"Treynor Ratio","terms/t/trilemma.asp":"Economic Trilemma","terms/t/type-ii-error.asp":"Type II Error","terms/u/uncoveredinterestrateparity.asp":"Uncovered Interest Rate Parity","terms/u/unemployment.asp":"Unemployment","terms/u/unleveredbeta.asp":"Unlevered Beta","terms/v/var.asp":"Value at Risk (VaR)","terms/v/vwap.asp":"Volume-Weighted Average Price (VWAP)","terms/w/wacc.asp":"WACC","terms/w/workingcapital.asp":"Working Capital","terms/y/yieldcurve.asp":"Yield Curve","terms/y/yieldtomaturity.asp":"Yield to Maturity (YTM)","terms/y/yieldtoworst.asp":"Yield to Worst (YTW)","terms/z/zspread.asp":"Zero-Volatility Spread (Z-Spread)","updates/purchasing-power-parity-ppp/":"Purchasing Power Parity (PPP)",
 "terms/r/roys-safety-first-criterion.asp":"Roy's Safety-First Criterion","terms/a/allowancefordoubtfulaccounts.asp":"Allowance for Doubtful Accounts","terms/b/baddebt.asp":"Bad Debt","terms/l/llc.asp":"Limited Liability Company (LLC)","terms/g/generalpartnership.asp":"General Partnership","terms/i/international-capm.asp":"International CAPM","terms/t/target-payout-ratio.asp":"Target Payout Ratio","terms/t/technicalanalysis.asp":"Technical Analysis","terms/r/resistance.asp":"Resistance Levels in Trading","terms/a/asset-based-approach.asp":"Asset-Based Valuation","terms/b/bond-valuation.asp":"Bond Valuation","terms/l/leverage.asp":"Financial Leverage","terms/v/venturecapital.asp":"Venture Capital","terms/p/premoneyvaluation.asp":"Pre-Money Valuation","terms/p/performance-fee.asp":"Performance Fees","terms/n/net-exposure.asp":"Net Exposure","terms/m/meanvariance-analysis.asp":"Mean-Variance Analysis","terms/e/etf.asp":"Exchange-Traded Fund (ETF)","terms/a/authorizedparticipant.asp":"Authorized Participants in ETFs","terms/s/securitieslending.asp":"Securities Lending","terms/t/target-date_fund.asp":"Target-Date Funds","terms/d/definedcontributionplan.asp":"Defined Contribution Plans",
 "terms/m/managementfee.asp":"Management Fee","terms/f/fulcrumfee.asp":"Fulcrum Fee","terms/d/duediligence.asp":"Due Diligence","terms/s/styledrift.asp":"Style Drift","terms/c/collar.asp":"Collar Options Strategy","terms/t/totalreturnswap.asp":"Total Return Swaps","terms/b/bearspread.asp":"Bear Spreads","terms/s/strangle.asp":"Strangle Options Strategy","terms/h/homebias.asp":"Home Bias"};
+/* Fixed full-length mocks, generated by tools/make-mocks.js: do not edit by hand.
+   Re-running the tool keeps every existing form unchanged and adds new forms only from sets no form uses yet. */
+CFA_DATA.mockForms = {
+ 1: [
+  {id:"L1-M1", name:"Mock 1",
+   s1:["L1-ETH-27","L1-ETH-54","L1-ETH-21","L1-ETH-15","L1-ETH-64","L1-ETH-25","L1-ETH-103","L1-ETH-28","L1-ETH-104","L1-ETH-07","L1-ETH-01","L1-ETH-105","L1-ETH-22","L1-ETH-08","L1-ETH-02","L1-ETH-56","L1-ETH-61","L1-ETH-14","L1-ETH-20","L1-ETH-17","L1-ETH-16","L1-ETH-05","L1-QM-13","L1-QM-02","L1-QM-06","L1-QM-26","L1-QM-61","L1-QM-59","L1-QM-15","L1-QM-57","L1-QM-51","L1-QM-56","L1-QM-12","L1-QM-105","L1-QM-27","L1-QM-54","L1-QM-05","L1-QM-18","L1-QM-23","L1-QM-22","L1-QM-104","L1-QM-102","L1-QM-10","L1-QM-19","L1-ECON-16","L1-ECON-104","L1-ECON-09","L1-ECON-101","L1-ECON-102","L1-ECON-17","L1-ECON-02","L1-ECON-11","L1-ECON-01","L1-ECON-51","L1-ECON-03","L1-ECON-60","L1-ECON-63","L1-FSA-21","L1-FSA-63","L1-FSA-105","L1-FSA-53","L1-FSA-103","L1-FSA-51","L1-FSA-55","L1-FSA-13","L1-FSA-02","L1-FSA-08","L1-FSA-01","L1-FSA-11","L1-FSA-24","L1-FSA-26","L1-FSA-104","L1-FSA-16","L1-FSA-07","L1-FSA-52","L1-FSA-59","L1-FSA-58","L1-FSA-17","L1-FSA-06","L1-CI-16","L1-CI-12","L1-CI-101","L1-CI-102","L1-CI-04","L1-CI-60","L1-CI-65","L1-CI-09","L1-CI-11","L1-CI-63","L1-CI-53","L1-CI-08","L1-CI-61"],
+   s2:["L1-EQ-61","L1-EQ-08","L1-EQ-63","L1-EQ-59","L1-EQ-05","L1-EQ-23","L1-EQ-03","L1-EQ-102","L1-EQ-20","L1-EQ-04","L1-EQ-62","L1-EQ-06","L1-EQ-103","L1-EQ-53","L1-EQ-60","L1-EQ-19","L1-EQ-21","L1-EQ-01","L1-EQ-16","L1-EQ-12","L1-EQ-02","L1-EQ-55","L1-FI-06","L1-FI-65","L1-FI-51","L1-FI-59","L1-FI-11","L1-FI-104","L1-FI-18","L1-FI-61","L1-FI-15","L1-FI-101","L1-FI-19","L1-FI-05","L1-FI-105","L1-FI-16","L1-FI-17","L1-FI-20","L1-FI-13","L1-FI-57","L1-FI-58","L1-FI-25","L1-FI-23","L1-FI-02","L1-DER-10","L1-DER-104","L1-DER-55","L1-DER-101","L1-DER-63","L1-DER-06","L1-DER-09","L1-DER-54","L1-DER-07","L1-DER-12","L1-DER-52","L1-DER-59","L1-DER-60","L1-ALT-102","L1-ALT-64","L1-ALT-09","L1-ALT-63","L1-ALT-06","L1-ALT-60","L1-ALT-12","L1-ALT-02","L1-ALT-57","L1-ALT-05","L1-ALT-03","L1-ALT-08","L1-ALT-65","L1-PM-58","L1-PM-104","L1-PM-20","L1-PM-09","L1-PM-51","L1-PM-62","L1-PM-03","L1-PM-11","L1-PM-52","L1-PM-103","L1-PM-04","L1-PM-101","L1-PM-12","L1-PM-17","L1-PM-61","L1-PM-19","L1-PM-54","L1-PM-64"]},
+  {id:"L1-M2", name:"Mock 2",
+   s1:["L1-ETH-18","L1-ETH-51","L1-ETH-59","L1-ETH-26","L1-ETH-52","L1-ETH-13","L1-ETH-23","L1-ETH-04","L1-ETH-65","L1-ETH-09","L1-ETH-29","L1-ETH-11","L1-ETH-03","L1-ETH-06","L1-ETH-102","L1-ETH-63","L1-ETH-12","L1-ETH-24","L1-ETH-60","L1-ETH-10","L1-ETH-19","L1-ETH-53","L1-QM-101","L1-QM-08","L1-QM-24","L1-QM-63","L1-QM-53","L1-QM-52","L1-QM-62","L1-QM-64","L1-QM-20","L1-QM-03","L1-QM-17","L1-QM-55","L1-QM-14","L1-QM-25","L1-QM-65","L1-QM-60","L1-QM-103","L1-QM-16","L1-QM-04","L1-QM-58","L1-QM-09","L1-QM-21","L1-ECON-53","L1-ECON-14","L1-ECON-08","L1-ECON-15","L1-ECON-103","L1-ECON-62","L1-ECON-06","L1-ECON-10","L1-ECON-61","L1-ECON-59","L1-ECON-04","L1-ECON-65","L1-ECON-57","L1-FSA-03","L1-FSA-54","L1-FSA-12","L1-FSA-22","L1-FSA-101","L1-FSA-09","L1-FSA-64","L1-FSA-25","L1-FSA-04","L1-FSA-20","L1-FSA-10","L1-FSA-60","L1-FSA-14","L1-FSA-65","L1-FSA-56","L1-FSA-18","L1-FSA-57","L1-FSA-102","L1-FSA-27","L1-FSA-19","L1-FSA-15","L1-FSA-28","L1-CI-02","L1-CI-104","L1-CI-07","L1-CI-05","L1-CI-55","L1-CI-56","L1-CI-105","L1-CI-14","L1-CI-103","L1-CI-57","L1-CI-13","L1-CI-03","L1-CI-58"],
+   s2:["L1-EQ-54","L1-EQ-14","L1-EQ-57","L1-EQ-104","L1-EQ-51","L1-EQ-105","L1-EQ-64","L1-EQ-15","L1-EQ-07","L1-EQ-52","L1-EQ-13","L1-EQ-58","L1-EQ-25","L1-EQ-10","L1-EQ-11","L1-EQ-101","L1-EQ-09","L1-EQ-17","L1-EQ-65","L1-EQ-56","L1-EQ-26","L1-EQ-22","L1-FI-21","L1-FI-12","L1-FI-54","L1-FI-63","L1-FI-04","L1-FI-24","L1-FI-55","L1-FI-52","L1-FI-14","L1-FI-10","L1-FI-01","L1-FI-64","L1-FI-07","L1-FI-56","L1-FI-03","L1-FI-08","L1-FI-60","L1-FI-53","L1-FI-102","L1-FI-62","L1-FI-103","L1-FI-22","L1-DER-56","L1-DER-58","L1-DER-62","L1-DER-01","L1-DER-05","L1-DER-103","L1-DER-11","L1-DER-105","L1-DER-64","L1-DER-13","L1-DER-102","L1-DER-51","L1-DER-61","L1-ALT-53","L1-ALT-59","L1-ALT-51","L1-ALT-103","L1-ALT-11","L1-ALT-14","L1-ALT-10","L1-ALT-62","L1-ALT-56","L1-ALT-61","L1-ALT-101","L1-ALT-07","L1-ALT-58","L1-PM-65","L1-PM-59","L1-PM-63","L1-PM-01","L1-PM-105","L1-PM-55","L1-PM-02","L1-PM-07","L1-PM-102","L1-PM-08","L1-PM-57","L1-PM-13","L1-PM-06","L1-PM-53","L1-PM-18","L1-PM-16","L1-PM-56","L1-PM-05"]}
+ ],
+ 2: [
+  {id:"L2-M1", name:"Mock 1",
+   s1:["L2-EQ-02","L2-FSA-01","L2-EQ-06","L2-FSA-02","L2-ETH-05","L2-PM-06","L2-CI-05","L2-QM-02","L2-FI-01","L2-QM-03","L2-PM-03"],
+   s2:["L2-DER-02","L2-ALT-05","L2-ECON-03","L2-FI-04","L2-ETH-07","L2-FSA-05","L2-FI-02","L2-ETH-06","L2-ECON-01","L2-EQ-04","L2-PM-02"]},
+  {id:"L2-M2", name:"Mock 2",
+   s1:["L2-EQ-03","L2-QM-01","L2-FSA-06","L2-EQ-07","L2-FI-06","L2-PM-05","L2-PM-04","L2-FSA-03","L2-PM-07","L2-FI-05","L2-FSA-07"],
+   s2:["L2-ETH-04","L2-ETH-02","L2-ALT-04","L2-QM-04","L2-CI-03","L2-DER-01","L2-ETH-01","L2-ECON-05","L2-ECON-02","L2-FI-07","L2-EQ-01"]}
+ ],
+ 3: [
+  {id:"L3-M1", name:"Mock 1",
+   s1:["L3-ETH-CR02","L3-PMP-CR06","L3-PMP-05","L3-AA-09","L3-DR-CR01","L3-DR-03","L3-PMP-07","L3-PMP-CR03","L3-PMP-CR02","L3-PC-CR02","L3-ETH-05"],
+   s2:["L3-AA-04","L3-PC-CR01","L3-PMP-09","L3-PMP-06","L3-PMP-CR05","L3-PM-03","L3-PM-CR01","L3-PC-08","L3-AA-CR01","L3-PC-03","L3-AA-CR03"]},
+  {id:"L3-M2", name:"Mock 2",
+   s1:["L3-PM-CR03","L3-AA-CR04","L3-PC-07","L3-PC-CR03","L3-PMP-02","L3-PMP-01","L3-AA-07","L3-ETH-CR01","L3-PMP-CR07","L3-PC-02","L3-PMP-CR09"],
+   s2:["L3-ETH-02","L3-DR-06","L3-AA-01","L3-PC-CR05","L3-AA-CR02","L3-PMP-CR08","L3-DR-CR02","L3-PMP-04","L3-PMP-08","L3-PM-02","L3-PMP-CR01"]}
+ ]
+};
 /* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
    Covers what the CFA exam uses: chain/AOS arithmetic, memories, TVM with P/Y, C/Y and BGN, AMORT, cash flows
    (NPV, IRR), DATA/STAT (1-V, LIN, Ln, EXP, PWR), ICONV, Δ%, FORMAT and RESET. BOND, DEPR, DATE, BRKEVN, PROFIT
@@ -6901,7 +7360,7 @@ function topicRow(name, sub, p, has, o){
 function examRows(list){
   if(!list.length) return '';
   return list.map(e=>{ const tag = canOpenExam(e) ? 'button' : 'div';
-    return `<${tag} class="erow" ${tag==='button'?`data-exam="${DB.exams.indexOf(e)}" title="Open this mock's results"`:''}><span class="score ${barCls(e.score)}">${e.score}%</span><div class="grow"><div>${e.correct} / ${e.total} points</div><div class="sub">${fmtDate(e.date)} · ${fmtTime(e.duration)}</div></div>${tag==='button'?icon('chevR','chev'):''}</${tag}>`; }).join('');
+    return `<${tag} class="erow" ${tag==='button'?`data-exam="${DB.exams.indexOf(e)}" title="Open this mock's results"`:''}><span class="score ${barCls(e.score)}">${e.score}%</span><div class="grow"><div>${e.form && formOf(e.form) ? `<b>${esc(formOf(e.form).name)}</b> · ` : ''}${e.correct} / ${e.total} points</div><div class="sub">${fmtDate(e.date)} · ${fmtTime(e.duration)}</div></div>${tag==='button'?icon('chevR','chev'):''}</${tag}>`; }).join('');
 }
 /* a past mock can be reopened when its sets are known and still in the bank */
 const canOpenExam = e => !!(e.sets && e.sets.length && e.sets.every(id=>SETMAP[id]));
@@ -7635,8 +8094,12 @@ function vExam(app){
   const isCustom = !EXAM_PRESETS[l].some(p=>p[0]===c.n);
   app.innerHTML = `<div class="content">
     <div class="page-head"><div><div class="eyebrow">${LEVELS[l]}</div><h1>Mock exam</h1><p>Timed and exam-style. Answers and explanations appear only after you submit.</p></div></div>
+    ${(D.mockForms && D.mockForms[l] || []).length ? `<div class="panel">
+      <div class="panel-head"><div><h2>Full mocks</h2><p>Full-length exams in two timed sessions at the official ${CURRICULUM_YEAR} topic weights${l===3?', core plus the Portfolio Management pathway':''}. Each mock always has the same questions and no question appears in two mocks, so your scores compare over time.</p></div></div>
+      <div>${D.mockForms[l].map(formRow).join('')}</div>
+    </div>` : ''}
     <div class="panel">
-      <div class="panel-head"><div><h2>Length</h2><p>Drawn by the official ${CURRICULUM_YEAR} topic weights, starting with questions you have not met in earlier mocks</p></div></div>
+      <div class="panel-head"><div><h2>Custom mock</h2><p>Your own length, drawn by the official ${CURRICULUM_YEAR} topic weights, starting with questions you have not met in earlier mocks</p></div></div>
       <div class="panel-body"><div class="choices">
         ${EXAM_PRESETS[l].map(([n,title])=>`<button class="choice ${c.n===n?'on':''}" data-n="${n}" ${n>avail?'disabled':''}><span class="radio"></span><div class="c-title">${title}</div><div class="c-num">${n}<small>${unit}</small></div><div class="c-time">${icon('clock')}${est(n)}</div></button>`).join('')}
         <div class="choice ${isCustom?'on':''}" id="customCard"><span class="radio"></span><div class="c-title">Custom</div><div class="c-num"><input type="number" class="field" id="custom" min="1" max="${avail}" value="${c.n}" aria-label="Custom number of ${unit}"><small>${unit}</small></div><div class="c-time">${icon('clock')}<span id="customTime">${est(Math.min(c.n,avail))}</span></div></div>
@@ -7664,6 +8127,19 @@ function vExam(app){
   inp.oninput = ()=>{ const v=Math.max(1,Math.min(avail,+inp.value||1)); $('#customTime').textContent=est(v); };
   inp.onchange = ()=>{ c.n=Math.max(1,Math.min(avail,+inp.value||1)); render(); };
   $('#start').onclick=()=>{ if(document.activeElement===inp) c.n=Math.max(1,Math.min(avail,+inp.value||1)); startExam(c); };
+  $$('[data-form]',app).forEach(b=>b.onclick=()=>startFixed(b.dataset.form));
+}
+/* fixed full-length mocks (src/data/_mocks.js, built by tools/make-mocks.js): the same questions every time */
+function formOf(id){ for(const l of [1,2,3]){ const f = ((D.mockForms||{})[l]||[]).find(x=>x.id===id); if(f) return f; } return null; }
+function formRow(f){
+  const l = +f.id[1], ids = f.s1.concat(f.s2).filter(x=>SETMAP[x]);
+  const nq = ids.reduce((a,x)=>a+SETMAP[x].questions.length,0);
+  const tries = DB.exams.filter(e=>e.form===f.id), best = tries.length ? Math.max(...tries.map(e=>e.score)) : null;
+  return `<div class="erow"><div class="grow"><div><b>${esc(f.name)}</b></div><div class="sub">${nq} questions · ${fmtDur(examSeconds(l, ids))} · two sessions${tries.length?` · taken ${plural(tries.length,'time')}`:''}</div></div>${best!=null?`<span class="score ${barCls(best)}" title="Best score">${best}%</span>`:''}<button class="btn sm" data-form="${f.id}">${tries.length?'Retake':'Start'}</button></div>`;
+}
+function startFixed(id){
+  const f = formOf(id); if(!f) return;
+  launchExam(+id[1], f.s1.filter(x=>SETMAP[x]), f.s2.filter(x=>SETMAP[x]), true, id);
 }
 function startExam(c){
   const pool = examPool(c);
@@ -7685,12 +8161,17 @@ function startExam(c){
   }
   if(c.level===1){ const byOrder=(a,b)=>TOPICS[1].indexOf(a.topic)-TOPICS[1].indexOf(b.topic); s1.sort(byOrder); s2.sort(byOrder); } // real Level I exams group by topic
   else { s1 = shuffle(s1); s2 = shuffle(s2); }
-  const ids = s1.concat(s2).map(s=>s.id);
-  const total = examSeconds(c.level, ids);
-  const ex = {level:c.level, sets:ids, pos:0, states:{}, flags:{}, struck:{}, start:Date.now(), sessStart:Date.now(), used:0, totalSec:total, phase:'running'};
-  if(twoSessions && s1.length && s2.length){
-    ex.sessions = [[0,s1.length],[s1.length,ids.length]]; ex.sess = 0;
-    ex.sessSec = ex.sessions.map(([a,b])=>examSeconds(c.level, ids.slice(a,b)));
+  launchExam(c.level, s1.map(s=>s.id), s2.map(s=>s.id), twoSessions);
+}
+/* start a mock from its two sessions' set ids (a custom draw or a fixed form) */
+function launchExam(level, ids1, ids2, twoSessions, form){
+  const ids = ids1.concat(ids2);
+  const total = examSeconds(level, ids);
+  const ex = {level, sets:ids, pos:0, states:{}, flags:{}, struck:{}, start:Date.now(), sessStart:Date.now(), used:0, totalSec:total, phase:'running'};
+  if(form) ex.form = form;
+  if(twoSessions && ids1.length && ids2.length){
+    ex.sessions = [[0,ids1.length],[ids1.length,ids.length]]; ex.sess = 0;
+    ex.sessSec = ex.sessions.map(([a,b])=>examSeconds(level, ids.slice(a,b)));
   }
   ex.endAt = Date.now() + (ex.sessions ? ex.sessSec[0] : total)*1000;
   S.exam = ex;
@@ -7977,6 +8458,7 @@ function finalizeExam(){
   ex.sets.forEach(id=>SETMAP[id].questions.forEach(q=>{ const st=ex.states[q.qid]; if(!st) return; answers[q.qid] = q.kind==='cr' ? {r:st.rubric, t:st.text||''} : {c:st.choice==null?null:st.choice}; }));
   const time = {}; Object.entries(ex.time||{}).forEach(([id,s])=>time[id]=Math.round(s));
   ex.result = {date:ex.submittedAt, level:ex.level, total, correct:r1(correct), score:pct(correct,total), duration:Math.round(ex.duration), byTopic, sets:ex.sets, answers, time, hl:ex.hl||{}, parts};
+  if(ex.form) ex.result.form = ex.form;
   DB.exams.push(ex.result); save();
 }
 const THIN_TOPIC = 8; // topic scores from fewer questions than this are flagged as a rough signal
