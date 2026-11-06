@@ -196,6 +196,22 @@ textarea::placeholder,.search input::placeholder{color:var(--text-3)}
 .notice{font-size:14px;line-height:1.55;color:var(--text-2);margin-top:32px;max-width:760px}
 
 /* Home hero, built like the landing page's: the words, beside a card on the blue-grey ground */
+/* Home and Mock exam setup: one column in content order, then a main column plus a right column from 1600px */
+.home-grid,.setup-grid{display:flex;flex-direction:column;gap:16px}
+.home-main,.home-aside,.setup-main,.setup-aside{display:contents}
+.home-hero{order:1}.content.home .tiles{order:2}.hm-notes{order:3;display:flex;flex-direction:column;gap:16px}.hm-notes:empty{display:none}.hm-notes .backup{margin-bottom:0}
+.home-aside > .plan{order:4}.hm-topics{order:5}.hm-mocks{order:6}.hm-keys{order:7}
+@media (min-width:1440px){
+  .content:not(.wide):not(.stage){max-width:1240px}
+}
+@media (min-width:1600px){
+  .content.home:not(.wide),.content.exam-setup:not(.wide){max-width:1480px}
+  .home-grid,.setup-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start}
+  .home-main,.home-aside,.setup-main,.setup-aside{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .home-aside .plan{margin-bottom:0}
+  .home-aside .trow{grid-template-columns:minmax(0,1fr) 48px 40px;gap:12px}
+  .home-aside .trow .chev{display:none}
+}
 .home-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:stretch}
 .home-hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:8px 0}
 .pill{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-height:32px;padding:4px 12px;border-radius:999px;border:1px solid var(--border-2);font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
@@ -8013,7 +8029,7 @@ function vHome(app){
   const text = dueSets.length ? `Questions you miss come back ${SRS_DAYS.slice(0,-1).join(', ')} and ${SRS_DAYS[SRS_DAYS.length-1]} days later. Get them right each time and they leave the queue.` : st.attempted===0 ? `${fmt}. Begin with a short mixed set, or open Practice to choose topics.` : `${st.attempted} of ${st.total} questions attempted. ${unseen ? `${plural(unseen, l===1?'question':'set')} still unseen.` : 'Keep sharpening with missed questions and mock exams.'}`;
   const exams = DB.exams.filter(e=>e.level===l).slice(-4).reverse();
   const rd = {ok:0,warn:0,bad:0,none:0}; TOPICS[l].forEach(t=>{ const v=ts[t]; if(v.attempted<READY_MIN){ rd.none++; return; } const p=pct(v.score,v.attempted); rd[p>=70?'ok':p>=60?'warn':'bad']++; });
-  app.innerHTML = `<div class="content">
+  app.innerHTML = `<div class="content home"><div class="home-grid"><div class="home-main">
     <div class="home-hero">
       <div class="home-hero__copy">
         <div class="pill-row"><span class="pill">${LEVELS[l]} · ${CURRICULUM_YEAR} curriculum<span class="faint">${l===3 ? 'Core + Portfolio Management pathway · ' : ''}${fmt}</span></span>${examChip(l)}</div>
@@ -8042,20 +8058,18 @@ function vHome(app){
       ${tile('Missed','xCircle',st.missed,'questions to redo')}
       ${tile('Bookmarked','bookmark',st.bookmarks,'saved for later')}
     </div>
-    ${topicNotice(l, ts, st)}
-    ${backupNotice()}
-    ${planPanel(l, ts)}
-    <div class="cols">
-      <div class="panel">
+    <div class="hm-notes">${topicNotice(l, ts, st)}${backupNotice()}</div>
+      <div class="panel hm-topics">
         <div class="panel-head"><div><h2>Topics</h2><p>Select a topic to practice it. After ${READY_MIN} answers a topic is rated against the 70% target: Ready from 70%, At risk from 60%, Gap below.</p></div></div>
         <div>${TOPICS[l].map(t=>{ const v=ts[t]; const p=pct(v.score,v.attempted); return topicRow(t, `${v.attempted} / ${v.total} answered`, p, v.attempted>0, {attr:`data-topic="${esc(t)}" title="Practice ${esc(t)}"`, tag: readyTag(v)}); }).join('')}</div>
       </div>
-      <div class="stack">
-        <div class="panel">
+    </div><aside class="home-aside">
+      ${planPanel(l, ts)}
+        <div class="panel hm-mocks">
           <div class="panel-head"><h2>Recent mock exams</h2>${exams.length?`<button class="btn ghost sm" data-goto="progress">View all ${icon('chevR')}</button>`:''}</div>
           ${exams.length?examRows(exams):`<div class="empty">${icon('timer')}<b>No mock exams yet</b><span class="small">A timed exam shows where you stand by topic.</span><button class="btn sm" data-goto="exam" style="margin-top:4px">Set one up</button></div>`}
         </div>
-        <div class="panel">
+        <div class="panel hm-keys">
           <div class="panel-head"><h2>Keyboard</h2></div>
           <div class="panel-body"><div class="keys">
             <span><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd></span><span>Answer the next open question</span>
@@ -8064,8 +8078,7 @@ function vHome(app){
             <span><kbd>Esc</kbd></span><span>Close dialogs and the navigator</span>
           </div></div>
         </div>
-      </div>
-    </div>
+    </aside></div>
     <p class="notice">These questions were written independently for practice and are not official CFA Institute materials. CFA® and Chartered Financial Analyst® are registered trademarks owned by CFA Institute, which does not endorse or sponsor this app. Your progress is stored only in this browser. <a href="/">About CFA Practice</a></p>
   </div>`;
   if(dueSets.length) $('#due').onclick = ()=>startPractice({level:l}, shuffle(dueSets.map(s=>s.id)).slice(0,40));
@@ -8472,8 +8485,9 @@ function vExam(app){
   const est = n=>(l===3?'≈ ':'')+fmtDur(n*avg);
   const unit = unitOf(l,2);
   const isCustom = !EXAM_PRESETS[l].some(p=>p[0]===c.n);
-  app.innerHTML = `<div class="content">
+  app.innerHTML = `<div class="content exam-setup">
     <div class="page-head"><div><div class="eyebrow">${LEVELS[l]}</div><h1>Mock exam</h1><p>Timed and exam-style. Answers and explanations appear only after you submit.</p></div></div>
+    <div class="setup-grid"><div class="setup-main">
     ${(D.mockForms && D.mockForms[l] || []).length ? `<div class="panel">
       <div class="panel-head"><div><h2>Full mocks</h2><p>Full-length exams in two timed sessions at the official ${CURRICULUM_YEAR} topic weights${l===3?', core plus the Portfolio Management pathway':''}. Each mock always has the same questions and no question appears in two mocks, so your scores compare over time.</p></div></div>
       <div>${D.mockForms[l].map(formRow).join('')}</div>
@@ -8487,6 +8501,7 @@ function vExam(app){
       ${l===3?`<div class="srow" style="border-top:1px solid var(--border)"><div class="lbl"><b>Format</b><span>Level III mixes item sets and constructed response</span></div><div class="seg inline">${[['mixed','Both'],['set','Item sets only'],['cr','Constructed response only']].map(([k,lab])=>`<button class="${c.mix===k?'on':''}" data-mix="${k}">${lab}</button>`).join('')}</div></div>
       <div class="srow" style="border-top:1px solid var(--border)"><div class="lbl"><b>Pathway</b><span>The pathway is 30–35% of the exam. Only Portfolio Management is available so far.</span></div><div class="seg inline">${[['pm','Portfolio Management'],['none','Core only']].map(([k,lab])=>`<button class="${c.path===k?'on':''}" data-path="${k}">${lab}</button>`).join('')}</div></div>`:''}
     </div>
+    </div><aside class="setup-aside">
     <div class="panel">
       <div class="panel-head"><h2>How it works</h2></div>
       <div class="panel-body"><div class="rules">
@@ -8497,6 +8512,7 @@ function vExam(app){
         <div class="rule">${icon('chart')}<div><b>Full report</b>Score by topic, then a question-by-question review with explanations.</div></div>
       </div></div>
     </div>
+    </aside></div>
     <div class="actionbar"><div class="ab-text"><b>${Math.min(c.n,avail)}</b> ${unitOf(l,Math.min(c.n,avail))} · ${est(Math.min(c.n,avail))}</div><button class="btn primary lg" id="start" ${avail?'':'disabled'}>Start exam ${icon('arrowR')}</button></div>
   </div>`;
   $$('[data-n]',app).forEach(b=>b.onclick=()=>{ c.n=+b.dataset.n; render(); });
