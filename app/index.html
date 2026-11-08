@@ -6645,6 +6645,64 @@ Ignore dividends, borrowing costs, and transaction costs.`,
  ["deal failure risk, which gives the strategy a payoff like that of a short put option.","interest rate risk, because the deal takes six months to close.","currency risk, because the two companies report in different currencies."],
  0,"Merger arbitrage earns a small, likely gain if the deal closes and suffers a large loss if it fails, much like writing a put. The vignette gives no currency difference, and six months of interest rate exposure is minor compared with deal risk."]
 ]);
+/* Level III, fourth batch (2026-11-08): constructed-response sets for Mock 4.
+   L3-AA-CR07 (currency expectations: PPP, uncovered interest parity, capital flows) and
+   L3-AA-CR08 (macro expectations: trend growth, Taylor rule, cycle implications).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR07",
+`Lucas Brandt, CFA, sets capital market expectations for a domestic investor who is considering a one-year position in government bonds of Norvenia. The bonds are denominated in the Norvenian krone (NVK). Brandt gathers the following data.
+
+**Exhibit 1: Market data**
+
+| Item | Domestic | Norvenia |
+|---|---|---|
+| Expected inflation, next year | 1.5% | 5.5% |
+| One-year government bond yield | 2.5% | 7.0% |
+| Spot exchange rate | 0.2500 domestic currency (DC) per NVK | |
+
+Norvenia runs a current account deficit of 5% of GDP. The deficit is financed mainly by short-term portfolio inflows that were attracted by Norvenia's high interest rates, and the Norvenian central bank raised its policy rate last month.
+
+Brandt assumes the one-year Norvenian bond is held to maturity, so its local-currency return equals its 7.0% yield.`,
+[
+["**A.** Using relative purchasing power parity, calculate the expected spot exchange rate (DC per NVK) in one year and the expected percentage change in the value of the NVK.",
+ "Relative PPP: the higher-inflation currency depreciates. Expected change in the NVK = (1 + domestic inflation)/(1 + Norvenian inflation) − 1 = 1.015/1.055 − 1 = −3.79%. Expected spot rate = 0.2500 × 1.015/1.055 ≈ 0.2405 DC per NVK. (The simple inflation difference of −4.0% is an approximation.)",
+ [["Uses the inflation ratio with Norvenian inflation in the denominator",1],["Expected NVK change of about −3.8% (depreciation)",1],["Expected spot rate of about 0.2405 DC per NVK",1]],true],
+["**B.** Calculate the expected one-year return, in domestic currency, on an unhedged investment in the Norvenian bond (i) if uncovered interest rate parity holds and (ii) if instead the currency moves as forecast in Part A. Interpret the difference.",
+ "(i) Under uncovered interest rate parity the NVK is expected to fall by 1.025/1.070 − 1 = −4.21%. Domestic-currency return = 1.070 × (1.025/1.070) − 1 = 2.50%, exactly the domestic one-year yield: the higher Norvenian yield is fully offset by the expected depreciation. (ii) With the PPP forecast: 1.070 × (1.015/1.055) − 1 = 1.070 × 0.9621 − 1 ≈ 2.94%. If Brandt's PPP view is right, the unhedged bond earns about 0.44 percentage points more than a domestic bond, because PPP predicts less depreciation than the interest differential implies. This excess return is the reward for bearing currency risk and relies on uncovered interest parity failing over the horizon.",
+ [["UIP depreciation of about 4.2% and a domestic-currency return of 2.5%",1],["PPP-based return of about 2.94%",1],["Interprets the gap as an excess return for bearing currency risk that exists only if UIP fails",1]],true],
+["**C.** Discuss how Norvenia's current account position and the way it is financed affect the outlook for the NVK over (i) the short to medium term and (ii) the long term, and explain why Brandt should not rely on PPP alone for a one-year forecast.",
+ "(i) Over the short to medium term, exchange rates are driven mainly by capital flows rather than trade. The high and rising Norvenian policy rate attracts carry-seeking portfolio inflows that can support or even strengthen the NVK. However, because the deficit depends on short-term, easily reversed ('hot') money, a change in sentiment or a rise in global rates could trigger a sudden stop of inflows and a sharp depreciation, so the risk is skewed to the downside. (ii) Over the long term, a persistent current account deficit requires a real depreciation of the NVK to restore external balance, consistent with the direction of the PPP forecast. PPP holds only over long horizons; over one year, interest rate differentials, capital flows, risk sentiment and policy actions dominate, and deviations from PPP can persist for years.",
+ [["Short term: capital flows dominate and high rates can support the NVK",1],["Reliance on short-term inflows creates a risk of sudden reversal and sharp depreciation",1],["Long term: a persistent deficit implies real depreciation of the NVK",1],["PPP is a long-run anchor and a poor one-year predictor",1]]]
+]);
+
+CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR08",
+`Tobias Reinholt, CFA, is preparing the macroeconomic section of the capital market expectations for a balanced fund that invests in its home economy. He gathers the following data.
+
+**Exhibit 1: Economic data**
+
+| Item | Value |
+|---|---|
+| Labor force growth (trend) | 0.6% |
+| Labor productivity growth (trend) | 1.4% |
+| Expected real GDP growth, next year | 3.2% |
+| Expected inflation, next year | 3.5% |
+| Central bank inflation target | 2.0% |
+| Neutral real policy rate | 1.0% |
+| Current policy rate | 3.25% |
+
+Unemployment is below its estimated natural rate, capacity utilization is high, and wage growth has been accelerating. Reinholt uses the Taylor rule with weights of 0.5 on both the growth gap and the inflation gap.`,
+[
+["**A.** Calculate the economy's trend rate of real GDP growth and the gap between expected and trend growth for next year.",
+ "Trend (potential) real GDP growth = labor force growth + labor productivity growth = 0.6% + 1.4% = 2.0%. Expected growth of 3.2% exceeds trend by 1.2 percentage points, so the economy is expected to grow faster than its sustainable rate.",
+ [["Trend growth of 2.0% as labor force growth plus productivity growth",1],["Growth gap of +1.2 percentage points",1]],true],
+["**B.** Calculate the policy rate implied by the Taylor rule. State whether current monetary policy is accommodative or restrictive, and the likely direction of policy rates.",
+ "Taylor rule: i* = neutral real rate + expected inflation + 0.5 × (expected growth − trend growth) + 0.5 × (expected inflation − target) = 1.0% + 3.5% + 0.5 × 1.2% + 0.5 × 1.5% = 1.0% + 3.5% + 0.6% + 0.75% = 5.85%. The current policy rate of 3.25% is 2.6 percentage points below this level, and the real policy rate is about 3.25% − 3.5% = −0.25%, below the 1.0% neutral real rate. Policy is therefore accommodative, and the central bank is likely to raise rates.",
+ [["Applies the Taylor rule with both gaps weighted at 0.5",1],["Taylor rate of about 5.85%",1],["Concludes policy is accommodative and rate increases are likely",1]],true],
+["**C.** Identify the stage of the business cycle suggested by the data, and explain its likely implications for (i) short-term government bond yields and the shape of the yield curve and (ii) domestic equities.",
+ "The economy is in the late stage of expansion: growth above trend, unemployment below its natural rate, high capacity utilization, rising wages and inflation above target. (i) Short-term yields are likely to rise as the central bank tightens toward the Taylor rate. Long-term yields typically rise by less, because tightening is expected to slow growth and inflation later, so the yield curve is likely to flatten (bear flattening) and may eventually invert. (ii) For equities, earnings are still growing, but rising rates, cost and wage pressure squeezing margins, and higher discount rates put pressure on valuations. Late-cycle equity returns tend to be more volatile and below the earlier stages of the expansion, which argues for caution and a tilt toward defensive or less rate-sensitive holdings.",
+ [["Identifies late expansion with supporting evidence",1],["Short-term yields rise and the curve flattens",1],["Equities: earnings growth continues but higher rates and margin pressure weigh on valuations",1],["Expects more volatile, lower equity returns and greater caution",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -7046,7 +7104,9 @@ CFA_DATA.formulas(3,"Asset Allocation","F3-AA",[
 ["Expected real estate return","E(R) ≈ cap rate + NOI growth − %Δ cap rate (annualized)","A rising cap rate lowers the expected return; express its change as an annual percentage change.","cap rate|core office property"],
 ["Relative purchasing power parity","Expected % change in a foreign currency ≈ (1 + domestic inflation)/(1 + foreign inflation) − 1","The higher-inflation currency is expected to depreciate.","purchasing power parity|\bppp\b"],
 ["Gordon growth model for equity returns","E(R_e) = D1/P0 + g","g is long-run nominal growth in earnings and dividends.","gordon growth"],
-["Human capital and economic net worth","HC = salary₁/(r − g) × [1 − ((1 + g)/(1 + r))^N];  economic net worth = HC + financial capital − liabilities","Stable, bond-like income supports more equities in the financial portfolio; equity-like income supports fewer.","human capital|economic net worth"]
+["Human capital and economic net worth","HC = salary₁/(r − g) × [1 − ((1 + g)/(1 + r))^N];  economic net worth = HC + financial capital − liabilities","Stable, bond-like income supports more equities in the financial portfolio; equity-like income supports fewer.","human capital|economic net worth"],
+["Uncovered interest rate parity","Expected % change in a foreign currency = (1 + domestic rate)/(1 + foreign rate) − 1","If it holds, an unhedged foreign bond is expected to earn the domestic rate; excess return requires UIP to fail.","uncovered interest"],
+["Trend growth and the Taylor rule","Trend growth = labor force growth + labor productivity growth;  i* = r_neutral + π_e + 0.5 × (g_e − g_trend) + 0.5 × (π_e − π_target)","A policy rate below i* is accommodative (hikes likely); above i* is restrictive.","taylor rule|labor productivity growth|trend rate of real gdp growth"]
 ]);
 CFA_DATA.formulas(3,"Portfolio Construction","F3-PC",[
 ["Active share","Active share = ½ × Σ |w_portfolio,i − w_benchmark,i|","0% = index fund, 100% = no overlap with the benchmark.","active share"],
