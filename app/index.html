@@ -1774,6 +1774,72 @@ CFA_DATA.mc(1,"Fixed Income","L1-FI",[
  ["the support tranche, which absorbs prepayments above the PAC schedule.","the PAC tranche, because it has the highest priority for principal.","both tranches equally, because principal is passed through pro rata."],
  0,"Within the collar, the PAC tranche keeps to its schedule, and any principal beyond that schedule goes to the support tranche. The support tranche therefore takes on most of the contraction risk when prepayments are fast, and most of the extension risk when they are slow. That protection is the whole point of a PAC, and principal in a CMO is not shared pro rata."]
 ],{from:101,diff:"hard"});
+/* Batch for Mock 3 (2026-11-08): standard questions from id 111, exam-level from 131 */
+CFA_DATA.mc(1,"Fixed Income","L1-FI",[
+["A five-year zero-coupon bond has a yield to maturity of 4% on an annual basis. Its price per 100 of par is **closest** to:",
+ ["80.00","82.03","82.19"],
+ 2,"Discount the single payment at the annual yield: 100 ÷ 1.04⁵ = 100 ÷ 1.21665 = 82.19. Calculator: N = 5, I/Y = 4, FV = 100, PMT = 0, CPT PV. Compounding semiannually instead (100 ÷ 1.02¹⁰) gives 82.03, and 80.00 subtracts simple interest (100 × (1 − 5 × 0.04)), which is not how bonds are priced.",1],
+["A two-year bond pays a 10% annual coupon and is priced at par, so its yield to maturity is 10%. Its Macaulay duration is **closest** to:",
+ ["1.74","1.91","2.00"],
+ 1,"Weight each payment's time by its share of the price. PV of year 1 = 10 ÷ 1.10 = 9.09; PV of year 2 = 110 ÷ 1.21 = 90.91. Macaulay duration = (1 × 9.09 + 2 × 90.91) ÷ 100 = 1.91 years. 2.00 is the maturity, which would be the duration only of a zero-coupon bond, and 1.74 is the modified duration (1.91 ÷ 1.10).",1],
+["A 10-year zero-coupon bond has a yield to maturity of 5% on an annual basis. Its modified duration is **closest** to:",
+ ["9.52","10.00","10.50"],
+ 0,"The Macaulay duration of a zero-coupon bond equals its maturity, 10 years. Modified duration = Macaulay duration ÷ (1 + yield per period) = 10 ÷ 1.05 = 9.52. The figure 10.00 is the Macaulay duration itself, and 10.50 multiplies by (1 + yield) instead of dividing.",1],
+["A floating-rate note pays quarterly coupons equal to the reference rate plus a quoted margin of 110 bps, both stated as annual rates. If the reference rate at the reset date is 3.25%, the next quarterly coupon per 100 of par is **closest** to:",
+ ["1.0875","1.9125","4.3500"],
+ 0,"The annual coupon rate is 3.25% + 1.10% = 4.35%, and a quarterly coupon pays a quarter of it: 4.35 ÷ 4 = 1.0875 per 100. The figure 4.3500 is the full annual coupon, and 1.9125 divides only the reference rate by 4 (0.8125) but adds the whole annual margin of 1.10.",1],
+["A bond trades at a premium to par. If its yield to maturity stays the same, over the next year its price will **most likely**:",
+ ["fall gradually toward par as maturity nears.","rise, because the coupon exceeds the yield.","stay unchanged, because the yield is unchanged."],
+ 0,"A premium bond's price is pulled to par as it approaches maturity (the constant-yield price trajectory): each coupon is above the market yield, and the extra income is paid for by the premium wearing away. A coupon above the yield is the reason the bond trades at a premium, not a reason for it to rise further, and the price changes even with an unchanged yield because there is less time left."],
+["In the traditional four Cs of credit analysis, the borrower's ability to make its debt payments on time from its operating cash flows is called:",
+ ["capacity.","collateral.","covenants."],
+ 0,"Capacity is the borrower's ability to service its debt from its cash flows, and analysts judge it with industry, company and financial ratio analysis. Collateral is the value of the assets pledged to the lenders, and covenants are the terms in the bond indenture that the issuer must meet; both matter for credit risk, but neither is the ability to pay from operations."],
+["In a bankruptcy, after secured creditors are paid from their collateral, which of the following claims **most likely** ranks highest?",
+ ["Senior unsecured bonds","Subordinated bonds","Preferred shares"],
+ 0,"The priority of claims runs from secured debt to senior unsecured debt, then to subordinated debt, and only then to preferred and common equity. So once the secured creditors have been paid, senior unsecured bondholders come next. Subordinated bonds rank below them by contract, and preferred shares are equity, which comes after all debt."],
+["A sinking fund provision in a bond indenture **most likely**:",
+ ["makes the issuer retire part of the issue each year.","lets holders sell bonds back at par.","guarantees the bonds with a pool of high-quality assets."],
+ 0,"A sinking fund requires the issuer to repay a portion of the principal on a schedule over the bond's life, which lowers credit risk because less is due at maturity (it adds reinvestment risk if bonds are retired when rates are low). The right of holders to sell bonds back is a put provision, and backing the bonds with a pool of assets describes collateral or a covered bond, not a sinking fund."],
+["A bond denominated in US dollars is issued by a Japanese company and sold to investors in several European countries, outside the jurisdiction of any single country. It is **best** described as a:",
+ ["Eurobond.","foreign bond.","global bond."],
+ 0,"A Eurobond is issued outside the jurisdiction of any one country, in a currency other than that of the markets where it is sold. A foreign bond is issued by a foreign company in another country's domestic market and currency (for example, a Japanese company selling dollar bonds in the US market). A global bond is issued at the same time in the Eurobond market and in at least one domestic market."],
+["In a bond offering, the investment bank buys the entire issue from the issuer at an agreed price and takes the risk of reselling it. This is **best** described as:",
+ ["an underwritten offering.","a best-efforts arrangement.","a private placement."],
+ 0,"In an underwritten (firm-commitment) offering the bank guarantees the issuer the proceeds by buying the whole issue, and it bears the risk of reselling it at a lower price. In a best-efforts arrangement the bank only tries to sell the bonds and takes no price risk, and a private placement sells the bonds directly to a few qualified investors rather than through a public offering."],
+["Under the pure expectations theory, a downward-sloping (inverted) yield curve **most likely** indicates that investors expect:",
+ ["short-term rates to fall.","short-term rates to rise.","a larger term premium on long bonds."],
+ 0,"The pure expectations theory says forward rates are unbiased forecasts of future short-term rates, so long-term yields are averages of expected short rates. Long yields below short yields therefore mean investors expect short rates to fall. Expected rises would make the curve slope upward, and this theory assumes there is no term premium at all; a term premium is the idea behind the liquidity preference theory."],
+["The risk that a bond's price falls because a rating agency lowers its credit rating, even though the issuer has not defaulted, is **best** described as:",
+ ["downgrade risk.","default risk.","loss severity."],
+ 0,"Downgrade (credit migration) risk is the risk that the issuer's creditworthiness is judged worse, which widens the bond's spread and lowers its price before any default. Default risk is the probability that the issuer fails to pay on time and in full, and loss severity is the share of the position lost if a default does happen; neither has occurred here."],
+["In a securitization with senior, mezzanine and subordinated tranches, credit losses on the underlying loans are absorbed **first** by the:",
+ ["subordinated tranche.","mezzanine tranche.","senior tranche, which has the largest balance."],
+ 0,"Credit tranching works like a waterfall: losses hit the most junior (subordinated or equity) tranche first, then the mezzanine tranche, and the senior tranche only after both are wiped out. That protection is why the senior tranche gets the highest rating. Its larger balance does not make it absorb losses first; it is the last in line."],
+["A government's inflation-linked bond adjusts its principal for inflation each period. Its coupon payments **most likely**:",
+ ["rise with inflation, since the principal grows.","stay fixed in money terms.","fall with inflation, to keep the real return constant."],
+ 0,"The fixed coupon rate is applied to the inflation-adjusted principal, so as inflation raises the principal, each coupon payment rises too; this is what protects the investor's real income. The coupon would stay fixed in money terms only for a conventional bond, and nothing in the design makes coupons fall when prices rise."]
+],{from:111});
+
+CFA_DATA.mc(1,"Fixed Income","L1-FI",[
+["A four-year corporate bond yields 5.40%. Government bonds yield 3.80% at three years and 4.20% at five years. Using linear interpolation, the bond's G-spread is **closest** to:",
+ ["120 bps","140 bps","160 bps"],
+ 1,"Interpolate the government yield at the bond's four-year maturity: halfway between 3.80% and 4.20% is 4.00%. G-spread = 5.40% − 4.00% = 1.40%, or 140 bps. Using the five-year yield gives 120 bps and using the three-year yield gives 160 bps; neither matches the bond's maturity.",1],
+["The one-year forward rates are 3% for the first year (0y1y) and 5% for the second year (1y1y). The price of a two-year zero-coupon bond per 100 of par is **closest** to:",
+ ["92.46","94.26","95.24"],
+ 0,"Discount the payment through each year at that year's forward rate: 100 ÷ (1.03 × 1.05) = 100 ÷ 1.0815 = 92.46. Using 3% for both years (100 ÷ 1.03²) gives 94.26 and ignores the higher second-year rate, while 95.24 discounts only one year at 5%.",1],
+["A three-year bond pays a 6% annual coupon and is priced at 97.38 per 100 of par. Its yield to maturity is **closest** to:",
+ ["6.00%","6.16%","7.00%"],
+ 2,"Calculator: N = 3, PV = −97.38, PMT = 6, FV = 100, CPT I/Y = 7.00%. Check: 6 ÷ 1.07 + 6 ÷ 1.07² + 106 ÷ 1.07³ = 5.61 + 5.24 + 86.53 = 97.38. The bond trades below par, so its yield must be above the 6.00% coupon, and 6.16% is the current yield (6 ÷ 97.38), which ignores the gain from the price rising to par.",1],
+["A bond is priced at 100. If its yield rises by 25 bps the price falls to 98.80, and if its yield falls by 25 bps the price rises to 101.25. Its approximate convexity is **closest** to:",
+ ["0.2","40.0","80.0"],
+ 2,"Approximate convexity = (PV₋ + PV₊ − 2 × PV₀) ÷ (PV₀ × Δy²) = (101.25 + 98.80 − 200) ÷ (100 × 0.0025²) = 0.05 ÷ 0.000625 = 80.0. Putting a factor of 2 in the denominator, as in the duration formula, gives 40.0, and forgetting to square Δy gives 0.2.",1],
+["Holding the yield equal across all three, which option-free bond **most likely** has the highest modified duration?",
+ ["A 20-year bond with a 2% coupon","A 20-year bond with a 6% coupon","A 10-year bond with a 2% coupon"],
+ 0,"Duration rises with maturity and falls as the coupon rises, because more of a low-coupon bond's value comes from the distant principal payment. The 20-year 2% bond combines the longer maturity with the lower coupon, so it has the highest duration. The 20-year 6% bond receives more value earlier through its coupons, and the 10-year 2% bond has the shorter maturity."],
+["An investor holds mortgage pass-through securities. If interest rates rise sharply, the investor **most likely** faces:",
+ ["extension risk, as prepayments slow down.","contraction risk, as prepayments speed up.","lower credit risk on the loans."],
+ 0,"When rates rise, fewer homeowners refinance, prepayments slow and the security's expected life lengthens just when the investor would like money back to reinvest at the higher rates; this is extension risk. Contraction risk is the opposite case, when falling rates speed up prepayments, and a change in interest rates does not by itself lower the borrowers' credit risk."]
+],{from:131,diff:"exam"});
 CFA_DATA.mc(1,"Fixed Income","L1-FI",[
 ["A bond covenant that requires the issuer to maintain a minimum interest coverage ratio is **best** described as:",
  ["an affirmative covenant.","a negative covenant.","a cross-default provision."],
@@ -1920,6 +1986,27 @@ CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
  ["1.08","3.00","3.08"],
  2,"Put–call–forward parity: P = C − (F − X)/(1 + r) = 5.00 − (52 − 50)/1.04 = 5.00 − 1.92 = 3.08. 3.00 does not discount the difference between the forward price and the strike, and 1.08 plugs the forward price into put–call parity as if it were the spot price: 5 − 52 + 50/1.04.",true]
 ],{from:101,diff:"hard"});
+/* Batch for Mock 3 (2026-11-08): standard questions from id 111, exam-level from 131 */
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["An investor writes a put option with an exercise price of 50 for a premium of 4. At expiration the stock trades at 43. The writer's profit per share is **closest** to:",
+ ["−7","−3","4"],
+ 1,"The put is exercised because the stock is below the strike, so the writer pays 50 − 43 = 7 per share and keeps the premium of 4: profit = 4 − 7 = −3. The figure −7 is the payoff alone, ignoring the premium received, and +4 would be the profit only if the put expired worthless, which needs a price at or above 50.",1],
+["Which of the following is **most likely** a benefit of derivative markets?",
+ ["They let users take on or hedge risks at lower cost.","They remove counterparty risk from all contracts.","They prevent speculation in the underlying markets."],
+ 0,"Derivatives let users transfer, take on or hedge risk with little up-front capital and low transaction costs, and their prices help with price discovery. They do not remove counterparty risk: OTC contracts in particular still carry it. They also do not prevent speculation; derivatives are widely used to speculate, which is one of the criticisms of them."],
+["When an OTC interest rate swap is centrally cleared, the central counterparty (CCP) becomes the buyer to every seller and the seller to every buyer. This **most likely**:",
+ ["lowers the counterparty credit risk each party faces.","removes the need for either party to post margin.","turns the swap into a standardized exchange-traded future."],
+ 0,"With a CCP in the middle, each party faces the clearinghouse instead of the other party, and the CCP's margin rules and default fund make default losses much less likely. Central clearing increases margin requirements rather than removing them, and the swap remains a swap with its own terms; clearing does not turn it into a futures contract traded on an exchange."]
+],{from:111});
+
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["In a one-period binomial model, a stock will either rise by a factor of 1.20 or fall by a factor of 0.90. The risk-free rate for the period is 3%. The risk-neutral probability of an up move is **closest** to:",
+ ["0.433","0.500","0.567"],
+ 0,"Risk-neutral probability of an up move = (1 + r − d) ÷ (u − d) = (1.03 − 0.90) ÷ (1.20 − 0.90) = 0.13 ÷ 0.30 = 0.433. The figure 0.567 is the probability of a down move (1 − 0.433), and 0.500 simply assumes equal odds, which does not make the stock earn the risk-free rate in expectation.",1],
+["A receive-fixed, pay-floating interest rate swap is **most** similar to:",
+ ["a long fixed-rate bond and a short floating-rate note.","a short fixed-rate bond and a long floating-rate note.","a long position in a series of interest rate calls."],
+ 0,"Receiving fixed is like owning a fixed-rate bond (collecting fixed coupons), and paying floating is like having issued a floating-rate note (paying floating coupons), so the swap equals a long fixed-rate bond plus a short FRN. The reverse combination is the pay-fixed side. A swap is a forward commitment, a series of FRAs, not a portfolio of options such as calls."]
+],{from:131,diff:"exam"});
 CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
 ["Compared with a forward contract, a futures contract is **most likely**:",
  ["customized and traded over the counter.","standardized, exchange-traded, and marked to market daily.","free of counterparty risk because of a clearinghouse but not marked to market."],
@@ -2164,6 +2251,27 @@ CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
  ["Stock X has the higher expected return, because it has more total risk.","Stock Y has the higher expected return, because only systematic risk is priced.","The two have the same expected return, because diversification removes risk differences."],
  1,"In the CAPM, investors are rewarded only for systematic risk, measured by beta, because unsystematic risk can be diversified away at no cost. Y's beta of 1.3 exceeds X's 0.8, so Y has the higher expected return even though X is more volatile overall. Diversification removes unsystematic risk but not differences in beta."]
 ],{from:101,diff:"hard"});
+/* Batch for Mock 3 (2026-11-08): standard questions from id 111, exam-level from 131 */
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["A fund excludes companies that make tobacco products or weapons from its portfolio. This ESG approach is **best** described as:",
+ ["negative screening.","positive screening.","thematic investing."],
+ 0,"Negative (exclusionary) screening removes companies or sectors from the investable universe because of their activities. Positive screening does the opposite and selects companies with strong ESG practices, and thematic investing targets a theme such as clean energy; neither of those is about leaving out tobacco and weapons makers."],
+["A service that builds and rebalances low-cost portfolios automatically from a client's answers to an online questionnaire is **best** described as a:",
+ ["robo-adviser.","wrap account.","separately managed account."],
+ 0,"A robo-adviser uses algorithms to turn a client's questionnaire answers into a portfolio, usually of low-cost index funds or ETFs, and rebalances it automatically with little or no human adviser involvement. A wrap account bundles advice and trading for one fee, and a separately managed account is a portfolio run by a professional manager for one client; neither is defined by automation."],
+["A stock's relative strength index (RSI) has risen to 82. A technical analyst would **most likely** view the stock as:",
+ ["overbought, and due for a pullback.","oversold, and due for a rebound.","neutral, as RSI only signals above 90."],
+ 0,"The RSI is a momentum oscillator between 0 and 100; readings above 70 are usually read as overbought (prices have risen too far, too fast) and readings below 30 as oversold. A reading of 82 is therefore an overbought signal. It is not oversold, and the usual signal levels are 70 and 30, not 90."]
+],{from:111});
+
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["An investor puts 60% of a portfolio in a risky portfolio with an expected return of 10% and a standard deviation of 20%, and 40% in the risk-free asset yielding 3%. The standard deviation of the combined portfolio is **closest** to:",
+ ["8.0%","12.0%","20.0%"],
+ 1,"The risk-free asset has zero standard deviation and zero correlation with the risky portfolio, so the combined standard deviation is just the risky weight times the risky standard deviation: 0.60 × 20% = 12.0% (expected return 0.60 × 10% + 0.40 × 3% = 7.2%). The figure 8.0% uses the risk-free weight, and 20.0% is the risky portfolio on its own.",1],
+["A portfolio holds 40% in a stock with a beta of 1.5 and 60% in a stock with a beta of 0.5. The portfolio's beta is **closest** to:",
+ ["0.90","1.00","1.10"],
+ 0,"Portfolio beta is the weighted average of the holdings' betas: 0.40 × 1.5 + 0.60 × 0.5 = 0.60 + 0.30 = 0.90. A simple average of the two betas gives 1.00 and ignores the weights, and 1.10 swaps the weights (0.60 × 1.5 + 0.40 × 0.5).",1]
+],{from:131,diff:"exam"});
 CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
 ["The main benefit of the portfolio perspective on investing is that it:",
  ["guarantees higher returns than holding the individual securities on their own.","reduces risk through diversification without necessarily reducing return.","eliminates all systematic risk once enough securities are held."],
@@ -6501,7 +6609,7 @@ CFA_DATA.formulas(1,"Equities","F1-EQ",[
 ["Short sale profit","Profit = (sale price − purchase price) × shares − dividends paid − costs","The short seller pays any dividends to the share lender.","short sale|sells short|covers"]
 ]);
 CFA_DATA.formulas(1,"Fixed Income","F1-FI",[
-["Bond price","P = Σ C / (1 + r)^t + FV / (1 + r)^N","Use periodic rates and periods (for semiannual: r/2 and 2N).","price is|price per 100|bond's price|price of a"],
+["Bond price","P = Σ C / (1 + r)^t + FV / (1 + r)^N","Use periodic rates and periods (for semiannual: r/2 and 2N).","price is|price per 100|bond's price|price of a|its yield to maturity is"],
 ["Pricing with spot rates","P = C / (1 + S1) + C / (1 + S2)² + … + (C + FV) / (1 + SN)^N","Each cash flow is discounted at the spot rate for its own maturity.","spot rate"],
 ["Current yield","Current yield = annual coupon / flat price","Ignores capital gains and reinvestment.","current yield"],
 ["Accrued interest and full price","AI = coupon per period × (days since last coupon / days in period);  full price = flat price + AI","Flat (clean) prices are quoted; the full (dirty) price is paid.","accrued|full price|flat price"],
@@ -6516,7 +6624,7 @@ CFA_DATA.formulas(1,"Fixed Income","F1-FI",[
 ["Expected loss","Expected loss = probability of default × loss given default;  LGD = exposure × (1 − recovery rate)","Approximates the credit spread needed to compensate for default risk.","expected loss|recovery rate"],
 ["Repo repurchase price","Cash lent = market value × (1 − haircut);  repurchase price = cash × (1 + repo rate × days/360)","The haircut protects the lender against a fall in collateral value.","repurchase|repo"],
 ["Yield to worst","Yield to worst = lowest of the yield to maturity and the yields to each call date","The realistic yield for premium callable bonds.","yield to worst|yield to call"],
-["Floater duration","Duration ≈ time to the next coupon reset","A floater's price returns close to par at each reset if credit quality is unchanged.","floating-rate|floater|resets"]
+["Floater duration","Duration ≈ time to the next coupon reset","A floater's price returns close to par at each reset if credit quality is unchanged.","^(?!.*next quarterly coupon).*(floating-rate|floater|resets)"]
 ]);
 CFA_DATA.formulas(1,"Derivatives and Risk Management","F1-DER",[
 ["Forward price, no income","F0 = S0 × (1 + r)^T","No-arbitrage price; the cost of carry is the financing cost.","pays no income|forward price"],
@@ -6540,7 +6648,7 @@ CFA_DATA.formulas(1,"Alternative Investments","F1-ALT",[
 CFA_DATA.formulas(1,"Portfolio Construction","F1-PM",[
 ["Utility","U = E(R) − ½ × A × σ²","A = risk-aversion coefficient (use decimals). Choose the portfolio with the highest utility.","utility|risk-aversion"],
 ["Two-asset portfolio risk","σp² = w1²σ1² + w2²σ2² + 2 w1 w2 Cov12;  Cov12 = ρ12 σ1 σ2","With ρ = +1 there is no diversification benefit.","correlation between|correlation of [0-9.]+ (between|with)|holds [0-9]+% in"],
-["Capital allocation line","E(Rp) = Rf + [(E(Ri) − Rf) / σi] × σp","Weight in the risky portfolio = target σp / σi.","capital allocation|capital market line|wants a standard deviation|market portfolio has"],
+["Capital allocation line","E(Rp) = Rf + [(E(Ri) − Rf) / σi] × σp","Weight in the risky portfolio = target σp / σi.","capital allocation|capital market line|wants a standard deviation|market portfolio has|risk-free asset yielding"],
 ["CAPM and security market line","E(Ri) = Rf + βi × [E(Rm) − Rf]","An asset above the SML is undervalued; below it, overvalued.","capm|security market line|beta of [0-9]"],
 ["Beta","βi = Cov(Ri, Rm) / σm² = ρi,m × σi / σm","Only systematic risk is priced.","beta is|the stock's beta|covariance with"],
 ["Sharpe and Treynor ratios","Sharpe = (Rp − Rf) / σp;  Treynor = (Rp − Rf) / βp","Sharpe for a total portfolio, Treynor for one part of a diversified portfolio.","sharpe|treynor"],
