@@ -6642,6 +6642,9 @@ Ignore dividends, borrowing costs, and transaction costs.`,
 /* Level III, fourth batch (2026-11-08): constructed-response sets for Mock 4.
    L3-AA-CR07 (currency expectations: PPP, uncovered interest parity, capital flows) and
    L3-AA-CR08 (macro expectations: trend growth, Taylor rule, cycle implications).
+   Added 2026-11-10: L3-PC-CR07 (index fund excess return and tracking error), L3-PC-CR08 (sovereign
+   wealth fund IPS), L3-PM-CR04 (Treynor, Jensen's alpha, information ratio, capture, drawdown),
+   L3-DR-CR05 (delta hedging and an interest rate cap), L3-ETH-CR04 (Standards I(B), IV(C), VI(A)).
    Topic names written out (constants live elsewhere). */
 
 CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR07",
@@ -6696,6 +6699,143 @@ Unemployment is below its estimated natural rate, capacity utilization is high, 
 ["**C.** Identify the stage of the business cycle suggested by the data, and explain its likely implications for (i) short-term government bond yields and the shape of the yield curve and (ii) domestic equities.",
  "The economy is in the late stage of expansion: growth above trend, unemployment below its natural rate, high capacity utilization, rising wages and inflation above target. (i) Short-term yields are likely to rise as the central bank tightens toward the Taylor rate. Long-term yields typically rise by less, because tightening is expected to slow growth and inflation later, so the yield curve is likely to flatten (bear flattening) and may eventually invert. (ii) For equities, earnings are still growing, but rising rates, cost and wage pressure squeezing margins, and higher discount rates put pressure on valuations. Late-cycle equity returns tend to be more volatile and below the earlier stages of the expansion, which argues for caution and a tilt toward defensive or less rate-sensitive holdings.",
  [["Identifies late expansion with supporting evidence",1],["Short-term yields rise and the curve flattens",1],["Equities: earnings growth continues but higher rates and margin pressure weigh on valuations",1],["Expects more volatile, lower equity returns and greater caution",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Construction","L3-PC-CR07",
+`Signe Aaltonen, CFA, manages the Halden Broad Market Index Fund, an 800 million fund that fully replicates a capitalization-weighted index of 1,200 stocks. The investment committee asks why the fund trails its index and how closely it follows it.
+
+**Exhibit 1: Expected annual figures**
+
+| Item | Value |
+|---|---|
+| Expected return of the index | 9.0% |
+| Management and administration fees | 0.12% of assets |
+| Cash held to meet redemptions | 2.0% of assets |
+| Return earned on cash | 3.0% |
+| Trading costs of index changes and rebalancing | 0.03% of assets |
+| Net income from securities lending | 0.04% of assets |
+
+**Exhibit 2: Monthly excess return of the fund (fund return minus index return), in basis points**
+
+| Month | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| Excess return | −4 | +1 | −3 | −1 | −5 | 0 |
+
+Aaltonen proposes two changes: buying equity index futures against the cash balance, and lending a larger share of the fund's securities.`,
+[
+["**A.** Using Exhibit 1, calculate the fund's expected annual excess return relative to the index, showing each component.",
+ "Fees: −0.12%. Cash drag: the 2.0% held in cash earns 3.0% instead of the index's 9.0%, so 2.0% × (3.0% − 9.0%) = −0.12%. Trading costs: −0.03%. Securities lending income: +0.04%. Expected excess return = −0.12% − 0.12% − 0.03% + 0.04% = −0.23% a year. The index itself bears no fees, cash or trading costs, so a fully replicating fund is expected to lag it by roughly its costs, partly offset by lending income.",
+ [["Cash drag of −0.12% from 2.0% × (3.0% − 9.0%)",1],["Fees and trading costs deducted, lending income added",1],["Expected excess return of about −0.23%",1]],true],
+["**B.** Using Exhibit 2, calculate the fund's annualized tracking error, and explain how tracking error differs from the excess return calculated in Part A.",
+ "Mean monthly excess return = (−4 + 1 − 3 − 1 − 5 + 0)/6 = −2 bps. Deviations from the mean: −2, +3, −1, +1, −3, +2; squared: 4, 9, 1, 1, 9, 4, sum 28. Sample variance = 28/5 = 5.6, so the monthly standard deviation is about 2.37 bps. Annualized tracking error = 2.37 × √12 ≈ 8.2 bps, or about 0.08%. (Dividing by 6 instead of 5 gives about 7.5 bps.) Excess return (tracking difference) is the average amount by which the fund trails or beats the index; tracking error is the variability of that difference. A fund can lag its index by a steady amount every month and so have a negative excess return with a tracking error near zero. Costs mostly explain the excess return, while uneven cash flows, sampling and timing differences explain the tracking error.",
+ [["Mean monthly excess return of −2 bps",1],["Monthly standard deviation of about 2.4 bps",1],["Annualized tracking error of about 8 bps using √12",1],["Distinguishes the average shortfall (excess return) from its variability (tracking error)",1]],true],
+["**C.** For **each** of Aaltonen's two proposals, describe the benefit to the fund and **one** risk or cost it introduces.",
+ "Futures against cash (equitizing): the fund keeps the cash it needs for redemptions but gains index exposure on it, removing most of the 0.12% cash drag and lowering tracking error. Risks or costs: liquid futures exist on large-cap indexes, not on a 1,200-stock broad index, so the futures will not move exactly with the benchmark (basis risk); contracts must be rolled, and margin must be posted and managed. Securities lending: fee income offsets part of the fund's costs and narrows the shortfall to the index. Risks or costs: the borrower may fail to return the securities (counterparty risk), the cash collateral may be reinvested at a loss, and shares on loan cannot be voted unless they are recalled. Lending should therefore be over-collateralized, marked to market daily and limited to sound counterparties.",
+ [["Futures: removes cash drag while keeping liquidity",1],["Futures: one valid risk or cost (basis risk against a broad index, roll, margin)",1],["Lending: income offsets costs",1],["Lending: one valid risk (counterparty, collateral reinvestment, loss of voting rights)",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Construction","L3-PC-CR08",
+`The Republic of Talvaria earns most of its export revenue from copper. For fifteen years it has run a 60 billion fund that was built to cover budget shortfalls when copper prices fell. Parliament has now created a separate, smaller fund for that purpose and has converted the original fund into the Talvaria Future Generations Fund (TFGF), whose mission is to share the country's mineral wealth with future generations once the mines are exhausted in about 40 years.
+
+Under the new law, the government may withdraw up to 3.0% of the fund's value each year in real terms, and the real value of the fund after withdrawals must be preserved. Expected inflation is 2.5% and the fund's costs are 0.3% of assets. No withdrawals other than the annual 3.0% are allowed.
+
+**Exhibit 1: Current TFGF allocation, inherited from its previous role**
+
+| Asset class | Weight |
+|---|---|
+| Short-term government bonds (global) | 70% |
+| Domestic equities, of which two thirds are mining companies | 20% |
+| Global equities | 10% |
+
+Oskar Lindahl, CFA, has been hired to draft the fund's investment policy statement.`,
+[
+["**A.** Identify the type of sovereign wealth fund the TFGF has become, and calculate the nominal annual return it requires to meet its mission.",
+ "The TFGF is now a savings fund (an intergenerational wealth fund): it converts a non-renewable resource into financial assets for future generations. In its previous role it was a budget stabilization fund. Required return: the fund must cover the 3.0% real withdrawal, inflation of 2.5% and costs of 0.3%. Compounded: 1.030 × 1.025 × 1.003 − 1 ≈ 5.89%; the additive approximation is 3.0% + 2.5% + 0.3% = 5.8%.",
+ [["Identifies a savings (intergenerational) fund",1],["Includes spending, inflation and costs in the required return",1],["Required nominal return of about 5.9% (5.8% if added)",1]],true],
+["**B.** Discuss the TFGF's (i) time horizon, (ii) liquidity needs and (iii) ability to take risk, and state **one** factor that limits the risk it should take.",
+ "(i) Time horizon: very long. The mission is intergenerational and the fund is meant to outlast the mines, so the horizon is effectively perpetual. (ii) Liquidity needs: low and predictable. Withdrawals are capped at 3.0% a year, and the new stabilization fund now absorbs budget emergencies, so the TFGF does not have to hold large liquid reserves. (iii) Ability to take risk: high. With a long horizon, no fixed liabilities and small, known outflows, the fund can ride out market declines and can hold illiquid assets to earn an illiquidity premium. Limiting factors (any one): the country's wealth is already concentrated in copper, so the fund should not add exposure to commodity-sensitive assets; the fund is publicly owned, so large losses bring political and reputational pressure that can force changes at the worst time; a spending rule tied to fund value means large losses cut the government's revenue.",
+ [["Very long or perpetual horizon",1],["Low, predictable liquidity needs",1],["High ability to take risk, with a reason",1],["One valid limiting factor (copper concentration, political scrutiny, spending depends on fund value)",1]]],
+["**C.** Explain **two** reasons the allocation in Exhibit 1 is unsuitable for the TFGF's new mission, and recommend a change that addresses each.",
+ "1) Too little growth and too much liquidity. Short-term government bonds make up 70% of the fund. That suited a stabilization fund that had to pay out at short notice, but their expected return is well below the 5.9% required, so the fund's real value would shrink after withdrawals. Recommendation: cut short-term bonds sharply and move to a growth-oriented mix of global equities, longer-term and inflation-linked bonds, and illiquid assets such as private equity, real estate and infrastructure, which the fund's horizon lets it hold. 2) Too much exposure to the home economy and to copper. Two thirds of the 20% domestic equity holding is in mining companies, so the fund would lose value at the same time as the state's copper revenue falls, which is exactly when the fund matters most. Recommendation: reduce domestic and mining equities and diversify globally toward assets with low correlation to copper prices. Investing abroad also avoids pushing up domestic asset prices and the exchange rate with resource money.",
+ [["Identifies the low expected return or excess liquidity of the 70% short-term bond holding",1],["Recommends a shift to growth and illiquid assets",1],["Identifies the concentration in domestic mining and its correlation with copper revenue",1],["Recommends global diversification away from commodity-sensitive assets",1]]]
+]);
+
+CFA_DATA.cr(3,"Performance Measurement","L3-PM-CR04",
+`The Ostrava Teachers' Pension Fund spreads its equity allocation across twelve external managers. Its performance analyst, Katarzyna Wolny, CFA, reviews one of them, Corvin Capital, over the past five years.
+
+**Exhibit 1: Annualized data, past five years**
+
+| Item | Corvin Capital | Benchmark (market index) |
+|---|---|---|
+| Return | 11.5% | 9.0% |
+| Beta | 0.85 | 1.00 |
+| Standard deviation of active return | 4.0% | n/a |
+| Average return in months when the benchmark rose | 2.4% | 3.0% |
+| Average return in months when the benchmark fell | −1.2% | −2.4% |
+
+The risk-free rate averaged 3.0%.
+
+**Exhibit 2: Value of 100 invested with Corvin Capital, at the end of each quarter of the weakest period**
+
+| Quarter | Start | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| Value | 100.0 | 108.0 | 97.2 | 91.8 | 102.0 | 110.0 |`,
+[
+["**A.** Calculate Corvin Capital's Treynor ratio and Jensen's alpha, and explain why measures based on beta suit the fund's evaluation of this manager.",
+ "Treynor ratio = (11.5% − 3.0%)/0.85 = 10.0%, against (9.0% − 3.0%)/1.00 = 6.0% for the benchmark. Jensen's alpha = 11.5% − [3.0% + 0.85 × (9.0% − 3.0%)] = 11.5% − 8.1% = 3.4%. Corvin is one of twelve managers, so most of its manager-specific risk is diversified away at the level of the total fund. What Corvin adds to the fund's risk is mainly its systematic risk, which beta measures. The Sharpe ratio, which uses total risk, suits a portfolio held on its own.",
+ [["Treynor ratio of 10.0%",1],["Jensen's alpha of 3.4%",1],["Explains that the manager is one part of a diversified fund, so systematic risk is the relevant risk",1]],true],
+["**B.** Calculate Corvin Capital's information ratio and its upside capture, downside capture and capture ratio. Describe what the capture figures show about the manager's return profile.",
+ "Information ratio = active return/active risk = (11.5% − 9.0%)/4.0% = 0.625, or about 0.63. Upside capture = 2.4%/3.0% = 80%. Downside capture = −1.2%/−2.4% = 50%. Capture ratio = 80%/50% = 1.6. Corvin gains less than the benchmark in rising months but loses only half as much in falling months. A capture ratio above 1 shows an asymmetric (convex) profile: the protection in down markets is worth more than the upside given up, which fits a defensive manager with a beta below 1.",
+ [["Information ratio of about 0.63",1],["Upside capture of 80% and downside capture of 50%",1],["Capture ratio of 1.6",1],["Interprets the profile as defensive or convex: gives up some upside, protects much more on the downside",1]],true],
+["**C.** Using Exhibit 2, calculate the maximum drawdown and the drawdown duration. State **one** limitation of maximum drawdown as a risk measure.",
+ "The peak is 108.0 at the end of quarter 1 and the trough is 91.8 at the end of quarter 3. Maximum drawdown = 91.8/108.0 − 1 = −15.0%. The value is still below the peak at the end of quarter 4 (102.0) and passes it only in quarter 5 (110.0), so the drawdown lasted four quarters from peak to recovery: two quarters of decline and two of recovery. Limitations (any one): maximum drawdown describes a single worst episode and ignores how often and how severely other losses occurred; it depends on the period and on how often values are measured, so longer records and more frequent data tend to show larger drawdowns, which makes managers with different track records hard to compare; it describes the past and says little about the likelihood of future losses.",
+ [["Maximum drawdown of −15.0% from 108.0 to 91.8",1],["Drawdown duration of four quarters, peak to recovery",1],["One valid limitation (single episode, depends on period length and data frequency, backward-looking)",1]],true]
+]);
+
+CFA_DATA.cr(3,"Derivatives and Risk Management","L3-DR-CR05",
+`Emeka Adeyemi, CFA, is the risk manager of a bank that has two positions to manage.
+
+**Position 1.** The equity desk has sold 2,000 call option contracts on Varden Corp. to a client. Each contract covers 100 shares. The shares trade at 50 and the calls have a delta of 0.60. The desk wants to be delta neutral. Two days later the shares trade at 53 and the delta of the calls is 0.72.
+
+**Position 2.** A corporate client, Pellam Logistics, has an 80 million loan that pays the six-month reference rate plus 1.2%, reset every six months. Pellam's treasurer thinks rates are as likely to fall as to rise, but the company could not afford a reference rate above 4.5%. The bank offers two hedges on 80 million notional:
+
+- an interest rate cap with a strike of 4.5%, for an upfront premium;
+- a zero-cost collar: the same cap, paid for by selling a floor with a strike of 3.5%.
+
+Interest and option payments use a half-year period of 180/360.`,
+[
+["**A.** For Position 1, calculate the number of shares the desk must hold to be delta neutral when the calls are sold, and the trade it must make two days later to remain delta neutral.",
+ "The desk is short calls on 2,000 × 100 = 200,000 shares. The position delta is −0.60 × 200,000 = −120,000 shares, so the desk must buy 120,000 shares. After the price rises to 53, the position delta is −0.72 × 200,000 = −144,000 shares. The desk holds 120,000, so it must buy another 24,000 shares at 53.",
+ [["Initial hedge: buy 120,000 shares",1],["New required holding of 144,000 shares",1],["Buys a further 24,000 shares",1]],true],
+["**B.** Explain why the desk's delta hedge does not remove all of its risk, and describe when this remaining risk is greatest.",
+ "Delta measures the option's sensitivity only for a small price change at one moment. The desk is short options, so it is short gamma: when the share price rises, the delta of the calls rises and the desk has to buy more shares at the higher price; when the price falls, it has to sell shares at the lower price. Rebalancing therefore means buying high and selling low, and a large jump in price between rebalancing dates leaves a loss the hedge does not cover. The desk is also short vega, so a rise in implied volatility increases the value of the calls it owes. Gamma is greatest for options that are at the money and close to expiry, where delta can swing between near 0 and near 1 on a small price move. The risk can be reduced by buying other options to offset gamma.",
+ [["Delta holds only for small moves, so the hedge must be rebalanced",1],["Short options mean short gamma: the desk buys after rises and sells after falls, and loses on large moves",1],["Gamma risk is greatest at the money and near expiry",1]]],
+["**C.** For Position 2, Pellam buys the cap. Calculate Pellam's net interest cost for a six-month period, ignoring the premium, and the corresponding annualized rate, if the reference rate is set at (i) 5.6% and (ii) 3.8%.",
+ "(i) Reference rate 5.6%. Loan interest = 80,000,000 × (5.6% + 1.2%) × 180/360 = 2,720,000. Cap payment received = 80,000,000 × (5.6% − 4.5%) × 180/360 = 440,000. Net cost = 2,280,000, an annualized rate of 2,280,000/80,000,000 × 2 = 5.7%, which equals the cap strike plus the loan spread (4.5% + 1.2%). (ii) Reference rate 3.8%. The cap pays nothing. Loan interest = 80,000,000 × (3.8% + 1.2%) × 180/360 = 2,000,000, an annualized rate of 5.0%. The cap limits the cost to 5.7% a year before the premium, and Pellam keeps the full benefit of lower rates.",
+ [["Cap payment of 440,000 at 5.6%",1],["Net cost of 2,280,000, or 5.7% annualized",1],["No cap payment at 3.8%; cost of 2,000,000, or 5.0% annualized",1]],true],
+["**D.** Compare the cap with the zero-cost collar for Pellam, and recommend one given the treasurer's view.",
+ "Both hedges limit Pellam's cost to 5.7% a year when the reference rate is above 4.5%. The cap costs an upfront premium but leaves all of the benefit of falling rates. The collar has no upfront cost, but Pellam has sold a floor at 3.5%: if the reference rate falls below 3.5%, Pellam pays the bank the difference, so its cost cannot fall below 3.5% + 1.2% = 4.7% a year. The collar's cost is therefore the benefit Pellam gives up when rates fall. The treasurer thinks a fall in rates is as likely as a rise, so giving up that benefit has real value to Pellam; the cap fits this view, provided Pellam can pay the premium. If the premium were not affordable, the collar would still give the protection Pellam needs, with its cost kept between 4.7% and 5.7%.",
+ [["Both limit the cost to 5.7% when rates rise",1],["Cap: premium paid, full benefit of lower rates",1],["Collar: no premium, but cost cannot fall below 4.7%",1],["Recommends the cap and ties it to the view that rates may fall (collar acceptable only if the premium is unaffordable)",1]]]
+]);
+
+CFA_DATA.cr(3,"Ethical and Professional Standards","L3-ETH-CR04",
+`Consider each of the following situations independently. All of the individuals are CFA charterholders.
+
+Situation 1: Marek Dvorak is a research analyst at Brennor Securities and covers Tessaly Mining. Tessaly invites him to visit a remote mine and pays for a chartered flight and two nights at a luxury resort for Dvorak and his wife; a commercial flight and ordinary hotels were available. On his return, the head of Brennor's investment banking division reminds him that Tessaly is expected to choose an underwriter for a share issue soon and asks to see his report before it is published. After her comments, Dvorak raises his rating from "hold" to "buy" without changing his earnings forecasts.
+
+Situation 2: Ingrid Solberg heads the trading desk of an asset manager and has delegated the daily review of trade allocations to her deputy. The deputy tells her that a trader has, on several days, allocated the best-priced fills of block trades to one account at the end of the day. Solberg speaks to the trader, who promises that it will not happen again. She takes no further action and tells the deputy the matter is closed, adding that the daily reviews are the deputy's responsibility, not hers.
+
+Situation 3: Rafael Okonjo manages portfolios for private clients. He recommends the shares of Lantern Biotech to several clients; the recommendation rests on thorough research and suits the clients. Okonjo's wife is the chief financial officer of Lantern and holds a large number of its shares. Separately, Okonjo's firm pays him an extra bonus for each client he moves into the firm's in-house funds. He has not mentioned either fact to his clients; his employer knows about the bonus but not about his wife's position.`,
+[
+["**A.** For Situation 1, determine whether Dvorak violated the Standards. Identify the Standard involved, justify your answer with **two** reasons, and describe what he and his firm should have done.",
+ "Violation of Standard I(B) Independence and Objectivity. 1) He accepted lavish hospitality from the company he covers: a chartered flight and a resort stay for himself and his wife, when commercial transport and ordinary hotels were available. Benefits like these can reasonably be expected to compromise his objectivity. 2) He allowed the investment banking division to influence his rating: he raised it after her comments with no change in his forecasts, so the new rating reflects the firm's wish to win the underwriting mandate, not his research. He should have paid for his own travel, or had his firm pay, used commercial arrangements and declined the hospitality for himself and his wife. The firm should keep research separate from investment banking: analysts should not report to or be paid by that division, and it should not review or approve ratings. If the firm could not allow an independent opinion, Tessaly should have gone on a restricted list with only factual information published.",
+ [["Determines a violation and identifies Standard I(B)",1],["Lavish issuer-paid travel and hospitality compromise objectivity",1],["Rating changed under investment banking pressure without a research basis",1],["Appropriate actions (pay own way, separate research from investment banking, restricted list if needed)",1]]],
+["**B.** For Situation 2, determine whether Solberg violated the Standards. Identify the Standard involved and describe the steps she should have taken.",
+ "Violation of Standard IV(C) Responsibilities of Supervisors. Solberg may delegate supervisory tasks, but delegation does not remove her responsibility for the people under her supervision, so her claim that the reviews are the deputy's responsibility is wrong. Once she knew of a likely violation (the trader's allocations favor one account over others, a breach of Standard III(B) Fair Dealing), accepting the trader's promise was not enough. She should have responded promptly; investigated to find out how many trades and accounts were affected; restricted the trader's activities or supervised them more closely until the investigation was complete; reported the matter to compliance or senior management under the firm's procedures; and made sure procedures prevent a repeat, for example allocating block trades before or at execution on a pro rata basis. The disadvantaged accounts should also be corrected.",
+ [["Determines a violation and identifies Standard IV(C)",1],["Delegation does not relieve a supervisor of responsibility",1],["Accepting an assurance is not an adequate response: investigate promptly and limit or monitor the trader",1],["Reports to compliance and strengthens allocation procedures",1]]],
+["**C.** For Situation 3, determine whether Okonjo violated the Standards. Identify the Standard involved, explain each conflict, and describe the disclosures required.",
+ "Violation of Standard VI(A) Disclosure of Conflicts, in two ways. 1) His wife is an executive of Lantern and a large shareholder, so his household benefits if the share price rises. This could reasonably be expected to affect his independence, whatever the quality of his research. It should have been disclosed to his clients before the recommendation and to his employer, which did not know about it. 2) The bonus for moving clients into in-house funds gives him an incentive to recommend those funds whether or not they are the best choice. The employer knows, but clients do not, and they need the information to judge his advice. Disclosures must be prominent, in plain language and made in a way that communicates the conflict effectively, so that clients and the employer can assess his objectivity. The fact that the Lantern recommendation is well researched and suitable does not remove the duty to disclose.",
+ [["Determines a violation and identifies Standard VI(A)",1],["Spouse's position and shareholding is a conflict to disclose to clients and employer",1],["Bonus for in-house funds is a conflict to disclose to clients",1],["Disclosure must be prominent and in plain language; sound research does not remove the duty",1]]]
 ]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
