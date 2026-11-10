@@ -4636,6 +4636,208 @@ In a second scenario, no debt transfers with Pakta: the buyer pays cash equal to
  ["an equity carve-out.","a split-off.","a leveraged buyout."],
  2,"A purchase financed mostly with debt that is secured on the acquired business and repaid from its cash flows is a leveraged buyout. In an equity carve-out the parent sells a minority of the division's shares to the public and keeps control, and in a split-off shareholders exchange their parent shares for shares of the division; neither involves a sale of the whole division for cash."]
 ]);
+/* Level II, fifth batch (2026-11-10): six item sets toward Mock 4.
+   L2-EQ-09 (two-stage dividend discount model, PVGO, terminal value share, sensitivity),
+   L2-EQ-10 (Fama-French required return, ex post alpha, build-up method, survivorship bias),
+   L2-EQ-11 (FCFF from EBITDA, FCFE from FCFF, FCFE with a target debt ratio, effect of dividends),
+   L2-FI-09 (bootstrapping spot rates, forward price, forward rates and active management, term structure theories),
+   L2-FI-10 (binomial tree rates and volatility, capped floater, pathwise valuation, Monte Carlo),
+   L2-FI-11 (convertible bond: conversion value, minimum value, forced conversion, premium over straight value).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Equities","L2-EQ-09",
+`Camille Roy values the shares of Tessler Brands with a two-stage dividend discount model.
+
+**Exhibit 1: Tessler Brands**
+
+| Item | Value |
+|---|---|
+| Dividend just paid | 2.00 per share |
+| Dividend growth, years 1 to 3 | 10% a year |
+| Dividend growth from year 4 | 4% a year |
+| Required return on equity | 9% |
+| Expected earnings per share next year | 3.60 |
+| Current share price | 52.00 |`,
+[
+["Roy's estimate of the value of a Tessler share is **closest** to:",
+ ["42.76","48.87","55.37"],
+ 1,"Dividends: 2.20, 2.42 and 2.662 in years 1 to 3, and 2.662 × 1.04 = 2.768 in year 4. Terminal value at the end of year 3 = 2.768/(0.09 − 0.04) = 55.37. Value = 2.20/1.09 + 2.42/1.09² + (2.662 + 55.37)/1.09³ = 2.02 + 2.04 + 44.81 = 48.87. 42.76 is the present value of the terminal value alone, and 55.37 is the terminal value without discounting.",true],
+["Based on Roy's value estimate, the present value of growth opportunities per share is **closest** to:",
+ ["8.87","12.00","40.00"],
+ 0,"The no-growth value per share is next year's earnings divided by the required return: 3.60/0.09 = 40.00. PVGO = 48.87 − 40.00 = 8.87. 12.00 uses the market price of 52.00 in place of Roy's estimate, and 40.00 is the no-growth value itself.",true],
+["The share of Roy's value estimate that comes from the terminal value is **closest** to:",
+ ["82%","88%","113%"],
+ 1,"Present value of the terminal value = 55.37/1.09³ = 42.76, which is 42.76/48.87 = 87.5%, or about 88% of the estimate. 82% divides by the market price, and 113% uses the terminal value before discounting.",true],
+["Roy's value estimate is **most** sensitive to a change of one percentage point in the:",
+ ["growth rate of dividends in the first stage.","dividend paid in the most recent year.","growth rate of dividends from year 4."],
+ 2,"Almost 88% of the value comes from the terminal value, which is divided by the difference between the required return and the long-term growth rate. That difference is only 5 percentage points, so moving long-term growth from 4% to 5% raises the terminal value by a quarter. A one-point change in first-stage growth affects three years of dividends and the starting point of the terminal value by only a few percent, and a change in the base dividend moves the value in simple proportion."]
+]);
+
+CFA_DATA.set(2,"Equities","L2-EQ-10",
+`Olav Stenersen estimates required returns for two companies.
+
+Orvik ASA is a listed industrial company. Stenersen uses the Fama-French three-factor model.
+
+**Exhibit 1: Factor data**
+
+| Factor | Risk premium | Orvik's sensitivity |
+|---|---|---|
+| Market | 5.5% | 1.10 |
+| Size (SMB) | 2.0% | 0.40 |
+| Value (HML) | 3.5% | −0.20 |
+
+The risk-free rate is 3.0%. One year ago Orvik's shares traded at 40.00. They now trade at 43.00, and a dividend of 1.20 per share was paid at the end of the year.
+
+Dunmore Ltd is a small private company with no comparable listed peers, so Stenersen uses the build-up method with the same risk-free rate and equity risk premium, a size premium of 3.0%, an industry risk premium of 1.0% and a company-specific premium of 2.0%.
+
+Stenersen's equity risk premium is a historical average taken from an index made up of the companies that are in the index today.`,
+[
+["Orvik's required return on equity under the Fama-French model is **closest** to:",
+ ["9.05%","9.15%","10.55%"],
+ 1,"Required return = 3.0% + 1.10 × 5.5% + 0.40 × 2.0% + (−0.20) × 3.5% = 3.0% + 6.05% + 0.80% − 0.70% = 9.15%. 9.05% is the CAPM result with the market factor only, and 10.55% adds the value term instead of subtracting it.",true],
+["Measured against the Fama-French required return, Orvik's ex post alpha for the past year is **closest** to:",
+ ["1.35%","1.45%","10.50%"],
+ 0,"Holding period return = (43.00 − 40.00 + 1.20)/40.00 = 10.50%. Ex post alpha = 10.50% − 9.15% = 1.35%. 1.45% measures against the CAPM figure of 9.05%, and 10.50% is the whole return, not the part above the required return.",true],
+["Dunmore's required return on equity under the build-up method is **closest** to:",
+ ["11.5%","13.5%","14.5%"],
+ 2,"Build-up = risk-free rate + equity risk premium + size premium + industry premium + company-specific premium = 3.0% + 5.5% + 3.0% + 1.0% + 2.0% = 14.5%. No beta is applied. 13.5% leaves out the industry premium, and 11.5% leaves out both the industry and the size premium.",true],
+["The way Stenersen's equity risk premium was estimated **most likely** makes it:",
+ ["too high, because companies that failed are left out.","too low, because companies that failed are left out.","unbiased, because the index is weighted by market value."],
+ 0,"An index built from today's members excludes companies that went bankrupt or were dropped, so its past returns look better than investors actually earned. This survivorship bias inflates the historical equity risk premium, and the estimate should be adjusted downward. Weighting by market value does not correct for the missing companies."]
+]);
+
+CFA_DATA.set(2,"Equities","L2-EQ-11",
+`Greta Halloran analyzes the free cash flow of Brantley Tools.
+
+**Exhibit 1: Brantley Tools, most recent year (millions)**
+
+| Item | Value |
+|---|---|
+| EBITDA | 500 |
+| Depreciation | 100 |
+| Interest expense | 40 |
+| Investment in fixed capital | 160 |
+| Investment in working capital | 30 |
+| Net borrowing | 50 |
+
+The tax rate is 25%.
+
+**Exhibit 2: Forecast for next year (millions)**
+
+| Item | Value |
+|---|---|
+| Net income | 240 |
+| Investment in fixed capital | 180 |
+| Depreciation | 110 |
+| Investment in working capital | 40 |
+
+For the forecast, Halloran assumes that Brantley finances 40% of its net new investment in fixed and working capital with debt. The board is also discussing a higher dividend for next year.`,
+[
+["Brantley's free cash flow to the firm for the most recent year is **closest** to:",
+ ["185","210","285"],
+ 1,"FCFF = EBITDA × (1 − t) + depreciation × t − fixed capital investment − working capital investment = 500 × 0.75 + 100 × 0.25 − 160 − 30 = 375 + 25 − 190 = 210. 185 leaves out the tax saving from depreciation, and 285 adds back all of the depreciation, which is already inside EBITDA.",true],
+["Brantley's free cash flow to equity for the most recent year is **closest** to:",
+ ["130","220","230"],
+ 2,"FCFE = FCFF − interest × (1 − t) + net borrowing = 210 − 40 × 0.75 + 50 = 230. 220 deducts the interest before tax, and 130 subtracts net borrowing instead of adding it.",true],
+["Using Exhibit 2 and Halloran's financing assumption, forecast FCFE for next year is **closest** to:",
+ ["130","174","198"],
+ 1,"With a target debt ratio, FCFE = net income − (1 − DR) × (fixed capital investment − depreciation) − (1 − DR) × working capital investment = 240 − 0.60 × (180 − 110) − 0.60 × 40 = 240 − 42 − 24 = 174. 130 assumes no debt financing, and 198 leaves out the investment in working capital.",true],
+["If the board raises next year's dividend and nothing else changes, forecast FCFE will **most likely**:",
+ ["be unchanged, because dividends are a use of free cash flow.","fall by the full amount of the increase in the dividend.","fall by the after-tax amount of the dividend increase."],
+ 0,"FCFE is the cash available to shareholders after operating needs, investment and debt flows. Dividends, share repurchases and share issues are ways of using or adding to that cash and do not enter its calculation. Dividends are also not tax deductible, so there is no after-tax adjustment."]
+]);
+
+CFA_DATA.set(2,"Fixed Income","L2-FI-09",
+`Nikhil Varma derives spot and forward rates from the government par curve. All bonds pay annual coupons.
+
+**Exhibit 1: Government par rates**
+
+| Maturity | Par rate |
+|---|---|
+| 1 year | 2.00% |
+| 2 years | 4.00% |
+| 3 years | 6.00% |
+
+Varma calculates a 2-year spot rate of 4.04%.
+
+A portfolio manager at the firm expects that spot rates one and two years from now will be lower than the forward rates implied by today's curve.
+
+A colleague describes her view of the yield curve: "Most investors and borrowers have a preferred maturity range, but they will move to another part of the curve if the yield advantage is large enough."`,
+[
+["The 3-year spot rate is **closest** to:",
+ ["5.83%","6.00%","6.17%"],
+ 2,"Discount the first two coupons of the 3-year par bond at the 1-year and 2-year spot rates: 6/1.02 + 6/1.0404² = 5.88 + 5.54 = 11.43. The final cash flow must be worth 100 − 11.43 = 88.57, so (1 + z3)³ = 106/88.57 = 1.1967 and z3 = 6.17%. With an upward-sloping par curve the spot rate lies above the par rate, so 6.00% and 5.83% are both too low.",true],
+["The forward price today of a 1-year zero-coupon bond to be delivered in two years, per 1 of par, is **closest** to:",
+ ["0.8356","0.9045","0.9434"],
+ 1,"Forward price = P(3)/P(2), the ratio of the 3-year to the 2-year discount factor = (1/1.1967)/(1/1.0824) = 0.8356/0.9238 = 0.9045, which implies a forward rate of about 10.6%. 0.8356 is the 3-year discount factor itself, and 0.9434 discounts one year at the 3-year par rate of 6%.",true],
+["If the portfolio manager's expectation is correct, she will earn more than the 1-year rate over the next year by:",
+ ["buying bonds that mature after her one-year horizon.","holding 1-year bonds and reinvesting when they mature.","selling long-maturity bonds short and holding cash."],
+ 0,"If future spot rates turn out lower than today's forward rates, longer bonds are priced too cheaply today: their prices will be higher than the forward curve implies, so they return more than the 1-year rate. Holding 1-year bonds earns exactly the 1-year rate, and a short position in long bonds loses when rates end up below the forwards."],
+["The colleague's view is **most** consistent with the:",
+ ["liquidity preference theory.","preferred habitat theory.","segmented markets theory."],
+ 1,"Preferred habitat theory says that participants favor certain maturities but can be drawn away by a sufficient yield premium, so both expectations and supply and demand at each maturity shape the curve. Under segmented markets, participants never leave their maturity segment whatever the yield. Liquidity preference says only that longer maturities carry a premium that rises with maturity."]
+]);
+
+CFA_DATA.set(2,"Fixed Income","L2-FI-10",
+`Pilar Ortega builds a binomial tree of one-year interest rates with equal probabilities of an up and a down move and an assumed volatility of 15%.
+
+**Exhibit 1: One-year rates**
+
+| Time | Rate |
+|---|---|
+| 0 | 3.00% |
+| 1, lower node | 3.70% |
+| 1, upper node | to be calculated |
+
+After calculating the upper rate, Ortega rounds it to 5.00% for her valuation work.
+
+She values a two-year floating-rate note with a par value of 100. The note pays the one-year rate annually in arrears: each coupon is set at the start of the year and paid at the end. The coupon rate is capped at 4.50%.
+
+Ortega also plans to value a three-year bond by pathwise valuation, using one-year rates at times 0, 1 and 2, and to value a portfolio of mortgage-backed securities.`,
+[
+["The upper one-year rate at time 1, before rounding, is **closest** to:",
+ ["4.30%","4.81%","4.99%"],
+ 2,"In a lognormal binomial tree, adjacent rates differ by a factor of e^(2σ): upper rate = 3.70% × e^(2 × 0.15) = 3.70% × 1.3499 = 4.99%. 4.30% multiplies by e^σ only, and 4.81% adds 2σ = 30% without compounding.",true],
+["The value of the capped floating-rate note is **closest** to:",
+ ["99.52","99.77","100.00"],
+ 1,"The first coupon is set at 3.00% and is not capped. At time 1, upper node: the coupon is capped at 4.50%, so value = 104.50/1.05 = 99.52. Lower node: the coupon is 3.70%, so value = 103.70/1.037 = 100.00. Value today = [0.5 × (99.52 + 100.00) + 3.00]/1.03 = 99.77. 100.00 is the value without the cap, and 99.52 is the value at the upper node only.",true],
+["The number of interest rate paths Ortega needs for the pathwise valuation of the three-year bond is:",
+ ["4","6","8"],
+ 0,"The tree has rates at times 0, 1 and 2, so there are two moves, each up or down: 2² = 4 paths. 8 would need a third move, which a three-year bond with annual rates does not have, and 6 is the number of nodes in the tree, not of paths."],
+["For the mortgage-backed securities, a Monte Carlo approach is **most likely** preferred to the binomial tree because:",
+ ["it does not need to be calibrated to benchmark bond prices.","it removes the need to assume an interest rate volatility.","the cash flows depend on the path that rates have followed."],
+ 2,"Prepayments on mortgages depend on the history of rates, for example on whether borrowers have already had a chance to refinance, so the cash flows are path dependent. A recombining binomial tree values each node without regard to how it was reached and cannot handle that. A Monte Carlo model still needs a volatility assumption and is still calibrated, with a drift adjustment, so that it reprices the benchmark bonds."]
+]);
+
+CFA_DATA.set(2,"Fixed Income","L2-FI-11",
+`Dario Lenz analyzes a convertible bond issued by Arven Systems.
+
+**Exhibit 1: Arven Systems convertible bond**
+
+| Item | Value |
+|---|---|
+| Par value | 1,000 |
+| Conversion ratio | 20 shares |
+| Market price of the convertible bond | 1,050 |
+| Value of an otherwise identical straight bond | 930 |
+| Current share price | 46.00 |
+| Issuer's call price, from next year | 1,020 |
+
+Arven pays no dividends.`,
+[
+["The conversion value of the bond is **closest** to:",
+ ["920","1,000","1,050"],
+ 0,"Conversion value = conversion ratio × share price = 20 × 46.00 = 920. 1,000 is the par value, and 1,050 is the market price of the convertible.",true],
+["The minimum value of the convertible bond is **closest** to:",
+ ["920","930","1,050"],
+ 1,"The minimum value is the greater of the conversion value (920) and the straight bond value (930), so 930. Below that price an investor could buy the convertible and hold a bond worth more than it cost. 1,050 is the market price, which also includes the value of the conversion option.",true],
+["If the share price is 60.00 when Arven calls the bond, a bondholder will **most likely**:",
+ ["convert the bond into shares worth 1,200.","accept the call price of 1,020 in cash.","keep the bond and receive 1,000 at maturity."],
+ 0,"When the bond is called, the holder can still convert before the call date. Conversion value = 20 × 60.00 = 1,200, well above the call price of 1,020, so a rational holder converts. This is forced conversion: the issuer calls in order to turn the debt into equity. Once called, the bond cannot be kept to maturity."],
+["The premium of the convertible bond over its straight value is **closest** to:",
+ ["5.0%","12.9%","14.1%"],
+ 1,"Premium over straight value = 1,050/930 − 1 = 12.9%. It measures downside risk: how far the convertible could fall toward its bond floor if the shares do poorly. 14.1% is the premium over the conversion value of 920, and 5.0% is the premium over par.",true]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
