@@ -4443,6 +4443,199 @@ Haddad holds 60% Arlo and 40% Breck.`,
  ["leave factor exposures unchanged, because surprises average zero.","reduce the portfolio's GDP sensitivity, because expected growth is already in prices.","tilt the portfolio toward stocks with higher GDP sensitivity."],
  2,"A view that GDP will beat consensus is a forecast of a positive surprise; raising exposure to the GDP factor positions the portfolio to benefit. Consensus growth is in prices, but her view differs from consensus, so leaving exposures unchanged gives up the bet."]
 ]);
+/* Level II, fourth batch (2026-11-10): first six item sets toward Mock 4.
+   L2-QM-07 (model fit and specification: adjusted R², nested F-test, AIC/BIC, VIF),
+   L2-QM-08 (log-linear trend, first-differenced AR model, out-of-sample RMSE),
+   L2-ECON-06 (steady-state growth in the neoclassical model, endogenous growth),
+   L2-ECON-07 (real exchange rate, overshooting, portfolio balance, carry trade return),
+   L2-CI-06 (dividend coverage, double taxation, ex-dividend price, signaling),
+   L2-CI-07 (divestiture valuation, leverage after a sale, conglomerate discount, LBO).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Quantitative Methods","L2-QM-07",
+`Sofia Brandt studies what explains the return on equity of 65 listed retailers. She estimates two cross-sectional regressions on the same 65 observations. Model 1 uses two independent variables. Model 2 keeps those two and adds three more.
+
+**Exhibit 1: Regression results**
+
+| Item | Model 1 | Model 2 |
+|---|---|---|
+| Independent variables | 2 | 5 |
+| Total sum of squares | 800 | 800 |
+| Sum of squared errors | 520 | 440 |
+| AIC | 141.2 | 136.3 |
+| BIC | 147.7 | 149.4 |
+
+**Exhibit 2: Variance inflation factors, Model 2**
+
+| Variable | X1 | X2 | X3 | X4 | X5 |
+|---|---|---|---|---|---|
+| VIF | 1.3 | 1.8 | 6.2 | 11.4 | 2.1 |
+
+Brandt's main purpose is to forecast the return on equity of retailers that are not in her sample.`,
+[
+["The adjusted R² of Model 2 is **closest** to:",
+ ["0.40","0.45","0.49"],
+ 0,"R² = 1 − 440/800 = 0.45. Adjusted R² = 1 − [(n − 1)/(n − k − 1)] × (1 − R²) = 1 − (64/59) × 0.55 = 0.403. 0.45 is the unadjusted R², and 0.49 inverts the degrees-of-freedom ratio, which would make the adjusted figure higher than R².",true],
+["The F-statistic for testing whether the three variables added in Model 2 are jointly equal to zero is **closest** to:",
+ ["2.15","3.58","10.73"],
+ 1,"F = [(SSE restricted − SSE unrestricted)/q] / [SSE unrestricted/(n − k − 1)] = [(520 − 440)/3] / (440/59) = 26.67/7.46 = 3.58, where q = 3 is the number of restrictions. 2.15 divides by all five variables instead of the three being tested, and 10.73 does not divide by q at all.",true],
+["Given her main purpose, Brandt should **most appropriately** prefer:",
+ ["Model 1, because it has the lower BIC.","Model 2, because it has the lower AIC.","Model 2, because it has the higher R²."],
+ 1,"Lower values of both criteria are better. AIC is the preferred criterion when the goal is prediction, and it favors Model 2 (136.3 against 141.2). BIC penalizes extra variables more heavily and is preferred when the goal is the best-fitting, most parsimonious description of the data; here it favors Model 1. R² always rises when variables are added, so it cannot be used to choose between the models.",false],
+["The results in Exhibit 2 **most likely** indicate:",
+ ["conditional heteroskedasticity that is related to the level of X4.","no concern, because none of the factors is below the threshold of 1.","serious multicollinearity for X4 and a possible concern for X3."],
+ 2,"A VIF above 10 signals serious multicollinearity and a VIF above 5 calls for further investigation, so X4 (11.4) is a clear problem and X3 (6.2) a possible one. A VIF cannot be below 1, and values near 1 mean no correlation with the other variables, so the 1 threshold is not a test. VIFs measure correlation among the independent variables and say nothing about the variance of the errors."]
+]);
+
+CFA_DATA.set(2,"Quantitative Methods","L2-QM-08",
+`Tomas Hruby forecasts quarterly figures for a software company.
+
+For revenue (in millions), he fits a log-linear trend to the last 40 quarters (t = 1 to 40):
+
+ln(revenue) = 4.20 + 0.03 × t
+
+For the number of enterprise customers, y, he finds that the series has a unit root, so he models its first difference, Δy(t) = y(t) − y(t − 1):
+
+Δy(t) = 0.50 + 0.40 × Δy(t − 1)
+
+The two most recent observations are y = 118.0 and then y = 120.0.
+
+For a third series, operating margin, Hruby compares two models.
+
+**Exhibit 1: Root mean squared error (RMSE) of the operating margin models**
+
+| Item | Model A | Model B |
+|---|---|---|
+| In-sample RMSE | 2.1 | 2.6 |
+| Out-of-sample RMSE | 3.9 | 3.0 |`,
+[
+["The forecast of revenue for quarter 41, in millions, is **closest** to:",
+ ["5.4","221.4","228.1"],
+ 2,"ln(revenue) = 4.20 + 0.03 × 41 = 5.43, so revenue = e^5.43 ≈ 228.1. 5.4 is the forecast of the logarithm, which still has to be converted, and 221.4 uses t = 40, the last quarter of the sample.",true],
+["A log-linear trend is **most likely** a better choice than a linear trend for revenue if revenue has been:",
+ ["rising by a constant amount each quarter.","moving around a constant average level.","growing at a constant percentage rate."],
+ 2,"A log-linear trend models the logarithm as a linear function of time, which means a constant growth rate: here about 3% a quarter. A constant amount of increase each quarter is what a linear trend describes, and a series that moves around a constant level has no trend to model."],
+["The one-period-ahead forecast of the number of enterprise customers is **closest** to:",
+ ["120.5","121.3","122.0"],
+ 1,"The latest change is 120.0 − 118.0 = 2.0. Forecast change = 0.50 + 0.40 × 2.0 = 1.30, so the forecast level is 120.0 + 1.3 = 121.3. 120.5 adds only the intercept, and 122.0 repeats the last change of 2.0.",true],
+["Based on Exhibit 1, Hruby should **most appropriately** forecast operating margin with:",
+ ["Model B, because it has the lower out-of-sample RMSE.","Model A, because it has the lower in-sample RMSE.","Model A, because its two RMSE figures differ the most."],
+ 0,"Forecast accuracy is judged on data that were not used to estimate the model, so the model with the lower out-of-sample RMSE is preferred: Model B, at 3.0 against 3.9. Model A fits the estimation sample more closely, but its errors nearly double outside it, which suggests it is fitted too closely to that sample; a large gap between the two figures is a warning, not a merit."]
+]);
+
+CFA_DATA.set(2,"Economics","L2-ECON-06",
+`Astrid Nyberg, an economist at a global asset manager, compares the long-run growth prospects of two countries using the neoclassical growth model.
+
+**Exhibit 1: Country data**
+
+| Item | Northmark | Sundara |
+|---|---|---|
+| Growth rate of total factor productivity | 1.2% | 1.8% |
+| Labor's share of income | 0.60 | 0.55 |
+| Growth rate of the labor force | 0.4% | 1.6% |
+| Current growth rate of capital per worker | 2.0% | 6.0% |
+
+A colleague argues that Sundara's government should subsidize research and education: "Spending on knowledge benefits other firms as well as the one that pays for it, so capital in this broad sense does not run into diminishing returns, and a higher rate of investment can raise the growth rate permanently."`,
+[
+["Northmark's steady-state growth rate of output per worker is **closest** to:",
+ ["1.2%","2.0%","3.0%"],
+ 1,"In the neoclassical model, steady-state growth of output per worker = growth of total factor productivity/labor's share of income = 1.2%/0.60 = 2.0%. 1.2% is productivity growth alone, without the capital deepening it induces, and 3.0% divides by capital's share (0.40).",true],
+["Sundara's steady-state growth rate of total output is **closest** to:",
+ ["3.3%","3.4%","4.9%"],
+ 2,"Steady-state output growth = productivity growth/labor's share + labor force growth = 1.8%/0.55 + 1.6% = 3.27% + 1.6% = 4.87%. 3.3% is the growth of output per worker only, and 3.4% adds productivity and labor force growth without dividing by labor's share.",true],
+["Based on Exhibit 1, Sundara's economy is **most likely**:",
+ ["still deepening its capital, so its growth is temporarily above the steady-state rate.","in its steady state, because capital per worker and output per worker grow together.","on a permanently faster path, because rapid investment raises the steady-state rate."],
+ 0,"In the steady state, capital per worker grows at the same rate as output per worker, 3.27% for Sundara. Capital per worker is growing at 6.0%, so the country is still deepening its capital and growing faster than its steady-state rate. As capital per worker rises, its marginal product falls and growth slows toward the steady-state rate: in this model, more investment raises the level of output per worker but not its long-run growth rate. Northmark, at 2.0%, is the one in its steady state."],
+["The colleague's argument is **most** consistent with:",
+ ["classical growth theory.","endogenous growth theory.","neoclassical growth theory."],
+ 1,"Endogenous growth theory holds that knowledge and human capital create benefits beyond the firm that invests, so returns to capital broadly defined need not diminish and a higher saving or investment rate can raise growth permanently. In the neoclassical model, diminishing returns mean investment affects only the level of output per worker. Classical theory predicts that growth in output per person is temporary because population growth absorbs it."]
+]);
+
+CFA_DATA.set(2,"Economics","L2-ECON-07",
+`Ji-woo Han, a currency strategist, reviews the Mexican peso (MXN).
+
+Over the past year the MXN/USD exchange rate rose from 17.00 to 18.36. Inflation over the year was 6% in Mexico and 2% in the United States.
+
+Han considers two scenarios. In the first, the Mexican central bank unexpectedly and permanently increases the money supply; Han assumes that goods prices adjust slowly while financial markets adjust at once. In the second, the Mexican government runs large budget deficits for many years.
+
+A client asks about a one-year carry trade: borrow Japanese yen at 0.5% and invest in peso deposits at 10.5%. Han's forecast is that the peso will fall by 6% against the yen over the year.`,
+[
+["Over the past year, the change in the real MXN/USD exchange rate was **closest** to:",
+ ["+3.9%","+8.0%","+12.2%"],
+ 0,"The nominal rate rose by 18.36/17.00 − 1 = 8.0%. Real rate change = (1 + nominal change) × (1 + US inflation)/(1 + Mexican inflation) − 1 = 1.08 × 1.02/1.06 − 1 = +3.9%: the dollar gained about 3.9% against the peso in real terms. 8.0% is the nominal change, and 12.2% applies the inflation rates the wrong way round.",true],
+["In the first scenario, the Dornbusch overshooting model predicts that the peso will **most likely**:",
+ ["move straight to its new long-run value and remain at that level.","fall below its new long-run value and then recover part of the fall.","rise at first as capital flows in, and then fall to its long-run value."],
+ 1,"With slow-moving goods prices, a larger money supply lowers Mexican interest rates in the short run. For investors to hold pesos at the lower rate, the peso must be expected to appreciate, which requires it to fall at once by more than its long-run depreciation and then recover as prices rise. A direct move to the long-run value is the prediction when prices are fully flexible, and lower interest rates cause capital to flow out, not in."],
+["In the second scenario, the portfolio balance approach predicts that, in the long run, the peso will **most likely**:",
+ ["appreciate, because the deficits keep Mexican interest rates high.","be unchanged, because fiscal policy affects only real interest rates.","depreciate, because investors must be induced to hold more peso debt."],
+ 2,"Persistent deficits add steadily to the stock of peso government debt that investors must hold. They will hold a growing share only for a higher expected return, which requires a lower price of the debt, a weaker peso, or both; eventually the debt may also be monetized. Appreciation from higher interest rates is the short-run prediction of the Mundell-Fleming model with mobile capital, not the long-run result."],
+["If Han's forecast is correct, the return on the client's carry trade, as a percentage of the amount borrowed, is **closest** to:",
+ ["3.4%","10.0%","16.6%"],
+ 0,"Each yen invested grows to 1.105 × (1 − 0.06) = 1.0387 in yen terms, a return of 3.87%; less the 0.5% borrowing cost, the trade earns about 3.4%. 10.0% is the interest rate difference with no currency loss, and 16.6% adds the 6% move as if the peso had risen.",true]
+]);
+
+CFA_DATA.set(2,"Corporate Finance","L2-CI-06",
+`Halvorsen Foods is reviewing its payout policy. Its treasurer, Mikkel Dahl, gathers the following data for the most recent year.
+
+**Exhibit 1: Halvorsen Foods (millions)**
+
+| Item | Value |
+|---|---|
+| Net income | 200 |
+| Cash flow from operations | 310 |
+| Fixed capital investment | 150 |
+| Net borrowing | 20 |
+| Dividends paid | 90 |
+| Share repurchases | 60 |
+
+Halvorsen pays corporate tax at 25%. Its shareholders pay 20% tax on dividends and 10% on capital gains. The next dividend will be 2.00 per share.
+
+The chief executive proposes to cut the dividend by half next year to pay for a new plant that has a positive net present value. The company would announce the cut without giving details of the project.`,
+[
+["Halvorsen's FCFE coverage ratio for dividends and share repurchases is **closest** to:",
+ ["1.20","1.33","2.00"],
+ 0,"FCFE = cash flow from operations − fixed capital investment + net borrowing = 310 − 150 + 20 = 180. Coverage = FCFE/(dividends + repurchases) = 180/(90 + 60) = 1.20. 1.33 uses net income in place of FCFE, and 2.00 leaves the repurchases out.",true],
+["The effective tax rate on a unit of pre-tax profit that Halvorsen distributes as a dividend is **closest** to:",
+ ["25%","40%","45%"],
+ 1,"Under double taxation, profit is taxed at the company and what is left is taxed again in the shareholder's hands: 1 − (1 − 0.25) × (1 − 0.20) = 40%. 25% is the corporate tax alone, and 45% adds the two rates, which overstates the tax because the dividend tax applies only to the 75% that remains.",true],
+["For a shareholder who is indifferent between selling just before and just after the shares go ex-dividend, the expected fall in the share price on the ex-dividend date is **closest** to:",
+ ["1.60","1.78","2.25"],
+ 1,"Price fall = D × (1 − tax on dividends)/(1 − tax on capital gains) = 2.00 × 0.80/0.90 = 1.78. 1.60 is the after-tax dividend with the capital gains tax ignored, and 2.25 has the two tax rates the wrong way round.",true],
+["If the chief executive's proposal is announced as described, the share price will **most likely**:",
+ ["rise, because investors expect the plant to add to the value of the company.","stay the same, because dividend policy has no effect on a company's value.","fall, because investors will read the cut as a sign of weaker future earnings."],
+ 2,"Managers know more than investors about the company's prospects, so dividend changes are treated as signals, and a cut is usually read as bad news about future earnings. With no details of the project, investors cannot tell this cut from one forced by weak results. Dividend irrelevance holds only under perfect-market assumptions that include equal information. The expected fall could be reduced by explaining the investment clearly."]
+]);
+
+CFA_DATA.set(2,"Corporate Finance","L2-CI-07",
+`Castellane Group is a conglomerate. Its board is considering the sale of its packaging division, Pakta. An analyst, Irene Soto, gathers the following.
+
+**Exhibit 1: Data (millions)**
+
+| Item | Value |
+|---|---|
+| Castellane EBITDA, including Pakta | 400 |
+| Castellane net debt | 1,400 |
+| Castellane enterprise value at current market prices | 3,200 |
+| Pakta EBITDA | 80 |
+| Net debt that would transfer to a buyer with Pakta | 120 |
+| Median EV/EBITDA in recent sales of packaging companies | 9.0 |
+| EV/EBITDA that Soto considers fair for Castellane's other businesses | 8.5 |
+
+In a second scenario, no debt transfers with Pakta: the buyer pays cash equal to Pakta's full enterprise value at the median multiple, and Castellane uses all of the cash to repay its own debt. The most likely buyer is a private equity firm that would pay 70% of the price with new debt secured on Pakta's assets and cash flows.`,
+[
+["If the debt transfers with Pakta, the price a buyer would pay for Pakta's equity at the median multiple is **closest** to:",
+ ["600","720","840"],
+ 0,"Enterprise value = 9.0 × 80 = 720. Equity value = enterprise value − net debt = 720 − 120 = 600. 720 is the enterprise value, and 840 adds the debt instead of deducting it.",true],
+["In the second scenario, Castellane's ratio of net debt to EBITDA after the sale is **closest** to:",
+ ["1.7","2.1","3.5"],
+ 1,"Net debt after the sale = 1,400 − 720 = 680. EBITDA after the sale = 400 − 80 = 320. Ratio = 680/320 = 2.1. 1.7 still counts Pakta's EBITDA after it has been sold, and 3.5 is the ratio before the sale (1,400/400).",true],
+["Using Soto's multiples, the conglomerate discount in Castellane's current enterprise value is **closest** to:",
+ ["7.0%","7.5%","22.5%"],
+ 0,"Sum of the parts = Pakta 9.0 × 80 = 720 plus the other businesses 8.5 × 320 = 2,720, a total of 3,440. Discount = (3,440 − 3,200)/3,440 = 7.0%. 7.5% divides the 240 gap by the market value instead of the sum of the parts, and 22.5% is Pakta's value as a share of the current enterprise value.",true],
+["A sale of Pakta to the private equity firm on the terms described is **best** described as:",
+ ["an equity carve-out.","a split-off.","a leveraged buyout."],
+ 2,"A purchase financed mostly with debt that is secured on the acquired business and repaid from its cash flows is a leveraged buyout. In an equity carve-out the parent sells a minority of the division's shares to the public and keeps control, and in a split-off shareholders exchange their parent shares for shares of the division; neither involves a sale of the whole division for cash."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
