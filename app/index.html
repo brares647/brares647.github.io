@@ -4838,6 +4838,192 @@ Arven pays no dividends.`,
  ["5.0%","12.9%","14.1%"],
  1,"Premium over straight value = 1,050/930 − 1 = 12.9%. It measures downside risk: how far the convertible could fall toward its bond floor if the shares do poorly. 14.1% is the premium over the conversion value of 920, and 5.0% is the premium over par.",true]
 ]);
+/* Level II, sixth batch (2026-11-10): six item sets toward Mock 4.
+   L2-ETH-10 (duties to clients: mandate, fair dealing, confidentiality, client-directed brokerage),
+   L2-ETH-11 (priority of transactions, independent practice, misconduct, conduct in the CFA Program),
+   L2-ETH-12 (stricter law, use of sub-advisers, selective disclosure, firm-level conflicts),
+   L2-FSA-09 (current rate translation, cumulative translation adjustment, temporal method exposure, hyperinflation),
+   L2-FSA-10 (modeling: price, volume and input costs, gross margin, inventory forecast, forecasting bias),
+   L2-FSA-11 (US GAAP pension cost, total periodic pension cost, cash flow adjustment, IFRS comparison).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-10",
+`Leila Haddad, CFA, is a portfolio manager at Saffron Wealth. A compliance review records four matters.
+
+Matter 1: Haddad manages the Saffron Small-Cap Fund, whose prospectus says it invests in companies with a market value below 2 billion. Expecting a downturn, she moved 30% of the fund into shares of very large companies, which she considers safer. The fund's investors were not told.
+
+Matter 2: When Saffron's research team changes a recommendation, Haddad telephones her ten largest clients the same morning. All other clients learn of the change from the weekly newsletter several days later. Saffron's client agreements do not describe different levels of service.
+
+Matter 3: A client's transfers lead Haddad to suspect that he is laundering money. The law in her country requires such suspicions to be reported to the financial regulator. Haddad does nothing, because "client information is confidential."
+
+Matter 4: A pension fund client instructs Haddad in writing to send its trades to a particular broker, which gives the pension fund research that the fund's trustees use. Haddad believes this broker's execution is slightly worse than that of other brokers. She follows the instruction and tells the client about her concern.`,
+[
+["In Matter 1, Haddad **most likely**:",
+ ["complied with the Standards, because she acted to protect the fund's investors from losses.","violated the Standard on suitability, because she departed from the fund's stated mandate.","violated the Standard on fair dealing, because some investors gained more than others."],
+ 1,"For a fund managed to a stated mandate, Standard III(C) Suitability requires investments consistent with that mandate; investors chose the fund for small-cap exposure and may hold large companies elsewhere. Good intentions do not allow a change of style without disclosure. All investors in the fund were treated alike, so fair dealing is not the issue."],
+["In Matter 2, Haddad's practice **most likely**:",
+ ["violates the Standards, because recommendation changes must reach all clients fairly.","complies with the Standards, because larger clients may receive a better service.","complies with the Standards, because every client is informed within a week."],
+ 0,"Standard III(B) Fair Dealing requires that changes in recommendations be communicated so that all clients have a fair opportunity to act; telephoning a few clients days before the rest disadvantages the others. Firms may offer different levels of service, but only if these are disclosed and do not disadvantage any client, and here they are not described at all. Informing everyone eventually does not cure the head start."],
+["In Matter 3, Haddad **most likely**:",
+ ["complied with the Standards, because confidentiality applies to all client matters.","violated the Standards, because she should have ended the relationship at once.","violated the Standards, because the law requires her to report her suspicion."],
+ 2,"Standard III(E) Preservation of Confidentiality has exceptions: information about illegal activities, and disclosure required by law. Where the law requires a report, Standard I(A) Knowledge of the Law obliges her to make it, normally after consulting compliance or legal counsel. Ending the relationship might follow, but it does not replace the legal duty to report."],
+["In Matter 4, Haddad **most likely**:",
+ ["violated her duty of loyalty, because she did not seek the best execution.","complied with the Standards, because the brokerage belongs to the client.","violated the Standards, because research for trustees is an improper benefit."],
+ 1,"Brokerage commissions are an asset of the client. When the client itself directs trades to a broker and receives the benefit, the manager may follow the instruction; Standard III(A) asks her to tell the client if she believes it may not get best execution, which she did. The research goes to the client that pays for it, so it is not an improper benefit to the manager."]
+]);
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-11",
+`Daniel Okoro, CFA, is an equity analyst at Marlowe Capital, and Priya Raman is a Level II candidate who works on his team. Marlowe's compliance officer reviews four events.
+
+Event 1: Okoro's father is a fee-paying client of Marlowe with a discretionary account. When Marlowe receives shares in a heavily oversubscribed initial public offering, the allocation rule gives every eligible client a pro rata share. Okoro removes his father's account from the allocation "to avoid any appearance of favoritism."
+
+Event 2: On weekends Okoro prepares paid valuation reports for small local businesses. Marlowe offers the same service through its advisory unit. He has not told Marlowe.
+
+Event 3: Okoro has twice been arrested for taking part in peaceful protests that blocked a road; both arrests led to small fines. Separately, a colleague of his, also a charterholder, has several times returned from client lunches too intoxicated to work.
+
+Event 4: The day after her exam, Raman posts on a study forum: "No questions on pensions at all this year, but two full item sets on currency translation."`,
+[
+["In Event 1, Okoro **most likely**:",
+ ["complied with the Standards, because family accounts must rank behind other clients.","violated the Standards, because a family member who is a client was treated unfairly.","violated the Standards, because employees' relatives may not take part in such offerings."],
+ 1,"Under Standard VI(B) Priority of Transactions, accounts in which a member has a beneficial interest rank behind clients, but a family member's account that is a normal fee-paying client account must be treated like any other client account. Excluding his father breaches the duty owed to him as a client (fair dealing). Relatives are not barred from offerings when they are ordinary clients."],
+["In Event 2, Okoro **most likely**:",
+ ["violated the Standards, because he competes with his employer without its consent.","complied with the Standards, because the work is done in his own time.","complied with the Standards, because the businesses are not clients of Marlowe."],
+ 0,"Standard IV(A) Loyalty requires members who undertake independent practice that could compete with their employer to notify the employer and obtain its consent first, describing the services, their duration and the compensation. Doing the work on weekends or for businesses that are not Marlowe's clients does not remove the conflict, because Marlowe sells the same service."],
+["Regarding Event 3, which statement is **most** accurate?",
+ ["Both Okoro and his colleague violated the Standard on misconduct.","Neither violated the Standards, because all of the conduct was outside work.","Only the colleague violated the Standard on misconduct."],
+ 2,"Standard I(D) Misconduct covers conduct involving dishonesty, fraud or deceit, or acts that reflect adversely on professional reputation, integrity or competence. Being repeatedly unable to work after client lunches reflects on professional competence and happens in a work setting. Arrests for acts of civil disobedience in support of personal beliefs do not, as a rule, reflect on professional integrity, so Okoro has not violated it."],
+["In Event 4, Raman **most likely**:",
+ ["complied with the Standards, because she gave no questions or answers.","violated the Standards, because she revealed which topics were tested.","complied with the Standards, because the exam had already finished."],
+ 1,"Standard VII(A) Conduct as Participants in CFA Institute Programs prohibits disclosing confidential exam information, which includes the broad topic areas that were or were not tested, not only specific questions. The obligation continues after the exam. Candidates may still discuss the published curriculum and give opinions about the Program."]
+]);
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-12",
+`Corinne Baptiste, CFA, is head of research at Delmar Partners, a firm based in Country A that also sells its services to clients in Country B. Four matters come to her attention.
+
+Matter 1: Country A's rules allow an adviser to trade for its own account ahead of client orders if this is disclosed in the client agreement. Country B's rules and the Code and Standards prohibit it. A Delmar trader based in Country A, who is a CFA charterholder, trades ahead of orders from clients in Country B, pointing to the disclosure in the agreement. Delmar's services in Country B are subject to Country B's rules.
+
+Matter 2: Delmar's brochure states: "Our in-house specialists manage every asset class for you." All emerging market portfolios are in fact managed by an outside sub-adviser that Baptiste's team selects and monitors carefully.
+
+Matter 3: The chief financial officer of a company Delmar covers holds a call for six invited analysts, including one from Delmar, and says that quarterly revenue will be about 15% below the published guidance. The company has made no public announcement. The Delmar analyst wants to change his rating that afternoon.
+
+Matter 4: Delmar's corporate finance unit is advising Orlin Corp. on a share issue, and Delmar owns 4% of Orlin's shares. An analyst's carefully researched report recommends buying Orlin. Its only disclosure reads: "Delmar may have business relationships with companies mentioned in this report."`,
+[
+["In Matter 1, the trader **most likely**:",
+ ["complied with the Standards, because the practice was disclosed to the clients.","complied with the Standards, because he must follow the law of Country A.","violated the Standards, because he must follow the stricter of the rules that apply."],
+ 2,"Standard I(A) Knowledge of the Law requires members to follow the strictest of the applicable law and the Code and Standards. Here Country B's rules apply to the business and, like the Standards (VI(B) Priority of Transactions), prohibit trading ahead of clients. A disclosure permitted in Country A does not help, and neither does being resident there."],
+["The statement in Delmar's brochure **most likely**:",
+ ["violates the Standards, because it misrepresents who manages the portfolios.","complies with the Standards, because the sub-adviser was chosen with diligence.","violates the Standards, because the use of sub-advisers is not permitted."],
+ 0,"Standard I(C) Misrepresentation prohibits false or misleading statements about the firm's services and capabilities. Using an outside sub-adviser is acceptable, and so is careful selection, but the firm must not present that work as done in-house. The brochure should say that outside managers are used for emerging markets."],
+["Before changing his rating in Matter 3, the Delmar analyst should **most appropriately**:",
+ ["confirm that the comment is accurate by calling the chief financial officer.","urge the company to make the information public and wait until it has done so.","share the comment with all Delmar clients at once, so that none is favored."],
+ 1,"A revenue shortfall of 15% against guidance is material, and information given to six invited analysts is nonpublic until it is disseminated to the market. Under Standard II(A), the analyst must not act or cause others to act on it; he should encourage public disclosure and, if that fails, tell compliance and place the stock under restriction. Confirming the figure does not make it public, and passing it to clients would spread material nonpublic information."],
+["The disclosure in the Orlin report **most likely**:",
+ ["complies with the Standards, because the report rests on thorough research.","complies with the Standards, because it warns that relationships may exist.","violates the Standards, because the specific conflicts are not made clear."],
+ 2,"Standard VI(A) Disclosure of Conflicts requires full and fair disclosure, in plain language and prominently, of matters that could impair independence. An advisory mandate and a 4% shareholding are specific conflicts that readers need to know; a general statement that relationships may exist does not communicate them. Good research does not remove the duty to disclose."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-09",
+`Arborea Inc. reports in US dollars (USD) under US GAAP. Its wholly owned subsidiary in Kovania keeps its accounts in the Kovanian rand (KVR). An analyst, Selim Aydin, reviews the subsidiary's accounts.
+
+**Exhibit 1: Subsidiary balance sheet at year-end (KVR millions)**
+
+| Assets | | Liabilities and equity | |
+|---|---|---|---|
+| Cash | 100 | Accounts payable | 250 |
+| Accounts receivable | 200 | Long-term debt | 450 |
+| Inventory | 300 | Common stock | 300 |
+| Property, plant and equipment | 600 | Retained earnings | 200 |
+| Total | 1,200 | Total | 1,200 |
+
+**Exhibit 2: Other data**
+
+| Item | Value |
+|---|---|
+| Net income for the year (KVR millions) | 80 |
+| Dividends | none |
+| Opening retained earnings, as translated in prior years (USD millions) | 62.0 |
+| Exchange rate when the common stock was issued (USD per KVR) | 0.55 |
+| Exchange rate at the start of the year | 0.50 |
+| Average exchange rate for the year | 0.46 |
+| Exchange rate at year-end | 0.42 |
+
+The KVR is the subsidiary's functional currency. Aydin also considers what would change if the USD were the functional currency, and what Arborea would do if Kovania's cumulative inflation over three years exceeded 100%.`,
+[
+["The subsidiary's net income for the year, translated into USD millions, is **closest** to:",
+ ["33.6","36.8","40.0"],
+ 1,"With the local currency as functional currency, the current rate method applies and income statement items are translated at the average rate: 80 × 0.46 = 36.8. 33.6 uses the year-end rate, and 40.0 uses the rate at the start of the year.",true],
+["The cumulative translation adjustment at year-end, in USD millions, is **closest** to:",
+ ["−53.8","−50.6","+53.8"],
+ 0,"All assets and liabilities are translated at the year-end rate: net assets = (1,200 − 700) × 0.42 = 210.0. Common stock at the historical rate = 300 × 0.55 = 165.0. Retained earnings = 62.0 + 36.8 = 98.8. The adjustment is the balancing figure: 210.0 − 165.0 − 98.8 = −53.8, a loss because the subsidiary's net assets are held in a currency that has fallen. −50.6 translates the year's income at the year-end rate, and the positive figure has the sign reversed.",true],
+["If the USD were the functional currency, the fall in the KVR during the year would **most likely** produce a remeasurement:",
+ ["loss, reported in net income.","gain, reported in other comprehensive income.","gain, reported in net income."],
+ 2,"Under the temporal method the exposure is the net monetary position. Monetary assets (cash and receivables) are 300 and monetary liabilities (payables and debt) are 700, so the subsidiary has a net monetary liability of 400 in KVR. When the KVR falls, those liabilities are worth less in USD, giving a gain, and under the temporal method the gain or loss goes to net income, not to other comprehensive income."],
+["If Kovania became a hyperinflationary economy, Arborea would **most likely**:",
+ ["restate the accounts for local inflation and then use the current rate.","remeasure the subsidiary with the temporal method, into USD.","continue with the current rate method and report the adjustment in equity."],
+ 1,"Under US GAAP, a subsidiary in a highly inflationary economy (cumulative inflation above 100% over three years) is remeasured with the temporal method, treating the parent's reporting currency as the functional currency. Restating for inflation and then translating at the current rate is the IFRS treatment. Continuing with the current rate method would make non-monetary assets such as property shrink toward nothing in USD terms."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-10",
+`Marta Olsen builds a forecast model for Ferrow Snacks.
+
+**Exhibit 1: Ferrow Snacks, most recent year**
+
+| Item | Value |
+|---|---|
+| Units sold | 100 million |
+| Average price per unit | 2.00 |
+| Cost of goods sold per unit | 1.20 |
+
+For next year Olsen assumes that input costs raise the cost of goods sold per unit by 8%, that Ferrow raises its price by 5%, and that the volume sold falls by 3% as a result. She forecasts inventory using 45 days of inventory on hand and a 365-day year, based on forecast cost of goods sold.
+
+Two months ago Olsen published an earnings forecast for another company. Since then the company has lost its largest customer. Olsen has lowered her forecast only slightly, explaining that her original analysis was thorough and that she prefers to wait for more evidence.`,
+[
+["Ferrow's forecast revenue for next year, in millions, is **closest** to:",
+ ["194.0","203.7","210.0"],
+ 1,"Units = 100 × 0.97 = 97 million; price = 2.00 × 1.05 = 2.10. Revenue = 97 × 2.10 = 203.7. 194.0 applies the fall in volume but not the price increase, and 210.0 applies the price increase but not the fall in volume.",true],
+["Ferrow's forecast gross margin for next year is **closest** to:",
+ ["38.3%","40.0%","42.9%"],
+ 0,"Cost per unit = 1.20 × 1.08 = 1.296, so cost of goods sold = 97 × 1.296 = 125.7 and gross profit = 203.7 − 125.7 = 78.0. Gross margin = 78.0/203.7 = 38.3%, down from 40.0%, because the price rises by less than the unit cost. 40.0% is last year's margin, and 42.9% leaves the unit cost unchanged.",true],
+["Ferrow's forecast year-end inventory, in millions, is **closest** to:",
+ ["14.8","15.5","25.1"],
+ 1,"Inventory = cost of goods sold × days on hand/365 = 125.7 × 45/365 = 15.5. 14.8 uses last year's cost of goods sold of 120, and 25.1 applies the days to revenue instead of cost of goods sold.",true],
+["Olsen's handling of her forecast for the other company is **most likely** an example of:",
+ ["representativeness bias.","confirmation bias.","conservatism bias."],
+ 2,"Conservatism bias is holding on to a prior view and adjusting too little when new information arrives; losing the largest customer is significant, yet the forecast barely moved. Confirmation bias would involve seeking out or favoring evidence that supports her view, and representativeness bias would involve classifying the company by its likeness to a familiar pattern."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-11",
+`Tolland Corp. reports under US GAAP and sponsors a defined benefit pension plan. An analyst, Hugo Lindgren, gathers the following.
+
+**Exhibit 1: Pension data for the year (millions)**
+
+| Item | Value |
+|---|---|
+| Benefit obligation at the start of the year | 1,000 |
+| Plan assets at the start of the year | 900 |
+| Current service cost | 60 |
+| Discount rate | 5% |
+| Expected return on plan assets | 7% |
+| Actual return on plan assets | 45 |
+| Actuarial loss on the benefit obligation | 30 |
+| Benefits paid | 40 |
+| Employer contributions | 80 |
+
+There is no amortization of past service costs or of actuarial gains and losses this year. Tolland's tax rate is 25%. Tolland reports its pension contributions in cash flow from operations.`,
+[
+["The periodic pension cost that Tolland reports in profit or loss for the year is **closest** to:",
+ ["47","65","110"],
+ 0,"Under US GAAP: current service cost 60 + interest cost 5% × 1,000 = 50 − expected return on plan assets 7% × 900 = 63, giving 47. 65 deducts the actual return of 45 in place of the expected return, and 110 deducts no return on assets at all.",true],
+["Tolland's total periodic pension cost for the year is **closest** to:",
+ ["47","80","95"],
+ 2,"Ending obligation = 1,000 + 60 + 50 + 30 − 40 = 1,100; ending assets = 900 + 45 + 80 − 40 = 985. The funded status moved from −100 to −115. Total periodic pension cost = contributions − change in funded status = 80 − (−15) = 95; equivalently 60 + 50 + 30 − 45 = 95. 47 is only the part reported in profit or loss, and 80 is the cash contributed.",true],
+["To reflect the economics of the plan, Lindgren should **most appropriately** adjust Tolland's cash flow statement by:",
+ ["raising operating cash flow by 11.25 and lowering financing cash flow by 11.25.","lowering operating cash flow by 11.25 and raising financing cash flow by 11.25.","lowering operating cash flow by 15.00 and raising financing cash flow by 15.00."],
+ 1,"Contributions of 80 are 15 less than the total pension cost of 95. The shortfall is in substance borrowing from the plan: a financing inflow that has flattered operating cash flow. After tax it is 15 × (1 − 0.25) = 11.25, so operating cash flow is reduced and financing cash flow increased by that amount. The opposite adjustment applies when contributions exceed the total cost, and 15.00 ignores the tax effect."],
+["If Tolland reported under IFRS, its pension expense in profit or loss for the year would **most likely** be:",
+ ["higher, because the return on plan assets would be taken at the discount rate.","lower, because the actuarial loss would be reported in other comprehensive income.","the same, because the two sets of standards measure the obligation alike."],
+ 0,"Under IFRS, profit or loss includes service cost plus net interest on the net pension liability at the discount rate: 60 + 5% × (1,000 − 900) = 65, against 47 under US GAAP. The difference arises because the 7% expected return assumption is replaced by the 5% discount rate. The actuarial loss is outside profit or loss this year under both sets of standards, so it does not explain a difference."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
