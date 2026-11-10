@@ -6837,6 +6837,219 @@ Situation 3: Rafael Okonjo manages portfolios for private clients. He recommends
  "Violation of Standard VI(A) Disclosure of Conflicts, in two ways. 1) His wife is an executive of Lantern and a large shareholder, so his household benefits if the share price rises. This could reasonably be expected to affect his independence, whatever the quality of his research. It should have been disclosed to his clients before the recommendation and to his employer, which did not know about it. 2) The bonus for moving clients into in-house funds gives him an incentive to recommend those funds whether or not they are the best choice. The employer knows, but clients do not, and they need the information to judge his advice. Disclosures must be prominent, in plain language and made in a way that communicates the conflict effectively, so that clients and the employer can assess his objectivity. The fact that the Lantern recommendation is well researched and suitable does not remove the duty to disclose.",
  [["Determines a violation and identifies Standard VI(A)",1],["Spouse's position and shareholding is a conflict to disclose to clients and employer",1],["Bonus for in-house funds is a conflict to disclose to clients",1],["Disclosure must be prominent and in plain language; sound research does not remove the duty",1]]]
 ]);
+/* Level III, fifth batch (2026-11-10): Portfolio Management Pathway items that complete Mock 4.
+   Item sets L3-PMP-12 (inter-market carry and currency hedging), L3-PMP-13 (convexity and key rate
+   durations), L3-PMP-14 (single-name CDS), L3-PMP-15 (trade cost benchmarks).
+   Essays L3-PMP-CR12 (capacity of an active equity strategy), L3-PMP-CR13 (riding a stable yield curve
+   with repo financing), L3-PMP-CR14 (duration times spread), L3-PMP-CR15 (endowment liquidity after a
+   market fall, futures overlay). Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-12",
+`Alessia Romano, CFA, manages a global government bond portfolio for investors whose base currency is the euro (EUR). She compares three markets.
+
+**Exhibit 1: Government bond yields**
+
+| Market | 1-year yield | 5-year yield |
+|---|---|---|
+| Eurozone (EUR) | 2.0% | 2.6% |
+| Australia (AUD) | 4.0% | 4.4% |
+| Japan (JPY) | 0.4% | 0.9% |
+
+Romano assumes that all three yield curves stay unchanged over the next year and, to keep the comparison simple, that each 5-year bond earns its yield with no price change. One-year forward exchange rates are consistent with covered interest rate parity.
+
+A colleague suggests a separate trade: borrow for one year in yen and invest the proceeds in one-year Australian government bonds, without hedging the currency.`,
+[
+["The expected one-year return on the 5-year Australian bond, hedged into euros, is **closest** to:",
+ ["0.6%","2.4%","4.4%"],
+ 1,"Hedging sells the AUD forward at a discount equal to the one-year rate difference: 2.0% − 4.0% = −2.0%. Hedged return ≈ 4.4% − 2.0% = 2.4%. 4.4% is the unhedged local return, and 0.6% is the slope of the euro curve, which belongs to the euro bond.",true],
+["If the Australian dollar falls by 2.5% against the yen over the year, the return on the colleague's trade, as a percentage of the amount borrowed, is **closest** to:",
+ ["1.0%","3.6%","6.1%"],
+ 0,"The investment grows to 1.040 × (1 − 0.025) = 1.014 in yen terms, a 1.4% return, and the loan costs 0.4%, leaving about 1.0% (the additive shortcut 4.0% − 0.4% − 2.5% gives 1.1%). 3.6% ignores the currency loss, and 6.1% adds the 2.5% instead of subtracting it.",true],
+["On a currency-hedged basis, the 5-year bond with the highest expected one-year return for Romano's investors is the one issued in:",
+ ["Australia.","Japan.","the eurozone."],
+ 2,"Hedged into euros, each bond earns its own 5-year yield minus its own 1-year yield plus the euro 1-year yield, so the ranking depends on the slope of each curve, not on the level of yields. Eurozone: 2.6%. Japan: 0.9% − 0.4% + 2.0% = 2.5%. Australia: 4.4% − 4.0% + 2.0% = 2.4%. Australia's high yield is offset by the forward discount on its currency."],
+["The colleague's trade is **most likely** to lose money when:",
+ ["exchange rates move by less than the forward rates imply.","investors cut risk and the funding currency rises sharply.","forward rates drift away from covered interest rate parity."],
+ 1,"An unhedged carry trade earns the rate difference as long as the high-yield currency does not fall by more than that difference. Its typical loss comes in periods of market stress, when carry positions are unwound together and the low-yield funding currency (here the yen) appreciates quickly. Exchange rates moving by less than forwards imply is exactly the case in which the trade profits, and the trade uses no forward contract, so covered parity is not what drives its result."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-13",
+`Henrik Dahl, CFA, manages a 200 million government bond portfolio and is choosing between two structures with the same duration.
+
+**Exhibit 1: Candidate portfolios**
+
+| Item | Bullet | Barbell |
+|---|---|---|
+| Modified duration | 7.0 | 7.0 |
+| Convexity | 60 | 110 |
+| Yield | 3.90% | 3.70% |
+
+**Exhibit 2: Key rate durations of the barbell**
+
+| Maturity | 2-year | 10-year | 30-year |
+|---|---|---|---|
+| Key rate duration | 1.0 | 0.5 | 5.5 |
+
+Dahl expects yields to stay within a narrow range over the next year.`,
+[
+["For an immediate parallel rise of 100 bps in yields, the percentage change in the value of the barbell is **closest** to:",
+ ["−7.55%","−7.00%","−6.45%"],
+ 2,"Change ≈ −duration × Δy + ½ × convexity × Δy² = −7.0 × 0.01 + 0.5 × 110 × 0.01² = −7.00% + 0.55% = −6.45%. −7.00% uses duration alone, and −7.55% subtracts the convexity effect, which always works in the holder's favor.",true],
+["For an immediate parallel change of 100 bps in yields, in either direction, the barbell outperforms the bullet by an amount **closest** to:",
+ ["0.25%","0.50%","0.55%"],
+ 0,"The durations are equal, so the difference comes from convexity alone: ½ × (110 − 60) × 0.01² = 0.25%. 0.50% leaves out the ½, and 0.55% is the barbell's whole convexity effect, not its advantage over the bullet.",true],
+["Given his expectation for yields, Dahl should **most appropriately** hold the:",
+ ["barbell, because higher convexity raises the return whatever happens to yields.","barbell, because a lower yield makes its price less sensitive to rate changes.","bullet, because convexity is paid for in yield and rewards only large rate moves."],
+ 2,"The barbell gives up 20 bps of yield a year for its extra convexity, and that convexity is worth only 25 bps even for a 100 bp move. If yields stay in a narrow range, the convexity gain is small and the yield given up dominates, so the bullet is expected to earn more. Convexity does not raise return in all cases, because it has a cost, and both portfolios have the same duration, so the barbell is not less sensitive to rates."],
+["Using Exhibit 2, if the 2-year yield falls by 20 bps, the 10-year yield is unchanged and the 30-year yield rises by 30 bps, the change in the value of the barbell is **closest** to:",
+ ["−1.85%","−1.45%","+1.45%"],
+ 1,"Change ≈ −Σ(key rate duration × change in that yield) = −[1.0 × (−0.20%) + 0.5 × 0 + 5.5 × 0.30%] = +0.20% − 1.65% = −1.45%. −1.85% treats the fall in the 2-year yield as a loss, and +1.45% has the sign reversed. The total duration of 7.0 says nothing about this steepening, which is why key rate durations are needed.",true]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-14",
+`Yara Haddad, CFA, uses credit default swaps (CDS) in a credit fund. She is looking at five-year CDS on Corvex Industries.
+
+**Exhibit 1: Five-year CDS on Corvex Industries**
+
+| Item | Value |
+|---|---|
+| Notional | 10 million |
+| Standardized fixed coupon | 1.00% |
+| Current CDS spread | 2.50% |
+| Effective spread duration | 4.4 |
+
+Haddad's analyst expects Corvex to face a difficult refinancing in the next twelve months but to be a sound credit afterward if it gets through. A colleague, who is pessimistic about another issuer, asks whether to buy CDS protection or to sell that issuer's bonds short.`,
+[
+["At the current spread, the upfront payment made by the buyer of protection in Exhibit 1 is **closest** to:",
+ ["150,000","660,000","1,100,000"],
+ 1,"Upfront premium ≈ (CDS spread − fixed coupon) × effective spread duration = (2.50% − 1.00%) × 4.4 = 6.6% of notional, or 660,000. The buyer pays it because the 1.00% coupon is less than the 2.50% the protection is worth. 150,000 is one year of the spread difference with no duration, and 1,100,000 uses the whole spread.",true],
+["Haddad sells protection on 10 million notional at a spread of 2.50%. If the spread then falls immediately to 2.00%, her gain or loss is **closest** to:",
+ ["−220,000","50,000","220,000"],
+ 2,"A protection seller is long the credit and gains when the spread narrows: 0.50% × 4.4 × 10,000,000 = 220,000. The negative figure would be the protection buyer's result, and 50,000 is 0.50% of notional with no spread duration.",true],
+["The CDS trade that **best** fits the analyst's view of Corvex is to:",
+ ["buy one-year protection and sell five-year protection.","sell one-year protection and buy five-year protection.","sell protection at both the one-year and five-year maturities."],
+ 0,"The analyst sees high default risk in the next year and low risk afterward, so near-term spreads should rise relative to long-term spreads (the CDS curve flattens or inverts). Buying short-maturity protection and selling long-maturity protection profits from that change. The reverse trade is a steepener, and selling protection at both maturities is an outright long position in the credit."],
+["Compared with selling the bonds short, buying CDS protection **most likely**:",
+ ["removes the exposure to the counterparty in the trade.","avoids having to borrow bonds that may be hard to find.","hedges the interest rate risk of the bonds as well."],
+ 1,"Shorting a corporate bond requires borrowing it in the repo market, which can be costly or impossible for many issues; buying protection needs no borrowed bond and is often more liquid. A CDS adds exposure to the protection seller or clearing house and carries credit risk only, so it does not hedge interest rate risk."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-15",
+`Lucia Ferrand, CFA, is head trader at Morrow Asset Management. She reviews the execution of an order to buy 50,000 shares of Kestane AG, which was completed within one trading day.
+
+**Exhibit 1: Kestane order**
+
+| Item | Value |
+|---|---|
+| Price when the order reached the trading desk (arrival price) | 80.00 |
+| Average execution price | 80.40 |
+| Volume-weighted average price (VWAP) of all market trades while the order was worked | 80.25 |
+| Change in the market index while the order was worked | +0.30% |
+| Beta of Kestane | 1.2 |
+
+Morrow also runs an index fund whose net asset value and benchmark are both calculated from closing prices.`,
+[
+["The arrival cost of the Kestane order is **closest** to:",
+ ["19 bps","31 bps","50 bps"],
+ 2,"For a buy order, arrival cost = (average execution price − arrival price)/arrival price = (80.40 − 80.00)/80.00 = 0.50%, or 50 bps. 19 bps is the cost measured against VWAP, and 31 bps is the gap between VWAP and the arrival price.",true],
+["Measured against the VWAP benchmark, the cost of the order is **closest** to:",
+ ["−19 bps","19 bps","50 bps"],
+ 1,"VWAP cost = (80.40 − 80.25)/80.25 = 0.187%, about 19 bps. The desk bought at a higher price than the market's average during the period, so the cost is positive; a negative figure would mean it bought below VWAP. 50 bps is the cost against the arrival price.",true],
+["The market-adjusted cost of the order is **closest** to:",
+ ["14 bps","20 bps","86 bps"],
+ 0,"Market-adjusted cost = arrival cost − beta × index cost = 50 bps − 1.2 × 30 bps = 14 bps. Most of the 50 bps reflects a rising market, not the desk's trading. 20 bps leaves out the beta, and 86 bps adds the market move instead of removing it.",true],
+["For trades made by Morrow's index fund, the **most appropriate** reference price is the:",
+ ["arrival price.","interval VWAP.","closing price."],
+ 2,"The fund's value and its benchmark are both struck at closing prices, so trading at the close (for example with market-on-close orders) keeps tracking error lowest, and the closing price is the benchmark that matches the fund's objective. The arrival price suits managers trading on short-lived information, and VWAP suits orders worked through the day with no need to match the close."]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR12",
+`Bruno Carvalho, CFA, manages the Tavira Small-Cap Fund, a concentrated active strategy that holds 40 equally weighted stocks and has annual turnover of 150%. The fund has assets of 600 million. A new distribution agreement is expected to raise assets to 1.5 billion within a year.
+
+To limit market impact, the firm never trades more than 10% of a stock's average daily volume. A typical holding in the fund has an average daily volume of 3 million (in value). Assume 252 trading days in a year.`,
+[
+["**A.** Calculate the size of a full position and the number of trading days needed to build it, at assets of (i) 600 million and (ii) 1.5 billion.",
+ "The fund can trade at most 10% × 3 million = 0.3 million of a typical stock per day. (i) Position = 600 million/40 = 15 million; 15/0.3 = 50 trading days. (ii) Position = 1,500 million/40 = 37.5 million; 37.5/0.3 = 125 trading days.",
+ [["Maximum daily trade of 0.3 million per stock",1],["15 million and 50 days at 600 million",1],["37.5 million and 125 days at 1.5 billion",1]],true],
+["**B.** Explain **two** ways the growth in assets is likely to reduce the fund's performance.",
+ "1) Slower implementation and lost alpha. With 150% turnover, the average holding period is about 1/1.5 = 0.67 years, roughly 168 trading days. Building a position over 125 days, and as long again to sell it, means the fund is rarely fully invested in its ideas while they are working: much of the expected excess return is gone before the position is complete (delay or opportunity cost). 2) Higher implicit trading costs. If Carvalho trades faster to avoid the delay, each order is a larger share of daily volume and market impact rises more than in proportion to trade size, which is most severe in small, illiquid stocks and is paid 1.5 times a year. Also acceptable: pressure to hold more or larger companies dilutes the best ideas and changes the strategy investors chose (style drift).",
+ [["Delay or opportunity cost: positions take too long relative to the holding period",2],["Higher market impact (implicit costs), made worse by small-cap illiquidity and high turnover; or dilution and style drift",2]]],
+["**C.** Recommend **two** actions the firm could take to protect the strategy, and state **one** drawback of each.",
+ "1) Close the fund to new investors at a stated capacity limit. This protects existing investors' returns; the drawback is that the firm gives up fee income and breaks or limits the distribution agreement. 2) Hold more positions, each a smaller share of the fund. Positions become quicker to trade; the drawback is that capital moves from the best ideas to lower-conviction ones, so expected active return falls and the fund becomes more like the index. 3) Lower turnover by lengthening the investment horizon. Trading costs fall and slow trading matters less; the drawback is that the strategy can no longer use shorter-lived insights. 4) Allow larger, more liquid companies. Capacity rises; the drawback is a change of style away from the small-cap mandate. Any two.",
+ [["First action with its drawback",2],["Second action with its drawback",2]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR13",
+`Mirela Stoica, CFA, expects the government yield curve to keep its current level and shape for the next six months. She buys 50 million of a 10-year government bond at par, with a yield of 4.40%, and finances the whole purchase with a six-month repurchase agreement at 3.20%.
+
+On today's yield curve, a bond with 9.5 years to maturity yields 4.34%. In six months the bond she bought will have 9.5 years to maturity and a modified duration of 7.5.
+
+Treat six months as half a year and ignore transaction costs and repo haircuts.`,
+[
+["**A.** Calculate the expected profit on the position over six months if the yield curve is unchanged, showing the carry and the rolldown separately.",
+ "Carry = bond income less financing cost = 50,000,000 × (4.40% − 3.20%) × 0.5 = 300,000. Rolldown: as the bond ages to 9.5 years its yield falls from 4.40% to 4.34%, a decline of 6 bps, and its price rises by about 7.5 × 0.06% = 0.45%, or 225,000. Expected profit = 300,000 + 225,000 = 525,000, which is 1.05% of the position.",
+ [["Carry of 300,000",1],["Rolldown gain of about 225,000 (0.45%)",1],["Total of about 525,000",1]],true],
+["**B.** Calculate how far the yield of the bond can be above 4.34% in six months before the position makes no profit.",
+ "The expected profit is 1.05% of the position, and the bond will have a modified duration of 7.5. Breakeven rise in yield = 1.05%/7.5 = 0.14%, or 14 bps. The position breaks even if the 9.5-year yield is about 4.48% in six months and loses money above that level.",
+ [["Divides the 1.05% expected profit by the duration of 7.5",1],["Breakeven of about 14 bps (a yield near 4.48%)",1]],true],
+["**C.** Explain what Stoica's position assumes about forward rates, and describe **one** way she could obtain a similar exposure without repo financing.",
+ "An upward-sloping curve implies forward rates above today's spot rates: the market prices in higher yields in six months. Buying the longer bond with short-term financing earns more than the short rate only if yields rise by less than those forward rates imply. Stoica is therefore betting that future spot rates will be below today's forward rates; if the forward rates are realized, the carry and rolldown are offset by a price loss and the position earns nothing extra. Alternatives without repo: buy government bond futures, which give the price exposure for a margin deposit, with financing built into the futures price; or enter a receive-fixed, pay-floating interest rate swap, which receives the long-term fixed rate against a short-term floating rate. Both are leveraged in the same way, so the breakeven logic is unchanged.",
+ [["Forward rates are above spot rates on an upward-sloping curve",1],["The position profits only if yields rise by less than the forwards imply",1],["One valid alternative (long bond futures or a receive-fixed swap)",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR14",
+`Anneke Visser, CFA, compares the credit risk of two corporate bond portfolios of 100 million each.
+
+**Exhibit 1: Portfolio holdings**
+
+| Portfolio | Segment | Weight | Spread duration | Spread |
+|---|---|---|---|---|
+| P | A-rated | 60% | 5.0 | 100 bps |
+| P | BB-rated | 40% | 3.0 | 400 bps |
+| Q | A-rated | 90% | 7.0 | 100 bps |
+| Q | BB-rated | 10% | 3.0 | 400 bps |
+
+A colleague says that Portfolio Q carries far more credit risk than Portfolio P, "because its spread duration is much higher."`,
+[
+["**A.** Calculate the spread duration and the duration times spread (DTS) of each portfolio.",
+ "Spread duration: P = 0.60 × 5.0 + 0.40 × 3.0 = 4.2. Q = 0.90 × 7.0 + 0.10 × 3.0 = 6.6. DTS = Σ weight × spread duration × spread. P = 0.60 × 5.0 × 100 + 0.40 × 3.0 × 400 = 300 + 480 = 780. Q = 0.90 × 7.0 × 100 + 0.10 × 3.0 × 400 = 630 + 120 = 750.",
+ [["Spread durations of 4.2 and 6.6",1],["DTS of 780 for P",1],["DTS of 750 for Q",1]],true],
+["**B.** Calculate the loss on each portfolio if (i) all spreads widen by 20 bps and (ii) all spreads widen by 20% of their current level.",
+ "(i) Parallel widening of 20 bps: loss = spread duration × 0.20%. P = 4.2 × 0.20% = 0.84%; Q = 6.6 × 0.20% = 1.32%. (ii) Proportional widening of 20%: A-rated spreads widen by 20 bps and BB-rated spreads by 80 bps. P = 0.60 × 5.0 × 0.20% + 0.40 × 3.0 × 0.80% = 0.60% + 0.96% = 1.56%. Q = 0.90 × 7.0 × 0.20% + 0.10 × 3.0 × 0.80% = 1.26% + 0.24% = 1.50%. The same results come from DTS × 20%: 780 × 0.20 = 156 bps and 750 × 0.20 = 150 bps.",
+ [["Parallel case: 0.84% for P and 1.32% for Q",1],["Proportional case: 1.56% for P",1],["Proportional case: 1.50% for Q",1]],true],
+["**C.** Evaluate the colleague's statement, and state **one** limitation of DTS as a measure of credit risk.",
+ "The statement relies on spread duration, which measures the loss for an equal change in all spreads. In practice spreads tend to move in proportion to their level: a bond trading at 400 bps usually widens by about four times as many basis points as one trading at 100 bps. Portfolio P has much more in BB-rated bonds, so under proportional moves its loss is slightly larger than Q's (DTS of 780 against 750), although its spread duration is much lower. The two portfolios carry similar exposure to a general change in spreads, and the colleague's conclusion is wrong. Limitations of DTS (any one): it measures sensitivity to market-wide spread changes, not default or sudden jump risk of single issuers, so it says nothing about concentration; the proportional relationship is an empirical regularity that can fail, for example for distressed bonds, which trade on price and expected recovery, or for very low spreads; it ignores liquidity differences.",
+ [["Spreads tend to change in proportion to their level, so DTS is the better comparison",1],["Concludes the two portfolios have similar spread risk (P slightly higher), so the statement is wrong",1],["One valid limitation (default or issuer-specific risk, proportionality can fail, liquidity)",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR15",
+`The Northfield University endowment had assets of 2,000 million at the start of the quarter, invested at its policy weights.
+
+**Exhibit 1: Policy weights and values at the start of the quarter**
+
+| Asset class | Policy weight | Value (millions) |
+|---|---|---|
+| Public equity | 40% | 800 |
+| Fixed income | 20% | 400 |
+| Private equity | 25% | 500 |
+| Real estate | 15% | 300 |
+
+The investment policy statement allows public equity to range from 35% to 45% and limits illiquid assets (private equity plus real estate) to 45% of the endowment.
+
+During the quarter public equity markets fall by 30%. Fixed income is unchanged. The private equity and real estate managers have not yet issued new valuations, so both are still carried at their values from the start of the quarter.
+
+The chief investment officer, Dominic Farrow, CFA, decides to bring public equity exposure back to 35% of the endowment by buying equity index futures. The futures price is 4,000 and the contract multiplier is 250.`,
+[
+["**A.** Calculate the weights of public equity and of illiquid assets after the market fall, and state which policy limits are breached.",
+ "Public equity = 800 × 0.70 = 560. Total = 560 + 400 + 500 + 300 = 1,760 million. Public equity weight = 560/1,760 = 31.8%, below the 35% minimum. Illiquid assets = 800/1,760 = 45.5%, above the 45% limit. Both limits are breached, although the endowment has bought no illiquid assets.",
+ [["Total value of 1,760 million",1],["Public equity at 31.8%, below its minimum",1],["Illiquid assets at 45.5%, above the limit",1]],true],
+["**B.** Explain why the measured weight of illiquid assets is likely to overstate their true weight, and describe **two** problems the endowment faces even so.",
+ "This is the denominator effect: the endowment has shrunk because public equities fell, while private equity and real estate are still carried at old appraisal values. Private asset values are reported with a lag and smoothed; when the managers update them they will probably be marked down, so the true illiquid weight is likely below 45.5%. Problems that remain (any two): 1) The endowment cannot rebalance by selling illiquid assets, except at large discounts in the secondary market, so the whole adjustment falls on the liquid portfolio. 2) Spending and private equity capital calls must be paid from a smaller pool of liquid assets, and capital calls do not stop when markets fall while distributions from private funds usually slow. 3) Paying those needs by selling public equities after a 30% fall locks in losses and pushes the equity weight further below its range. 4) New private commitments may have to be reduced, which disturbs the long-run private asset program.",
+ [["Stale, smoothed private valuations and a smaller total inflate the illiquid weight",1],["First valid problem (cannot sell illiquid assets, so liquid assets bear the adjustment)",1],["Second valid problem (spending and capital calls from a smaller liquid pool, forced sales, reduced commitments)",1]]],
+["**C.** Calculate the number of equity index futures contracts Farrow must buy, and state **one** advantage and **one** risk of using futures for this purpose.",
+ "Target public equity exposure = 35% × 1,760 = 616 million. Exposure to add = 616 − 560 = 56 million. One contract controls 4,000 × 250 = 1,000,000, so Farrow buys 56 contracts. Advantage: the exposure is restored at once and at low cost, without selling other assets in a stressed market or disturbing the external managers. Risks (any one): futures require margin, and a further fall in equities brings margin calls that use up liquidity exactly when the endowment is short of it; unless fixed income exposure is reduced by the same amount, the futures add leverage to the endowment; the futures index may not match the endowment's equity benchmark (basis risk), and contracts must be rolled.",
+ [["Exposure to add of 56 million",1],["56 contracts",1],["One valid advantage (speed, low cost, no forced sales, managers undisturbed)",1],["One valid risk (margin calls, leverage, basis or roll risk)",1]],true]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -7702,7 +7915,10 @@ CFA_DATA.mockForms = {
    s2:["L3-ETH-02","L3-DR-06","L3-AA-01","L3-PC-CR05","L3-AA-CR02","L3-PMP-CR08","L3-DR-CR02","L3-PMP-04","L3-PMP-08","L3-PM-02","L3-PMP-CR01"]},
   {id:"L3-M3", name:"Mock 3",
    s1:["L3-PC-04","L3-AA-CR06","L3-PM-CR02","L3-PC-01","L3-PC-CR04","L3-PC-CR06","L3-DR-04","L3-AA-03","L3-DR-CR04","L3-AA-CR05","L3-PMP-10"],
-   s2:["L3-PMP-CR11","L3-PMP-11","L3-AA-05","L3-PMP-CR10","L3-ETH-06","L3-PMP-CR04","L3-PMP-03","L3-DR-01","L3-DR-CR03","L3-PM-05","L3-ETH-CR03"]}
+   s2:["L3-PMP-CR11","L3-PMP-11","L3-AA-05","L3-PMP-CR10","L3-ETH-06","L3-PMP-CR04","L3-PMP-03","L3-DR-01","L3-DR-CR03","L3-PM-05","L3-ETH-CR03"]},
+  {id:"L3-M4", name:"Mock 4",
+   s1:["L3-PMP-CR12","L3-PMP-CR13","L3-PMP-CR15","L3-PMP-CR14","L3-PM-04","L3-PMP-15","L3-PM-CR04","L3-PMP-12","L3-ETH-04","L3-AA-CR07","L3-PC-06"],
+   s2:["L3-DR-05","L3-AA-CR08","L3-PMP-13","L3-PC-09","L3-DR-CR05","L3-PMP-14","L3-AA-02","L3-PC-CR08","L3-PC-CR07","L3-AA-08","L3-ETH-CR04"]}
  ]
 };
 /* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
