@@ -330,6 +330,7 @@ button.erow .chev{color:var(--text-3)}
 .choice .radio{position:absolute;top:14px;right:14px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border-2);transition:border .12s}
 .choice.on .radio{border:5px solid var(--accent)}
 .rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px}
+.setup-aside .rules{grid-template-columns:1fr}
 .rule{display:flex;gap:12px;font-size:14px;color:var(--text-2)}
 .rule .ic{color:var(--text-3);margin-top:2px}
 .rule b{display:block;color:var(--text);font-weight:500}
@@ -381,7 +382,8 @@ button.erow .chev{color:var(--text-3)}
 .prose td + td,.prose th + th{border-left:1px solid var(--border)}
 .qblock{padding:0 0 32px}
 .qblock + .qblock{border-top:1px solid var(--border);padding-top:32px}
-.qhead{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:28px}
+.qhead{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:28px}
+.qhead .btn{flex:none}
 .qnum{font-size:13px;font-weight:500;color:var(--text-2);margin-right:2px}
 .stem{font-size:17px;font-weight:400;line-height:1.55;margin-bottom:16px}
 .opts{display:flex;flex-direction:column;gap:8px}
@@ -520,6 +522,8 @@ label.rub:hover{background:var(--surface-2)}
 .ck:active{transform:scale(.97)}
 .ck .ck2{font:400 13px/1 var(--font);color:var(--accent-text);white-space:nowrap;letter-spacing:-.02em}
 .ck .ck2:empty{display:none}
+.ck[data-ck="onoff"]{font-size:13px}
+.ck[data-ck="ce"] .ck2{font-size:12px}
 .ck.num{background:var(--surface);border-color:var(--border-2);font-size:17px}
 .ck.eq{grid-row:span 2;height:auto}
 .ck.k2nd{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
@@ -608,6 +612,11 @@ label.rub:hover{background:var(--surface-2)}
 .toast{position:fixed;left:50%;bottom:28px;z-index:200;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:12px 20px;border-radius:12px;font-size:14px;font-weight:500;box-shadow:var(--shadow-3);animation:toast .22s cubic-bezier(.2,.8,.2,1)}
 .toast.out{opacity:0;transition:opacity .25s}
 
+/* shown inside #app until the script at the end of the page has downloaded and drawn the first screen */
+.boot{display:flex;flex-direction:column;align-items:center;gap:8px;padding:96px 24px;text-align:center;color:var(--text-2);font-size:14px}
+.boot b{color:var(--text);font-weight:500;font-size:16px}
+.boot-spin{width:24px;height:24px;margin-bottom:8px;border-radius:50%;border:2px solid var(--border-2);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 /* motion */
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes focusring{from{outline-offset:6px}to{outline-offset:2px}}
@@ -632,6 +641,9 @@ label.rub:hover{background:var(--surface-2)}
   .seg button{height:36px}
   html .mtop .seg button{height:34px;padding:0 12px}
   select.select,.search,input.field{height:44px}
+  .strike{width:40px;height:40px;top:4px;right:4px}
+  .np-help{min-height:44px;align-items:center}
+  .pill--exam{min-height:40px}
 }
 @media (prefers-reduced-motion:reduce){
 *,*::before,*::after{animation:none!important;transition:none!important}}
@@ -701,6 +713,20 @@ label.rub:hover{background:var(--surface-2)}
   .tile{padding:12px}
   .tile-value{font-size:21px}
 }
+/* small phones (320 to 360px wide): the tab labels, the session bars and the calculator keys stay inside the screen */
+@media (max-width:360px){
+  .tab{font-size:11px}
+  .sess-in{padding:0 12px;gap:6px}
+  .sess-r{gap:6px}
+  .timer .ic{display:none}
+  .sess-foot-in{padding-left:12px;padding-right:12px;gap:8px}
+  .sess-foot .btn:not(.icon){padding:0 12px}
+  .seg button{padding:0 6px}
+  .ck{font-size:13px}
+  .ck .ck2{font-size:11px}
+  .fcard-act .btn{flex:1 1 100%}
+  .qhead .tag.warn{font-size:0;gap:0;padding:0 6px}
+}
 </style>
 </head>
 <body>
@@ -720,7 +746,7 @@ label.rub:hover{background:var(--surface-2)}
       <div class="seg" id="lvlTop" role="group" aria-label="CFA level"></div>
       <button class="btn ghost icon" id="themeTop" title="Change theme"></button>
     </header>
-    <main id="app"></main>
+    <main id="app"><div class="boot" role="status"><span class="boot-spin" aria-hidden="true"></span><b>Loading the question bank</b><span>About 400 KB. On a slow connection this takes a few seconds.</span></div></main>
   </div>
 </div>
 <nav class="tabbar" id="tabbar" aria-label="Main navigation"></nav>
