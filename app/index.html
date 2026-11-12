@@ -5924,6 +5924,151 @@ Rahimi also reviews a report on the emerging economy of Kestova, which has a fix
  ["signs of an improving external position.","unrelated to the stability of the exchange rate.","warning signs of a currency crisis."],
  2,"A rising ratio of broad money to reserves, an overvalued real exchange rate and falling reserves are among the typical warning signs seen before currency crises in countries with fixed exchange rates: the central bank has fewer reserves with which to defend an overvalued peg against a growing stock of money that could be converted. They point to a weakening, not an improving, external position."]
 ]);
+/* Level II, ninth batch (2026-11-12): four item sets toward Mock 5.
+   L2-FSA-12 (acquisition method: full and partial goodwill, non-controlling interest, goodwill impairment, variable interest entities),
+   L2-FSA-13 (integration of techniques: removing an associate from margins and turnover, cash flow quality, segment capital allocation),
+   L2-FSA-14 (banks: net interest margin, net stable funding ratio, provisions against charge-offs, CAMELS sensitivity),
+   L2-CI-08 (cost of capital: Grinold-Kroner equity risk premium, Fama-French, build-up for a private company, ESG risk).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-12",
+`Petra Vasilenko analyzes Dunmore Group, which reports under IFRS. At the start of the year Dunmore paid 480 million in cash for 80% of the shares of Tarn Components.
+
+**Exhibit 1: Tarn Components at the acquisition date (millions)**
+
+| Item | Amount |
+|---|---|
+| Fair value of identifiable net assets | 500 |
+| Fair value of the 20% non-controlling interest | 115 |
+
+Dunmore chose the full goodwill method. One year later, the carrying amount of the Tarn cash-generating unit, including goodwill, is 640 million. Its recoverable amount is 590 million, and the fair value of the unit as a whole is 600 million.
+
+Dunmore also provides most of the funding for Larch Leasing, an entity in which it holds 10% of the voting shares. Dunmore has guaranteed Larch's debt and will absorb most of Larch's expected losses.`,
+[
+["The goodwill Dunmore recognizes at the acquisition date is **closest** to:",
+ ["80 million","95 million","115 million"],
+ 1,"Full goodwill = consideration paid + fair value of the non-controlling interest − fair value of identifiable net assets = 480 + 115 − 500 = 95 million. 80 million is partial goodwill, 480 − 80% × 500, which IFRS also permits but Dunmore did not choose. 115 million is the fair value of the non-controlling interest, not goodwill.",true],
+["If Dunmore had used the partial goodwill method, the non-controlling interest reported at the acquisition date would have been **closest** to:",
+ ["100 million","115 million","119 million"],
+ 0,"Under the partial goodwill method the non-controlling interest is measured at its share of identifiable net assets: 20% × 500 = 100 million. 115 million is its fair value, used under the full goodwill method. 119 million takes 20% of net assets plus the full goodwill of 95.",true],
+["If Dunmore reported under US GAAP, the goodwill impairment loss for the Tarn unit at the end of the year would be **closest** to:",
+ ["40 million","50 million","95 million"],
+ 0,"Under US GAAP the loss is the amount by which the reporting unit's carrying amount exceeds its fair value, limited to the goodwill: 640 − 600 = 40 million. Under IFRS the comparison is with the recoverable amount, giving 640 − 590 = 50 million. 95 million would write off all of the goodwill, which neither standard requires here.",true],
+["Regarding Larch Leasing, Dunmore should **most likely**:",
+ ["report its 10% holding at fair value, because it has no significant influence.","use the equity method, because it provides most of Larch's funding.","consolidate Larch, because it bears most of Larch's risks and controls its activities in substance."],
+ 2,"Consolidation depends on control, not on the share of votes. An entity that absorbs most of another entity's expected losses and has guaranteed its debt is exposed to the variable returns and, in substance, directs it; under IFRS this is control, and under US GAAP Dunmore would be the primary beneficiary of a variable interest entity. Treating the holding as a small financial asset or as an associate would leave Larch's debt off Dunmore's balance sheet."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-13",
+`Jamal Okonjo evaluates Maris Holdings as a possible long-term investment. He wants to judge the company's own operations, separately from its 30% holding in an associate, Vento.
+
+**Exhibit 1: Maris Holdings, latest year (millions)**
+
+| Item | Amount |
+|---|---|
+| Revenue | 4,000 |
+| Operating income | 350 |
+| Net income (includes 60 of equity income from Vento) | 240 |
+| Total assets (include 400 of investment in Vento) | 3,000 |
+| Cash flow from operations | 300 |
+| Cash interest paid | 40 |
+| Cash taxes paid | 80 |
+
+**Exhibit 2: Segment data**
+
+| Segment | EBIT margin | Share of total assets | Share of capital expenditures |
+|---|---|---|---|
+| Industrial | 14% | 65% | 45% |
+| Consumer | 6% | 35% | 55% |`,
+[
+["Maris's net profit margin, excluding the equity income from Vento, is **closest** to:",
+ ["4.5%","6.0%","7.5%"],
+ 0,"Net income without the associate = 240 − 60 = 180, and 180/4,000 = 4.5%. 6.0% is the reported margin, which includes income that Maris's own revenue did not produce, and 7.5% adds the equity income a second time.",true],
+["Maris's total asset turnover, excluding the investment in Vento, is **closest** to:",
+ ["1.33","1.43","1.54"],
+ 2,"Assets used in Maris's own operations = 3,000 − 400 = 2,600, and 4,000/2,600 = 1.54. 1.33 uses total assets, which include an investment that generates none of the revenue. 1.43 uses assets of 2,800, removing only half of the investment.",true],
+["The ratio of operating cash flow before interest and taxes to operating income is **closest** to:",
+ ["0.86","1.20","1.25"],
+ 1,"Operating cash flow before interest and taxes = 300 + 40 + 80 = 420, and 420/350 = 1.20. A ratio above 1 suggests that operating income is well supported by cash. 0.86 compares cash flow from operations with operating income without adding back interest and taxes, and 1.25 compares it with net income.",true],
+["Based on Exhibit 2, Okonjo should be **most** concerned that Maris is:",
+ ["investing too little in the Consumer segment relative to its size.","directing a disproportionate share of capital spending to its less profitable segment.","earning a higher margin in the segment that holds most of its assets."],
+ 1,"The Consumer segment receives 55% of capital expenditures with only 35% of assets, a ratio of 1.57, while the Industrial segment's ratio is 45%/65% = 0.69. Consumer's EBIT margin is 6% against 14% for Industrial, so capital is flowing toward the lower-return business, which may reduce the company's overall returns. A higher margin in the larger segment is not a concern."]
+]);
+
+CFA_DATA.set(2,"Financial Statement Analysis","L2-FSA-14",
+`Emre Aydin, a bank analyst, reviews Callow Bank using the CAMELS approach.
+
+**Exhibit 1: Callow Bank, latest year (millions)**
+
+| Item | Amount |
+|---|---|
+| Average earning assets | 8,000 |
+| Interest income | 480 |
+| Interest expense | 280 |
+| Available stable funding | 5,400 |
+| Required stable funding | 5,000 |
+| Nonperforming loans | 150 |
+| Allowance for loan losses | 90 |
+| Provision for loan losses | 45 |
+| Net charge-offs | 60 |
+
+Aydin notes that Callow has invested a large share of its assets in long-dated fixed-rate government bonds, funded mostly by deposits that reprice within three months.`,
+[
+["Callow's net interest margin is **closest** to:",
+ ["2.5%","3.5%","6.0%"],
+ 0,"Net interest margin = (interest income − interest expense)/average earning assets = (480 − 280)/8,000 = 2.5%. 6.0% is the yield on earning assets before funding costs, and 3.5% is the interest expense as a share of earning assets.",true],
+["Callow's net stable funding ratio is **closest** to:",
+ ["92.6%","108.0%","135.0%"],
+ 1,"Net stable funding ratio = available stable funding/required stable funding = 5,400/5,000 = 108.0%, above the 100% minimum, so long-term assets are covered by stable funding. 92.6% inverts the ratio, and 135.0% compares available stable funding with only 4,000 of requirements.",true],
+["The ratio of Callow's provision for loan losses to its net charge-offs, and its **most likely** interpretation, are:",
+ ["0.60, which suggests that the allowance is conservative.","0.75, which suggests that provisions may be too low.","1.33, which suggests that provisions exceed the losses realized."],
+ 1,"Provision/net charge-offs = 45/60 = 0.75. When a bank provides less than it is writing off, its allowance shrinks relative to realized losses, which may mean earnings are being supported by under-provisioning; here the allowance also covers only 60% of nonperforming loans. 1.33 inverts the ratio, and 0.60 is the allowance as a share of nonperforming loans.",true],
+["Aydin's note about Callow's bond holdings and deposits relates **most** directly to which CAMELS component?",
+ ["Capital adequacy","Asset quality","Sensitivity to market risk"],
+ 2,"Long-dated fixed-rate assets funded by deposits that reprice quickly leave earnings and the value of equity exposed to a rise in interest rates, which is what the sensitivity to market risk component assesses. Government bonds carry little credit risk, so asset quality is not the issue, and capital adequacy concerns the amount of capital relative to risk-weighted assets."]
+]);
+
+CFA_DATA.set(2,"Corporate Finance","L2-CI-08",
+`Liang Wei estimates costs of equity at Hartwell Advisers.
+
+**Exhibit 1: Market data**
+
+| Item | Value |
+|---|---|
+| Expected dividend yield on the equity index | 2.0% |
+| Expected inflation | 2.5% |
+| Expected real growth in earnings | 2.0% |
+| Expected change in shares outstanding | −0.5% a year |
+| Expected change in the price-to-earnings ratio | 0.0% |
+| Yield on 10-year government bonds | 4.0% |
+
+For individual companies, Hartwell uses a risk-free rate of 4.0% and an equity market risk premium of 5.0%.
+
+**Exhibit 2: Sorrel plc (listed), Fama-French inputs**
+
+| Factor | Sorrel's beta | Factor risk premium |
+|---|---|---|
+| Market | 1.10 | 5.0% |
+| Size | 0.40 | 2.0% |
+| Value | −0.20 | 3.0% |
+
+Wei also values Tavistock Tools, a small private company, with a build-up approach: a size premium of 3.0%, an industry risk premium of 1.0% and a specific-company premium of 2.0%.
+
+A colleague remarks that Tavistock's main factory is in a region where new emission limits may force its closure within ten years.`,
+[
+["Using the Grinold-Kroner model and Exhibit 1, the equity risk premium is **closest** to:",
+ ["2.0%","3.0%","7.0%"],
+ 1,"Expected equity return = dividend yield − change in shares + inflation + real earnings growth + change in P/E = 2.0% + 0.5% + 2.5% + 2.0% + 0.0% = 7.0%. Subtracting the 4.0% bond yield gives a premium of 3.0%. A falling share count (net buybacks) adds to the return, so 2.0% results from subtracting it; 7.0% is the expected return, not the premium.",true],
+["Using the Fama-French model, Sorrel's required return on equity is **closest** to:",
+ ["9.7%","10.3%","10.9%"],
+ 0,"Required return = 4.0% + 1.10 × 5.0% + 0.40 × 2.0% + (−0.20) × 3.0% = 4.0% + 5.5% + 0.8% − 0.6% = 9.7%. 10.9% adds the value term instead of subtracting it, and 10.3% leaves the value factor out.",true],
+["Using the build-up approach, Tavistock's required return on equity is **closest** to:",
+ ["12.0%","13.0%","15.0%"],
+ 2,"Required return = risk-free rate + equity risk premium + size premium + industry premium + specific-company premium = 4.0% + 5.0% + 3.0% + 1.0% + 2.0% = 15.0%. No beta is applied in the build-up approach. 13.0% leaves out the specific-company premium, and 12.0% leaves out the size premium.",true],
+["The risk the colleague describes is **best** described as:",
+ ["a stranded asset risk that should be reflected in Tavistock's valuation.","a diversifiable risk that has no place in the valuation of a private company.","a governance risk arising from Tavistock's ownership structure."],
+ 0,"An asset that may have to be retired early because of environmental regulation is a potential stranded asset. It is a material environmental risk for this company and should be reflected in the valuation, through lower forecast cash flows, a shorter asset life or a higher specific-company premium. Owners of a private company are often undiversified, so company-specific risk matters, and the issue concerns regulation, not ownership."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
