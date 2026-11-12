@@ -2786,6 +2786,51 @@ CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
  ["the long only.","the short only.","both parties equally."],
  0,"A forward with positive value to the long is an asset of the long and a liability of the short: the short owes the value. Only the party that is owed money can lose from a default, so the long bears the credit risk now. If the value later turns negative for the long, the exposure passes to the short; it is not shared equally at any one time."]
 ],{from:151,diff:"exam"});
+/* Batch for Mock 5 (2026-11-12): standard questions from id 181, exam-level from 201 */
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["A company with floating-rate debt enters a swap to pay a fixed rate and receive the floating rate, so that its future interest payments are known. For hedge accounting, this is **best** described as:",
+ ["a fair value hedge.","a net investment hedge.","a cash flow hedge."],
+ 2,"A cash flow hedge reduces the variability of future cash flows, here the floating interest payments. A fair value hedge offsets changes in the value of an existing asset or liability, for example swapping fixed-rate debt to floating, and a net investment hedge covers the currency risk of a foreign subsidiary."],
+["In a futures market, open interest is the:",
+ ["number of contracts traded during the day.","number of contracts outstanding at a point in time.","total margin posted by all traders."],
+ 1,"Open interest counts the contracts that have been entered and not yet closed out or settled. Each contract has one long and one short, and it is counted once. The number traded in a day is trading volume, which can be large while open interest hardly changes if traders open and close positions within the day."],
+["An investor buys a put option with an exercise price of 50 for a premium of 4. If the underlying is at 42 at expiration, the investor's profit is **closest** to:",
+ ["−4","4","8"],
+ 1,"Payoff = 50 − 42 = 8, and profit = payoff − premium = 8 − 4 = 4. 8 is the payoff before the premium, and −4 would be the result if the option expired out of the money.",true],
+["All else equal, a rise in the dividend expected to be paid on a stock during the life of an option will **most likely**:",
+ ["lower the value of a call and raise the value of a put.","raise the value of a call and lower the value of a put.","raise the value of both a call and a put."],
+ 0,"The share price falls when a dividend is paid, and option holders do not receive it. A larger dividend therefore lowers the expected price at expiration, which reduces the value of a call and increases the value of a put."],
+["At the initiation of a forward contract that is priced with no arbitrage, the value of the contract to the long is:",
+ ["equal to the forward price.","equal to the spot price of the underlying.","zero."],
+ 2,"The forward price is set so that neither party has to pay the other to enter the contract, so the value at initiation is zero. The value changes afterwards as the price of the underlying moves. The forward price is the price agreed for the future exchange, which is different from the value of the contract."],
+["An asset manager holds fixed-rate bonds and expects interest rates to rise. To make the portfolio's income behave like that of floating-rate notes, the manager would **most likely** enter a swap to:",
+ ["pay fixed and receive floating.","pay floating and receive fixed.","pay fixed and receive fixed in another currency."],
+ 0,"Paying the fixed rate offsets the fixed coupons received from the bonds, and receiving the floating rate leaves the manager with income that rises with market rates. Receiving fixed would add to the fixed-rate exposure, and a fixed-for-fixed currency swap changes the currency of the cash flows, not their sensitivity to interest rates."],
+["An investor holds an asset and sells a forward contract on it at the no-arbitrage forward price. Ignoring counterparty risk, the combined position should earn:",
+ ["the expected return on the asset.","the risk-free rate.","zero."],
+ 1,"Owning the asset and having agreed its sale price removes all price risk, so the position is equivalent to a risk-free investment and must earn the risk-free rate; otherwise an arbitrage would exist. This is the reasoning that produces the forward price in the first place."],
+["A covered call (long stock, short call) has a payoff profile **most** similar to that of:",
+ ["a long put.","a long call.","a short put."],
+ 2,"A covered call has limited upside, because the stock is called away above the exercise price, and it keeps the downside of the stock, cushioned by the premium. That is the shape of a short put (combined with lending the present value of the exercise price), as put–call parity shows: stock − call = bond − put."]
+],{from:181});
+
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["On a semiannual settlement date of an interest rate swap with a notional amount of 20 million, the fixed rate is 3.5% and the floating rate for the period is 4.1%, both annualized. The net payment received by the fixed-rate payer is **closest** to:",
+ ["60,000","120,000","410,000"],
+ 0,"Only the difference is exchanged: 20,000,000 × (4.1% − 3.5%) × 6/12 = 60,000, paid by the floating-rate payer to the fixed-rate payer because the floating rate is higher. 120,000 forgets the half-year, and 410,000 is the gross floating payment.",true],
+["Compared with an otherwise identical European put, an American put on a stock that pays no dividends is **most likely** worth:",
+ ["less, because early exercise forfeits time value.","the same, because early exercise is never optimal.","more, because early exercise can be optimal when the put is deep in the money."],
+ 2,"When a put is deep in the money, exercising now and earning interest on the exercise price can be worth more than waiting, since the payoff can grow no further than the exercise price. The right to exercise early therefore has value for a put, even without dividends. For a call on a stock with no dividends early exercise is never optimal, and the American and European calls are worth the same."],
+["As a futures contract approaches its expiration date, the futures price will **most likely**:",
+ ["converge to the spot price of the underlying.","move away from the spot price as carry costs accumulate.","stay above the spot price by the amount of the initial margin."],
+ 0,"At expiration a futures contract becomes a contract for immediate delivery, so its price must equal the spot price; any difference would allow an arbitrage. The gap between futures and spot (the basis) reflects the cost of carry for the remaining time and shrinks to zero. Margin is collateral and has no effect on the price."],
+["A stock trades at 40.00. One-year European options with an exercise price of 40 trade at 3.00 for the call and 2.50 for the put. The one-year risk-free rate is 5%. An arbitrageur would **most likely**:",
+ ["buy the put and the stock, and sell the call and borrow.","buy the call and lend, and sell the put and short the stock.","do nothing, because put–call parity holds."],
+ 1,"The present value of the exercise price is 40/1.05 = 38.10. Fiduciary call = 3.00 + 38.10 = 41.10; protective put = 2.50 + 40.00 = 42.50. The two should be equal, so the protective put is overpriced by 1.40: sell it (sell the put and short the stock) and buy the fiduciary call (buy the call and lend 38.10), locking in 1.40 today with offsetting payoffs at expiration.",true],
+["A trader buys a futures contract on an underlying worth 200,000 and posts an initial margin of 10,000. If the futures price rises by 3%, the return on the margin posted is **closest** to:",
+ ["3%","30%","60%"],
+ 2,"Gain = 3% × 200,000 = 6,000, and 6,000/10,000 = 60%. The position controls twenty times the money posted, so gains and losses on the margin are twenty times the price change. 3% is the return on the underlying, and 30% halves the leverage.",true]
+],{from:201,diff:"exam"});
 CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
 ["Compared with a forward contract, a futures contract is **most likely**:",
  ["customized and traded over the counter.","standardized, exchange-traded, and marked to market daily.","free of counterparty risk because of a clearinghouse but not marked to market."],
@@ -3232,6 +3277,66 @@ CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
  ["1.4%","2.4%","4.0%"],
  0,"The market model predicts 1.0% + 1.2 × 8.0% = 10.6%. The company-specific (residual) return is the actual return minus this: 12.0% − 10.6% = 1.4%. 2.4% leaves out the intercept, and 4.0% simply compares the stock's return with the market's.",true]
 ],{from:161,diff:"exam"});
+/* Batch for Mock 5 (2026-11-12): standard questions from id 181, exam-level from 201 */
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["Compared with a life insurer, a property and casualty insurer **most likely** has:",
+ ["a longer investment horizon and lower liquidity needs.","a shorter investment horizon and higher liquidity needs.","the same horizon, with no need for liquidity."],
+ 1,"Property and casualty claims are less predictable in timing and amount and are paid over shorter periods than life insurance benefits, so these insurers keep shorter-term and more liquid portfolios. Life insurers have long, fairly predictable liabilities and can invest for longer horizons."],
+["Shares of a closed-end fund **most likely**:",
+ ["are redeemed by the fund at net asset value each day.","are created and redeemed in kind by authorized participants.","trade on an exchange at a price that can differ from net asset value."],
+ 2,"A closed-end fund issues a fixed number of shares, which investors buy and sell on an exchange; the price is set by supply and demand and can be at a premium or a discount to net asset value. Daily redemption at net asset value describes an open-end fund, and in-kind creation and redemption by authorized participants describes an ETF."],
+["An investment policy statement says: 'The portfolio should not lose more than 8% of its value in any twelve-month period.' This is **best** described as:",
+ ["an absolute risk objective.","a relative risk objective.","a liquidity constraint."],
+ 0,"An absolute risk objective is stated without reference to a benchmark, as a maximum loss or a maximum volatility. A relative risk objective limits risk compared with a benchmark, for example a tracking error of no more than 2%. A liquidity constraint concerns the need for cash, not the tolerance for losses."],
+["A portfolio is invested half in an asset with a standard deviation of 10% and half in an asset with a standard deviation of 20%. If the correlation between the two assets is +1, the portfolio's standard deviation is **closest** to:",
+ ["11.2%","15.0%","22.4%"],
+ 1,"With perfect positive correlation, portfolio risk is the weighted average of the two standard deviations: 0.5 × 10% + 0.5 × 20% = 15.0%; there is no diversification benefit. 11.2% is the result with zero correlation, and 22.4% combines the standard deviations without applying the weights.",true],
+["Two investors face the same capital allocation line. The more risk-averse investor will **most likely** choose a portfolio with:",
+ ["a higher Sharpe ratio.","a larger share in the risk-free asset.","a larger share in the risky portfolio."],
+ 1,"Every portfolio on the same capital allocation line has the same Sharpe ratio, so the choice along the line depends only on risk aversion: the more risk-averse investor has steeper indifference curves and holds more of the risk-free asset and less of the risky portfolio."],
+["In a regression of a security's excess returns on the market's excess returns (the security characteristic line), the slope and the intercept are, respectively, the security's:",
+ ["alpha and beta.","total risk and systematic risk.","beta and alpha."],
+ 2,"The slope measures sensitivity to the market, which is beta, and the intercept is the average return not explained by the market, Jensen's alpha. Total risk and systematic risk are measured by the variance of returns and by beta, not by the regression's two coefficients."],
+["Two portfolios are ranked by their Sharpe ratios and then by their M² measures. The two rankings will **most likely** be:",
+ ["the same.","the reverse of each other.","unrelated."],
+ 0,"M² rescales each portfolio to the market's level of total risk and reports the result as a return, so it is a restatement of the Sharpe ratio in percentage terms and always ranks portfolios in the same order. Its advantage is that the size of the difference is easier to interpret."],
+["A client accepts a fund described as having 'a 90% chance of meeting its target' but rejects the same fund when it is described as having 'a 10% chance of falling short.' This is an example of:",
+ ["anchoring bias.","hindsight bias.","framing bias."],
+ 2,"Framing bias is responding differently to the same information depending on how it is presented, here as a gain or as a loss. Anchoring is relying too heavily on an initial figure, and hindsight bias is believing after an event that it was predictable."],
+["After a sharp fall in share prices, an investor says: 'It was obvious the market was too high; I knew this would happen.' She made no change to her portfolio before the fall. This is **best** described as:",
+ ["hindsight bias.","regret aversion.","self-control bias."],
+ 0,"Hindsight bias is seeing past events as having been predictable, which leads people to overestimate their ability to forecast. Regret aversion is avoiding decisions for fear they will turn out badly, and self-control bias is failing to act in one's long-term interest, such as saving too little."],
+["Allocating a firm's total acceptable risk among its business units or portfolio managers is **best** described as:",
+ ["risk transfer.","risk governance.","risk budgeting."],
+ 2,"Risk budgeting divides the total risk the organization is willing to take among units, strategies or managers, and then monitors each against its share. Risk governance is the top-level oversight that sets risk tolerance, and risk transfer passes a risk to another party, as with insurance."],
+["A share price touches the upper Bollinger band after a strong rise. A technical analyst following a contrarian approach would **most likely** regard the share as:",
+ ["oversold.","overbought.","fairly priced."],
+ 1,"Bollinger bands are drawn a set number of standard deviations above and below a moving average. A price at the upper band is high relative to its recent range, which a contrarian reads as overbought and a possible sell signal; a price at the lower band would be read as oversold."]
+],{from:181});
+
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["Asset A has a standard deviation of 10% and Asset B a standard deviation of 30%. The correlation between them is −1. The weight of Asset A in the portfolio that has zero risk is **closest** to:",
+ ["25%","50%","75%"],
+ 2,"With a correlation of −1, portfolio standard deviation = |w_A × 10% − (1 − w_A) × 30%|, which is zero when w_A = 30/(10 + 30) = 75%. The less volatile asset needs the larger weight. 25% is the weight of Asset B, and 50% would leave a standard deviation of 10%.",true],
+["The risk-free rate is 3%, and the market portfolio has an expected return of 9% and a standard deviation of 16%. An investor wants a portfolio on the capital market line with a standard deviation of 12%. The weight in the market portfolio should be **closest** to:",
+ ["25%","75%","133%"],
+ 1,"On the capital market line, portfolio standard deviation = weight in the market × market standard deviation, so the weight = 12%/16% = 75%, with 25% in the risk-free asset; the expected return is 3% + 0.75 × 6% = 7.5%. 133% inverts the ratio, which would mean borrowing, and 25% is the risk-free weight.",true],
+["A pension fund holds most of its equity allocation in index funds and gives smaller amounts to a few active managers. This structure is **best** described as:",
+ ["a risk parity approach.","a core–satellite approach.","tactical asset allocation."],
+ 1,"In a core–satellite approach the core is invested passively at low cost, and smaller satellite portfolios are managed actively to add return. Risk parity sets weights so that each asset class contributes equally to risk, and tactical asset allocation is a short-term deviation from strategic weights."],
+["A fund manager attributes the years in which he beat his benchmark to his skill and the years in which he lagged it to bad luck. This is **best** described as:",
+ ["status quo bias.","illusion of control bias.","self-attribution bias."],
+ 2,"Self-attribution bias is taking credit for successes and blaming failures on outside factors; it feeds overconfidence. Status quo bias is a preference for leaving things as they are, and illusion of control is believing one can influence outcomes that are in fact beyond one's control."],
+["Duration for a bond, beta for a stock and delta for an option are all examples of:",
+ ["sensitivity measures of exposure to a risk factor.","measures of the maximum possible loss.","scenario-based measures of tail risk."],
+ 0,"Each measures how much the value of a position changes for a small change in a risk factor: interest rates, the market, or the price of the underlying. They do not state how large a loss could be; value at risk and scenario analysis address that question."],
+["An algorithm divides a large order into many small pieces and sends them to the market over the day. The **main** purpose of this type of algorithmic trading is to:",
+ ["reduce the market impact of the order.","forecast the direction of the share price.","avoid the need for a broker's license."],
+ 0,"Execution algorithms split large orders so that no single trade moves the price much, lowering market impact and total trading cost. They carry out a decision that has already been made; they do not forecast prices, and they have nothing to do with licensing."],
+["A technical analyst plots the ratio of a stock's price to the level of a market index. A rising line **most likely** indicates that the stock is:",
+ ["becoming more volatile than the index.","rising in absolute terms.","outperforming the index."],
+ 2,"Relative strength analysis compares one price with another: when the ratio of the stock to the index rises, the stock is doing better than the index, whether both are rising or both are falling. It says nothing about volatility, and the stock's own price can be falling while the ratio rises."]
+],{from:201,diff:"exam"});
 CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
 ["The main benefit of the portfolio perspective on investing is that it:",
  ["guarantees higher returns than holding the individual securities on their own.","reduces risk through diversification without necessarily reducing return.","eliminates all systematic risk once enough securities are held."],
