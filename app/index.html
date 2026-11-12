@@ -6259,6 +6259,204 @@ CFA_DATA.set(2,"Fixed Income","L2-FI-14",
  ["40,000","60,000","100,000"],
  1,"Each company is 1/125 of the index, so the defaulted name represents 12.5 million/125 = 100,000 of notional. As the protection seller, Cardale pays the loss: 100,000 × (1 − 0.40) = 60,000. The index continues with 124 names and a notional of 12.4 million. 40,000 is the recovered amount, and 100,000 ignores recovery.",true]
 ]);
+/* Level II, eleventh batch (2026-11-12): the last seven item sets needed for Mock 5.
+   L2-DER-07 (Black model for options on futures, swaptions, put delta hedge, implied volatility),
+   L2-DER-08 (equity index forward with a dividend yield, forward valuation, swap valuation from discount factors, dividends and forward prices),
+   L2-ALT-07 (real estate: cost approach, sales comparison approach, income approach, repeat-sales indexes),
+   L2-ALT-08 (commodities: basis, calendar spread and roll, commodity swaps, seasonality and storage),
+   L2-PM-13 (trading costs and electronic markets: effective spread, VWAP cost, spoofing, latency),
+   L2-PM-14 (ETFs: creation arbitrage, leveraged ETF over two days, exchange-traded notes, tax efficiency),
+   L2-PM-15 (simulation: maximum drawdown, conditional VaR, historical versus Monte Carlo simulation, risk parity weights).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Derivatives and Risk Management","L2-DER-07",
+`Oskar Lindqvist prices options at Halvard Securities.
+
+**Option 1.** A European call option on a bond futures contract. The futures price is 102.00 and the exercise price is 100.00. From the Black model, N(d1) = 0.60 and N(d2) = 0.54. The discount factor to the option's expiration is 0.98.
+
+**Option 2.** A client expects to borrow at a fixed rate for five years, starting in one year, and is worried that swap rates will rise before then.
+
+**Option 3.** Halvard holds 1,000 European put options on Norden shares, each on one share. For these options, N(d1) = 0.60.
+
+**Option 4.** A one-year call option on Norden trades at a price that implies a volatility of 34%. Norden's historical volatility, and the volatility Lindqvist expects over the next year, is 25%.`,
+[
+["Using the Black model, the value of Option 1 is **closest** to:",
+ ["1.96","7.06","7.20"],
+ 1,"Black model: call = discount factor × [F × N(d1) − X × N(d2)] = 0.98 × (102.00 × 0.60 − 100.00 × 0.54) = 0.98 × 7.20 = 7.06. 7.20 forgets to discount, and 1.96 is the discounted difference between the futures price and the exercise price.",true],
+["The instrument that **best** meets the needs of the client in Option 2 is a long position in a:",
+ ["receiver swaption.","payer swaption.","receive-fixed forward swap."],
+ 1,"A payer swaption gives the right to enter a swap paying the fixed rate set today. If swap rates rise, the client exercises and locks in the lower rate; if they fall, the client lets it expire and borrows at the lower market rate. A receiver swaption gains when rates fall, and a receive-fixed forward swap would lose if rates rise and would also remove the benefit of a fall."],
+["To delta hedge the position in Option 3, Halvard should:",
+ ["buy 400 Norden shares.","sell 400 Norden shares.","buy 600 Norden shares."],
+ 0,"Put delta = N(d1) − 1 = 0.60 − 1 = −0.40. A long position in 1,000 puts has a delta of −400 shares, so the hedge is to buy 400 shares. Selling shares would add to the negative delta, and 600 uses the call delta.",true],
+["Based on the information about Option 4, Lindqvist would **most likely** conclude that the call is:",
+ ["underpriced, because implied volatility is above expected volatility.","fairly priced, because implied volatility cannot be compared with historical volatility.","overpriced, and he could sell it and delta hedge."],
+ 2,"Implied volatility is the market's price of the option expressed as a volatility. If it is above the volatility the analyst expects, the option is expensive relative to his view: he would sell it and delta hedge to isolate the volatility exposure. A higher implied volatility means a higher option price, not a lower one, and comparing the two measures is exactly how volatility is traded."]
+]);
+
+CFA_DATA.set(2,"Derivatives and Risk Management","L2-DER-08",
+`Mireille Fabre works on the derivatives desk of Aubrac Asset Management. Rates are continuously compounded unless stated otherwise.
+
+**Equity index forward.** An equity index stands at 2,000. The risk-free rate is 5.0% and the index's dividend yield is 2.0%. Aubrac buys a six-month forward contract on the index at the no-arbitrage price.
+
+Three months later the index is at 2,100. The risk-free rate and the dividend yield are unchanged.
+
+**Interest rate swap.** Aubrac receives a fixed rate of 4.0%, paid annually, on a swap with a notional amount of 10 million and exactly two years remaining. The current discount factors for one and two years are 0.96 and 0.92.`,
+[
+["The no-arbitrage price of the six-month index forward at initiation is **closest** to:",
+ ["1,970.22","2,030.23","2,050.63"],
+ 1,"F = S × e^((r − q) × T) = 2,000 × e^((0.05 − 0.02) × 0.5) = 2,000 × e^0.015 = 2,030.23. 2,050.63 ignores the dividend yield, which lowers the forward price because the holder of a forward receives no dividends. 1,970.22 uses a negative exponent.",true],
+["Three months after initiation, the value of Aubrac's long forward position per unit of the index is **closest** to:",
+ ["69.77","84.52","94.99"],
+ 1,"Value = S × e^(−q × T) − F0 × e^(−r × T), with three months left: 2,100 × e^(−0.02 × 0.25) − 2,030.23 × e^(−0.05 × 0.25) = 2,089.53 − 2,005.01 = 84.52. 69.77 simply subtracts the forward price from the index level, and 94.99 does not adjust the index for the dividends the forward holder will not receive.",true],
+["The value of the swap to Aubrac is **closest** to:",
+ ["−48,000","−25,500","48,000"],
+ 0,"Value of the fixed leg per unit of notional = 0.04 × (0.96 + 0.92) + 0.92 = 0.9952; the floating leg is worth 1 on a reset date. Value to the fixed receiver = (0.9952 − 1) × 10,000,000 = −48,000. The swap has negative value because the current par swap rate, (1 − 0.92)/1.88 = 4.26%, is above the 4.0% Aubrac receives. 48,000 is the value to the fixed payer, and −25,500 is one year's rate difference without discounting two payments.",true],
+["If the expected dividend yield on the index rises and nothing else changes, the no-arbitrage forward price of the index will **most likely**:",
+ ["increase.","stay the same.","decrease."],
+ 2,"Dividends are a benefit of holding the index that the forward buyer does not receive. A higher dividend yield lowers the cost of carry (r − q), so the forward price falls. It would stay the same only if dividends had no effect on carry, and it rises with the interest rate, not with the dividend yield."]
+]);
+
+CFA_DATA.set(2,"Alternative Investments","L2-ALT-07",
+`Catalina Reyes values a suburban office building for Orrin Real Estate Partners.
+
+**Exhibit 1: Cost approach inputs (millions)**
+
+| Item | Amount |
+|---|---|
+| Replacement cost of the building, new | 12.0 |
+| Curable physical deterioration | 0.5 |
+| Functional obsolescence | 0.4 |
+| External obsolescence | 0.3 |
+| Market value of the land | 3.0 |
+
+The building has an effective age of 10 years and a total economic life of 50 years. Incurable physical deterioration is calculated on replacement cost after deducting curable deterioration.
+
+**Exhibit 2: Comparable sale**
+
+A similar building sold recently for 5,000 per square meter. Compared with the subject, the comparable is in a better location (an adjustment of −10%) and is older (an adjustment of +5%). Adjustments are added together. The subject has 2,000 square meters.
+
+The subject is fully let on long leases to several tenants. Reyes also wants an index that tracks changes in the prices of commercial property over time.`,
+[
+["Using the cost approach, the value of the property is **closest** to:",
+ ["8.5 million","11.5 million","13.8 million"],
+ 1,"Incurable physical deterioration = (12.0 − 0.5) × 10/50 = 2.3. Building value = 12.0 − 0.5 − 2.3 − 0.4 − 0.3 = 8.5, and adding the land gives 8.5 + 3.0 = 11.5 million. 8.5 million leaves out the land, and 13.8 million leaves out the incurable deterioration.",true],
+["Using the sales comparison approach, the value of the subject property is **closest** to:",
+ ["9.5 million","10.0 million","10.5 million"],
+ 0,"Adjustments are made to the comparable's price to make it like the subject: −10% + 5% = −5%, so 5,000 × 0.95 = 4,750 per square meter, and 4,750 × 2,000 = 9.5 million. 10.0 million makes no adjustment, and 10.5 million applies only the age adjustment.",true],
+["For this property, the valuation approach that deserves the **most** weight is the:",
+ ["income approach, because the property produces stable rental income.","cost approach, because the building is ten years old.","sales comparison approach, because one comparable sale is available."],
+ 0,"An investor buys a fully let office building for its income, so discounting or capitalizing that income is the most relevant method. The cost approach is most useful for new or unusual buildings with few comparables; depreciation estimates become less reliable as a building ages. The sales comparison approach needs several recent, similar transactions, not one."],
+["A repeat-sales index, which Reyes considers, is **best** described as an index based on:",
+ ["appraised values of a fixed sample of properties.","price changes of properties that have sold at least twice.","the share prices of listed real estate companies."],
+ 1,"A repeat-sales index measures price change from properties that were sold more than once, so that each change compares the same property with itself. It is a transaction-based index. Appraisal-based indexes use valuations and tend to lag and smooth price changes, and an index of listed property companies reflects share prices, including the effect of leverage and of the equity market."]
+]);
+
+CFA_DATA.set(2,"Alternative Investments","L2-ALT-08",
+`Tobias Engel analyzes copper for Meridian Commodity Advisers.
+
+**Exhibit 1: Copper prices (per unit)**
+
+| Contract | Price |
+|---|---|
+| Spot | 82.00 |
+| Futures expiring in one month (near) | 80.00 |
+| Futures expiring in four months (far) | 77.00 |
+
+A pension fund client wants exposure to a broad commodity index for three years but does not want to manage futures positions. Engel proposes an excess return swap on the index.
+
+Engel also compares commodity sectors and comments on natural gas, for which demand peaks in winter and storage capacity is limited and costly.`,
+[
+["Based on Exhibit 1, the basis for the near contract and the state of the copper market are, respectively:",
+ ["−2.00 and contango.","2.00 and backwardation.","3.00 and backwardation."],
+ 1,"Basis = spot price − futures price = 82.00 − 80.00 = 2.00. A positive basis, with futures below spot, is backwardation. −2.00 reverses the subtraction, and 3.00 is the calendar spread between the two futures contracts, not the basis.",true],
+["If the futures curve keeps its present shape, an investor who holds a long position and rolls it from the near to the far contract will **most likely** earn a roll return that is:",
+ ["positive, because the far contract is cheaper than the near contract.","negative, because the far contract is cheaper than the near contract.","zero, because roll return depends only on changes in the spot price."],
+ 0,"The calendar spread is 80.00 − 77.00 = 3.00: the investor sells the expiring contract and buys the next one at a lower price, and as time passes that contract tends to rise toward the spot price. In backwardation the roll return for a long position is positive. It would be negative in contango, and roll return is separate from the change in the spot price."],
+["In the swap Engel proposes, the pension fund will **most likely**:",
+ ["take delivery of the physical commodities when the swap ends.","post no collateral and face no counterparty risk.","receive a payment when the index rises above an agreed level and pay when it falls below it."],
+ 2,"In an excess return swap, payments are based on the change in the index relative to a benchmark level: the party that is long receives when the index rises and pays when it falls, in exchange for a fee. This gives the exposure without rolling futures. Swaps are settled in cash, with no physical delivery, and as over-the-counter contracts they carry counterparty risk and usually require collateral."],
+["The natural gas market Engel describes is **most likely** characterized by:",
+ ["a futures curve that slopes upward smoothly at all times.","prices that show little seasonality, because gas is easy to transport.","futures prices that differ markedly by delivery month, reflecting seasonal demand."],
+ 2,"When demand is seasonal and storage is limited and expensive, supply cannot easily be moved from one season to another, so futures for winter delivery trade at a premium to those for other months and prices can spike when inventories are low. The curve therefore has a seasonal shape and is not smooth, and gas is costly, not easy, to transport and store."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-13",
+`Yara Haddad reviews trade execution at Stonebridge Investors.
+
+**Trade 1.** Stonebridge bought 10,000 shares of Calder plc at an average price of 20.07. When the first part of the order was filled at 20.06, the market was quoted at 20.00 bid and 20.08 ask. The volume-weighted average price (VWAP) of all trades in Calder during the period of the order was 20.03.
+
+**Observation 1.** In another stock, Haddad sees that a trader repeatedly placed large sell orders just above the best ask price, cancelled them within a second, and meanwhile bought shares at prices that had fallen.
+
+**Observation 2.** A broker offers Stonebridge the option of placing its trading servers in the same data center as the exchange's matching engine.`,
+[
+["The effective spread for the first fill of Trade 1 is **closest** to:",
+ ["0.02","0.04","0.08"],
+ 1,"The midquote is (20.00 + 20.08)/2 = 20.04. Effective spread = 2 × (trade price − midquote) = 2 × (20.06 − 20.04) = 0.04. The trade was executed inside the quote, so the effective spread is below the quoted spread of 0.08; 0.02 is the difference from the midquote before doubling.",true],
+["Measured against VWAP, the transaction cost of Trade 1 is **closest** to:",
+ ["10 bps","15 bps","20 bps"],
+ 2,"VWAP transaction cost for a purchase = (average trade price − VWAP)/VWAP = (20.07 − 20.03)/20.03 = 0.20%, or 20 bps (400 in money terms on 10,000 shares). 15 bps measures the cost against the midquote of 20.04, and 10 bps halves the result.",true],
+["The behavior in Observation 1 is **best** described as:",
+ ["front running.","spoofing.","wash trading."],
+ 1,"Spoofing is placing orders with no intention of executing them in order to give a false impression of supply or demand, here pushing the price down so that the trader can buy cheaply, and then cancelling them. Front running is trading ahead of a known customer order, and wash trading is trading with oneself to create the appearance of volume."],
+["The broker's offer in Observation 2 is intended **mainly** to reduce:",
+ ["latency.","market impact.","the bid–ask spread quoted by dealers."],
+ 0,"Placing servers next to the exchange's matching engine (co-location) shortens the time between an event and the arrival of the firm's orders, which is latency. Market impact depends on the size and aggressiveness of orders, and co-location does not change the spreads that other participants quote."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-14",
+`Stefan Draganov advises clients on exchange-traded products at Lowen Private Bank.
+
+**Fund A.** An equity ETF trades at 50.40 per share while the value of its creation basket is 50.00 per share. An authorized participant pays a creation fee equal to 0.10 per share.
+
+**Fund B.** A leveraged ETF aims to deliver twice the daily return of an index. The index rises 10% on the first day and falls 10% on the second day.
+
+**Product C.** A commodity-linked exchange-traded note (ETN) is issued by a bank.
+
+A client asks why ETFs usually distribute smaller taxable capital gains than comparable mutual funds.`,
+[
+["For Fund A, an authorized participant can earn an arbitrage profit per share of:",
+ ["0.30, by redeeming ETF shares and selling the basket.","0.40, by creating ETF shares and selling them.","0.30, by creating ETF shares and selling them."],
+ 2,"The ETF trades at a premium, so the authorized participant buys the basket for 50.00, delivers it to the fund in exchange for new ETF shares and sells those shares at 50.40. After the creation fee of 0.10 the profit is 0.30 per share, and the extra supply pushes the ETF price back toward the basket value. Redeeming is the trade for an ETF at a discount, and 0.40 ignores the fee.",true],
+["Over the two days, the return of Fund B is **closest** to:",
+ ["−4.0%","−2.0%","0.0%"],
+ 0,"Daily returns of the fund are +20% and −20%: 1.20 × 0.80 = 0.96, a loss of 4.0%. The index itself returns 1.10 × 0.90 − 1 = −1.0%, and twice that is −2.0%; the fund does worse because its leverage is reset every day, which hurts in a market that moves back and forth.",true],
+["Compared with a physically backed commodity ETF, Product C exposes investors to more:",
+ ["tracking error against the index.","credit risk of the issuer.","risk from the storage of the commodity."],
+ 1,"An ETN is an unsecured debt obligation of the issuing bank, which promises to pay the index return less fees: it tracks the index closely, but if the bank fails investors are unsecured creditors. A physically backed ETF owns the commodity, so it carries storage costs and risks but no issuer credit risk of that kind."],
+["The **best** answer to the client's question is that ETFs:",
+ ["can hand low-cost-basis securities to authorized participants through in-kind redemptions.","are exempt from capital gains tax in most countries.","must hold every security in the index and so never sell."],
+ 0,"When investors leave a mutual fund, it may have to sell securities and realize gains that are distributed to the remaining holders. An ETF meets redemptions in kind, delivering securities, usually those with the lowest cost basis, to authorized participants without a taxable sale. ETFs are not exempt from tax, and they do trade when the index changes."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-15",
+`Leila Farouk evaluates a proposed strategy for the Sandhurst Foundation.
+
+**Exhibit 1: Backtested portfolio value at the end of each year**
+
+| Year | 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|---|
+| Value | 100 | 112 | 95 | 104 | 90 | 108 |
+
+**Exhibit 2: Simulation.** Farouk runs 100 simulated one-year returns. The five worst outcomes are −12%, −10%, −9%, −8% and −7%.
+
+She compares two ways of generating scenarios: historical simulation, which draws from past returns, and Monte Carlo simulation, which draws from a distribution she specifies.
+
+Finally, she considers a risk parity benchmark for two asset classes with volatilities of 10% and 20%, with weights set in inverse proportion to volatility.`,
+[
+["The maximum drawdown of the backtested strategy is **closest** to:",
+ ["10.0%","15.2%","19.6%"],
+ 2,"Maximum drawdown is the largest fall from a peak to a later trough: from 112 at the end of Year 1 to 90 at the end of Year 4, (112 − 90)/112 = 19.6%. 15.2% is the fall from 112 to 95, which was not the lowest point reached before a new high, and 10.0% measures the low from the starting value.",true],
+["Based on Exhibit 2, the conditional VaR (expected shortfall) at the 5% level is **closest** to:",
+ ["7.0%","9.2%","12.0%"],
+ 1,"The 5% tail of 100 outcomes is the five worst. Conditional VaR is their average: (12 + 10 + 9 + 8 + 7)/5 = 9.2%. 7.0% is the 5% VaR, the loss at the edge of the tail, and 12.0% is the single worst outcome.",true],
+["Compared with Monte Carlo simulation, historical simulation **most likely**:",
+ ["requires no assumption about the distribution of returns but is limited to what happened in the past.","can generate outcomes more extreme than any observed in the sample period.","requires the analyst to estimate a correlation matrix and choose a distribution."],
+ 0,"Historical simulation resamples actual past returns, so it needs no distributional assumption and keeps the observed relationships between assets, but it cannot produce events that are not in the sample. Monte Carlo simulation requires the analyst to specify distributions and correlations, and in exchange it can generate outcomes outside past experience."],
+["In the risk parity benchmark, the weight of the asset class with 10% volatility is **closest** to:",
+ ["33.3%","50.0%","66.7%"],
+ 2,"Weights are proportional to 1/volatility: (1/0.10)/(1/0.10 + 1/0.20) = 10/15 = 66.7%. The less volatile asset receives the larger weight so that the two contribute similar amounts of risk. 33.3% is the weight of the more volatile asset, and 50.0% is an equal weighting.",true]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
@@ -9726,7 +9924,10 @@ CFA_DATA.mockForms = {
    s2:["L2-QM-06","L2-FI-08","L2-ETH-09","L2-ALT-03","L2-PM-09","L2-CI-02","L2-EQ-08","L2-FI-03","L2-ALT-01","L2-PM-01","L2-PM-08"]},
   {id:"L2-M4", name:"Mock 4",
    s1:["L2-ETH-11","L2-ETH-10","L2-PM-10","L2-QM-07","L2-EQ-11","L2-EQ-09","L2-FSA-11","L2-CI-06","L2-FI-11","L2-ETH-12","L2-FI-10"],
-   s2:["L2-PM-11","L2-PM-12","L2-FSA-09","L2-FSA-10","L2-ECON-06","L2-DER-05","L2-DER-06","L2-ALT-02","L2-ALT-06","L2-EQ-10","L2-FI-09"]}
+   s2:["L2-PM-11","L2-PM-12","L2-FSA-09","L2-FSA-10","L2-ECON-06","L2-DER-05","L2-DER-06","L2-ALT-02","L2-ALT-06","L2-EQ-10","L2-FI-09"]},
+  {id:"L2-M5", name:"Mock 5",
+   s1:["L2-FSA-14","L2-ETH-14","L2-EQ-14","L2-FI-14","L2-FSA-12","L2-EQ-12","L2-FI-13","L2-FI-12","L2-QM-08","L2-PM-14","L2-ETH-13"],
+   s2:["L2-FSA-13","L2-ALT-07","L2-CI-08","L2-EQ-13","L2-ETH-15","L2-PM-15","L2-ECON-07","L2-DER-07","L2-QM-09","L2-ECON-08","L2-PM-13"]}
  ],
  3: [
   {id:"L3-M1", name:"Mock 1",
