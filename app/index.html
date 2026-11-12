@@ -9265,8 +9265,8 @@ CFA_DATA.mockForms = {
 };
 /* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
    Covers what the CFA exam uses: chain/AOS arithmetic, memories, TVM with P/Y, C/Y and BGN, AMORT, cash flows
-   (NPV, IRR), DATA/STAT (1-V, LIN, Ln, EXP, PWR), ICONV, Δ%, FORMAT and RESET. BOND, DEPR, DATE, BRKEVN, PROFIT
-   and trigonometry are not built and say so on the display.
+   (NPV, IRR), DATA/STAT (1-V, LIN, Ln, EXP, PWR), ICONV, Δ%, BOND, DEPR (SL, SYD, DB, DBX), DATE, BRKEVN, PROFIT,
+   FORMAT and RESET. Dates are entered as mm.ddyy (years 1950–2049). Trigonometry is not built.
    Key ids: cpt enter up down onoff 2nd cf npv irr back n iy pv pmt fv pct sqrt sq inv1x div inv lp rp pow mul
             ln 7 8 9 sub sto 4 5 6 add rcl 1 2 3 eq ce 0 dot neg */
 const BACalc = (function(){
@@ -9295,7 +9295,10 @@ const BACalc = (function(){
   const fresh = () => ({
     dec:2, aos:false, mem:[0,0,0,0,0,0,0,0,0,0], ans:0,
     tvm:{N:0, IY:0, PV:0, PMT:0, FV:0, PY:1, CY:1, BGN:false}, amort:{P1:1, P2:1},
-    cf:{CF0:0, flows:[], I:0}, data:[], statMethod:0, iconv:{NOM:0, EFF:0, CY:1}, dpct:{OLD:0, NEW:0, PCT:0, PD:1}
+    cf:{CF0:0, flows:[], I:0}, data:[], statMethod:0, iconv:{NOM:0, EFF:0, CY:1}, dpct:{OLD:0, NEW:0, PCT:0, PD:1},
+    bond:{SDT:12.3190, CPN:0, RDT:12.3190, RV:100, D360:false, M:2, YLD:0, PRI:0},
+    depr:{method:0, DB:200, LIF:1, M01:1, CST:0, SAL:0, YR:1}, date:{DT1:12.3190, DT2:12.3190, DBD:0, D360:false},
+    brk:{FC:0, VC:0, P:0, PFT:0, Q:0}, profit:{CST:0, SEL:0, MAR:0}
   });
 
   /* ---------------- finance ---------------- */
@@ -9384,11 +9387,62 @@ const BACalc = (function(){
     return o;
   }
 
+  /* ---------------- dates, bonds, depreciation ---------------- */
+  const dim = (y, m) => new Date(Date.UTC(y, m, 0)).getUTCDate();
+  function parseDate(v){ // mm.ddyy, years 1950–2049
+    const m = Math.floor(v + 1e-9), frac = Math.round((v - m)*10000), d = Math.floor(frac/100), yy = frac % 100, y = yy >= 50 ? 1900+yy : 2000+yy;
+    if(!(v > 0) || m < 1 || m > 12 || d < 1 || d > dim(y, m)) throw new CalcError(4);
+    return {y, m, d};
+  }
+  const dateNum = o => o.m + (o.d*100 + o.y % 100)/10000;
+  const serial = o => Math.round(Date.UTC(o.y, o.m-1, o.d)/86400000);
+  function fromSerial(n){ const t = new Date(n*86400000), o = {y:t.getUTCFullYear(), m:t.getUTCMonth()+1, d:t.getUTCDate()}; if(o.y < 1950 || o.y > 2049) throw new CalcError(4); return o; }
+  function days(a, b, d360){ // actual days, or 30/360 as in the BA II Plus guidebook
+    if(!d360) return serial(b) - serial(a);
+    let d1 = a.d, d2 = b.d; if(d1 === 31) d1 = 30; if(d2 === 31 && d1 >= 30) d2 = 30;
+    return (b.y - a.y)*360 + (b.m - a.m)*30 + (d2 - d1);
+  }
+  function fmtDate(v){ try{ const o = parseDate(v); return String(o.m).padStart(2,'0')+'-'+String(o.d).padStart(2,'0')+'-'+o.y; }catch(e){ return '0'; } }
+  function addMonths(o, k){ const mm = o.y*12 + (o.m-1) + k, y = Math.floor(mm/12), m = mm - y*12 + 1; return {y, m, d: Math.min(o.d, dim(y, m))}; }
+  function bondSchedule(b){ // coupon dates are counted back from the redemption date
+    const s = parseDate(b.SDT), r = parseDate(b.RDT), step = 12/b.M;
+    if(serial(s) >= serial(r)) throw new CalcError(4);
+    let n = 0, next = r, prev = r;
+    while(serial(prev) > serial(s)){ n++; next = prev; prev = addMonths(r, -n*step); }
+    const E = b.D360 ? 360/b.M : days(prev, next, false), A = days(prev, s, b.D360);
+    return {n, E, A, DSC: E - A};
+  }
+  function bondPrice(b, yld, sch){ // clean price per 100 of par; yld in % a year
+    const {n, E, A, DSC} = sch || bondSchedule(b), c = b.CPN/b.M, y = yld/100/b.M;
+    if(n === 1){ const den = 1 + (DSC/E)*y; if(den <= 0) throw new CalcError(5); return (b.RV + c)/den - c*A/E; }
+    if(1 + y <= 0) throw new CalcError(5);
+    let p = b.RV/Math.pow(1+y, n-1+DSC/E);
+    for(let k=1;k<=n;k++) p += c/Math.pow(1+y, k-1+DSC/E);
+    return p - c*A/E;
+  }
+  function bondYield(b){ const sch = bondSchedule(b); if(b.PRI <= 0) throw new CalcError(4); return 100*solveRate(y => bondPrice(b, 100*y, sch) - b.PRI, b.CPN > 0 ? b.CPN/100 : 0.05, -0.99, 10); }
+  function bondAI(b){ const s = bondSchedule(b); return b.CPN/b.M*s.A/s.E; }
+  const DEPR_METHODS = ['SL','SYD','DB','DBX'];
+  function depreciate(d){ // depreciation for year YR; M01 is the starting month (1 = a full first year)
+    const m = DEPR_METHODS[d.method], L = d.LIF, base = d.CST - d.SAL, f1 = (13 - d.M01)/12, syd = L*(L+1)/2;
+    if(L <= 0 || d.M01 < 1 || d.M01 >= 13 || d.YR < 1 || d.YR !== Math.floor(d.YR) || d.SAL > d.CST) throw new CalcError(4);
+    let rbv = d.CST, dep = 0;
+    for(let k=1;k<=d.YR;k++){
+      const rdv = rbv - d.SAL, left = L - (k - 2 + f1); let v;
+      if(m==='SL') v = k===1 ? base/L*f1 : base/L;
+      else if(m==='SYD') v = k===1 ? f1*L*base/syd : (L + 2 - k - f1)*base/syd;
+      else { const db = (k===1 ? d.CST*f1 : rbv)*d.DB/(L*100);
+        if(m==='DB') v = db; else { const sl = k===1 ? base/L*f1 : (left > 0 ? rdv/left : rdv); v = Math.max(db, sl); } }
+      dep = Math.max(0, Math.min(v, rdv)); rbv -= dep;
+    }
+    return {DEP:chk(dep), RBV:chk(rbv), RDV:chk(rbv - d.SAL)};
+  }
+
   /* ---------------- the calculator ---------------- */
   function create(saved){
     const S = Object.assign(fresh(), saved||{});
     let x = 0, entry = null, second = false, inv = false, stoPending = null, cptPending = false;
-    let frames = [{vals:[], ops:[]}], err = null, ws = null, wsIdx = 0, label = '', flag = '', note = '', resetAsk = false, opJust = false, lastKeyOp = false;
+    let frames = [{vals:[], ops:[]}], err = null, ws = null, wsIdx = 0, label = '', flag = '', note = '', resetAsk = false, opJust = false, lastKeyOp = false, dateShow = false;
     const save = () => JSON.parse(JSON.stringify(S));
 
     /* entry */
@@ -9468,6 +9522,35 @@ const BACalc = (function(){
                 {l:'NEW', g:()=>p.NEW, s:v=>{ p.NEW=v; }, cpt:()=>{ p.NEW = chk(p.OLD*Math.pow(1+p.PCT/100, p.PD)); return p.NEW; }},
                 {l:'%CH', g:()=>p.PCT, s:v=>{ p.PCT=v; }, cpt:()=>{ if(p.OLD===0) throw new CalcError(1); p.PCT = chk(100*(Math.pow(p.NEW/p.OLD, 1/p.PD)-1)); return p.PCT; }},
                 {l:'#PD', g:()=>p.PD, s:v=>{ p.PD=v; }, cpt:()=>{ if(p.OLD===0 || p.PCT<=-100) throw new CalcError(5); p.PD = chk(Math.log(p.NEW/p.OLD)/Math.log(1+p.PCT/100)); return p.PD; }}]; }
+      if(ws==='date'){ const d=S.date;
+        const dv = (l,k,sign)=>({l, date:true, g:()=>d[k], s:v=>{ parseDate(v); d[k]=v; }, cpt:()=>{ if(d.D360) throw new CalcError(5);
+          const other = parseDate(k==='DT1' ? d.DT2 : d.DT1); d[k] = dateNum(fromSerial(serial(other) + sign*Math.round(d.DBD))); return d[k]; }});
+        return [dv('DT1','DT1',-1), dv('DT2','DT2',1),
+                {l:'DBD', g:()=>d.DBD, s:v=>{ d.DBD=v; }, cpt:()=>{ d.DBD = days(parseDate(d.DT1), parseDate(d.DT2), d.D360); return d.DBD; }},
+                {l:d.D360?'360':'ACT', g:null, set:()=>{ d.D360=!d.D360; }}]; }
+      if(ws==='bond'){ const b=S.bond;
+        const dv = (l,k)=>({l, date:true, g:()=>b[k], s:v=>{ parseDate(v); b[k]=v; }});
+        const pos = (l,k)=>({l, g:()=>b[k], s:v=>{ if(v<0) throw new CalcError(4); b[k]=v; }});
+        return [dv('SDT','SDT'), pos('CPN','CPN'), dv('RDT','RDT'), pos('RV','RV'),
+                {l:b.D360?'360':'ACT', g:null, set:()=>{ b.D360=!b.D360; }}, {l:b.M===2?'2/Y':'1/Y', g:null, set:()=>{ b.M = b.M===2 ? 1 : 2; }},
+                {l:'YLD', g:()=>b.YLD, s:v=>{ b.YLD=v; }, cpt:()=>{ b.YLD = chk(bondYield(b)); return b.YLD; }},
+                {l:'PRI', g:()=>b.PRI, s:v=>{ b.PRI=v; }, cpt:()=>{ b.PRI = chk(bondPrice(b, b.YLD)); return b.PRI; }},
+                {l:'AI', g:()=>chk(bondAI(b)), auto:true}]; }
+      if(ws==='depr'){ const d=S.depr, m=DEPR_METHODS[d.method], r=()=>depreciate(d), db = m==='DB' || m==='DBX';
+        const pos = (l,k)=>({l, g:()=>d[k], s:v=>{ if(v<0) throw new CalcError(4); d[k]=v; }});
+        return [Object.assign({l:m, set:()=>{ d.method=(d.method+1)%DEPR_METHODS.length; }}, db ? {g:()=>d.DB, s:v=>{ if(v<=0) throw new CalcError(4); d.DB=v; }} : {g:null}),
+                {l:'LIF', g:()=>d.LIF, s:v=>{ if(v<=0) throw new CalcError(4); d.LIF=v; }},
+                {l:'M01', g:()=>d.M01, s:v=>{ if(v<1 || v>=13) throw new CalcError(4); d.M01=v; }},
+                pos('CST','CST'), pos('SAL','SAL'),
+                {l:'YR', g:()=>d.YR, s:v=>{ if(v<1 || v!==Math.floor(v)) throw new CalcError(4); d.YR=v; }, cpt:()=>{ d.YR++; return d.YR; }},
+                {l:'DEP', g:()=>r().DEP, auto:true}, {l:'RBV', g:()=>r().RBV, auto:true}, {l:'RDV', g:()=>r().RDV, auto:true}]; }
+      if(ws==='brkevn'){ const b=S.brk; const div = (a,c)=>{ if(c===0) throw new CalcError(1); return a/c; };
+        const mk = (l,f)=>({l, g:()=>b[l], s:v=>{ b[l]=v; }, cpt:()=>{ b[l]=chk(f()); return b[l]; }});
+        return [mk('FC',()=>b.Q*(b.P-b.VC)-b.PFT), mk('VC',()=>b.P-div(b.FC+b.PFT,b.Q)), mk('P',()=>b.VC+div(b.FC+b.PFT,b.Q)),
+                mk('PFT',()=>b.Q*(b.P-b.VC)-b.FC), mk('Q',()=>div(b.FC+b.PFT,b.P-b.VC))]; }
+      if(ws==='profit'){ const p=S.profit; const div = (a,c)=>{ if(c===0) throw new CalcError(1); return a/c; };
+        const mk = (l,f)=>({l, g:()=>p[l], s:v=>{ p[l]=v; }, cpt:()=>{ p[l]=chk(f()); return p[l]; }});
+        return [mk('CST',()=>p.SEL*(1-p.MAR/100)), mk('SEL',()=>div(p.CST,1-p.MAR/100)), mk('MAR',()=>100*div(p.SEL-p.CST,p.SEL))]; }
       if(ws==='mem') return S.mem.map((m,k)=>({l:'M'+k, g:()=>S.mem[k], s:v=>{ S.mem[k]=v; }}));
       if(ws==='format') return [{l:'DEC', g:()=>S.dec, s:v=>{ if(v<0 || v>9 || v!==Math.floor(v)) throw new CalcError(2); S.dec=v; }},
                                 {l:S.aos?'AOS':'Chn', g:null, set:()=>{ S.aos=!S.aos; }}];
@@ -9476,7 +9559,7 @@ const BACalc = (function(){
     function showVar(){
       const list = sheet(); if(!list.length) return;
       wsIdx = Math.max(0, Math.min(wsIdx, list.length-1)); const v = list[wsIdx];
-      entry = null; label = v.l + (v.g ? '=' : ''); flag = v.auto ? '=' : '';
+      entry = null; label = v.l + (v.g ? '=' : ''); flag = v.auto ? '=' : ''; dateShow = !!v.date;
       try{ x = v.g ? (v.g()==null ? 0 : v.g()) : 0; }catch(e){ if(e instanceof CalcError){ x = 0; flag=''; } else throw e; }
     }
     function openSheet(name){ ws = name; wsIdx = 0; frames = [{vals:[], ops:[]}]; showVar(); }
@@ -9495,7 +9578,7 @@ const BACalc = (function(){
     }
 
     function press(key){
-      note = '';
+      note = ''; if(key!=='2nd') dateShow = false;
       if(err && key!=='ce' && key!=='onoff'){ return; }
       if(resetAsk){ resetAsk = false; if(key==='enter'){ Object.assign(S, fresh()); quit(); note = 'RST'; } else quit(); return; }
       if(key==='2nd'){ second = !second; return; }
@@ -9536,12 +9619,13 @@ const BACalc = (function(){
           case 'clrtvm': Object.assign(S.tvm, {N:0, IY:0, PV:0, PMT:0, FV:0}); if(ws==='tvm') quit(); note = 'CLR TVM'; return;
           case 'n': case 'iy': case 'pv': case 'pmt': case 'fv': tvmKey(k); return;
           case 'cpt':
-            if(ws && ws!=='tvm'){ const v = sheet()[wsIdx]; if(v && v.cpt){ x = v.cpt(); entry = null; flag = '*'; } return; }
+            if(ws && ws!=='tvm'){ const v = sheet()[wsIdx]; if(v && v.cpt){ x = v.cpt(); entry = null; flag = '*'; dateShow = !!v.date; } return; }
             cptPending = true; return;
           case 'cf': openSheet('cf'); return;
           case 'npv': openSheet('npv'); return;
           case 'irr': openSheet('irr'); return;
-          case 'py': case 'bgn': case 'amort': case 'data': case 'stat': case 'iconv': case 'dpct': case 'mem': case 'format': openSheet(k); return;
+          case 'py': case 'bgn': case 'amort': case 'data': case 'stat': case 'iconv': case 'dpct': case 'mem': case 'format':
+          case 'bond': case 'depr': case 'brkevn': case 'date': case 'profit': openSheet(k); return;
           case 'quit': quit(); return;
           case 'up': case 'down':
             if(!ws || ws==='tvm') return;
@@ -9549,7 +9633,7 @@ const BACalc = (function(){
             return;
           case 'enter':
             if(!ws || ws==='tvm'){ commit(); return; }
-            { const v = sheet()[wsIdx]; if(v && v.s){ v.s(commit()); flag = '='; label = v.l + '='; x = v.g(); entry = null; } }
+            { const v = sheet()[wsIdx]; if(v && v.s){ v.s(commit()); flag = '='; label = v.l + '='; x = v.g(); entry = null; dateShow = !!v.date; } }
             return;
           case 'set': if(ws){ const v = sheet()[wsIdx]; if(v && v.set){ v.set(); showVar(); } } return;
           case 'del': if(ws){ const v = sheet()[wsIdx]; if(v && v.del){ v.del(); showVar(); } } return;
@@ -9564,9 +9648,10 @@ const BACalc = (function(){
             else if(ws==='py'){ S.tvm.PY = 1; S.tvm.CY = 1; }
             else if(ws==='bgn'){ S.tvm.BGN = false; }
             else if(ws==='format'){ S.dec = 2; S.aos = false; }
+            else if(['bond','depr','date','profit'].includes(ws)){ S[ws] = fresh()[ws]; }
+            else if(ws==='brkevn'){ S.brk = fresh().brk; }
             if(ws){ wsIdx = 0; showVar(); } return;
           case 'reset': resetAsk = true; return;
-          case 'bond': case 'depr': case 'brkevn': case 'date': case 'profit': note = 'n/a'; return;
           default: return;
         }
       }catch(e){
@@ -9589,13 +9674,14 @@ const BACalc = (function(){
       else if(note === 'n/a') value = 'Not built';
       else if(note) value = note;
       else if(entry!=null){ const neg = entry.startsWith('-'); const body = neg ? entry.slice(1) : entry; const [i, d] = body.split('.'); value = (neg?'-':'') + Number(i||'0').toLocaleString('en-US') + (d!=null ? '.'+d : ''); }
+      else if(dateShow && entry==null) value = fmtDate(x);
       else if(ws && sheet()[wsIdx] && !sheet()[wsIdx].g) value = '';
       else value = fmt(x);
       return { label: err ? '' : label, value, second, inv, bgn: S.tvm.BGN, compute: cptPending, flag, aos: S.aos, err: err ? ERR[err] || '' : '', ws };
     }
     return { press, display, save, get x(){ return entry!=null ? cur() : x; } };
   }
-  return { create, SECOND, LABEL2, solveTVM, npvAt, cfList, stats };
+  return { create, SECOND, LABEL2, solveTVM, npvAt, cfList, stats, bondPrice, depreciate, days, parseDate };
 })();
 if(typeof module !== 'undefined') module.exports = BACalc;
 </script>
