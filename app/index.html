@@ -9064,6 +9064,234 @@ The chief investment officer, Dominic Farrow, CFA, decides to bring public equit
  "Target public equity exposure = 35% × 1,760 = 616 million. Exposure to add = 616 − 560 = 56 million. One contract controls 4,000 × 250 = 1,000,000, so Farrow buys 56 contracts. Advantage: the exposure is restored at once and at low cost, without selling other assets in a stressed market or disturbing the external managers. Risks (any one): futures require margin, and a further fall in equities brings margin calls that use up liquidity exactly when the endowment is short of it; unless fixed income exposure is reduced by the same amount, the futures add leverage to the endowment; the futures index may not match the endowment's equity benchmark (basis risk), and contracts must be rolled.",
  [["Exposure to add of 56 million",1],["56 contracts",1],["One valid advantage (speed, low cost, no forced sales, managers undisturbed)",1],["One valid risk (margin calls, leverage, basis or roll risk)",1]],true]
 ]);
+/* Level III, sixth batch (2026-11-12): core items for Mock 5.
+   Essays L3-AA-CR09 (rebalancing corridors), L3-AA-CR10 (fixed-income building blocks, horizon and duration,
+   emerging market warning signs), L3-PC-CR09 (private client: capital sufficiency, Monte Carlo, risk tolerance),
+   L3-PC-CR10 (private equity commitments and liquidity planning), L3-PM-CR05 (performance-based fees),
+   L3-DR-CR06 (bull call spread), L3-ETH-CR05 (Standards II(A), III(B), VI(B)).
+   Item sets L3-AA-10 (reverse optimization, Black-Litterman, resampling, illiquid assets),
+   L3-PC-10 (equity portfolios: effective number of stocks, engagement, dividend capture, passive voting).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR09",
+`The Calloway Foundation has a portfolio of 500 million and the following policy.
+
+**Exhibit 1: Policy weights, corridors and current values**
+
+| Asset class | Target weight | Corridor | Current value (millions) |
+|---|---|---|---|
+| Public equities | 60% | ±5% | 335 |
+| Government bonds | 30% | ±3% | 125 |
+| Private real estate | 10% | ±2% | 40 |
+
+The foundation rebalances all the way back to target whenever any asset class is outside its corridor.
+
+The investment committee is reviewing the corridors and notes three facts: (1) trading private real estate is slow and expensive; (2) the expected volatility of public equities has risen sharply; (3) the board has recently said it can tolerate larger deviations from policy.`,
+[
+["**A.** Determine which asset classes are outside their corridors, and calculate the trades needed to return the portfolio to its target weights.",
+ "Current weights: equities 335/500 = 67%, bonds 125/500 = 25%, real estate 40/500 = 8%. Equities are above the upper limit of 65%, so they breach. Bonds are below the lower limit of 27%, so they breach. Real estate is at its lower limit of 8% but not outside it. Because a breach has occurred, the whole portfolio goes back to target: targets are 300, 150 and 50 million, so sell 35 million of equities, buy 25 million of bonds and buy 10 million of real estate.",
+ [["Weights of 67%, 25% and 8%",1],["Equities and bonds are outside their corridors; real estate is not",2],["Sell 35 equities, buy 25 bonds, buy 10 real estate",2]],true],
+["**B.** For each of the three facts the committee notes, state whether it argues for a wider or a narrower corridor for the asset class concerned (or for the portfolio), and justify each answer.",
+ "(1) Wider corridor for private real estate: the higher the cost of trading and the lower the liquidity, the less often rebalancing is worth its cost. (2) Narrower corridor for equities: a more volatile asset class can drift far from target quickly, so the risk of a large deviation is higher and the corridor should be tighter. (3) Wider corridors overall: higher risk tolerance means deviations from the policy mix matter less to the board, so less rebalancing is needed.",
+ [["Real estate: wider, because transaction costs are high and liquidity is low",1],["Equities: narrower, because higher volatility makes large drifts more likely",1],["Risk tolerance: wider, because the board is less sensitive to deviations",1]]],
+["**C.** Explain how the committee's view of whether markets trend or revert to the mean should affect the width of the corridors, and describe **one** way the foundation could reduce the cost of rebalancing its real estate allocation.",
+ "If the committee believes markets trend (momentum), wider corridors are better: rebalancing sells winners that are likely to keep rising. If it believes markets revert to the mean, narrower corridors are better: rebalancing sells what has become expensive and buys what has become cheap, which adds return. To reduce costs in real estate, the foundation could (any one): rebalance only to the edge of the corridor instead of to target; direct new contributions and income to the underweight class instead of selling; use liquid proxies such as listed real estate securities or derivatives to adjust exposure; or treat real estate with a wider corridor and rebalance the liquid classes around it.",
+ [["Trending markets favor wider corridors; mean-reverting markets favor narrower ones, with the reason",2],["One valid way to reduce the cost of rebalancing the illiquid class",1]]]
+]);
+
+CFA_DATA.cr(3,"Asset Allocation","L3-AA-CR10",
+`Ilse Brandt sets capital market expectations for fixed income at Norhaven Insurance.
+
+**Exhibit 1: Building blocks**
+
+| Component | Value |
+|---|---|
+| Real short-term risk-free rate | 0.8% |
+| Expected inflation | 2.0% |
+| Term premium, 10-year maturity | 1.1% |
+| Credit premium, A-rated corporate bonds | 0.9% |
+| Liquidity premium, privately placed bonds | 0.3% |
+
+Norhaven also holds a portfolio of government bonds with a yield to maturity of 4.6% and a Macaulay duration of 7 years. The portfolio backs a liability due in 4 years. Brandt expects yields to rise by one percentage point across the curve within the next few months and then to stay there.
+
+**Exhibit 2: Indicators for the Republic of Tavana (an emerging market issuer)**
+
+| Indicator | Value |
+|---|---|
+| Fiscal deficit / GDP | 6% |
+| Government debt / GDP | 85% |
+| Current account deficit / GDP | 5% |
+| Foreign exchange reserves / short-term external debt | 80% |
+| Real GDP growth | 5% |`,
+[
+["**A.** Using the building block approach, calculate the expected return on (i) a 10-year government bond and (ii) a 10-year, A-rated, privately placed corporate bond.",
+ "Nominal short-term risk-free rate = 0.8% + 2.0% = 2.8%. (i) Government bond = 2.8% + term premium 1.1% = 3.9%. (ii) Private A-rated corporate bond = 3.9% + credit premium 0.9% + liquidity premium 0.3% = 5.1%.",
+ [["Nominal short rate of 2.8%",1],["3.9% for the government bond",1],["5.1% for the private corporate bond",1]],true],
+["**B.** Explain whether the realized annual return on the government bond portfolio over the 4-year horizon is likely to be above or below its 4.6% yield to maturity if Brandt's forecast is correct.",
+ "Below 4.6%. A rise in yields has two opposite effects: an immediate capital loss, and higher income from reinvesting coupons at the new yields. The two offset each other when the investment horizon equals the Macaulay duration. Here the horizon (4 years) is shorter than the duration (7 years), so the capital loss is larger than what can be earned back from reinvestment within the horizon, and the realized return falls short of the initial yield. (Had the horizon been longer than 7 years, the reinvestment effect would dominate.)",
+ [["Realized return will be below 4.6%",1],["Capital loss versus reinvestment gain, offsetting when horizon equals Macaulay duration",2],["Horizon of 4 years is shorter than duration of 7, so the price effect dominates",1]]],
+["**C.** Identify **three** indicators in Exhibit 2 that are warning signs for an investor in Tavana's bonds, and explain why each is a concern.",
+ "Any three: (1) Fiscal deficit of 6% of GDP, above the level of about 4% often used as a warning sign: persistent deficits add to debt. (2) Debt of 85% of GDP, above the 70–80% range: servicing it becomes harder, especially if rates rise or growth slows. (3) Current account deficit of 5% of GDP, above about 4%: the country depends on foreign capital and is exposed if inflows stop. (4) Reserves equal to only 80% of short-term external debt, below 100%: the country could not repay debt falling due if it lost market access. Real GDP growth of 5% is not a warning sign; growth below about 4% would be.",
+ [["First warning sign with its explanation",1],["Second warning sign with its explanation",1],["Third warning sign with its explanation",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Construction","L3-PC-CR09",
+`Ana Ribeiro, aged 60, has just retired with an investment portfolio of 2,400,000 and no other significant assets or debts. She wants to spend 96,000 at the end of the first year, with spending rising by 2.5% a year for inflation, over a planning horizon of 30 years. Her adviser, Jonas Feld, CFA, expects the portfolio to return 5.5% a year.
+
+Feld also runs a Monte Carlo simulation of the same plan with a balanced portfolio. It shows that the portfolio lasts the full 30 years in 82% of the simulated paths. Ribeiro says she wants to be "at least 90% sure" that her money will last.
+
+When Feld asks about risk, Ribeiro says: "In 2020 I sold all my shares after they had fallen 15% and bought back in a year later. I would do the same again."`,
+[
+["**A.** Using a deterministic approach, calculate the present value of Ribeiro's planned spending and state whether her capital is sufficient.",
+ "The spending is a growing annuity: PV = C1/(r − g) × [1 − ((1 + g)/(1 + r))^n] = 96,000/(0.055 − 0.025) × [1 − (1.025/1.055)^30] = 3,200,000 × (1 − 0.4209) = 1,853,000 (approximately). This is below the portfolio of 2,400,000, a surplus of about 547,000, so on a deterministic basis her capital is sufficient.",
+ [["Growing annuity set up correctly",1],["Present value of about 1.85 million",2],["Capital is sufficient, with a surplus of about 0.55 million",1]],true],
+["**B.** Explain why the Monte Carlo result is less favorable than the deterministic one, and recommend **two** changes that would raise the probability of success toward Ribeiro's 90% target.",
+ "The deterministic calculation assumes the portfolio earns exactly 5.5% every year. Monte Carlo simulation lets returns vary, so it captures paths with poor returns, in particular poor returns early in retirement while withdrawals continue (sequence-of-returns risk), from which the portfolio may not recover. An 82% success rate means the plan fails in 18% of paths although the average outcome is comfortable. Changes (any two): reduce the planned spending, or make it flexible so that it is cut after bad years; work part time or delay full retirement so that withdrawals start later; buy a life annuity with part of the portfolio to cover basic spending and remove longevity risk; shorten the bequest or other goals; keep a cash reserve of one to two years of spending to avoid selling after falls.",
+ [["Deterministic approach ignores variability of returns; sequence risk",2],["First valid change",1],["Second valid change",1]]],
+["**C.** Assess Ribeiro's ability and willingness to take risk, and state which should guide the portfolio's risk level.",
+ "Ability is moderate: she has a surplus of about 23% of the portfolio over the present value of her spending and a long horizon, but she has no employment income to make up losses and depends on the portfolio for all her spending. Willingness is low: she sold after a 15% fall and says she would do so again, which shows loss aversion and a tendency to act on it at the worst time. When the two differ, the lower one should set the risk level, so the portfolio should be built to her low willingness; Feld should also educate her about the cost of selling after falls, because a portfolio she abandons in a downturn will not deliver its expected return.",
+ [["Ability: moderate, with a supporting reason",1],["Willingness: low, with the evidence",1],["The lower of the two (willingness) governs",1]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Construction","L3-PC-CR10",
+`The Aldersgate Endowment commits 100 million to a new private equity fund. Its staff model the cash flows with the following assumptions.
+
+**Exhibit 1: Assumptions**
+
+| Year | Rate of contribution (share of uncalled commitment) | Rate of distribution (share of grown net asset value) |
+|---|---|---|
+| 1 | 25% | 0% |
+| 2 | 33.33% | 10% |
+
+The net asset value (NAV) grows by 12% a year. Contributions and distributions occur at the end of each year: the distribution is taken from the NAV after that year's growth, and the contribution is then added.
+
+The endowment's target allocation to private equity is 15% of a 1 billion portfolio, and its current private equity NAV is 110 million. The chief investment officer proposes total commitments well above 150 million.`,
+[
+["**A.** Calculate the fund's NAV at the end of Year 1 and at the end of Year 2, and the uncalled commitment after Year 2.",
+ "Year 1: contribution = 25% × 100 = 25; there is no opening NAV to grow and no distribution, so NAV = 25. Uncalled = 75. Year 2: contribution = 33.33% × 75 = 25. Grown NAV = 25 × 1.12 = 28; distribution = 10% × 28 = 2.8. NAV = 28 − 2.8 + 25 = 50.2. Uncalled commitment = 75 − 25 = 50.",
+ [["Year 1 contribution of 25 and NAV of 25",1],["Year 2 contribution of 25 and distribution of 2.8",2],["Year 2 NAV of 50.2 and uncalled commitment of 50",1]],true],
+["**B.** Explain why an investor that wants to reach and keep a target allocation to private equity commits more than the target amount, and state **one** risk of doing so.",
+ "Commitments are drawn down over several years and never all at once, while older funds are returning capital through distributions; the invested amount (NAV) is therefore always well below total commitments. Part A shows it: two years after a commitment of 100, only 50.2 is invested. To hold 15% of the portfolio in private equity, the endowment must commit more than 150 million in total and keep committing to new funds each year. Risk (any one): if distributions slow or public markets fall, capital calls continue while the rest of the portfolio shrinks, so the allocation overshoots its target (the denominator effect) and the endowment may have to sell liquid assets at low prices, or sell fund interests at a discount, to meet calls.",
+ [["Capital is called gradually and distributions return capital, so NAV stays below commitments",2],["One valid risk of over-commitment",1]]],
+["**C.** Recommend how the endowment should hold the capital it has committed but that has not yet been called, and justify your recommendation.",
+ "It should be held in liquid assets that can be turned into cash at short notice with little risk of loss, for example a mix of cash, short-term government bonds and, for part of it, liquid public equity exposure (index funds or futures) as a proxy for the private equity it will become. Holding all of it in cash is safe but creates cash drag against the equity-like policy allocation; holding all of it in public equities keeps the exposure but risks having to sell after a fall, exactly when calls may arrive. A common solution is to keep the next 12–24 months of expected calls in cash or short-term bonds and equitize the rest.",
+ [["Liquid assets able to meet calls at short notice",1],["Trade-off between cash drag and the risk of forced selling",1],["A reasoned split, such as near-term calls in cash and the rest in public market proxies",1]]]
+]);
+
+CFA_DATA.cr(3,"Performance Measurement","L3-PM-CR05",
+`The Westmere Pension Fund is negotiating fees with Corbel Partners for a 500 million active equity mandate. Corbel proposes:
+
+- a base fee of 0.40% of assets a year;
+- a performance fee of 20% of the gross return in excess of the benchmark return;
+- a cap on the total fee of 1.50% of assets a year.
+
+There is no high-water mark and no clawback. Assume assets of 500 million throughout the year.`,
+[
+["**A.** Calculate the total fee in millions, and the fund's return net of fees, in each of three years: (i) gross return 12%, benchmark 8%; (ii) gross return 16%, benchmark 8%; (iii) gross return 5%, benchmark 8%.",
+ "(i) Excess return 4%; performance fee 20% × 4% = 0.80%; total 0.40% + 0.80% = 1.20%, below the cap. Fee = 1.20% × 500 = 6.0 million; net return = 12% − 1.20% = 10.80%. (ii) Excess return 8%; performance fee 1.60%; total 2.00%, capped at 1.50%. Fee = 7.5 million; net return = 14.50%. (iii) Excess return is negative, so only the base fee is paid: 0.40% × 500 = 2.0 million; net return = 4.60%.",
+ [["Year (i): 6.0 million and 10.80%",1],["Year (ii): cap applies, 7.5 million and 14.50%",2],["Year (iii): base fee only, 2.0 million and 4.60%",1]],true],
+["**B.** Explain how the proposed structure affects (i) the manager's incentive to take risk and (ii) the alignment of interests in a year that follows a year of large underperformance.",
+ "(i) The fee is asymmetric: Corbel shares in outperformance but gives nothing back for underperformance, which is like owning a call option on the excess return. An option is worth more when volatility is higher, so the structure can encourage more active risk than the fund wants. The cap works the other way once reached: above an excess return of 5.5% the manager earns nothing more and has a reason to lock in the result by reducing risk. (ii) Without a high-water mark, Corbel earns a performance fee in any year in which it beats the benchmark, even if the fund has not yet recovered what it lost relative to the benchmark the year before. The fund can therefore pay performance fees over a period in which the cumulative excess return is zero or negative.",
+ [["Asymmetric, option-like payoff encourages more active risk",2],["Cap removes the incentive beyond a 5.5% excess return",1],["No high-water mark: fees paid before earlier underperformance is recovered",1]]],
+["**C.** Recommend **two** changes to the fee structure that would better protect the fund, and justify each.",
+ "Any two: (1) a high-water mark, defined on cumulative excess return, so that a performance fee is paid only after earlier underperformance has been made up; (2) a clawback or deferral, with part of each year's performance fee held back and paid only if outperformance persists over, for example, three years; (3) measuring performance over a rolling multi-year period instead of one year, which reduces the reward for a single lucky year; (4) a symmetric (fulcrum) fee, in which the base fee is reduced when the manager underperforms; (5) tracking error or other risk limits in the mandate to stop the manager raising risk to increase the value of the option.",
+ [["First change with justification",2],["Second change with justification",2]]]
+]);
+
+CFA_DATA.cr(3,"Derivatives and Risk Management","L3-DR-CR06",
+`A client of Mateus Oliveira, CFA, expects the shares of Vantor plc, now trading at 80, to rise moderately over the next three months, to between 86 and 90. She wants to profit from this view with options, at a low cost.
+
+**Exhibit 1: Three-month call options on Vantor**
+
+| Exercise price | Premium | Delta | Vega (per 1% change in volatility) |
+|---|---|---|---|
+| 80 | 4.50 | 0.55 | 0.16 |
+| 90 | 1.20 | 0.20 | 0.11 |
+
+Oliveira compares buying the 80 call alone with a bull call spread: buying the 80 call and selling the 90 call.`,
+[
+["**A.** For the bull call spread, calculate the net cost, the maximum profit, the maximum loss and the breakeven share price at expiration, per share.",
+ "Net cost = 4.50 − 1.20 = 3.30. Maximum profit = difference in exercise prices − net cost = 10.00 − 3.30 = 6.70, earned if the share price is 90 or higher. Maximum loss = the net cost, 3.30, if the price is 80 or lower. Breakeven = 80 + 3.30 = 83.30.",
+ [["Net cost of 3.30",1],["Maximum profit of 6.70",1],["Maximum loss of 3.30",1],["Breakeven of 83.30",1]],true],
+["**B.** Calculate the profit per share at expiration from each of the two strategies if the share price is (i) 86 and (ii) 96, and explain which strategy better fits the client's view.",
+ "(i) At 86: spread = (86 − 80) − 3.30 = 2.70; long call = (86 − 80) − 4.50 = 1.50. (ii) At 96: spread = 10.00 − 3.30 = 6.70 (capped); long call = (96 − 80) − 4.50 = 11.50. The spread fits better: the client expects a moderate rise to 86–90, where the spread earns more than the call because the premium received on the 90 call lowers the cost and the breakeven (83.30 against 84.50). The spread gives up gains above 90, which the client does not expect, and it costs less, which she wants.",
+ [["Profits at 86: 2.70 and 1.50",1],["Profits at 96: 6.70 and 11.50",1],["Spread fits the moderate view: lower cost and breakeven, cap lies above the expected range",2]],true],
+["**C.** Using Exhibit 1, calculate the delta and the vega of the bull call spread, and explain what the vega implies if implied volatility falls by 2 percentage points soon after the trade.",
+ "Delta = 0.55 − 0.20 = 0.35. Vega = 0.16 − 0.11 = 0.05 per 1% of volatility. The spread is long volatility, but only slightly, because the short call offsets most of the long call's vega. If implied volatility falls by 2 points, the spread loses about 2 × 0.05 = 0.10 per share, against about 2 × 0.16 = 0.32 for the long call alone. The spread is therefore much less exposed to a fall in implied volatility, which is a further reason to prefer it when the view is about direction and not about volatility.",
+ [["Delta of 0.35",1],["Vega of 0.05",1],["Loss of about 0.10 against 0.32 for the call alone; spread is less exposed to volatility",1]],true]
+]);
+
+CFA_DATA.cr(3,"Ethical and Professional Standards","L3-ETH-CR05",
+`Nilufar Rashidova, CFA, is a portfolio manager at Kestrel Bridge Capital.
+
+**Situation 1.** Through an expert network, Rashidova speaks with a doctor who is running a clinical trial for Solvia Pharma, a listed company. The doctor tells her that the trial's results, which Solvia will announce in three weeks, are much worse than the market expects. Rashidova combines this with her own published-data analysis of Solvia's sales and sells the firm's entire position in Solvia the next day.
+
+**Situation 2.** Kestrel Bridge decides to buy shares of Tarn Logistics for all of its equity accounts. Rashidova first buys the shares for the firm's hedge fund, in which she and other employees have invested alongside outside clients and which pays a performance fee. Two days later, after the price has risen 3%, she buys for the firm's pension fund clients.
+
+The firm has no written policy on the use of expert networks or on the order in which accounts are traded.`,
+[
+["**A.** For Situation 1, determine whether Rashidova violated the Standards. Identify the Standard involved and justify your answer.",
+ "Yes: Standard II(A) Material Nonpublic Information. The trial result is material (it would clearly affect Solvia's price) and nonpublic (it will be announced only in three weeks), and it came from a person who owes a duty of confidentiality to the company. The mosaic theory does not protect her: it permits conclusions built from public information and non-material nonpublic information, but here a single piece of material nonpublic information drives the decision, and adding her own analysis of public data does not change its nature. She should not have traded or caused others to trade, and she should have reported the matter to compliance so that Solvia could be placed on a restricted list.",
+ [["Violation of Standard II(A)",1],["Information is both material and nonpublic",1],["Mosaic theory does not apply when material nonpublic information is part of the mosaic",1],["Correct action: do not trade, inform compliance",1]]],
+["**B.** For Situation 2, determine whether Rashidova violated the Standards. Identify **two** Standards involved and justify your answer.",
+ "Yes. Standard III(B) Fair Dealing: all clients for whom the investment is suitable must be treated fairly when investment action is taken; trading the hedge fund first gave it a better price and made the pension clients pay 3% more, partly because of the firm's own earlier buying. Standard VI(B) Priority of Transactions: the hedge fund contains the money of Rashidova and other employees, so an account in which she has a beneficial interest was traded ahead of clients. (Also acceptable: Standard III(A) Loyalty, Prudence, and Care, because the firm's interest in performance fees was put ahead of the pension clients.) The orders should have been combined in one block and allocated pro rata at the same average price.",
+ [["Violation identified",1],["Standard III(B) Fair Dealing with justification",1],["Standard VI(B) Priority of Transactions (or III(A)) with justification",1],["Correct practice: block trade and pro rata allocation at the average price",1]]],
+["**C.** Recommend **two** written procedures Kestrel Bridge should adopt to prevent a repeat of these situations.",
+ "Any two, at least one for each situation where possible: (1) an expert network policy: experts must confirm they are not bound by confidentiality duties to the companies discussed, employees of an issuer and people running its trials may not be consulted about that issuer, calls are logged and can be monitored by compliance, and any suspected inside information is reported at once; (2) a restricted or watch list and a requirement to stop trading when material nonpublic information may have been received; (3) a trade allocation policy: orders for the same security are aggregated, allocated before execution and filled pro rata at the average price, with compliance reviewing allocations by account type; (4) rules for accounts with employee money: they trade with or after client accounts, never before, and are subject to pre-clearance and reporting.",
+ [["First procedure, relevant and specific",2],["Second procedure, relevant and specific",2]]]
+]);
+
+CFA_DATA.set(3,"Asset Allocation","L3-AA-10",
+`Sunita Rao, CFA, reviews the asset allocation process of the Harcourt Pension Fund. The fund's consultant runs a mean-variance optimization using historical average returns, and the result places 58% of the fund in two asset classes.
+
+Rao considers three refinements.
+
+**Reverse optimization.** Starting from the weights of the global market portfolio, Rao derives the returns implied by those weights. She uses a risk-free rate of 2.5% and a global market risk premium of 4.0%. Emerging market equities have a beta of 1.3 relative to the global market portfolio.
+
+**Black-Litterman.** Rao would then adjust the implied returns for the fund's own views.
+
+**Resampling.** Alternatively, she would run the optimization many times with inputs drawn from a distribution around the estimates.
+
+The fund also plans a first allocation to private real estate, for which the only return data are quarterly appraisal-based index returns.`,
+[
+["The return on emerging market equities implied by reverse optimization is **closest** to:",
+ ["5.2%","7.7%","8.5%"],
+ 1,"Implied return = risk-free rate + beta × global market risk premium = 2.5% + 1.3 × 4.0% = 7.7%. 5.2% is the risk premium alone, without the risk-free rate, and 8.5% applies the beta to the sum of the risk-free rate and the premium.",true],
+["Compared with the consultant's optimization, the Black-Litterman approach **most likely** produces allocations that are:",
+ ["identical to the weights of the global market portfolio in every case.","more concentrated, because the investor's views replace the market's.","better diversified, tilted away from market weights only where the investor holds views."],
+ 2,"The Black-Litterman model starts from the returns implied by market weights and blends them with the investor's views according to the confidence placed in each view. With no views the result is the market portfolio; with views, the weights tilt away from it in a measured way, which avoids the extreme and concentrated allocations that historical-average inputs tend to produce."],
+["Resampled mean-variance optimization **most directly** addresses the criticism that standard optimization:",
+ ["is highly sensitive to small changes in its inputs.","takes account of only one period.","ignores the investor's liabilities."],
+ 0,"Resampling runs the optimization on many sets of simulated inputs and averages the resulting weights, which yields a smoother, more diversified and more stable frontier; it deals with the sensitivity of the output to estimation error in the inputs. It remains a single-period, asset-only method, so it answers neither of the other two criticisms."],
+["If Rao uses the appraisal-based index returns for real estate in the optimization without adjustment, the **most likely** result is:",
+ ["an allocation to real estate that is too small.","an allocation to real estate that is too large.","no effect on the allocation, because the returns are unbiased."],
+ 1,"Appraisal-based returns are smoothed: they understate volatility and correlation with other asset classes. An optimizer fed these figures sees an asset with high risk-adjusted return and strong diversification benefits and allocates too much to it. The usual remedies are to unsmooth the return series or to model the asset with listed proxies or risk factors, and to cap the allocation."]
+]);
+
+CFA_DATA.set(3,"Portfolio Construction","L3-PC-10",
+`Kwame Mensah, CFA, oversees the equity allocation of the Tiverton Staff Pension Scheme.
+
+**Portfolio A** is a concentrated active portfolio with four holdings weighted 40%, 30%, 20% and 10%.
+
+**Portfolio B** is an index fund. A trustee argues: "Because we own every company in the index and cannot sell, there is no point in spending money on voting or on talking to company managements."
+
+**Portfolio C** is run by a manager who sometimes buys shares just before they go ex-dividend and sells them shortly afterwards.
+
+Mensah also meets an active manager who describes her engagement with companies: she holds private discussions with boards about strategy and capital allocation, and votes against management when the discussions fail.`,
+[
+["The effective number of stocks in Portfolio A is **closest** to:",
+ ["2.50","3.33","4.00"],
+ 1,"The Herfindahl-Hirschman index is the sum of squared weights: 0.40² + 0.30² + 0.20² + 0.10² = 0.30. Effective number of stocks = 1/0.30 = 3.33. 4.00 is the actual number of holdings, which would be the effective number only with equal weights, and 2.50 is the reciprocal of the largest weight.",true],
+["The trustee's argument about Portfolio B is **most likely**:",
+ ["incorrect, because an investor that cannot sell has more reason to use its votes.","correct, because index funds are not allowed to vote their shares.","correct, because engagement benefits only active managers."],
+ 0,"A passive investor is a permanent owner: it cannot express a view by selling, so voting and engagement are its only ways of influencing the companies it holds, and any improvement benefits the whole index it tracks. Index funds do vote, and the largest of them are among the most influential shareholders. The cost is real, and it is shared with free riders, but that is an argument about how much to spend, not for doing nothing."],
+["The practice of the manager of Portfolio C is **best** described as:",
+ ["securities lending.","a covered call strategy.","dividend capture."],
+ 2,"Dividend capture buys a share before the ex-dividend date to receive the dividend and sells it afterwards, on the expectation that the price will fall by less than the dividend. Securities lending earns a fee for lending shares to others, and a covered call strategy earns option premiums; both are other ways of adding income to an equity portfolio."],
+["The active manager's engagement is **most likely** intended to:",
+ ["obtain material nonpublic information about the companies.","increase the long-term value of the companies she holds.","reduce the tracking error of her portfolio."],
+ 1,"Engagement aims to improve strategy, capital allocation and governance so that the companies become more valuable over time. It must not be used to obtain inside information; managers who receive material nonpublic information in such talks have to stop trading. It has no direct link with tracking error."]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
