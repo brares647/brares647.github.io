@@ -5050,6 +5050,147 @@ There is no amortization of past service costs or of actuarial gains and losses 
  ["higher, because the return on plan assets would be taken at the discount rate.","lower, because the actuarial loss would be reported in other comprehensive income.","the same, because the two sets of standards measure the obligation alike."],
  0,"Under IFRS, profit or loss includes service cost plus net interest on the net pension liability at the discount rate: 60 + 5% × (1,000 − 900) = 65, against 47 under US GAAP. The difference arises because the 7% expected return assumption is replaced by the 5% discount rate. The actuarial loss is outside profit or loss this year under both sets of standards, so it does not explain a difference."]
 ]);
+/* Level II, seventh batch (2026-11-12): the last five item sets needed for Mock 4.
+   L2-PM-10 (economics and investment markets: intertemporal rate of substitution, Taylor rule, breakeven inflation, equity risk premium),
+   L2-PM-11 (active management: transfer coefficient, market timing, combined Sharpe ratio, correlated decisions),
+   L2-PM-12 (market risk: delta-gamma estimate, surplus at risk, incremental VaR, risk budgeting),
+   L2-DER-06 (bond futures with a conversion factor, currency forward pricing and valuation, cash-and-carry arbitrage),
+   L2-ALT-06 (hedge fund strategies: merger arbitrage, convertible arbitrage, equity market neutral, payoff profiles).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-10",
+`Ingrid Solberg is a strategist at Fennmark Investments. She prepares notes for the firm's asset allocation committee.
+
+**Note 1.** Solberg estimates that investors' expected one-year intertemporal rate of substitution, the amount of consumption today they would give up for one certain unit of real consumption in a year, is 0.970.
+
+**Note 2.** The central bank is assumed to follow a Taylor rule: policy rate = neutral real rate + inflation + 0.5 × (inflation − target inflation) + 0.5 × output gap.
+
+**Exhibit 1: Economic data**
+
+| Item | Value |
+|---|---|
+| Neutral real policy rate | 1.5% |
+| Current inflation | 3.2% |
+| Target inflation | 2.0% |
+| Expected GDP growth | 1.0% |
+| Trend GDP growth | 2.0% |
+| 10-year nominal government bond yield | 4.6% |
+| 10-year inflation-indexed government bond yield | 1.9% |
+| Expected average inflation over 10 years (survey) | 2.3% |
+
+The output gap is measured as expected GDP growth minus trend GDP growth.
+
+**Note 3.** A committee member asks why shares of cyclical companies should offer a higher expected return than default-free bonds.`,
+[
+["Based on Note 1, the one-year real risk-free rate is **closest** to:",
+ ["2.91%","3.00%","3.09%"],
+ 2,"The price today of one certain unit of real consumption in a year equals the expected intertemporal rate of substitution, 0.970, so the real risk-free rate = 1/0.970 − 1 = 3.09%. 3.00% is 1 − 0.970, which is the discount and not the rate of return, and 2.91% multiplies that discount by 0.970 instead of dividing by it.",true],
+["Based on Note 2 and Exhibit 1, the policy rate implied by the Taylor rule is **closest** to:",
+ ["3.3%","4.8%","5.8%"],
+ 1,"Output gap = 1.0% − 2.0% = −1.0%. Policy rate = 1.5% + 3.2% + 0.5 × (3.2% − 2.0%) + 0.5 × (−1.0%) = 1.5% + 3.2% + 0.6% − 0.5% = 4.8%. 5.8% adds the output gap as if growth were above trend, and 3.3% leaves out the neutral real rate.",true],
+["Based on Exhibit 1, the premium for inflation uncertainty included in the 10-year nominal yield is **closest** to:",
+ ["0.4%","2.3%","2.7%"],
+ 0,"The breakeven inflation rate = nominal yield − inflation-indexed yield = 4.6% − 1.9% = 2.7%. It contains expected inflation plus a premium for inflation uncertainty, so the premium = 2.7% − 2.3% = 0.4%. 2.7% is the whole breakeven rate and 2.3% is expected inflation alone.",true],
+["The **best** answer to the question in Note 3 is that the payoffs of cyclical shares:",
+ ["are low in bad times, when an extra unit of consumption is valued most.","are uncertain, whatever their relationship with the state of the economy turns out to be.","are high in bad times, which makes them a hedge for consumption."],
+ 0,"A risk premium arises from negative covariance between an asset's payoff and investors' intertemporal rate of substitution: cyclical shares pay poorly in recessions, exactly when marginal utility of consumption is high, so investors demand a higher expected return to hold them. Uncertainty alone does not earn a premium if it is unrelated to bad times, and an asset that pays well in bad times is a hedge, which would sell at a higher price and offer a lower expected return."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-11",
+`Tomas Lindqvist selects external managers for the Brevik Foundation. The foundation's benchmark has an expected Sharpe ratio of 0.40. He reviews two active managers.
+
+**Manager A** is a stock selector. Lindqvist estimates an information coefficient of 0.06, 100 independent active decisions per year and, because the mandate forbids short positions, a transfer coefficient of 0.80. The manager runs the portfolio at an active risk of 5.0%.
+
+**Manager B** is a market timer who decides once each quarter whether to overweight or underweight equities. Over a long record the manager's quarterly calls were correct 60% of the time. The calls are independent of one another and there are no constraints on carrying them out.
+
+Lindqvist's assistant comments: "Manager A's 100 decisions are mostly bets on the same few industries, so they are positively correlated with one another."`,
+[
+["Manager A's expected active return is **closest** to:",
+ ["2.40%","3.00%","3.75%"],
+ 0,"Information ratio = transfer coefficient × information coefficient × √breadth = 0.80 × 0.06 × √100 = 0.48. Expected active return = information ratio × active risk = 0.48 × 5.0% = 2.40%. 3.00% leaves out the transfer coefficient, and 3.75% divides by the transfer coefficient instead of multiplying by it.",true],
+["Manager B's expected information ratio is **closest** to:",
+ ["0.10","0.20","0.40"],
+ 2,"For up-or-down calls, the information coefficient = 2 × (share of correct calls) − 1 = 2 × 0.60 − 1 = 0.20. With four independent calls a year and a transfer coefficient of 1, information ratio = 0.20 × √4 = 0.40. 0.20 is the information coefficient alone, and 0.10 is the share of correct calls minus one-half.",true],
+["If the foundation combines Manager A's portfolio with the benchmark at the optimal level of active risk, the Sharpe ratio of the combined portfolio is **closest** to:",
+ ["0.48","0.62","0.88"],
+ 1,"With the optimal amount of active risk, squared Sharpe ratio = squared benchmark Sharpe ratio + squared information ratio = 0.40² + 0.48² = 0.16 + 0.2304 = 0.3904, so the Sharpe ratio = √0.3904 = 0.62. 0.88 adds the two ratios without squaring them, and 0.48 is Manager A's information ratio alone.",true],
+["If the assistant's comment is correct, Lindqvist's estimate for Manager A **most likely**:",
+ ["understates the information ratio, because correlated bets reinforce one another.","is unaffected, because breadth counts decisions and not their correlation.","overstates the information ratio, because true breadth is below 100."],
+ 2,"Breadth is the number of independent decisions. When decisions are positively correlated, the effective breadth is smaller than the count of decisions, so using 100 gives an information ratio that is too high. Correlated bets do not add information, they repeat it, so they cannot raise the ratio, and the fundamental law explicitly requires independence, so correlation does matter."]
+]);
+
+CFA_DATA.set(2,"Portfolio Construction","L2-PM-12",
+`Amara Nwosu is the risk officer of the Calder Pension Fund, a defined benefit plan. She prepares answers to questions from the trustees.
+
+**Options position.** The fund holds 2,000 call options on Tavira shares, each option on one share. Each option has a delta of 0.55 and a gamma of 0.04. A trustee asks what the position would lose if the share price fell at once from 80 to 75.
+
+**Surplus.** The fund's assets exceed its liabilities by 40 million. Over the next year Nwosu expects the surplus to grow by 6 million, with a standard deviation of 30 million. She assumes the change in surplus is normally distributed; the 1% one-tailed critical value is 2.33 and the 5% value is 1.65.
+
+**New investment.** The trustees plan to add a 20 million infrastructure holding. A trustee asks: "By how much will the fund's total VaR change once the whole 20 million has been added?"
+
+**Limits.** The chair proposes that the fund adopt risk budgeting.`,
+[
+["Using delta and gamma, the estimated loss on the options position is **closest** to:",
+ ["4,500","5,500","6,500"],
+ 0,"Change per option ≈ delta × ΔS + ½ × gamma × ΔS² = 0.55 × (−5) + ½ × 0.04 × 25 = −2.75 + 0.50 = −2.25. For 2,000 options the loss is 4,500. 5,500 uses delta alone and ignores the gamma, which cushions the fall for a long option; 6,500 subtracts the gamma term instead of adding it.",true],
+["The fund's one-year surplus at risk at the 1% level is **closest** to:",
+ ["43.5 million","63.9 million","69.9 million"],
+ 1,"Surplus at risk applies VaR to the surplus: expected change − 2.33 × standard deviation = 6 − 2.33 × 30 = 6 − 69.9 = −63.9 million, a loss of 63.9 million. 69.9 million ignores the expected growth of the surplus, and 43.5 million uses the 5% critical value of 1.65.",true],
+["The measure that answers the trustee's question about the new investment is:",
+ ["marginal VaR.","incremental VaR.","relative VaR."],
+ 1,"Incremental VaR is the change in portfolio VaR from adding (or removing) a whole position, found by computing VaR with and without it. Marginal VaR measures the effect of a very small change in a position's size, and relative VaR (ex ante tracking error) measures the risk of the portfolio's return falling short of its benchmark's."],
+["The risk budgeting the chair proposes is **best** described as:",
+ ["capping the size of each position as a share of the fund's assets.","estimating the loss the fund would suffer in a chosen past crisis.","setting a total amount of risk and dividing it among activities."],
+ 2,"In risk budgeting the fund first decides how much total risk it is willing to bear and then allocates that risk to asset classes, strategies or managers. A cap on the size of each holding is a position limit, which is a narrower constraint, and estimating the loss in a past crisis is a historical scenario analysis, a way of measuring risk and not of allocating it."]
+]);
+
+CFA_DATA.set(2,"Derivatives and Risk Management","L2-DER-06",
+`Henrik Aalto is a derivatives analyst at Norvik Asset Management, whose reporting currency is the US dollar. He reviews two positions. Interest is compounded annually in all calculations.
+
+**Position 1: government bond futures.** A futures contract on a government bond expires in three months. The bond that will be delivered has a quoted (clean) price of 104.00 and accrued interest today of 1.20. It pays no coupon before the futures contract expires, and its accrued interest at expiration will be 2.45. The bond's conversion factor is 0.92 and the risk-free rate is 4.0%.
+
+**Position 2: currency forward.** Six months ago Norvik sold 10 million euros forward for delivery in one year at 1.2150 US dollars per euro. Today the spot rate is 1.2000 US dollars per euro and six months remain. The risk-free rate is 5.0% in US dollars and 3.0% in euros.
+
+Aalto's colleague observes that the bond futures contract in Position 1 is quoted in the market at 114.00.`,
+[
+["The no-arbitrage quoted price of the bond futures contract in Position 1 is **closest** to:",
+ ["95.48","103.79","112.81"],
+ 2,"Full price today = 104.00 + 1.20 = 105.20. Its future value = 105.20 × 1.04^0.25 = 106.24. Subtracting the accrued interest at expiration gives 106.24 − 2.45 = 103.79, and dividing by the conversion factor gives 103.79 / 0.92 = 112.81. 103.79 forgets the conversion factor, and 95.48 multiplies by it instead of dividing.",true],
+["The forward rate at which a new six-month contract on the euro could be agreed today is **closest** to:",
+ ["1.2116","1.2233","1.2296"],
+ 0,"With the rate quoted in US dollars per euro, forward = spot × [(1 + dollar rate)/(1 + euro rate)]^T = 1.2000 × (1.05/1.03)^0.5 = 1.2116. 1.2233 uses a full year instead of the six months that remain, and 1.2296 ignores the euro interest rate.",true],
+["The current value of Position 2 to Norvik, in US dollars, is **closest** to:",
+ ["−33,200","33,200","150,000"],
+ 1,"Norvik has sold euros at 1.2150 and could now buy them forward at 1.2116, so it gains the difference at expiration, discounted at the dollar rate: (1.2150 − 1.2116) / 1.05^0.5 × 10,000,000 ≈ 33,200. The value is positive because the forward rate has fallen below the rate at which Norvik sold; the negative figure is the value to the buyer of euros. 150,000 compares the contract rate with the spot rate and ignores interest rates.",true],
+["Given the colleague's observation, an arbitrageur would **most appropriately**:",
+ ["buy the bond with borrowed funds and sell the futures.","sell the bond short, lend the proceeds and buy the futures.","buy both the bond and the futures, and lend at the risk-free rate."],
+ 0,"At 114.00 the futures contract is quoted above its no-arbitrage price of 112.81, so it is overpriced relative to the bond. Cash-and-carry arbitrage sells the expensive futures, buys the bond with borrowed money and delivers the bond at expiration, locking in a return above the financing cost. Shorting the bond and buying the futures is the reverse trade, which is right only when the futures are too cheap; buying both leaves the position exposed to the bond price and is not an arbitrage."]
+]);
+
+CFA_DATA.set(2,"Alternative Investments","L2-ALT-06",
+`Sofia Marchetti analyzes three hedge funds for the Aldine University endowment.
+
+**Fund 1: merger arbitrage.** Fund 1 has bought shares of Corran Foods at 46.00 after a cash takeover offer of 50.00 per share was announced. The deal is expected to close in six months. Marchetti estimates a 90% probability that it closes; if it fails, she expects Corran's shares to fall to 38.00. Corran pays no dividend in the period.
+
+**Fund 2: convertible arbitrage.** Fund 2 owns 1,000 convertible bonds of Tessel Systems. Each bond can be converted into 20 Tessel shares, and the delta of the conversion option is 0.60 per share. The fund hedges its exposure to Tessel's share price by selling shares short.
+
+**Fund 3: equity market neutral.** Fund 3 has capital of 100 million. It holds long positions of 80 million with an average beta of 1.10 and short positions of 80 million with an average beta of 0.85.
+
+Marchetti wants to know which fund's pattern of returns most resembles that of an investor who sells insurance.`,
+[
+["Fund 1's expected return on the Corran position over the six months is **closest** to:",
+ ["6.1%","7.8%","8.7%"],
+ 0,"Expected gain per share = 0.90 × (50.00 − 46.00) + 0.10 × (38.00 − 46.00) = 3.60 − 0.80 = 2.80, and 2.80 / 46.00 = 6.1%. 8.7% is the return if the deal is certain to close (4.00 / 46.00), and 7.8% multiplies that return by 90% but ignores the loss if the deal fails.",true],
+["To make the position delta neutral, the number of Tessel shares Fund 2 should sell short is **closest** to:",
+ ["600","8,000","12,000"],
+ 2,"The bonds convert into 1,000 × 20 = 20,000 shares, and each behaves like 0.60 of a share, so the hedge is 20,000 × 0.60 = 12,000 shares short. 8,000 uses one minus delta, and 600 leaves out the conversion ratio.",true],
+["Fund 3's beta relative to its capital is **closest** to:",
+ ["0.00","0.20","0.25"],
+ 1,"Beta-weighted exposure = 80 × 1.10 − 80 × 0.85 = 88 − 68 = 20 million, which is 0.20 of the 100 million capital. The fund is dollar neutral (longs equal shorts) but not beta neutral, so its beta is not zero; 0.25 is the difference in betas, which would be right only if each side were as large as the capital.",true],
+["The fund Marchetti is looking for is **most likely**:",
+ ["Fund 3, because equal long and short positions remove its market exposure.","Fund 2, because it gains when the share price becomes more volatile.","Fund 1, because its gain is capped while a failed deal brings a large loss."],
+ 2,"Merger arbitrage earns a small, limited spread when deals close and suffers a large loss when one fails, like collecting premiums for selling insurance (a short put on the deal). Convertible arbitrage is long the conversion option and so benefits from higher volatility, the opposite of selling insurance. Fund 3's equal long and short positions do not remove its market exposure (its beta is 0.20), and market neutrality does not by itself create an insurance-like payoff."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
@@ -8511,7 +8652,10 @@ CFA_DATA.mockForms = {
    s2:["L2-ETH-04","L2-ETH-02","L2-ALT-04","L2-QM-04","L2-CI-03","L2-DER-01","L2-ETH-01","L2-ECON-05","L2-ECON-02","L2-FI-07","L2-EQ-01"]},
   {id:"L2-M3", name:"Mock 3",
    s1:["L2-CI-04","L2-ECON-04","L2-DER-03","L2-CI-01","L2-DER-04","L2-EQ-05","L2-ETH-08","L2-FSA-08","L2-QM-05","L2-FSA-04","L2-ETH-03"],
-   s2:["L2-QM-06","L2-FI-08","L2-ETH-09","L2-ALT-03","L2-PM-09","L2-CI-02","L2-EQ-08","L2-FI-03","L2-ALT-01","L2-PM-01","L2-PM-08"]}
+   s2:["L2-QM-06","L2-FI-08","L2-ETH-09","L2-ALT-03","L2-PM-09","L2-CI-02","L2-EQ-08","L2-FI-03","L2-ALT-01","L2-PM-01","L2-PM-08"]},
+  {id:"L2-M4", name:"Mock 4",
+   s1:["L2-ETH-11","L2-ETH-10","L2-PM-10","L2-QM-07","L2-EQ-11","L2-EQ-09","L2-FSA-11","L2-CI-06","L2-FI-11","L2-ETH-12","L2-FI-10"],
+   s2:["L2-PM-11","L2-PM-12","L2-FSA-09","L2-FSA-10","L2-ECON-06","L2-DER-05","L2-DER-06","L2-ALT-02","L2-ALT-06","L2-EQ-10","L2-FI-09"]}
  ],
  3: [
   {id:"L3-M1", name:"Mock 1",
