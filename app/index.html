@@ -5779,6 +5779,151 @@ Marchetti wants to know which fund's pattern of returns most resembles that of a
  ["Fund 3, because equal long and short positions remove its market exposure.","Fund 2, because it gains when the share price becomes more volatile.","Fund 1, because its gain is capped while a failed deal brings a large loss."],
  2,"Merger arbitrage earns a small, limited spread when deals close and suffers a large loss when one fails, like collecting premiums for selling insurance (a short put on the deal). Convertible arbitrage is long the conversion option and so benefits from higher volatility, the opposite of selling insurance. Fund 3's equal long and short positions do not remove its market exposure (its beta is 0.20), and market neutrality does not by itself create an insurance-like payoff."]
 ]);
+/* Level II, eighth batch (2026-11-12): first five item sets toward Mock 5.
+   L2-ETH-13 (research independence: investment banking pressure, contingent issuer fees, restricted list, analyst pay),
+   L2-ETH-14 (trading: block allocation after the fact, trade errors, cross trades, front-running with options),
+   L2-ETH-15 (private wealth: updating client information, suitability in a portfolio context, client gifts, confidentiality),
+   L2-QM-09 (dummy variables, logistic regression, influential observations, ARCH),
+   L2-ECON-08 (triangular arbitrage with bid-offer quotes, uncovered interest parity, parity conditions, currency crisis signals).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-13",
+`Aiko Tanabe, CFA, is a senior equity analyst at Brennick Securities, a firm with a large investment banking division. A review of the research department records four matters.
+
+Matter 1: Tanabe intends to lower her rating on Solvane Energy from buy to hold. Solvane is an investment banking client of Brennick. The head of investment banking asks to see her draft "to check the facts" and then presses her to keep the buy rating until a planned share offering by Solvane is completed.
+
+Matter 2: Brennick agrees to write research on Pelham Mining, a small company with no analyst coverage. Pelham will pay a fee of 40,000 plus warrants on Pelham's shares if the report rates the shares a buy.
+
+Matter 3: Brennick is advising on a confidential takeover of Castor Foods, a company Tanabe covers with a buy rating. Brennick's compliance department places Castor on the firm's restricted list and tells Tanabe to issue no opinion on Castor, only factual information, until the deal is announced.
+
+Matter 4: Tanabe's annual bonus is based partly on the fees that the investment banking division earns from the companies she covers.`,
+[
+["In Matter 1, the **most appropriate** action for Tanabe is to:",
+ ["keep the buy rating until the share offering is completed, then lower it.","publish the hold rating she believes is justified.","remove her name from the report and let the firm decide the rating."],
+ 1,"Standard I(B) Independence and Objectivity requires a recommendation to reflect the analyst's own opinion, free of pressure from the investment banking side. Delaying a downgrade to help an offering misleads the investors who buy in it. Investment bankers may check facts only under compliance supervision, and taking her name off a report she believes is wrong does not remove the misleading rating from the market."],
+["The compensation arrangement in Matter 2 is **most likely**:",
+ ["acceptable, because issuer-paid research is allowed when the payment is disclosed.","acceptable, because warrants align the analyst's interests with those of shareholders.","a violation, because part of the payment depends on the conclusion of the report."],
+ 2,"Issuer-paid research is permitted only when the fee is a flat amount that does not depend on the report's conclusions, and the arrangement is disclosed. Warrants granted only for a buy rating tie pay to the recommendation, and their value rises with the share price, so both features compromise independence under Standard I(B). Disclosure does not cure a fee that depends on the rating."],
+["The compliance department's instruction in Matter 3 is **most likely**:",
+ ["an appropriate way to protect the objectivity of the firm's research.","a violation, because clients are denied the analyst's current opinion.","a violation, because the restricted list reveals that a deal is under way."],
+ 0,"When a firm holds material nonpublic information about a covered company, placing the company on a restricted list and distributing only factual information is the recommended procedure under Standards I(B) and II(A): the firm avoids both trading on the information and issuing a rating that might be influenced by it. Clients are not owed an opinion that could rest on inside information. The list is an internal control and should be circulated only as widely as needed."],
+["The bonus arrangement in Matter 4 is **most likely**:",
+ ["consistent with the Standards if it is disclosed in each of her reports.","inconsistent with the Standards' recommended procedures for independence.","consistent with the Standards, because all bonuses depend on the firm's revenue."],
+ 1,"The guidance to Standard I(B) recommends that analysts' compensation not be linked directly to investment banking fees from the companies they cover, because the link gives a direct incentive to favor those companies. A bonus based on the firm's overall results is different from one tied to banking fees from covered companies, and disclosure in reports does not remove the incentive."]
+]);
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-14",
+`Marek Nowicki, CFA, is head trader at Aldgate Asset Management, and Selin Kaya, CFA, is a portfolio manager there. An internal audit raises four points.
+
+Point 1: Kaya often places one block order for several accounts in the morning. At the end of the day, after seeing how prices have moved, she decides how to divide the day's executions among the accounts. The audit finds that trades that were profitable by the close went more often to accounts that pay performance fees.
+
+Point 2: Nowicki bought 50,000 shares for a client account when the order was for 5,000. The price then fell, and the error cost 30,000. Nowicki asked the broker to absorb the loss in return for a larger share of Aldgate's client commissions over the next quarter.
+
+Point 3: One of Kaya's client funds has to sell a thinly traded bond to meet redemptions, and another of her client funds, with a different mandate, has room for it. She moves the bond between the two funds at the previous day's closing bid price, without telling either client and without asking compliance.
+
+Point 4: Kaya learns that a pension client will place a very large order for shares of Brandt Industries tomorrow. That evening she buys call options on Brandt for her personal account.`,
+[
+["Kaya's practice in Point 1 **most likely** violates the Standard relating to:",
+ ["fair dealing.","performance presentation.","diligence and reasonable basis."],
+ 0,"Standard III(B) Fair Dealing requires trades to be allocated fairly, which in practice means deciding the allocation before or when the order is placed and giving each account the same average price. Allocating after the result is known lets the manager steer winning trades to favored accounts. Nothing in the case concerns how performance is reported or the research behind the trades."],
+["Nowicki's handling of the error in Point 2 is **most likely**:",
+ ["acceptable, because the client suffers no loss.","acceptable, because brokers often absorb losses for good customers.","a violation, because client commissions are used to pay for the firm's mistake."],
+ 2,"Client brokerage is an asset of the clients and may be used only for their benefit (Standard III(A) Loyalty, Prudence, and Care). Promising future commissions so that the broker covers the loss makes clients pay, through their commissions, for an error that the firm should bear. That this one client is made whole does not justify using all clients' commissions for the firm's benefit."],
+["The transfer in Point 3 is **most likely**:",
+ ["acceptable, because both funds are managed by the same person.","a violation, because the price and suitability for both clients were not properly established.","acceptable, because a closing price from the previous day is an objective price."],
+ 1,"A cross trade puts the manager on both sides, so each client's interests must be protected: the trade must be suitable for both, executed at a fair current market price, and carried out under the firm's policy, normally with disclosure or consent and compliance approval. A stale bid for a thinly traded bond favors the buyer over the seller. The same person managing both funds is the source of the conflict, not a defense."],
+["Kaya's purchase in Point 4 is **most likely**:",
+ ["acceptable, because she bought options and not the shares themselves.","acceptable, because the client's order is not material nonpublic information about Brandt.","a violation of the Standard on priority of transactions."],
+ 2,"Trading for a personal account ahead of a client's order is front-running, a violation of Standard VI(B) Priority of Transactions and of the duty of loyalty to the client. Using a derivative on the same underlying is treated the same as trading the shares. Knowledge of a large pending order is exactly the kind of information a member must not exploit, whatever its status under insider trading rules."]
+]);
+
+CFA_DATA.set(2,"Ethical and Professional Standards","L2-ETH-15",
+`Helena Brandao, CFA, advises private clients at Corvin Wealth. Her supervisor reviews four client files.
+
+File 1: Brandao wrote an investment policy statement for the Ortega family six years ago and has not updated it. Last year Mr. Ortega retired and the family's income fell by half. The portfolio is still managed to the original growth objective.
+
+File 2: For Dr. Imani, whose portfolio holds mostly government bonds, Brandao bought a small position in an emerging market equity fund. Looked at alone, the fund is much riskier than Dr. Imani's stated tolerance; Brandao's analysis shows that it lowers the volatility of the whole portfolio because of its low correlation with the bonds.
+
+File 3: After a very good year, a client gives Brandao a painting worth about 2,000 as a thank-you gift. Brandao accepts it and reports it to Corvin the following week.
+
+File 4: A client's adult daughter telephones and asks how much her father's account is worth, explaining that she is helping him plan his estate. The father has given no instruction on the matter. Brandao tells her the account value.`,
+[
+["In File 1, Brandao has **most likely**:",
+ ["complied, because the family did not ask for the statement to be changed.","complied, because an investment policy statement must be reviewed only every ten years.","violated the Standard on suitability."],
+ 2,"Standard III(C) Suitability requires the client's circumstances and the investment policy statement to be reviewed regularly, at least annually, and whenever there is a material change such as retirement. The duty to keep the information current rests with the adviser, not with the client, and no ten-year rule exists."],
+["Brandao's purchase in File 2 is **most likely**:",
+ ["consistent with the Standards, because suitability is judged in the context of the total portfolio.","a violation, because each holding must match the client's risk tolerance on its own.","a violation, because emerging market funds are unsuitable for conservative clients."],
+ 0,"Under Standard III(C), an investment is judged by its effect on the client's whole portfolio, not in isolation. A risky asset that reduces overall risk through diversification can be suitable for a conservative client, provided it fits the investment policy statement and the adviser has a reasonable basis, as Brandao's analysis provides."],
+["Regarding the gift in File 3, Brandao has **most likely**:",
+ ["violated the Standards, because gifts from clients must be refused.","complied with the Standards.","violated the Standards, because she needed her employer's permission before accepting."],
+ 1,"A gift from a client for past performance is treated differently from a gift from someone seeking to influence the member: Standard I(B) requires disclosure to the employer, which Brandao made, and disclosure after the fact is acceptable when prior notice is not practical. Prior written consent under Standard IV(B) is needed for arrangements that depend on future performance, which this gift does not."],
+["In File 4, Brandao has **most likely**:",
+ ["complied, because the daughter is a close family member with a legitimate purpose.","complied, because an account's value is not confidential information.","violated the Standard on preservation of confidentiality."],
+ 2,"Standard III(E) requires client information to be kept confidential unless it concerns illegal activity, disclosure is required by law, or the client permits it. A family relationship gives the daughter no right to the information, and the father has not consented. Brandao should have asked the father before saying anything."]
+]);
+
+CFA_DATA.set(2,"Quantitative Methods","L2-QM-09",
+`Ricardo Fuentes is a quantitative analyst at Tamarind Capital. He reviews three models.
+
+**Model 1.** A regression of a small-cap fund's monthly excess return (in percent) on the market's excess return and a dummy variable JAN, which equals 1 in January and 0 in other months:
+
+Excess return = 0.20 + 1.10 × Market excess return + 0.45 × JAN
+
+All three coefficients are statistically significant. One observation, from a month in which the fund's largest holding was acquired, has a Cook's distance far above that of every other observation.
+
+**Model 2.** A logistic regression that estimates the probability that a company defaults within a year:
+
+ln(odds of default) = −3.0 + 4.0 × Debt ratio
+
+**Model 3.** Fuentes tests the squared residuals of a model of daily index returns and finds ARCH(1) effects. The estimated equation for the variance of the errors is:
+
+Predicted variance = 0.0002 + 0.60 × (previous day's squared residual)
+
+Yesterday's residual was 0.03.`,
+[
+["Based on Model 1, the predicted excess return of the fund in a January in which the market's excess return is 2.0% is **closest** to:",
+ ["2.40%","2.65%","2.85%"],
+ 2,"Predicted excess return = 0.20 + 1.10 × 2.0 + 0.45 × 1 = 2.85%. 2.40% is the prediction for any month other than January, when the dummy equals zero, and 2.65% leaves out the intercept.",true],
+["The observation with the very high Cook's distance is **best** described as:",
+ ["evidence that the errors are serially correlated.","an influential observation that may be distorting the estimated coefficients.","a sign that the two independent variables are highly correlated with each other."],
+ 1,"Cook's distance measures how much the fitted values would change if one observation were removed; a value far above the rest marks an influential observation, which should be examined and may justify estimating the model with and without it. Serial correlation is detected with tests such as Durbin-Watson or Breusch-Godfrey, and correlation between independent variables (multicollinearity) with the variance inflation factor."],
+["Based on Model 2, the probability of default for a company with a debt ratio of 0.50 is **closest** to:",
+ ["26.9%","36.8%","73.1%"],
+ 0,"ln(odds) = −3.0 + 4.0 × 0.50 = −1.0, so odds = e^−1.0 = 0.368 and probability = odds/(1 + odds) = 0.368/1.368 = 26.9%. 36.8% reports the odds as if they were the probability, and 73.1% is the probability of not defaulting.",true],
+["Based on Model 3, the predicted variance of today's error is **closest** to:",
+ ["0.00054","0.00074","0.01820"],
+ 1,"Predicted variance = 0.0002 + 0.60 × 0.03² = 0.0002 + 0.60 × 0.0009 = 0.00074, a standard deviation of about 2.7%. 0.00054 leaves out the constant, and 0.01820 uses the residual without squaring it.",true]
+]);
+
+CFA_DATA.set(2,"Economics","L2-ECON-08",
+`Nadia Rahimi trades currencies at Ostrava Bank. She has the following quotes.
+
+**Exhibit 1: Interbank spot quotes (bid–offer)**
+
+| Pair | Bid | Offer |
+|---|---|---|
+| USD/EUR (US dollars per euro) | 1.1000 | 1.1004 |
+| JPY/USD (yen per US dollar) | 150.00 | 150.06 |
+
+A regional dealer quotes JPY/EUR (yen per euro) at 165.30–165.40.
+
+One-year interest rates are 4.0% in US dollars and 2.0% in euros.
+
+Rahimi also reviews a report on the emerging economy of Kestova, which has a fixed exchange rate. Over the past two years its ratio of broad money to official reserves has risen sharply, its real exchange rate has appreciated well above its historical average, and its foreign exchange reserves have fallen.`,
+[
+["Using mid-market rates and ignoring the regional dealer, uncovered interest rate parity implies an expected USD/EUR spot rate in one year that is **closest** to:",
+ ["1.0790","1.1002","1.1218"],
+ 2,"Mid spot = 1.1002. Under uncovered interest rate parity the currency with the higher interest rate is expected to depreciate: expected spot = 1.1002 × 1.04/1.02 = 1.1218 dollars per euro. 1.0790 inverts the interest rate ratio, and 1.1002 assumes no change.",true],
+["If Rahimi buys 1,000,000 euros through the interbank market using yen and sells them to the regional dealer, her arbitrage profit in yen is **closest** to:",
+ ["0, because the dealer's quote is consistent with the interbank quotes","174,000","300,000"],
+ 1,"Buying euros with yen in the interbank market means buying dollars at the offer of 150.06 yen and buying euros at the offer of 1.1004 dollars: 1.1004 × 150.06 = 165.126 yen per euro. The dealer bids 165.30 for euros, so the profit is (165.30 − 165.126) × 1,000,000 ≈ 174,000 yen. 300,000 uses the interbank bid rates (165.00) and ignores the spreads that must be paid.",true],
+["Which statement about the international parity conditions is **most** accurate?",
+ ["Covered interest rate parity holds closely because it is enforced by arbitrage.","Uncovered interest rate parity holds closely over short horizons.","Purchasing power parity explains most exchange rate movements from month to month."],
+ 0,"Covered interest rate parity is a no-arbitrage condition and holds closely for currencies that trade freely. Uncovered interest rate parity is not enforced by arbitrage and is a poor predictor over short horizons, which is why carry trades can be profitable; purchasing power parity also fails in the short run and is a tendency only over long periods."],
+["Taken together, the developments in Kestova are **most likely**:",
+ ["signs of an improving external position.","unrelated to the stability of the exchange rate.","warning signs of a currency crisis."],
+ 2,"A rising ratio of broad money to reserves, an overvalued real exchange rate and falling reserves are among the typical warning signs seen before currency crises in countries with fixed exchange rates: the central bank has fewer reserves with which to defend an overvalued peg against a growing stock of money that could be converted. They point to a weakening, not an improving, external position."]
+]);
 const T3A = "Asset Allocation";
 
 /* ---------------- Item sets ---------------- */
