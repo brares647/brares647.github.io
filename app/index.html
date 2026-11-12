@@ -2294,6 +2294,51 @@ CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
  ["a long fixed-rate bond and a short floating-rate note.","a short fixed-rate bond and a long floating-rate note.","a long position in a series of interest rate calls."],
  0,"Receiving fixed is like owning a fixed-rate bond (collecting fixed coupons), and paying floating is like having issued a floating-rate note (paying floating coupons), so the swap equals a long fixed-rate bond plus a short FRN. The reverse combination is the pay-fixed side. A swap is a forward commitment, a series of FRAs, not a portfolio of options such as calls."]
 ],{from:131,diff:"exam"});
+/* Batch for Mock 4 (2026-11-12): standard questions from id 141, exam-level from 151 */
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["Futures prices for an asset are positively correlated with interest rates. Compared with the price of an otherwise identical forward contract, the futures price will **most likely** be:",
+ ["lower, because daily settlement adds risk for the buyer.","the same, because both contracts deliver the same asset.","higher, because gains can be reinvested when rates are high."],
+ 2,"With positive correlation, the long futures holder receives daily gains when interest rates are high and funds daily losses when rates are low, an advantage a forward does not offer, so the futures price is higher. The prices are equal only if rates are constant or uncorrelated with futures prices. Daily settlement lowers counterparty risk, it does not add risk that would lower the price."],
+["All else equal, a rise in the risk-free interest rate will **most likely** cause the value of a European put option on a stock to:",
+ ["decrease.","increase.","stay the same."],
+ 0,"A put gives the right to receive the exercise price in the future; a higher interest rate lowers the present value of that exercise price, so the put is worth less. The opposite holds for a call, whose value rises with interest rates. The rate is one of the inputs to option value, so the value does not stay the same."],
+["Early exercise of an American call option on a stock that pays no dividends is **most likely**:",
+ ["optimal once the option is deep in the money.","never optimal, because the option is worth more alive than exercised.","optimal just before the option's expiration date."],
+ 1,"Before expiration, a call on a non-dividend stock is worth at least the stock price minus the present value of the exercise price, which is more than the stock price minus the exercise price received on exercise. The holder does better selling the option than exercising it, however deep in the money it is. Only a dividend can make early exercise of a call worthwhile."],
+["A trader is short a forward contract on 1,000 units of a commodity at a forward price of 75. At expiration the spot price is 71. The trader's payoff is **closest** to:",
+ ["4,000","71,000","75,000"],
+ 0,"The short delivers at the forward price and gains when the spot price is below it: payoff = (75 − 71) × 1,000 = 4,000. The long has the opposite payoff, a loss of 4,000. 75,000 and 71,000 are the total contract value at the forward price and the value of the commodity at the spot price, not the payoff.",true],
+["An interest rate swap is **most** accurately described as equivalent to a series of:",
+ ["interest rate options with the same exercise rate.","futures contracts that are settled every day.","forward rate agreements with the same fixed rate."],
+ 2,"Each swap payment exchanges a fixed rate for the floating rate over one period, which is what a forward rate agreement does. Because one fixed rate is used for every period, the individual agreements are off-market: some have positive and some negative value at the start, summing to zero. Options would pay only when it suits the holder, and a swap is not settled daily like futures."],
+["Immediately after the daily settlement of a futures contract, the value of the contract to the long is **most likely**:",
+ ["zero.","equal to the balance in the margin account.","equal to the day's gain or loss."],
+ 0,"Daily settlement (marking to market) pays out the day's gain or loss through the margin accounts and resets the contract at the settlement price, so its value returns to zero. The gain or loss has already been paid, and the margin balance is collateral, not the value of the contract."],
+["A long European call option combined with a short European put option on the same asset, with the same exercise price and expiration date, has a payoff at expiration equal to that of:",
+ ["a short position in the underlying asset.","a long forward contract at a price equal to the exercise price.","a risk-free bond that pays the exercise price."],
+ 1,"If the asset ends above the exercise price, the call pays the difference; if it ends below, the short put costs the difference. Either way the payoff is the asset price minus the exercise price, the payoff of a long forward at that price. A short position has the opposite payoff, and a bond pays a fixed amount that does not depend on the asset."],
+["In the one-period binomial model, the value of an option is found by discounting its expected payoff at the risk-free rate, where the expectation uses:",
+ ["the probabilities investors actually assign to the up and down moves.","equal probabilities of one-half for each move.","risk-neutral probabilities derived from the up and down factors and the risk-free rate."],
+ 2,"The option can be replicated with the stock and risk-free borrowing, so its value does not depend on the true probabilities of the moves or on investors' risk aversion. The risk-neutral probability of an up move is (1 + r − d)/(u − d); it equals one-half only by coincidence for particular values of u, d and r."]
+],{from:141});
+
+CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
+["The one-year spot rate is 3.00% and the two-year spot rate is 4.00%, both annually compounded. The fixed rate on a forward rate agreement for a one-year loan starting in one year is **closest** to:",
+ ["3.50%","5.01%","7.00%"],
+ 1,"The forward rate makes investing for two years equal to investing for one year and rolling over: (1.04)² / 1.03 − 1 = 1.0816 / 1.03 − 1 = 5.01%. 3.50% is the simple average of the two spot rates, and 7.00% is their sum.",true],
+["A stock trades at 50 and in one year will be worth either 60 or 40. The one-year risk-free rate is 4%. Using a one-period binomial model, the value of a one-year European put option with an exercise price of 55 is **closest** to:",
+ ["5.00","5.77","8.65"],
+ 1,"Up factor 1.2, down factor 0.8. Risk-neutral probability of an up move = (1.04 − 0.8)/(1.2 − 0.8) = 0.60. The put pays 0 if the stock rises to 60 and 15 if it falls to 40, so value = 0.40 × 15 / 1.04 = 5.77. 8.65 applies the up probability to the down payoff, and 5.00 is only the put's exercise value today.",true],
+["A stock trades at 52 and pays no dividends. The one-year risk-free rate is 5%. The lower bound for the value of a one-year European put option with an exercise price of 60 is **closest** to:",
+ ["5.14","8.00","10.48"],
+ 0,"Lower bound for a European put = max(0, X/(1 + r)^T − S) = 60/1.05 − 52 = 57.14 − 52 = 5.14. 8.00 is the exercise value, which is the bound for an American put that can be exercised now; a European put can be worth less than that. 10.48 discounts the stock price instead of the exercise price.",true],
+["A three-month interest rate futures contract on a notional amount of 1,000,000 is quoted as 100 minus the annualized interest rate. A trader buys one contract at 96.25 and sells it at 96.40. The trader's gain is **closest** to:",
+ ["15","375","1,500"],
+ 1,"The price rose 0.15, which is 15 basis points of annualized rate. One basis point on a three-month contract is worth 1,000,000 × 0.0001 × 3/12 = 25, so the gain is 15 × 25 = 375. 1,500 leaves out the three-month fraction and treats the rate change as applying for a full year, and 15 is the number of basis points, not an amount of money.",true],
+["Midway through its life, a forward contract has a positive value to the long. At this time, the credit risk of the contract is **most likely** borne by:",
+ ["the long only.","the short only.","both parties equally."],
+ 0,"A forward with positive value to the long is an asset of the long and a liability of the short: the short owes the value. Only the party that is owed money can lose from a default, so the long bears the credit risk now. If the value later turns negative for the long, the exposure passes to the short; it is not shared equally at any one time."]
+],{from:151,diff:"exam"});
 CFA_DATA.mc(1,"Derivatives and Risk Management","L1-DER",[
 ["Compared with a forward contract, a futures contract is **most likely**:",
  ["customized and traded over the counter.","standardized, exchange-traded, and marked to market daily.","free of counterparty risk because of a clearinghouse but not marked to market."],
@@ -2635,6 +2680,66 @@ CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
  ["4.0%","9.0%","12.0%"],
  2,"Find the weight in the tangency portfolio: 3% + w × (11% − 3%) = 9%, so w = 6 ÷ 8 = 0.75. The risk-free asset adds no risk, so the standard deviation is 0.75 × 16% = 12.0%. The figure 4.0% applies the risk-free weight (0.25) to 16%, and 9.0% confuses the target return with the risk.",1]
 ],{from:133,diff:"exam"});
+/* Batch for Mock 4 (2026-11-12): standard questions from id 141, exam-level from 161 */
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["In the portfolio management process, rebalancing the portfolio and measuring its performance belong to the:",
+ ["planning step.","execution step.","feedback step."],
+ 2,"The feedback step monitors and rebalances the portfolio and evaluates its performance. The planning step sets out the client's objectives and constraints in an investment policy statement, and the execution step covers asset allocation, security selection and portfolio construction."],
+["In a defined contribution pension plan, the risk that investments perform poorly is borne by:",
+ ["the employee.","the employer.","the plan's investment manager."],
+ 0,"In a defined contribution plan the employer promises only its contributions; the retirement income depends on how the investments perform, so the employee carries the risk. In a defined benefit plan the employer promises the pension and bears the shortfall risk. The investment manager is paid a fee and does not guarantee results."],
+["A portfolio holds 40% in an asset with an expected return of 12% and 60% in an asset with an expected return of 6%. The portfolio's expected return is **closest** to:",
+ ["7.8%","8.4%","9.0%"],
+ 1,"Expected return is the weighted average: 0.40 × 12% + 0.60 × 6% = 4.8% + 3.6% = 8.4%. 9.0% is the simple average of the two returns, which ignores the weights, and 7.8% results from swapping part of the weights (0.30 and 0.70).",true],
+["Two assets have standard deviations of 20% and 30%, and the correlation between their returns is 0.40. The covariance of their returns is **closest** to:",
+ ["0.006","0.024","0.150"],
+ 1,"Covariance = correlation × σ₁ × σ₂ = 0.40 × 0.20 × 0.30 = 0.024. 0.150 divides the product of the standard deviations by the correlation, and 0.006 uses a correlation of 0.10.",true],
+["Compared with the capital market line (CML), the security market line (SML) **most likely**:",
+ ["applies only to efficient portfolios.","measures risk by standard deviation.","applies to any security or portfolio."],
+ 2,"The SML relates expected return to beta and holds for every security and portfolio, efficient or not. The CML relates expected return to total risk (standard deviation) and describes only efficient combinations of the risk-free asset and the market portfolio."],
+["A manager with a strategic allocation of 60% equities and 40% bonds moves to 65% equities for a few months because she expects share prices to rise. This is **best** described as:",
+ ["security selection.","tactical asset allocation.","rebalancing to the policy weights."],
+ 1,"Tactical asset allocation is a deliberate, temporary departure from the strategic weights to profit from short-term views on asset classes. Security selection chooses individual securities within an asset class, and rebalancing would move the portfolio back toward 60/40, not away from it."],
+["An investor quickly sells shares that have risen in price but keeps shares that have fallen, hoping to get back to the purchase price. This behavior is **most likely** caused by:",
+ ["confirmation bias.","hindsight bias.","loss aversion."],
+ 2,"Loss aversion means losses hurt more than gains of the same size please, so investors avoid realizing losses and take gains early (the disposition effect). Confirmation bias is looking only for information that supports an existing view, and hindsight bias is believing after the event that the outcome was predictable."],
+["An analyst who recommends a stock reads only the research reports that agree with the recommendation and dismisses critical reports as badly informed. This is **best** described as:",
+ ["confirmation bias.","anchoring bias.","framing bias."],
+ 0,"Confirmation bias is seeking and giving weight to evidence that supports a belief while ignoring evidence against it. Anchoring is holding on to an initial number, such as a first price target, when new information arrives, and framing is answering differently depending on how a question is presented."],
+["An airline agrees today on the price it will pay for jet fuel in six months by entering a forward contract. This method of modifying risk is **best** described as:",
+ ["risk transfer.","self-insurance.","risk shifting."],
+ 2,"Risk shifting changes the distribution of outcomes, usually with derivatives such as forwards. Risk transfer passes a risk to another party for a premium, as with an insurance policy. Self-insurance means keeping the risk and setting aside reserves to absorb losses."],
+["A share price has repeatedly failed to rise above 50. After it finally moves well above 50, technical analysts would **most likely** expect the 50 level to act as:",
+ ["a resistance level again.","a support level.","a price target for a reversal pattern."],
+ 1,"Under the change in polarity principle, a resistance level that has been broken becomes a support level, because buyers who missed the breakout tend to buy on a return to that price. It no longer acts as resistance once prices are above it, and it is not a price target, which is calculated from the size of a chart pattern."],
+["A machine learning model predicts share returns very accurately on the data used to build it but poorly on new data. This problem is **best** described as:",
+ ["underfitting.","tokenization.","overfitting."],
+ 2,"An overfitted model has learned the noise in its training data and so does not generalize to new data. Underfitting is the opposite problem: the model is too simple to capture the pattern even in the training data. Tokenization is representing ownership of an asset on a distributed ledger and has nothing to do with model accuracy."]
+],{from:141});
+
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["A stock trades at 40. An analyst expects a price of 44 in one year and a dividend of 1 during the year. The risk-free rate is 3%, the stock's beta is 1.3 and the market risk premium is 6%. The stock is **most likely**:",
+ ["overvalued, because its required return of 10.8% is above the market's return.","fairly valued, because its expected return equals its required return.","undervalued, because its expected return of 12.5% is above its required return."],
+ 2,"Expected return = (44 − 40 + 1)/40 = 12.5%. Required return from the CAPM = 3% + 1.3 × 6% = 10.8%. The expected return is higher, so the stock plots above the security market line and is undervalued. A required return above the market's only reflects the beta above 1; it says nothing about valuation on its own.",true],
+["An investor holds 1,000,000 in an equity portfolio with a beta of 1.2. To reduce the beta of her total holdings to 0.9, the amount she should move from the equity portfolio into a risk-free asset is **closest** to:",
+ ["250,000","300,000","750,000"],
+ 0,"The risk-free asset has a beta of zero, so the combined beta is the equity weight × 1.2. For 0.9 the equity weight must be 0.9/1.2 = 75%, which means moving 25%, or 250,000. 750,000 is the amount that stays in equities, and 300,000 applies the 0.3 reduction in beta directly as a weight.",true],
+["Conditional value at risk (CVaR) is **best** described as the:",
+ ["average loss, given that the loss is larger than the VaR.","largest loss the portfolio can suffer over the period.","loss that will be exceeded with a stated probability."],
+ 0,"CVaR, or expected shortfall, is the expected loss in the tail beyond the VaR level, so it says how bad losses are when the VaR is breached. The loss that is exceeded with a stated probability is VaR itself. Neither measure gives the largest possible loss, which can be far greater."],
+["The risk-free rate is 3% and the market portfolio has an expected return of 9%. An investor borrows 30% of his own capital at the risk-free rate and invests everything in the market portfolio. His expected return is **closest** to:",
+ ["7.8%","10.8%","11.7%"],
+ 1,"The weight in the market is 130% and the weight in the risk-free asset is −30%: 1.3 × 9% − 0.3 × 3% = 11.7% − 0.9% = 10.8%. 11.7% forgets the interest on the borrowing, and 7.8% is 1.3 times the market risk premium without adding the risk-free rate.",true],
+["Two assets each have a standard deviation of 20%, and their returns are uncorrelated. The standard deviation of a portfolio with half its value in each asset is **closest** to:",
+ ["14.1%","20.0%","28.3%"],
+ 0,"With zero correlation, variance = 0.5² × 0.20² + 0.5² × 0.20² = 0.01 + 0.01 = 0.02, and the standard deviation is √0.02 = 14.1%. 20.0% would be the result only with perfect positive correlation, where there is no benefit from diversification, and 28.3% adds the two variances without applying the weights.",true],
+["An analyst rates a newly listed company as a strong buy because it reminds her of a technology company whose shares rose tenfold, without considering how rarely such companies succeed. This is **most likely** an example of:",
+ ["conservatism bias.","availability bias.","representativeness bias."],
+ 2,"Representativeness is classifying something by its resemblance to a familiar case and neglecting the base rate, here the low share of young companies that succeed. Conservatism is the opposite tendency, giving too little weight to new information. Availability bias judges probability by how easily examples come to mind, which is close but does not involve classifying by similarity."],
+["An analyst estimates the market model for a stock with an intercept of 1.0% and a beta of 1.2. In a year when the market returns 8.0%, the stock returns 12.0%. The part of the stock's return that is specific to the company is **closest** to:",
+ ["1.4%","2.4%","4.0%"],
+ 0,"The market model predicts 1.0% + 1.2 × 8.0% = 10.6%. The company-specific (residual) return is the actual return minus this: 12.0% − 10.6% = 1.4%. 2.4% leaves out the intercept, and 4.0% simply compares the stock's return with the market's.",true]
+],{from:161,diff:"exam"});
 CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
 ["The main benefit of the portfolio perspective on investing is that it:",
  ["guarantees higher returns than holding the individual securities on their own.","reduces risk through diversification without necessarily reducing return.","eliminates all systematic risk once enough securities are held."],
