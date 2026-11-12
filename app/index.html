@@ -9261,7 +9261,7 @@ The fund also plans a first allocation to private real estate, for which the onl
  ["identical to the weights of the global market portfolio in every case.","more concentrated, because the investor's views replace the market's.","better diversified, tilted away from market weights only where the investor holds views."],
  2,"The Black-Litterman model starts from the returns implied by market weights and blends them with the investor's views according to the confidence placed in each view. With no views the result is the market portfolio; with views, the weights tilt away from it in a measured way, which avoids the extreme and concentrated allocations that historical-average inputs tend to produce."],
 ["Resampled mean-variance optimization **most directly** addresses the criticism that standard optimization:",
- ["is highly sensitive to small changes in its inputs.","takes account of only one period.","ignores the investor's liabilities."],
+ ["is highly sensitive to its inputs.","takes account of only one period.","ignores the investor's liabilities."],
  0,"Resampling runs the optimization on many sets of simulated inputs and averages the resulting weights, which yields a smoother, more diversified and more stable frontier; it deals with the sensitivity of the output to estimation error in the inputs. It remains a single-period, asset-only method, so it answers neither of the other two criticisms."],
 ["If Rao uses the appraisal-based index returns for real estate in the optimization without adjustment, the **most likely** result is:",
  ["an allocation to real estate that is too small.","an allocation to real estate that is too large.","no effect on the allocation, because the returns are unbiased."],
@@ -9291,6 +9291,222 @@ Mensah also meets an active manager who describes her engagement with companies:
 ["The active manager's engagement is **most likely** intended to:",
  ["obtain material nonpublic information about the companies.","increase the long-term value of the companies she holds.","reduce the tracking error of her portfolio."],
  1,"Engagement aims to improve strategy, capital allocation and governance so that the companies become more valuable over time. It must not be used to obtain inside information; managers who receive material nonpublic information in such talks have to stop trading. It has no direct link with tracking error."]
+]);
+/* Level III, seventh batch (2026-11-12): Portfolio Management Pathway items that complete Mock 5.
+   Item sets L3-PMP-16 (bond indexing: enhanced indexing, total return swap, ladders, cap-weighted bond indexes),
+   L3-PMP-17 (130/30 long-short extension), L3-PMP-18 (butterfly trade, adding duration with swaps, options on
+   bond futures), L3-PMP-19 (index CDS, rating averages, liquidity cost, CLO tranches).
+   Essays L3-PMP-CR16 (pairs trading and quantitative pitfalls), L3-PMP-CR17 (immunizing multiple liabilities,
+   swaptions), L3-PMP-CR18 (market-adjusted trading cost, choice of trading strategy),
+   L3-PMP-CR19 (rebalancing a fund with a futures overlay). Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-16",
+`Mirela Constantin, CFA, runs index-based bond mandates at Ostrava Asset Management.
+
+**Mandate 1.** A 150 million mandate tracks a broad investment-grade index of more than 9,000 bonds, many of which rarely trade. Constantin plans to hold about 400 bonds.
+
+**Mandate 2.** A client wants exposure to the same index for one quarter while a manager search is completed. Constantin proposes a total return swap on a notional amount of 50 million: the client receives the index return and pays the market reference rate (MRR) plus 0.20%, with one settlement at the end of the quarter. MRR is 4.00% a year. Over the quarter, the index returns 2.40%.
+
+**Mandate 3.** A retired client wants a bond portfolio that is simple, provides regular liquidity and does not depend on forecasting interest rates. Constantin proposes a ladder of bonds maturing in each of the next ten years.
+
+A trustee of another client remarks that a market-value-weighted corporate bond index "gives the most weight to the companies that have borrowed the most."`,
+[
+["For Mandate 1, the approach that Constantin plans is **best** described as:",
+ ["full replication.","an active mandate with a wide risk budget.","enhanced indexing."],
+ 2,"With 9,000 bonds, many illiquid, full replication is impractical and costly. Holding a sample of bonds chosen so that the portfolio matches the index's main risk exposures (duration, key rate durations, sector and quality weights, issuer exposure) is enhanced indexing through stratified sampling. The aim is still to track the index closely, so it is not an active mandate."],
+["The net payment the client receives on the swap in Mandate 2 at the end of the quarter is **closest** to:",
+ ["525,000","675,000","1,200,000"],
+ 1,"The client receives the index return, 2.40% × 50 million = 1,200,000, and pays (4.00% + 0.20%)/4 = 1.05% × 50 million = 525,000. Net receipt = 675,000. 1,200,000 ignores the financing leg, and 525,000 is the financing leg alone.",true],
+["Compared with a barbell of short-term and long-term bonds with the same duration, the ladder proposed for Mandate 3 **most likely** offers:",
+ ["reinvestment risk spread more evenly over time.","higher convexity.","a lower need for reinvestment decisions."],
+ 0,"A ladder spreads maturities evenly, so a bond matures every year and is reinvested at that year's rates, which spreads reinvestment risk over time and provides regular liquidity. A barbell, with its cash flows far apart, has the higher convexity. A ladder requires a reinvestment decision each year, though a mechanical one: buy a new bond at the long end."],
+["The feature of bond indexes that the trustee describes is **best** known as the:",
+ ["survivorship problem.","liquidity mismatch.","bums problem."],
+ 2,"In a market-value-weighted bond index, issuers with the most debt outstanding receive the largest weights, so an investor tracking the index lends most to the most indebted borrowers. This is called the bums problem. Survivorship concerns failed funds or issuers dropping out of data, and liquidity mismatch is the difficulty of trading index bonds."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-17",
+`Rasmus Holt, CFA, proposes converting a long-only equity fund with 200 million of capital into a 130/30 fund: 260 million of long positions and 60 million of short positions, measured against the same benchmark.
+
+Holt explains that one of his strongest negative views is on Brevia plc, which is 0.2% of the benchmark. In the 130/30 fund he would hold a short position in Brevia equal to 1.0% of the fund's capital.
+
+A trustee asks what the fund gains from the change and what new risks it takes on.`,
+[
+["The gross exposure of the proposed fund, as a percentage of capital, is **closest** to:",
+ ["100%","130%","160%"],
+ 2,"Gross exposure = long positions + absolute value of short positions = 260 + 60 = 320 million, or 160% of the 200 million of capital. Net exposure is 260 − 60 = 200 million, or 100%, so the fund keeps a market exposure similar to that of a long-only fund. 130% counts only the long side.",true],
+["The **main** benefit of the 130/30 structure for Holt's process is that it:",
+ ["lets negative views be expressed in full, beyond a zero weight.","removes the fund's exposure to the equity market.","lowers the fund's costs by cutting turnover."],
+ 0,"A long-only manager can underweight a stock only down to a zero holding, which for a small benchmark weight is almost nothing. Shorting relaxes that constraint, so the portfolio reflects the manager's negative views as fully as the positive ones (a higher transfer coefficient), and the short proceeds fund larger long positions in favored stocks. The net exposure remains about 100%, and costs rise because of borrowing fees and more trading."],
+["Brevia's active weight in the 130/30 fund is **closest** to:",
+ ["−1.2%","−1.0%","−0.8%"],
+ 0,"Active weight = portfolio weight − benchmark weight = −1.0% − 0.2% = −1.2%. In the long-only fund the largest possible underweight was −0.2%, reached by not holding the stock. −1.0% is the portfolio weight itself, and −0.8% subtracts in the wrong direction.",true],
+["A risk that the 130/30 fund has and the long-only fund does not is that:",
+ ["its benchmark may be changed by the index provider.","lenders may recall the shares it has borrowed.","a holding may fall to zero."],
+ 1,"A short position depends on borrowed shares: if the lender recalls them, or if a rising price draws in other short sellers who must buy (a short squeeze), the position may have to be covered at a bad price, and the potential loss on a short is unlimited. A long holding falling to zero and a change of benchmark are risks any equity fund faces."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-18",
+`Camila Duarte, CFA, manages government bond portfolios at Solano Fixed Income.
+
+**Trade 1.** Duarte sells 50 million par value of 10-year bonds and uses the proceeds, together with cash, to buy 2-year and 30-year bonds. She sizes the purchases so that each of the two purchases has half of the basis point value (BPV) of the bonds sold.
+
+**Exhibit 1: BPV per 100 of par value**
+
+| Bond | BPV |
+|---|---|
+| 2-year | 0.019 |
+| 10-year | 0.085 |
+| 30-year | 0.190 |
+
+**Trade 2.** A 100 million portfolio has a modified duration of 5.0. Duarte wants a duration of 6.0 and will use a receive-fixed interest rate swap with a BPV of 0.045 per 100 of notional.
+
+**Trade 3.** In another portfolio, Duarte replaces part of a holding of 10-year bonds with call options on bond futures.`,
+[
+["In Trade 1, the par value of 30-year bonds that Duarte buys is **closest** to:",
+ ["11.2 million","22.4 million","25.0 million"],
+ 0,"BPV sold = 50,000,000 × 0.085/100 = 42,500. Each purchase must carry half of it, 21,250. For the 30-year bond: 21,250/(0.190/100) = 11.2 million. (The 2-year purchase is 21,250/(0.019/100) = 111.8 million.) 22.4 million would put the whole BPV in the 30-year bond, and 25.0 million simply splits the par amount in two.",true],
+["After Trade 1, the position will **most likely** gain if:",
+ ["the yield curve shifts in parallel by a few basis points.","the 10-year yield rises relative to the 2-year and 30-year yields.","the 10-year yield falls relative to the 2-year and 30-year yields."],
+ 1,"The trade is duration neutral, long the wings and short the body of the curve: it gains when the middle of the curve rises relative to the ends, that is, when curvature increases. The barbell also has more convexity than the bullet it replaced, which helps in large moves, but a small parallel shift has almost no effect. A fall in the 10-year yield relative to the wings would produce a loss."],
+["In Trade 2, the notional amount of the swap that Duarte needs is **closest** to:",
+ ["16.7 million","20.0 million","22.2 million"],
+ 2,"BPV to add = 100,000,000 × (6.0 − 5.0) × 0.0001 = 10,000. Notional = 10,000/(0.045/100) = 22.2 million of receive-fixed swap. 20.0 million would be right for a swap with a BPV of 0.050, that is, an instrument with the portfolio's own duration, and 16.7 million divides the portfolio by the target duration.",true],
+["Compared with the bonds it replaces, Trade 3 **most likely**:",
+ ["raises the portfolio's yield and lowers its convexity.","adds convexity at the cost of the option premium.","leaves convexity unchanged and removes all interest rate risk."],
+ 1,"Buying call options adds convexity: the portfolio gains as yields fall and loses no more than the premium if they rise. The cost is the premium, which reduces the portfolio's yield, so the trade pays off only if rates move by more than the market's implied volatility. Selling options would do the opposite, raising yield and lowering convexity."]
+]);
+
+CFA_DATA.set(3,"Portfolio Management Pathway","L3-PMP-19",
+`Farid Nouri, CFA, manages credit portfolios at Kelburn Capital.
+
+**Position 1.** To add credit exposure quickly, Nouri sells protection on 20 million notional of a high-yield CDS index. The index CDS has a spread duration of 4.5. Shortly afterwards the index spread narrows by 50 basis points.
+
+**Observation.** A colleague reports the average credit quality of a portfolio by assigning 1 to AAA, 2 to AA+ and so on, and taking the market-value-weighted average of the numbers.
+
+**Position 2.** Nouri needs to sell 10 million (market value) of a corporate bond with a modified duration of 5.0. Dealers quote the bond with a bid–offer spread of 40 basis points in yield.
+
+**Position 3.** Nouri expects the correlation of defaults among the loans in a collateralized loan obligation (CLO) to rise, with no change in the expected number of defaults.`,
+[
+["Ignoring the premium earned, the change in the value of Position 1 for Kelburn is **closest** to:",
+ ["a loss of 450,000.","a gain of 100,000.","a gain of 450,000."],
+ 2,"A protection seller is long credit risk and gains when spreads narrow: change in value ≈ spread change × spread duration × notional = 0.0050 × 4.5 × 20,000,000 = 450,000. The loss would be the result for the protection buyer, and 100,000 leaves out the duration.",true],
+["The colleague's method of averaging ratings **most likely**:",
+ ["understates the portfolio's credit risk.","overstates the portfolio's credit risk.","measures credit risk accurately if the weights are market values."],
+ 0,"Default probabilities rise much faster than in a straight line as ratings fall, so equal steps on a number scale understate how much more risk the lower ratings carry. A portfolio combining very high and very low ratings has the same arithmetic average as one in the middle but far more credit risk. A non-linear scale based on default rates, or spread-based measures such as duration times spread, is preferable."],
+["The cost of selling the bond in Position 2, measured as half of the bid–offer spread, is **closest** to:",
+ ["20,000","100,000","200,000"],
+ 1,"Half of the spread is 20 basis points of yield. Price effect ≈ duration × yield change = 5.0 × 0.0020 = 1.0%, and 1.0% × 10,000,000 = 100,000. 200,000 is the cost of a full round trip, and 20,000 applies the 20 basis points directly to the market value without the duration.",true],
+["If Nouri's expectation in Position 3 is correct, the value of the CLO's equity tranche relative to its senior tranche will **most likely**:",
+ ["fall.","rise.","be unchanged."],
+ 1,"With higher default correlation, defaults tend to come together: there are more scenarios with very few defaults, which favor the equity tranche, and more with very many, which reach the senior tranche. The equity tranche can lose no more than its small investment, so higher correlation raises its value relative to the senior tranche, whose risk of loss increases."]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR16",
+`Ingrid Solheim, CFA, runs a quantitative equity strategy at Fjordvik Capital. One of its models trades pairs of stocks in the same industry.
+
+For the pair Arden Steel and Belmont Steel, the ratio of the two share prices (Arden/Belmont) has had a mean of 1.50 and a standard deviation of 0.08 over the past two years. The ratio is now 1.70. The model opens a trade when the ratio is more than two standard deviations from its mean and closes it when the ratio returns to the mean.
+
+The model was developed by testing several hundred candidate signals on ten years of data from a database of companies that are listed today, and it showed a backtested information ratio of 1.8 before trading costs.`,
+[
+["**A.** Calculate the z-score of the price ratio, state whether the model opens a trade, and describe the positions it takes.",
+ "z-score = (1.70 − 1.50)/0.08 = 2.5. This is more than two standard deviations above the mean, so the model opens a trade. Arden is expensive relative to Belmont, so the model sells Arden short and buys Belmont, in amounts of equal value (or beta), expecting the ratio to fall back toward 1.50.",
+ [["z-score of 2.5",1],["Trade is opened because the z-score exceeds 2",1],["Short Arden, long Belmont",1]],true],
+["**B.** Identify **three** weaknesses in the way the model was developed and tested, and explain how each could make the backtested result overstate future performance.",
+ "1) Data mining: testing several hundred signals on the same data guarantees that some look good by chance; the chosen signals may have no real predictive power. 2) Survivorship bias: a database of companies listed today leaves out those that failed or were taken over, so the backtest never experienced the losses those stocks would have caused. 3) No trading costs: pairs trading has high turnover and requires short selling, so commissions, bid–offer spreads, market impact and borrowing fees can consume much of a gross information ratio of 1.8. Also acceptable: look-ahead bias if the data used were not available on the trade dates; no out-of-sample test.",
+ [["First weakness with its effect",1],["Second weakness with its effect",1],["Third weakness with its effect",1]]],
+["**C.** Explain **two** risks of the Arden–Belmont trade itself, even if the model is sound.",
+ "Any two: (1) Structural change: the relationship may have broken for a fundamental reason, such as a takeover bid for one company, a new plant or a lawsuit, so the ratio never returns to its old mean and the loss grows. (2) Divergence before convergence: the ratio can move further away first; with leverage and risk limits the position may have to be cut at a loss before it comes right. (3) Short-side risk: Arden's shares may be recalled or squeezed, and the loss on a short is unlimited. (4) Crowding: other quantitative funds hold similar pairs, and when they reduce positions together the trades move against everyone at once.",
+ [["First risk explained",2],["Second risk explained",2]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR17",
+`The Torrance Pension Plan has closed to new members. Its liabilities are a stream of payments over the next 40 years. Wei Zhang, CFA, must choose a bond portfolio to immunize them.
+
+**Exhibit 1: Liabilities and candidate portfolios**
+
+| | Market value (millions) | BPV | Convexity |
+|---|---|---|---|
+| Liabilities | 400 | 360,000 | 95 |
+| Portfolio 1 | 400 | 360,000 | 80 |
+| Portfolio 2 | 402 | 361,000 | 105 |
+| Portfolio 3 | 401 | 359,000 | 190 |
+| Portfolio 4 | 400 | 300,000 | 100 |
+
+Separately, the plan's sponsor hedges only 60% of the interest rate risk of another plan with swaps. The sponsor believes that swap rates are more likely to rise than to fall over the next two years but wants protection if they fall. Zhang considers three ways to raise the hedge: (1) a larger receive-fixed swap, (2) buying a receiver swaption, (3) a swaption collar: buying a receiver swaption and selling a payer swaption with a higher exercise rate, at no net premium.`,
+[
+["**A.** Determine which portfolio **best** immunizes the liabilities, and explain why each of the other three is less suitable.",
+ "Portfolio 2. Immunizing multiple liabilities requires that the assets' market value is at least the present value of the liabilities, that the BPVs match, and that the assets' convexity (dispersion of cash flows) is greater than the liabilities', but by as little as possible. Portfolio 2 meets all three: 402 against 400, a BPV within 1,000 of the liabilities', and convexity of 105 against 95. Portfolio 1 has lower convexity than the liabilities, so a change in rates in either direction would leave assets below liabilities. Portfolio 3 matches BPV but has far more convexity than needed, which means its cash flows are much more dispersed than the liabilities' and it is exposed to changes in the shape of the curve. Portfolio 4 has a BPV of only 300,000, so it would fall short if rates fell.",
+ [["Portfolio 2 chosen with the three conditions",2],["Portfolio 1: convexity below that of the liabilities",1],["Portfolio 3: excess convexity, more structural risk",1],["Portfolio 4: BPV mismatch",1]]],
+["**B.** Explain what structural risk means for an immunized portfolio and how it is kept low.",
+ "Immunization by matching BPV protects against parallel shifts of the yield curve. Structural risk is the risk that the curve twists or changes shape, so that assets and liabilities, whose cash flows fall at different maturities, change in value by different amounts although their durations match. It is kept low by making the timing of asset cash flows resemble that of the liabilities as closely as possible, that is, by minimizing the dispersion (and so the convexity) of the assets subject to its being at least that of the liabilities; in the limit this is cash flow matching, which has no structural risk.",
+ [["Risk from non-parallel shifts and twists of the curve",2],["Reduced by keeping the dispersion or convexity of assets close to that of liabilities",1]]],
+["**C.** Recommend which of the three hedging choices fits the sponsor's view, and state the condition under which the swaption collar would turn out worse than the receiver swaption.",
+ "The receiver swaption. If rates rise, as the sponsor expects, the swaption expires unexercised and the plan loses only the premium, while keeping the full benefit of the fall in the value of its liabilities on the unhedged part. If rates fall, the swaption is exercised and provides the protection the sponsor wants. A larger swap would lock in today's rate and produce losses on the swap if rates rise, which contradicts the view. The collar costs nothing at the start, but the plan has sold a payer swaption: if swap rates rise above its exercise rate, the buyer exercises and the plan is obliged to receive a fixed rate below the market, giving up the gains beyond that level. The collar is therefore worse than the receiver swaption if rates rise above the payer swaption's exercise rate by more than the premium saved is worth.",
+ [["Receiver swaption recommended",1],["Justification: protection if rates fall, loss limited to the premium if they rise",1],["Collar is worse when rates rise above the exercise rate of the payer swaption sold",2]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR18",
+`Tomasz Zielinski, CFA, is head of trading at Brightwater Investors.
+
+**Exhibit 1: A completed order**
+
+| Item | Value |
+|---|---|
+| Order | Buy 200,000 shares of Corran plc |
+| Arrival price | 25.00 |
+| Average execution price | 25.20 |
+| Return of the market index over the trading period | +0.50% |
+| Corran's beta | 1.2 |
+| Pre-trade estimate of trading cost | 30 bps |
+
+**Exhibit 2: Three new orders**
+
+| Order | Size relative to average daily volume | Other information |
+|---|---|---|
+| X | 1% | Large, liquid stock; the manager has no view on short-term price moves |
+| Y | 40% | Small, thinly traded stock; no urgency; the manager fears information leakage |
+| Z | 5% | The manager expects the price to rise within hours, after news is released |
+
+Brightwater also runs an index fund whose net asset value is calculated from closing prices each day.`,
+[
+["**A.** Calculate the arrival cost of the Corran order in basis points and the market-adjusted cost, and state whether the trade was more or less costly than the pre-trade estimate once the market's movement is removed.",
+ "Arrival cost = (25.20 − 25.00)/25.00 = 0.80% = 80 bps. Part of this is due to the market rising: index cost = 50 bps, and with a beta of 1.2 the expected move in Corran is 1.2 × 50 = 60 bps. Market-adjusted cost = 80 − 60 = 20 bps. This is 10 bps below the pre-trade estimate of 30 bps, so once the market's rise is removed the order was traded more cheaply than expected.",
+ [["Arrival cost of 80 bps",1],["Market-adjusted cost of 20 bps",2],["10 bps better than the pre-trade estimate",1]],true],
+["**B.** Recommend a trading strategy for each of the three orders in Exhibit 2 and justify each recommendation.",
+ "Order X: a scheduled algorithm such as VWAP or TWAP. The order is small relative to volume in a liquid stock, with no short-term view, so spreading it over the day at low cost and with little attention is appropriate. Order Y: a liquidity-seeking approach using dark pools, or a high-touch broker working the order (possibly a negotiated block). At 40% of daily volume in an illiquid stock, a displayed or scheduled order would move the price and reveal the manager's intention; there is no urgency, so the trader can wait for liquidity. Order Z: an arrival price (implementation shortfall) algorithm that trades quickly, front-loading the order. The manager expects the price to move against the order within hours, so the cost of delay is greater than the extra market impact of trading fast, and 5% of volume can be executed quickly.",
+ [["X: VWAP or TWAP, justified",1],["Y: dark pool, liquidity-seeking or high-touch, justified",2],["Z: arrival price algorithm with fast execution, justified",2]]],
+["**C.** Identify the reference price that the index fund's trader should use, and explain why.",
+ "The closing price, usually obtained by trading in the closing auction (market-on-close orders). The fund's net asset value and the index it tracks are both calculated from closing prices, so trading at the close makes the price paid equal to the price at which the fund and the index are valued. That minimizes tracking error from cash flows and index changes. An arrival or VWAP benchmark could give a lower cost in some periods but would introduce a difference between the fund's execution prices and its valuation prices.",
+ [["Closing price (closing auction, market-on-close)",1],["Matches the prices used for the fund's valuation and the index, minimizing tracking error",2]]]
+]);
+
+CFA_DATA.cr(3,"Portfolio Management Pathway","L3-PMP-CR19",
+`The Halberg Reserve Fund has assets of 2,000 million and a policy allocation of 60% equities and 40% bonds. After a strong equity market, the fund holds 1,280 million of equities and 720 million of bonds. Both the equity portfolio and the bond portfolio are managed by external managers with notice periods for withdrawals.
+
+Elif Demir, CFA, the fund's chief investment officer, wants to return to the policy weights at once with a futures overlay and to leave the external managers' portfolios untouched for now.
+
+**Exhibit 1: Market data**
+
+| Item | Value |
+|---|---|
+| Equity index level | 4,000 |
+| Equity futures multiplier | 50 |
+| Beta of the equity portfolio and of the futures | 1.0 |
+| Target modified duration of the bond allocation | 6.0 |
+| BPV of one bond futures contract | 80 |
+
+Assume that the equity futures price equals the index level and that the cash released by the equity futures position has a duration of zero.`,
+[
+["**A.** Calculate the number of equity index futures contracts and the number of bond futures contracts Demir should trade, and state whether each is bought or sold.",
+ "Target equities = 60% × 2,000 = 1,200 million, so equity exposure must fall by 80 million and bond exposure must rise by 80 million. Equity futures: one contract = 4,000 × 50 = 200,000; with betas of 1.0, contracts = 80,000,000/200,000 = 400, sold. Bond futures: the 80 million of synthetic cash must be given a duration of 6.0, so BPV to add = 80,000,000 × 6.0 × 0.0001 = 48,000; contracts = 48,000/80 = 600, bought.",
+ [["Exposure shift of 80 million",1],["Sell 400 equity index futures",2],["Buy 600 bond futures",2]],true],
+["**B.** Explain **two** advantages of the overlay over rebalancing by moving money between the external managers.",
+ "Any two: (1) Speed: futures can be traded in minutes, while withdrawals from external managers require notice, so the fund is back at its policy risk immediately. (2) Cost: futures on major indexes and government bonds are very liquid, with far lower transaction costs and market impact than selling 80 million of shares and buying 80 million of bonds. (3) No disruption: the managers' portfolios, and any alpha they generate, are left intact; nothing has to be sold that they would have kept. (4) Flexibility: the position is easy to reverse or resize if markets move again before the physical rebalancing takes place.",
+ [["First advantage explained",2],["Second advantage explained",2]]],
+["**C.** Describe **two** risks or costs that the overlay introduces.",
+ "Any two: (1) Basis risk: the futures track an index and a deliverable bond, not the managers' actual portfolios, so the hedge will not offset the portfolios' behavior exactly (for example, an equity portfolio whose beta or composition differs from the index). (2) Liquidity for margin: futures are marked to market daily, and if equities keep rising the short position generates margin calls that must be met in cash, which the fund must hold or raise. (3) Roll cost and operational demands: positions must be rolled each quarter, monitored and kept within counterparty and regulatory limits. (4) The overlay changes exposures but not holdings: the fund remains overweight in the equity managers' specific positions, so concentration and manager risk are unchanged until the physical rebalancing is done.",
+ [["First risk or cost explained",2],["Second risk or cost explained",2]]]
 ]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
@@ -10169,7 +10385,10 @@ CFA_DATA.mockForms = {
    s2:["L3-PMP-CR11","L3-PMP-11","L3-AA-05","L3-PMP-CR10","L3-ETH-06","L3-PMP-CR04","L3-PMP-03","L3-DR-01","L3-DR-CR03","L3-PM-05","L3-ETH-CR03"]},
   {id:"L3-M4", name:"Mock 4",
    s1:["L3-PMP-CR12","L3-PMP-CR13","L3-PMP-CR15","L3-PMP-CR14","L3-PM-04","L3-PMP-15","L3-PM-CR04","L3-PMP-12","L3-ETH-04","L3-AA-CR07","L3-PC-06"],
-   s2:["L3-DR-05","L3-AA-CR08","L3-PMP-13","L3-PC-09","L3-DR-CR05","L3-PMP-14","L3-AA-02","L3-PC-CR08","L3-PC-CR07","L3-AA-08","L3-ETH-CR04"]}
+   s2:["L3-DR-05","L3-AA-CR08","L3-PMP-13","L3-PC-09","L3-DR-CR05","L3-PMP-14","L3-AA-02","L3-PC-CR08","L3-PC-CR07","L3-AA-08","L3-ETH-CR04"]},
+  {id:"L3-M5", name:"Mock 5",
+   s1:["L3-PMP-CR17","L3-AA-CR09","L3-PMP-17","L3-PMP-CR16","L3-PMP-CR18","L3-PM-06","L3-PM-CR05","L3-PMP-CR19","L3-PMP-16","L3-PC-10","L3-PC-05"],
+   s2:["L3-PC-CR09","L3-AA-06","L3-PMP-18","L3-PMP-19","L3-DR-CR06","L3-DR-08","L3-PC-CR10","L3-AA-10","L3-ETH-03","L3-AA-CR10","L3-ETH-CR05"]}
  ]
 };
 /* BA II Plus–style calculator engine (no DOM). The keypad UI lives in shell.html and calls press(key).
