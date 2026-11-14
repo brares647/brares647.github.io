@@ -763,7 +763,7 @@ window.CFA_DATA = {
   topics: {
     1: ["Ethical and Professional Standards","Quantitative Methods","Economics","Financial Statement Analysis","Corporate Finance","Equities","Fixed Income","Derivatives and Risk Management","Alternative Investments","Portfolio Construction"],
     2: ["Ethical and Professional Standards","Quantitative Methods","Economics","Financial Statement Analysis","Corporate Finance","Equities","Fixed Income","Derivatives and Risk Management","Alternative Investments","Portfolio Construction"],
-    3: ["Asset Allocation","Portfolio Construction","Performance Measurement","Derivatives and Risk Management","Ethical and Professional Standards","Portfolio Management Pathway"]
+    3: ["Asset Allocation","Portfolio Construction","Performance Measurement","Derivatives and Risk Management","Ethical and Professional Standards","Portfolio Management Pathway","Private Wealth Pathway","Private Markets Pathway"]
   },
   items: [],
   /* Deterministic option rotation so the correct letter is spread evenly across A/B/C.
@@ -10108,6 +10108,419 @@ Assume that the equity futures price equals the index level and that the cash re
  "Any two: (1) Basis risk: the futures track an index and a deliverable bond, not the managers' actual portfolios, so the hedge will not offset the portfolios' behavior exactly (for example, an equity portfolio whose beta or composition differs from the index). (2) Liquidity for margin: futures are marked to market daily, and if equities keep rising the short position generates margin calls that must be met in cash, which the fund must hold or raise. (3) Roll cost and operational demands: positions must be rolled each quarter, monitored and kept within counterparty and regulatory limits. (4) The overlay changes exposures but not holdings: the fund remains overweight in the equity managers' specific positions, so concentration and manager risk are unchanged until the physical rebalancing is done.",
  [["First risk or cost explained",2],["Second risk or cost explained",2]]]
 ]);
+/* Level III, Private Wealth Pathway, first batch (2026-11-14): enough pathway items for one full mock.
+   Follows the 2027 topic outline (industry, working with the wealthy, wealth planning, investment planning,
+   preserving, advising and transferring the wealth).
+   Item sets L3-PW-01 (business models, fees, family office, family constitution), L3-PW-02 (taxes on investment
+   returns, accrual equivalent tax rate, asset location), L3-PW-03 (human capital risks, life insurance needs,
+   inflation, exchange rates), L3-PW-04 (gift against bequest, forced heirship, charitable vehicles).
+   Essays L3-PW-CR01 (goals-based plan and liquidity), L3-PW-CR02 (business owner before a sale),
+   L3-PW-CR03 (moving country: double taxation relief and residency), L3-PW-CR04 (family governance and philanthropy).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-01",
+`Tereza Novak, CFA, is a wealth manager at Halden Private Bank, which serves three client segments: mass affluent, high-net-worth and ultra-high-net-worth.
+
+**Fees.** Halden charges discretionary clients an annual fee on assets under management: 1.00% on the first 2 million, 0.75% on the next 3 million and 0.50% on assets above 5 million. Lukas Brandt has 8 million with the bank. For structured products placed in client accounts, the issuers pay Halden a retrocession, part of which is passed on to the adviser.
+
+**The Brandt family.** Brandt's wider family owns a manufacturing company and financial assets worth about 400 million. The family is deciding between setting up a single-family office and joining a multi-family office.
+
+**Family decisions.** Three generations of the family disagree about how much of the company's profit should be paid out as dividends. Novak suggests that the family write a family constitution and form a family council.`,
+[
+["The annual fee on Brandt's account is **closest** to:",
+ ["40,000","57,500","80,000"],
+ 1,"Fee = 1.00% × 2,000,000 + 0.75% × 3,000,000 + 0.50% × 3,000,000 = 20,000 + 22,500 + 15,000 = 57,500, an effective rate of about 0.72%. 40,000 applies the lowest rate to the whole account, and 80,000 applies the highest rate to the whole account.",true],
+["The arrangement at Halden that creates the **most** direct conflict between the adviser and the client is the:",
+ ["tiered fee on assets under management.","retrocession paid by product issuers.","lower fee rate on larger accounts."],
+ 1,"A retrocession is paid by the product provider, so the adviser earns more by placing those products whether or not they suit the client; many regulators restrict or ban such payments or require them to be disclosed. A fee on assets links the firm's revenue to the growth of the client's wealth, although it has milder conflicts of its own (for example, a reluctance to advise using savings to pay off debt). A lower rate on larger accounts is simply a volume discount."],
+["Compared with joining a multi-family office, a single-family office would **most likely** give the Brandt family:",
+ ["lower costs, because staff and systems are shared.","more control, privacy and tailoring of services.","easier access to deals shared among several families."],
+ 1,"A single-family office works for one family only, so the family decides its staff, services and investment policy and keeps its affairs private. The price is cost: the family bears all of the staff and systems expense, which is why this route is usually reserved for very large fortunes. Shared costs and access to other families' deal flow are advantages of the multi-family office."],
+["A family constitution of the kind Novak suggests is **best** described as a:",
+ ["legally binding contract on the voting and transfer of shares.","statement of the family's values, rules and decision process.","trust deed that names the beneficiaries of the family's assets."],
+ 1,"A family constitution (or charter) sets out the family's mission and values, who may take part in decisions, how the family council and other bodies work, and policies such as dividends and employment of family members. It is normally a moral rather than a legal commitment. A binding contract on voting and share transfers is a shareholders' agreement, and a trust deed governs a trust, not the family's decision making."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-02",
+`Freja Olsen has 1,000,000 to invest for ten years and asks her adviser, Marek Dvorak, CFA, how taxes will affect the result. In her country, interest and dividends are taxed each year at 30%, and capital gains are taxed at 20% when they are realized.
+
+**Investment 1.** 500,000 in a bond fund expected to return 5% a year before tax, all of it interest.
+
+**Investment 2.** 500,000 in a portfolio of growth shares expected to return 7% a year before tax, all of it as price appreciation. No dividends are paid and nothing is sold until the end of year 10, when the whole position is sold. The tax basis is the amount invested.
+
+Olsen has two accounts available: an ordinary taxable account and a retirement account in which returns are not taxed until money is withdrawn. Each account can hold 500,000.`,
+[
+["The expected after-tax value of Investment 1 after ten years, if held in the taxable account, is **closest** to:",
+ ["705,299","720,113","814,447"],
+ 0,"Interest is taxed every year, so the after-tax return is 5% × (1 − 0.30) = 3.5%. Value = 500,000 × 1.035^10 = 705,299. 814,447 ignores tax (500,000 × 1.05^10), and 720,113 taxes the whole gain once at the end, which understates the cost of paying tax every year.",true],
+["The expected after-tax value of Investment 2 after ten years, if held in the taxable account, is **closest** to:",
+ ["862,202","886,861","983,576"],
+ 1,"The gain is taxed once, at the sale. Pretax value = 500,000 × 1.07^10 = 983,576. Tax = 20% × (983,576 − 500,000) = 96,715. After-tax value = 886,861, or 500,000 × [1.07^10 × (1 − 0.20) + 0.20]. 862,202 taxes the gain every year at 20% (500,000 × 1.056^10), and 983,576 is the value before tax.",true],
+["The accrual equivalent tax rate of Investment 2 is **closest** to:",
+ ["15.7%","20.0%","30.0%"],
+ 0,"The accrual equivalent return is the constant annual after-tax return that gives the same ending value: (886,861/500,000)^(1/10) − 1 = 5.90%. The accrual equivalent tax rate is 1 − 5.90%/7% = 15.7%. It is below the stated 20% because the tax is deferred for ten years. 30.0% is the rate on interest and dividends, which does not apply to this investment.",true],
+["If Olsen holds both investments, Dvorak's **most** appropriate advice on where to hold them is to place:",
+ ["the bond fund in the retirement account and the shares in the taxable account.","the shares in the retirement account and the bond fund in the taxable account.","half of each investment in each account."],
+ 0,"Asset location puts the most heavily taxed returns in the sheltered account. The bond fund's interest is taxed every year at 30%, while the shares are taxed only at sale and at 20%, so they already enjoy deferral in a taxable account. Putting the shares in the retirement account would waste the shelter on the asset that needs it least, and splitting both investments gives up part of the benefit."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-03",
+`Karim Haddad, 45, is a surgeon and the only earner in his family. His adviser, Ines Moreau, CFA, reviews the risks to the family's finances.
+
+**Earnings.** Almost all of the family's future spending depends on Haddad's ability to operate for another 20 years.
+
+**Life insurance.** If Haddad died today, the family would need 150,000 at once for final expenses and debts and 90,000 at the start of each year for 20 years to cover living costs. Moreau discounts these costs at a real rate of 3%. The family has 400,000 of investments, and Haddad already has life insurance cover of 250,000.
+
+**Haddad's mother.** She is 70 and lives on a fixed annuity of 40,000 a year that will never increase. She has 300,000 of savings in long-term government bonds with fixed coupons. Moreau expects inflation of 3% a year.
+
+**Retirement abroad.** Haddad plans to retire in his home country, so his future spending will be in his domestic currency. He holds a foreign bond fund that he expects to return 6% in the foreign currency over the next year, and he expects the foreign currency to lose 4% against his domestic currency.`,
+[
+["The product that **best** covers the main risk to the family's future spending while Haddad is alive is:",
+ ["a deferred life annuity.","disability income insurance.","a whole life insurance policy."],
+ 1,"The family's largest asset is Haddad's human capital, and for a surgeon an injury or illness can end his earnings while he is still alive. Disability income insurance replaces part of the lost income. Life insurance pays only on death, and a deferred annuity protects against outliving one's savings in retirement, not against losing the ability to work."],
+["Using a needs analysis, the additional life insurance cover that Haddad should buy is **closest** to:",
+ ["838,973","879,142","1,129,142"],
+ 1,"Living costs are paid at the start of each year, so they form an annuity due: 90,000 × [(1 − 1.03^−20)/0.03] × 1.03 = 90,000 × 15.3238 = 1,379,142. Total need = 1,379,142 + 150,000 = 1,529,142. Resources = 400,000 of investments + 250,000 of existing cover = 650,000. Additional cover = 879,142. 838,973 treats the payments as made at the end of each year, and 1,129,142 forgets the existing cover.",true],
+["To protect the purchasing power of his mother's income, the **most** appropriate change is to:",
+ ["extend the maturity of her fixed-coupon bonds.","move part of her savings into inflation-linked bonds.","convert her savings into a second fixed annuity."],
+ 1,"With inflation of 3%, a fixed payment of 40,000 buys about 36% less after 15 years (1/1.03^15 = 0.64). Her annuity and her fixed-coupon bonds are both nominal, so all of her income is exposed. Inflation-linked bonds pay coupons and principal that rise with the price index. Longer fixed-coupon bonds lose more value when inflation and yields rise, and another fixed annuity adds to the same exposure."],
+["Haddad's expected return on the foreign bond fund, measured in his domestic currency, is **closest** to:",
+ ["1.76%","2.00%","10.24%"],
+ 0,"Domestic-currency return = (1 + 0.06) × (1 − 0.04) − 1 = 1.76%. 2.00% simply subtracts the currency loss from the foreign return and ignores the cross term, and 10.24% treats the currency move as a gain. Because his spending will be in the domestic currency, the currency exposure is a risk to his retirement plan rather than a hedge.",true]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-04",
+`Beatriz Okafor, 68, has wealth of about 30 million. She discusses transferring wealth with her adviser, Jonas Lindgren, CFA.
+
+**Gift or bequest.** Okafor can give 2 million to her granddaughter now, free of gift tax, or leave the same assets to her in a will. Lindgren assumes that Okafor will live another 20 years, that the assets earn 6% a year before tax in either case, that investment returns are taxed each year at 35% in Okafor's hands and at 15% in the granddaughter's hands, and that inheritance tax of 40% is paid on a bequest.
+
+**Heirship rules.** Okafor's country gives her two children, together, a right to 50% of her estate, divided equally between them. Gifts made in the ten years before death are added back to the estate for this calculation. Lindgren projects an estate of 24 million at death and gifts of 6 million within the ten years before it.
+
+**Charity.** Okafor wants to give 3 million to charitable causes over many years. She wants a tax deduction this year, wants her children to help choose the charities, and does not want to hire staff or run an organization.`,
+[
+["The relative value of the tax-free gift compared with the bequest is **closest** to:",
+ ["1.26","1.67","2.10"],
+ 2,"Relative value = [1 + 0.06 × (1 − 0.15)]^20 / {[1 + 0.06 × (1 − 0.35)]^20 × (1 − 0.40)} = 1.051^20 / (1.039^20 × 0.60) = 2.7043/(2.1494 × 0.60) = 2.10. The gift is worth about twice the bequest, because it escapes inheritance tax and then grows at the granddaughter's lower tax rate. 1.26 leaves out the inheritance tax, and 1.67 leaves out the difference in tax on investment returns.",true],
+["If the gift were instead subject to a gift tax of 25%, paid by the granddaughter, its relative value compared with the bequest would be **closest** to:",
+ ["0.75","1.57","2.10"],
+ 1,"A gift tax paid by the recipient reduces the amount that is invested: relative value = 2.097 × (1 − 0.25) = 1.57. The gift is still clearly better than the bequest, because a 25% gift tax costs less than a 40% inheritance tax and the lower tax on returns still applies. 0.75 is only the share of the gift left after the tax, and 2.10 ignores the gift tax.",true],
+["The minimum amount that each child can claim under the heirship rules is **closest** to:",
+ ["7.5 million","12.0 million","15.0 million"],
+ 0,"The gifts made within ten years are added back: 24 + 6 = 30 million. The children's share is 50% of this, 15 million, or 7.5 million each. 15.0 million is the share of both children together, and 12.0 million is half of the estate at death without the gifts added back. The add-back (clawback) means lifetime gifts cannot be used to defeat the children's rights.",true],
+["The vehicle that **best** meets Okafor's charitable aims is:",
+ ["a private foundation.","a donor-advised fund.","a bequest to charity in her will."],
+ 1,"A donor-advised fund takes an irrevocable gift now, which gives the tax deduction this year, and then lets Okafor and her children recommend grants over many years while the sponsoring organization handles administration, at low cost. A private foundation offers more control but needs a board, filings and often staff, which she wants to avoid. A bequest gives no deduction this year and no role for the family during her lifetime."]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR01",
+`Anna and Erik Lindqvist, both 60, have a portfolio of 3,600,000. Their adviser, Sofia Brandao, CFA, uses a goals-based approach. Each goal is funded by its own sub-portfolio, and each is discounted at the return that its sub-portfolio is expected to exceed with the probability the couple requires.
+
+**Exhibit 1: Goals**
+
+| Goal | Cash flow | Required probability | Discount rate |
+|---|---|---|---|
+| 1. Living costs | 120,000 at the end of each year for 30 years | 95% | 2.5% |
+| 2. Grandchildren's education | 400,000 in 10 years | 85% | 4.0% |
+| 3. Gift to a university | 2,000,000 in 20 years | 60% | 6.5% |
+
+Of the portfolio, 15% is in private equity funds that cannot be sold for several years. After the plan is drawn up, the couple says they also wish to buy a holiday home for 300,000 in six months.`,
+[
+["**A.** Calculate the capital required today for each goal and determine whether the portfolio is large enough to fund all three.",
+ "Goal 1: 120,000 × [(1 − 1.025^−30)/0.025] = 120,000 × 20.9303 = 2,511,635. Goal 2: 400,000/1.04^10 = 270,226. Goal 3: 2,000,000/1.065^20 = 567,594. Total = 3,349,455. The portfolio of 3,600,000 exceeds this by 250,545, so all three goals are funded, with a surplus.",
+ [["Goal 1: about 2,511,635",1],["Goal 2: about 270,226",1],["Goal 3: about 567,594",1],["Total about 3,349,455 and surplus about 250,545, so the goals are funded",2]],true],
+["**B.** Explain why Goal 1 is discounted at the lowest rate, and state what this means for the assets held in its sub-portfolio.",
+ "Living costs are the goal the couple can least afford to miss, so they require a 95% probability of success. The return that a portfolio will exceed with 95% probability is much lower than the return it will exceed with 60% probability, so the discount rate is low and more capital must be set aside. The sub-portfolio is invested conservatively, mainly in high-quality bonds and cash (possibly with annuities), so that the range of outcomes is narrow.",
+ [["Highest required probability, because it is the most important goal",1],["Lower rate means more capital set aside and a conservative, low-risk sub-portfolio",1]]],
+["**C.** Determine whether the holiday home can be bought without reducing any of the three goals, and recommend **two** actions to manage the couple's liquidity.",
+ "The surplus is 250,545, which is 49,455 less than the 300,000 price, so the purchase cannot be made in full without taking capital from a goal: the couple must reduce or delay a goal (most naturally the university gift, which has the lowest priority), buy a cheaper property or borrow the difference. Liquidity actions (any two): (1) hold the 300,000, and the next one to two years of living costs, in cash or short-term bonds now, so that the purchase does not depend on selling risky assets at a bad time; (2) take the money from the liquid part of the portfolio and rebalance the sub-portfolios afterwards, since the 15% in private equity (540,000) cannot be sold; (3) arrange a credit line secured on the portfolio, or a mortgage, to bridge the purchase and repay it as private equity distributions arrive; (4) make no new private equity commitments until liquidity is restored.",
+ [["Surplus is about 49,455 short of the price, so a goal must be reduced or the gap financed",2],["First liquidity action explained",1],["Second liquidity action explained",1]],true]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR02",
+`Dragan Petrov, 58, founded Petrov Logistik and owns 80% of it. The company is valued at 50 million. His tax basis in the shares is close to zero, and capital gains are taxed at 20%. His other assets are a home and savings worth 3 million. He has no debt. His wife and two adult children own no shares.
+
+Petrov wants to retire within three years and has received three proposals for his stake:
+
+1. **Trade sale.** A competitor pays 40 million in cash at closing.
+2. **Private equity.** A fund pays 28 million in cash and Petrov keeps shares worth 12 million in the new holding company. He stays as chief executive for three years.
+3. **Management buyout.** The managers pay 15 million in cash, and Petrov lends them the remaining 25 million, to be repaid from the company's cash flow over five years.
+
+His adviser is Laura Bianchi, CFA.`,
+[
+["**A.** Calculate the share of Petrov's net worth that is invested in the company today, and the after-tax cash he would receive from the trade sale.",
+ "His stake is 80% × 50 million = 40 million. Net worth = 40 + 3 = 43 million, so 40/43 = 93% is in the company. Trade sale: tax = 20% × 40 million = 8 million (the basis is about zero), so after-tax cash = 32 million.",
+ [["Stake of 40 million is about 93% of net worth",1],["Tax of about 8 million",1],["After-tax cash of about 32 million",1]],true],
+["**B.** Discuss **two** risks of Petrov's present financial position.",
+ "Any two: (1) Concentration: 93% of his wealth depends on one unlisted company, so a problem in that business or its industry would damage nearly everything he owns. (2) Illiquidity: the shares cannot be sold quickly or in part, so his wealth is not available to fund retirement, and the value of 50 million is an estimate until a buyer pays it. (3) His human capital is tied to the same company: his salary and his wealth would fall together. (4) Key-person and succession risk: the value depends on him, and without a plan it may fall when he steps back, becomes ill or dies; his family would then inherit an asset that is hard to sell and may face a tax bill without cash to pay it.",
+ [["First risk explained",2],["Second risk explained",2]]],
+["**C.** Compare proposals 2 and 3 in terms of how well each diversifies Petrov's wealth and the risks each leaves him with.",
+ "Proposal 2 pays 28 million at closing (22.4 million after tax), so most of his wealth becomes liquid and can be diversified at once. He keeps 12 million of shares, now a minority holding in a company that will carry acquisition debt and be controlled by the fund; that part is riskier than before but gives him a share of a later, larger exit. He must also work three more years. Proposal 3 pays only 15 million at closing (12 million after tax). The 25 million loan depends on the same company's cash flow and on managers who have borrowed to buy it, so most of his wealth stays exposed to the business, now as a creditor with no control and no share of the upside. Proposal 3 therefore diversifies him far less and leaves him with credit risk for five years; it may suit a wish to keep the company independent, but financially proposal 2 is safer.",
+ [["Proposal 2: most cash up front, immediate diversification",1],["Proposal 2: retained minority stake in a leveraged company, and continued employment",1],["Proposal 3: little cash up front; loan repayment depends on the same company",1],["Conclusion that proposal 3 leaves much more exposure to the business",1]]],
+["**D.** Recommend **two** planning steps that Petrov should take before any sale is signed.",
+ "Any two: (1) Transfer some shares to his children or to a trust before the sale, while the value is still an estimate and can be supported by a valuation, so that later growth and the sale proceeds on those shares arise outside his estate. (2) Give shares, rather than cash after the sale, to a charity or donor-advised fund if he plans charitable giving: the gain on the donated shares is then not taxed in his hands. (3) Draw up a personal financial plan and an investment policy for the proceeds before they arrive: retirement spending, goals, risk tolerance and target allocation. (4) Take tax and legal advice on the structure of the sale (timing, instalments, any reliefs for business owners, residency). (5) Update wills and estate documents and agree the family's expectations, since the wealth changes from a business into financial assets.",
+ [["First step with its purpose",1],["Second step with its purpose",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR03",
+`Elena Marchetti is a citizen and tax resident of Country A, which taxes its residents on their worldwide income. Interest income is taxed there at 40%. She receives 200,000 a year of interest from bonds issued in Country C, which withholds a 15% tax at source on interest paid to non-residents.
+
+Marchetti is considering a move to Country B, which has a territorial tax system: it taxes only income that arises in Country B, at 25%.
+
+She would keep her house in Country A, where her adult children live, and expects to spend about five months a year there and seven months in Country B. Her adviser is Tomas Reyes, CFA.`,
+[
+["**A.** Calculate the total tax on the Country C interest while Marchetti is resident in Country A if Country A relieves double taxation by (i) the credit method, (ii) the exemption method and (iii) the deduction method.",
+ "Source tax in Country C = 15% × 200,000 = 30,000 in every case. (i) Credit method: Country A charges 40% × 200,000 = 80,000 and gives credit for the 30,000 paid, so it collects 50,000. Total = 80,000 (the higher of the two rates). (ii) Exemption method: Country A does not tax the foreign income. Total = 30,000. (iii) Deduction method: Country A taxes the income net of the foreign tax: 40% × (200,000 − 30,000) = 68,000. Total = 30,000 + 68,000 = 98,000.",
+ [["Credit method: 80,000",1],["Exemption method: 30,000",1],["Deduction method: 98,000",2]],true],
+["**B.** Explain how the tax on this income would change if Marchetti became tax resident only in Country B, and discuss **two** matters that Reyes should examine before she moves.",
+ "Country B taxes only income arising in Country B, so the Country C interest would not be taxed there; the only tax would be the 30,000 withheld by Country C (possibly a different amount if a treaty between B and C sets another rate). Matters to examine (any two): (1) Whether she really ceases to be resident in Country A, given the house, the family and the five months a year; if not, Country A will go on taxing her worldwide income. (2) An exit tax: Country A may treat her assets as sold when she leaves and tax the unrealized gains. (3) Whether Country A taxes on the basis of citizenship or keeps taxing former residents for some years. (4) Inheritance, gift and heirship rules in Country B, which may differ from those of Country A and apply to her estate once she lives there. (5) Reporting: financial accounts are reported between tax authorities, so the move must be genuine and properly declared. (6) Non-tax matters such as residence permits, health care and the stability of Country B's rules.",
+ [["Only the Country C withholding tax of 30,000 would apply",2],["First matter explained",1],["Second matter explained",1]]],
+["**C.** Explain the conflict that may arise from Marchetti's planned living arrangements and how tax treaties usually resolve it.",
+ "Both countries may claim her as a resident: Country B because she spends most of the year there, Country A because she keeps a home there and has family ties. This is a residence–residence conflict, and without relief both could tax the same income. A tax treaty settles it with tie-breaker tests applied in order: where she has a permanent home; if in both, where her centre of vital interests lies (personal and economic ties); then where she has her habitual abode; then her nationality; and finally agreement between the two tax authorities. With a home and family in Country A and citizenship there, several of these tests could point to Country A, so the plan to keep the house weakens the case for the move.",
+ [["Identifies that both countries may treat her as resident (residence–residence conflict)",1],["Describes the treaty tie-breaker tests (permanent home, centre of vital interests, habitual abode, nationality)",1],["Notes that her home and family ties may leave her resident in Country A",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR04",
+`Henrik Anders, 72, founded Anders Marine, which makes up about 70% of his family's wealth of 120 million. He owns all of the shares.
+
+Anders has three children from his first marriage. Maja runs the company's largest division. Oskar is a doctor and Linnea is an artist; neither works in the business. Anders married again five years ago; his wife, Petra, has a daughter of her own. There is no written succession plan, and Anders decides the dividend each year himself.
+
+Anders tells his adviser, Yuki Tanaka, CFA, that he wants to treat his children equally, keep the company in the family and "see the grandchildren learn to give something back". He is willing to set aside 10 million for charitable work that should continue after his death, and he wants the family to control how the money is invested and granted.`,
+[
+["**A.** Identify **three** sources of potential conflict in the Anders family.",
+ "Any three: (1) Children inside and outside the business want different things: Maja is likely to favor reinvesting profits, while Oskar and Linnea, as future owners who do not work there, are likely to want dividends or a way to sell. (2) Succession is unsettled: nobody knows who will lead or control the company after Anders. (3) The second marriage: Petra and her daughter have claims and expectations that compete with those of the children from the first marriage. (4) Equal treatment is hard when 70% of the wealth is a single company that cannot easily be divided. (5) All decisions rest with one person, so there is no accepted process once he is gone.",
+ [["First source",1],["Second source",1],["Third source",1]]],
+["**B.** Recommend **two** governance mechanisms and explain how each would reduce the conflicts identified.",
+ "Any two: (1) A family council with a family constitution: a regular forum, with agreed rules, in which family members discuss matters such as the dividend policy, employment of family members in the company and how disputes are settled; it gives those outside the business a voice and information. (2) A shareholders' agreement: binding rules on voting, transfers of shares, rights of first refusal and a method for valuing and buying out an owner who wishes to leave, which gives Oskar and Linnea a way out without forcing a sale of the company. (3) A board with independent directors and a written dividend policy: decisions on strategy and payouts are made by a body that all owners can accept, not by one sibling. (4) A written succession plan with a timetable, covering both management and ownership, announced while Anders can still support it.",
+ [["First mechanism described",1],["How it reduces a conflict",1],["Second mechanism described",1],["How it reduces a conflict",1]]],
+["**C.** Recommend how Anders could treat his three children equally in value while keeping control of the company with the child who works in it.",
+ "Leave control of the company to Maja and equal value to the others by other means. Options: give Maja the voting shares and Oskar and Linnea non-voting shares with the same dividend rights, with a buy-out mechanism; or leave Maja a larger part of the company and the others the non-business assets (about 36 million), topping up with life insurance on Anders's life payable to Oskar and Linnea if those assets are not enough. Provision for Petra, for example a trust that pays her income for life, should be made separately so that it does not reduce the children's shares unexpectedly.",
+ [["Separates control from value (voting and non-voting shares, or company to Maja and other assets to the others)",1],["Gives a way to make up the difference in value (other assets, life insurance or buy-out)",1]]],
+["**D.** Compare a private foundation with a donor-advised fund for Anders's charitable aim, and recommend one.",
+ "A private foundation is a separate legal entity with its own board: the family controls investments and grants, can employ family members or involve them as trustees, and it can last for generations. It costs more to set up and run and has more filing and legal duties. A donor-advised fund is an account at a sponsoring charity: it is cheap and simple, but the sponsor legally owns the assets, the family only recommends grants and has limited say over investments, and its life after the donor's death depends on the sponsor's rules. Recommendation: the private foundation. With 10 million the costs are affordable, and it gives what Anders asked for: family control over investing and giving, continuity after his death, and board seats through which the grandchildren can learn.",
+ [["Foundation: control and permanence, but higher cost and administration",1],["Donor-advised fund: simple and cheap, but advisory role only",1],["Recommends the foundation with a reason tied to his aims",1]]]
+]);
+/* Level III, Private Markets Pathway, first batch (2026-11-14): enough pathway items for one full mock.
+   Follows the 2027 topic outline (private investments and structures, general partner and investor perspectives,
+   private equity, private debt, special situations, private real estate, infrastructure).
+   Item sets L3-PRM-01 (paid-in multiples, J-curve, co-investment), L3-PRM-02 (management fee, carried interest,
+   waterfalls, alignment), L3-PRM-03 (senior, mezzanine and unitranche debt, leverage ratios),
+   L3-PRM-04 (direct capitalization, debt service cover, leverage, timberland).
+   Essays L3-PRM-CR01 (venture capital valuation and terms), L3-PRM-CR02 (buyout value creation and exit),
+   L3-PRM-CR03 (distressed debt and the fulcrum security), L3-PRM-CR04 (infrastructure projects and debt sizing).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-01",
+`Nordhaven Pension Fund committed 20 million to Fund IV, a buyout fund, five years ago. Aiko Mori, CFA, reviews the position for the trustees.
+
+**Exhibit 1: Fund IV, Nordhaven's share (millions)**
+
+| Item | Amount |
+|---|---|
+| Commitment | 20 |
+| Paid-in capital to date | 16 |
+| Distributions to date | 6 |
+| Net asset value of remaining holdings | 18 |
+
+The general partner reports a net internal rate of return of 14% since inception. A trustee recalls that the fund showed negative returns in its first two years. Another trustee asks whether Nordhaven should accept the general partner's offer to co-invest directly in one of the fund's new acquisitions.`,
+[
+["Fund IV's total value to paid-in (TVPI) multiple is **closest** to:",
+ ["1.13","1.20","1.50"],
+ 2,"TVPI = (distributions + net asset value)/paid-in capital = (6 + 18)/16 = 1.50. 1.13 is the residual value to paid-in alone (18/16), and 1.20 divides by the commitment of 20 instead of the capital actually paid in.",true],
+["The measure that **best** shows how much of Fund IV's return Nordhaven has already received in cash is:",
+ ["RVPI.","DPI.","IRR."],
+ 1,"Distributed to paid-in (DPI) = 6/16 = 0.38: the fund has so far returned in cash only 38% of what was paid in. Residual value to paid-in (RVPI) = 18/16 = 1.13 is still unrealized and rests on the general partner's valuations. The IRR of 14% mixes realized and unrealized value and is sensitive to the timing of cash flows."],
+["The negative returns in the fund's first two years were **most likely** caused by:",
+ ["fees charged before any value had been recognized.","the sale of the best companies early in the fund's life.","a preferred return paid to the general partner each year."],
+ 0,"This is the J-curve. Management fees are charged on committed capital from the start and deal costs are paid early, while investments are held near cost until improvements show up in valuations or exits. Early sales of good companies would raise early returns, not lower them, and the preferred return is owed to the limited partners, not paid to the general partner."],
+["Compared with investing the same amount through Fund IV, the co-investment would **most likely** give Nordhaven:",
+ ["broader diversification across companies.","lower fees, but deal assessment at short notice.","a preferred return that the fund does not offer."],
+ 1,"Co-investments are usually offered with no or reduced management fee and carried interest, which raises the net return. In exchange the investor takes a concentrated position in one company and must do its own due diligence, often within a few weeks, which requires skilled staff. Diversification is lower, not broader, and no return is promised."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-02",
+`Castellan Growth Fund has commitments of 300 million from its limited partners (LPs). Its terms are:
+
+- Management fee: 2.0% a year of committed capital during the five-year investment period, then 1.5% a year of invested capital that has not yet been realized.
+- Carried interest: 20% of profits, subject to a preferred return of 8% a year to the LPs, with a full catch-up for the general partner (GP).
+- Distributions follow a whole-of-fund waterfall, and the fund has a clawback provision.
+- The GP's partners commit 9 million of their own money to the fund.
+
+In year 7, the cost of investments not yet realized is 200 million.
+
+At the end of its life the fund has called and invested 300 million in total and distributed 540 million. The LPs' preferred return over the life of the fund amounts to 140 million.`,
+[
+["The management fee for year 7 is **closest** to:",
+ ["3.0 million","4.5 million","6.0 million"],
+ 0,"After the investment period the fee is 1.5% of invested capital not yet realized: 1.5% × 200 million = 3.0 million. 6.0 million is the fee during the investment period (2.0% × 300 million), and 4.5 million applies the lower rate to the whole commitment.",true],
+["The total carried interest that the GP earns over the life of the fund is **closest** to:",
+ ["20 million","48 million","108 million"],
+ 1,"Profit = 540 − 300 = 240 million, which is more than the preferred return of 140 million, so the hurdle is met. With a full catch-up the GP ends with 20% of all profit: 20% × 240 = 48 million. Step by step: the LPs receive 300 of capital and 140 of preferred return; the GP then takes the next 35 (20% of 175); the remaining 65 is split 52 to the LPs and 13 to the GP. 20 million would be the carry with no catch-up (20% of the profit above the preferred return), and 108 million takes 20% of all distributions.",true],
+["Had the fund used a deal-by-deal waterfall instead, the GP would **most likely** have:",
+ ["received carry earlier, relying more on the clawback.","earned a lower management fee.","been required to return all capital before any carry was paid."],
+ 0,"Under a deal-by-deal (American) waterfall the GP takes carry on each profitable exit, even if later deals lose money. Carry is paid sooner and may exceed 20% of the fund's final profit, so the LPs rely on the clawback to recover the excess. Returning all capital and the preferred return first describes the whole-of-fund waterfall the fund actually has. The management fee does not depend on the waterfall."],
+["The term that **most** directly aligns the GP's interests with those of the LPs is the:",
+ ["management fee on committed capital.","GP partners' own commitment of 9 million.","right to charge fees to portfolio companies."],
+ 1,"Money the partners invest alongside the LPs (here 3% of commitments) gains and loses exactly as the LPs' money does, so the GP shares the downside as well as the upside. A fee on committed capital is earned whatever the results and rewards raising large funds. Fees charged to portfolio companies add to the GP's income at the expense of the investments unless they are offset against the management fee."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-03",
+`A private equity sponsor is buying Meridian Packaging for an enterprise value of 400 million. Meridian's EBITDA is 40 million. The sponsor will invest 160 million of equity and compares two ways of borrowing the remaining 240 million.
+
+**Structure 1.** A senior secured term loan of 180 million from a group of banks, at a floating rate, and a mezzanine loan of 60 million from a private debt fund.
+
+**Structure 2.** A single unitranche loan of 240 million from one private debt fund.
+
+Farid Rahimi, CFA, analyses the two structures for a private debt fund that has been asked to provide either the mezzanine loan or the unitranche loan.`,
+[
+["Under Structure 1, senior leverage (senior debt to EBITDA) is **closest** to:",
+ ["4.5x","6.0x","10.0x"],
+ 0,"Senior leverage = 180/40 = 4.5x. Total leverage, which includes the mezzanine loan, is 240/40 = 6.0x, and 10.0x is the purchase multiple (400/40).",true],
+["Under Structure 2, the loan-to-value ratio of the unitranche loan is **closest** to:",
+ ["40%","45%","60%"],
+ 2,"Loan-to-value = 240/400 = 60%. The unitranche lender is exposed from the first unit of value up to 60% of the enterprise value, with 40% of equity beneath it. 45% is the loan-to-value of the senior loan alone in Structure 1 (180/400), and 40% is the equity share.",true],
+["For the sponsor, the **main** advantage of Structure 2 over Structure 1 is:",
+ ["the lowest possible interest cost on every part of the debt.","one lender and one agreement, so faster and more certain execution.","freedom from all financial covenants."],
+ 1,"A unitranche loan combines senior and junior debt in a single facility at a blended rate: the sponsor negotiates with one lender under one set of documents, with no agreement to settle between creditor classes. That saves time and reduces the risk that the financing fails. The blended rate is usually higher than a bank's rate on the senior part alone, and unitranche loans normally still carry covenants."],
+["The return on the mezzanine loan in Structure 1 would **most likely** come from:",
+ ["a first-priority claim on Meridian's assets.","a cash coupon, payment-in-kind interest and warrants.","repayment ahead of the senior loan."],
+ 1,"Mezzanine debt ranks below senior debt and is usually unsecured or second-ranking, so the lender is paid for the risk by a higher coupon, often partly paid in kind (added to principal rather than paid in cash, which spares the company's cash flow), and by an equity kicker such as warrants. The first-priority claim and earlier repayment belong to the senior lenders."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-04",
+`Greta Halvorsen, CFA, evaluates a fully built office property for a real estate fund.
+
+**Exhibit 1: Office property, expected first year (millions)**
+
+| Item | Amount |
+|---|---|
+| Potential gross rent if fully let | 5.0 |
+| Vacancy allowance | 8% of potential gross rent |
+| Operating expenses | 1.4 |
+
+Recent sales of comparable buildings imply a capitalization rate of 6.4%. The fund would finance the purchase with an interest-only loan of 30 million at 6.0%.
+
+The fund's investment committee also asks Halvorsen to compare timberland with farmland for a later investment.`,
+[
+["Using direct capitalization, the value of the property is **closest** to:",
+ ["50.0 million","56.3 million","71.9 million"],
+ 0,"Net operating income = 5.0 × (1 − 0.08) − 1.4 = 4.6 − 1.4 = 3.2 million. Value = 3.2/0.064 = 50.0 million. 56.3 million leaves out the vacancy allowance (3.6/0.064), and 71.9 million leaves out operating expenses (4.6/0.064).",true],
+["The debt service coverage ratio of the loan in the first year is **closest** to:",
+ ["0.56x","1.78x","2.56x"],
+ 1,"Debt service = 6.0% × 30 = 1.8 million (interest only). Coverage = net operating income/debt service = 3.2/1.8 = 1.78x. 2.56x uses income before operating expenses (4.6/1.8), and 0.56x inverts the ratio.",true],
+["If the capitalization rate rises to 7.4% soon after the purchase at the value above, with no change in income, the fund's equity in the property changes by **closest** to:",
+ ["−33.8%","−15.6%","−13.5%"],
+ 0,"New value = 3.2/0.074 = 43.24 million, a fall of 13.5%. The loan is still 30 million, so equity falls from 20.0 million to 13.24 million, or −33.8%. With a loan of 60% of value, the loss on equity is 2.5 times the loss on the property. −13.5% is the change in the property's value, and −15.6% takes the rise in the rate (1.0) as a share of the old rate (6.4).",true],
+["Compared with farmland, timberland has the distinctive advantage that:",
+ ["its harvest can be delayed while the trees keep growing.","its output must be sold every year, which steadies income.","its value does not depend on commodity prices."],
+ 0,"Trees can be left standing when timber prices are low, and they continue to grow in volume and often in value per unit, so the owner can choose when to harvest. Most farm crops must be harvested each season whatever the price. Both land types depend on the prices of what they produce, and both also draw part of their return from the value of the land."]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR01",
+`Kestrel Ventures is considering a Series A investment of 5 million in Luma Diagnostics, a company with a working prototype and no revenue. The founders hold 8,000,000 shares, and there are no other shareholders.
+
+Chidi Okeke, CFA, a partner at Kestrel, expects that Luma could be sold for 120 million in six years if it succeeds. Kestrel requires a return of 40% a year on investments at this stage.
+
+Okeke expects that Luma will need one more financing round before the sale, in which new shares equal to 20% of the enlarged share capital will be issued to other investors.`,
+[
+["**A.** Ignoring the later financing round, calculate the post-money valuation, the pre-money valuation and the ownership share that Kestrel requires.",
+ "Post-money valuation = 120/1.40^6 = 120/7.5295 = 15.94 million. Pre-money valuation = 15.94 − 5.00 = 10.94 million. Required ownership = 5.00/15.94 = 31.4%. (Check: 31.4% of 120 million = 37.6 million = 5 million × 7.53.)",
+ [["Post-money about 15.94 million",1],["Pre-money about 10.94 million",1],["Ownership about 31.4%",1]],true],
+["**B.** Calculate the number of new shares that Luma must issue to Kestrel and the price per share.",
+ "New shares = existing shares × f/(1 − f) = 8,000,000 × 0.3137/0.6863 = about 3,657,000 shares. Price per share = 5,000,000/3,657,000 = 1.37. (Equivalently, the pre-money valuation of 10.94 million divided by the founders' 8,000,000 shares.)",
+ [["About 3.66 million new shares",1],["Price of about 1.37 a share",1]],true],
+["**C.** Calculate the ownership share that Kestrel must obtain now so that it still holds the required share at the sale after the later round.",
+ "The later round leaves existing holders with 80% of the company, so Kestrel must start with 31.37%/(1 − 0.20) = 39.2%. After the dilution, 39.2% × 0.80 = 31.4%, which is the share needed to earn 40% a year on 5 million.",
+ [["Divides the required share by the retention ratio of 0.80",1],["About 39.2%",1]],true],
+["**D.** Explain why the 40% required return is higher than the return Kestrel expects to earn on its venture portfolio, and describe **two** terms that Kestrel could negotiate to protect its investment.",
+ "The 120 million is the value if Luma succeeds, not an expected value. Most early-stage companies fail or return little, so discounting the success case at a high rate is a way of allowing for the probability of failure (and for illiquidity, the long holding period and the work Kestrel will put in). The return actually expected across the portfolio is far lower than 40%. Protective terms (any two): (1) preferred shares with a liquidation preference, so that Kestrel is repaid before the founders in a sale or wind-up; (2) anti-dilution protection, which adjusts Kestrel's conversion price if a later round is priced lower; (3) investing in stages, releasing money as milestones are met; (4) a board seat and veto rights over major decisions; (5) vesting of founders' shares, and drag-along and tag-along rights for an exit.",
+ [["The exit value assumes success; the high rate compensates for the chance of failure",2],["First protective term described",1],["Second protective term described",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR02",
+`Five years ago, Arcadia Partners bought Delmar Foods in a leveraged buyout. Arcadia now prepares to sell the company.
+
+**Exhibit 1: Delmar Foods (millions)**
+
+| | At purchase | Now (expected at sale) |
+|---|---|---|
+| EBITDA | 50 | 70 |
+| Enterprise value / EBITDA | 8.0x | 9.0x |
+| Net debt | 240 | 150 |
+
+No dividends were paid and no equity was added during the holding period.
+
+Nadia Farouk, CFA, an analyst at an investor in Arcadia's fund, notes that equity markets have been volatile this year and that two large food companies have approached Arcadia about buying Delmar.`,
+[
+["**A.** Calculate the equity value at purchase and at sale, the multiple of invested capital and the internal rate of return on Arcadia's investment.",
+ "At purchase: enterprise value = 8.0 × 50 = 400; equity = 400 − 240 = 160 million. At sale: enterprise value = 9.0 × 70 = 630; equity = 630 − 150 = 480 million. Multiple of invested capital = 480/160 = 3.0x. IRR = 3.0^(1/5) − 1 = 24.6% a year.",
+ [["Equity of 160 million at purchase and 480 million at sale",1],["Multiple of 3.0x",1],["IRR of about 24.6%",1]],true],
+["**B.** Attribute the increase in equity value to growth in EBITDA, the change in the valuation multiple and the reduction of debt.",
+ "The increase is 480 − 160 = 320 million. EBITDA growth: (70 − 50) × 8.0 = 160 million. Multiple expansion: (9.0 − 8.0) × 70 = 70 million. Debt reduction: 240 − 150 = 90 million. Total = 320 million. Half of the gain came from higher earnings, 22% from a higher multiple and 28% from paying down debt.",
+ [["EBITDA growth: 160 million",1],["Multiple expansion: 70 million",1],["Debt reduction: 90 million",1]],true],
+["**C.** Discuss what the attribution in Part B says about the quality of the return, and explain how the leverage used affected both the return and the risk.",
+ "Earnings growth is the source investors value most, because it reflects operating improvement (sales, margins, acquisitions) that the manager can repeat in other companies; here it is half of the gain. Multiple expansion depends largely on market conditions at the sale and cannot be relied on in future deals, though part of it may be earned if the company is now larger and better run. Debt reduction is paid from the company's own cash flow: it shows the business generated cash, but it is financial rather than operating value. Leverage: with debt of 60% of the purchase price, the 230 million rise in enterprise value (58%) became a 200% rise in equity. The same leverage would have magnified a loss: a fall in EBITDA or in the multiple could have wiped out the equity or breached covenants, and interest and repayments left less cash for investment.",
+ [["Earnings growth is the most repeatable source; multiple expansion depends on markets",2],["Leverage magnified the equity return and would have magnified losses",1]]],
+["**D.** Compare a sale to one of the food companies with an initial public offering as exit routes for Delmar, and recommend one.",
+ "A trade sale to a strategic buyer gives Arcadia a complete exit for cash at closing; the buyer may pay for synergies, and the price is negotiated once, with two interested parties competing. Its drawbacks are competition-authority review and the disclosure of confidential information to competitors. An IPO can give a high valuation in strong markets and keeps the company independent, but it is costly and slow, the price depends on market conditions on the day, and Arcadia would sell only part of its shares and be locked in for the rest, remaining exposed to the share price. Recommendation: the trade sale. Equity markets are volatile, which makes an IPO uncertain, while two strategic buyers are already interested and can be played against each other for a full cash exit.",
+ [["Trade sale: full cash exit, possible synergy premium",1],["IPO: market-dependent, partial exit with lock-up, costly",1],["Recommends the trade sale, citing volatile markets and the two interested buyers",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR03",
+`Vostok Retail has stopped paying interest and is negotiating a reorganization with its creditors. Simone Ricci, CFA, analyses the situation for a special situations fund.
+
+**Exhibit 1: Vostok Retail, claims (millions, par value)**
+
+| Claim | Amount |
+|---|---|
+| Senior secured loan | 200 |
+| Senior unsecured bonds | 250 |
+| Subordinated notes | 100 |
+
+Ricci estimates the enterprise value of the reorganized company at 300 million. The senior unsecured bonds trade at 35% of par. Ricci expects the reorganization to be completed in 18 months, with claims that cannot be paid in cash converted into shares of the reorganized company.
+
+Vostok also needs 40 million of new money to keep trading during the process and has asked the fund to provide it as a debtor-in-possession (DIP) loan.`,
+[
+["**A.** Calculate the recovery, as a percentage of par, for each class of claim at an enterprise value of 300 million, and identify the fulcrum security.",
+ "Value is distributed in order of priority. Senior secured loan: 200 of 200, a recovery of 100%. Senior unsecured bonds: the remaining 100 against claims of 250, a recovery of 40%. Subordinated notes: nothing left, 0%. The equity is worthless. The fulcrum security is the senior unsecured bonds: the class where the value runs out, which is only partly covered and will therefore receive most of the shares of the reorganized company.",
+ [["Secured 100%, unsecured 40%, subordinated 0%",2],["Fulcrum security is the senior unsecured bonds, with the reason",1]],true],
+["**B.** The fund buys 100 million par value of the senior unsecured bonds at the market price. Calculate its annualized return if the reorganization takes 18 months and the enterprise value is (i) 300 million and (ii) 350 million, and comment on the result.",
+ "Cost = 35% × 100 = 35 million. (i) Recovery of 40% = 40 million. Return = 40/35 − 1 = 14.3% over 18 months, or 1.1429^(1/1.5) − 1 = 9.3% a year. (ii) At 350 million, 150 is left for the bonds: recovery = 150/250 = 60%, or 60 million. Return = 60/35 − 1 = 71.4%, or 1.7143^(1/1.5) − 1 = 43.2% a year. Comment: because the bonds are the fulcrum security, their value is highly sensitive to the enterprise value: a 17% higher value raises the recovery by half. At Ricci's central estimate the return of about 9% a year is low for the risk, so the investment makes sense only if the fund believes the company is worth more than 300 million or that it can raise the value through the reorganization.",
+ [["Case (i): about 9.3% a year (14.3% over the period)",1],["Case (ii): recovery of 60% and about 43.2% a year (71.4% over the period)",2],["Comment on sensitivity to enterprise value or on the low base-case return",1]],true],
+["**C.** Describe a loan-to-own strategy in this situation and discuss **two** of its risks.",
+ "In a loan-to-own strategy the fund buys enough of the fulcrum security, here the senior unsecured bonds, to control that class's vote, with the aim of converting the debt into a controlling shareholding in the reorganized company and then improving and selling the business. Risks (any two): (1) Valuation: if the company is worth less than expected, the value runs out higher in the structure and the bonds receive little. (2) Process: reorganizations can take much longer than planned, other creditor classes may litigate or propose a competing plan, and the court may not approve the fund's plan; delay lowers the annualized return. (3) Operating risk: as owner the fund must turn around a retailer that has already failed once, which needs skills and often more capital. (4) Illiquidity: the shares received may be unlisted and hard to sell for years. (5) Holding a blocking position may bring restrictions on trading because of access to non-public information.",
+ [["Buy the fulcrum security to convert it into control of the reorganized company",1],["First risk explained",1],["Second risk explained",1]]],
+["**D.** Explain why providing the DIP loan may be attractive to the fund.",
+ "A DIP loan is new money lent during the reorganization with the court's approval, and it ranks ahead of the existing claims, usually including the existing secured loan (super-priority), so the risk of loss is low even though the borrower is insolvent. It pays a high interest rate and fees, has a short maturity and is normally repaid in full when the company leaves the process. It also gives the lender information and influence over the reorganization (covenants, milestones), which helps a fund that also holds the fulcrum bonds.",
+ [["Super-priority over existing claims, so low loss risk",1],["High rate and fees for a short loan, or influence over the process",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR04",
+`An infrastructure fund is comparing two investments. Pablo Serrano, CFA, prepares the analysis.
+
+**Project 1.** A new toll motorway, to be built over four years under a 35-year concession. Revenue will come from tolls paid by drivers, based on a traffic forecast.
+
+**Project 2.** A hospital building that has been in operation for six years under a public–private partnership. The regional government pays a fixed, inflation-linked fee as long as the building is available and maintained to the agreed standard, whatever the number of patients.
+
+For Project 1, Serrano gathers the following for the operating phase:
+
+- Construction cost: 300 million
+- Cash flow available for debt service: 24 million a year
+- Lenders require a debt service coverage ratio of at least 1.30x
+- Debt would be repaid in equal annual payments over 20 years at an interest rate of 6%`,
+[
+["**A.** Compare the risks of the two projects with respect to (i) the stage of the project and (ii) the source of revenue.",
+ "(i) Stage: Project 1 is a greenfield project. It carries construction risk (cost overruns, delays, permits) and produces no cash for four years, followed by a period in which traffic builds up. Project 2 is brownfield: it is built and has an operating record, so there is no construction risk and cash flows start at once. (ii) Revenue: Project 1 bears demand risk, because income depends on how many drivers use the road and on the toll they will pay, and traffic forecasts for new roads are often too optimistic. Project 2 is availability-based: income does not depend on usage, only on keeping the building available, so the main risks are operating performance and the credit quality and reliability of the government that pays. Project 1 is therefore much riskier and should offer a higher expected return; Project 2 behaves more like a long inflation-linked bond.",
+ [["Project 1 greenfield with construction risk; Project 2 brownfield and operating",2],["Project 1 demand (traffic) risk; Project 2 availability payments with counterparty risk",2]]],
+["**B.** Calculate the maximum debt that Project 1 can support in its operating phase and the equity required to fund the construction cost.",
+ "Maximum annual debt service = 24/1.30 = 18.46 million. The present value of 20 annual payments at 6% is 18.46 × [(1 − 1.06^−20)/0.06] = 18.46 × 11.4699 = 211.8 million of debt. Equity required = 300 − 211.8 = 88.2 million, so debt would fund about 71% of the cost.",
+ [["Maximum debt service of about 18.46 million",1],["Maximum debt of about 211.8 million",1],["Equity of about 88.2 million",1]],true],
+["**C.** Explain how the financing of a project such as Project 1 typically changes between the construction phase and the operating phase.",
+ "During construction the risk is highest and there is no revenue, so the project is funded by sponsors' equity and by bank loans drawn in stages, at higher margins and with tight conditions. Once the road is open and traffic has stabilized, the risk falls and the cash flows become predictable: the bank loans are refinanced with cheaper long-term debt, often bonds or loans from institutional investors such as insurers and pension funds, and early equity investors may sell to investors who seek stable income, at a lower required return.",
+ [["Construction: equity and staged bank loans, costly because risk is high",1],["Operation: refinancing with cheaper long-term debt and sale to income-seeking investors",1]]],
+["**D.** Identify **two** matters that Serrano should examine in due diligence on Project 1 before investing.",
+ "Any two: (1) the traffic forecast, tested by an independent adviser, with downside cases, competing roads and the sensitivity of demand to the toll; (2) the concession agreement: how tolls may be raised, the length of the concession, termination and compensation clauses, and political or regulatory risk; (3) the construction contract: fixed price and date, the contractor's financial strength, and guarantees for delay; (4) the financing terms: covenants, reserve accounts and refinancing risk; (5) environmental and social matters, permits and land acquisition.",
+ [["First matter with what to check",1],["Second matter with what to check",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -10596,7 +11009,8 @@ const AREAS = {
   "Fixed Income":"fi", "Derivatives":"der", "Alternative Investments":"alt", "Portfolio Management":"pm quant",
   "Asset Allocation":"pm fi econ quant", "Portfolio Construction":"pm eq fi alt der",
   "Performance Measurement":"pm quant", "Derivatives and Risk Management":"der pm fi econ",
-  "Portfolio Management Pathway":"pm eq fi"
+  "Portfolio Management Pathway":"pm eq fi",
+  "Private Wealth Pathway":"pm eq fi alt", "Private Markets Pathway":"alt eq fi corp"
 };
 const C = [];
 const L = (label, areas, re, ...links)=>C.push({label, areas:areas.split(' '), re, links});
@@ -11427,7 +11841,7 @@ const LEVELS = {1:'Level I',2:'Level II',3:'Level III'};
 const ROMAN = {1:'I',2:'II',3:'III'};
 const LETTERS = ['A','B','C','D'];
 const KEY = 'cfa-practice-v1';
-const SHORT = {"Ethical and Professional Standards":"Ethics","Quantitative Methods":"Quant","Financial Statement Analysis":"FSA","Equity Investments":"Equity","Alternative Investments":"Alternatives","Portfolio Management":"Portfolio Mgmt","Performance Measurement":"Performance","Derivatives and Risk Management":"Derivatives & Risk","Portfolio Management Pathway":"PM pathway"};
+const SHORT = {"Ethical and Professional Standards":"Ethics","Quantitative Methods":"Quant","Financial Statement Analysis":"FSA","Equity Investments":"Equity","Alternative Investments":"Alternatives","Portfolio Management":"Portfolio Mgmt","Performance Measurement":"Performance","Derivatives and Risk Management":"Derivatives & Risk","Portfolio Management Pathway":"PM pathway","Private Wealth Pathway":"Private wealth","Private Markets Pathway":"Private markets"};
 const short = t=>SHORT[t]||t;
 
 /* ---------- icons (24px grid, stroked) ---------- */
@@ -11500,10 +11914,10 @@ function md(text){
 
 /* ---------- data ---------- */
 const D = window.CFA_DATA || {items:[],topics:{}};
-const SETS = D.items;
+/* Level III pathway: the candidate picks one of three; items of the other two are hidden everywhere but stay in SETMAP so old history still resolves */ const PATHWAYS = {pm:"Portfolio Management Pathway", pw:"Private Wealth Pathway", prm:"Private Markets Pathway"}, PATH_LABELS = {pm:'Portfolio Management', pw:'Private Wealth', prm:'Private Markets'}, PATH_KEY = 'cfa-practice-pathway'; let PATH3 = 'pm'; try{ const v = localStorage.getItem(PATH_KEY); if(PATHWAYS[v]) PATH3 = v; }catch(e){} const PATHWAY_TOPIC = PATHWAYS[PATH3]; const SETS = D.items.filter(s=>s.topic===PATHWAY_TOPIC || !Object.values(PATHWAYS).includes(s.topic));
 const QMAP = {};   // qid -> question
 const SETMAP = {}; // set id -> set
-SETS.forEach(set=>{
+D.items.forEach(set=>{
   SETMAP[set.id] = set;
   if(!set.questions){ set.questions = [{stem:set.stem,options:set.options,answer:set.answer,explanation:set.explanation,calc:set.calc,diff:set.diff}]; }
   set.questions.forEach((q,i)=>{
@@ -11514,7 +11928,7 @@ SETS.forEach(set=>{
     QMAP[q.qid] = q;
   });
 });
-const TOPICS = {1:[],2:[],3:[]};
+/* the fixed Level III mocks are built with Portfolio Management items; on another pathway each one is replaced by an unused item of the same kind from that pathway, or dropped when none is left */ if(PATH3!=='pm' && D.mockForms && D.mockForms[3]){ const mine = {cr:SETS.filter(s=>s.topic===PATHWAY_TOPIC && s.type==='cr').map(s=>s.id), set:SETS.filter(s=>s.topic===PATHWAY_TOPIC && s.type!=='cr').map(s=>s.id)}; const kind = id=>{ const s=SETMAP[id]; return s && s.topic===PATHWAYS.pm ? (s.type==='cr'?'cr':'set') : null; }; D.mockForms[3] = D.mockForms[3].map(f=>{ const sub = ids=>ids.map(id=>{ const k=kind(id); return k ? (mine[k].shift()||null) : id; }).filter(Boolean); return Object.assign({}, f, {s1:sub(f.s1), s2:sub(f.s2)}); }); } const TOPICS = {1:[],2:[],3:[]};
 SETS.forEach(s=>{ if(!TOPICS[s.level].includes(s.topic)) TOPICS[s.level].push(s.topic); });
 Object.keys(TOPICS).forEach(l=>{ const order = (D.topics&&D.topics[l])||[]; TOPICS[l].sort((a,b)=>order.indexOf(a)-order.indexOf(b)); });
 const setText = s=>s._txt || (s._txt = (s.id+' '+s.topic+' '+(s.vignette||'')+' '+s.questions.map(q=>q.stem+' '+(q.options||[]).join(' ')).join(' ')).toLowerCase());
@@ -12087,7 +12501,7 @@ function vHome(app){
   app.innerHTML = `<div class="content home"><div class="home-grid"><div class="home-main">
     <div class="home-hero">
       <div class="home-hero__copy">
-        <div class="pill-row"><span class="pill">${LEVELS[l]} · ${CURRICULUM_YEAR} curriculum<span class="faint">${l===3 ? 'Core + Portfolio Management pathway · ' : ''}${fmt}</span></span>${examChip(l)}</div>
+        <div class="pill-row"><span class="pill">${LEVELS[l]} · ${CURRICULUM_YEAR} curriculum<span class="faint">${l===3 ? 'Core + '+PATH_LABELS[PATH3]+' pathway · ' : ''}${fmt}</span></span>${examChip(l)}</div>
         <h1>${title}</h1><p>${text}</p>
         <div class="row">
           ${dueSets.length?`<button class="btn primary lg" id="due">${icon('review')}Review due <span class="num">${dueSets.length}</span></button>`:''}
@@ -12497,7 +12911,7 @@ const EXAM_PRESETS = { 1:[[30,'Short'],[60,'Half session'],[90,'One session'],[1
 const CR_SECONDS = 240; // time allowed per essay part, as in the mock exam timing
 const setSeconds = (level,s)=>s.questions.reduce((x,q)=>x+(q.kind==='cr'?CR_SECONDS:(level===1?90:180)),0);
 function examSeconds(level, ids){ return ids.reduce((a,id)=>a+setSeconds(level,SETMAP[id]),0); }
-const PATHWAY_TOPIC = "Portfolio Management Pathway";
+/* PATHWAY_TOPIC is set with the data, from the candidate's chosen pathway */
 function examPool(c){
   let pool = SETS.filter(s=>s.level===c.level);
   if(c.level===3 && c.mix!=='mixed') pool = pool.filter(s=>c.mix==='cr'?s.type==='cr':s.type!=='cr');
@@ -12510,7 +12924,7 @@ const EXAM_WEIGHTS = {
   2:{"Ethical and Professional Standards":12.5,"Quantitative Methods":7.5,"Economics":7.5,"Financial Statement Analysis":12.5,"Corporate Finance":7.5,"Equities":12.5,"Fixed Income":12.5,"Derivatives and Risk Management":7.5,"Alternative Investments":7.5,"Portfolio Construction":12.5},
   3:{"Asset Allocation":17.5,"Portfolio Construction":17.5,"Performance Measurement":7.5,"Derivatives and Risk Management":12.5,"Ethical and Professional Standards":12.5,"Portfolio Management Pathway":32.5}
 };
-/* Level I session 1 holds these topics, session 2 the rest, as on the real exam */
+if(PATH3!=='pm'){ EXAM_WEIGHTS[3][PATHWAY_TOPIC] = EXAM_WEIGHTS[3][PATHWAYS.pm]; delete EXAM_WEIGHTS[3][PATHWAYS.pm]; } /* Level I session 1 holds these topics, session 2 the rest, as on the real exam */
 const L1_SESSION1 = ["Ethical and Professional Standards","Quantitative Methods","Economics","Financial Statement Analysis","Corporate Finance"];
 /* a mock longer than one exam session runs as two sessions with an optional break */
 const SESSION_SIZE = {1:90, 2:11, 3:11};
@@ -12544,7 +12958,7 @@ function vExam(app){
     <div class="page-head"><div><div class="eyebrow">${LEVELS[l]}</div><h1>Mock exam</h1><p>Timed and exam-style. Answers and explanations appear only after you submit.</p></div></div>
     <div class="setup-grid"><div class="setup-main">
     ${(D.mockForms && D.mockForms[l] || []).length ? `<div class="panel">
-      <div class="panel-head"><div><h2>Full mocks</h2><p>Full-length exams in two timed sessions at the official ${CURRICULUM_YEAR} topic weights${l===3?', core plus the Portfolio Management pathway':''}. Each mock always has the same questions and no question appears in two mocks, so your scores compare over time.</p></div></div>
+      <div class="panel-head"><div><h2>Full mocks</h2><p>Full-length exams in two timed sessions at the official ${CURRICULUM_YEAR} topic weights${l===3?', core plus the '+PATH_LABELS[PATH3]+' pathway':''}. Each mock always has the same questions and no question appears in two mocks, so your scores compare over time.</p></div></div>
       <div>${D.mockForms[l].map(formRow).join('')}</div>
     </div>` : ''}
     <div class="panel">
@@ -12554,7 +12968,7 @@ function vExam(app){
         <div class="choice ${isCustom?'on':''}" id="customCard"><span class="radio"></span><div class="c-title">Custom</div><div class="c-num"><input type="number" class="field" id="custom" min="1" max="${avail}" value="${c.n}" aria-label="Custom number of ${unit}"><small>${unit}</small></div><div class="c-time">${icon('clock')}<span id="customTime">${est(Math.min(c.n,avail))}</span></div></div>
       </div></div>
       ${l===3?`<div class="srow" style="border-top:1px solid var(--border)"><div class="lbl"><b>Format</b><span>Level III mixes item sets and constructed response</span></div><div class="seg inline">${[['mixed','Both'],['set','Item sets only'],['cr','Constructed response only']].map(([k,lab])=>`<button class="${c.mix===k?'on':''}" data-mix="${k}">${lab}</button>`).join('')}</div></div>
-      <div class="srow" style="border-top:1px solid var(--border)"><div class="lbl"><b>Pathway</b><span>The pathway is 30–35% of the exam. Only Portfolio Management is available so far.</span></div><div class="seg inline">${[['pm','Portfolio Management'],['none','Core only']].map(([k,lab])=>`<button class="${c.path===k?'on':''}" data-path="${k}">${lab}</button>`).join('')}</div></div>`:''}
+      <div class="srow" style="border-top:1px solid var(--border)"><div class="lbl"><b>Pathway</b><span>The pathway is 30–35% of the exam. Choosing another pathway reloads the app; your progress is kept.</span></div><div class="seg inline">${[['pm','Portfolio Management'],['pw','Private Wealth'],['prm','Private Markets'],['none','Core only']].map(([k,lab])=>`<button class="${(k==='none'?c.path==='none':c.path!=='none'&&PATH3===k)?'on':''}" data-path="${k}">${lab}</button>`).join('')}</div></div>`:''}
     </div>
     </div><aside class="setup-aside">
     <div class="panel">
@@ -12572,7 +12986,7 @@ function vExam(app){
   </div>`;
   $$('[data-n]',app).forEach(b=>b.onclick=()=>{ c.n=+b.dataset.n; render(); });
   $$('[data-mix]',app).forEach(b=>b.onclick=()=>{ c.mix=b.dataset.mix; render(); });
-  $$('[data-path]',app).forEach(b=>b.onclick=()=>{ c.path=b.dataset.path; render(); });
+  $$('[data-path]',app).forEach(b=>b.onclick=()=>{ const k=b.dataset.path; if(k==='none'){ c.path='none'; return render(); } c.path='pm'; if(k!==PATH3){ try{ localStorage.setItem(PATH_KEY,k); }catch(e){} location.reload(); return; } render(); });
   const inp = $('#custom');
   $('#customCard').onclick = e=>{ if(e.target!==inp) inp.focus(); };
   inp.oninput = ()=>{ const v=Math.max(1,Math.min(avail,+inp.value||1)); $('#customTime').textContent=est(v); };
@@ -12586,7 +13000,7 @@ function formRow(f){
   const l = +f.id[1], ids = f.s1.concat(f.s2).filter(x=>SETMAP[x]);
   const nq = ids.reduce((a,x)=>a+SETMAP[x].questions.length,0);
   const tries = DB.exams.filter(e=>e.form===f.id), best = tries.length ? Math.max(...tries.map(e=>e.score)) : null;
-  return `<div class="erow"><div class="grow"><div><b>${esc(f.name)}</b></div><div class="sub">${nq} questions · ${fmtDur(examSeconds(l, ids))} · two sessions${tries.length?` · taken ${plural(tries.length,'time')}`:''}</div></div>${best!=null?`<span class="score ${barCls(best)}" title="Best score">${best}%</span>`:''}<button class="btn sm" data-form="${f.id}">${tries.length?'Retake':'Start'}</button></div>`;
+  return `<div class="erow"><div class="grow"><div><b>${esc(f.name)}</b></div><div class="sub">${nq} questions · ${fmtDur(examSeconds(l, ids))} · two sessions${l===3&&ids.length<22?' · core only: no pathway items left for this mock':''}${tries.length?` · taken ${plural(tries.length,'time')}`:''}</div></div>${best!=null?`<span class="score ${barCls(best)}" title="Best score">${best}%</span>`:''}<button class="btn sm" data-form="${f.id}">${tries.length?'Retake':'Start'}</button></div>`;
 }
 function startFixed(id){
   const f = formOf(id); if(!f) return;
@@ -13021,7 +13435,7 @@ function vReview(app){
 /* =========================== FORMULAS ============================ */
 /* Formula sheets by topic, a "Formula" button on calculation questions, and flashcards that reuse the
    1, 3, 7, 21-day intervals. DB.cards[id] = {step, due}; a card with due:null has been learned. */
-const FORMULAS = (D.formulaList||[]).map(f=>Object.assign(f,{re: f.keys ? new RegExp(f.keys,'i') : null}));
+const FORMULAS = (D.formulaList||[]).filter(f=>f.topic===PATHWAY_TOPIC || !Object.values(PATHWAYS).includes(f.topic)).map(f=>Object.assign(f,{re: f.keys ? new RegExp(f.keys,'i') : null}));
 const FMAP = {}; FORMULAS.forEach(f=>FMAP[f.id]=f);
 const formulaCache = {};
 function formulasFor(q){
