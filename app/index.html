@@ -11306,6 +11306,310 @@ Pelagic's founders ask for 10 million at once, to fund three years of developmen
  "Risks (any three): technology risk (the product may not work at scale); market risk (customers may not buy, or not at the price needed); management risk (the founders may be unable to build and lead a company); financing risk (later rounds may be unavailable or on poor terms); competition; and exit risk (no buyer or public offering when the fund needs to sell). At portfolio level the fund accepts that most of these risks cannot be removed from a single company. It invests in many companies, across sectors and years, expecting several to fail; it reserves capital to invest further in those that succeed; and it relies on a few large gains to pay for the losses.",
  [["Three risks identified",2],["Diversification across many companies, with reserves for follow-on rounds in the winners",1]]]
 ]);
+/* Level III, Private Wealth Pathway, fourth batch (2026-11-14): the pathway items that complete a fourth mock.
+   Item sets L3-PW-13 (household budget: cash reserve, debt service, saving for education, repaying debt),
+   L3-PW-14 (property and liability risks: underinsurance, deductibles, umbrella cover, retaining small risks),
+   L3-PW-15 (family limited partnership discounts, estate freeze, probate, control).
+   Essays L3-PW-CR13 (wealth concentrated in rental property), L3-PW-CR14 (professional athlete with a short career),
+   L3-PW-CR15 (dividing assets in a divorce after tax).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-13",
+`Nora and Emil Sandahl, both 36, meet Pilar Ortega, CFA, for a first financial plan. They have a daughter aged 3.
+
+**Exhibit 1: The Sandahls' monthly budget and savings**
+
+| Item | Amount |
+|---|---|
+| Income after tax | 9,000 |
+| Essential expenses, including the loan payments below | 5,400 |
+| of which: payment on the home loan | 2,100 |
+| of which: payment on the car loan | 450 |
+| Other spending | 2,100 |
+| Saving | 1,500 |
+| Cash in the bank | 21,600 |
+
+**Education.** The Sandahls want to have 160,000 in 15 years for their daughter's studies. They will save an equal amount at the end of each year and expect to earn 5% a year.
+
+**A bonus.** Emil has received a bonus of 14,000 after tax. The car loan has a balance of 14,000 and costs 9% a year; the home loan costs 3.5%. Ortega expects a balanced fund to return 5% a year after tax.`,
+[
+["The number of months of essential expenses covered by the Sandahls' cash is **closest** to:",
+ ["2.4","2.9","4.0"],
+ 2,"Emergency reserve = cash / essential monthly expenses = 21,600/5,400 = 4.0 months. A reserve of three to six months is the usual guide, and more for a household with one income or unstable earnings. 2.4 divides by income and 2.9 by total spending of 7,500; the reserve is measured against the expenses that cannot be cut if income stops.",true],
+["The Sandahls' debt service-to-income ratio is **closest** to:",
+ ["23.3%","28.3%","47.2%"],
+ 1,"Debt payments = 2,100 + 450 = 2,550 a month. Ratio = 2,550/9,000 = 28.3% of income after tax. 23.3% counts only the home loan, and 47.2% divides the payments by essential expenses instead of income.",true],
+["The amount the Sandahls must save each year for the education goal is **closest** to:",
+ ["7,415","10,667","15,415"],
+ 0,"The savings are an annuity whose future value must be 160,000. Future value factor = (1.05^15 − 1)/0.05 = 21.5786. Payment = 160,000/21.5786 = 7,415. 10,667 is 160,000/15 and ignores the return earned on the savings, and 15,415 uses the present value factor of the annuity (10.3797) instead of the future value factor.",true],
+["The **most appropriate** use of the bonus is to:",
+ ["repay the car loan.","invest it in the balanced fund.","make an extra payment on the home loan."],
+ 0,"Repaying a loan earns its interest rate with certainty. The car loan costs 9%, more than the 5% the fund is only expected to earn and far more than the 3.5% saved on the home loan. Repaying it also frees 450 a month, which lowers essential expenses and so strengthens the cash reserve. The usual order is: keep the reserve, repay the most expensive debt, then invest."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-14",
+`Tomas and Ilse Brenner have a net worth of 4 million. Their adviser, Yusuf Demir, CFA, reviews their insurance.
+
+**The house.** Rebuilding the house would cost 600,000, but it is insured for only 420,000. The policy has a coinsurance clause: a partial loss is paid in full only if the sum insured is at least 80% of the rebuilding cost; otherwise the payment is reduced in proportion. A fire has just caused damage of 100,000. Ignore the deductible for this claim.
+
+**The deductible.** The insurer offers to cut the annual premium by 300 if the Brenners raise the deductible from 500 to 2,500. Demir puts the probability of a claim in any year at 8%, and every claim would exceed 2,500.
+
+**Liability.** Their car policy covers injury to other people up to 300,000. Tomas drives 40,000 km a year.
+
+**Small risks.** Ilse asks whether to buy the extended warranties that shops offer on household appliances.`,
+[
+["The amount the insurer will pay for the fire damage is **closest** to:",
+ ["70,000","87,500","100,000"],
+ 1,"Required cover = 80% × 600,000 = 480,000. The Brenners carry 420,000, so the claim is paid in the proportion 420,000/480,000 = 87.5%: 100,000 × 0.875 = 87,500. They bear 12,500 themselves because they were underinsured. 70,000 scales the claim by 420,000/600,000, and 100,000 would be paid only if the sum insured were at least 480,000.",true],
+["The expected net saving each year from accepting the higher deductible is **closest** to:",
+ ["140","160","300"],
+ 0,"The Brenners keep an extra 2,000 of each loss. Expected extra cost = 8% × 2,000 = 160 a year. Net saving = 300 − 160 = 140. A loss of 2,000 is small against their wealth, so they should retain it and keep the premium. 160 is the extra expected loss alone, and 300 is the premium saving before that loss.",true],
+["The **most appropriate** way to deal with the Brenners' liability risk is:",
+ ["an umbrella liability policy.","a higher deductible on the car policy.","a whole life policy on Tomas's life."],
+ 0,"A serious accident can bring a claim of several million, far above the 300,000 limit, and the Brenners' 4 million of assets would be at stake. An umbrella policy adds a high limit above the car and home policies at low cost, because large claims are rare. A higher deductible changes only what they pay on small claims, and life insurance does nothing for a liability claim."],
+["Demir's advice on the extended warranties should **most likely** be to:",
+ ["buy them for every appliance.","retain the risk and decline them.","buy them only for the cheapest appliances."],
+ 1,"Insurance is worth buying for losses that are rare but large enough to damage the household's finances. The failure of an appliance is a small loss that the Brenners can easily pay from income, and warranties are priced well above the expected cost of repairs. Low-severity risks should be retained, and the premium money spent on cover for severe risks such as liability."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-15",
+`Leopold Arnesen, 68, owns investment assets of 20 million and, separately, all the shares of a trading company valued at 14 million. His adviser is Camille Roux, CFA. Gifts and bequests are taxed at 40%.
+
+**Partnership.** Arnesen will place the investment assets in a family limited partnership. He will be the general partner with a 1% interest and will give his children limited partner interests that represent 30% of the partnership's assets. A valuer supports a discount of 15% for lack of control and then a discount of 20% for lack of marketability on limited interests.
+
+**Company.** Arnesen will exchange his ordinary shares in the trading company for preferred shares with a fixed value of 14 million and give newly issued ordinary shares, which have almost no value today, to his children.
+
+**Holiday home.** Arnesen owns a holiday home in another country. He wants it to pass to his children quickly and privately, without a court process there.`,
+[
+["Compared with giving the children 30% of the investment assets directly, the gift of limited partner interests reduces gift tax by an amount **closest** to:",
+ ["0.77 million","0.84 million","1.63 million"],
+ 0,"A direct gift is worth 30% × 20 = 6.0 million. The limited interests are valued at 6.0 × (1 − 0.15) × (1 − 0.20) = 4.08 million, because a limited partner can neither direct the partnership nor sell the interest easily. Tax saved = 40% × (6.0 − 4.08) = 0.768 million. 0.84 million adds the two discounts to 35% instead of applying them in sequence, and 1.63 million is the tax on the discounted gift itself.",true],
+["If the trading company is worth 22 million when Arnesen dies, the value of his holding in it that falls into his estate is **closest** to:",
+ ["8 million","14 million","22 million"],
+ 1,"This is an estate freeze. Arnesen's preferred shares are fixed at 14 million, so that is what his estate holds. The growth of 22 − 14 = 8 million belongs to the ordinary shares that the children received when they were worth almost nothing, and it escapes the 40% tax. 22 million would be in the estate without the freeze."],
+["As general partner with a 1% interest, Arnesen:",
+ ["continues to manage the partnership's assets.","is liable only up to the amount he invested.","must distribute all partnership income each year."],
+ 0,"The general partner makes the investment and distribution decisions, however small the economic interest, so Arnesen can give away value without giving up control. The price is unlimited liability for the partnership's debts; limited liability belongs to the limited partners. Distributions are at the general partner's discretion, which is one reason for the discounts."],
+["The **most** suitable arrangement for the holiday home is:",
+ ["a letter of wishes.","a revocable living trust.","a will proved in the foreign court."],
+ 1,"Assets held in a living trust belong to the trustee, so at death they pass to the beneficiaries under the trust deed without probate: no court process, no public record and little delay. Being revocable, the trust leaves Arnesen free to change his mind. A will must go through probate in the country where the property lies, which is slow and public, and a letter of wishes has no legal force."]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR13",
+`Farid Rahimi, 61, owns five apartment buildings in one city. He manages them himself and plans to stop working at 65. His adviser is Lotte Vinter, CFA.
+
+**Exhibit 1: Rahimi's assets and liabilities (millions)**
+
+| Item | Amount |
+|---|---|
+| Apartment buildings, market value | 12.0 |
+| Bank loans secured on the buildings (floating rate, due for renewal in two years) | 3.0 |
+| Tax basis of the buildings | 4.0 |
+| Listed securities | 0.8 |
+| Home, no debt | 1.2 |
+
+Gains on property are taxed at 25% when realized. Rahimi says: "Property has made me rich. I see no reason to own anything else."`,
+[
+["**A.** Calculate Rahimi's net worth, the share of it held in the apartment buildings, and the cash he would keep if he sold all the buildings today and repaid the loans.",
+ "Net worth = 12.0 − 3.0 + 0.8 + 1.2 = 11.0 million. Equity in the buildings = 12.0 − 3.0 = 9.0 million, which is 9.0/11.0 = 82% of net worth. On a sale the gain is 12.0 − 4.0 = 8.0 million and the tax 25% × 8.0 = 2.0 million. Cash kept = 12.0 − 2.0 − 3.0 = 7.0 million, so a full sale would cost him 2.0 million of his 9.0 million of equity.",
+ [["Net worth of 11.0 million",1],["About 82% in the buildings",1],["Tax of 2.0 million and cash of 7.0 million after repaying the loans",1]],true],
+["**B.** Describe **three** risks of Rahimi's present position.",
+ "Any three: (1) Concentration: over 80% of his wealth is in one type of asset in one city, so a local downturn, a large employer leaving or new rent controls would hit all five buildings at once. (2) Illiquidity: buildings take months to sell and cannot be sold in part, so cash for an emergency or for retirement spending is hard to raise; he has only 0.8 million of liquid assets. (3) Leverage and refinancing: the loans carry a floating rate and must be renewed in two years; higher rates or tighter lending would cut his income or force a sale at a bad time, and debt magnifies any fall in values (a 20% fall in the buildings is a 27% fall in his equity). (4) Dependence on himself: he manages the buildings; illness or age would reduce income or bring management costs just when he wants to retire. (5) Tax: the embedded gain makes him reluctant to sell, which locks the risk in.",
+ [["First risk explained",1],["Second risk explained",1],["Third risk explained",1]]],
+["**C.** Recommend **two** ways in which Rahimi could reduce the concentration without selling everything at once, and state one drawback of each.",
+ "Any two: (1) Staged sales: sell one building at a time over several tax years, starting with the one that has the highest basis or weakest prospects, and reinvest the proceeds in a diversified liquid portfolio. Drawback: tax of 25% of each gain is still paid, and the risk falls only slowly. (2) Borrow against the buildings: raise a further fixed-rate loan and invest the money in diversified assets. No gain is realized and he keeps the buildings' upside. Drawback: more leverage and interest cost, and the total exposure to property is unchanged. (3) Exchange buildings for units of a diversified property fund or listed property company, where the law lets the gain be deferred. Drawback: he is still in property and loses control. (4) Give buildings to his heirs or to charity as part of his estate plan. Drawback: he gives up the income. In every case he should also appoint a professional manager before he retires and build a cash reserve.",
+ [["First method with how it reduces the risk",1],["Its drawback",1],["Second method with how it reduces the risk",1],["Its drawback",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR14",
+`Marco Bellini, 27, is a professional footballer. His contract runs for three more years, and he hopes to play until he is 34. He earns 2,400,000 a year after tax, spends 1,500,000 and has savings of 1,000,000, most of it in a restaurant owned by a friend.
+
+When he stops playing, Bellini wants to spend 240,000 a year in today's money for 50 years. His adviser, Elin Sorensen, CFA, assumes a real return of 3% a year, spending and saving at the end of each year, and no income after football.`,
+[
+["**A.** Calculate the capital Bellini needs at 34 and the amount he must save in each of the next seven years to reach it. Compare the result with what he saves today.",
+ "Capital needed at 34 = 240,000 × [(1 − 1.03^−50)/0.03] = 240,000 × 25.7298 = 6,175,143. His present savings grow to 1,000,000 × 1.03^7 = 1,229,874, leaving 4,945,269 to build. Future value factor for seven years = (1.03^7 − 1)/0.03 = 7.6625. Saving needed = 4,945,269/7.6625 = 645,389 a year. He saves 2,400,000 − 1,500,000 = 900,000 today, which is enough, but only if he earns at this level for all seven years, and his contract covers only three.",
+ [["Capital needed of about 6.18 million",1],["Gap of about 4.95 million after growth of present savings",1],["Saving of about 645,000 a year",1],["Comparison with 900,000 and the condition that his income continues",1]],true],
+["**B.** Identify **three** risks to this plan that are specific to Bellini's career and recommend a response to each.",
+ "Any three: (1) Injury or loss of form: his human capital is large but short-lived and could end in a single match. Response: career-ending disability insurance, and saving more than the minimum while he earns. (2) Income after the present contract is not certain. Response: base the plan on the three contracted years and treat later earnings as a bonus; that requires saving far more than 645,389 now. (3) Spending habits: a lifestyle of 1,500,000 a year is hard to cut to 240,000, and friends and family expect support. Response: a written budget, automatic transfer of savings on pay day, and a fixed annual amount for gifts. (4) Poor advice and unsuitable deals: young athletes are offered private ventures by people they trust. Response: an independent, regulated adviser paid by fee, assets held by a separate custodian, and a rule that no private deal is made without review. (5) No second career. Response: invest in training or qualifications now.",
+ [["First risk with a response",1],["Second risk with a response",1],["Third risk with a response",1]]],
+["**C.** Recommend how Bellini's savings should be invested, referring to the nature of his human capital and to his present holdings.",
+ "His human capital is risky, concentrated in one activity and will be used up within a few years, so his financial assets must do the opposite job: be diversified, liquid and unrelated to football. The restaurant fails on each count: it is a single unlisted business, cannot be sold quickly and depends on a friend; he should reduce it to a small part of his wealth and make no further investments of that kind. A cash reserve of at least a year of spending should cover an injury or a gap between contracts. The rest should go into a diversified portfolio of listed funds. Because the money must last more than 50 years, it needs a meaningful share of equities and inflation-linked assets for growth, balanced by high-quality bonds; very low-risk investments alone would not earn the 3% real return the plan assumes.",
+ [["Human capital is risky and short, so financial assets should be diversified and liquid",1],["Reduce the restaurant holding; hold a cash reserve",1],["Long horizon needs growth assets in a diversified portfolio",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR15",
+`Anneli and Jonas Berg, both 45, are divorcing and have agreed to divide their assets equally. Anneli's adviser is Rasmus Holm, CFA.
+
+**Exhibit 1: The Bergs' assets**
+
+| Asset | Market value | Tax treatment |
+|---|---|---|
+| Retirement account | 1,200,000 | Withdrawals taxed as income at 30%; no access before age 60 |
+| Home | 800,000 | No tax on sale |
+| Cash | 400,000 | None |
+| Share portfolio | 600,000 | Tax basis 200,000; gains taxed at 20% when realized |
+
+Jonas proposes: "Anneli takes the retirement account. I take the home and the cash. We split the shares in half. Each of us gets 1,500,000." Anneli will rent a flat at first and wants to buy one within two years.`,
+[
+["**A.** Calculate the after-tax value that each spouse would receive under Jonas's proposal and the payment that would make the division equal.",
+ "Half of the shares: market value 300,000, basis 100,000, tax 20% × 200,000 = 40,000, after-tax value 260,000 for each. Anneli: retirement account 1,200,000 × (1 − 0.30) = 840,000, plus 260,000 = 1,100,000. Jonas: home 800,000 + cash 400,000 + 260,000 = 1,460,000. Jonas would receive 360,000 more. A payment of 180,000 from Jonas to Anneli would leave each with 1,280,000 after tax.",
+ [["Anneli receives 1,100,000 after tax",1],["Jonas receives 1,460,000 after tax",1],["Equalizing payment of 180,000 from Jonas to Anneli",1]],true],
+["**B.** Apart from tax, explain **two** reasons why the assets offered to Anneli suit her circumstances poorly, and recommend a better division.",
+ "(1) Liquidity: the retirement account cannot be touched for 15 years, so almost all of her share would be locked away while she must pay rent now and wants to buy a flat within two years. Jonas would hold all the cash and the home. (2) Housing: Jonas keeps a debt-free home and so has no housing cost, while she gains a new expense; her need for income and capital in the next few years is the greater. Also acceptable: all her wealth would sit in one account with one tax treatment, with no reserve for emergencies. Recommendation: divide each type of asset more evenly. For example, split the retirement account and the shares in half, and let Jonas keep the home while Anneli takes the cash and a balancing payment, so that each has equal after-tax value and she has the liquid funds for her purchase.",
+ [["Liquidity: locked account against a need for cash within two years",1],["Housing or lack of reserve explained",1],["Recommendation that gives her liquid assets and equal after-tax value",1]]],
+["**C.** Recommend **three** changes that Anneli should make to her financial plan once the divorce is settled.",
+ "Any three: (1) A new budget and cash reserve based on one income and her own housing costs. (2) New legal documents: a new will, new beneficiaries on her retirement account and insurance policies, and new powers of attorney, since Jonas is probably named in all of them. (3) Insurance: her own health and disability cover if she was insured through Jonas, and life insurance on Jonas if she depends on payments from him. (4) A new investment policy: her capacity to bear risk is lower with one income and half the assets, the money for the flat must be kept in safe, short-term investments, and her retirement goal and saving rate must be recalculated. (5) Accounts and credit in her own name, and the closing of joint accounts and joint debts.",
+ [["First change with its reason",1],["Second change with its reason",1],["Third change with its reason",1]]]
+]);
+/* Level III, Private Markets Pathway, fourth batch (2026-11-14): the pathway items that complete a fourth mock.
+   Item sets L3-PRM-13 (real estate development: yield on cost, development profit, break-even cap rate, fund type),
+   L3-PRM-14 (buy-and-build, dividend recapitalization, management incentives),
+   L3-PRM-15 (private debt: loss-adjusted yield, payment-in-kind interest, venture debt, covenant breach).
+   Essays L3-PRM-CR13 (deal-by-deal carried interest and clawback), L3-PRM-CR14 (a co-investment offer),
+   L3-PRM-CR15 (trade sale against an initial public offering).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-13",
+`Dalia Roth, CFA, of Corvin Real Estate Partners reviews a plan to build a logistics warehouse. No tenant has signed a lease yet.
+
+**Exhibit 1: The project (millions)**
+
+| Item | Amount |
+|---|---|
+| Land | 8.0 |
+| Construction and other costs | 32.0 |
+| Total cost | 40.0 |
+| Net operating income once fully let | 3.0 a year |
+| Construction loan (60% of total cost) | 24.0 |
+| Equity | 16.0 |
+
+Finished and fully let warehouses of this kind now sell at a capitalization rate of 6.0%. Ignore interest on the loan during construction.
+
+A pension fund client tells Roth that it likes property but must be able to withdraw money every quarter at net asset value.`,
+[
+["The project's yield on cost is **closest** to:",
+ ["6.0%","7.5%","9.4%"],
+ 1,"Yield on cost = stabilized net operating income / total cost = 3.0/40.0 = 7.5%. It exceeds the 6.0% at which finished warehouses sell, and that spread of 1.5 percentage points is the developer's reward for taking construction and leasing risk. 6.0% is the market capitalization rate itself, and 9.4% leaves the land out of the cost.",true],
+["If the warehouse is completed and let as planned, the development profit as a share of the completed value is **closest** to:",
+ ["20%","25%","31%"],
+ 0,"Completed value = 3.0/0.06 = 50.0 million. Profit = 50.0 − 40.0 = 10.0 million, which is 10.0/50.0 = 20% of value. 25% is the same profit as a share of total cost, and 31% measures it against construction cost alone.",true],
+["The capitalization rate at completion at which the equity would be worth exactly the 16.0 million invested is **closest** to:",
+ ["6.5%","7.0%","7.5%"],
+ 2,"The equity is worth 16.0 million when the property is worth 16.0 + 24.0 = 40.0 million, its cost. That needs a capitalization rate of 3.0/40.0 = 7.5%: the break-even rate equals the yield on cost. At 7.0% the property would still be worth 42.9 million and at 6.5% 46.2 million, both above cost. A rise of 1.5 percentage points in market rates, or an equivalent shortfall in rent, would remove the whole profit.",true],
+["The vehicle that **best** meets the pension fund's requirement is:",
+ ["an open-end core fund.","a closed-end opportunistic fund.","a joint venture in a single development."],
+ 0,"An open-end fund has no fixed life: investors subscribe and redeem at net asset value, usually quarterly, and such funds hold let, income-producing (core) buildings whose values can be appraised regularly. Even so, redemptions may be queued or suspended when many investors leave at once. A closed-end fund locks capital in for its life of eight to ten years, and a development joint venture returns money only when the project is sold."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-14",
+`Arden Capital, a buyout firm, has owned Medivet Group, a chain of veterinary clinics, for three years. Priya Nair, CFA, reviews the investment for one of Arden's investors.
+
+**Acquisitions.** Medivet earns EBITDA of 40 million and is valued at 10 times EBITDA. It will buy a number of independent clinics with total EBITDA of 10 million for 6 times EBITDA. Assume no cost savings.
+
+**Dividend.** Arden invested 200 million of equity in Medivet. Medivet now borrows a further 120 million and pays the whole amount to Arden as a dividend.
+
+**Management.** Medivet's managers bought ordinary shares with their own money. Their share of the equity rises if Arden's proceeds at exit exceed three times its investment.`,
+[
+["If the enlarged group is valued at 10 times EBITDA, its enterprise value after the acquisitions is **closest** to:",
+ ["400 million","460 million","500 million"],
+ 2,"Combined EBITDA = 40 + 10 = 50 million; at 10 times, enterprise value = 500 million. The clinics cost 6 × 10 = 60 million and are worth 100 million inside the group, so 40 million of value comes purely from the higher multiple that a larger company commands (multiple arbitrage). 460 million adds the clinics at the price paid, and 400 million is the value before the acquisitions.",true],
+["Immediately after the dividend, the distributed to paid-in multiple (DPI) of Arden's investment in Medivet is **closest** to:",
+ ["0.38","0.60","1.60"],
+ 1,"DPI = cumulative distributions / paid-in capital = 120/200 = 0.60. Arden has taken back 60% of its money while still owning the company. 0.38 divides by the investment plus the new debt, and 1.60 adds the dividend to the capital invested.",true],
+["The dividend recapitalization **most likely**:",
+ ["raises Medivet's financial risk.","reduces Arden's percentage ownership of Medivet.","lowers the internal rate of return that Arden reports."],
+ 0,"Medivet carries 120 million more debt with no new assets or earnings to service it, so its leverage and its risk of distress rise; lenders and employees bear part of that risk. Arden's shareholding is unchanged because no shares are sold. Receiving cash early raises the internal rate of return, which is one reason sponsors use recapitalizations when an exit is not yet possible."],
+["The **main** purpose of the arrangement with Medivet's managers is to:",
+ ["give the lenders security over the managers' shares.","tie the managers' rewards to Arden's exit return.","guarantee the managers a fixed return on the money they invested."],
+ 1,"Managers who have their own money in ordinary shares lose it if the plan fails, and the ratchet gives them a larger share of the gain if the sponsor does very well, so their interests are aligned with Arden's over the holding period. Nothing is guaranteed: ordinary shares rank last. The arrangement concerns shareholders and has nothing to do with security for the lenders."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-15",
+`Mateus Costa, CFA, analyzes loans for Halden Credit Partners, a private debt manager.
+
+**Direct lending fund.** The fund's loans yield 10.5% a year. Costa expects 3% of the loans to default each year, with a recovery of 60% of the amount owed. Fees and expenses are 1.5% of assets a year.
+
+**Mezzanine loan.** A loan of 20 million for four years pays cash interest of 8% a year and a further 6% a year as payment-in-kind interest, which is added to the principal at the end of each year.
+
+**Venture debt.** Halden is asked to lend 10 million for three years to a software company that is backed by venture capital funds and is not yet profitable. Halden would receive warrants on the company's shares.
+
+**A breach.** A borrower's leverage has risen above the maximum allowed by its loan agreement. It has paid all interest on time.`,
+[
+["The fund's expected return to investors after credit losses and fees is **closest** to:",
+ ["7.8%","9.0%","9.3%"],
+ 0,"Expected credit loss = default rate × loss given default = 3% × (1 − 0.60) = 1.2% a year. Return = 10.5% − 1.2% − 1.5% = 7.8%. 9.0% deducts the fees but no credit losses, and 9.3% deducts the losses but no fees. The quoted yield of a loan fund always overstates what investors should expect to keep.",true],
+["The principal that the mezzanine borrower must repay at maturity is **closest** to:",
+ ["24.80 million","25.25 million","33.78 million"],
+ 1,"Payment-in-kind interest compounds: principal = 20 × 1.06^4 = 25.25 million. The cash interest of 8% is paid each year, on the growing principal, and does not accumulate. 24.80 million adds simple interest of 6% for four years, and 33.78 million compounds the full 14% as if no interest were paid in cash. The lender's exposure is largest at the end, when repayment depends on a refinancing or a sale.",true],
+["Repayment of the venture loan will **most likely** depend on:",
+ ["the sale of the company's fixed assets.","the company's future equity financing.","the cash flow from its present operations."],
+ 1,"A young, loss-making software company has neither operating cash flow nor valuable fixed assets. Venture lenders rely on the venture capital backers to keep funding the company and on the next equity round or a sale to repay the loan, so they analyze the investors and the cash runway as much as the borrower. The warrants compensate for this risk with a share in the upside."],
+["The breach by the borrower is **best** described as a:",
+ ["technical default.","payment default.","cross-default."],
+ 0,"Breaking a maintenance covenant while still paying interest and principal on time is a technical default. It gives the lender the right to act early: typically it grants a waiver or amendment in return for a fee, a higher margin or new equity from the owner. A payment default is a missed payment, and a cross-default clause makes a default on one debt a default on the borrower's other debts."]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR13",
+`Sable Equity Fund III invested 300 million of its investors' capital in three companies, 100 million in each. The general partner receives carried interest of 20% of profits with no hurdle rate, calculated and paid deal by deal as each company is sold. Ignore management fees.
+
+**Exhibit 1: Results of the three investments (millions)**
+
+| Company | Cost | Year sold | Proceeds |
+|---|---|---|---|
+| A | 100 | 3 | 250 |
+| B | 100 | 5 | 130 |
+| C | 100 | 7 (written off) | 0 |
+
+The fund agreement contains a clawback clause. Hanna Brekke, CFA, advises an investor in the fund.`,
+[
+["**A.** Calculate the carried interest paid to the general partner on the deal-by-deal basis, the carried interest it has earned on the fund as a whole, and the amount of the clawback.",
+ "Deal by deal: A, 20% × (250 − 100) = 30 million; B, 20% × (130 − 100) = 6 million; C, a loss, nothing. Paid = 36 million. Whole fund: proceeds 250 + 130 + 0 = 380 million against 300 million invested, a profit of 80 million; carried interest earned = 20% × 80 = 16 million. Clawback = 36 − 16 = 20 million owed by the general partner to the investors.",
+ [["36 million paid deal by deal",1],["16 million earned on the whole fund",1],["Clawback of 20 million",1]],true],
+["**B.** Explain **two** reasons why the investors may not recover the full clawback, and describe **two** terms they could have negotiated to protect themselves.",
+ "Reasons (any two): (1) The carried interest was paid to individual partners years ago; they have spent it or paid tax on it, and most agreements limit the clawback to the amount received net of tax. (2) Partners who have left the firm, or who are liable only for their own share, are hard to pursue. (3) The clawback is usually settled only when the fund is wound up, long after the overpayment. Protections (any two): (1) An escrow account that holds back part of each carried interest payment, for example 30%, until the fund's final result is known. (2) Guarantees from the partners personally, or from the management company, each liable for the whole amount. (3) Interim tests of the clawback at fixed dates instead of only at the end. (4) A valuation test: no carried interest is paid on a sale unless the remaining portfolio is worth comfortably more than its cost.",
+ [["First reason",1],["Second reason",1],["First protection described",1],["Second protection described",1]]],
+["**C.** Determine when, and how much, carried interest the general partner would have received under a whole-fund waterfall, and compare the two methods from the points of view of the investors and the general partner.",
+ "Under a whole-fund waterfall the investors first receive back all the capital they contributed, 300 million. The sale of A returns 250 million, so nothing is paid to the general partner in year 3. The sale of B brings the total to 380 million: the investors have their 300 million, and the profit of 80 million is shared, 16 million to the general partner in year 5. The write-off of C changes nothing, so no clawback arises. Investors: the whole-fund method pays them first and makes an overpayment unlikely. General partner: it waits longer for its reward (year 5 instead of year 3, and 16 million instead of 30 million at first), which makes it harder to pay and keep its investment staff; deal-by-deal payment rewards early successes but creates the clawback risk shown here.",
+ [["Nothing in year 3; 16 million in year 5; no clawback",1],["Investors: capital returned first, little risk of overpayment",1],["General partner: carried interest arrives later",1]],true]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR14",
+`Rowanmere Endowment has assets of 2 billion, a private equity allocation managed by two investment officers, and a rule that no single private company may exceed 1% of total assets. It is an investor in Vantor Partners Fund V, which charges a management fee of 2% a year of invested capital and carried interest of 20% of profits.
+
+Vantor is buying an industrial software company and offers Rowanmere a co-investment of 20 million next to the fund, with no fee and no carried interest. Rowanmere has three weeks to decide. Vantor expects to sell the company after five years for 2.2 times the amount invested.
+
+Kasper Lund, CFA, Rowanmere's chief investment officer, assumes for comparison that the fund's fees on this investment are deducted from the sale proceeds, and that carried interest is charged on the gain after the management fees.`,
+[
+["**A.** For 20 million invested in this company, calculate the multiple and the annual return that Rowanmere would earn through the co-investment and through the fund, and the amount of fees saved.",
+ "Co-investment: proceeds = 20 × 2.2 = 44.0 million; multiple 2.20; annual return = 2.2^(1/5) − 1 = 17.1%. Through the fund: gross gain = 24.0 million; management fees = 2% × 20 × 5 = 2.0 million; gain after fees = 22.0 million; carried interest = 20% × 22.0 = 4.4 million; net gain = 17.6 million; proceeds = 37.6 million; multiple 1.88; annual return = 1.88^(1/5) − 1 = 13.5%. Fees saved = 2.0 + 4.4 = 6.4 million, about 3.6 percentage points of return a year.",
+ [["Co-investment: 2.20 times and about 17.1% a year",1],["Fund: 1.88 times and about 13.5% a year",1],["Fees saved of 6.4 million",1]],true],
+["**B.** Discuss **three** risks of the co-investment that could offset the saving in fees.",
+ "Any three: (1) Adverse selection: managers tend to offer co-investments in deals that are too large for the fund or that they are less sure of, so the deals offered may not be a fair sample of the fund's portfolio. (2) Concentration: 20 million in one company carries far more specific risk than 20 million spread across the fund's 10 to 15 companies; a single failure loses the whole amount. (3) Limited ability to judge: three weeks and two officers leave little room for independent due diligence, so Rowanmere would rely largely on Vantor's own work, and Vantor has an interest in closing the deal. (4) No control: as a minority co-investor Rowanmere cannot decide on strategy, further funding or the timing of the exit, and may be asked for more capital. (5) Costs: legal and advisory costs are borne even if the deal fails, and time is taken from the selection of funds.",
+ [["First risk explained",1],["Second risk explained",1],["Third risk explained",1]]],
+["**C.** Recommend whether Rowanmere should accept the offer, and describe how it should organize co-investments in future given its resources.",
+ "Recommendation: accept, but for less than the 20 million offered, for example 10 million. The offer comes from a manager Rowanmere has already examined, the saving in fees is large, and the amount is within the 1% limit (20 million is exactly 1% of 2 billion, which leaves no room for a rise in value or a further capital call). A smaller amount limits the damage from a decision made in three weeks by a small team. For the future: (1) co-invest only alongside managers in whose funds it already invests, and in deals that fit those managers' proven strengths; (2) set rules in advance for size, sector and the minimum information needed, so that decisions can be made quickly; (3) build a spread of many small co-investments over several years instead of a few large ones; (4) if the team cannot do this, use a co-investment fund or an outside adviser, accepting a modest fee.",
+ [["Accept at a reduced size, with reasons",1],["Note that 20 million is exactly at the 1% limit",1],["Program rules: existing managers, set criteria, many small positions or an outside vehicle",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR15",
+`Orrin Partners Fund II is in the ninth year of its ten-year life and owns all the shares of Calder Foods. Orrin has two ways to exit.
+
+**Trade sale.** A larger food company offers 600 million for the shares: 540 million in cash at closing and 60 million held in escrow for 18 months against warranty claims. Orrin expects the escrow to be released in full.
+
+**Initial public offering.** Advisers expect Calder to be valued at 700 million at the offer price. Orrin could sell 40% of its shares in the offering and would pay underwriting fees of 5% of the amount sold. Its remaining shares could not be sold for six months (a lock-up) and would then be sold in stages.
+
+Linus Falk, CFA, advises Orrin's investment committee. Ignore the time value of money and the costs of later share sales.`,
+[
+["**A.** Calculate the cash that Orrin receives at closing under each route, and the fall in Calder's share price after the offering at which the two routes would produce the same total proceeds.",
+ "Trade sale: 540 million at closing (600 million in total). Offering: 40% × 700 = 280 million sold, less fees of 5% × 280 = 14 million, gives 266 million at closing. The remaining 60% is worth 420 million at the offer price. To match 600 million, the remaining shares must bring in 600 − 266 = 334 million, which is 334/420 = 79.5% of the offer price. A fall of about 20.5% in the share price would therefore remove the whole advantage of the offering.",
+ [["Trade sale: 540 million at closing",1],["Offering: 266 million at closing after fees",1],["Break-even fall of about 20.5% on the remaining shares",1]],true],
+["**B.** Discuss **three** reasons why the trade sale suits Orrin's situation.",
+ "Any three: (1) Fund life: the fund ends next year. The trade sale turns the whole holding into cash now (and the escrow within 18 months), while after an offering Orrin would still own 60% of a listed company and would need an extension of the fund to sell it. (2) Certainty: the price is agreed with one buyer, while the offering depends on the market on the day and can be postponed or cancelled if conditions worsen. (3) Market risk afterwards: for at least six months Orrin can sell nothing, and the market knows that a large holder will sell (an overhang), which weighs on the price; the break-even fall of 20.5% is well within the range of normal share price moves. (4) A strategic buyer can pay for cost savings and other synergies that stock market investors will not pay for. (5) An offering brings costs, public disclosure and demands on management's time.",
+ [["First reason explained",1],["Second reason explained",1],["Third reason explained",1]]],
+["**C.** Describe **two** circumstances in which the offering would be the better route, and identify **one** other way for Orrin to exit if neither route were attractive.",
+ "Offering better (any two): (1) Stock markets value the sector well above what trade buyers pay, and demand for new issues is strong. (2) The fund has several years left, so Orrin can hold the remaining shares and benefit from further growth. (3) No strategic buyer exists, or a sale to a competitor would be blocked by the competition authority. (4) Calder is large and growing, and its managers want to stay independent, which a sale to a competitor would end. Other exits (any one): a sale to another private equity fund (secondary buyout); a transfer of Calder to a continuation fund managed by Orrin, giving investors the choice of cash or staying invested; or a dividend recapitalization to return part of the capital while waiting for better conditions.",
+ [["First circumstance",1],["Second circumstance",1],["One alternative exit described",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
