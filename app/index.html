@@ -10521,6 +10521,406 @@ For Project 1, Serrano gathers the following for the operating phase:
  "Any two: (1) the traffic forecast, tested by an independent adviser, with downside cases, competing roads and the sensitivity of demand to the toll; (2) the concession agreement: how tolls may be raised, the length of the concession, termination and compensation clauses, and political or regulatory risk; (3) the construction contract: fixed price and date, the contractor's financial strength, and guarantees for delay; (4) the financing terms: covenants, reserve accounts and refinancing risk; (5) environmental and social matters, permits and land acquisition.",
  [["First matter with what to check",1],["Second matter with what to check",1]]]
 ]);
+/* Level III, Private Wealth Pathway, second batch (2026-11-14): pathway items for a second full mock.
+   Item sets L3-PW-05 (client profiling, regulation, communication, ultra-high-net-worth clients),
+   L3-PW-06 (tax lot selection, tax-loss harvesting, holding period), L3-PW-07 (retirement income: simulation,
+   annuities, survival probabilities, longevity), L3-PW-08 (executive with a concentrated share position).
+   Essays L3-PW-CR05 (required return, inflation and currency for a retiree abroad), L3-PW-CR06 (trusts, skipping
+   a generation, life insurance), L3-PW-CR07 (economic balance sheet of a professional),
+   L3-PW-CR08 (reviewing a client's portfolio report: time-weighted and money-weighted returns).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-05",
+`Nikolai Brandt, CFA, joins Aldermoor Wealth and takes on three new client relationships.
+
+**Client 1.** Paula Sorensen, 52, answers a questionnaire in a way that shows a strong appetite for risk: she says she would "buy more" after a 30% fall. Her portfolio must, however, pay her daughter's university fees for the next four years and service a large mortgage, and she has no other income.
+
+**Client 2.** Rashid Al-Amin wishes to open an account with 25 million that comes from the sale of trading companies in several countries. He asks that the account be opened this week so that he can take part in a new bond issue.
+
+**Client 3.** Marta Vidal becomes anxious when shown tables of standard deviations and probabilities. She tells Brandt that what matters to her is "keeping the house, helping my son start his business and not being a burden in old age".
+
+Brandt's manager also asks him to prepare a proposal for a family with wealth of 600 million, the largest client the firm has approached.`,
+[
+["For Client 1, Brandt should **most appropriately** set the portfolio's risk according to her:",
+ ["stated willingness, since she knows her own preferences.","ability to bear risk, explaining why.","willingness and ability averaged together."],
+ 1,"Sorensen's willingness to take risk is high, but her ability is low: the portfolio must meet large, fixed payments over a short horizon and there is no other income to make up a loss. When the two differ, the more conservative one governs, and the adviser explains why. Following her stated willingness could leave the fees and mortgage unfunded after a fall, and averaging the two has no basis: it still takes more risk than she can bear."],
+["Before opening the account for Client 2, Brandt's firm **must** first:",
+ ["agree an investment policy statement with him.","verify his identity and the source of his wealth.","obtain his consent to share data with the bond issuer."],
+ 1,"Know-your-client and anti-money-laundering rules require the firm to establish who the client is and where the money comes from before it accepts him, and wealth arising from companies in several countries calls for enhanced checks. The client's hurry is not a reason to shorten them. The investment policy statement comes after the client has been accepted, and data sharing with an issuer is not a condition of opening an account."],
+["The **most** effective way for Brandt to present a proposal to Client 3 is to:",
+ ["add more detailed risk statistics so that she can study them.","organize the portfolio around her three goals.","show only past returns and leave risk out of the discussion."],
+ 1,"Vidal thinks in terms of concrete goals, not statistics. A goals-based presentation, with a sub-portfolio for the house, for her son's business and for old age, and a plain statement of how likely each is to be met, speaks her language and makes her more likely to keep to the plan. More statistics would raise her anxiety, and leaving risk out would fail the adviser's duty to make sure she understands it."],
+["Compared with the firm's other clients, the 600 million family will **most likely** need:",
+ ["a shorter investment horizon and far more liquid assets.","standard model portfolios at a lower fee.","coordinated advice across generations and countries."],
+ 2,"Ultra-high-net-worth families typically hold wealth through companies, trusts and foundations in several countries, plan over more than one generation, and want direct and private investments, so they need investment, tax, legal, estate and philanthropic advice that is coordinated and tailored. Their horizon is longer, not shorter, and standard model portfolios are the offering for smaller accounts."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-06",
+`Ingrid Halvard holds 3,000 shares of Tessor plc in a taxable account, bought in three lots of 1,000 shares at prices of 40, 70 and 95. The share price is now 80. She needs to sell 1,000 shares. Realized capital gains are taxed at 25%, and realized losses can be set against gains realized elsewhere in the same year, of which she has plenty.
+
+Her adviser, Callum Reid, CFA, also reviews two other positions:
+
+**Fund K.** Halvard has an unrealized loss of 60,000 on Fund K. Reid proposes to sell it now, use the loss against gains, and invest the proceeds and the tax saved in a different fund with similar exposure. He expects to hold the new fund for eight years and to earn 6% a year after tax on the tax saved.
+
+**Position M.** Halvard bought shares 11 months ago that are now worth 250,000 and show a gain of 50,000. Gains on positions held for less than one year are taxed at 40%, not 25%. She thinks the shares may fall and wants to sell today.`,
+[
+["Selling the Tessor lot with the highest cost, compared with selling the lot bought first, lowers Halvard's tax bill this year by **closest** to:",
+ ["6,250","10,000","13,750"],
+ 2,"Lot bought first (cost 40): gain = (80 − 40) × 1,000 = 40,000, tax = 10,000. Highest-cost lot (cost 95): loss = 15,000, which offsets other gains and saves 3,750. Difference = 10,000 + 3,750 = 13,750. 10,000 counts only the tax avoided and forgets the value of the loss, and 6,250 subtracts the saving instead of adding it.",true],
+["If Fund K is sold as Reid proposes, the benefit of harvesting the loss, measured at the end of the eight years, is **closest** to:",
+ ["8,908","15,000","23,908"],
+ 0,"The loss saves 25% × 60,000 = 15,000 of tax today. But the new fund starts with a tax basis 60,000 lower, so 15,000 more tax is due when it is sold: the tax is deferred, not removed. The benefit is the growth on the saving: 15,000 × 1.06^8 − 15,000 = 23,908 − 15,000 = 8,908. 15,000 treats the saving as permanent, and 23,908 forgets the extra tax at the end.",true],
+["Reid proposes a different fund, and not the repurchase of Fund K itself, **most likely** because:",
+ ["the loss is disallowed if Fund K is bought back at once.","Fund K's past loss shows that its manager lacks skill.","a loss can be claimed only once for each security in a lifetime."],
+ 0,"Many tax systems deny the loss if the same or a substantially identical security is bought within a short period around the sale (a wash sale rule). Buying a different fund with similar exposure keeps the portfolio's market position while the loss stays valid. An unrealized loss says little about skill, and there is no lifetime limit of one loss per security."],
+["Ignoring the time value of one month, the fall in the value of Position M over the next month that would leave Halvard no better off for having waited is **closest** to:",
+ ["3.0%","4.0%","20.0%"],
+ 1,"Selling today: after-tax gain = 50,000 × (1 − 0.40) = 30,000. Selling in one month at the 25% rate: the gain G must satisfy G × (1 − 0.25) = 30,000, so G = 40,000. The position can lose 10,000 of value, or 10,000/250,000 = 4.0%, before waiting stops paying. 3.0% divides the tax saved at today's price (15% × 50,000 = 7,500) by the value and forgets that a smaller gain also bears less tax, and 20.0% is the whole gain as a share of the value.",true]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-07",
+`Walter and Edith Brunner, both 65, are about to retire with a portfolio of 1,500,000. Their adviser, Hana Sato, CFA, prepares a retirement income plan.
+
+**Spending.** The Brunners' essential expenses are 60,000 a year. A state pension will pay them 22,800 a year, linked to inflation. An insurer offers an inflation-linked life annuity that pays 6.2% of the purchase price each year for as long as either of them is alive.
+
+**Projection.** Sato's first projection assumes the same return every year. She then replaces it with a Monte Carlo simulation.
+
+**A small pension.** Edith is also entitled to 20,000 at the end of each of the next three years, paid only if she is alive. The probabilities that she is alive at the end of years 1, 2 and 3 are 0.98, 0.95 and 0.91. Sato discounts at 4%.
+
+**Longevity.** Both Brunners have parents who lived beyond 95, and they worry about running out of money late in life.`,
+[
+["The purchase price of the annuity that would cover the part of the Brunners' essential expenses not met by the state pension is **closest** to:",
+ ["372,000","600,000","967,742"],
+ 1,"The gap is 60,000 − 22,800 = 37,200 a year. Purchase price = 37,200/0.062 = 600,000, which leaves 900,000 invested for other spending. 967,742 buys an annuity for the whole 60,000 and ignores the state pension, and 372,000 is simply ten years of the gap.",true],
+["The **main** advantage of the Monte Carlo simulation over Sato's first projection is that it:",
+ ["removes the need to estimate expected returns.","shows the effect of the order of good and bad years.","guarantees that the chosen spending level is safe for life."],
+ 1,"A projection with the same return every year hides sequence-of-returns risk: poor returns early in retirement, while withdrawals are being made, do far more damage than the same returns later. Simulation generates many paths and gives a probability that the plan succeeds. It still depends on estimates of returns, volatility and correlations, and a probability is not a guarantee."],
+["The present value of Edith's small pension, allowing for the survival probabilities, is **closest** to:",
+ ["52,592","55,502","56,800"],
+ 0,"Each payment is weighted by the probability that it is made: 20,000 × 0.98/1.04 + 20,000 × 0.95/1.04^2 + 20,000 × 0.91/1.04^3 = 18,846 + 17,567 + 16,180 = 52,592. 55,502 discounts the payments as if they were certain, and 56,800 weights them by survival but does not discount.",true],
+["The product that **most** directly addresses the Brunners' worry about longevity, at the lowest cost today, is:",
+ ["a term life insurance policy on each of them.","a deferred annuity that starts paying at age 85.","a portfolio of long-term government bonds."],
+ 1,"A deferred (advanced-life) annuity bought today starts paying only if they reach 85 and then pays for life. Because the payments are far off and are made only to survivors, it costs a small part of the portfolio, and it turns an open-ended horizon into a fixed one of 20 years. Life insurance pays on early death, the opposite risk, and a bond portfolio can still be exhausted if they live long enough."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-08",
+`Sana Iqbal is chief financial officer of Orbis Tech, a listed company. She owns 100,000 Orbis shares, received over the years as part of her pay. The share price is 60 and her tax basis is 10 a share. Her other assets, a home and a pension fund, are worth 2.0 million. Capital gains are taxed at 25%.
+
+Her adviser, Mateo Cruz, CFA, discusses three ideas with her:
+
+**Idea 1.** Sell all of the shares now and invest the proceeds in a diversified portfolio.
+
+**Idea 2.** Keep the shares and borrow 3.0 million against them from her bank, using the loan to buy a diversified portfolio.
+
+**Idea 3.** Sell 40,000 shares now and adopt a written plan, set up in advance, under which a broker sells a fixed number of the remaining shares each quarter.
+
+As an executive, Iqbal may trade Orbis shares only in short periods after results are published, and never when she holds material nonpublic information.`,
+[
+["Under Idea 1, Iqbal's proceeds after tax are **closest** to:",
+ ["3.75 million","4.50 million","4.75 million"],
+ 2,"Sale proceeds = 100,000 × 60 = 6.0 million. Gain = 100,000 × (60 − 10) = 5.0 million, and tax = 25% × 5.0 = 1.25 million. After-tax proceeds = 4.75 million. 4.50 million taxes the whole proceeds, and 3.75 million is only the gain after tax.",true],
+["The **main** weakness of Idea 2 as a way of reducing Iqbal's risk is that:",
+ ["interest on the loan cannot exceed the dividends on the shares.","she stays fully exposed to Orbis and adds leverage on top.","the loan triggers the capital gains tax at once."],
+ 1,"Borrowing against the shares avoids the tax, which is why it appeals, but nothing has been sold: all 6.0 million remains exposed to Orbis, and the diversified portfolio is financed with debt. If the Orbis price falls sharply the bank can demand more collateral or sell the shares, at the worst time. A loan is not a sale, so no gain is taxed, and there is no rule tying loan interest to dividends."],
+["The pre-arranged selling plan in Idea 3 is **most** useful to Iqbal because it:",
+ ["postpones the tax on the shares that are sold under the plan.","lets sales go ahead when she could not otherwise trade.","guarantees a minimum price for each quarterly sale."],
+ 1,"A plan adopted when she holds no material nonpublic information, with amounts and dates fixed in advance and carried out by a broker without her involvement, lets sales continue through closed periods and protects her against a charge of insider trading. It also takes the timing decision, and the emotion, out of her hands. Each sale is still taxed when it is made, and the price is whatever the market offers on the day."],
+["After the first sale of 40,000 shares under Idea 3, with the tax paid from the proceeds and the rest reinvested in a diversified portfolio, the share of Iqbal's total wealth held in Orbis is **closest** to:",
+ ["45.0%","48.0%","60.0%"],
+ 1,"Proceeds = 40,000 × 60 = 2.4 million; tax = 25% × 40,000 × 50 = 0.5 million; reinvested = 1.9 million. Orbis holding = 60,000 × 60 = 3.6 million. Total wealth = 3.6 + 1.9 + 2.0 = 7.5 million, so Orbis is 3.6/7.5 = 48.0%, down from 75%. 45.0% divides by the wealth before tax (8.0 million), and 60.0% is the share of the original holding she still owns.",true]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR05",
+`Gunnar and Lise Ekdahl, both 62, sold their company and have a portfolio of 4,000,000, all invested in assets of their home country and denominated in its currency, the krone. They have moved permanently to a country that uses the euro. About 80% of their spending is now in euros.
+
+They wish to spend the equivalent of 150,000 a year, rising with inflation, and to keep the real value of the portfolio intact for their children. Their adviser, Rosa Delgado, CFA, expects inflation of 2.5% a year and charges fees and costs of 0.5% of assets a year. Taxes can be ignored.
+
+The portfolio holds 70% in fixed-coupon krone government bonds with an average maturity of 12 years and 30% in krone equities.`,
+[
+["**A.** Calculate the nominal return, before fees, that the portfolio must earn for the Ekdahls to meet both of their objectives.",
+ "Spending rate = 150,000/4,000,000 = 3.75%. To pay this, cover inflation and cover costs: (1.0375 × 1.025 × 1.005) − 1 = 6.88% a year. (Adding the three figures gives 6.75%, an acceptable approximation.)",
+ [["Spending rate of 3.75%",1],["Combines spending, inflation and costs",1],["Required return of about 6.9% (6.75% if added)",1]],true],
+["**B.** Explain **two** ways in which the present portfolio exposes the Ekdahls to a loss of purchasing power.",
+ "(1) Inflation: 70% of the portfolio is in long fixed-coupon bonds, whose coupons and principal are fixed in nominal terms. Their real value falls every year with inflation, and if inflation rises their market price falls as yields rise. A portfolio this heavy in nominal bonds is also unlikely to earn the 6.9% required, so real capital would be eroded by the spending. (2) Currency: all assets are in krone but 80% of the spending is in euros. If the krone weakens against the euro, the same portfolio buys less of what they actually consume. What matters to them now is inflation and prices in the euro country, not at home.",
+ [["Inflation exposure of long nominal bonds explained",2],["Mismatch between krone assets and euro spending explained",2]]],
+["**C.** Recommend **three** changes to the portfolio or the plan that would reduce these exposures.",
+ "Any three: (1) Match the currency of assets to the currency of spending: move a large part of the bond holding into euro bonds, or hedge krone assets into euros with forward contracts, keeping roughly the 20% of spending that remains in krone unhedged. (2) Replace part of the nominal bonds with inflation-linked bonds, preferably linked to euro-area prices. (3) Raise the share of assets whose income grows with prices over time, such as globally diversified equities and real assets (property, infrastructure), which also lifts the expected return toward the 6.9% needed. (4) Shorten the maturity of the remaining nominal bonds. (5) Keep one to two years of spending in euro cash so that currency or market falls do not force sales. (6) If the required return cannot be reached at a risk they accept, lower the spending or relax the aim of keeping the capital intact in real terms.",
+ [["First change with its purpose",1],["Second change with its purpose",1],["Third change with its purpose",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR06",
+`Margit Solberg, 74, is a widow with wealth of 40 million. She has one son, Anton, 50, who is financially secure but whose business has been sued several times, and two grandchildren aged 19 and 22. Transfers at death are taxed at 30% in her country at each transfer, and there is no separate tax on skipping a generation.
+
+Solberg wants 10 million to end up with her grandchildren. She is concerned that they are too young to manage a large sum, and she wants to be sure that the money cannot be taken by Anton's creditors.
+
+Her estate also includes a forest property worth 12 million that she does not want sold, while her liquid assets are 6 million. Her adviser is Emil Karlsen, CFA.`,
+[
+["**A.** Calculate the amount that reaches the grandchildren if 10 million is (i) left to Anton, who later leaves it to them, and (ii) left to them directly. Ignore investment returns. State the relative value of the direct bequest.",
+ "(i) Through Anton: 10 × (1 − 0.30) = 7.0 million reaches Anton, and 7.0 × (1 − 0.30) = 4.9 million reaches the grandchildren. (ii) Directly: 10 × (1 − 0.30) = 7.0 million. Relative value of skipping a generation = 7.0/4.9 = 1/(1 − 0.30) = 1.43: the grandchildren receive 43% more because one layer of tax is avoided.",
+ [["Through Anton: 4.9 million",1],["Directly: 7.0 million",1],["Relative value of about 1.43",1]],true],
+["**B.** Recommend a type of trust that meets Solberg's two concerns, and explain how its features do so.",
+ "An irrevocable, discretionary trust for the grandchildren. Irrevocable: Solberg gives up ownership, so the assets leave her estate and belong to the trust, not to her or to Anton; Anton's creditors have no claim on assets he never owned. Discretionary: the trustee decides when and how much to pay to each grandchild, so no grandchild can demand the capital while young, and distributions can be tied to age or purpose (education, a first home). Because a beneficiary has no fixed entitlement, the assets are also protected from the grandchildren's own creditors or a divorcing spouse. She can guide the trustee with a letter of wishes. A revocable trust would not do: the assets would still be treated as hers.",
+ [["Irrevocable trust: assets leave her estate and are out of reach of Anton's creditors",2],["Discretionary: trustee controls timing and amount, protecting young beneficiaries",2]]],
+["**C.** Explain the problem that the forest property creates for Solberg's estate and recommend a solution.",
+ "The estate will owe tax of roughly 30% of 40 million, about 12 million, but holds only 6 million of liquid assets. Unless cash is found, the heirs would have to sell the forest, perhaps quickly and at a poor price, which is exactly what she wishes to avoid. Solution: life insurance on Solberg's life, sized to the shortfall and owned by a trust (or by Anton) so that the payout is not itself part of her taxable estate; it delivers cash at the moment the tax falls due. Alternatives: give assets away during her lifetime to shrink the estate, build up liquid assets from the forest's income, or use any relief or instalment arrangement the tax law offers for forestry and family businesses.",
+ [["Tax of about 12 million against 6 million of liquid assets: risk of a forced sale",2],["Life insurance held outside the estate, or another workable source of liquidity",1]],true]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR07",
+`Dr. Amara Nwosu, 40, is a partner in a law firm that advises investment banks on mergers and acquisitions. Her income rises and falls with the level of deal activity. Her adviser, Felix Baumann, CFA, draws up her economic balance sheet.
+
+**Exhibit 1: Amara Nwosu (thousands)**
+
+| Item | Value |
+|---|---|
+| Investment portfolio (85% equities, 15% bonds) | 1,800 |
+| Home | 1,200 |
+| Present value of future earnings | 5,400 |
+| Present value of pension benefits earned to date | 300 |
+| Mortgage | 700 |
+| Present value of lifetime consumption | 4,900 |
+| Present value of children's education | 500 |
+
+Nwosu has no disability or life insurance. She is divorced and has two children, aged 8 and 10, who depend on her.`,
+[
+["**A.** Calculate Nwosu's net worth on a traditional balance sheet and her economic net worth.",
+ "Traditional net worth counts only marketable assets and debts: 1,800 + 1,200 − 700 = 2,300 thousand. Economic net worth adds human capital and pension wealth and deducts the present value of planned spending: (1,800 + 1,200 + 5,400 + 300) − (700 + 4,900 + 500) = 8,700 − 6,100 = 2,600 thousand.",
+ [["Traditional net worth of 2,300 thousand",1],["Economic assets of 8,700 thousand and liabilities of 6,100 thousand",1],["Economic net worth of 2,600 thousand",1]],true],
+["**B.** Describe the nature of Nwosu's human capital and explain what it implies for the allocation of her investment portfolio.",
+ "Human capital is by far her largest asset: 5,400 of 8,700, or 62% of economic assets. Her earnings depend on merger activity, which moves with the equity market and the economic cycle, so her human capital behaves like equity rather than like a bond. In a market fall her income and her portfolio would drop together. Her total exposure to equity-like risk is therefore already very high, and the financial portfolio should offset it: 85% in equities is too much. She should hold more high-quality bonds and other assets with a low correlation to deal activity, and avoid further concentration in the financial sector. (A person with stable, bond-like earnings, such as a tenured teacher, could do the opposite.)",
+ [["Human capital is her largest asset",1],["It is equity-like, correlated with markets",1],["Portfolio should hold less equity and more low-correlation assets",1]]],
+["**C.** Identify the **two** most serious risks to Nwosu's economic net worth that are not addressed today, and recommend how to manage each.",
+ "(1) Loss of earning ability through illness or injury: her human capital of 5,400 would fall while her spending needs continue. Recommend disability income insurance, ideally a policy that covers inability to work in her own occupation, sized to replace most of her after-tax income. (2) Premature death: two young children depend entirely on her income and there is no second earner. Recommend life insurance, most simply a term policy lasting until the children are independent (about 15 years), sized to cover their living and education costs and the mortgage (the education and mortgage alone are 1,200), less the assets available; name a guardian and a trust to manage the money for the children. Also acceptable as a further point: an emergency reserve of cash, since her income is volatile.",
+ [["Disability risk identified and disability income insurance recommended",2],["Risk of premature death identified and term life insurance recommended, with a basis for its size",2]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR08",
+`Viktor Hale receives the two-year report on his portfolio from his adviser, Dana Whitlock, CFA.
+
+**Exhibit 1: Viktor Hale's portfolio**
+
+| | Year 1 | Year 2 |
+|---|---|---|
+| Value at start of year | 2,000,000 | 3,200,000 |
+| Return for the year | +10% | −5% |
+| Value at end of year, before any contribution | 2,200,000 | 3,040,000 |
+
+At the end of Year 1, against Whitlock's advice to invest gradually, Hale added 1,000,000 from an inheritance. The benchmark agreed in his investment policy statement returned +9% in Year 1 and −6% in Year 2.
+
+Hale's main goal, set two years ago, is to have 3,500,000 in three years' time to buy a business. He complains: "I put in 3,000,000 and I have 3,040,000. Two years for almost nothing, and you tell me you beat the benchmark."`,
+[
+["**A.** Calculate the annualized time-weighted return and the annualized money-weighted return on Hale's portfolio over the two years.",
+ "Time-weighted: (1.10 × 0.95)^(1/2) − 1 = 1.045^0.5 − 1 = 2.2% a year. Money-weighted: the rate r that solves 2,000,000 × (1 + r)^2 + 1,000,000 × (1 + r) = 3,040,000. With x = 1 + r: 2x^2 + x − 3.04 = 0, so x = [−1 + (1 + 24.32)^0.5]/4 = 1.008, and r = 0.8% a year.",
+ [["Time-weighted return of about 2.2%",1],["Sets up the money-weighted equation with both cash flows",1],["Money-weighted return of about 0.8%",1]],true],
+["**B.** Explain why the two returns differ and which one should be used to judge Whitlock.",
+ "The time-weighted return gives each year the same weight whatever the amount invested. The money-weighted return weights each year by the money at work: Hale had 2,000,000 invested in the good year and 3,200,000 in the bad year, so his own experience is worse. The difference is caused by the timing of his contribution, which was his decision and was made against advice. Whitlock should be judged on the time-weighted return, compared with the benchmark: the benchmark returned (1.09 × 0.94)^0.5 − 1 = 1.2% a year, so she added about 1.0% a year. Hale's statement is an accurate description of his money-weighted result, but it does not measure her skill.",
+ [["Money-weighted return reflects the size and timing of flows; more money was invested in the weak year",1],["Time-weighted return is the right measure of the manager, because the client controlled the flow",1],["Benchmark of about 1.2% a year, so the portfolio outperformed",1]],true],
+["**C.** Evaluate whether Hale's investment program is on course to meet his main goal, and recommend what Whitlock should discuss with him at the review.",
+ "To grow from 3,040,000 to 3,500,000 in three years the portfolio must earn (3,500,000/3,040,000)^(1/3) − 1 = 4.8% a year, with a short horizon and a fixed target. That is possible but far from assured, and a portfolio risky enough to lose 5% in a year could leave him well short. Success for a private client is measured against the goal first, and against the benchmark second: the manager has done well relative to the benchmark, but the goal is at risk. Whitlock should discuss: whether the target date or amount can move, or whether Hale can add savings; lowering the portfolio's risk as the date approaches, since the money is needed in three years, even though this lowers the expected return; whether the investment policy statement and its benchmark still fit a three-year horizon; and his behavior: a rule for investing future lump sums, since the timing of the last one cost him.",
+ [["Required return of about 4.8% a year, judged uncertain for a three-year horizon",2],["Success is measured against the goal, not only the benchmark",1],["A relevant recommendation (reduce risk as the date nears, revise the goal or policy, rule for future contributions)",1]],true]
+]);
+/* Level III, Private Markets Pathway, second batch (2026-11-14): pathway items for a second full mock.
+   Item sets L3-PRM-05 (public market equivalent, commitment sizing, smoothed valuations),
+   L3-PRM-06 (gross and net multiples, due diligence, business plan, continuation fund),
+   L3-PRM-07 (buyout financing and required exit value, growth equity, suitable targets),
+   L3-PRM-08 (direct lending yield, covenants, floating rates, fund leverage).
+   Essays L3-PRM-CR05 (value-add real estate), L3-PRM-CR06 (growth equity with a liquidation preference),
+   L3-PRM-CR07 (mezzanine loan return and private debt in an allocation),
+   L3-PRM-CR08 (private market allocation under stress: weights, calls and liquidity).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-05",
+`Selim Aydin, CFA, advises the Tarnow Foundation on its private equity program.
+
+**Fund A.** Tarnow paid 10 million into Fund A five years ago. It received one distribution of 4 million three years after the payment, and the remaining holding is valued at 12 million today. A broad public equity index, with dividends reinvested, stood at 100 when the capital was paid in, at 130 when the distribution was made and at 160 today.
+
+**Program size.** Tarnow wants about 100 million of net asset value in private equity. Aydin's cash flow model shows that, for a steady program, net asset value peaks at about 70% of the amounts committed, because capital is called gradually and early investments are sold before the last ones are made.
+
+**Risk estimates.** The foundation's consultant has measured private equity's volatility at 9% and its correlation with listed equities at 0.4, using the quarterly values reported by the funds.`,
+[
+["The public market equivalent (PME) of Fund A, measured as the ratio of future values at the index return, is **closest** to:",
+ ["0.94","1.06","1.60"],
+ 1,"Each cash flow is carried forward to today at the index return. Contribution: 10 × 160/100 = 16.00. Distribution: 4 × 160/130 = 4.92. PME = (4.92 + 12.00)/16.00 = 1.06. 1.60 is the total value to paid-in multiple, (4 + 12)/10, which takes no account of what the index earned, and 0.94 inverts the ratio.",true],
+["Aydin should interpret the PME of Fund A as showing that the fund:",
+ ["earned 6% a year more than the index.","lost value relative to the capital paid in.","did better than the same cash flows invested in the index."],
+ 2,"A PME above 1 means that the fund's distributions and remaining value are worth more than the same contributions would have produced in the public index: about 6% more wealth in total over the period, not 6% a year. It compares the fund with the index and says nothing about a loss; the fund's multiple is 1.60."],
+["To reach the target, the total amount that Tarnow should commit is **closest** to:",
+ ["70 million","100 million","143 million"],
+ 2,"If net asset value peaks at 70% of commitments, a target of 100 million requires commitments of 100/0.70 = 143 million. Committing only 100 million would leave the program at about 70 million, permanently below target, and 70 million applies the ratio in the wrong direction. Over-commitment of this kind must be supported by a liquidity plan for capital calls.",true],
+["The consultant's risk estimates **most likely**:",
+ ["understate both the volatility and the correlation.","overstate both the volatility and the correlation.","understate the volatility but overstate the correlation."],
+ 0,"Reported values are appraisals that adjust slowly and are updated only quarterly, so the return series is smoothed. Smoothing lowers measured volatility and also lowers measured correlation with listed markets. Used in an optimizer without correction (unsmoothing), such figures make private equity look far safer and more diversifying than it is and lead to an excessive allocation."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-06",
+`Hollis Bridge Capital is the general partner of a buyout fund. Petra Lindahl, CFA, works for one of its limited partners.
+
+**One investment.** The limited partners paid in 110 million in respect of the fund's investment in Corvin Tools: 100 million was invested in the company and 10 million covered management fees and expenses. Corvin was sold for proceeds to the fund of 250 million. Carried interest is 20% of the profit after fees and expenses; assume the preferred return has been met with a full catch-up.
+
+**Before the purchase.** Hollis Bridge commissioned a report on Corvin's markets, customers and competitors and, at closing, agreed a plan with Corvin's managers setting out the actions for the first months of ownership.
+
+**A proposal.** For another company, which it believes needs three more years to reach its potential, Hollis Bridge proposes a sale to a continuation fund that it would also manage. Existing limited partners may take cash or transfer their interest to the new fund.`,
+[
+["The limited partners' net multiple on the Corvin investment is **closest** to:",
+ ["2.02x","2.22x","2.50x"],
+ 0,"Profit after fees and expenses = 250 − 110 = 140 million. Carried interest = 20% × 140 = 28 million. The limited partners receive 250 − 28 = 222 million on 110 million paid in: 222/110 = 2.02x. 2.50x is the gross multiple on the capital invested in the company (250/100), and 2.22x divides the net proceeds by the invested capital and so ignores the fees paid in.",true],
+["The report commissioned before the purchase is **best** described as:",
+ ["legal due diligence.","commercial due diligence.","financial due diligence."],
+ 1,"Commercial due diligence tests the investment case from the outside: market size and growth, customers, competitors and the company's position. Financial due diligence examines the quality of earnings, working capital and debt, and legal due diligence covers contracts, litigation, ownership and compliance."],
+["The plan agreed with Corvin's managers at closing serves **mainly** to:",
+ ["set priorities so that value creation starts at once.","fix the price at which the company will later be sold.","replace the financial covenants required by the lenders."],
+ 0,"A business plan for the first months (often called a 100-day plan) turns the investment case into concrete actions with owners and deadlines: pricing, costs, appointments, reporting, quick improvements. It aligns managers and the sponsor from the first day, when change is easiest. It has nothing to do with the exit price, and lenders' covenants stand whatever the plan says."],
+["The **main** concern for limited partners in the continuation fund proposal is that the general partner:",
+ ["will no longer earn a fee on the company.","is on both sides of the sale and sets the price.","must sell the company to a strategic buyer within a year."],
+ 1,"The general partner sells the company from one fund it manages to another it manages, so it acts for seller and buyer at once, and it gains new fees and a new carried interest if the deal goes through. Existing investors who take cash need a high price, and new investors a low one. Good practice is an independent valuation or a competitive process, review by the limited partner advisory committee and enough time for investors to decide."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-07",
+`Varga Partners, a private equity firm, studies two investments. Lena Okonjo, CFA, prepares the analysis.
+
+**Investment 1: buyout of Halden Filters.** Halden's EBITDA is 30 million. Lenders will provide debt of 5.5 times EBITDA, and Varga will invest 110 million of equity. Varga requires an internal rate of return of 20% and plans to sell after five years, when it expects 100 million of debt to remain. No dividends are expected before the sale.
+
+**Investment 2: Nimbus Software.** Nimbus has revenue growing at 40% a year and is close to breaking even. Its founders want 25 million to expand abroad and do not wish to give up control.
+
+A junior analyst suggests a third company, a shipbuilder whose profits swing widely with the order cycle and which must invest heavily in its yards every year.`,
+[
+["In Investment 1, Varga's equity as a share of the purchase price is **closest** to:",
+ ["40%","60%","67%"],
+ 0,"Debt = 5.5 × 30 = 165 million. Purchase price = 165 + 110 = 275 million (about 9.2 times EBITDA). Equity share = 110/275 = 40%. 60% is the share financed by debt, and 67% divides the equity by the debt.",true],
+["The enterprise value at which Halden must be sold for Varga to earn its required return is **closest** to:",
+ ["273.7 million","373.7 million","438.7 million"],
+ 1,"Equity needed after five years = 110 × 1.20^5 = 110 × 2.4883 = 273.7 million. Adding the 100 million of debt still outstanding gives an enterprise value of 373.7 million. 273.7 million is the equity alone, and 438.7 million adds the opening debt of 165 million, ignoring the repayments.",true],
+["Investment 2 is **best** described as growth equity, in which Varga would most likely:",
+ ["buy all of the shares, financed mainly with debt.","take a minority stake and rely on revenue growth.","lend to the company, secured on its assets."],
+ 1,"Growth equity provides expansion capital to a company with a proven product and fast-growing sales, usually for a minority stake, with the founders staying in control and the investor protected by shareholder rights. The return comes from growth, not from leverage: a company near break-even cannot service much debt. Buying all of the shares with debt describes a buyout, and a secured loan is private debt."],
+["The shipbuilder is poorly suited to a leveraged buyout **mainly** because:",
+ ["its cash flows are too unstable to service a large debt.","it is too large for a private equity firm.","its assets cannot be valued."],
+ 0,"A buyout loads the company with debt whose interest and repayments are fixed, so lenders and sponsors look for stable, predictable cash flows, low capital expenditure needs and a strong market position. A cyclical business that must keep investing heavily has little free cash flow in a downturn and could breach its covenants or default. Size and asset valuation are not the obstacle."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-08",
+`Brightwater Credit manages a direct lending fund. Oskar Nyberg, CFA, reviews a proposed loan and the fund's structure.
+
+**The loan.** A senior secured loan to a mid-sized software company, paying the market reference rate (MRR), now 4.0%, plus a spread of 6.0%. The borrower pays an upfront fee of 2.0% of the loan, and Nyberg expects the loan to be repaid after four years. He estimates the annual probability of default at 2.5% and the loss given default at 40%.
+
+**Covenants.** The loan agreement requires that the borrower's ratio of debt to EBITDA, tested at the end of every quarter, stay below 5.5 times.
+
+**Fund leverage.** The fund borrows 1.00 for each 1.00 of investors' equity, at a cost of 6.5%. Nyberg estimates that the fund's loans, after expected losses, yield 9.5%. Ignore fees charged by the fund.`,
+[
+["Nyberg's estimate of the expected annual return on the loan, after expected credit losses, is **closest** to:",
+ ["9.0%","9.5%","10.5%"],
+ 1,"Coupon = 4.0% + 6.0% = 10.0%. The upfront fee adds about 2.0%/4 = 0.5% a year over the expected life. Expected loss = 2.5% × 40% = 1.0% a year. Expected return = 10.0% + 0.5% − 1.0% = 9.5%. 10.5% ignores the expected loss, and 9.0% ignores the fee.",true],
+["The covenant in the loan agreement is **best** described as:",
+ ["an incurrence covenant.","a maintenance covenant.","a negative pledge."],
+ 1,"A maintenance covenant must be met at every test date, here each quarter, whatever the borrower does; a breach gives the lender an early right to step in, reprice or renegotiate. An incurrence covenant is tested only when the borrower takes a specified action, such as raising more debt or paying a dividend. A negative pledge is a promise not to give security over assets to other creditors."],
+["If MRR rises sharply, the **main** risk to the fund from this loan is that:",
+ ["the loan's price falls because of its long duration.","the borrower's interest cost rises and its ability to pay weakens.","the spread over MRR is reduced automatically."],
+ 1,"The loan pays a floating rate, so its duration is short and its price is not much affected by the level of rates; the lender's income rises. The risk moves to the borrower: every rise in MRR increases its interest bill, lowers its interest coverage and raises the chance of default. Floating-rate lending converts interest rate risk into credit risk. The spread is fixed by contract."],
+["The expected return on the fund investors' equity is **closest** to:",
+ ["3.0%","9.5%","12.5%"],
+ 2,"Return on equity = asset yield + (debt/equity) × (asset yield − cost of debt) = 9.5% + 1.0 × (9.5% − 6.5%) = 12.5%. 9.5% is the return without leverage, and 3.0% is only the margin earned on the borrowed money. The leverage also doubles the effect of credit losses on investors' capital.",true]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR05",
+`Castor Real Estate Fund is considering the purchase of an office building from the 1990s that is 65% let. Its plan is to refurbish the building, let the empty space and sell after three years.
+
+- Purchase price: 40 million
+- Refurbishment cost: 6 million, spent at the start
+- Loan: 60% of the total cost, interest only; assume that net rental income during the three years just covers interest and running costs, so there are no interim cash flows to equity
+- Net operating income once the building is fully let: 3.5 million a year
+- Capitalization rate expected at the sale: 6.25%
+
+Yara Haddad, CFA, reviews the plan for an investor in the fund. The fund describes its strategy as "core".`,
+[
+["**A.** Calculate the expected sale price, the equity invested, the equity multiple and the internal rate of return on equity.",
+ "Sale price = 3.5/0.0625 = 56.0 million. Total cost = 40 + 6 = 46 million. Loan = 60% × 46 = 27.6 million; equity = 18.4 million. Equity proceeds at sale = 56.0 − 27.6 = 28.4 million. Equity multiple = 28.4/18.4 = 1.54x. With no interim cash flows, IRR = 1.5435^(1/3) − 1 = 15.6% a year.",
+ [["Sale price of 56.0 million",1],["Equity of 18.4 million and proceeds of 28.4 million",1],["Multiple of about 1.54x",1],["IRR of about 15.6%",1]],true],
+["**B.** Explain whether \"core\" is an accurate description of this investment.",
+ "It is not. Core real estate means well-located, modern, fully let buildings with long leases, low leverage and returns that come mainly from stable income. This plan buys an older building with 35% vacancy, spends on refurbishment, relies on letting the empty space and earns its return almost entirely from a higher sale price, with 60% leverage. That is a value-add strategy (some would say opportunistic, given the leasing and execution risk). The label matters: the investor should expect higher risk and require a higher return than for core property.",
+ [["Core means stabilized, income-driven, low-leverage property",1],["This plan is value-add: vacancy, refurbishment, return from appreciation, higher leverage",1]]],
+["**C.** Discuss **two** risks to the plan and state the effect on the sale price if the capitalization rate at the sale is 7.0%.",
+ "At 7.0% the sale price is 3.5/0.07 = 50.0 million, 6.0 million lower; equity proceeds fall to 22.4 million and the multiple to 1.22x (an IRR of about 6.8%). Risks (any two): (1) Market or exit risk: the sale price depends on capitalization rates three years from now, which move with interest rates and investor demand, and leverage magnifies the effect on equity. (2) Leasing risk: the empty space may let slowly, at lower rents or with large incentives, so that the 3.5 million is not reached; demand for older offices may be weak. (3) Construction risk: the refurbishment may cost more or take longer than planned. (4) Financing risk: the loan may need to be refinanced or its covenants may be breached if values fall or letting is delayed.",
+ [["Sale price of 50.0 million at a 7.0% rate",1],["First risk explained",1],["Second risk explained",1]],true],
+["**D.** Identify **two** matters that Haddad should examine in due diligence on the building.",
+ "Any two: (1) The existing leases: tenants' credit quality, expiry dates, break options and rents compared with market rents. (2) The physical condition: a technical survey of structure, services, energy performance and environmental issues, and whether 6 million is enough. (3) The local market: vacancy, new supply, rents achieved and recent sales of comparable buildings, to test the rent and the capitalization rate assumed. (4) Legal matters: title, planning permission for the works and any restrictions on use. (5) The loan terms and the fund manager's record with similar projects.",
+ [["First matter with what to check",1],["Second matter with what to check",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR06",
+`Tidewater Growth Partners plans to invest 30 million in Veloce Mobility for 20% of the company. The investment would be in preferred shares with a liquidation preference of one times the amount invested, non-participating: at a sale, Tidewater receives the greater of 30 million and its 20% share of the proceeds.
+
+Jun Takeda, CFA, expects a sale in four years and considers three cases for the value of the whole company at that time.
+
+**Exhibit 1: Value of Veloce at sale**
+
+| Case | Probability | Value (millions) |
+|---|---|---|
+| Strong | 40% | 600 |
+| Moderate | 40% | 300 |
+| Weak | 20% | 100 |
+
+Veloce's founders will keep a majority of the votes and of the seats on the board.`,
+[
+["**A.** Calculate the post-money valuation implied by the investment and Tidewater's proceeds in each of the three cases.",
+ "Post-money valuation = 30/0.20 = 150 million (pre-money 120 million). Strong: 20% × 600 = 120 million. Moderate: 20% × 300 = 60 million. Weak: 20% × 100 = 20 million, which is less than the preference, so Tidewater takes 30 million.",
+ [["Post-money valuation of 150 million",1],["Strong 120 million and moderate 60 million",1],["Weak case: 30 million under the preference",1]],true],
+["**B.** Calculate Tidewater's expected proceeds, the expected multiple of invested capital and the annual return implied by the expected proceeds.",
+ "Expected proceeds = 0.40 × 120 + 0.40 × 60 + 0.20 × 30 = 48 + 24 + 6 = 78 million. Multiple = 78/30 = 2.6x. Annual return = 2.6^(1/4) − 1 = 27.0%.",
+ [["Expected proceeds of 78 million",1],["Multiple of 2.6x",1],["Annual return of about 27%",1]],true],
+["**C.** Explain what the liquidation preference does for Tidewater and why its effect on the expected return is small here.",
+ "The preference protects the downside: in a weak sale Tidewater is paid before the ordinary shareholders and recovers its 30 million instead of 20 million, so it loses nothing unless the company is sold for less than 30 million. In the other cases it converts to ordinary shares and takes its 20%. Its effect on the expected figures is small because it matters only in the weak case, which has a 20% probability, and adds only 10 million there: expected proceeds would be 76 million without it against 78 million with it. Its value lies in limiting losses, and in making the founders bear the first loss if the price paid proves too high.",
+ [["Priority in a low-value sale: recovers 30 million instead of 20 million",1],["Affects only the weak case; expected proceeds 78 against 76 million",1]],true],
+["**D.** Tidewater will be a minority shareholder. Recommend **three** rights that it should negotiate, with the purpose of each.",
+ "Any three: (1) A board seat (or observer seat) and information rights: regular accounts and budgets, so that it can monitor and influence the company. (2) Veto (consent) rights over major decisions: new share issues, large acquisitions or debt, sale of the company, changes to the articles, related-party transactions. (3) Anti-dilution protection and pre-emption rights: to keep its percentage, or adjust its price, if shares are later issued at a lower valuation. (4) Exit rights: tag-along to sell on the same terms as the founders, drag-along or a right to require a sale or redemption after a set number of years, so that it is not locked in indefinitely. (5) Vesting and non-compete terms for the founders, to keep them committed.",
+ [["First right with its purpose",1],["Second right with its purpose",1],["Third right with its purpose",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR07",
+`Solvik Insurance has invested in private debt only through senior direct lending funds. Its chief investment officer asks Marit Aasen, CFA, to evaluate a mezzanine loan offered as a co-investment, and to comment on the role of different kinds of private debt.
+
+**The mezzanine loan.** 20 million lent for five years to a company owned by a private equity sponsor, ranking behind 90 million of senior debt. Terms:
+
+- Cash interest of 8% a year, paid annually on the outstanding principal
+- Payment-in-kind (PIK) interest of 4% a year, added to the principal each year
+- Principal, including the PIK interest, repaid at the end of year 5
+- Warrants that Aasen expects to be worth 3 million at the end of year 5
+
+The company's EBITDA is 22 million, and its enterprise value is estimated at 200 million.`,
+[
+["**A.** Calculate the principal repaid at the end of year 5, the total cash received over the five years (interest, principal and warrants) and the multiple of the amount invested.",
+ "Principal at the end of year 5 = 20 × 1.04^5 = 24.33 million. Cash interest is 8% of the principal outstanding during each year: 1.600, 1.664, 1.731, 1.800 and 1.872, a total of 8.67 million. Total received = 8.67 + 24.33 + 3.00 = 36.0 million. Multiple = 36.0/20 = 1.80x.",
+ [["Principal of about 24.33 million",1],["Cash interest of about 8.67 million",1],["Total of about 36.0 million and multiple of 1.80x",1]],true],
+["**B.** Explain why the internal rate of return on the loan is 12% before the warrants, and state the effect of the warrants.",
+ "Each year the lender earns 8% in cash and 4% added to principal, both on the principal then outstanding, so the loan earns 12% on its carrying amount every year and is repaid at that amount: the IRR is exactly 12%. The warrants add a payment of 3 million at the end, which raises the IRR to about 14%. That extra return is uncertain: it exists only if the equity is worth something at the exit.",
+ [["8% cash plus 4% PIK on outstanding principal gives 12% a year",1],["Warrants raise the return (to about 14%) but are uncertain",1]],true],
+["**C.** Calculate total leverage through the mezzanine loan and its loan-to-value range, and discuss **two** risks of this loan compared with Solvik's senior lending.",
+ "Total debt = 90 + 20 = 110 million, or 110/22 = 5.0 times EBITDA (senior leverage is 4.1 times). The mezzanine loan covers the slice of enterprise value from 45% (90/200) to 55% (110/200). Risks (any two): (1) Subordination: senior lenders are paid first, so a fall of more than 45% in enterprise value would wipe out the mezzanine loan entirely; loss given default is much higher than on senior debt. (2) PIK interest: a third of the return is not received in cash but added to the claim, so the exposure grows each year (to 24.3 million) and is collected only if the company can refinance or be sold at the end. (3) Weaker rights: mezzanine lenders are usually unsecured or second-ranking, and an agreement with the senior lenders limits their ability to enforce. (4) Single-name concentration: a co-investment is one loan, not a diversified fund. (5) Illiquidity and, for an insurer, a higher capital charge.",
+ [["Total leverage of 5.0x and loan-to-value from 45% to 55%",2],["First risk explained",1],["Second risk explained",1]],true],
+["**D.** Compare the role that senior direct lending and distressed debt would each play in Solvik's portfolio.",
+ "Senior direct lending: secured, floating-rate loans held to maturity, with returns that come mainly from contractual income (a spread over public loans for illiquidity and complexity) and with relatively low losses. It suits an insurer's need for predictable income to match liabilities. Distressed debt: buying the debt of companies in or near default at a discount, with returns that come from capital gains through restructuring. Returns are higher on average but uneven, depend on the manager's legal and negotiating skill, produce little current income and are best in the period after a credit downturn. For Solvik it would be a small, return-seeking allocation rather than part of the income portfolio.",
+ [["Senior direct lending: contractual income, lower risk, fits liability matching",1],["Distressed debt: capital gains, higher and more variable return, small return-seeking role",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR08",
+`Whitmoor University Endowment has assets of 1,000 million: 750 million in listed equities and bonds and 250 million in private market funds. Its policy sets a target of 25% for private markets, with a maximum of 30%. Spending is 45 million a year.
+
+During a market crisis, the listed portfolio falls by 30%. The private funds' latest reported values are 5% lower than before.
+
+The endowment has unfunded commitments of 120 million to its private funds. Chief investment officer Declan Byrne, CFA, expects capital calls of 40 million and distributions of only 15 million over the next twelve months, because exits have almost stopped. All of the endowment's commitments were made in the last four years.`,
+[
+["**A.** Calculate the weight of private markets after the fall and state whether the policy maximum is breached.",
+ "Listed portfolio = 750 × 0.70 = 525 million. Private funds = 250 × 0.95 = 237.5 million. Total = 762.5 million. Private market weight = 237.5/762.5 = 31.1%, which is above the 30% maximum, although no private investment was bought. (This is known as the denominator effect.)",
+ [["Listed 525 million, private 237.5 million, total 762.5 million",1],["Weight of about 31.1%",1],["Maximum of 30% is breached",1]],true],
+["**B.** Explain why the reported figures probably understate both the endowment's loss and its commitment to private markets.",
+ "Loss: private funds report values with a delay and by appraisal, so a 5% markdown beside a 30% fall in listed markets mostly reflects stale prices rather than resilience. If the holdings had to be sold today the discount would be much larger, so the endowment's true total value is below 762.5 million. Commitment: the weight counts only money already invested. The 120 million of unfunded commitments is a further, legally binding claim on the liquid portfolio, equal to 23% of what remains of it, and it does not appear in the 31.1%.",
+ [["Appraisal values lag; the real fall in value is larger than reported",1],["Unfunded commitments are an additional exposure not shown in the weight",1]]],
+["**C.** Calculate the cash that the endowment must find from its listed portfolio over the next twelve months, and discuss the consequence.",
+ "Net calls = 40 − 15 = 25 million. Adding spending of 45 million, the endowment needs 70 million, which is 13.3% of the listed portfolio of 525 million. It must sell listed assets after they have fallen 30%, which locks in losses, and each sale pushes the private market weight higher still. Had distributions continued at a normal pace they would have funded the calls; the program was relying on distributions that stop in a crisis.",
+ [["Net calls of 25 million plus spending of 45 million: 70 million",1],["About 13% of the listed portfolio, sold at depressed prices and raising the private weight further",1]],true],
+["**D.** Recommend **three** measures, for now or for the design of the program, to manage this problem.",
+ "Any three: (1) Reduce or pause new commitments for the coming year and rebuild them gradually (commitment pacing), instead of reacting only when limits are breached. (2) Spread commitments evenly over vintage years: all of the endowment's commitments are less than four years old, so its funds are all still calling capital and none is distributing; a mature program funds itself. (3) Hold a liquidity reserve, or arrange a credit line, sized to cover expected calls and spending for one to two years under a stress case. (4) Sell some fund interests on the secondary market, accepting a discount, if the exposure must be cut. (5) Widen the policy range or allow a temporary breach, with the board's approval, to avoid forced sales at the worst time. (6) Model cash flows under stress when setting the target, since calls continue while distributions stop.",
+ [["First measure with its purpose",1],["Second measure with its purpose",1],["Third measure with its purpose",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
