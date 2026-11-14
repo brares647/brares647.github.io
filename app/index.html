@@ -11610,6 +11610,382 @@ Linus Falk, CFA, advises Orrin's investment committee. Ignore the time value of 
  "Offering better (any two): (1) Stock markets value the sector well above what trade buyers pay, and demand for new issues is strong. (2) The fund has several years left, so Orrin can hold the remaining shares and benefit from further growth. (3) No strategic buyer exists, or a sale to a competitor would be blocked by the competition authority. (4) Calder is large and growing, and its managers want to stay independent, which a sale to a competitor would end. Other exits (any one): a sale to another private equity fund (secondary buyout); a transfer of Calder to a continuation fund managed by Orrin, giving investors the choice of cash or staying invested; or a dividend recapitalization to return part of the capital while waiting for better conditions.",
  [["First circumstance",1],["Second circumstance",1],["One alternative exit described",1]]]
 ]);
+/* Level III, Private Wealth Pathway, fifth batch (2026-11-14): pathway items for a fifth full mock.
+   Item sets L3-PW-16 (behavioral biases, willingness and ability to bear risk, utility of a portfolio),
+   L3-PW-17 (selling against borrowing on the portfolio, margin call, private equity and art for a private client),
+   L3-PW-18 (estate tax, transfer to a spouse, step-up in basis, liquidity of an estate),
+   L3-PW-19 (rebalancing bands, reviewing the policy statement, a client's benchmark).
+   Essays L3-PW-CR16 (elderly client: care costs and diminished capacity), L3-PW-CR17 (private bank, single-family
+   office or multi-family office), L3-PW-CR18 (moving an inherited portfolio with embedded gains),
+   L3-PW-CR19 (sequence of returns at the start of retirement).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-16",
+`Ines Carvalho, 52, is a dentist with a net worth of 3 million. Stefan Auer, CFA, has just become her adviser and notes the following.
+
+**A fund.** Carvalho bought a technology fund at 100; it now stands at 70. Auer thinks its prospects are poor, but she says: "I will sell when it is back to what I paid."
+
+**Cash and debt.** She keeps 400,000 in a savings account that pays 1%, which she calls her "holiday home money", and owes 150,000 on a credit line that costs 7%.
+
+**Risk.** Her answers to a questionnaire show a high willingness to take risk. She is the only earner in her household, supports two children at university and plans to retire in eight years with little pension.
+
+**Portfolios.** Auer measures the appeal of a portfolio as its expected return minus 0.5 × A × variance, with A = 4 for Carvalho (returns and standard deviations as decimals).
+
+| Portfolio | Expected return | Standard deviation |
+|---|---|---|
+| X | 4.0% | 5% |
+| Y | 6.5% | 10% |
+| Z | 8.0% | 16% |`,
+[
+["Carvalho's remark about the technology fund is **best** explained by:",
+ ["loss aversion.","overconfidence.","the endowment effect."],
+ 0,"She refuses to turn a paper loss into a real one and takes the purchase price as her reference point, although that price says nothing about the fund's future. Loss-averse investors hold losers too long (and sell winners too early). Overconfidence would show in excessive trading or in forecasts held with too much certainty, and the endowment effect is valuing something more highly merely because one owns it, without reference to a loss."],
+["The annual cost to Carvalho of keeping the cash while owing the credit line is **closest** to:",
+ ["1,500","9,000","10,500"],
+ 1,"Repaying the 150,000 would save 7% and give up 1% of interest: 150,000 × (0.07 − 0.01) = 9,000 a year. She treats the cash and the debt as separate pots (mental accounting), though money is interchangeable. 10,500 is the interest on the credit line alone, and 1,500 is the interest earned on 150,000 of cash.",true],
+["In setting Carvalho's risk tolerance, Auer should **most appropriately**:",
+ ["follow her ability to bear risk, which is the lower.","follow the questionnaire, since it records her own wishes.","take the average of her willingness and her ability."],
+ 0,"Ability and willingness conflict here: one income, dependants, a short horizon and little pension mean that a large loss could not be made good, whatever she feels about risk. The prudent course is to be guided by the lower of the two and to explain why. Following the questionnaire alone would expose her to losses she cannot afford, and averaging the two has no basis."],
+["On Auer's measure, the **most** attractive portfolio for Carvalho is:",
+ ["Portfolio X.","Portfolio Y.","Portfolio Z."],
+ 1,"Utility = E(R) − 0.5 × 4 × σ². X: 0.040 − 2 × 0.0025 = 0.0350. Y: 0.065 − 2 × 0.0100 = 0.0450. Z: 0.080 − 2 × 0.0256 = 0.0288. Y scores highest. Z has the highest return but its variance is penalized heavily at her level of risk aversion, and X gives up too much return for its low risk.",true]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-17",
+`Oskar Lindahl has a portfolio of listed securities worth 5.0 million with a tax basis of 2.0 million, spread evenly across the holdings. He needs 1.0 million to buy a holiday home. Realized gains are taxed at 20%. His adviser is Maya Petrescu, CFA.
+
+**Selling.** Lindahl could sell securities and pay the tax from the proceeds.
+
+**Borrowing.** His bank would lend 1.0 million against the portfolio. It asks for more collateral or repayment (a margin call) if the loan exceeds 40% of the portfolio's value.
+
+**Private equity.** Lindahl, who spends 200,000 a year from the portfolio, would like to put 30% of it into private equity funds.
+
+**Art.** He owns paintings insured for 800,000 and asks how they fit into his plan.`,
+[
+["The value of securities that Lindahl must sell to keep 1.0 million after tax is **closest** to:",
+ ["1.136 million","1.200 million","1.250 million"],
+ 0,"The gain is (5.0 − 2.0)/5.0 = 60% of every unit sold, so the tax is 20% × 60% = 12% of the amount sold. Sale needed = 1.0/(1 − 0.12) = 1.136 million, of which 0.136 million goes in tax. 1.200 million adds 20% to the amount needed, and 1.250 million treats the whole sale as gain.",true],
+["If Lindahl borrows instead, the fall in the portfolio's value that would bring a margin call is **closest** to:",
+ ["40%","50%","60%"],
+ 1,"The loan reaches 40% of the collateral when the portfolio is worth 1.0/0.40 = 2.5 million, a fall of 50% from 5.0 million. Borrowing avoids the tax of 0.136 million and keeps him invested, but he pays interest and could be forced to sell after a large fall. 40% is the lending limit itself, and 60% would be the answer for a limit of 50%."],
+["The feature of private equity funds that **most** limits the share Lindahl should hold is that:",
+ ["capital is locked in for many years.","returns are reported with a delay.","the funds are valued each quarter."],
+ 0,"A fund calls capital over several years and returns it over ten or more, with no right to redeem. Lindahl draws 200,000 a year and may face a margin call, so he needs a large liquid core; 30% in assets that cannot be sold, plus uncalled commitments, would leave too little. Late reporting and quarterly valuation are inconveniences, not constraints on size."],
+["In Lindahl's plan the paintings are **best** treated as:",
+ ["a substitute for part of the bond allocation.","a personal asset outside the portfolio.","a liquid reserve for unexpected expenses."],
+ 1,"Art pays no income, costs money to insure and store, is hard to value and can take months to sell at a high commission, and its owner usually has no wish to sell. It belongs on the balance sheet as a personal asset, and in the estate plan and insurance review, but not among the assets meant to fund his goals. It has none of the stability or liquidity of bonds or of a cash reserve."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-18",
+`Magnus Ekholm, 74, has an estate of 30 million, of which 22 million is the family company. His wife Dagny is 70, and they have two children. Their adviser is Noor Saleh, CFA.
+
+**Tax rules.** Estates are taxed at 40% above an exemption of 5 million for each person. Anything left to a spouse is exempt. The tax is due nine months after death.
+
+**Listed shares.** Among his other assets, Magnus holds listed shares worth 5 million that he bought for 1 million. Realized gains are taxed at 20%. Heirs take inherited assets at their market value at the date of death (a step-up in basis); a person who receives a lifetime gift takes over the giver's basis.`,
+[
+["If Magnus dies first and leaves everything to the children, the estate tax is **closest** to:",
+ ["6.8 million","8.8 million","10.0 million"],
+ 2,"Taxable estate = 30 − 5 = 25 million; tax = 40% × 25 = 10.0 million. 8.8 million taxes only the company (40% × 22), and 6.8 million applies the exemption to the company alone. With 22 of the 30 million in an unlisted company, the estate has only 8 million of other assets from which to pay.",true],
+["If Magnus instead leaves everything to Dagny, the estate tax is **most likely**:",
+ ["avoided permanently.","deferred until Dagny's death.","doubled, since the assets are taxed twice."],
+ 1,"The spouse exemption means nothing is taxed at his death, but the assets then form part of Dagny's estate and are taxed when she dies, with any growth in between. The tax is postponed, not removed. There is a cost: Magnus's own 5 million exemption is wasted unless he uses it for the children, so leaving part to them is usually better."],
+["If Magnus gives the listed shares to the children now and they sell them, the tax on the gain, compared with the tax if they inherited and sold the shares, is higher by an amount **closest** to:",
+ ["0.2 million","0.8 million","1.0 million"],
+ 1,"After a gift the children's basis is his 1 million, so a sale at 5 million realizes a gain of 4 million and tax of 20% × 4 = 0.8 million. After an inheritance the basis is stepped up to 5 million and no gain arises. Highly appreciated assets are therefore better kept until death, and cash or high-basis assets given away, where such rules apply. 1.0 million taxes the full value, and 0.2 million taxes only the original cost.",true],
+["The **most appropriate** preparation for the payment of the estate tax is:",
+ ["a pledge of the company's shares to Dagny.","life insurance held in a trust for the children.","moving more of the estate into the company."],
+ 1,"The tax is due in nine months, and an unlisted company cannot be sold in part or quickly without damage. Life insurance pays cash exactly when the tax arises, and if a trust owns the policy the proceeds stay outside the taxable estate. A pledge to Dagny produces no cash, and putting more wealth into the company would make the estate even less liquid."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-19",
+`Petra and Milan Horvat invested 2,000,000 a year ago: 60% in equities and 40% in bonds, as set out in their investment policy statement. The statement allows each weight to move five percentage points either side of its target before the portfolio is rebalanced. Their adviser is Signe Dahlberg, CFA.
+
+Over the year equities returned 30% and bonds 0%. Nothing was added or withdrawn.
+
+At the annual review, Milan says that he has decided to retire in three years instead of eight. Petra asks what the portfolio's return should be compared with: "The equity index did 30%. We did much less."`,
+[
+["The weight of equities in the Horvats' portfolio today is **closest** to:",
+ ["66.1%","78.0%","90.0%"],
+ 0,"Equities: 1,200,000 × 1.30 = 1,560,000. Bonds: 800,000. Total 2,360,000. Weight = 1,560,000/2,360,000 = 66.1%, more than five points above the 60% target, so the band is breached. 78.0% divides the equities by last year's total, and 90.0% simply adds the 30% return to the weight.",true],
+["The value of equities to be sold to bring the portfolio back to its target is **closest** to:",
+ ["72,000","144,000","360,000"],
+ 1,"Target equities = 60% × 2,360,000 = 1,416,000. Sale = 1,560,000 − 1,416,000 = 144,000, reinvested in bonds. 360,000 is the whole of the year's gain, which would leave equities at only 50.8%, and 72,000 goes only half-way, leaving equities at 63%, above the target.",true],
+["The event that **most** requires the policy statement itself to be revised is:",
+ ["the breach of the rebalancing band.","Milan's decision to retire earlier.","the high return on equities this year."],
+ 1,"The statement rests on the clients' goals, horizon and ability to bear risk. Retiring five years earlier shortens the saving period, lengthens the spending period and reduces the time to recover from a loss, so the return objective, risk tolerance and allocation must all be reconsidered. A breach of the band is dealt with by the statement as it stands, through rebalancing, and one year's market return changes nothing about the clients."],
+["The **most** suitable benchmark for the Horvats' portfolio is:",
+ ["the equity index that Petra quotes.","a 60/40 blend of equity and bond indexes.","the return on bank deposits."],
+ 1,"A benchmark must reflect the portfolio's strategic allocation and risk. A blend of 60% of an equity index and 40% of a bond index would have returned 0.6 × 30% + 0.4 × 0% = 18%, which is what the Horvats' own portfolio earned. Comparing a balanced portfolio with an all-equity index will flatter it in falling markets and condemn it in rising ones, and deposits carry none of its risk."]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR16",
+`Agnes Thorvald, 82, is a widow with liquid investments of 1,800,000, a home worth 600,000 and a pension of 30,000 a year. Her son lives abroad. She has no power of attorney in place. Daniel Reiss, CFA, has advised her for 15 years.
+
+In recent months Thorvald has missed two meetings and asked the same questions several times in one conversation. Today she telephones and asks Reiss to transfer 150,000 at once to a new friend, "for his business. He says it cannot wait."
+
+Thorvald's doctor has suggested that she may need to move to a care home, which would cost 96,000 a year. Reiss assumes a stay of eight years, payments at the end of each year, and a real return of 1%.`,
+[
+["**A.** Calculate the capital needed today to pay for the care home beyond what Thorvald's pension covers, and state whether her resources are sufficient.",
+ "Net cost = 96,000 − 30,000 = 66,000 a year. Present value = 66,000 × [(1 − 1.01^−8)/0.01] = 66,000 × 7.6517 = 505,011. This is about 28% of her liquid investments of 1,800,000, so she can afford the care without selling her home, with a wide margin for a longer stay or higher costs.",
+ [["Net cost of 66,000 a year",1],["Present value of about 505,000",1],["Sufficient: about 28% of liquid assets",1]],true],
+["**B.** Describe **four** steps that Reiss should take in response to the transfer request and the changes he has noticed.",
+ "Any four: (1) Do not carry out the transfer at once: an urgent payment to a new acquaintance, out of line with her past behaviour, is a classic sign of financial exploitation. Ask her about the purpose, the person and the documents, and use any right the firm has to delay a suspicious payment. (2) Record what he has observed, with dates: the missed meetings, the repeated questions, this request. (3) Follow his firm's procedure for vulnerable clients and inform compliance or his supervisor, so the decision is not his alone. (4) Speak to her in person, without the friend present, and with a colleague as witness. (5) With her consent, or under the trusted-contact arrangement if one exists, involve her son. (6) Encourage her to see her doctor and a lawyer and to sign a durable power of attorney and a health-care directive while she still has the capacity to do so. (7) Keep her information confidential from the friend and from anyone without authority.",
+ [["Delay and question the transfer",1],["Document and escalate within the firm",1],["Involve the son or a trusted contact with consent",1],["Power of attorney and medical or legal advice while she has capacity",1]]],
+["**C.** Recommend **three** changes to Thorvald's investments and arrangements for the years ahead.",
+ "Any three: (1) Hold about two to three years of net care costs (130,000 to 200,000) in cash and short-term bonds, so that fees are paid without selling other assets at a bad time. (2) Simplify: fewer accounts and funds, automatic payment of the care home and regular bills, so that little depends on her own actions. (3) Lower the risk of the portfolio in line with her shorter horizon and reduced ability to cope with losses, while keeping some protection against inflation in care costs. (4) Put a durable power of attorney in place, or move the assets into a trust with her son or a professional as co-trustee, so that someone can act when she cannot. (5) Require two signatures or a waiting period for large or unusual payments. (6) Review her will and decide what should happen to the home.",
+ [["First change with its reason",1],["Second change with its reason",1],["Third change with its reason",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR17",
+`The Castellanos family has sold its company and holds 120 million of liquid assets for 14 family members in three generations. It is comparing three ways to have the wealth managed.
+
+**Exhibit 1: Annual costs**
+
+| Arrangement | Cost |
+|---|---|
+| Private bank | 0.90% of assets, all services included |
+| Single-family office | Staff and premises of 1.8 million, plus 0.30% of assets for outside managers and custody |
+| Multi-family office | 0.55% of assets, all services included |
+
+The family's eldest member says: "We ran our own company for 40 years. We should run our own office." The family's adviser is Bruno Keller, CFA.`,
+[
+["**A.** Calculate the annual cost of each arrangement for the family today, and the amount of assets at which a single-family office would cost the same as the private bank.",
+ "Private bank: 0.90% × 120 = 1.08 million. Single-family office: 1.8 + 0.30% × 120 = 1.8 + 0.36 = 2.16 million, or 1.80% of assets. Multi-family office: 0.55% × 120 = 0.66 million. Break-even with the bank: 1.8 + 0.003A = 0.009A, so A = 1.8/0.006 = 300 million. Against the multi-family office the break-even would be 1.8/0.0025 = 720 million.",
+ [["Bank 1.08 million and multi-family office 0.66 million",1],["Single-family office 2.16 million",1],["Break-even of 300 million against the bank",1]],true],
+["**B.** Apart from cost, discuss **two** advantages and **two** disadvantages of a single-family office for this family.",
+ "Advantages (any two): (1) Control and tailoring: the staff work only for the family, so investments, reporting, tax and estate work, philanthropy and the education of the younger generation can be shaped to it. (2) Privacy: information stays inside the family's own organization. (3) Independence: employees on salary have no products to sell, unlike a bank. (4) A shared institution that can hold a large family together across generations. Disadvantages (any two): (1) People: a small office depends on a few employees who are hard to recruit, supervise and keep, and the family has never managed investment staff. (2) Narrow expertise and access: six people cannot cover every asset class, tax system and legal question, so much is bought in anyway. (3) Operational and regulatory risk falls on the family itself: controls, systems, cyber security. (4) Governance burden: 14 members must agree on budgets, hiring and who is served first.",
+ [["First advantage",1],["Second advantage",1],["First disadvantage",1],["Second disadvantage",1]]],
+["**C.** Recommend an arrangement for the family and **two** governance measures that should accompany it.",
+ "Recommendation: the multi-family office. It is the cheapest (0.66 million against 1.08 and 2.16 million), offers independent advice and most of the integrated services of a family office, and spreads staff and systems across several families. At 120 million a single-family office costs twice as much as the bank and is far below the break-even of 300 million; the wish to 'run our own office' confuses running an operating company with supervising investments. The choice can be reviewed if the assets grow well beyond 300 million. Governance (any two): a family council that represents all three generations and deals with the office; a written investment policy statement for the family's wealth, with separate accounts where branches have different needs; consolidated reporting and a regular review of the provider's performance and fees; a family constitution that sets out how decisions and disagreements are handled.",
+ [["Multi-family office recommended on cost and suitability",1],["Single-family office rejected as below the break-even size",1],["Two governance measures",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR18",
+`Viveca Lund, 55, has become a client of Aron Meyer, CFA. Her taxable portfolio was built up over 20 years without a plan.
+
+**Exhibit 1: Lund's portfolio**
+
+| Holding | Market value | Tax basis | Annual fee |
+|---|---|---|---|
+| Three actively managed equity funds | 1,800,000 | 1,000,000 | 1.6% |
+| Shares of Nordtek, her former employer | 900,000 | 100,000 | none |
+| Bond fund | 300,000 | 350,000 | 0.4% |
+
+Realized gains are taxed at 20%, and realized losses can be set against gains. Meyer would like to move the portfolio to index funds that cost 0.2% a year. Lund gives 30,000 a year to charity, in cash. Gifts of shares to charity are not treated as a sale.`,
+[
+["**A.** Calculate the tax cost of selling the whole portfolio at once, the annual saving in fees from replacing the equity funds, and the number of years of fee savings needed to recover the tax on selling those funds alone.",
+ "Gains: funds 800,000; Nordtek 800,000; bond fund, a loss of 50,000. Net gain = 1,550,000; tax = 20% × 1,550,000 = 310,000, about 10% of the portfolio. Fee saving = (1.6% − 0.2%) × 1,800,000 = 25,200 a year. Tax on the funds alone = 20% × 800,000 = 160,000; years to recover = 160,000/25,200 = 6.3 years, ignoring growth (using the bond loss as well, the tax is 150,000 and the period 6.0 years).",
+ [["Tax of 310,000 on a full sale",1],["Fee saving of 25,200 a year",1],["About 6 years to recover the tax on the funds",1]],true],
+["**B.** Explain **two** risks of leaving the portfolio as it is.",
+ "Any two: (1) Concentration: Nordtek is 30% of the portfolio. One company's fortunes, in a sector she knows but no longer works in, could remove a large part of her wealth, and this specific risk earns no extra expected return. (2) Cost: fees of 1.6% on 1,800,000 are 28,800 a year, paid with certainty, and three active funds held together are likely to resemble the index, so she pays active fees for close to index returns. (3) No link to her goals: the mix of 90% equities and 10% bonds was never chosen, and at 55 it may be more risk than her retirement plans can bear. (4) Tax is deciding the investments: the longer she waits, the larger the gain and the harder the change becomes.",
+ [["First risk explained",1],["Second risk explained",1]]],
+["**C.** Recommend a plan to move the portfolio that limits the tax cost. Include **four** elements.",
+ "Any four: (1) Sell the bond fund now: the loss of 50,000 offsets gains elsewhere and saves 10,000 of tax. (2) Reduce Nordtek first, because that is where the risk lies: sell the lots with the highest basis, in stages over several tax years, with a set date and a maximum weight (for example 10%) so that the plan is completed. (3) Give Nordtek shares to charity instead of cash: 30,000 of shares a year costs her the same as 30,000 in cash, but the gain on them is never taxed, and she keeps the cash to invest in index funds. (4) Stop reinvesting dividends and distributions in the old holdings and direct them, and all new savings, to the index funds. (5) Sell the active funds in stages, the highest-cost and highest-basis first, matching gains with losses realized in weaker years. (6) Meanwhile choose the new holdings to complement what remains, for example funds with little exposure to Nordtek's sector. (7) Compare the tax with the benefit each time: the payback of about six years for the funds is acceptable at 55, and for Nordtek the reduction in risk justifies the tax.",
+ [["Realize the bond loss to offset gains",1],["Staged reduction of Nordtek with a firm target",1],["Give appreciated shares to charity instead of cash",1],["Redirect cash flows or stage the fund sales",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR19",
+`Henning and Ruth Aalto, both 62, retire this month with a portfolio of 2,000,000, 70% of it in equities. They will withdraw 90,000 at the start of each year and raise the amount with inflation. From age 67 they will receive state pensions of 30,000 a year in today's money, and they plan to reduce their withdrawals by that amount. Their adviser is Katja Lehto, CFA.
+
+Ruth says: "Over 30 years the average return is what matters. A bad year now and then makes no difference."`,
+[
+["**A.** Calculate the Aaltos' initial withdrawal rate. Then calculate the withdrawal rate at the start of the second year if the portfolio loses 20% in the first year and inflation is 3%.",
+ "Initial rate = 90,000/2,000,000 = 4.5%. After the withdrawal 1,910,000 is invested; a loss of 20% leaves 1,528,000. Second withdrawal = 90,000 × 1.03 = 92,700. Rate = 92,700/1,528,000 = 6.1%. One bad year has raised the share of the portfolio that they consume from 4.5% to 6.1%.",
+ [["Initial rate of 4.5%",1],["Portfolio of 1,528,000 after the first year",1],["Second-year rate of about 6.1%",1]],true],
+["**B.** Explain to Ruth why she is mistaken, and why the risk she overlooks is greatest for the Aaltos now.",
+ "Her statement is true only when nothing is added or withdrawn. When money is taken out, the order of returns matters (sequence-of-returns risk): after an early loss, fixed withdrawals force the sale of more units at low prices, and that capital is no longer there when markets recover. Two retirees with the same average return over 30 years can end with very different results: the one who meets the bad years first may run out of money. The risk is greatest now because the portfolio is at its largest, so a given percentage loss costs the most in money; all 30 years of withdrawals still lie ahead; they can no longer replace losses from earnings; and until 67 the portfolio carries their full spending without the pensions. A bad year at 85 would affect only a few remaining years of spending.",
+ [["Order of returns matters when withdrawals are made",1],["Selling at low prices leaves less to recover",1],["Greatest at the start: largest portfolio, longest spending period, no pension yet",1]]],
+["**C.** Recommend **three** measures to reduce this risk for the Aaltos.",
+ "Any three: (1) A reserve for the five years before the pensions begin: hold the 150,000 that the pensions will later replace (5 × 30,000), or several years of full withdrawals, in cash and short-term bonds, and draw on it instead of selling equities after a fall. (2) A flexible spending rule: skip the inflation increase, or cut the withdrawal by a set percentage, after a year of losses, and keep the withdrawal rate inside agreed limits. (3) Less equity at the start: 70% is high for the most exposed years; begin lower and raise the share later, once the pensions are in payment. (4) Buy a life annuity with part of the portfolio so that, with the state pensions, essential spending is covered whatever markets do. (5) Postpone retirement, or work part-time for a few years, so that withdrawals start later and smaller.",
+ [["First measure and how it helps",1],["Second measure and how it helps",1],["Third measure and how it helps",1]]]
+]);
+/* Level III, Private Markets Pathway, fifth batch (2026-11-14): pathway items for a fifth full mock.
+   Item sets L3-PRM-16 (fund terms: fee step-down, general partner commitment, advisory committee, partnership form),
+   L3-PRM-17 (property value from income growth, debt yield, return on equity with a loan, triple-net lease),
+   L3-PRM-18 (infrastructure: value of an availability concession, demand risk, greenfield risk, inflation and fixed debt),
+   L3-PRM-19 (valuing fund holdings: peer multiples, calibration, down round, incentives when raising a fund).
+   Essays L3-PRM-CR16 (track record of a first-time fund), L3-PRM-CR17 (leverage in a property fund),
+   L3-PRM-CR18 (building a seed venture fund), L3-PRM-CR19 (wind farm with a power purchase agreement).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-16",
+`Ebba Nyqvist, CFA, reviews the terms of Tallis Capital Partners Fund IV, a buyout fund, for a pension fund.
+
+**Size and life.** Investors have committed 500 million. The fund is a limited partnership with a life of ten years.
+
+**Management fee.** 2.0% a year of commitments during the five-year investment period; afterwards 1.5% a year of the cost of the investments still held, which Nyqvist expects to average 300 million over the last five years.
+
+**The manager's own money.** Tallis's partners will commit 15 million to the fund on the same terms as the investors.
+
+**Advisory committee.** A committee of representatives of the larger investors will be formed.`,
+[
+["The total management fee that Nyqvist should expect over the fund's ten-year life is **closest** to:",
+ ["72.5 million","87.5 million","100.0 million"],
+ 0,"Investment period: 2.0% × 500 × 5 = 50.0 million. Afterwards: 1.5% × 300 × 5 = 22.5 million. Total = 72.5 million, or 14.5% of commitments. 87.5 million keeps the lower rate on full commitments (1.5% × 500 × 5 = 37.5), and 100.0 million charges 2% of commitments for all ten years. The step-down matters because the fee is paid on every unit committed whether or not it earns a return.",true],
+["The partners' own commitment is valuable to investors **mainly** because it:",
+ ["makes the manager share in any losses.","guarantees a minimum return to investors.","reduces the management fee the fund pays."],
+ 0,"Carried interest gives the manager a share of gains but nothing to lose, which can encourage risk-taking. Money of its own in the fund, here 3% of commitments, exposes the manager to losses on the same terms as investors. It is no guarantee of any return, and it does not alter the fee."],
+["The **most appropriate** role for the advisory committee is to:",
+ ["select the fund's investments.","review conflicts of interest and valuations.","set the carried interest each year."],
+ 1,"The committee represents investors on matters where the manager's interests may differ from theirs: transactions with related parties, valuation methods, extensions of the fund's life and waivers of restrictions in the agreement. It must not take investment decisions: limited partners who take part in management can lose their limited liability. Carried interest is fixed in the partnership agreement."],
+["Private market funds are usually set up as limited partnerships **mainly** because a partnership:",
+ ["is not itself taxed on its income.","can borrow without any limit.","lets investors redeem on demand."],
+ 0,"A partnership is transparent for tax: income and gains pass through to each partner and are taxed, or exempt, according to that partner's own status, so a pension fund does not suffer a layer of tax at fund level. The form also limits investors' liability to their commitments. Borrowing is restricted by the agreement, and investors cannot redeem: capital is returned only as investments are sold."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-17",
+`Tomasz Wrona, CFA, of Fjordline Property Fund values an office building let to a single tenant.
+
+**Income.** Net operating income is expected to be 5.0 million next year and to grow by 2% a year. Investors require a return of 7.5% on buildings of this kind.
+
+**Loan.** A bank offers a loan of 55 million at 5.0%, with interest only payable during its term.
+
+**Lease.** The lease is triple-net.`,
+[
+["The value of the building is **closest** to:",
+ ["66.7 million","90.9 million","250.0 million"],
+ 1,"With income growing at a constant rate, the capitalization rate equals the required return minus the growth rate: 7.5% − 2.0% = 5.5%. Value = 5.0/0.055 = 90.9 million. 66.7 million capitalizes the income at the full required return and so ignores growth, and 250.0 million divides by the growth rate.",true],
+["The debt yield on the proposed loan is **closest** to:",
+ ["5.0%","5.5%","9.1%"],
+ 2,"Debt yield = net operating income / loan amount = 5.0/55 = 9.1%. Lenders use it because it does not depend on the interest rate or on an appraised value: it shows the return the lender would earn on its loan if it had to take the building over. 5.0% is the interest rate, and 5.5% is the capitalization rate.",true],
+["If the fund buys the building at the value calculated and takes the loan, its income return on equity in the first year is **closest** to:",
+ ["5.5%","6.3%","13.9%"],
+ 1,"Interest = 5.0% × 55 = 2.75 million. Income to equity = 5.0 − 2.75 = 2.25 million. Equity = 90.9 − 55.0 = 35.9 million. Return = 2.25/35.9 = 6.3%. It exceeds the 5.5% earned without debt because the loan costs less than the building yields (positive leverage). 13.9% forgets to deduct the interest.",true],
+["Under the lease described, the risk that the building's operating costs rise is borne by:",
+ ["the tenant.","the owner.","the lender."],
+ 0,"In a triple-net lease the tenant pays property taxes, insurance and maintenance in addition to the rent, so the owner's income is close to a fixed payment and behaves much like a bond issued by the tenant. The owner's main risks become the tenant's credit quality and the re-letting of the building when the lease ends."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-18",
+`Chiara Bassi, CFA, of Meridian Infrastructure Partners compares three investments.
+
+**Hospital.** A hospital building operated under a concession with 20 years left. The regional government pays a fixed annual amount as long as the building is available and maintained to standard. Equity investors expect 12 million a year, at the end of each year. The building passes to the government at the end, with no payment. Meridian requires 9% on such assets.
+
+**Toll road.** A new road that will take three years to build. Revenue will depend on the number of vehicles; the forecast comes from the project's sponsor.
+
+**Water company.** A regulated water company whose charges rise each year with inflation. It is financed 70% by debt at fixed interest rates.`,
+[
+["The value of the equity in the hospital concession is **closest** to:",
+ ["42.8 million","109.5 million","133.3 million"],
+ 1,"The cash flows are a 20-year annuity with no residual value: 12 × [(1 − 1.09^−20)/0.09] = 12 × 9.1285 = 109.5 million. 133.3 million treats the payments as a perpetuity (12/0.09), which is wrong for a concession that ends, and 42.8 million discounts the total of 240 million as a single sum received in year 20.",true],
+["In the hospital concession, the risk that the building is used less than expected is borne by:",
+ ["the public authority.","the equity investors.","the building contractor."],
+ 0,"Under an availability payment the investors are paid for keeping the asset open and up to standard, whatever the number of patients. Demand risk stays with the government. The investors bear the risk of deductions for poor performance and the credit risk of the government as payer."],
+["Compared with the hospital, the toll road requires a higher return **mainly** because:",
+ ["its revenue is likely to rise with inflation.","its concession has a fixed end date.","it carries construction and traffic risk."],
+ 2,"A greenfield project can be late or over budget and earns nothing for three years, and a toll road's revenue depends on traffic that nobody can observe yet; forecasts made by sponsors have often proved too high. The hospital is built and is paid regardless of use. Both assets have concessions that end, and inflation-linked revenue is an advantage, not a risk."],
+["If inflation is higher than expected, the cash flow to the water company's equity investors will **most likely**:",
+ ["fall.","rise.","stay the same."],
+ 1,"Revenue rises with inflation while the interest on 70% of the financing is fixed, so the whole increase, after higher operating costs, goes to the equity holders, and the real value of the debt falls. Fixed-rate debt behind inflation-linked revenue makes the equity a strong hedge against inflation. With inflation-linked debt the effect would be much weaker."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-19",
+`Amara Nwosu, CFA, checks the valuations in the latest report of Kessler Equity Partners Fund V for an investor. Kessler has begun to raise Fund VI.
+
+**Brightpath.** EBITDA is 30 million and net debt 90 million. Listed companies in the sector trade at an enterprise value of 10 times EBITDA. Kessler applies a discount of 20% to that multiple for Brightpath's smaller size. The fund owns 60% of the equity.
+
+**Corvex.** Bought six months ago at 9 times EBITDA, when listed peers traded at 11 times.
+
+**Lumina.** The fund holds 4 million shares of this young company, carried at 40 million on the basis of a financing round 18 months ago at 10 a share. Last month an unrelated investor bought new shares of the same class at 6 a share.`,
+[
+["The fair value of the fund's holding in Brightpath is **closest** to:",
+ ["54 million","90 million","144 million"],
+ 1,"Multiple = 10 × (1 − 0.20) = 8. Enterprise value = 8 × 30 = 240 million. Equity = 240 − 90 = 150 million. The fund's 60% = 90 million. 144 million takes 60% of the enterprise value without deducting the debt, and 54 million deducts all of the debt from the fund's share of the enterprise value.",true],
+["In valuing Corvex at later dates, calibration means:",
+ ["carrying the company at cost until it is sold.","keeping the entry discount to peers.","applying the peers' multiple unchanged."],
+ 1,"The purchase was an arm's-length price, so it shows how the market valued Corvex against its peers: at 9/11, a discount of about 18%. Calibration carries that relationship forward: if peers move to 12 times, Corvex is valued at about 9.8 times unless something specific to the company has changed. Holding at cost ignores market movements, and using the peers' multiple unchanged would create an instant gain with no basis."],
+["The fair value of the fund's holding in Lumina is **closest** to:",
+ ["24 million","32 million","40 million"],
+ 0,"A recent transaction in the same shares between unrelated parties is the best evidence of fair value: 4 million × 6 = 24 million, a write-down of 16 million. The price of 18 months ago has been overtaken, so 40 million cannot stand, and 32 million averages the two prices, which no valuation standard supports.",true],
+["Because Kessler is raising Fund VI, Nwosu should be **most** alert to:",
+ ["an incentive to overstate unrealized values.","an incentive to write holdings down sharply.","a lack of any incentive, since fees are fixed."],
+ 0,"New investors judge a manager largely on the interim returns of its current fund, and those returns rest on the manager's own valuations of unsold companies. The temptation is to be generous, or slow to write down, while money is being raised. She should compare the valuations with later sale prices, ask who reviews them and look at how much of the reported return has been realized in cash."]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR16",
+`Halvard Juel has left a large buyout firm with two colleagues to found Northlight Partners, which is raising a first fund of 400 million. Meera Pillai, CFA, considers a commitment for a pension fund.
+
+Northlight presents the record of the eight investments that Juel "led" at his former firm.
+
+**Exhibit 1: Record presented by Northlight (millions, before fees)**
+
+| | Invested | Realized proceeds | Unrealized value | Total value |
+|---|---|---|---|---|
+| All eight investments | 400 | 400 | 600 | 1,000 |
+| of which: Deal 3 | 40 | 100 | 400 | 500 |
+
+The unrealized values are Northlight's own estimates.`,
+[
+["**A.** Calculate the multiple of invested capital for all eight investments and for the seven other than Deal 3, and the share of total value that is unrealized.",
+ "All eight: 1,000/400 = 2.5 times. Without Deal 3: (1,000 − 500)/(400 − 40) = 500/360 = 1.39 times. Unrealized share = 600/1,000 = 60%. Deal 3 alone produces half the value from 10% of the capital, and on cash actually returned the record is only 400/400 = 1.0 times.",
+ [["2.5 times overall",1],["About 1.4 times without Deal 3",1],["60% of value unrealized",1]],true],
+["**B.** Discuss **four** concerns that Pillai should investigate before relying on this record.",
+ "Any four: (1) Attribution: 'led' is Northlight's word. Deals at a large firm are found, approved and managed by many people; she should ask the former firm, co-investors and the companies' chief executives what Juel himself did. (2) Dependence on one deal: without Deal 3 the result is ordinary, so she must judge whether that success was skill that can be repeated or good fortune. (3) Unrealized value: 60% of the total, and 80% of Deal 3, rests on Northlight's own estimates, which the former firm may value differently. (4) Gross figures: the record is before fees and carried interest, and investors' returns would be lower. (5) The platform: the deals had the former firm's brand, deal flow, financing relationships and operating staff behind them, which Northlight lacks. (6) The team: the three partners have never run a firm together, and there is no record of how they share decisions and rewards. (7) Fit: whether deals of the size and type in the record match what a 400 million fund will do.",
+ [["Attribution of the deals",1],["Reliance on a single deal",1],["Unrealized or gross figures",1],["Loss of the platform, or an untested team",1]]],
+["**C.** Recommend **three** terms or arrangements by which Pillai could limit the risks of investing in a first fund.",
+ "Any three: (1) A smaller commitment than she would make to an established manager, with rights to co-invest without fees in deals she likes, so that exposure grows with evidence. (2) A key-person clause naming Juel and his partners, which stops new investments if they leave. (3) A seat on the advisory committee, to oversee valuations and conflicts. (4) Better economics for backing the fund early: a lower management fee or a fee based on an agreed budget, since a new firm should cover its costs and not profit from fees. (5) A large commitment by the partners themselves, relative to their wealth. (6) A right for a majority of investors to remove the manager or end the investment period without having to show fault. (7) A whole-fund waterfall, so that carried interest is paid only after capital is returned.",
+ [["First term with its purpose",1],["Second term with its purpose",1],["Third term with its purpose",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR17",
+`Stonebridge Core-Plus Fund buys a portfolio of apartment buildings for 100 million. Net operating income is 6.0 million a year. The purchase is financed with a five-year bank loan of 55 million at a floating rate, now 4.5%, with interest only payable during the term. The loan agreement requires the loan to stay below 65% of the appraised value of the buildings, tested every year.
+
+Yara Mansour, CFA, reviews the purchase for an investor in the fund.`,
+[
+["**A.** Calculate the income return on the fund's equity in the first year and compare it with the return without a loan. Then calculate the percentage loss of equity if the buildings fall 15% in value, and the fall in value at which the loan covenant would be breached.",
+ "Without a loan: 6.0/100 = 6.0%. With the loan: interest = 4.5% × 55 = 2.475 million; income to equity = 6.0 − 2.475 = 3.525 million on equity of 45 million = 7.8%. A 15% fall takes the buildings to 85 million; equity = 85 − 55 = 30 million, a loss of 15/45 = 33.3%. Covenant: the loan is 65% of value when value = 55/0.65 = 84.6 million, a fall of 15.4%.",
+ [["6.0% without a loan and about 7.8% with it",1],["Equity loss of 33.3% for a 15% fall in value",1],["Covenant breached after a fall of about 15.4%",1]],true],
+["**B.** Explain **three** risks that the loan adds for the fund's investors.",
+ "(1) Larger losses: equity is 45% of the price, so every 1% change in value is a 2.2% change in equity; the same leverage that lifts the income return from 6.0% to 7.8% turns a 15% fall into a loss of a third. (2) Covenant risk: a fall of little more than 15% in the appraised value breaches the 65% limit even if every tenant pays. The bank can then demand partial repayment, trap the rental income or call the loan, and the fund may have to sell buildings or call capital from investors at the worst time. (3) Refinancing and interest rates: the rate floats, so higher rates cut the income to equity directly (a rate of 6.0% would reduce the return to 6.0%, removing the whole benefit), and in five years the full 55 million must be refinanced or repaid, whatever the state of the lending market and of values then.",
+ [["Magnified losses",1],["Covenant breach and its consequences",1],["Floating rate or refinancing at maturity",1]]],
+["**C.** Recommend **three** ways in which the fund's manager could reduce these risks.",
+ "Any three: (1) Borrow less: at 45 million the covenant would be breached only after a fall of about 31%. (2) Fix the interest rate, or buy a cap, for the term of the loan. (3) Lengthen the loan and spread maturities, so that not all the debt falls due in one year, and begin refinancing well before maturity. (4) Negotiate the covenant: a higher limit, testing less often, and the right to cure a breach by adding cash within a set period. (5) Keep a reserve of cash or uncalled commitments to repay part of the loan if values fall. (6) Borrow against each building separately, without recourse to the fund or cross-default between loans, so that trouble with one asset cannot bring down the others.",
+ [["First measure and its effect",1],["Second measure and its effect",1],["Third measure and its effect",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR18",
+`Quillon Ventures is raising a seed fund of 100 million. Over the fund's life, 20 million will go on management fees and expenses. Quillon plans 25 first investments of 1.6 million each, for about 10% of each company, and will keep the rest for later rounds in the companies that do well. Carried interest is 20% of profits, with no hurdle.
+
+Quillon tells investors that it aims to return three times their commitments after fees and carried interest. It expects its holdings in successful companies to be diluted to about 6% by the time they are sold.
+
+Idris Kane, CFA, reviews the fund for a family office.`,
+[
+["**A.** Calculate the amount Quillon keeps for later rounds, the total proceeds the fund's investments must produce to meet the target, and the sale value of a single company that would return the entire fund.",
+ "Capital for investment = 100 − 20 = 80 million. First investments = 25 × 1.6 = 40 million, so 40 million is kept for later rounds. Target: investors receive 300 million, a profit of 200 million, which is 80% of total profit; total profit = 250 million, of which Quillon takes 50 million. Proceeds needed = 100 + 250 = 350 million, about 4.4 times the 80 million invested. A company returns the fund when 6% of its sale value equals 100 million: 100/0.06 = 1,667 million.",
+ [["40 million kept for later rounds",1],["Proceeds of 350 million, about 4.4 times invested capital",1],["Sale value of about 1.67 billion to return the fund",1]],true],
+["**B.** Explain why the returns of a seed fund come from very few of its companies, and what that implies for the way Quillon builds the portfolio.",
+ "Outcomes of young companies are extremely skewed: most fail or return little, a few return several times the investment, and perhaps one or two in 25 grow into very large companies. Those few produce most or all of the fund's profit, so a fund without one cannot reach three times. Implications: (1) Enough companies: with 25 investments Quillon has a reasonable chance of holding at least one exceptional company; a handful would leave it to luck. (2) Every investment must be capable of a very large outcome, since a company that can at best double does not move the result. (3) Ownership matters: at 6% only a sale above 1.6 billion returns the fund, so Quillon needs meaningful stakes and the right to invest in later rounds. (4) Reserves: half the investable capital is kept to add to the winners as they emerge and limit dilution. (5) Winners should be held, not sold early to show a quick gain.",
+ [["Skewed outcomes: a few companies produce most of the profit",1],["Needs many investments, each with very large potential",1],["Ownership and reserves to follow the winners",1]]],
+["**C.** Discuss **three** risks for the family office in committing to this fund, and state how each could be managed.",
+ "Any three: (1) Time and illiquidity: seed investments take ten years or more to reach a sale, with nothing distributed for much of that time. Manage by committing only money that is not needed, and by spreading commitments over several years. (2) Manager selection: the gap between the best and the worst venture funds is very wide and the median fund is unrewarding. Manage by thorough due diligence on Quillon's record and access to founders, and by investing with several managers. (3) Paper values: interim results rest on the prices of later financing rounds, which can reverse. Manage by judging the fund on cash distributed and by treating interim values with caution. (4) Later rounds: the companies need more capital from other investors; in a weak market good companies can fail or be heavily diluted. Manage by checking that reserves are adequate and that Quillon has ties to later-stage investors. (5) Size: a venture allocation should be small enough that a total loss is bearable.",
+ [["First risk and how to manage it",1],["Second risk and how to manage it",1],["Third risk and how to manage it",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR19",
+`Aurvik Wind is an onshore wind farm that is expected to produce 300 gigawatt-hours (GWh) of electricity a year. Sunniva Dale, CFA, studies an equity investment in it.
+
+**Exhibit 1: Aurvik Wind**
+
+| Item | Detail |
+|---|---|
+| Power purchase agreement | A utility buys 70% of output at a fixed 60 per megawatt-hour (MWh) for the next 12 years |
+| Remaining output | Sold at the market price: 50 per MWh expected, 30 per MWh in Dale's low case |
+| Operating costs | 5.1 million a year |
+| Debt service | 8.0 million a year for the next 15 years |
+| Lenders' requirement | Debt service coverage ratio of at least 1.20 |
+
+One GWh is 1,000 MWh.`,
+[
+["**A.** Calculate revenue, cash flow available for debt service and the debt service coverage ratio in the expected case and in the low case, during the term of the agreement.",
+ "Contracted output = 70% × 300 = 210 GWh; revenue = 210,000 MWh × 60 = 12.6 million. Market output = 90 GWh. Expected case: 90,000 × 50 = 4.5 million; revenue 17.1 million; cash flow = 17.1 − 5.1 = 12.0 million; coverage = 12.0/8.0 = 1.50. Low case: 90,000 × 30 = 2.7 million; revenue 15.3 million; cash flow 10.2 million; coverage = 10.2/8.0 = 1.28, still above 1.20.",
+ [["Contracted revenue of 12.6 million",1],["Expected case: cash flow 12.0 million, coverage 1.50",1],["Low case: cash flow 10.2 million, coverage 1.28",1]],true],
+["**B.** Calculate the coverage ratio in years 13 to 15 at each of the two market prices, explain the problem this reveals, and describe **one** way to deal with it.",
+ "After year 12 all 300 GWh is sold at the market price. At 50: revenue 15.0 million; cash flow 9.9 million; coverage 1.24. At 30: revenue 9.0 million; cash flow 3.9 million; coverage 0.49. The debt runs three years longer than the contract that supports it, so in the last three years repayment depends entirely on the market price of power: even the expected price barely meets the lenders' 1.20, and the low price covers less than half the debt service. Solutions (any one): repay the debt within the 12 contracted years, or shape repayments so that little is left after year 12; use surplus cash in the early years to repay debt ahead of schedule (a cash sweep) and build a reserve account; sign a new or longer purchase agreement before the first one ends.",
+ [["Coverage of about 1.24 at 50 and 0.49 at 30",1],["Debt outlasts the contract, leaving full exposure to market prices",1],["One suitable solution",1]],true],
+["**C.** Identify **three** other risks for the equity investors and state how each can be reduced.",
+ "Any three: (1) Wind: output varies from year to year with the weather, and a poor year cuts revenue under the contract too. Reduce by using independent studies with cautious (for example P90) output cases and by owning sites in several regions. (2) Counterparty: 70% of revenue depends on one utility. Reduce by checking its credit quality and obtaining a parent guarantee or security. (3) Operations: turbine faults reduce output. Reduce by a long-term maintenance contract with guaranteed availability, the manufacturer's warranties and insurance. (4) Grid and curtailment: the network operator may limit output when the grid is congested. Reduce by a firm connection agreement and compensation clauses. (5) Regulation and tax: changes in support schemes, taxes on power producers or permits. Reduce by choosing stable jurisdictions and spreading across countries. (6) End of life: costs of dismantling and uncertain value after 25 years. Reduce by reserving cash for it and assuming no residual value.",
+ [["First risk and how to reduce it",1],["Second risk and how to reduce it",1],["Third risk and how to reduce it",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
