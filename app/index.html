@@ -10921,6 +10921,391 @@ The endowment has unfunded commitments of 120 million to its private funds. Chie
  "Any three: (1) Reduce or pause new commitments for the coming year and rebuild them gradually (commitment pacing), instead of reacting only when limits are breached. (2) Spread commitments evenly over vintage years: all of the endowment's commitments are less than four years old, so its funds are all still calling capital and none is distributing; a mature program funds itself. (3) Hold a liquidity reserve, or arrange a credit line, sized to cover expected calls and spending for one to two years under a stress case. (4) Sell some fund interests on the secondary market, accepting a discount, if the exposure must be cut. (5) Widen the policy range or allow a temporary breach, with the board's approval, to avoid forced sales at the worst time. (6) Model cash flows under stress when setting the target, since calls continue while distributions stop.",
  [["First measure with its purpose",1],["Second measure with its purpose",1],["Third measure with its purpose",1]]]
 ]);
+/* Level III, Private Wealth Pathway, third batch (2026-11-14): pathway items for a third full mock.
+   Item sets L3-PW-09 (fee models, custodian, digital advice, cross-border rules), L3-PW-10 (tax drag, wealth tax,
+   tax-deferred against tax-exempt accounts, fund turnover), L3-PW-11 (blended family: marital property,
+   prenuptial agreement, dependent with a disability, incapacity), L3-PW-12 (giving shares to charity, annual
+   exempt gifts, charitable remainder trust, giving growth assets early).
+   Essays L3-PW-CR09 (two business partners: buy-sell agreement and personal risk), L3-PW-CR10 (pension as a
+   lump sum or an annuity), L3-PW-CR11 (after-tax asset allocation), L3-PW-CR12 (core capital and lifetime gifts).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-09",
+`Linnea Aro, CFA, compares ways in which her firm, Kestrel Wealth, could charge and serve its clients.
+
+**Fees.** Kestrel now charges 0.80% a year of assets under management. Aro is considering a flat annual retainer of 12,000 for financial planning and investment advice, whatever the size of the account.
+
+**Operations.** Kestrel does not hold client assets itself. Securities and cash are kept, and trades are settled, by a separate bank.
+
+**Smaller clients.** Kestrel receives many enquiries from people with 50,000 to 200,000 to invest and simple needs. Serving them with a personal adviser is not profitable.
+
+**New markets.** A senior adviser proposes to travel to a neighboring country, where Kestrel holds no licence, to hold seminars and sign up new clients there.`,
+[
+["The account size above which a client would pay less under the flat retainer than under the present fee is **closest** to:",
+ ["1.2 million","1.5 million","1.8 million"],
+ 1,"The two charges are equal when 0.80% × assets = 12,000, so assets = 12,000/0.008 = 1.5 million. Larger accounts would pay less under the retainer and smaller ones more. 1.2 million would be the answer for a 1.00% fee, and 1.8 million has no basis in the figures.",true],
+["The separate bank that keeps the clients' securities and cash acts as:",
+ ["trustee.","custodian.","introducing broker."],
+ 1,"A custodian holds client assets in safekeeping, settles trades and collects income, apart from the firm that gives advice. The separation protects clients if the adviser fails or misbehaves. A trustee holds legal title to trust assets for beneficiaries under a trust deed, and an introducing broker passes client orders to another firm."],
+["The **most** suitable way for Kestrel to serve the smaller clients is:",
+ ["a digital advice platform with model portfolios.","a single-family office structure.","discretionary mandates with bespoke private investments."],
+ 0,"A digital (robo) platform gathers the client's details online, places them in a model portfolio of low-cost funds and rebalances automatically, so many small accounts with simple needs can be served at low cost. Family offices and bespoke private investments are for very large fortunes and would cost far more than these accounts can bear."],
+["The senior adviser's proposal is **most likely** to breach rules on:",
+ ["custody of client assets.","cross-border marketing.","the reporting of large cash transactions."],
+ 1,"Most countries require a licence, or a specific exemption, before a foreign firm may actively solicit clients on their territory; seminars and signing up clients there are regulated activities. Breaches can bring fines, a ban and personal liability for the adviser. A firm may usually respond to a client who approaches it on the client's own initiative, but it may not go looking for business without permission. Custody and cash-reporting rules are separate matters."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-10",
+`Rohan Mehta asks his adviser, Astrid Nilsen, CFA, to explain how different taxes would affect 1,000,000 invested for 20 years.
+
+**Case 1.** The investment returns 8% a year, all of it taxed each year at 25%.
+
+**Case 2.** The investment returns 6% a year. There is no tax on returns, but a wealth tax of 1% of the value of the investment is charged at the end of every year.
+
+**Case 3.** Mehta can save for retirement in Account X, where contributions are deducted from taxable income and withdrawals are taxed, or in Account Y, where contributions are made from taxed income and withdrawals are tax-free. Returns are untaxed in both. His tax rate is 40% today, and he expects it to be 25% when he retires.
+
+Mehta also asks why Nilsen prefers an index fund to an actively managed fund with annual turnover of 90% for his taxable account.`,
+[
+["In Case 1, the share of the pretax investment gain that is lost to tax over the 20 years (the tax drag) is **closest** to:",
+ ["25.0%","31.2%","39.7%"],
+ 2,"After tax the return is 8% × (1 − 0.25) = 6%. After-tax gain per unit invested = 1.06^20 − 1 = 2.2071. Pretax gain = 1.08^20 − 1 = 3.6610. Tax drag = 1 − 2.2071/3.6610 = 39.7%. With annual taxation the drag exceeds the tax rate of 25%, and the gap widens with time and with the return, because the tax paid each year can no longer compound. 31.2% compares ending values instead of gains.",true],
+["In Case 2, the value of the investment after 20 years is **closest** to:",
+ ["2,565,708","2,623,138","2,653,298"],
+ 1,"Each year the investment grows by 6% and 1% of the resulting value is taken: 1.06 × 0.99 = 1.0494. Value = 1,000,000 × 1.0494^20 = 2,623,138. 2,653,298 simply subtracts 1% from the return (1.05^20) and ignores that the tax also falls on the year's growth, and 2,565,708 applies a 20% tax to the final value. A wealth tax is charged on capital whether or not there is a return, so its burden as a share of the return is heavy when returns are low.",true],
+["In Case 3, Mehta should **most appropriately** choose:",
+ ["Account Y, because withdrawals are never taxed.","Account X, because his tax rate will fall.","either account, since the two always give the same result."],
+ 1,"Per unit of pretax income, Account X grows to (1 + r)^n × (1 − 0.25) and Account Y to (1 − 0.40) × (1 + r)^n. The growth is the same, so the comparison is 0.75 against 0.60: the deduction is taken at 40% and the tax paid at only 25%. The accounts give equal results only when the two tax rates are the same, and Account Y would win if he expected a higher rate in retirement."],
+["Nilsen prefers the index fund for the taxable account **mainly** because it:",
+ ["realizes fewer gains each year, deferring tax.","pays more of its return as dividends.","is exempt from tax on gains when it is finally sold."],
+ 0,"A fund with 90% turnover sells most of its holdings every year and passes the realized gains, often short-term ones taxed at higher rates, to its investors. An index fund trades little, so most of the gain stays unrealized and compounds before tax until the investor sells. The gain is still taxed at the final sale, and index funds do not pay higher dividends than active funds as a rule."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-11",
+`Gabriel Moreau, 63, plans to marry Celine, 55. Each has children from an earlier marriage. Gabriel's adviser is Ingrid Dahl, CFA.
+
+**Property.** In their country, property acquired during a marriage belongs to the spouses in equal shares (community property), while property owned before the marriage, and gifts and inheritances, remain separate. On a death, the survivor keeps his or her half of the community property. Dahl projects that in 15 years the couple will have community property of 8 million and that Gabriel will have separate property of 2 million.
+
+**Children.** Gabriel wants the family company he owns today to pass to his two children. His son Luc, 30, has a permanent disability and receives means-tested state benefits that cover his care.
+
+**Health.** Gabriel's father suffered from dementia for several years, and Gabriel is concerned about who would manage his affairs if the same happened to him.`,
+[
+["If Gabriel dies in 15 years with the property projected, the value of the estate that he can dispose of by will is **closest** to:",
+ ["4 million","6 million","10 million"],
+ 1,"Half of the community property already belongs to Celine: 8/2 = 4 million. Gabriel's estate is his half of the community property plus his separate property: 4 + 2 = 6 million. 10 million counts Celine's half as his, and 4 million leaves out his separate property.",true],
+["To make sure that the company passes to his children, Gabriel should **most appropriately**, before the wedding:",
+ ["sign a prenuptial agreement that keeps the company separate.","transfer the company into joint ownership with Celine.","rely on his will, which overrides the marital property rules."],
+ 0,"A prenuptial agreement lets the couple set aside the default rules: it can confirm that the company, its growth and its income stay Gabriel's separate property and what Celine receives instead. Without it, growth or income arising during the marriage may be treated as community property. Joint ownership would give Celine half, and a will cannot dispose of property that the law gives to the surviving spouse."],
+["For Luc, the **most** suitable way for Gabriel to leave money is:",
+ ["an outright bequest of a large sum of money.","a discretionary trust for his benefit.","a life annuity paid directly to him."],
+ 1,"Luc's benefits are means-tested, so money he owns or income he has a right to could end them. A discretionary (special needs) trust owns the assets; the trustee pays for extras that the benefits do not cover, and because Luc has no entitlement, the trust is not counted as his. It also provides management for life. An outright sum or an annuity in his name would be counted as his resources."],
+["The document that **best** addresses Gabriel's concern about his health is a:",
+ ["letter of wishes.","durable power of attorney.","revocable will."],
+ 1,"A durable (lasting) power of attorney names someone to manage his financial affairs and stays valid after he loses mental capacity, which is exactly when it is needed; a similar document can cover medical decisions. Without it the family may have to go to court. A will takes effect only at death, and a letter of wishes merely guides trustees."]
+]);
+
+CFA_DATA.set(3,"Private Wealth Pathway","L3-PW-12",
+`Helena Strand, 70, and her husband have eight descendants: three children and five grandchildren. Her adviser is Tobias Engel, CFA.
+
+**A donation.** Strand wishes to support a hospital with shares worth 500,000 that she bought for 100,000. Realized gains are taxed at 20%. Gifts to recognized charities are deductible from income taxed at 40%, at the market value of what is given, and a charity pays no tax when it sells donated shares. She could give the shares themselves, or sell them and give the cash that is left after tax.
+
+**Family gifts.** Each person may give 15,000 a year to each recipient free of gift tax. Larger gifts, and bequests, are taxed at 30%.
+
+**Other ideas.** Strand asks about a trust that would pay her an income for life and pass what remains to the hospital at her death. She also owns shares in a young company that she expects to grow strongly, and she asks whether to give them to her children now or leave them in her will.`,
+[
+["If Strand gives the shares themselves to the hospital, the net cost of the gift to her, after the tax deduction, is **closest** to:",
+ ["300,000","332,000","420,000"],
+ 0,"The hospital receives shares worth 500,000 and no gain is taxed. The deduction saves 40% × 500,000 = 200,000, so the gift costs her 300,000. If she sold first, she would pay 20% × 400,000 = 80,000 of tax, give 420,000 and save 40% × 420,000 = 168,000: she would part with the same shares at a net cost of 332,000, and the hospital would receive 80,000 less.",true],
+["The largest total amount that Strand and her husband together can give to their descendants each year without gift tax is **closest** to:",
+ ["120,000","150,000","240,000"],
+ 2,"Each of the two spouses can give 15,000 to each of the eight descendants: 2 × 8 × 15,000 = 240,000 a year. Repeated every year, this moves a large sum, and its future growth, out of the estate free of the 30% tax. 120,000 counts only one donor, and 150,000 has no basis in the figures.",true],
+["The trust that Strand asks about is **best** described as a:",
+ ["charitable lead trust.","charitable remainder trust.","donor-advised fund."],
+ 1,"In a charitable remainder trust the donor (or another person) receives income for life or for a term, and the charity receives what is left. It suits a donor who needs income now and wants the capital to go to charity later. A charitable lead trust is the reverse: the charity receives the income for a period and the family receives the remainder. A donor-advised fund pays no income to the donor."],
+["Compared with leaving the shares of the young company in her will, giving them to her children now would **most likely**:",
+ ["keep their future growth out of her taxable estate.","let her keep control of the shares until her death.","remove the need to value the shares."],
+ 0,"A gift is valued, and taxed if at all, at today's low value; all later appreciation then belongs to the children and never enters her estate. Assets expected to grow strongly are therefore the best ones to give early. The price is that she gives up ownership and control, and the shares must still be valued at the date of the gift."]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR09",
+`Adrian Voss and Mila Kovac each own 50% of Voss & Kovac Engineering, which an independent valuer puts at 16 million. Both are 48, work full-time in the company and draw modest salaries; profits are reinvested. Each has personally guaranteed the company's bank loan of 4 million.
+
+Voss's other assets are a home worth 1.2 million, with a mortgage of 0.5 million, and savings of 0.3 million. He is married with three children. There is no agreement about what happens to a partner's shares on death, and neither partner has life or disability insurance.
+
+Voss's adviser is Irene Castell, CFA.`,
+[
+["**A.** Calculate Voss's net worth and the share of it that is invested in the company. State how the personal guarantee affects the picture.",
+ "Shares: 50% × 16 = 8.0 million. Net worth = 8.0 + 1.2 + 0.3 − 0.5 = 9.0 million, of which the company is 8.0/9.0 = 89%. The guarantee is a contingent liability of up to 4 million that does not appear in this figure. It would be called exactly when the company is in trouble and the shares are worth little, so his home and savings (1.0 million net) are also exposed to the business: in a failure he could lose everything.",
+ [["Net worth of 9.0 million",1],["About 89% in the company",1],["Guarantee is a contingent liability that exposes his other assets to the same risk",1]],true],
+["**B.** Explain the problem that arises for each family and for the surviving partner if one partner dies, and recommend an arrangement to solve it, including how it would be funded.",
+ "If Voss dies, his family inherits 50% of an unlisted company: shares that pay almost no income, cannot easily be sold and may be taxed. They lose his salary, and they become co-owners with Kovac, who must now run the business with partners who do not work in it and may want dividends or a sale. Kovac would wish to buy the shares but does not have 8 million. Recommendation: a buy-sell agreement, binding both partners and their heirs, under which the survivor (or the company) must buy and the estate must sell the shares at a price set by an agreed formula or regular valuation. It is funded by life insurance: each partner insures the other's life for 8 million (a cross-purchase), or the company insures both and buys back the shares. The family receives cash at a fair price and the survivor keeps control. The agreement should also cover disability and retirement.",
+ [["Family holds illiquid shares without income; survivor has unwanted co-owners and no cash to buy",2],["Buy-sell agreement with an agreed valuation",1],["Funded by life insurance of 8 million on each partner",1]]],
+["**C.** Recommend **three** further steps to reduce the risk in Voss's personal finances.",
+ "Any three: (1) Disability income insurance: his earnings and the company's value both depend on his ability to work. (2) Personal life insurance, beyond the buy-sell cover, so that the mortgage and the family's living costs are covered. (3) Build wealth outside the company: pay regular dividends or higher salaries and pension contributions and invest them in diversified, liquid assets not linked to the engineering sector. (4) Reduce or remove the personal guarantee: renegotiate with the bank as the company's own balance sheet strengthens, cap the amount or offer company assets as security instead. (5) Hold an emergency reserve of cash. (6) Put a will, powers of attorney and guardianship for the children in place. (7) Plan for an eventual exit so that the value of the shares can be realized.",
+ [["First step with its purpose",1],["Second step with its purpose",1],["Third step with its purpose",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR10",
+`Birgit Lang, 65, is retiring from a company whose pension plan offers her a choice:
+
+- a pension of 48,000 a year for life, paid at the end of each year, with no increases, or
+- a single payment of 750,000 today.
+
+Lang is in good health, and her mother is alive at 93. She is single, has no children and no other pension apart from a small state benefit. She has savings of 200,000 and describes herself as "nervous about markets". Her adviser, Paolo Ferri, CFA, values the pension using a discount rate of 3.5% and a payment period of 25 years. Taxes can be ignored.`,
+[
+["**A.** Calculate the present value of the pension on Ferri's assumptions and compare it with the single payment.",
+ "Present value = 48,000 × [(1 − 1.035^−25)/0.035] = 48,000 × 16.4815 = 791,113. This is 41,113 more than the single payment of 750,000, so on these assumptions the pension is worth more. (Equivalently, 750,000 would support only 45,506 a year for 25 years at 3.5%.)",
+ [["Annuity factor of about 16.48",1],["Present value of about 791,113",1],["Pension is worth about 41,000 more than the single payment",1]],true],
+["**B.** Discuss **three** factors in Lang's circumstances that support taking the pension.",
+ "Any three: (1) Longevity: she is healthy and has a long-lived parent, so she may well live beyond 90; the pension pays for as long as she lives, and each extra year raises its value above the 791,113, while a lump sum can run out. (2) No heirs: the main advantage of a lump sum is that what is unspent can be left to others, and that has no value to her. (3) Risk tolerance: she is nervous about markets; with the lump sum she would bear investment and sequence-of-returns risk and might sell at the wrong time, while the pension removes both. (4) She has little other secure income, so the pension would cover her basic expenses for life. (5) Her savings of 200,000 already provide a reserve for emergencies, so she does not need the liquidity of the lump sum.",
+ [["First factor explained",1],["Second factor explained",1],["Third factor explained",1]]],
+["**C.** Identify **two** risks of taking the pension and recommend how Lang could reduce each.",
+ "(1) Inflation: the pension never increases, so its purchasing power falls every year; at 2% inflation it buys about a third less after 20 years. She can reduce this by investing her 200,000 of savings mainly in assets that keep pace with prices (inflation-linked bonds, some equities) and by spending less than her full income in the early years to build a reserve for later. (2) Credit risk of the payer: the pension depends on the plan and its sponsor remaining able to pay. She should check the plan's funding level and whether a pension protection scheme or an insurer stands behind the payments, and keep her other savings independent of the employer. Also acceptable: loss of flexibility, since the choice cannot be reversed and capital cannot be drawn for a large expense; the savings held outside serve as that reserve.",
+ [["Inflation risk with a way to reduce it",2],["Credit risk of the plan (or loss of flexibility) with a way to reduce it",2]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR11",
+`Carl and Marianne Holt, both 58, have two investment accounts and a target allocation of 60% bonds and 40% equities. Their adviser is Selma Brandt, CFA.
+
+**Exhibit 1: The Holts' accounts**
+
+| Account | Holdings | Market value | Tax treatment |
+|---|---|---|---|
+| Retirement account | Bonds | 1,200,000 | Contributions were deducted; all withdrawals taxed as income at 30% |
+| Taxable account | Equities | 800,000 | Tax basis equals market value; future gains taxed at 20% when realized |
+
+The Holts say: "We are exactly on target, 60/40." Equity markets then rise by 25%, bonds are unchanged, and the Holts ask Brandt to rebalance.`,
+[
+["**A.** Calculate the Holts' asset allocation on an after-tax basis before the market move, and explain why it differs from 60/40.",
+ "The retirement account carries a tax liability: every unit withdrawn is taxed at 30%, so its after-tax value is 1,200,000 × (1 − 0.30) = 840,000. The taxable account's basis equals its market value, so it is worth 800,000 after tax. After-tax total = 1,640,000. Bonds = 840,000/1,640,000 = 51.2%; equities = 48.8%. The Holts own only 70% of the retirement account; the tax authority in effect owns the rest. Measured by what they can actually spend, they hold more equity risk than the 40% they intended.",
+ [["After-tax value of the retirement account: 840,000",1],["After-tax allocation of about 51% bonds and 49% equities",1],["Explanation: part of the retirement account belongs to the tax authority",1]],true],
+["**B.** After the market move, calculate the tax cost of selling 100,000 of equities in the taxable account, and recommend how Brandt should rebalance at the lowest tax cost.",
+ "After a 25% rise the equities are worth 1,000,000 with a basis of 800,000, so 20% of any sale is gain. Selling 100,000 realizes a gain of 20,000 and costs 20% × 20,000 = 4,000 in tax. Recommendation: trades inside the retirement account are not taxed, but it holds no equities, so nothing can be sold there. The lowest-cost route is to leave the taxable equities alone as far as possible and restore the balance in other ways: direct new savings and all dividends and interest into bonds; if equities must be sold, sell the lots with the highest basis first and use any losses available. For the future, hold part of the equity allocation inside the retirement account, so that rebalancing trades can be made there free of tax.",
+ [["Gain of 20,000 and tax of 4,000 on the sale",1],["Use new cash flows and income to rebalance, or highest-basis lots",1],["Hold some equities in the retirement account so future rebalancing is untaxed",1]],true],
+["**C.** Discuss whether holding all of the bonds in the retirement account and all of the equities in the taxable account is sensible, and identify **one** drawback.",
+ "In principle it is sound asset location: bond interest is taxed every year at the full income rate, so it benefits most from shelter, while equities are taxed lightly in a taxable account (gains at 20%, and only when realized, with losses usable). Drawbacks (any one): (1) Rebalancing: with each asset class confined to one account, any rebalancing between them needs taxable sales or new cash, as Part B shows. (2) Liquidity: money for an emergency must come from the taxable account, which holds only equities and may have to be sold after a fall, or from the retirement account at a 30% tax cost; a reserve of cash or short-term bonds in the taxable account is advisable. (3) Location should follow the after-tax allocation: the 60/40 target must be restated in after-tax terms or the Holts will keep taking more risk than they think.",
+ [["Location is tax-efficient: highly taxed interest sheltered, lightly taxed equities outside",2],["One drawback explained",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Wealth Pathway","L3-PW-CR12",
+`Otto and Renate Falk, both 70, have liquid wealth of 9,000,000. They spend 200,000 a year in today's money. Their adviser, Mikael Strom, CFA, estimates their core capital, the amount needed to maintain their lifestyle, as the present value of their spending over 25 years, paid at the end of each year and discounted at a real rate of 2%, plus a safety reserve equal to two years of spending.
+
+The Falks have two children. Their daughter is a teacher. Their son has twice needed help with gambling debts. In their country, lifetime gifts are tax-free if the giver lives another seven years, while bequests are taxed at 35%.
+
+The Falks would like to "help the children while we can see it", but Renate says: "I am afraid of giving too much away and then needing it."`,
+[
+["**A.** Calculate the Falks' core capital and the excess capital available for gifts.",
+ "Present value of spending = 200,000 × [(1 − 1.02^−25)/0.02] = 200,000 × 19.5235 = 3,904,691. Safety reserve = 2 × 200,000 = 400,000. Core capital = 4,304,691. Excess capital = 9,000,000 − 4,304,691 = 4,695,309.",
+ [["Present value of spending of about 3.90 million",1],["Core capital of about 4.30 million",1],["Excess capital of about 4.70 million",1]],true],
+["**B.** Explain why the Falks should consider giving during their lifetime and respond to Renate's concern.",
+ "Tax: a gift made now escapes the 35% tax on bequests if they live seven more years, which is likely at 70, so each 1,000,000 given saves 350,000; later growth on what is given also falls outside the estate. The children receive help when they can use it, and the parents see the result. Renate's concern is met by the method itself: only the excess capital is given. The core capital already covers 25 years of spending, to age 95, at a cautious real return, with two years of spending in reserve. Strom can make the margin wider still: give in stages over several years and review the calculation each time, start with part of the excess, and keep some as a buffer for care costs or a longer life.",
+ [["Gifts avoid the 35% tax if they survive seven years; growth leaves the estate",1],["Only capital above core needs is given; core capital protects their lifestyle",1],["Staged gifts or a retained buffer as further protection",1]]],
+["**C.** Recommend how the Falks should structure the gifts to each child, treating the two fairly.",
+ "Daughter: outright gifts are suitable; she is financially responsible and can use the money for a home or savings. Son: an outright gift could be lost to gambling or his creditors. Give his share through a discretionary trust with an independent trustee, who can pay for specific needs (housing, education, treatment) but not hand over capital on demand, or make payments directly to third parties on his behalf. Fairness: give equal amounts, in different forms, and explain the reason to both children to avoid resentment; the trust can provide that capital is released if he remains free of the problem for a set period. Both gifts should be documented, and the Falks' wills updated so that earlier gifts are taken into account.",
+ [["Outright gifts to the daughter",1],["Trust or controlled payments for the son, with the reason",2],["Equal value in different forms, communicated openly",1]]]
+]);
+/* Level III, Private Markets Pathway, third batch (2026-11-14): pathway items for a third full mock.
+   Item sets L3-PRM-09 (fund of funds fees, secondaries, subscription lines, key-person clause),
+   L3-PRM-10 (venture capital: option pool, anti-dilution, return pattern), L3-PRM-11 (infrastructure: regulated
+   asset base, regulatory risk, listed against unlisted, contracted power), L3-PRM-12 (special situations:
+   non-performing loans, scenario returns, debt-for-equity swap, return drivers).
+   Essays L3-PRM-CR09 (timberland and farmland), L3-PRM-CR10 (buying a fund interest on the secondary market),
+   L3-PRM-CR11 (private loan: ratios, covenant headroom, adjusted EBITDA),
+   L3-PRM-CR12 (venture valuation with a probability of failure, staged financing).
+   Topic names written out (constants live elsewhere). */
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-09",
+`The Lindqvist family office is building its first private equity program. Its adviser, Mei Tanaka, CFA, reviews four matters.
+
+**Fund of funds.** A fund of funds invests in buyout funds that are expected to return 14% a year after their own fees. The fund of funds charges a management fee of 1.0% of assets a year and carried interest of 5% of the gain remaining after that fee, with no hurdle.
+
+**Secondary purchase.** The family office is offered a limited partner's interest in a buyout fund that is six years old and holds nine companies.
+
+**Subscription line.** One general partner pays for new investments with a bank credit line secured on investors' commitments and calls the capital from investors about a year later.
+
+**Fund terms.** A draft limited partnership agreement states that if two named partners cease to devote their time to the fund, no new investments may be made until the investors decide how to proceed.`,
+[
+["The family office's expected annual return from the fund of funds, after both layers of fees, is **closest** to:",
+ ["12.35%","13.00%","13.30%"],
+ 0,"After the management fee: 14.0% − 1.0% = 13.0%. Carried interest = 5% × 13.0% = 0.65%. Net return = 12.35%. 13.00% leaves out the carried interest, and 13.30% takes 5% off the 14% and leaves out the management fee. The second layer of fees is the price of diversification, access and manager selection.",true],
+["Compared with a commitment to a new fund, the secondary purchase would **most likely** offer the family office:",
+ ["earlier distributions and a visible portfolio.","a longer period over which capital is called.","a larger share of the general partner's carried interest."],
+ 0,"A six-year-old fund has made most of its investments and is approaching its exits, so the buyer sees the actual companies (little blind-pool risk), pays in most of the capital at once and receives distributions sooner, which shortens the J-curve. The remaining calls are few, and buying an investor's interest gives no share of the carried interest."],
+["The general partner's use of the subscription line will **most likely**:",
+ ["raise the fund's reported IRR while slightly lowering its multiple.","raise both the reported IRR and the multiple.","lower the reported IRR while raising the multiple."],
+ 0,"The IRR is measured from the date investors' capital is called. Delaying the calls shortens the period over which investors' money is outstanding, so the same gains produce a higher IRR. The interest and fees on the line are a cost to the fund, so the total returned per unit paid in is slightly lower. Investors should compare funds on multiples and on IRRs with and without the line."],
+["The clause in the draft agreement is **best** described as a:",
+ ["clawback provision.","key-person clause.","no-fault removal clause."],
+ 1,"A key-person clause suspends the investment period if named individuals leave or stop devoting enough time, because investors committed to those people's skill. A clawback obliges the general partner to return carried interest it was overpaid, and a no-fault removal clause lets a large majority of investors remove the general partner without having to show cause."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-10",
+`Helix Ventures led the Series A round of Arbor Robotics two years ago. Kenji Watanabe, CFA, reviews the investment.
+
+**Series A.** Helix invested 10 million for 2,000,000 preferred shares at 5.00 each, equal to 20% of the company after the round. As a condition of the investment, an option pool for future employees equal to 10% of the shares after the round was created, taken entirely from the founders' side.
+
+**Series B.** Arbor has missed its sales targets and must now raise money at a lower price: 1,000,000 new shares at 3.00 each. Before this round there are 10,000,000 shares outstanding, including the option pool. Helix's preferred shares carry broad-based weighted average anti-dilution protection.
+
+Watanabe also prepares a note for new investors in Helix's fund on how returns in venture capital typically arise, and on why Helix releases money to its companies in rounds.`,
+[
+["Immediately after the Series A round, the founders' share of Arbor was **closest** to:",
+ ["70%","80%","90%"],
+ 0,"Helix holds 20% and the option pool 10%, so the founders hold 100% − 20% − 10% = 70%. Because the pool was created from the founders' side, it dilutes them and not the investor: the price Helix effectively paid for the founders' existing business was lower than the headline valuation suggests. 80% ignores the pool, and 90% ignores Helix.",true],
+["After the Series B round, the conversion price of Helix's preferred shares is **closest** to:",
+ ["3.00","4.82","5.00"],
+ 1,"Weighted average price = old price × (shares before + shares the new money would buy at the old price)/(shares before + shares actually issued) = 5.00 × (10,000,000 + 3,000,000/5.00)/(10,000,000 + 1,000,000) = 5.00 × 10.6/11.0 = 4.82. Each preferred share now converts into slightly more than one ordinary share. 3.00 would apply under a full ratchet, and 5.00 means no protection.",true],
+["Compared with a full ratchet, the weighted average protection that Helix holds is:",
+ ["more favorable to the founders, as it reflects the round's size.","less favorable to the founders, because it applies to every later round.","equally favorable, since both lead to the same conversion price."],
+ 0,"A full ratchet resets the investor's price to the new, lower price however few shares are issued, which can dilute founders and employees severely. The weighted average formula scales the adjustment to the amount of money raised at the lower price, so a small down round has a small effect: here 4.82 rather than 3.00."],
+["Watanabe's note should state that the returns of a venture capital fund **most likely** come from:",
+ ["steady, similar gains across most of its companies.","a few very large successes that outweigh many losses.","interest and dividends received during the holding period."],
+ 1,"Venture outcomes are highly skewed: many companies fail or return little, and a small number return many times the investment and account for most of the fund's profit. This is why funds diversify across many companies, reserve capital for follow-on rounds in the winners and release money in stages, so that they can stop funding the failures. Young companies pay no dividends or interest."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-11",
+`Arvid Holm, CFA, analyses three infrastructure opportunities for a pension fund.
+
+**Water utility.** The regulator sets the utility's allowed revenue as a return on its regulated asset base plus allowances for depreciation and operating costs. The regulated asset base is 800 million, the allowed return is 5.0%, the depreciation allowance is 32 million and the operating cost allowance is 60 million. The regulator will review the allowed return next year.
+
+**Wind farm.** An operating wind farm sells all of its output to a large utility under a contract with 15 years to run, at a fixed price per megawatt-hour that rises with inflation.
+
+**Access.** The pension fund could invest through an unlisted infrastructure fund with a 12-year life or through a fund of listed infrastructure companies.`,
+[
+["The water utility's allowed revenue for the year is **closest** to:",
+ ["72 million","100 million","132 million"],
+ 2,"Allowed revenue = return on the regulated asset base + depreciation + operating costs = 5.0% × 800 + 32 + 60 = 40 + 32 + 60 = 132 million. 72 million leaves out the operating cost allowance, and 100 million leaves out depreciation.",true],
+["The **main** risk to the pension fund's return from the water utility is that:",
+ ["customers will sharply reduce their use of water.","the regulator lowers the allowed return at the review.","a competitor builds a rival network."],
+ 1,"A regulated utility's revenue is set by formula, so demand has little effect on it, and a water network is a natural monopoly. What the owner earns depends on the allowed return and on which costs the regulator accepts: a cut from 5.0% to 4.0% would take 8 million a year from the return to capital. Regulatory and political risk is the central risk of regulated assets."],
+["For the wind farm, the revenue risk that remains with the owner is **mainly**:",
+ ["the market price of electricity.","output and the buyer's credit.","general inflation."],
+ 1,"The contract fixes the price and links it to inflation, so neither the power price nor inflation is the owner's main exposure for the next 15 years. Revenue is price times output: output depends on how much the wind blows and on the turbines' availability, and payment depends on the buyer staying solvent. After the contract ends the farm will be exposed to market prices."],
+["Compared with the unlisted fund, the fund of listed infrastructure companies would **most likely** give the pension fund:",
+ ["daily liquidity, but more equity market risk.","more control over each of the individual assets held.","smoother reported returns."],
+ 0,"Listed infrastructure shares trade every day and can be bought in small amounts at low cost, but their prices move with the stock market in the short run, so they diversify an equity portfolio less. Unlisted funds are valued by appraisal, which makes their returns look smoother, and large investors in them can obtain more influence over the assets; they are illiquid for a decade or more."]
+]);
+
+CFA_DATA.set(3,"Private Markets Pathway","L3-PRM-12",
+`Ardent Special Situations Fund considers several investments. Lucia Ferrand, CFA, prepares the analysis.
+
+**Loan portfolio.** A bank offers a portfolio of non-performing consumer loans with a face value of 100 million for a price of 30 million. Ferrand expects to collect 45 million over three years. A specialist servicer would charge 20% of the amounts collected.
+
+**Calder Marine bonds.** The bonds trade at 45% of par. Ferrand sees a 60% probability that the company is reorganized, with a recovery of 70% of par, and a 40% probability that it is liquidated, with a recovery of 30% of par. Either outcome is expected within a year.
+
+**Toren Glass.** Toren, which is worth more as a running business than its assets would fetch in a sale but less than its debts, proposes that its lenders exchange part of their loans for shares.`,
+[
+["The expected multiple of invested capital on the loan portfolio, after servicing costs, is **closest** to:",
+ ["1.20x","1.50x","3.33x"],
+ 0,"Net collections = 45 × (1 − 0.20) = 36 million. Multiple = 36/30 = 1.20x. 1.50x ignores the servicer's fee (45/30), and 3.33x compares the face value with the price (100/30), which says nothing about what will actually be collected.",true],
+["The expected return on the Calder Marine bonds is **closest** to:",
+ ["−33%","20%","56%"],
+ 1,"Expected recovery = 0.60 × 70 + 0.40 × 30 = 54% of par. Expected return = 54/45 − 1 = 20%. 56% is the return if the reorganization succeeds (70/45 − 1), and −33% is the return in a liquidation (30/45 − 1). The spread between those two outcomes shows how much the result depends on the path the company takes.",true],
+["Toren's lenders are **most likely** to accept the proposed exchange because:",
+ ["shares rank ahead of loans in an insolvency.","a running business preserves more value.","the exchange leaves the amount they are owed unchanged."],
+ 1,"The business is worth more as a going concern than in liquidation, but not enough to repay the debt in full. If lenders force a sale of assets they recover the lower liquidation value; by exchanging part of their claim for shares they cut the debt to a level the company can carry and take the ownership of the value that remains. Shares rank behind all debt, and the exchange reduces the amount owed."],
+["The returns of a fund such as Ardent depend **mainly** on:",
+ ["the direction of equity markets.","the outcome of individual situations and the manager's skill in them.","changes in the level of interest rates."],
+ 1,"Special situations returns come from specific events: a restructuring agreed, a court ruling, loans collected, an asset sold. They depend on sourcing, legal and financial analysis and negotiation, which is why results vary widely between managers and are uneven over time. Markets and rates matter chiefly through the supply of opportunities, which is largest after a downturn."]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR09",
+`The Halvorsen Endowment is considering its first investments in land: a timberland property and a farmland property. Edvard Lie, CFA, prepares a report for the investment committee.
+
+**Timberland.** The forest holds 100,000 cubic metres of timber that is ready to harvest. The price today is 50 per cubic metre. If the harvest is delayed by two years, the volume will grow by 6% a year, and Lie expects a price of 55 per cubic metre. He discounts timber cash flows at 8%. Harvesting costs can be ignored.
+
+**Farmland.** The farmland grows wheat and maize and would be let to a farmer for a fixed annual cash rent.
+
+The endowment could buy the forest directly or invest through a fund run by a specialist timberland manager.`,
+[
+["**A.** Calculate the value today of harvesting now and of harvesting in two years, and recommend when to harvest.",
+ "Harvest now: 100,000 × 50 = 5,000,000. Harvest in two years: volume = 100,000 × 1.06^2 = 112,360 cubic metres; revenue = 112,360 × 55 = 6,179,800; present value = 6,179,800/1.08^2 = 5,298,182. Delaying is worth 298,182 more, so the harvest should be delayed. (Growth of 6% a year plus a price rise of about 4.9% a year exceeds the 8% discount rate.)",
+ [["Harvest now: 5,000,000",1],["Volume of 112,360 and revenue of about 6.18 million in two years",1],["Present value of about 5.30 million, so delay the harvest",1]],true],
+["**B.** Describe the sources of return from timberland and from the farmland as it would be held, and state **one** important difference between them.",
+ "Timberland: biological growth (trees add volume each year and move into more valuable size classes), changes in timber prices, and changes in the value of the land. Farmland held under a cash lease: the rent paid by the farmer, which follows crop prices and yields only when the lease is renegotiated, plus changes in land value. Differences (any one): timber can be 'stored on the stump', so the owner chooses when to harvest and sell, while annual crops must be harvested every season whatever the price; timberland produces irregular cash flows tied to harvests, while leased farmland pays a steady annual income; under a cash lease the farmer, not the endowment, bears the risk of weather and crop prices in the year.",
+ [["Timberland: biological growth, timber prices, land value",1],["Farmland: lease income and land value",1],["A valid difference",1]]],
+["**C.** Discuss the role of these assets in the endowment's portfolio and **two** risks of holding them.",
+ "Role: returns have had a low correlation with listed equities and bonds, because they depend on biological growth and on commodity and land markets; land and its products tend to rise with the price level, giving some protection against inflation; and the long horizon suits an endowment. Risks (any two): (1) illiquidity and high transaction costs: sales take months and the market for large properties is thin; (2) physical risks such as fire, storms, pests, disease and drought, only partly insurable; (3) commodity price risk for timber and crops, and for timber dependence on housing construction; (4) political and regulatory risk: land-use rules, environmental restrictions, export limits, taxes on foreign owners; (5) appraisal-based valuations that understate volatility and correlation; (6) dependence on a specialist manager or tenant.",
+ [["Diversification and inflation protection suited to a long horizon",1],["First risk explained",1],["Second risk explained",1]]],
+["**D.** Compare buying the forest directly with investing through the specialist manager's fund.",
+ "Direct ownership gives the endowment control over harvesting, sale and holding period and avoids a layer of fund fees, but it needs forestry expertise it does not have, a large amount in a single property (little diversification by region, species and age of trees) and its own management of operations and risks. A fund provides the specialist manager's skill in buying, managing and selling forests, and diversification across properties for a smaller commitment, at the price of management and performance fees, a fixed fund life that may force sales at a poor time, and no say over individual decisions. For a first investment by an endowment without in-house expertise, the fund is the more suitable route.",
+ [["Direct: control and no fund fees, but expertise and concentration needed",1],["Fund: expertise and diversification, but fees and less control; suitable recommendation",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR10",
+`Aldgate Pension Fund wants to raise its private equity allocation quickly. A broker offers it a limited partner's interest in Fund VII, a buyout fund raised six years ago, which another pension fund wishes to sell.
+
+- Net asset value of the interest in the general partner's latest report, dated six months ago: 80 million
+- Price asked: 88% of that net asset value
+- Unfunded commitment that the buyer takes over: 20 million, expected to be called in full
+- Total distributions that Aldgate's analyst, Rhea Kapoor, CFA, expects from the interest over the next four years: 130 million
+
+Equity markets have fallen by 15% since the date of the report.`,
+[
+["**A.** Calculate the purchase price, the total capital that Aldgate would put at risk, and the expected multiple on that capital. State the multiple if the price were equal to net asset value.",
+ "Price = 88% × 80 = 70.4 million. Total capital = 70.4 + 20 = 90.4 million. Expected multiple = 130/90.4 = 1.44x. At net asset value the capital would be 80 + 20 = 100 million and the multiple 1.30x: the discount raises the multiple from 1.30x to 1.44x.",
+ [["Price of 70.4 million and total capital of 90.4 million",1],["Multiple of about 1.44x",1],["Multiple of 1.30x at net asset value",1]],true],
+["**B.** Explain **three** advantages of a secondary purchase of this kind for Aldgate, compared with committing to a new fund.",
+ "Any three: (1) Speed: capital is invested at once, so the allocation rises immediately, while a new fund calls capital over four to five years. (2) No J-curve: the early years of fees and unrealized investments are behind the fund, and distributions are expected within four years, so cash comes back sooner. (3) Visibility: the companies are known and can be analysed, while a new fund is a blind pool. (4) Price: buying at a discount to net asset value adds to the return. (5) Diversification by vintage year: Aldgate gains exposure to investments made six years ago, which it cannot obtain through new commitments.",
+ [["First advantage explained",1],["Second advantage explained",1],["Third advantage explained",1]]],
+["**C.** Discuss **two** reasons why the 12% discount may not be the bargain it appears, and state what Kapoor should do about each.",
+ "(1) Stale valuation: the 80 million dates from six months ago, and equity markets have since fallen 15%. Buyout companies are valued largely by reference to listed comparables, so today's value is probably well below 80 million, and the true discount may be small or nil. Kapoor should revalue each company herself using current multiples and recent trading, and bid on that value. (2) Information disadvantage and adverse selection: the seller has followed the fund for six years and may be selling because it expects poor results; the general partner knows more still. Kapoor should obtain the fund's reports and financial statements, speak to the general partner, and examine the largest holdings and their debt. Also acceptable: the remaining companies may be the weaker ones, since the best have been sold; the unfunded 20 million may be called for rescue financing; the expected 130 million is an estimate.",
+ [["Net asset value is six months old and markets have fallen: real discount is smaller",1],["Action: own valuation at current multiples",1],["Seller and general partner know more; adverse selection (or weaker remaining assets)",1],["Action: detailed due diligence on the fund and its largest holdings",1]]],
+["**D.** Give **two** reasons why a pension fund might sell such an interest at a discount.",
+ "Any two: (1) Liquidity: it needs cash to pay benefits or to meet capital calls on other funds, and waiting four years for distributions does not help. (2) Rebalancing: after a fall in listed markets its private equity weight is above the policy limit, and a sale is the only quick way to lower it. (3) Portfolio management: it is reducing the number of managers, or leaving a strategy, and prefers to sell older funds and redeploy the money. (4) A change of policy, regulation or leadership that limits illiquid holdings. (5) A wish to lock in gains to date. None of these implies that the assets are poor, which is why secondary purchases can be attractive.",
+ [["First reason",1],["Second reason",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR11",
+`Northgate Direct Lending made a loan of 250 million to Brix Hygiene, a company owned by a private equity sponsor. Stefan Olsson, CFA, reviews the loan one year later.
+
+**Exhibit 1: Brix Hygiene, last twelve months (millions)**
+
+| Item | Amount |
+|---|---|
+| Adjusted EBITDA, as defined in the loan agreement | 50 |
+| of which: add-backs for cost savings expected but not yet achieved | 8 |
+| Cash interest | 25 |
+| Capital expenditure | 10 |
+| Scheduled repayment of principal | 5 |
+| Debt | 250 |
+
+The loan agreement contains one financial covenant: debt may not exceed 6.0 times adjusted EBITDA, tested quarterly.`,
+[
+["**A.** Calculate Brix's leverage, its interest coverage and its fixed charge coverage, defined as (adjusted EBITDA − capital expenditure)/(cash interest + scheduled repayment).",
+ "Leverage = 250/50 = 5.0x. Interest coverage = 50/25 = 2.0x. Fixed charge coverage = (50 − 10)/(25 + 5) = 40/30 = 1.33x.",
+ [["Leverage of 5.0x",1],["Interest coverage of 2.0x",1],["Fixed charge coverage of 1.33x",1]],true],
+["**B.** Calculate the fall in adjusted EBITDA, in percent, that would cause a breach of the covenant.",
+ "The covenant is breached when debt/EBITDA exceeds 6.0x, that is, when EBITDA falls below 250/6.0 = 41.7 million. From 50 million that is a fall of 8.3 million, or 16.7%. This is the covenant headroom.",
+ [["EBITDA of about 41.7 million at the limit",1],["Headroom of about 16.7%",1]],true],
+["**C.** Recalculate leverage without the add-backs and discuss what the result means for Northgate.",
+ "Without the add-backs, EBITDA is 50 − 8 = 42 million and leverage is 250/42 = 5.95x. On earnings actually achieved, the company is at the covenant limit, with fixed charge coverage of only (42 − 10)/30 = 1.07x: almost all cash generated goes to interest, repayment and capital expenditure. The add-backs are forecasts by the borrower; if the savings do not arrive, the reported headroom of 16.7% is an illusion, and the covenant, which uses the adjusted figure, will warn the lender late or not at all. Olsson should track the savings against plan, judge the credit on unadjusted figures, and in future agreements cap add-backs (for example at a percentage of EBITDA) and limit the time allowed to realize them.",
+ [["Leverage of about 5.95x on unadjusted EBITDA",1],["Real headroom is almost nil; the covenant is weakened by the definition",1],["A sensible response: monitor savings, cap add-backs or use unadjusted figures",1]],true],
+["**D.** Describe **two** courses of action open to Northgate if the covenant is breached.",
+ "Any two: (1) Waive or reset the covenant in exchange for compensation: a fee, a higher margin, tighter terms, more reporting or additional security. (2) Require an equity cure: the sponsor injects new equity to reduce debt or to be counted toward the ratio, which also shows its commitment. (3) Restrict the borrower: stop dividends and acquisitions, sweep excess cash to repay the loan, require asset sales. (4) As a last resort, declare a default, demand repayment and enforce its security, or negotiate a restructuring in which the lender may take ownership. In most cases the lender prefers a negotiated amendment, because enforcement destroys value; the breach matters because it brings the sponsor to the table early.",
+ [["First course of action explained",1],["Second course of action explained",1]]]
+]);
+
+CFA_DATA.cr(3,"Private Markets Pathway","L3-PRM-CR12",
+`Norrsken Ventures is considering a first investment of 4 million in Pelagic Sensors, which has a prototype and two pilot customers. Ayla Demir, CFA, builds the valuation.
+
+- If Pelagic succeeds, Demir expects it to be worth 200 million in five years.
+- Norrsken requires a return of 20% a year on companies that succeed.
+- Demir estimates that in each of the five years there is a 25% probability that the company fails and becomes worthless.
+
+Pelagic's founders ask for 10 million at once, to fund three years of development. Demir proposes instead 4 million now and further rounds when the company reaches agreed milestones.`,
+[
+["**A.** Calculate the probability that Pelagic survives five years, the present value of the company allowing for the risk of failure, and the single discount rate that would give the same value if applied to the 200 million.",
+ "Probability of survival = 0.75^5 = 23.7%. Expected value in five years = 200 × 0.237 = 47.5 million; present value = 47.5/1.20^5 = 47.5/2.4883 = 19.1 million. Equivalent single rate: (1 + 0.20)/(1 − 0.25) − 1 = 60% a year, since 200/1.60^5 = 19.1 million.",
+ [["Survival probability of about 23.7%",1],["Present value of about 19.1 million",1],["Equivalent discount rate of 60%",1]],true],
+["**B.** Using the value from Part A as the post-money valuation, calculate the ownership share that Norrsken should receive for 4 million and the pre-money valuation.",
+ "Ownership = 4.0/19.07 = 21.0%. Pre-money valuation = 19.07 − 4.0 = 15.1 million.",
+ [["Ownership of about 21%",1],["Pre-money valuation of about 15.1 million",1]],true],
+["**C.** Explain why Demir's staged proposal is better for Norrsken than investing 10 million at once, and identify **one** advantage of staging for the founders.",
+ "For Norrsken: (1) It limits the loss. With a 25% chance of failure each year, money not yet invested is money not lost; at each milestone Norrsken can stop, which is a valuable option. (2) It gives information: each stage shows whether the technology works and customers buy, before more is committed. (3) It disciplines the company: managers must reach milestones to obtain the next round, and they spend carefully. For the founders: if milestones are met, later money is raised at a higher valuation, so they give up fewer shares in total than if they sold enough for 10 million at today's low value. (The cost to them is the risk that financing is not available when needed.)",
+ [["Limits capital at risk and gives an option to stop",1],["Milestones provide information and discipline",1],["Founders suffer less dilution if later rounds are priced higher",1]]],
+["**D.** Identify **three** kinds of risk in an investment at this stage and state how a venture fund deals with them at the level of its portfolio.",
+ "Risks (any three): technology risk (the product may not work at scale); market risk (customers may not buy, or not at the price needed); management risk (the founders may be unable to build and lead a company); financing risk (later rounds may be unavailable or on poor terms); competition; and exit risk (no buyer or public offering when the fund needs to sell). At portfolio level the fund accepts that most of these risks cannot be removed from a single company. It invests in many companies, across sectors and years, expecting several to fail; it reserves capital to invest further in those that succeed; and it relies on a few large gains to pay for the losses.",
+ [["Three risks identified",2],["Diversification across many companies, with reserves for follow-on rounds in the winners",1]]]
+]);
 /* "Read more" link for each formula: [link code, page title (optional), site name for plain URLs].
    'i:path' = Investopedia, 'w:Title' = Wikipedia. Each page was checked to load and to cover the formula's topic (Nov 2026);
    the formulas themselves were verified by recomputing the app's questions, not copied from these pages. */
@@ -13400,7 +13785,7 @@ function formRow(f){
   const l = +f.id[1], ids = f.s1.concat(f.s2).filter(x=>SETMAP[x]);
   const nq = ids.reduce((a,x)=>a+SETMAP[x].questions.length,0);
   const tries = DB.exams.filter(e=>e.form===f.id), best = tries.length ? Math.max(...tries.map(e=>e.score)) : null;
-  return `<div class="erow"><div class="grow"><div><b>${esc(f.name)}</b></div><div class="sub">${nq} questions · ${fmtDur(examSeconds(l, ids))} · two sessions${l===3&&ids.length<22?' · core only: no pathway items left for this mock':''}${tries.length?` · taken ${plural(tries.length,'time')}`:''}</div></div>${best!=null?`<span class="score ${barCls(best)}" title="Best score">${best}%</span>`:''}<button class="btn sm" data-form="${f.id}">${tries.length?'Retake':'Start'}</button></div>`;
+  return `<div class="erow"><div class="grow"><div><b>${esc(f.name)}</b></div><div class="sub">${nq} questions · ${fmtDur(examSeconds(l, ids))} · two sessions${l===3&&ids.length<22?(ids.some(x=>SETMAP[x].topic===PATHWAY_TOPIC)?' · shorter: only part of the pathway items are written so far':' · core only: no pathway items left for this mock'):''}${tries.length?` · taken ${plural(tries.length,'time')}`:''}</div></div>${best!=null?`<span class="score ${barCls(best)}" title="Best score">${best}%</span>`:''}<button class="btn sm" data-form="${f.id}">${tries.length?'Retake':'Start'}</button></div>`;
 }
 function startFixed(id){
   const f = formOf(id); if(!f) return;
