@@ -4141,6 +4141,42 @@ CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
  ["becoming more volatile than the index.","rising in absolute terms.","outperforming the index."],
  2,"Relative strength analysis compares one price with another: when the ratio of the stock to the index rises, the stock is doing better than the index, whether both are rising or both are falling. It says nothing about volatility, and the stock's own price can be falling while the ratio rises."]
 ],{from:201,diff:"exam"});
+/* Practice-only batch 1 (2026-11-16): not used in any fixed mock. Exam-level questions from id 211 (211–217), hard from 241 (241–243) */
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["A client tells her adviser that, for religious reasons, her portfolio must never hold shares of gambling or alcohol companies. In the investment policy statement, this is **best** recorded as:",
+ ["a unique circumstance.","a legal and regulatory constraint.","a liquidity constraint."],
+ 0,"Personal, ethical or religious preferences that restrict the investments a client will accept are recorded as unique circumstances. Legal and regulatory constraints are imposed by law or by a regulator, not chosen by the client. A liquidity constraint is a need for cash from the portfolio."],
+["A risk manager revalues today's portfolio using the market moves recorded during the 2008 financial crisis. This technique is **best** described as:",
+ ["historical scenario analysis.","Monte Carlo simulation.","parametric value at risk."],
+ 0,"A historical scenario applies the changes in prices and rates of a past period to the current portfolio to see what it would lose. Monte Carlo simulation generates thousands of random outcomes from assumed distributions. Parametric value at risk is computed from the portfolio's expected return and standard deviation, assuming a normal distribution."],
+["After several news reports about a bank failure, an investor sharply raises her estimate of the chance that her own bank will fail, although its finances have not changed. This is **best** described as:",
+ ["availability bias.","conservatism bias.","status quo bias."],
+ 0,"Availability bias is judging how likely an event is by how easily examples come to mind, so vivid recent news makes the event seem more probable. Conservatism bias is the opposite tendency: changing a view too little when new information arrives. Status quo bias is a preference for leaving things as they are."],
+["An employee was enrolled automatically in her pension plan's default fund 20 years ago and has never reviewed the choice, although her circumstances have changed greatly. This behavior is **best** described as:",
+ ["status quo bias.","illusion of control bias.","representativeness bias."],
+ 0,"Status quo bias is the tendency to do nothing and stay with the existing or default choice, even when a change would be better. Illusion of control is the belief that one can influence outcomes that are in fact outside one's control. Representativeness is classifying new information by its resemblance to a familiar pattern."],
+["The covariance between the returns of two assets is 0.012. Their standard deviations are 20% and 15%. The correlation between their returns is **closest** to:",
+ ["0.06","0.08","0.40"],
+ 2,"Correlation = covariance / (σ1 × σ2) = 0.012 / (0.20 × 0.15) = 0.012 / 0.03 = 0.40. 0.06 divides the covariance by the first standard deviation only, and 0.08 divides it by the second only.",true],
+["A shipping company decides not to buy insurance against minor cargo damage and instead sets aside a reserve each year to cover such losses. This is **best** described as:",
+ ["self-insurance.","risk transfer.","risk avoidance."],
+ 0,"Self-insurance means keeping a risk and funding the expected losses internally, which makes sense for small, frequent losses. Risk transfer passes the risk to another party, usually an insurer, in return for a premium. Risk avoidance means not carrying on the activity that creates the risk."],
+["A fund returned 11% over a year in which the risk-free rate was 3%. The standard deviation of the fund's returns was 16%. Its Sharpe ratio is **closest** to:",
+ ["0.19","0.50","0.69"],
+ 1,"Sharpe ratio = (portfolio return − risk-free rate) / standard deviation = (11% − 3%) / 16% = 0.50. 0.69 divides the total return by the standard deviation without deducting the risk-free rate. 0.19 divides the risk-free rate by the standard deviation.",true]
+],{from:211,diff:"exam"});
+
+CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
+["A client needs her portfolio to fund spending equal to 4% of its value each year after taxes and to keep its real value. Inflation is expected to be 2%, and all of the portfolio's returns are taxed at 25%. The required nominal pre-tax return is **closest** to:",
+ ["4.6%","6.1%","8.1%"],
+ 2,"After tax she needs (1.04 × 1.02) − 1 = 6.08% to cover spending and inflation. Before tax that is 6.08% / (1 − 0.25) = 8.1%. 6.1% is the after-tax requirement and leaves nothing for the tax. 4.6% multiplies by (1 − 0.25) instead of dividing by it.",true],
+["An investor can lend at the risk-free rate of 3% but must pay 6% to borrow. Compared with the case in which she can borrow at 3%, her capital allocation line **most likely**:",
+ ["is flatter for portfolios that use borrowing.","is steeper for portfolios that use borrowing.","shifts down in parallel for all portfolios."],
+ 0,"The slope of the line is the excess return over the financing rate per unit of risk. For leveraged portfolios the relevant rate is the borrowing rate of 6%, so the extra return earned for each unit of added risk is smaller and the line bends to a lower slope beyond the fully invested point. A steeper line would need a borrowing rate below the lending rate. Portfolios that lend are unaffected, so the line does not move as a whole."],
+["A portfolio is invested equally in two assets, each with a standard deviation of 20%. The portfolio's standard deviation is 16%. The correlation between the two assets' returns is **closest** to:",
+ ["0.28","0.64","0.80"],
+ 0,"Portfolio variance = 0.5² × 0.04 + 0.5² × 0.04 + 2 × 0.5 × 0.5 × 0.20 × 0.20 × ρ = 0.02 + 0.02ρ. Setting this equal to 0.16² = 0.0256 gives ρ = 0.28. 0.80 is the ratio of the portfolio's standard deviation to that of the assets (16 / 20), and 0.64 is the ratio of the variances.",true]
+],{from:241,diff:"hard"});
 CFA_DATA.mc(1,"Portfolio Construction","L1-PM",[
 ["The main benefit of the portfolio perspective on investing is that it:",
  ["guarantees higher returns than holding the individual securities on their own.","reduces risk through diversification without necessarily reducing return.","eliminates all systematic risk once enough securities are held."],
