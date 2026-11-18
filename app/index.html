@@ -754,7 +754,7 @@ label.rub:hover{background:var(--surface-2)}
 /* Data container and small helpers used by every topic file.
    Formats:
      CFA_DATA.mc(level, topic, prefix, [[stem, [optA,optB,optC], answerIndex, explanation, calc?], ...], {from, diff}?)
-       from: first id number (new batches start at 51 so ids never shift); diff: "exam" for exam-level questions, "hard" for Level I questions above exam level (new batches from 101)
+       from: first id number (new batches start at 51 so ids never shift); diff: "intro" for practice-only beginner warm-ups (never in a mock), "exam" for exam-level questions, "hard" for Level I questions above exam level (new batches from 101)
      CFA_DATA.basic([ids]) tags existing questions as basic recall
      CFA_DATA.set(level, topic, id, vignette, [[stem, [options], answerIndex, explanation, calc?], ...])
      CFA_DATA.cr(level, topic, id, vignette, [[stem, modelAnswer, [[rubricPoint, points], ...], calc?], ...])
@@ -863,6 +863,54 @@ CFA_DATA.mc(1,"Ethical and Professional Standards","L1-ETH",[
  ["violated the Standards, because his brother's account is a client account like any other.","not violated the Standards, because family accounts must always trade after all other client accounts.","not violated the Standards, as long as he discloses the allocation method to his brother."],
  0,"Standard VI(B) Priority of Transactions covers accounts in which the member has a beneficial interest. A family member's fee-paying account in which Brandt has no beneficial interest is a client account and must be treated like any other client account under Fair Dealing. Always filling it last systematically disadvantages that client, and disclosing the practice does not make it fair."]
 ],{from:101,diff:"hard"});
+/* Intro batch 1 (2026-11-18): practice-only beginner warm-ups (diff "intro"), never in a mock. Ids L1-ETH-301..315 */
+CFA_DATA.mc(1,"Ethical and Professional Standards","L1-ETH",[
+["Ethics is **best** described as:",
+ ["a set of moral principles that guide what people consider right or wrong behavior.","the body of laws that a government enforces through the courts.","the rules a company writes to protect its own reputation with customers."],
+ 0,"Ethics means moral principles: shared ideas about what is right and wrong that guide how we act, often in situations no rule covers. Laws are different: governments write and enforce them, and ethical behavior often goes further than the law requires. Company rules can support ethical behavior, but protecting a firm's reputation is a goal, not what ethics is."],
+["Compared with the law, ethical standards in the investment profession **most likely**:",
+ ["require only what is already legally required.","often ask for more than the law requires.","apply only when no law covers a situation."],
+ 1,"Laws set a minimum that society enforces. Ethical standards usually go beyond that minimum: an action can be legal and still unethical, for example quietly placing your own trades ahead of a client's. If ethics only repeated the law it would add nothing. Ethics also applies where laws exist, not only in the gaps between them."],
+["The CFA Institute Code of Ethics and Standards of Professional Conduct apply to:",
+ ["CFA Institute members and candidates in the CFA Program.","only investment professionals who already hold the CFA charter.","every employee of a firm that hires at least one CFA charterholder."],
+ 0,"The Code and Standards bind CFA Institute members (charterholders among them) and candidates, meaning anyone registered for or taking a CFA exam. So a Level I candidate must already follow them. They do not wait until the charter is awarded, and they do not extend to colleagues who are neither members nor candidates, even at the same firm."],
+["A key reason that ethics matters so much in the investment industry is that clients:",
+ ["are usually able to check every decision their adviser makes.","often know less than their advisers and must trust them.","pay fees that regulators set at the same level for every adviser."],
+ 1,"Investment professionals usually know far more about markets and products than their clients, a gap called information asymmetry. Clients cannot check every decision, so they must trust the professional to act in their interest. That is why trust, and the ethics that support it, is central to the industry. Fees are agreed between firms and clients, not set at one level by regulators."],
+["A CFA candidate works in a country whose law on a matter is stricter than the CFA Institute Standards. The candidate should follow:",
+ ["the CFA Institute Standards, because they apply worldwide.","the local law, because it is the stricter of the two.","whichever of the two rules the employer's compliance department prefers."],
+ 1,"Standard I(A) Knowledge of the Law says to follow the stricter of the applicable law and the Code and Standards. Here the local law is stricter, so it wins. The Standards set a floor, not a ceiling, so following only them would mean breaking the stricter law. An employer cannot choose a weaker rule than what the law and the Standards require."],
+["An analyst is offered a free luxury holiday by a company she writes research reports on. Under the Standard on Independence and Objectivity, she should **most likely**:",
+ ["accept it, as long as her next report stays accurate.","decline it, because it could affect her objectivity.","accept it and share the holiday with a colleague."],
+ 1,"Standard I(B) Independence and Objectivity asks members not to accept gifts that could reasonably be expected to compromise their independence. A luxury holiday from a company she covers is the kind of valuable gift that can bias her research, or look as if it does. Promising an accurate next report does not remove the conflict, and sharing the gift with a colleague only spreads it."],
+["An analyst copies several paragraphs from another firm's report into his own report and presents them as his own work. This is **best** described as:",
+ ["plagiarism, a form of misrepresentation.","acceptable, because research reports are public.","a breach of client confidentiality."],
+ 0,"Using someone else's words or ideas without saying where they came from is plagiarism. Standard I(C) Misrepresentation forbids it, because readers are misled about who did the work. A report being public does not make copying it without credit acceptable. Confidentiality is about keeping client information private, which is not the issue here."],
+["Under the CFA Institute Standards, material nonpublic information is information that:",
+ ["would likely affect a security's price and has not been made available to the market.","is published in a company's annual report but has not yet been read by most investors.","is known only to analysts and has no effect on a security's price."],
+ 0,"Information is material if it would likely move the price of a security or matter to a reasonable investor's decision. It is nonpublic if it has not been made available to the market in general. Standard II(A) forbids trading on such information or getting others to trade on it. An annual report is public once released, whether or not people have read it, and information with no effect on price is not material."],
+["Which of the following is **most likely** an example of market manipulation?",
+ ["Buying a stock after your own detailed research shows that it trades below its value.","Trading a stock back and forth between your own accounts to make it look busy.","Selling a stock because you need the cash to pay for a new house."],
+ 1,"Market manipulation means distorting prices or trading volume to mislead other market participants. Trading between your own accounts creates volume that does not reflect real buying and selling, which can trick others into thinking the stock is in demand. Standard II(B) forbids this. Buying on your own research is normal investing, and selling to raise cash is a personal decision that misleads no one."],
+["Under the Standard on Loyalty, Prudence, and Care, an investment manager must place the interests of:",
+ ["clients before those of the employer and the manager's own.","the employer before those of clients.","the manager's own before clients only for small trades."],
+ 0,"Standard III(A) Loyalty, Prudence, and Care says members owe their clients loyalty and must act for the clients' benefit, putting clients' interests ahead of the employer's and their own. The employer's interests come after the clients', not before. There is no exception for small trades: the size of a trade does not make putting yourself first acceptable."],
+["The Standard on Fair Dealing requires members to treat their clients:",
+ ["fairly, so that no client group is systematically disadvantaged.","exactly equally, so every client gets the same service at the same moment.","according to the fees they pay, so the biggest clients act first."],
+ 0,"Standard III(B) Fair Dealing asks for fair treatment, not identical treatment. Firms may offer different service levels, for example a premium service for a higher fee, as long as it is disclosed and no group of clients is systematically disadvantaged when recommendations are released or trades are made. Perfectly equal timing for every client is often impossible. Letting the biggest fee payers trade first on a new recommendation would disadvantage the other clients."],
+["Under the Standard on Responsibilities of Supervisors, a manager who supervises other employees must:",
+ ["make reasonable efforts to prevent violations by the people they supervise.","personally approve every trade their staff make.","answer only for their own conduct."],
+ 0,"Standard IV(C) Responsibilities of Supervisors asks supervisors to make reasonable efforts to prevent and detect violations of laws, rules and the Standards by anyone under their authority, usually through clear compliance procedures. This goes beyond their own conduct. Reasonable efforts do not mean approving every single trade personally, which would be impractical in most firms."],
+["When no law or regulation sets a period, CFA Institute recommends keeping the records that support investment recommendations for at least:",
+ ["3 years","5 years","7 years"],
+ 2,"Standard V(C) Record Retention asks members to keep records that support their investment analysis, recommendations and actions. When local rules say nothing about how long, CFA Institute recommends at least seven years. Three and five years are shorter than the recommended minimum. Where a regulator does set a period, that requirement applies."],
+["Under the Standard on Priority of Transactions, the correct order for acting on a new recommendation is:",
+ ["clients first, then the employer, then the member's own account.","the member's own account first, then clients, then the employer.","the employer first, then clients, then the member's own account."],
+ 0,"Standard VI(B) Priority of Transactions says trades for clients and the employer come before trades in which the member has a personal interest, and the duty of loyalty puts clients ahead of the employer. A member must never benefit by trading ahead of clients, a practice called front-running. Putting the employer ahead of clients would breach the duty of loyalty to clients."],
+["The main purpose of the Global Investment Performance Standards (GIPS) is to:",
+ ["make performance reports fair and comparable across firms.","guarantee that a firm's future returns will match its past returns.","set the minimum return that every investment firm must earn."],
+ 0,"GIPS are voluntary ethical standards for calculating and presenting investment performance. Their aim is fair representation and full disclosure, so prospective clients can compare firms on a like-for-like basis. They do not guarantee any future result, since past performance says nothing certain about future returns. They also do not set a minimum return; they only govern how returns are reported."]
+],{from:301,diff:"intro"});
 /* Batch for Mock 3 (2026-11-08): standard questions from id 111, exam-level from 131 */
 CFA_DATA.mc(1,"Ethical and Professional Standards","L1-ETH",[
 ["A portfolio manager whose bonus depends on beating the benchmark this quarter starts taking risks the clients did not approve, telling colleagues that everyone else does it too. This is **most likely** an example of:",
@@ -1219,6 +1267,54 @@ CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
  ["192,081","250,000","279,163"],
  2,"Monthly payment = 300,000 × 0.005/(1 − 1.005^−360) = 1,798.65. The balance is the present value of the 300 remaining payments: 1,798.65 × (1 − 1.005^−300)/0.005 = 279,163. 192,081 treats every payment as principal, and 250,000 assumes principal is repaid in equal amounts; early payments are mostly interest, so the balance falls slowly.",true]
 ],{from:101,diff:"hard"});
+/* Intro batch 1 (2026-11-18): practice-only beginner warm-ups (diff "intro"), never in a mock. Ids L1-QM-301..315 */
+CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
+["You deposit 1,000 in a bank account that pays 5% interest a year. After one year, the account holds:",
+ ["1,005","1,050","1,500"],
+ 1,"Future value after one year = amount today × (1 + interest rate) = 1,000 × 1.05 = 1,050. The interest earned is 5% of 1,000, which is 50. 1,005 treats 5% as 0.5%, and 1,500 treats it as 50%.",true],
+["You buy a share for 40, receive a dividend of 1 during the year and sell the share for 44 at the end of the year. Your holding period return is:",
+ ["10.0%","11.4%","12.5%"],
+ 2,"The holding period return is everything you gained divided by what you paid: (44 − 40 + 1) / 40 = 5 / 40 = 12.5%. The gain includes both the price rise of 4 and the dividend of 1. 10.0% leaves out the dividend, and 11.4% divides by the selling price (5 / 44) instead of the purchase price.",true],
+["A fund's returns over three years are 4%, 8% and −3%. The arithmetic mean return is:",
+ ["3.0%","4.0%","5.0%"],
+ 0,"The arithmetic mean is the sum of the returns divided by how many there are: (4 + 8 − 3) / 3 = 9 / 3 = 3.0%. 4.0% is the median, the middle value once the returns are sorted. 5.0% treats the −3% as +3%.",true],
+["At a discount rate of 10% a year, the present value of 110 to be received in one year is:",
+ ["99.00","100.00","121.00"],
+ 1,"Present value is the amount today that grows into the future amount: 110 / 1.10 = 100.00. Check: 100 invested at 10% for a year gives 110. 99.00 subtracts 10% of 110 instead of dividing by 1.10, and 121.00 multiplies by 1.10, which is a future value.",true],
+["Events A and B are independent. The probability of A is 0.30 and the probability of B is 0.50. The probability that both A and B happen is:",
+ ["0.15","0.20","0.80"],
+ 0,"Independent means that one event happening does not change the chance of the other. Then the probability of both is the product: 0.30 × 0.50 = 0.15. 0.20 is the difference between the two probabilities, which has no meaning here. 0.80 is their sum, which would be the chance of A or B only if they could never happen together.",true],
+["The real risk-free interest rate is **best** described as the return on a security that has:",
+ ["no default risk, in a world where no inflation is expected.","no default risk, plus a premium for expected inflation.","the highest possible return for its level of risk."],
+ 0,"Interest rates can be built up from parts. The real risk-free rate is the pure reward for waiting: the return on a riskless security when no inflation is expected. Adding a premium for expected inflation gives the nominal risk-free rate, which is roughly what a short-term government bill pays. The highest return for a given risk describes an efficient portfolio, not an interest rate."],
+["The median of a set of returns is the:",
+ ["value that appears most often in the data.","middle value once the returns are sorted from lowest to highest.","sum of the returns divided by the number of returns."],
+ 1,"To find the median, sort the observations and take the one in the middle; with an even number of observations, average the two middle ones. Half the data lie below it and half above. The value that appears most often is the mode, and the sum divided by the count is the arithmetic mean."],
+["The standard deviation of an asset's returns measures:",
+ ["how widely the returns are spread around their average.","the average return the asset earned over the period.","how closely the asset's returns move with the market."],
+ 0,"Standard deviation measures dispersion: how far returns typically fall from their mean. A higher standard deviation means returns swing more widely, so in finance it is the most common measure of risk. The average return is the mean. How closely an asset moves with the market is described by correlation or beta."],
+["A series of equal payments made at equal intervals for a fixed number of periods is called:",
+ ["an annuity.","a perpetuity.","a lump sum."],
+ 0,"An annuity is a set of equal cash flows at regular intervals with a fixed end, such as 500 a month for ten years. A perpetuity also pays equal amounts at regular intervals, but forever, with no end date. A lump sum is a single payment made once."],
+["A correlation coefficient of +1 between the returns of two assets means that the returns:",
+ ["move in exactly opposite directions, in a perfect straight line.","move together in a perfect straight-line relationship.","have no relationship with each other at all."],
+ 1,"Correlation runs from −1 to +1 and measures how closely two variables move together in a straight-line (linear) way. +1 is perfect positive correlation: when one return is above its average, so is the other, in fixed proportion. Exactly opposite movements give −1, and a correlation of 0 means there is no linear relationship."],
+["A normal distribution is **best** described as:",
+ ["symmetric and bell-shaped, with mean, median and mode all equal.","skewed to the right, with a mean above the median.","flat, with every outcome equally likely."],
+ 0,"The normal distribution is the bell curve: symmetric around its center, so the mean, median and mode are the same value. It is fully described by its mean and standard deviation. A right-skewed distribution has a long tail of large positive values, which pulls the mean above the median. A flat shape where every outcome is equally likely is a uniform distribution."],
+["In hypothesis testing, the null hypothesis is **most likely**:",
+ ["the statement being tested, which the researcher often hopes to reject.","a statement that has already been proven true by earlier studies and needs no test.","the conclusion the researcher reaches after the test."],
+ 0,"A hypothesis test starts from the null hypothesis (H0), a claim such as 'the fund's mean excess return is zero'. The data are then used to decide whether there is enough evidence to reject it in favor of the alternative hypothesis. The null is assumed for the test, not proven, and it is set up before the test rather than reached as its conclusion."],
+["For a given stated annual interest rate, compounding more often (for example monthly instead of once a year) makes the effective annual rate:",
+ ["lower.","unchanged.","higher."],
+ 2,"With more frequent compounding, interest is added to the balance sooner, and that interest then earns interest itself. So 12% a year compounded monthly gives an effective annual rate of about 12.68%, more than 12% compounded once a year. More compounding never lowers the effective rate, and the rate stays unchanged only when compounding happens once a year."],
+["In a simple linear regression that uses GDP growth to explain a company's sales growth, sales growth is the:",
+ ["independent variable.","dependent variable.","error term."],
+ 1,"The dependent variable is the one the regression tries to explain, here sales growth. The independent (explanatory) variable is the one used to explain it, here GDP growth. The error term is the part of sales growth that the regression line does not explain."],
+["In statistics, a sample is **best** described as:",
+ ["a subset of a population, used to learn about the whole.","every member of the group that is being studied.","a single number, such as a mean, computed for the whole population."],
+ 0,"A population is every member of the group you care about, for example all listed shares in a country. A sample is a smaller group drawn from it, studied because measuring everyone is too costly. A number that describes the whole population, such as its mean, is a parameter; the same measure computed from a sample is a statistic."]
+],{from:301,diff:"intro"});
 /* Batch for Mock 3 (2026-11-08): standard questions from id 111, exam-level from 131 */
 CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
 ["Before computing the mean of a return sample, an analyst replaces every observation below the 5th percentile with the 5th-percentile value and every observation above the 95th percentile with the 95th-percentile value. The resulting statistic is a:",
@@ -1575,6 +1671,54 @@ CFA_DATA.mc(1,"Economics","L1-ECON",[
  ["restrictive, because the policy rate is above the neutral rate of 3.5%.","accommodative, because the real policy rate is only 0.5% with 4% inflation.","neutral, because the policy rate is roughly in line with current inflation."],
  0,"The neutral policy rate is the real trend growth rate plus the inflation target: 1.5% + 2% = 3.5%. A policy rate of 4.5% is above it, so policy is restrictive, as would be expected with inflation well above target. The other options measure the stance against current inflation, which is not how the neutral rate is defined."]
 ],{from:101,diff:"hard"});
+/* Intro batch 1 (2026-11-18): practice-only beginner warm-ups (diff "intro"), never in a mock. Ids L1-ECON-301..315 */
+CFA_DATA.mc(1,"Economics","L1-ECON",[
+["A firm in a perfectly competitive market is a price taker. This means that the firm:",
+ ["can charge any price it likes, because buyers have no other choice.","sets its price only after watching how its few rivals react.","must accept the market price, because its product is identical to many others."],
+ 2,"In perfect competition there are many sellers of the same product and entry is easy. If one firm asked more than the market price, buyers would simply go to another seller, so each firm accepts the price the market sets: it is a price taker. Charging any price you like describes a monopoly with no close substitutes. Watching a few rivals before setting a price describes an oligopoly."],
+["A monopoly is **best** described as a market with:",
+ ["a single seller of a product with no close substitutes and high barriers to entry.","a few large sellers that watch and react to each other's prices.","many sellers of slightly different products and easy entry."],
+ 0,"A monopoly has one seller, no close substitutes and barriers that keep rivals out, such as patents or control of a key resource. That gives the firm strong pricing power. A few large sellers that react to each other describe an oligopoly, and many sellers of differentiated products with easy entry describe monopolistic competition."],
+["In an oligopoly, firms **most likely**:",
+ ["ignore their competitors, because each firm is too small to matter.","take their competitors' likely reactions into account when setting prices.","face no competition at all, because only one firm sells the product."],
+ 1,"An oligopoly has a few large firms, so each firm's price or output decision affects the others; economists call this interdependence. A firm that cuts its price must think about whether rivals will match the cut. Ignoring rivals fits firms in perfect competition, which are too small to matter, and a single seller is a monopoly."],
+["A recession is **best** described as a period in which:",
+ ["economic activity declines and unemployment usually rises.","economic activity grows faster than its long-run trend.","prices rise quickly while output stays the same."],
+ 0,"A recession is the contraction phase of the business cycle: real output falls, firms cut production and jobs, and unemployment rises. Growth faster than trend describes a strong expansion. Rising prices with flat output is closer to stagflation, and it is not the definition of a recession."],
+["During the expansion phase of the business cycle, the unemployment rate **most likely**:",
+ ["rises.","falls.","stays the same."],
+ 1,"In an expansion, output grows and firms need more workers, so they hire and unemployment falls. Unemployment typically rises in a contraction, when firms cut jobs. It does not stay fixed over the cycle, although it tends to lag the turning points because firms wait before hiring or firing."],
+["Fiscal policy refers to:",
+ ["the central bank's decisions on interest rates and the money supply.","the government's decisions on taxes and public spending.","the rules that govern trade between countries."],
+ 1,"Fiscal policy is what the government does with its budget: how much it spends and how much it collects in taxes. Decisions on interest rates and the money supply are monetary policy, which the central bank runs. Rules on trade between countries are trade policy."],
+["A central bank raises its policy interest rate. Its **most likely** aim is to:",
+ ["reduce inflation by slowing borrowing and spending.","make borrowing cheaper so that people spend more.","increase the tax revenue that the government collects."],
+ 0,"A higher policy rate pushes up borrowing costs across the economy, so households and firms borrow and spend less, demand cools and inflation slows. This is contractionary (restrictive) monetary policy. Cheaper borrowing would come from a rate cut, not a rise. Tax revenue depends on fiscal policy, not on the central bank."],
+["Which of the following is an example of expansionary fiscal policy?",
+ ["Raising income tax rates","Cutting income tax rates","Cutting government spending"],
+ 1,"Expansionary fiscal policy aims to boost demand, either by cutting taxes, so people keep more of their income to spend, or by raising government spending. Raising taxes and cutting spending both take money out of the economy, so they are contractionary."],
+["Inflation is **best** described as:",
+ ["a sustained rise in the overall level of prices.","a rise in the price of a single product, such as oil.","a fall in the overall level of prices."],
+ 0,"Inflation is a continuing increase in the general price level, so each unit of money buys less over time. A price jump in one product is a change in a relative price; it becomes inflation only if prices in general keep rising. A fall in the overall price level is deflation."],
+["A tariff is:",
+ ["a tax on imported goods.","a limit on the number of goods that can be imported.","a payment the government makes to exporters."],
+ 0,"A tariff is a tax charged on imports. It raises their price at home and protects domestic producers. A limit on the quantity of imports is a quota, and a government payment to exporters is an export subsidy."],
+["A country runs a trade surplus when:",
+ ["its imports are larger than its exports.","its exports are larger than its imports.","its government spends more than it collects in taxes."],
+ 1,"The trade balance is exports minus imports. When a country sells more goods and services abroad than it buys, the balance is positive: a trade surplus. Imports above exports give a trade deficit. Government spending above tax revenue is a fiscal (budget) deficit, which is a different measure."],
+["Using the quote convention of the CFA curriculum, an exchange rate of 1.10 USD/EUR means that:",
+ ["one euro costs 1.10 US dollars.","one US dollar costs 1.10 euros.","the euro will rise by 10% next year."],
+ 0,"In this convention, A/B is the number of units of currency A needed to buy one unit of currency B. So 1.10 USD/EUR means one euro costs 1.10 US dollars, and the euro is the base currency. One dollar costs 1 / 1.10 ≈ 0.91 euros, not 1.10. A spot quote shows today's price and says nothing about where the rate will go."],
+["A country's consumer price index rises from 200 to 206 over one year. The inflation rate for the year is **closest** to:",
+ ["2.9%","3.0%","6.0%"],
+ 1,"A consumer price index tracks the cost of a typical basket of goods and services. The inflation rate is its percentage change: 206 / 200 − 1 = 3.0%. 2.9% divides the rise of 6 by the new level (6 / 206) instead of the starting level. 6.0% is the rise in index points, which is not a percentage.",true],
+["In the CFA curriculum, geopolitics is **best** described as the study of how:",
+ ["geography affects politics and relations between countries.","share prices react to news about company earnings.","a country's central bank sets its interest rates."],
+ 0,"Geopolitics studies how geography, such as location, borders and natural resources, shapes politics and international relations. Investors follow it because conflicts, alliances and trade restrictions can change economic growth and asset prices. Earnings news and central bank decisions also move markets, but they are not what geopolitics means."],
+["A country has 950 employed people and 50 unemployed people who are looking for work. The unemployment rate is **closest** to:",
+ ["5.0%","5.3%","95.0%"],
+ 0,"The labor force is everyone who is working or actively looking for work: 950 + 50 = 1,000. The unemployment rate is unemployed / labor force = 50 / 1,000 = 5.0%. 5.3% divides by the employed only (50 / 950), which leaves the unemployed out of the labor force. 95.0% is the share of the labor force that has a job.",true]
+],{from:301,diff:"intro"});
 /* Batch for Mock 3 (2026-11-08): standard questions from id 111 */
 CFA_DATA.mc(1,"Economics","L1-ECON",[
 ["When its policy rate is already near zero, a central bank buys large amounts of long-term government bonds with newly created reserves. This policy **most likely** aims to:",
@@ -14260,15 +14404,18 @@ function placeStage(){
   const room = free - (sb.offsetHeight - explain) - 24;
   if(room>120) c.style.paddingTop = Math.round(Math.min(240, Math.max(24, room*0.36)))+'px';
 }
-const DIFF_LABEL = {basic:['Basic','','Recall of a definition or a one-step idea'], exam:['Exam-level',' accent','Written to the difficulty of the real exam'], hard:['Hard',' bad','Harder than the average exam question: more steps, traps or several ideas combined']};
+const DIFF_LABEL = {intro:['Intro','','Very easy warm-up: a first definition or idea, explained from zero'], basic:['Basic','','Recall of a definition or a one-step idea'], exam:['Exam-level',' accent','Written to the difficulty of the real exam'], hard:['Hard',' bad','Harder than the average exam question: more steps, traps or several ideas combined']};
 function diffTag(q, mode){ const d = mode!=='exam' && DIFF_LABEL[q.diff]; return d ? `<span class="tag${d[1]}" title="${d[2]}">${d[0]}</span>` : ''; }
 
 /* Adaptive practice (Level I). Each topic has a level worked out from answer history alone, so it carries over
    through export and import and also counts answers given in mocks. Levels: 1 Basic, 2 Standard (untagged),
    3 Exam-level, 4 Hard. A topic moves up once at least 6 questions of its level have been answered and 70% of the
-   latest 10 are right; it steps back down while the latest answers at its level are 40% or lower. */
-const TIERS = ['','Basic','Standard','Exam-level','Hard'];
-const tierOf = s => ({basic:1, exam:3, hard:4})[s.diff] || 2;
+   latest 10 are right; it steps back down while the latest answers at its level are 40% or lower.
+   Tier 0 (Intro, practice-only warm-ups) is not a level: it never counts towards moving up and only opens a session. */
+const TIERS = ['Intro','Basic','Standard','Exam-level','Hard'];
+const TIER_OF = {intro:0, basic:1, exam:3, hard:4};
+const tierOf = s => s.diff in TIER_OF ? TIER_OF[s.diff] : 2;
+const ladderOf = (l, topic) => [...new Set(SETS.filter(s=>s.level===l && s.topic===topic).map(tierOf))].filter(t=>t>0).sort();
 const ADAPT = {min:6, recent:10, up:0.7, down:0.4};
 function tierRecent(l, topic, t){
   const hs = SETS.filter(s=>s.level===l && s.topic===topic && tierOf(s)===t).flatMap(s=>s.questions)
@@ -14276,7 +14423,7 @@ function tierRecent(l, topic, t){
   return {n:hs.length, acc:hs.length ? hs.reduce((a,h)=>a+h.last,0)/hs.length : 0};
 }
 function topicTier(l, topic){
-  const have = [...new Set(SETS.filter(s=>s.level===l && s.topic===topic).map(tierOf))].sort();
+  const have = ladderOf(l, topic);
   if(!have.length) return 2;
   let i = 0;
   while(i<have.length-1){ const r=tierRecent(l,topic,have[i]); if(r.n>=ADAPT.min && r.acc>=ADAPT.up) i++; else break; }
@@ -14285,7 +14432,7 @@ function topicTier(l, topic){
 }
 /* what is needed to move a topic up a level, shown on the Progress page */
 function tierHint(l, topic){
-  const have = [...new Set(SETS.filter(s=>s.level===l && s.topic===topic).map(tierOf))].sort();
+  const have = ladderOf(l, topic);
   const t = topicTier(l,topic), next = have[have.indexOf(t)+1];
   if(next===undefined) return {t, have, hint:'Top level reached'};
   const r = tierRecent(l,topic,t), up = tierRecent(l,topic,next);
@@ -14294,17 +14441,29 @@ function tierHint(l, topic){
   return {t, have, hint:`${Math.round(r.acc*100)}% on your latest ${r.n} ${TIERS[t]} questions. 70% unlocks ${TIERS[next]}`};
 }
 const adaptTiers = c => Object.fromEntries(c.topics.map(t=>[t, topicTier(c.level,t)]));
-/* A session is about 20% warm-up from the level below, 60% at the topic's level and 20% stretch from the level above,
-   ordered easy to hard. Unseen questions come first, then missed ones. */
+/* A session opens with a warm-up ramp: Intro, then Basic, then Standard questions. The ramp is long while at least half
+   of the selected topics are below Exam-level (per 10 questions: 2 Intro, 2 Basic, 1 Standard) and short after that
+   (1 of each); it never takes more than half the session. The rest is about 20% from the level below, 60% at the
+   topic's level and 20% stretch from the level above. The whole session runs easy to hard; within a level unseen
+   questions come first, then missed ones. */
+const RAMP = {long:[0.2,0.2,0.1], short:[0.1,0.1,0.1]};
 function adaptivePick(sets, c, n){
   const tiers = adaptTiers(c), rel = s=>Math.sign(tierOf(s)-tiers[s.topic]);
   const fresh = s=> s.questions.some(q=>!isSeen(q)) ? 0 : s.questions.some(isMissed) ? 1 : 2;
-  const bucket = r=> shuffle(sets.filter(s=>rel(s)===r)).sort((a,b)=>fresh(a)-fresh(b));
+  const rank = list=> shuffle(list).sort((a,b)=>fresh(a)-fresh(b));
+  const ts = Object.values(tiers), long = ts.filter(t=>t<3).length*2 >= ts.length;
+  let ramp = [];
+  (long ? RAMP.long : RAMP.short).forEach((f,t)=>{ const k = t===0 ? Math.max(1,Math.floor(n*f)) : Math.floor(n*f); ramp.push(...rank(sets.filter(s=>tierOf(s)===t)).slice(0,k)); });
+  ramp = ramp.slice(0, Math.max(1, Math.floor(n/2)));
+  const taken = new Set(ramp), m = n - ramp.length;
+  const rest = sets.filter(s=>!taken.has(s) && tierOf(s)>0 && Math.abs(tierOf(s)-tiers[s.topic])<=1);
+  const bucket = r=> rank(rest.filter(s=>rel(s)===r));
   const B = {'-1':bucket(-1), '0':bucket(0), '1':bucket(1)}, out = [];
-  const nW = Math.round(n*0.2), nU = Math.round(n*0.2);
-  out.push(...B['-1'].splice(0,nW), ...B['1'].splice(0,nU), ...B['0'].splice(0,n-nW-nU));
-  ['0','1','-1'].forEach(k=>{ if(out.length<n) out.push(...B[k].splice(0,n-out.length)); });
-  return out.sort((a,b)=>rel(a)-rel(b) || tierOf(a)-tierOf(b));
+  const nW = Math.round(m*0.2), nU = Math.round(m*0.2);
+  out.push(...B['-1'].splice(0,nW), ...B['1'].splice(0,nU), ...B['0'].splice(0,m-nW-nU));
+  ['0','1','-1'].forEach(k=>{ if(out.length<m) out.push(...B[k].splice(0,m-out.length)); });
+  if(out.length<m){ out.forEach(s=>taken.add(s)); out.push(...rank(sets.filter(s=>!taken.has(s))).slice(0,m-out.length)); }
+  return ramp.concat(out).sort((a,b)=>tierOf(a)-tierOf(b));
 }
 function bookmarkBtn(qid){ const on=!!DB.bookmarks[qid]; return `<button class="btn ghost icon sm bm ${on?'on':''}" data-bm="${qid}" title="${on?'Remove bookmark':'Bookmark'}" aria-pressed="${on}">${icon('bookmark')}</button>`; }
 /* hidden during a running exam, as on the real exam screen */
@@ -14729,7 +14888,7 @@ function vPractice(app){
     <div class="panel">
       <div class="srow"><div class="lbl"><b>Session length</b><span>Number of ${unit}</span></div>${seg('data-n',c.count,[[5,'5'],[10,'10'],[20,'20'],[40,'40'],['all','All']])}</div>
       <div class="srow"><div class="lbl"><b>Questions from</b><span>Filter by your history</span></div>${seg('data-s',c.source,[['all','All'],['unseen','Unseen'],['missed','Missed'],['bookmarked','Bookmarked']])}</div>
-      ${hasDiff?`<div class="srow"><div class="lbl"><b>Difficulty</b><span>${adapt?'Starts at your level in each topic, easy to hard. A topic moves up after 70% on its latest 10 questions':'Basic questions check a definition or a one-step idea'}</span></div>${seg('data-d',c.diff,[...(l===1?[['adaptive','Adaptive']]:[]),['all','All'],['nobasic','No basic'],['exam','Exam+']])}</div>`:''}
+      ${hasDiff?`<div class="srow"><div class="lbl"><b>Difficulty</b><span>${adapt?'Opens with a few very easy warm-ups, then your level in each topic, easy to hard. A topic moves up after 70% on its latest 10 questions':'Intro and Basic questions check a definition or a one-step idea'}</span></div>${seg('data-d',c.diff,[...(l===1?[['adaptive','Adaptive']]:[]),['all','All'],['nobasic','No basic'],['exam','Exam+']])}</div>`:''}
       <div class="srow"><div class="lbl"><b>Timing</b><span>Exam pace: ${l===1?'90 s per question':'3 min per question, 4 min per essay part'}. The clock stops while you read explanations.</span></div>${seg('data-tm',c.timing,[['off','Untimed'],['on','Exam pace']])}</div>
       ${adapt?'':`<div class="srow"><div class="lbl"><b>Order</b><span>Shuffle, or keep topics together</span></div>${seg('data-o',c.order,[['shuffle','Shuffled'],['topic','By topic']])}</div>`}
     </div>
@@ -14750,16 +14909,18 @@ function practicePool(c){
   if(c.source==='unseen') sets = sets.filter(s=>s.questions.some(q=>!isSeen(q)));
   if(c.source==='missed') sets = sets.filter(s=>s.questions.some(isMissed));
   if(c.source==='bookmarked') sets = sets.filter(s=>s.questions.some(q=>DB.bookmarks[q.qid]));
-  if(c.diff==='nobasic') sets = sets.filter(s=>s.diff!=='basic');
+  if(c.diff==='nobasic') sets = sets.filter(s=>tierOf(s)>=2);
   if(c.diff==='exam') sets = sets.filter(s=>tierOf(s)>=3);
-  if(c.diff==='adaptive'){ const tiers=adaptTiers(c); sets = sets.filter(s=>Math.abs(tierOf(s)-tiers[s.topic])<=1); }
+  if(c.diff==='adaptive'){ const tiers=adaptTiers(c); sets = sets.filter(s=>tierOf(s)<=2 || Math.abs(tierOf(s)-tiers[s.topic])<=1); } // Intro, Basic and Standard stay in for the warm-up ramp
   return sets;
 }
 function startPractice(c, presetIds){
   let sets = presetIds ? presetIds.map(id=>SETMAP[id]) : practicePool(c);
   if(!presetIds){
-    sets = c.diff==='adaptive' ? adaptivePick(sets, c, c.count==='all'?sets.length:c.count) : c.order==='shuffle' ? shuffle(sets) : sets.slice().sort((a,b)=>TOPICS[c.level].indexOf(a.topic)-TOPICS[c.level].indexOf(b.topic)||a.id.localeCompare(b.id));
+    const intro = s=>tierOf(s)===0;
+    sets = c.diff==='adaptive' ? adaptivePick(sets, c, c.count==='all'?sets.length:c.count) : c.order==='shuffle' ? shuffle(sets) : sets.slice().sort((a,b)=>TOPICS[c.level].indexOf(a.topic)-TOPICS[c.level].indexOf(b.topic)||intro(b)-intro(a)||a.id.localeCompare(b.id));
     if(c.count!=='all') sets = sets.slice(0,c.count);
+    if(c.diff!=='adaptive' && c.order==='shuffle') sets = sets.filter(intro).concat(sets.filter(s=>!intro(s))); // Intro warm-ups only ever open a session
   }
   if(!sets.length){ toast('Nothing matches those filters.'); return; }
   S.practice = {level:c.level, sets:sets.map(s=>s.id), pos:0, states:{}, done:0, correct:0, timed:c.timing==='on', time:{}};
@@ -14919,7 +15080,7 @@ const setSeconds = (level,s)=>s.questions.reduce((x,q)=>x+(q.kind==='cr'?CR_SECO
 function examSeconds(level, ids){ return ids.reduce((a,id)=>a+setSeconds(level,SETMAP[id]),0); }
 /* PATHWAY_TOPIC is set with the data, from the candidate's chosen pathway */
 function examPool(c){
-  let pool = SETS.filter(s=>s.level===c.level);
+  let pool = SETS.filter(s=>s.level===c.level && s.diff!=='intro'); // Intro warm-ups are practice-only
   if(c.level===3 && c.mix!=='mixed') pool = pool.filter(s=>c.mix==='cr'?s.type==='cr':s.type!=='cr');
   if(c.level===3 && c.path==='none') pool = pool.filter(s=>s.topic!==PATHWAY_TOPIC); // candidates on another pathway practise the core only
   return pool;
