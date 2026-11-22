@@ -1618,6 +1618,110 @@ CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
  ["fall to one-quarter of its former value.","fall to one-half of its former value.","stay the same."],
  1,"The standard error is the standard deviation divided by the square root of the sample size. Multiplying the sample size by four multiplies its square root by two, so the standard error halves. It would fall to one-quarter only if the sample were sixteen times as large."]
 ],{from:201,diff:"exam"});
+/* Practice-only Quant batch 1 (2026-11-22): not used in any fixed mock. Fills the thin 2027 Quantitative Methods modules:
+   Returns of Financial Assets and Instruments, Benchmarking Returns, The Return and Risk of a Financial Portfolio,
+   Simulation of Financial Asset Prices and Returns, Introduction to Financial Data Science.
+   Exam-level questions from id 341 (341–361), hard from 371 (371–379). */
+CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
+/* Returns of Financial Assets and Instruments */
+["An analyst estimates required returns by adding risk premiums to the real risk-free rate. Compared with a government bond in the same currency and with the same 10-year maturity, a 10-year corporate bond **most likely** has a higher:",
+ ["expected inflation premium.","maturity premium.","default risk premium."],
+ 2,"The two bonds share the currency and the maturity, so investors demand the same compensation for expected inflation and the same maturity premium on both. Only the corporate issuer can fail to pay, so the corporate bond carries a default risk premium (and usually a larger liquidity premium as well)."],
+["Using the additive build-up, an analyst starts from a real risk-free rate of 1.0% and expected inflation of 2.5%. For a 7-year corporate bond she adds a default risk premium of 1.2%, a liquidity premium of 0.4% and a maturity premium of 0.8%. The required return on the bond is **closest** to:",
+ ["3.5%","4.7%","5.9%"],
+ 2,"Required return = real risk-free rate + inflation premium + default risk premium + liquidity premium + maturity premium = 1.0% + 2.5% + 1.2% + 0.4% + 0.8% = 5.9%. 3.5% is only the nominal risk-free rate (the real rate plus expected inflation), and 4.7% leaves out the default risk premium, which a corporate issuer must pay.",true],
+["Over long historical periods in most developed markets, compared with government bonds, equities have **most likely** delivered:",
+ ["higher average returns with higher volatility.","higher average returns with lower volatility, because company profits grow over time.","similar average returns with higher volatility."],
+ 0,"Equities have earned more than bonds on average over long periods, and the extra return is the reward for bearing more risk: their returns vary much more from year to year. Higher returns have not come with lower volatility, and if the average returns were only similar, investors would have no reason to hold the riskier asset."],
+["An analyst needs a risk-free rate to value a 10-year project with cash flows in euros. The **most appropriate** proxy is the yield on:",
+ ["a 3-month euro government bill, which has little interest rate risk.","a 10-year AAA-rated euro corporate bond.","a 10-year euro government bond issued by a highly rated euro area government."],
+ 2,"A risk-free rate should match the currency and the horizon of the cash flows and carry no default risk, and a 10-year bond of a highly rated euro area government comes closest to that. A 3-month bill does not match the 10-year horizon, so it leaves out the compensation investors require for lending for 10 years, and even a AAA corporate bond includes default and liquidity premiums."],
+["Expected inflation rises by one percentage point, while the real risk-free rate and all risk premiums stay the same. The price of an existing fixed-coupon bond **most likely**:",
+ ["falls, because the required return on the bond rises.","stays the same, because its coupons and principal are fixed in nominal terms.","rises, because investors move into bonds to protect themselves against inflation."],
+ 0,"The inflation premium is part of the required return, so the nominal required return rises by about one percentage point, and discounting the same fixed cash flows at a higher rate gives a lower price. Fixed nominal cash flows do not protect the price: they buy less when inflation is higher, which is also why investors do not buy fixed-coupon bonds to hedge inflation."],
+/* Benchmarking Returns */
+["A portfolio is worth 500,000 at the start of the year. After six months it is worth 540,000, and the client then adds 100,000. At the end of the year the portfolio is worth 660,000. The portfolio's time-weighted rate of return for the year is **closest** to:",
+ ["5.56%","11.38%","12.00%"],
+ 1,"Split the year at the cash flow. First half: 540,000/500,000 − 1 = 8.0%. Second half: 660,000/(540,000 + 100,000) − 1 = 3.125%. Linking the two: 1.08 × 1.03125 − 1 = 11.38%. 5.56% is the simple average of the two sub-period returns, and 12.00% treats the whole gain of 60,000 (660,000 − 500,000 − 100,000) as a return on the starting 500,000, ignoring when the new money arrived.",true],
+["An investor buys fund units for 1,000 at t = 0 and buys more for 1,000 at t = 1. At t = 2 the holding is worth 2,200, with no withdrawals. The investor's money-weighted rate of return per year is **closest** to:",
+ ["5.00%","6.52%","10.00%"],
+ 1,"The money-weighted return is the IRR that solves 1,000 + 1,000/(1 + r) = 2,200/(1 + r)². On the calculator, CF0 = −1,000, C01 = −1,000, C02 = 2,200 gives an IRR of about 6.52%. 10.00% divides the total gain of 200 by the 2,000 invested, with no regard to timing, and 5.00% simply halves it; both ignore that the second 1,000 was invested for one year only.",true],
+["A fund manager has no control over when clients add or withdraw money. To evaluate the manager's skill, the **most appropriate** measure is the:",
+ ["money-weighted rate of return, because it reflects how much money was invested in each period.","holding period return for the whole period, because it uses only the starting and ending values.","time-weighted rate of return, because it removes the effect of external cash flows."],
+ 2,"The time-weighted return links the returns of the periods between cash flows, so the size and timing of client deposits and withdrawals do not affect it, which makes it the standard for judging a manager. The money-weighted return is shaped by those cash flows, which the manager does not control. A single holding period return from the starting and ending values counts new deposits as if they were investment gains."],
+["An equal-weighted index of two stocks starts at 1,000. Over the quarter, stock X returns 20% and stock Y returns −10%. Just before the quarterly rebalancing, the weight of stock X in the index is **closest** to:",
+ ["42.9%","50.0%","57.1%"],
+ 2,"Each stock starts with 500. X grows to 500 × 1.20 = 600 and Y falls to 500 × 0.90 = 450, so the index is worth 1,050 and the weight of X is 600/1,050 = 57.1%. 42.9% is the weight of Y (450/1,050), and 50.0% is the weight only after the rebalancing restores equal weights.",true],
+["Which index weighting method **most likely** requires the most rebalancing trades to keep the index at its target weights?",
+ ["Market-capitalization weighting","Equal weighting","Price weighting"],
+ 1,"In an equal-weighted index, rising stocks become overweight and falling stocks underweight, so the index must sell winners and buy losers at every rebalancing. Market-capitalization and price weights move automatically with prices, so these indexes need trades mainly when their constituents change."],
+/* The Return and Risk of a Financial Portfolio */
+["Three portfolios of risky assets have these expected returns and standard deviations: X 8% and 12%; Y 8% and 15%; Z 10% and 15%. Which portfolio(s) **cannot** lie on the efficient frontier?",
+ ["Portfolio X only","Portfolios Y and Z","Portfolio Y only"],
+ 2,"Y is dominated twice: X offers the same 8% return with less risk, and Z offers a higher return for the same 15% risk, so no efficient portfolio looks like Y. X and Z do not dominate each other, because Z earns more but also carries more risk, so both can be efficient; a lower return alone does not rule out X, and Z is not dominated by any of the three."],
+["A portfolio holds three assets with weights of 50%, 30% and 20% and standard deviations of 20%, 15% and 10%. The returns of the three assets are uncorrelated. The portfolio's standard deviation is **closest** to:",
+ ["1.24%","11.15%","16.50%"],
+ 1,"With zero correlations, all covariance terms drop out: variance = 0.50² × 0.20² + 0.30² × 0.15² + 0.20² × 0.10² = 0.0100 + 0.002025 + 0.0004 = 0.012425, and the standard deviation is √0.012425 = 11.15%. 1.24% is the variance written as a percentage instead of its square root, and 16.50% is the weighted average of the standard deviations, which would hold only if every correlation were +1.",true],
+["An investor can combine a risk-free asset with the optimal risky portfolio along the capital allocation line (CAL). The investor's optimal portfolio is **best** described as the point where:",
+ ["the CAL is tangent to the investor's highest attainable indifference curve.","the CAL crosses the efficient frontier of risky assets.","the investor's indifference curve passes through the global minimum-variance portfolio of risky assets."],
+ 0,"Each investor picks the portfolio on the CAL that gives the highest utility, which is where the CAL just touches the highest indifference curve the investor can reach. The CAL touches the efficient frontier only at the optimal risky portfolio, which is the same for every investor, and once a risk-free asset is available the global minimum-variance portfolio plays no special role in a particular investor's choice."],
+["The expected returns and standard deviations of two risky assets stay the same, but the correlation between their returns falls. The minimum-variance frontier of portfolios of the two assets **most likely** moves:",
+ ["to the left, so each expected return can be reached with less risk.","to the right, because lower correlation adds risk to portfolios.","upward, as lower correlation raises expected returns."],
+ 0,"A lower correlation shrinks the covariance term in the portfolio variance, so every mix of the two assets (other than holding only one of them) has a lower standard deviation, which shifts the frontier to the left. A falling correlation does not add risk, and it does not change expected returns at all: a portfolio's expected return is simply the weighted average of the assets' expected returns."],
+/* Simulation of Financial Asset Prices and Returns */
+["In a Monte Carlo simulation, a stock priced at 50 receives a simulated continuously compounded return of −10% for the next month. The simulated price at the end of the month is **closest** to:",
+ ["45.00","45.24","55.26"],
+ 1,"With continuously compounded returns, the price is S1 = S0 × e^r = 50 × e^(−0.10) = 45.24. 45.00 treats −10% as a simple return, and 55.26 uses e^(+0.10), the wrong sign. Simulating log returns this way also keeps every simulated price above zero.",true],
+["Before generating any random draws, an analyst building a Monte Carlo simulation to value a security must **first**:",
+ ["specify the probability distributions of the key risk variables and their parameters.","compute the average of the values the security takes across all the trials.","choose which past periods of actual returns to resample for each trial."],
+ 0,"Monte Carlo simulation starts by choosing the risk variables and the distributions (with their means, volatilities and correlations) from which they will be drawn; only then are random values generated and the security valued in each trial. Averaging the trial values is the last step, and resampling actual past returns describes historical simulation or bootstrapping, not Monte Carlo simulation."],
+["A Monte Carlo model assumes that portfolio returns are normally distributed, but actual returns have fat tails. The probability of large losses estimated by the model is **most likely**:",
+ ["understated.","overstated.","about right, because a large number of trials removes the error."],
+ 0,"Fat tails mean that extreme outcomes happen more often than a normal distribution implies, so a model built on the normal assumption produces too few large losses. Overstatement would need the opposite, thinner tails. More trials only reduce the sampling error around the model's own answer; they cannot fix a wrong assumption about the distribution."],
+/* Introduction to Financial Data Science */
+["To estimate how well a supervised machine learning model will perform on new data, an analyst should **most likely** measure its error on the:",
+ ["training sample used to fit the model.","validation sample used to tune the model's hyperparameters.","test sample, which the model did not see during training or tuning."],
+ 2,"Only data the model never saw while it was being fitted or tuned give an honest estimate of its error on new data, and that is the role of the test sample. Error on the training sample is too optimistic, especially if the model overfits, and the validation sample has already shaped the model's settings, so its error is also biased downward."],
+["A supervised learning model predicts each company's earnings per share for the next quarter, in currency units. This task is **best** described as:",
+ ["clustering.","classification.","regression."],
+ 2,"The target is a continuous number, so this is a regression problem. Classification would predict a category, such as whether the company beats its earnings forecast or not, and clustering is an unsupervised method that groups observations without any target to predict."],
+["Which of the following is **most likely** an example of alternative data used in investment analysis?",
+ ["A company's audited annual financial statements","Satellite images of retailers' parking lots","A central bank's announcement of its policy rate"],
+ 1,"Alternative data come from sources outside traditional financial reporting and market data, such as satellite images, card transactions or web traffic, and can reveal trends before companies report them. Audited financial statements and policy rate announcements are traditional data that every analyst already uses."],
+["Before training a model on data scraped from websites, an analyst removes duplicate records, fills in missing values and corrects inconsistent formats. This step is **best** described as:",
+ ["data cleansing.","model training.","data visualization."],
+ 0,"Finding and correcting errors, gaps and inconsistencies is data cleansing, part of preparing (curating) the data before any model is built. Model training comes later and fits the model to the cleaned data, and data visualization shows data in charts to reveal patterns; neither fixes the records themselves."],
+],{from:341,diff:"exam"});
+
+CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
+["An investment earns a nominal return of 7.0%. The investor pays tax of 30% on the whole nominal return, and inflation is 2.0%. The investor's after-tax real return is **closest** to:",
+ ["2.84%","3.50%","4.90%"],
+ 0,"Tax is charged on the nominal return: 7.0% × (1 − 0.30) = 4.90% after tax. Removing inflation: 1.049/1.02 − 1 = 2.84%. 4.90% is the after-tax nominal return, which still includes inflation, and 3.50% taxes only the 5% left after subtracting inflation, although the tax falls on the full nominal return.",true],
+["A one-year nominal government bill yields 4.0%, and a one-year inflation-linked government bond yields a real 1.5%. Using the exact relationship (1 + nominal) = (1 + real)(1 + inflation) and ignoring any inflation risk premium, the breakeven inflation rate is **closest** to:",
+ ["2.46%","2.50%","5.56%"],
+ 0,"Breakeven inflation = 1.040/1.015 − 1 = 2.46%. 2.50% is the simple difference 4.0% − 1.5%, which slightly overstates inflation because it ignores the cross term, and 5.56% multiplies the two factors (1.040 × 1.015 − 1) instead of dividing.",true],
+["A price return index rises from 1,000 to 1,080 in year 1 and to 1,150 in year 2. The income return of the index is 2.0% in year 1 and 2.5% in year 2. The two-year total return of the index is **closest** to:",
+ ["15.00%","19.50%","19.88%"],
+ 2,"Total return each year = price return + income return: year 1 = 8.00% + 2.0% = 10.00%; year 2 = (1,150/1,080 − 1) + 2.5% = 6.48% + 2.5% = 8.98%. Compounding the two years: 1.1000 × 1.0898 − 1 = 19.88%. 15.00% is the price return only, and 19.50% adds the two income returns to the two-year price return without compounding them.",true],
+["An investor puts 100 into a fund, which returns 20% in year 1. At the end of year 1 the investor withdraws 60; the fund then returns −10% in year 2, leaving 54. The investor's money-weighted rate of return per year is **closest** to:",
+ ["3.92%","5.00%","9.37%"],
+ 2,"The money-weighted return is the IRR of the investor's cash flows: CF0 = −100, CF1 = +60, CF2 = +54, which gives about 9.37%. It is high because most of the money was taken out before the bad year. 3.92% is the time-weighted return, √(1.20 × 0.90) − 1, which ignores the withdrawal, and 5.00% is the arithmetic average of 20% and −10%.",true],
+["Asset A has a standard deviation of 20% and asset B of 30%, and the correlation between their returns is 0.2. In the two-asset portfolio with the minimum variance, the weight of asset A is **closest** to:",
+ ["60.0%","69.2%","73.6%"],
+ 2,"Cov(A, B) = 0.2 × 0.20 × 0.30 = 0.012. wA = (σB² − Cov)/(σA² + σB² − 2Cov) = (0.09 − 0.012)/(0.04 + 0.09 − 0.024) = 0.078/0.106 = 73.6%. 69.2% (0.09/0.13) leaves out the covariance, as if the correlation were zero, and 60.0% weights each asset by the other's standard deviation, 30%/(20% + 30%), which is not the minimum-variance rule.",true],
+["An equally weighted portfolio holds a growing number of assets. Every asset has the same variance, and every pair of assets has a correlation of 0.3. As the number of assets becomes very large, the portfolio's variance **most likely** approaches:",
+ ["zero.","0.3 times the variance of a single asset.","the variance of a single asset, because the correlation is positive."],
+ 1,"For n equally weighted assets, variance = σ²/n + [(n − 1)/n] × ρσ². As n grows, the first term vanishes and the second tends to ρσ² = 0.3σ², the average covariance, which diversification cannot remove. The variance would approach zero only if the correlation were zero, and a positive correlation still lets diversification cut the variance well below that of a single asset."],
+["Compared with a closed-form formula, Monte Carlo simulation is **most** useful for valuing a security whose:",
+ ["value must be known exactly, with no sampling error at all.","payoff depends on the path of prices and has no closed-form solution.","risk factors have unknown distributions that cannot be assumed."],
+ 1,"Simulation can value complex, path-dependent payoffs, such as options on an average price, by generating many price paths when no formula exists. Its estimates always contain sampling error, so it is not the tool for an exact value, and it needs assumed distributions for the risk factors; without them, an analyst would turn to historical simulation instead."],
+["Five trials of a Monte Carlo simulation give a call option's payoff at expiry, in one year, of 0, 4, 0, 10 and 6. The continuously compounded risk-free rate is 5%. The option's estimated value today is **closest** to:",
+ ["3.80","4.00","6.67"],
+ 0,"Average the payoffs across all trials, including the zeros: (0 + 4 + 0 + 10 + 6)/5 = 4.00, then discount at the risk-free rate: 4.00 × e^(−0.05) = 3.80. 4.00 forgets to discount the expected payoff to today, and 6.67 averages only the three trials with a positive payoff, which overstates the option's value.",true],
+["Deep learning (neural networks with many hidden layers) is **most** suited to:",
+ ["small structured data sets in which a simple linear relationship is expected.","finding complex nonlinear patterns in very large data sets such as images or text.","tasks in which each prediction must be explained with a few coefficients."],
+ 1,"Deep learning networks can learn complex, nonlinear relationships, but they need very large amounts of data, which is why they are used for images, speech and text. On a small data set with a linear relationship, a simple regression works better and overfits less, and a deep network's predictions are hard to explain with a few coefficients, so it is a poor choice when interpretability matters."],
+],{from:371,diff:"hard"});
 CFA_DATA.mc(1,"Quantitative Methods","L1-QM",[
 ["A fund earned annual returns of 10%, −5%, and 15% over three years. The geometric mean annual return is **closest** to:",
  ["6.32%","6.67%","7.05%"],
@@ -13508,6 +13612,7 @@ CFA_DATA.formulaSources = {
 "F3-PMP-13":["i:terms/p/privateequity.asp"],"F3-PMP-14":["i:terms/c/contingentimmunization.asp"],
 "F1-QM-31":["w:Chebyshev%27s_inequality"],"F1-QM-32":["w:Odds"],"F1-QM-33":["i:terms/f/fishereffect.asp"],"F1-QM-34":["i:terms/f/future-value-annuity.asp"],
 "F1-QM-35":["i:terms/l/leverage.asp"],"F1-QM-36":["i:terms/p/permutation.asp"],"F1-QM-37":["w:Simple_linear_regression"],"F1-QM-38":["w:Semi-log_plot"],
+"F1-QM-39":["w:Modern_portfolio_theory"],"F1-QM-40":["w:Interest_rate"],"F1-QM-41":["w:Diversification_(finance)"],
 "F1-FSA-19":["i:terms/e/effectivetaxrate.asp"],"F1-FSA-20":["i:terms/d/direct_method.asp"],"F1-FSA-21":["w:Depreciation"],"F1-FSA-22":["i:terms/d/defensive-interval-ratio.asp"],
 "F1-FSA-23":["i:terms/f/fundedstatus.asp"],"F1-PM-10":["i:terms/r/rebalancing.asp"],
 "F2-FSA-12":["https://www.ifrs.org/issued-standards/list-of-standards/ifrs-2-share-based-payment/","IFRS 2 Share-based Payment","IFRS Foundation"],
@@ -13562,7 +13667,10 @@ CFA_DATA.formulas(1,"Quantitative Methods","F1-QM",[
 ["Leveraged return","R_L = r + (V_B / V_E) × (r − r_D)","V_B = borrowed amount, V_E = own equity, r_D = borrowing cost.","leverag|borrows [0-9,]+"],
 ["Permutations and combinations","nPr = n! / (n − r)!;  nCr = n! / [(n − r)! r!];  multinomial = n! / (n1! n2! … nk!)","Use nPr when order (or role) matters, nCr when it does not.","permutation|combination|possible assignments|ways (to|of) (choose|assign|select)"],
 ["Standard error of estimate","SEE = √[SSE / (n − 2)] = √MSE","Smaller SEE means the regression line fits the data more closely.","standard error of (the )?estimate"],
-["Lin-log regression (and log-log regression)","Lin-log: Y = b0 + b1 ln X, so ΔY = b1 × Δ(ln X);  log-log: ln Y = b0 + b1 ln X, b1 = elasticity","Doubling X raises ln X by ln 2 = 0.693.","lin-log|log-log"]
+["Lin-log regression (and log-log regression)","Lin-log: Y = b0 + b1 ln X, so ΔY = b1 × Δ(ln X);  log-log: ln Y = b0 + b1 ln X, b1 = elasticity","Doubling X raises ln X by ln 2 = 0.693.","lin-log|log-log"],
+["Minimum-variance weight (two assets)","w_A = (σB² − Cov_AB) / (σA² + σB² − 2 Cov_AB);  Cov_AB = ρ σA σB","Weight of asset A in the two-asset portfolio with the lowest variance; w_B = 1 − w_A.","minimum.variance"],
+["Required return build-up","r ≈ real risk-free rate + inflation premium + default risk premium + liquidity premium + maturity premium","Additive approximation for the nominal required return on a debt instrument; a premium is zero where that risk is absent.","additive build-up"],
+["Variance of an equally weighted portfolio","σp² = σ²/n + [(n − 1)/n] × ρσ²  →  ρσ² as n grows","n assets with equal variance σ² and equal pairwise correlation ρ; the limit ρσ² is the average covariance, which diversification cannot remove.","growing number of assets"]
 ]);
 CFA_DATA.formulas(1,"Economics","F1-ECON",[
 ["Price elasticity of demand","E_p = %ΔQ_d / %ΔP","|E_p| > 1 elastic: a price cut raises total revenue. |E_p| < 1 inelastic.","elasticity"],
@@ -13999,6 +14107,10 @@ L('Geometric mean return','quant pm',/geometric (mean|average)|compound annual g
 L('Harmonic mean','quant',/harmonic mean|cost averaging/i,'i:terms/h/harmonicaverage.asp');
 L('Money-weighted return','quant pm eth',/money[- ]weighted/i,'i:terms/m/money-weighted-return.asp');
 L('Time-weighted return','quant pm eth',/time[- ]weighted/i,'i:terms/t/time-weightedror.asp');
+/* 2027 Quant module "Returns of Financial Assets and Instruments" (added 2026-11-22, pages checked to load that day) */
+L('Required return and risk premiums','quant fi',/required (rate of )?return|risk premi|default risk premium|liquidity premi|maturity premium|inflation premium|additive build-up/i,'w:Risk_premium','w:Interest_rate');
+L('Nominal and real returns','quant',/real (risk-free )?(rate|return)|after-tax real|breakeven inflation/i,'i:terms/f/fishereffect.asp','w:Real_interest_rate');
+L('Risk and return of asset classes','quant',/reward for bearing|higher volatility|risk[- ]return trade-?off/i,'w:Risk%E2%80%93return_spectrum');
 L('Standard deviation','quant pm',/standard deviation|sample variance|population variance|dispersion/i,'i:terms/s/standarddeviation.asp');
 L('Coefficient of variation','quant',/coefficient of variation/i,'i:terms/c/coefficientofvariation.asp');
 L('Roy\'s safety-first criterion','quant pm',/safety-first|shortfall risk|minimum acceptable return/i,'i:terms/r/roys-safety-first-criterion.asp');
@@ -14051,6 +14163,7 @@ L('Principal components analysis','quant',/principal component|dimension reducti
 L('Support vector machines and k-NN','quant',/support vector|\bSVM\b|k-nearest|\bKNN\b/i,'w:Support_vector_machine');
 L('Model evaluation: confusion matrix','quant',/confusion matrix|\bprecision\b.{0,80}\brecall\b|\brecall\b.{0,80}\bprecision\b|F1 score|accuracy rate|\bROC\b|area under the curve|true positives?|false positives?/i,'w:Confusion_matrix');
 L('Big data','quant pm',/big data|alternative data|volume, velocity|veracity|unstructured data/i,'i:terms/b/big-data.asp');
+L('Data cleansing','quant',/data cleansing|data cleaning|data curation|missing values|duplicate records/i,'w:Data_cleansing');
 L('Text analytics and NLP','quant',/natural language|\bNLP\b|text (mining|analytics|data)|tokeniz|stemming|lemmatiz|bag-of-words|sentiment|stop words|n-gram|TF-IDF|term frequency/i,'w:Natural_language_processing');
 
 /* ---------- economics ---------- */
@@ -14160,7 +14273,7 @@ L('Primary and secondary offerings','corp eq',/\bIPO\b|initial public offering|s
 /* ---------- equity ---------- */
 L('Efficient market hypothesis','eq pm',/efficien(t|cy) market|market efficiency|weak[- ]form|semi-?strong|strong[- ]form|\bEMH\b|anomal|January effect|momentum|calendar effect|overreaction/i,'i:terms/e/efficientmarkethypothesis.asp');
 L('Technical analysis','eq pm',/technical analy|resistance level|support level|breakout|chart pattern|head and shoulders|moving average crossover/i,'i:terms/t/technicalanalysis.asp','i:terms/r/resistance.asp');
-L('Index weighting methods','eq',/price-weighted|price weighted|market[- ]cap(italization)?[- ]weighted|float[- ]adjusted|equal[- ]weighted|fundamental weighting|index (return|level|weighting|construction)|rebalanc(ing|e) an index|reconstitution/i,'i:terms/p/priceweightedindex.asp','i:terms/c/capitalizationweightedindex.asp');
+L('Index weighting methods','eq quant',/price-weighted|price weighted|market[- ]cap(italization)?[- ]weighted|float[- ]adjusted|equal[- ]weighted|fundamental weighting|index (return|level|weighting|construction)|(price|total) return index|return of the index|rebalanc(ing|e) an index|reconstitution/i,'i:terms/p/priceweightedindex.asp','i:terms/c/capitalizationweightedindex.asp');
 L('Margin trading','eq',/margin (call|account|loan|requirement)|initial margin|maintenance margin|\d+% margin|buying on margin|leveraged position/i,'i:terms/m/margin.asp','i:terms/m/margincall.asp');
 L('Short selling','eq pm',/short sel|sells? short|short position|short sale/i,'i:terms/s/shortselling.asp');
 L('Order types','eq',/limit (buy |sell )?order|market order|stop (buy |sell )?order|stop-loss|stop-limit|execution instruction|validity instruction|clearing instruction|quote-driven|order-driven|brokered market|dealer market/i,'i:terms/l/limitorder.asp','i:terms/s/stoporder.asp');
@@ -14256,8 +14369,8 @@ L('Natural resources: farmland and timberland','alt',/farmland|timberland|timber
 L('Alternative investment structures','alt',/co-investment|separately managed|fund-of-funds|limited partnership|lockup|lock-up|redemption|gating|side pocket|due diligence|pooled fund/i,'i:terms/a/alternative_investment.asp');
 
 /* ---------- portfolio management (L1-L3) ---------- */
-L('Modern portfolio theory and the efficient frontier','pm',/efficient frontier|minimum[- ]variance portfolio|mean-variance|\bMVO\b|optimal (risky )?portfolio|Markowitz|global minimum|unconstrained optimi|corner portfolio/i,'i:terms/m/modernportfoliotheory.asp','i:terms/m/meanvariance-analysis.asp');
-L('Capital market line and security market line','pm',/capital market line|\bCML\b|security market line|\bSML\b|capital allocation line|\bCAL\b|market portfolio|tangency/i,'i:terms/c/cml.asp','i:terms/s/sml.asp');
+L('Modern portfolio theory and the efficient frontier','pm quant',/efficient frontier|minimum[- ]variance portfolio|portfolio with the minimum variance|mean-variance|\bMVO\b|optimal (risky )?portfolio|Markowitz|global minimum|unconstrained optimi|corner portfolio/i,'i:terms/m/modernportfoliotheory.asp','i:terms/m/meanvariance-analysis.asp');
+L('Capital market line and security market line','pm quant',/capital market line|\bCML\b|security market line|\bSML\b|capital allocation line|\bCAL\b|market portfolio|tangency/i,'i:terms/c/cml.asp','i:terms/s/sml.asp');
 L('Systematic vs unsystematic risk','pm eq',/systematic|unsystematic|diversifiable|nondiversifiable|idiosyncratic|specific risk|diversification/i,'i:terms/s/systematicrisk.asp','i:terms/d/diversification.asp');
 L('Risk aversion and utility','pm',/utility|risk aversion|risk-averse|indifference curve|risk-seeking|risk-neutral investor|certainty equivalent/i,'i:terms/r/riskaverse.asp','i:terms/i/indifferencecurve.asp');
 L('Sharpe ratio','pm quant alt',/Sharpe/i,'i:terms/s/sharperatio.asp');
