@@ -185,6 +185,8 @@
   }
   /* the narrowest phones: the bar keeps the name and the menu button; the hero's own button is right under it */
   @media (max-width: 359px) { .nav:not(.is-open) .nav__actions { display: none; } .nav:not(.is-open) .nav__toggle { margin-left: auto; } }
+  /* the personal headline is longer than the old one: two lines on a wide screen instead of three */
+  .hero--centred h1 { max-width: 22ch; }
 </style>
 </head>
 <body>
@@ -216,7 +218,8 @@
   <section class="hero hero--centred" aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text">
       <div class="hero__c">
-        <h1 id="hero-h">CFA exam practice, Levels I to III</h1>
+        <h1 id="hero-h">The practice bank I built for my own CFA exam</h1>
+        <p class="hero__lead t-lead">1,380 Level I questions on the 2027 curriculum, mocks timed like the real thing, and explanations that say why the wrong answers are wrong. Free for anyone, no account.</p>
         <div class="btn-row"><a class="btn btn--primary" href="/app/">Start practicing</a><a class="btn btn--secondary" href="#mocks">See the mock exams</a></div>
       </div>
       <div class="hero__window" role="img" aria-label="A Level I quantitative methods question answered correctly, with its explanation">
@@ -241,7 +244,7 @@
   <section class="section" id="review" aria-labelledby="review-h">
     <div class="wrap">
       <div class="grid">
-        <h2 id="review-h" class="span-6">Every missed question, kept for review</h2>
+        <h2 id="review-h" class="span-6">Review what you missed</h2>
         <p class="span-6 start-7 muted t-lead">Answer a question and its explanation opens under it. A wrong answer goes to Review with its topic, so you can redo the misses until they stick.</p>
       </div>
       <div class="ui ui-app app fill" role="img" aria-label="The Review list of missed questions beside a fixed income question answered wrong, with the explanation">
@@ -281,7 +284,7 @@
     <div class="wrap">
       <div class="grid">
         <div class="span-6 stack-6">
-          <h2 id="mocks-h">Mock exams timed like the real one</h2>
+          <h2 id="mocks-h">Five full mocks per level, timed like the exam</h2>
           <p class="t-lead">A full Level I mock runs 180 questions in two sessions of about 90, at 90 seconds a question. Topics are drawn at the 2027 curriculum weights, and answers show only after you submit.</p>
           <ul class="rows">
             <li><span class="rows__name">Level I</span><span class="rows__value">180 questions, 4 h 30 min</span></li>
@@ -320,11 +323,11 @@
     <div class="wrap">
       <div class="group">
         <div class="section-head">
-          <h2 id="tools-h">Tools around the questions</h2>
+          <h2 id="tools-h">Also in the app</h2>
         </div>
         <div class="grid">
           <article class="card card--row card--open span-6">
-            <h3>Rates each topic against 70%</h3>
+            <h3>See which topics are ready</h3>
             <p>After 8 answers a topic reads Ready from 70%, At risk from 60%, and Gap below.</p>
             <div class="panel">
               <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max: 440px; --ax: max(24px, 50% - 220px); --ay: 40px; --ay-sm: 24px">
@@ -338,7 +341,7 @@
             </div>
           </article>
           <article class="card card--row card--open span-6">
-            <h3>Lists 385 formulas by topic</h3>
+            <h3>385 formulas, every term explained</h3>
             <p>Each formula sits under its topic, with every term spelled out beside it.</p>
             <div class="panel">
               <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max: 440px; --ax: max(24px, 50% - 220px); --ay: 40px; --ay-sm: 24px">
@@ -359,7 +362,7 @@
       </div>
       <div class="grid">
         <article class="card card--row card--open span-6">
-          <h3>Grades Level III essays by rubric</h3>
+          <h3>Score your Level III essays by rubric</h3>
           <p>93 essay cases with 295 parts. You tick each rubric point your answer earned.</p>
           <div class="panel">
             <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max: 440px; --ax: max(24px, 50% - 220px); --ay: 40px; --ay-sm: 24px">
@@ -376,16 +379,16 @@
           </div>
         </article>
         <article class="card card--row card--open span-6">
-          <h3>Answers each question by keyboard</h3>
-          <p>Keys answer and move between questions. On a phone every answer is one tap.</p>
+          <h3>A BA II Plus calculator on screen</h3>
+          <p>TVM, cash flows with NPV and IRR, and the bond and depreciation worksheets, like the calculator you take into the exam.</p>
           <div class="panel">
             <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max: 440px; --ax: max(24px, 50% - 220px); --ay: 40px; --ay-sm: 24px">
               <div class="cpw cpw--sm ui ui-cpw" aria-hidden="true">
                 <div class="cpk">
-                  <div class="cpk__row"><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd><span>Answer the open question</span></div>
-                  <div class="cpk__row"><kbd>↵</kbd><kbd>→</kbd><span>Next question</span></div>
-                  <div class="cpk__row"><kbd>←</kbd><span>Previous question</span></div>
-                  <div class="cpk__row"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>Answer by number</span></div>
+                  <div class="cpk__row"><kbd>N</kbd><span>5 years</span></div>
+                  <div class="cpk__row"><kbd>I/Y</kbd><span>10% a year</span></div>
+                  <div class="cpk__row"><kbd>PMT</kbd><span>1,000 at each year end, FV = 0</span></div>
+                  <div class="cpk__row"><kbd>CPT</kbd><kbd>PV</kbd><span><b>PV = −3,790.79</b></span></div>
                 </div>
               </div>
             </div></div>
@@ -399,15 +402,15 @@
     <div class="wrap">
       <div class="grid">
         <div class="span-6 stack-4">
-          <h2 id="questions-h">Questions</h2>
-          <p class="muted">What people ask before their first session.</p>
+          <h2 id="questions-h">Before you start</h2>
+          <p class="muted">What people usually ask first.</p>
         </div>
         <div class="faq span-6 start-7">
           <div class="faq__item"><h3>Is it free?</h3><p>Yes. There is no price and no account to create.</p></div>
           <div class="faq__item"><h3>Where is my progress saved?</h3><p>In this browser. Export progress makes a backup file for another device.</p></div>
           <div class="faq__item"><h3>Are these official CFA Institute questions?</h3><p>No. They were written independently, on the 2027 curriculum topics.</p></div>
           <div class="faq__item faq--wide"><h3>Which levels does it cover?</h3><p>All three: 1,380 Level I questions, 113 Level II item sets, and 99 Level III item sets with 93 essay cases.</p></div>
-          <div class="faq__item"><h3>Who made it?</h3><p>A CFA candidate, for their own study and a few friends.</p></div>
+          <div class="faq__item"><h3>Who made it?</h3><p>I did: a CFA candidate, for my own study and a few friends.</p></div>
           <div class="faq__item"><h3>Does it work on a phone?</h3><p>Yes, in any phone browser.</p></div>
         </div>
       </div>
