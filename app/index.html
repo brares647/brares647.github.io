@@ -14492,6 +14492,129 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 {name:"Returns of Financial Assets and Instruments",
  core:/holding[- ]period return|build-up|risk premi|real (interest )?rate|nominal (interest )?rate|inflation premium|default (risk )?premium|liquidity premium|maturity premium|equities have|historical(ly)? (returns|risk premium|periods)|asset classes/,
  match:/holding[- ]period|required (rate of )?return|risk[- ]free (rate|asset)|risk premi|real (interest )?rate|real (risk-free|return)|nominal (interest )?rate|nominal (risk-free|return)|inflation premium|default (risk )?premium|liquidity premium|maturity premium|build-up|opportunity cost|interest rates? (as|can be|is) /,
+ lesson:`## 1. What a return measures
+A **return** answers a simple question: for every unit of money I put in, how much did I gain or lose over the period? Saying "I made 500" tells you little until you know whether 1,000 or 100,000 was invested. Dividing the gain by the amount invested puts every investment on the same scale, so a share, a bond and a flat can be compared.
+
+Any return has two sources:
+- **Income:** cash the asset pays while you hold it, such as dividends on shares, coupons on bonds and rent on property.
+- **Price change** (capital gain or loss): the difference between what you sell it for, or what it is worth now, and what you paid.
+
+Put together, they give the **holding period return** (HPR), the return over the whole time you held the asset, however long that was:
+- HPR = (P1 − P0 + I1) / P0,
+
+where P0 is the price at the start, P1 the price at the end and I1 the income received in between. It splits neatly into an **income yield** (I1 / P0) and a **capital gain yield** ((P1 − P0) / P0).
+
+> **Worked example 1: a bond held for a year**
+> You buy a bond at 96.40, receive a coupon of 5.00 during the year and sell it at 98.10.
+> - HPR = (98.10 − 96.40 + 5.00) / 96.40 = 6.70 / 96.40 = 6.95%
+> - Income yield = 5.00 / 96.40 = 5.19%; capital gain yield = 1.70 / 96.40 = 1.76%
+> Most of this bond's return came from its coupon. For a growth share that pays no dividend the split is the reverse: everything comes from the price.
+
+### Returns over several periods
+If you hold an asset for several periods, the yearly returns **compound**: each year's return is earned on the value reached at the end of the previous year, not on the original amount. So you link them by multiplying (1 + R) for each year, never by adding.
+
+> **Worked example 2: three years linked together**
+> A fund returns +8%, −5% and +12% in three consecutive years.
+> - Three-year HPR = 1.08 × 0.95 × 1.12 − 1 = 14.91%
+> Adding the returns would give 15%. The gap looks small here, but it grows with the size of the returns and the number of years. Imagine +50% then −50%: the sum says 0%, while 100 actually became 150 and then 75, a loss of 25%.
+
+### Realized versus expected returns
+A return you calculate from prices that have already happened is a **realized** (historical, ex post) return. A return you hope for or require before investing is an **expected** (ex ante) return. Analysts use realized returns to describe the past, but every valuation and every investment decision rests on expected returns, which are uncertain. Much of the CFA program is about estimating them sensibly.
+
+## 2. Three ways to read an interest rate
+An interest rate is the price of time. The same number can be read in three ways, depending on what you are doing with it. Suppose the one-year rate on a safe deposit is 4%:
+- **Required rate of return:** the minimum return an investor accepts before giving up their money for a year. Nobody rational lends safely for less than 4% if 4% is available elsewhere.
+- **Discount rate:** the rate that converts a future amount into its value today. 1,040 received in a year is worth 1,040 / 1.04 = 1,000 today.
+- **Opportunity cost:** what you give up by choosing something else. If you keep 1,000 in a current account paying nothing, you give up 40 of interest.
+
+All three are the same 4%, seen from the lender's side, the valuer's side and the spender's side. Exam questions sometimes ask which interpretation fits a given sentence, so connect the words: "minimum acceptable" is the required return, "value today" is the discount rate, "forgone" is the opportunity cost.
+
+## 3. Building a required return, layer by layer
+Why does a ten-year corporate bond yield more than a three-month government bill? Because the investor in the bond takes more risks, and each risk must be paid for. The required return is built up from a riskless base plus a premium for each risk.
+
+### The risk-free base
+- **Real risk-free rate:** the return on a perfectly safe investment in a world with no inflation. It rewards one thing only: waiting, that is, giving up spending today. It depends on how much people prefer consuming now to consuming later and on the returns available from real investment in the economy.
+- **Inflation premium:** lenders also want to keep their purchasing power. If prices are expected to rise by 2.5% a year, a lender demands roughly 2.5% extra. The premium reflects inflation **expected over the life of the investment**, not inflation last year.
+- **Nominal risk-free rate:** the real risk-free rate plus the inflation premium. The usual proxy is the yield on short-term government bills of the same currency, which carry almost no default risk and almost no price risk.
+
+The exact relation is multiplicative, because the real return also earns inflation:
+- (1 + nominal) = (1 + real) × (1 + expected inflation).
+For small rates the additive version (nominal ≈ real + inflation) is close enough, but exam answers are often built so that the two differ.
+
+### Premiums for risk
+On top of the nominal risk-free rate, add a premium for each risk the instrument carries:
+- **Default risk premium:** compensation for the chance that the borrower fails to pay interest or principal in full and on time. Zero for a strong government borrowing in its own currency, sizeable for a weak company.
+- **Liquidity premium:** compensation for the risk of having to sell quickly at a price below fair value. Government bonds trade in huge volumes; a small company's bond may find few buyers.
+- **Maturity premium:** compensation for the greater price sensitivity of long-term instruments to changes in interest rates. A 30-year bond loses far more value than a 1-year bond when rates rise by 1%, even if both are issued by the same safe government.
+
+So the build-up reads: required return ≈ real risk-free rate + inflation premium + default premium + liquidity premium + maturity premium.
+
+> **Worked example 3: building up a corporate bond's required return**
+> Real risk-free rate 1.5%, expected inflation 2.5%, default premium 1.2%, liquidity premium 0.4%, maturity premium 0.8%.
+> - Additive estimate: 1.5 + 2.5 + 1.2 + 0.4 + 0.8 = 6.4%
+> - The nominal risk-free part, done exactly: 1.015 × 1.025 − 1 = 4.04% (rather than 4.0%)
+> A three-month government bill in the same currency would need only the first two layers: about 4%. The extra 2.4% on the corporate bond is the price of its three risks.
+
+### Reading premiums off market yields
+You rarely see these premiums directly, but you can infer them by comparing yields that differ in one risk at a time:
+- A 10-year government bond against a 3-month government bill: same issuer, so the difference mostly reflects the **maturity premium** (plus any change in expected inflation over the longer horizon).
+- A 10-year corporate bond against a 10-year government bond: same maturity, so the difference (the **credit spread**) reflects the **default and liquidity premiums**.
+
+> **Worked example 4: separating the layers**
+> Yields in the same currency: 3-month government bill 3.5%, 10-year government bond 4.3%, 10-year bond of a mid-sized company 6.1%.
+> - Maturity premium (plus any extra expected inflation) ≈ 4.3 − 3.5 = 0.8%
+> - Default plus liquidity premium ≈ 6.1 − 4.3 = 1.8%
+> If the company's credit quality weakens, only the second difference should widen; if the market starts fearing higher long-term inflation, the first one widens for every issuer.
+
+## 4. Inflation and real returns
+A **nominal** return is measured in money; a **real** return is measured in purchasing power, the goods and services that money can buy. If your savings grow 5% while prices rise 5%, you are no richer in any useful sense. The exact real return is:
+- real return = (1 + nominal return) / (1 + inflation) − 1.
+
+> **Worked example 5: what a bill really earned**
+> A government bill yields 4.6% and inflation over the year turns out to be 3.0%.
+> - Exact real return = 1.046 / 1.030 − 1 = 1.55%
+> - The shortcut 4.6 − 3.0 = 1.6% is close, but not the answer to "calculate the real return".
+> If inflation had turned out to be 5.0% instead, the real return would have been negative: 1.046 / 1.050 − 1 = −0.38%. A "safe" asset can still lose purchasing power.
+
+Over long horizons the difference between nominal and real growth becomes large:
+
+> **Worked example 6: ten years of a 6% return with 3% inflation**
+> - 1,000 invested at 6% a year grows to 1,000 × 1.06^10 = 1,790.85 in money terms.
+> - In today's purchasing power that is 1,790.85 / 1.03^10 = 1,332.56.
+> - The real growth rate is 1.06 / 1.03 − 1 = 2.91% a year, and 1,000 × (1.06 / 1.03)^10 gives the same 1,332.56.
+> On the calculator: \\\`N = 10, I/Y = 6, PV = −1,000, PMT = 0, CPT FV\\\` gives 1,790.85. Then change \\\`I/Y = 2.9126\\\` and \\\`CPT FV\\\` again for 1,332.56.
+> Nearly half of the nominal gain (790.85) was just keeping up with prices.
+
+Two consequences are worth remembering:
+- Unexpected inflation hurts lenders and helps borrowers with fixed-rate debt, because the money repaid buys less than both sides expected.
+- An investor whose spending rises with prices, such as a retiree, should judge investments by their real returns.
+
+## 5. Risk and return across asset classes
+The build-up in section 3 explains why expected returns differ: **more risk requires more expected return**. The gap between an asset's expected return and the risk-free rate is its **risk premium**. For shares as a whole it is called the **equity risk premium**.
+
+Long-run studies of developed markets show a consistent pattern:
+- Equities have earned more than government bonds, and government bonds more than short-term bills.
+- Each step up in average return came with a step up in volatility: equity returns swing much more from year to year than bond returns, and bond returns more than bill returns.
+- Short-term bills have earned little above inflation, so their real return has been close to zero over long periods.
+
+> **Worked example 7: a required return on shares**
+> The nominal risk-free rate is 4.0% and analysts estimate the equity risk premium at 5.0%. For a share with average market risk:
+> - Required return = 4.0% + 5.0% = 9.0%
+> If the share is expected to return 7.5%, it does not compensate for its risk at today's price; the price would have to fall until the expected return reached 9%.
+
+Three cautions keep this pattern in perspective:
+- The equity premium is an **average over long periods**. Over five or even ten years shares can, and sometimes do, earn less than bonds. If they could not, they would not be risky.
+- Historical averages depend on the country and the period chosen, and on whether the markets studied survived. Markets that collapsed are often missing from long data sets, which can flatter the results.
+- The risk-free rate you use should match the **currency and horizon** of the cash flows you value. A 10-year euro project calls for a 10-year euro government yield, not a US bill rate.
+
+## 6. Checklist before you answer
+- Include income (dividends, coupons, rent) in the holding period return, not only the price change.
+- Link returns over several periods by multiplying (1 + R), never by adding.
+- Match the wording to the reading of a rate: "minimum acceptable" = required return, "value today" = discount rate, "given up" = opportunity cost.
+- For an exact nominal or real rate, multiply or divide (1 + rates); use addition only when the question says approximate.
+- Know which premium each comparison isolates: maturity (same issuer, different maturity), default and liquidity (same maturity, different issuer).
+- The inflation premium is about expected future inflation; unexpected inflation transfers wealth from lenders to borrowers.
+- Higher expected return is compensation for higher risk, on average and over long periods, not a guarantee in any one year.`,
  ideas:`**A return is what an investment earns over a period relative to what was put in.** It has two parts: income (dividends, coupons, rent) and the change in price. Holding period return: HPR = (P1 − P0 + income) / P0. Buying at 50, receiving 1.50 of dividends and selling at 53 gives (53 − 50 + 1.50) / 50 = 9%.
 
 ## Three ways to read an interest rate
@@ -14529,6 +14652,133 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 {name:"Types of Financial Returns",
  core:/borrows|arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded|leverag|after-tax|gross return|net return|effective annual|stated annual|compounded (monthly|quarterly|semi-?annually|daily)/,
  match:/arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded (return|rate)|gross return|net return|after-tax|pre-tax|leverag|compound annual growth|\bCAGR\b|effective annual|\bEAR\b|stated annual|periodic rate|compounded (monthly|quarterly|semi-?annually|daily)|compounding frequenc/,
+ lesson:`## 1. Why there are so many return measures
+The holding period return from the previous module tells you what one investment earned over one period. In practice you face harder questions. What was the typical yearly return of a fund over the last decade? How do you compare a 120-day deposit with a one-year bond? What did the investor keep after fees, taxes and inflation? What happens to the return when part of the investment is borrowed? Each question has its own measure. The exam tests two skills: computing each one, and choosing the right one for the question asked.
+
+The same formulas work for any series that changes over time: a share, a bond index, a commodity price, an exchange rate or an economic indicator such as a house price index. Only the interpretation changes.
+
+## 2. Averaging returns over several periods
+### Arithmetic mean
+The **arithmetic mean** is the simple average: add up the period returns and divide by their number. It answers the question "what is a typical single-period return?" and is the best estimate of **next period's expected return** when returns are drawn from the same distribution each period.
+
+### Geometric mean
+The **geometric mean** answers a different question: "what constant return, earned every period, would turn the starting value into the actual ending value?"
+- R_G = [(1 + R1)(1 + R2)…(1 + Rn)]^(1/n) − 1.
+
+It describes **compound growth that actually happened**, which is why fund performance over several years is reported this way.
+
+> **Worked example 1: arithmetic versus geometric**
+> A share returned +15%, −10%, +8% and +5% in four years.
+> - Arithmetic mean = (15 − 10 + 8 + 5) / 4 = 4.50%
+> - Growth of 100: 100 × 1.15 × 0.90 × 1.08 × 1.05 = 117.37
+> - Geometric mean = 1.17369^(1/4) − 1 = 4.09%
+> On the calculator: \\\`1.17369 y^x 4 1/x =\\\` gives 1.04085, so 4.09%.
+> Check: 100 × 1.0409^4 ≈ 117.37. Growing at 4.50% a year would have given 119.25, more than the investor actually had.
+
+The geometric mean is **never above** the arithmetic mean. They are equal only when every return is the same; the more the returns swing, the wider the gap. A rough rule: geometric ≈ arithmetic − variance / 2. This is why volatility is costly even when the average looks fine: a loss of 50% needs a gain of 100% to break even.
+
+### Harmonic mean
+The **harmonic mean** of n values is n divided by the sum of their reciprocals:
+- X_H = n / Σ(1 / Xi).
+
+Its main use in investing is **cost averaging**: investing the same amount of money at regular intervals. You automatically buy more shares when the price is low and fewer when it is high, so your average cost per share is the harmonic mean of the prices paid, which is below their arithmetic mean.
+
+> **Worked example 2: investing 1,200 a month**
+> You invest 1,200 in each of three months at prices of 20, 24 and 30.
+> - Shares bought: 60 + 50 + 40 = 150 for a total of 3,600, so the average cost is 3,600 / 150 = 24.00.
+> - Harmonic mean of the prices: 3 / (1/20 + 1/24 + 1/30) = 24.00, the same answer.
+> - Arithmetic mean of the prices: (20 + 24 + 30) / 3 = 24.67.
+> If you had bought the same number of shares each month instead (a fixed quantity, not a fixed amount), your average cost would have been the arithmetic 24.67.
+
+For any set of positive values that are not all equal: harmonic < geometric < arithmetic.
+
+### Which mean to use
+- Forecasting a single future period's return: arithmetic.
+- Describing past compound growth, or comparing funds over several years: geometric.
+- Average cost when investing a fixed amount each period: harmonic.
+Outliers distort the arithmetic mean. Statistical tools for handling them, such as trimmed and winsorized means, are covered in the module on the statistical characteristics of returns.
+
+## 3. Annualizing returns
+Returns over different horizons cannot be compared directly: 2% over three months is not the same as 2% over two years. The standard is to convert every return into an **annualized** return, assuming the return is earned repeatedly, with compounding, for a full year:
+- R_annual = (1 + R_period)^c − 1, where c is the number of periods in a year.
+
+So c = 365 / days for a return measured in days, 12 for a monthly return, 52 for a weekly return and 1 / years for a return over several years.
+
+> **Worked example 3: annualizing three different horizons**
+> - A 120-day deposit returns 2.4%: (1.024)^(365/120) − 1 = 7.48% a year. Multiplying, 2.4% × 365 / 120 = 7.30%, ignores compounding and is wrong.
+> - A weekly return of 0.3%: 1.003^52 − 1 = 16.86% a year.
+> - A two-year return of 18%: 1.18^(1/2) − 1 = 8.63% a year.
+
+Annualizing a short-term return assumes that the same return could be earned again and again, which is often unrealistic. A share that rose 5% in a lucky week will not rise 5% every week of the year; annualizing it gives an impressive but meaningless 1.05^52 − 1 ≈ 1,164%.
+
+## 4. Compounding frequency and continuous compounding
+### Stated rate versus effective annual rate
+Banks quote a **stated annual rate** (also called nominal or quoted), then apply it m times a year. What the investor actually earns over a year is the **effective annual rate** (EAR):
+- EAR = (1 + stated rate / m)^m − 1.
+
+> **Worked example 4: one stated rate, five effective rates**
+> A stated rate of 7.2% gives:
+> - annual compounding: 7.20%
+> - semi-annual: 1.036² − 1 = 7.33%
+> - quarterly: 1.018^4 − 1 = 7.40%
+> - monthly: 1.006^12 − 1 = 7.44%
+> - daily: (1 + 0.072 / 365)^365 − 1 = 7.46%
+> On the calculator, use the interest conversion worksheet: \\\`2ND 2\\\` (ICONV), enter \\\`NOM = 7.2\\\`, \\\`C/Y = 12\\\`, then move to EFF and press \\\`CPT\\\`: 7.44.
+> More frequent compounding raises the EAR, but by less and less each time.
+
+### Continuously compounded returns
+If compounding happens infinitely often, the limit is **continuous compounding**. A stated rate r compounded continuously gives EAR = e^r − 1; at 7.2% that is e^0.072 − 1 = 7.47%, just above daily compounding.
+
+Turned around, the **continuously compounded return** between two prices is the natural logarithm of their ratio:
+- r_cc = ln(P1 / P0) = ln(1 + HPR).
+
+Its great advantage is that it **adds up over time**: the continuously compounded return over several periods is the sum of the period returns. Holding period returns, by contrast, must be multiplied. This additivity is why statistical models of returns (and the lognormal model of prices) use continuously compounded returns.
+
+> **Worked example 5: log returns add up**
+> A share moves from 40 to 46 and then to 43.
+> - Period 1: ln(46 / 40) = 13.98%
+> - Period 2: ln(43 / 46) = −6.74%
+> - Sum: 13.98 − 6.74 = 7.23%, which equals ln(43 / 40) = 7.23% directly.
+> On the calculator: \\\`43 ÷ 40 = LN\\\` gives 0.0723.
+> The ordinary holding period return over both periods is 43 / 40 − 1 = 7.50%. The continuously compounded figure is always smaller than the HPR for a gain, and ln(1.075) = 7.23% links the two.
+
+## 5. Returns after costs, taxes and inflation
+Several measures peel back the layers between what the assets earned and what the investor keeps.
+- **Gross return:** what the portfolio earned before management and administrative fees. Trading costs are already deducted, because they are part of making the investments. Gross return is the fair way to judge a manager's skill at picking investments.
+- **Net return:** after all fees. This is what investors in the fund actually receive. Fixed administrative costs weigh more heavily on small funds.
+- **Pre-tax and after-tax return:** taxes on dividends, interest and realized gains reduce what the investor keeps. Tax rules differ by type of income and by country, and gains are usually taxed only when realized, which makes deferring a sale valuable.
+- **Real return:** the gain in purchasing power, (1 + nominal) / (1 + inflation) − 1, as in the previous module. Investors with long horizons care about it most.
+
+> **Worked example 6: from gross to real after-tax**
+> A fund earns 9.0% gross and charges 1.2% of assets in fees. Its investor pays tax of 25% on the whole return. Inflation is 3.1%.
+> - Net return = 9.0 − 1.2 = 7.8%
+> - After-tax return = 7.8% × (1 − 0.25) = 5.85%
+> - Real after-tax return = 1.0585 / 1.031 − 1 = 2.67%
+> Of the 9.0% the assets earned, the investor's purchasing power grew by less than a third of it.
+
+The order matters when the question gives different taxes or inflation adjustments, so follow the cash: fees come out of the fund, tax is paid by the investor on what the fund paid out, and inflation is applied last to whatever is left.
+
+## 6. Leveraged returns
+Investors can buy more assets than their own money allows by **borrowing**, through a loan, buying on margin or using derivatives. Borrowing magnifies the return on the investor's own money (equity), in both directions. With V_E of the investor's own money, V_B borrowed at a rate r_D and a return r on the total assets:
+- R_L = r + (V_B / V_E) × (r − r_D).
+
+The investor earns the asset return on their own money, plus the **spread** between the asset return and the borrowing cost on every unit borrowed.
+
+> **Worked example 7: the two faces of leverage**
+> An investor puts in 600,000 of their own money and borrows 400,000 at 5% to buy 1,000,000 of assets. Leverage ratio V_B / V_E = 400 / 600 = 0.667.
+> - Assets return 11%: R_L = 11% + 0.667 × (11% − 5%) = 15.0%
+> - Assets return −4%: R_L = −4% + 0.667 × (−4% − 5%) = −10.0%
+> Check the bad year in money: the assets are worth 960,000, the lender is owed 420,000 with interest, so the investor is left with 540,000, a loss of 60,000 on 600,000, which is −10%.
+> Leverage turned an 11% year into 15% but a 4% loss into a 10% loss. It helps only while the asset return beats the cost of borrowing.
+
+## 7. Checklist before you answer
+- Expected return for next period: arithmetic mean. Past compound growth: geometric mean. Cost per share with a fixed amount invested: harmonic mean.
+- Never add or average returns when you need growth over several periods: multiply (1 + R).
+- Annualize by compounding, (1 + R)^c − 1, not by multiplying the period return by c.
+- For an EAR, divide the stated rate by m, compound m times, subtract 1. With continuous compounding, EAR = e^r − 1.
+- Continuously compounded returns add over time; holding period returns multiply. Convert with ln(1 + HPR) and e^r − 1.
+- Gross return already deducts trading costs; net return also deducts management and administrative fees.
+- Leverage multiplies the spread between asset return and borrowing cost: check its sign before deciding whether leverage helped.`,
  ideas:`**Many return measures exist because each answers a different question.** The skill tested is choosing the right one and computing it.
 
 ## Averaging returns over several periods
@@ -14568,6 +14818,122 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 {name:"Benchmarking Returns",
  core:/money[- ]weighted|time[- ]weighted|\bindex\b|indexes|indices|benchmark/,
  match:/money[- ]weighted|time[- ]weighted|\bMWRR?\b|\bTWRR?\b|internal rate of return of the portfolio|\bindex\b|indexes|indices|price[- ]weighted|equal(ly)?[- ]weighted index|(market[- ]cap(italization)?|value)[- ]weighted|float[- ]adjusted|fundamental weighting|rebalanc|reconstitut|total return index|price return index|benchmark|external cash flow|deposits? (made )?(into|to) the (portfolio|account)|withdraw/,
+ lesson:`## 1. Two jobs: measure fairly, compare fairly
+Saying a fund "returned 9% last year" raises two questions. First, whose return is that: the return of the manager's decisions, or of the investor who added and withdrew money at particular moments? Second, 9% compared with what? A manager of large European shares should be judged against an index of large European shares, so the way that index is built matters too. This module answers both questions: how to compute a portfolio's return when money flows in and out, and how indices are constructed and their returns calculated.
+
+## 2. Money-weighted rate of return
+The **money-weighted rate of return** (MWRR) treats the portfolio like a project: it is the **internal rate of return** (IRR) of all the cash flows between the investor and the portfolio. Deposits are outflows for the investor, withdrawals and the ending value are inflows, and the MWRR is the single rate that makes their present values sum to zero.
+
+Because every cash flow counts, the MWRR is shaped by **how much money was invested when**. If an investor adds a lot of money just before a good year, the good year weighs heavily; if they add it before a bad year, the bad year dominates. The MWRR therefore measures the **investor's** experience, including their timing decisions.
+
+> **Worked example 1: an MWRR with a deposit**
+> An investor opens an account with 50,000. After one year it is worth 56,000 and they add 30,000, bringing it to 86,000. During the second year it loses 5% and ends at 81,700.
+> Cash flows from the investor's side: t = 0: −50,000; t = 1: −30,000; t = 2: +81,700.
+> Solve 50,000 × (1 + r)² + 30,000 × (1 + r) = 81,700, or use the calculator:
+> \\\`CF\\\`, \\\`2ND CE|C\\\`, \\\`CF0 = −50,000\\\`, \\\`C01 = −30,000\\\` (\\\`F01 = 1\\\`), \\\`C02 = 81,700\\\` (\\\`F02 = 1\\\`), \\\`IRR CPT\\\` gives 1.30%.
+> A money-weighted return of only 1.30% a year, even though the first year was very good. Most of the money was invested during the bad year.
+
+## 3. Time-weighted rate of return
+The **time-weighted rate of return** (TWRR) removes the effect of the investor's cash flows. The steps:
+1. Split the evaluation period into sub-periods, starting a new one at every external cash flow (deposit or withdrawal).
+2. Compute the holding period return of each sub-period, using the value **just before** the cash flow as the end of one sub-period and the value **just after** as the start of the next.
+3. Link the sub-period returns: (1 + R1)(1 + R2)…(1 + Rn) − 1.
+4. If the total period is longer than a year, annualize with the geometric mean.
+
+> **Worked example 2: the same account, time-weighted**
+> - Year 1: 56,000 / 50,000 − 1 = 12%
+> - Year 2: 81,700 / 86,000 − 1 = −5%
+> - Two-year TWRR = 1.12 × 0.95 − 1 = 6.40%; annualized: 1.064^(1/2) − 1 = 3.15%
+> The 30,000 deposit has no effect. Had the investor deposited nothing, the account would still show +12% and −5%.
+
+### Which one to use
+- A typical fund manager does not decide when clients add or withdraw money. Judging the manager with the MWRR would reward or punish them for the clients' timing. So the **TWRR is the industry standard for evaluating managers**, and the Global Investment Performance Standards (GIPS) require time-weighted returns for most portfolios.
+- The MWRR is the right measure when the manager **does control** the cash flows, as in private equity funds that decide when to call capital from investors and when to return it, or for an individual judging their own decisions.
+- When there are no external cash flows, both measures give the same answer.
+- The two differ most when cash flows are large relative to the portfolio and returns vary a lot between sub-periods.
+
+A practical limit of the TWRR is that it needs a valuation of the portfolio on every date with a cash flow. For liquid portfolios this is easy; for property or private companies, frequent valuations are costly, which is another reason those funds report money-weighted returns.
+
+## 4. What an index is for
+A **security market index** represents a market, a segment of a market or an asset class through a selection of securities called its **constituents**. Each index value is a single number computed from the constituents' prices and weights. Indices are used to:
+- gauge how a market has moved and how investors feel about it;
+- serve as **benchmarks** for active managers;
+- measure the market return and risk used in models such as the CAPM;
+- define asset classes in asset allocation;
+- serve as the basis of index funds and exchange-traded funds that track them.
+
+Building an index involves five choices: which market it represents, which securities enter, how they are **weighted**, how often it is **rebalanced** and how often it is **reviewed** (reconstituted). The weighting choice has the biggest effect on what the index shows.
+
+## 5. Weighting methods
+Throughout this section, use the same three shares. At the start: A at 80 with 10 million shares, B at 40 with 50 million shares, C at 20 with 200 million shares. At the end of the period: A at 72 (−10%), B at 44 (+10%), C at 23 (+15%).
+
+### Price weighting
+A **price-weighted** index adds up the prices and divides by a **divisor** (initially the number of constituents). Each share's weight is its price divided by the sum of prices, so a share with a high price matters most, whatever the size of the company.
+
+> **Worked example 3: a price-weighted index**
+> - Start: (80 + 40 + 20) / 3 = 46.67. End: (72 + 44 + 23) / 3 = 46.33.
+> - Price return = 46.33 / 46.67 − 1, or exactly 139 / 140 − 1 = −0.71%
+> A has the highest price, so its 10% fall outweighed the gains of B and C, even though A is the smallest company of the three.
+> Now B splits 2-for-1 at the end: its price halves to 22. Without an adjustment the index would fall to (72 + 22 + 23) / 3 = 39.00, although no investor lost anything. So the divisor is changed to keep the value at 46.33: new divisor = 117 / 46.33 = 2.525.
+> After the split, B's weight in the index is smaller than before. A split changes a share's weight in a price-weighted index without anything real having happened.
+
+Price weighting is simple and some long-established indices use it, but its weights are arbitrary: they depend on share prices, which reflect splits and the number of shares a company chose to issue, not on the company's value.
+
+### Equal weighting
+An **equal-weighted** index gives every constituent the same weight, so its return is the simple average of the constituents' returns.
+
+> **Worked example 4: equal weights**
+> Return = (−10% + 10% + 15%) / 3 = 5.00%.
+
+Equal weighting is easy to understand, but it **overweights small companies** relative to their importance in the market, and the weights drift as prices move. To restore equal weights the index must be **rebalanced** often (typically each quarter), which creates trading costs for funds that track it. Some small constituents may also be hard to trade in the quantities a large fund needs.
+
+### Market-capitalization weighting
+A **market-capitalization-weighted** (value-weighted) index weights each constituent by its market value: price × shares outstanding. The index moves like a portfolio that owns the whole market, so it is the most common choice.
+
+> **Worked example 5: market-cap weights**
+> - Start: A 800m, B 2,000m, C 4,000m, total 6,800m. Weights: A 11.8%, B 29.4%, C 58.8%.
+> - End: A 720m, B 2,200m, C 4,600m, total 7,520m.
+> - Return = 7,520 / 6,800 − 1 = 10.59%. If the index started at a base value of 1,000, it now stands at 1,000 × 7,520 / 6,800 = 1,105.88.
+> The same three shares gave −0.71%, 5.00% or 10.59% depending only on the weighting: C, the largest company, drives this one.
+
+A **float-adjusted** version counts only the shares available to the public (the free float), excluding blocks held by founders, governments or other companies. It reflects what investors can actually buy.
+
+> **Worked example 6: adjusting for free float**
+> Suppose 80 million of C's 200 million shares belong to its founding family and never trade. Float-adjusted values: A 800m, B 2,000m, C 120m × 20 = 2,400m, total 5,200m at the start; 720 + 2,200 + 2,760 = 5,680m at the end.
+> - Float-adjusted return = 5,680 / 5,200 − 1 = 9.23%, below 10.59%, because C's weight falls from 58.8% to 46.2%.
+
+Because a cap-weighted index gives more weight to shares whose prices have risen, it tilts toward large and possibly **overvalued** companies, and toward recent winners (a **momentum** tilt). Its advantage is that it needs no rebalancing: the weights adjust automatically as prices move.
+
+### Fundamental weighting
+A **fundamentally weighted** index weights constituents by measures of size that do not depend on price: sales, earnings, book value, cash flow or dividends. Shares that become expensive relative to these measures lose weight, so the index has a **value tilt**, and its rebalancing acts like a contrarian strategy: selling what has risen, buying what has fallen.
+
+## 6. Price return versus total return
+An index can be calculated in two versions:
+- A **price return** index reflects only changes in the constituents' prices.
+- A **total return** index also includes the income they pay (dividends, interest), assumed to be reinvested.
+
+> **Worked example 7: adding dividends**
+> During the period A paid a dividend of 2.00, B 1.00 and C 0.50 per share.
+> - Price-weighted total return: (139 + 3.50) / 140 − 1 = 1.79%, against a price return of −0.71%.
+> - Cap-weighted: dividends total 10m × 2.00 + 50m × 1.00 + 200m × 0.50 = 170m, so total return = (7,520 + 170) / 6,800 − 1 = 13.09%, against 10.59%.
+> - Equal-weighted: the average of (72 + 2) / 80 − 1, (44 + 1) / 40 − 1 and (23 + 0.5) / 20 − 1 = 7.50%, against 5.00%.
+> Over one year the gap is a couple of percentage points; over decades, reinvested income accounts for a large part of what shareholders earned. A manager whose fund includes dividends should be compared with a total return index.
+
+Both versions start at the same base value; afterwards the total return index stays above the price return index as long as the constituents pay income.
+
+## 7. Keeping an index up to date
+- **Rebalancing** brings the weights back to the target of the weighting method. Equal-weighted and fundamentally weighted indices need it regularly; cap-weighted indices mostly do not.
+- **Reconstitution** changes the list of constituents: companies that no longer meet the criteria (too small, delisted, merged) leave and new ones enter. Shares being added tend to rise and shares being removed tend to fall around the announcement, as funds that track the index trade them.
+- A **corporate action** such as a split, spin-off or share issue changes prices or share counts; the index provider adjusts the divisor so the index value is not distorted.
+
+## 8. Checklist before you answer
+- Judging a manager who does not control cash flows: TWRR. The investor's own experience, or a manager who controls the timing: MWRR.
+- In the TWRR, start a new sub-period at every external cash flow and link sub-period returns by multiplying (1 + R).
+- The MWRR is an IRR: put deposits and withdrawals on the timeline with opposite signs and use the CF worksheet.
+- Price-weighted: highest price matters most; a split changes the divisor and the weights.
+- Equal-weighted: small-company tilt, frequent rebalancing. Cap-weighted: large-company and momentum tilt, little rebalancing. Fundamental: value tilt.
+- Float adjustment removes shares the public cannot buy.
+- Compare total returns with total returns: a price return index understates what investors earned.`,
  ideas:`**Two jobs: measure a portfolio's return fairly, and build the index it is compared with.**
 
 ## Money-weighted versus time-weighted return
