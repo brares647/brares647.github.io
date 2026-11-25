@@ -15850,25 +15850,660 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 /* Learning map, Fixed Income: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Fixed Income","LM-FI",[
-{name:"Fixed-Income Instrument Features"},
-{name:"Fixed-Income Cash Flows and Types"},
-{name:"Fixed-Income Issuance and Trading"},
-{name:"Fixed-Income Markets for Corporate Issuers"},
-{name:"Fixed-Income Markets for Government Issuers"},
-{name:"Fixed-Income Bond Valuation: Prices and Yields"},
-{name:"Yield and Yield Spread Measures for Fixed-Rate Bonds"},
-{name:"Yield and Yield Spread Measures for Floating-Rate Instruments"},
-{name:"The Term Structure of Interest Rates: Spot, Par, and Forward Curves"},
-{name:"Interest Rate Risk and Return"},
-{name:"Yield-Based Bond Duration Measures and Properties"},
-{name:"Yield-Based Bond Convexity and Portfolio Properties"},
-{name:"Curve-Based and Empirical Fixed-Income Risk Measures"},
-{name:"Credit Risk"},
-{name:"Credit Analysis for Government Issuers"},
-{name:"Credit Analysis for Corporate Issuers"},
-{name:"Fixed-Income Securitization"},
-{name:"Asset-Backed Security (ABS) Instrument and Market Features"},
-{name:"Mortgage-Backed Security (MBS) Instrument and Market Features"}
+{name:"Fixed-Income Instrument Features",
+ core:/indenture|trust deed|covenants?\b|affirmative|negative pledge|\btrustee\b|par value|face value|\btenor\b|bond('s)? (features|terms)|features of (a|the) bond/,
+ match:/indenture|covenant|affirmative|negative|trustee|par|face value|tenor|maturity|coupon|currency|collateral|secured|seniority|issuer|bondholder|restrict/,
+ ideas:`**A bond is a promise by an issuer to make specified payments. Its features say who pays, how much, when, in which currency, and with what protection.**
+
+## Basic features
+- **Issuer:** governments, companies, supranational bodies, special purpose entities.
+- **Maturity (tenor):** when principal is due. Money market instruments mature within a year; capital market bonds later; perpetual bonds never.
+- **Par (face) value:** the principal repaid. Prices are quoted as a percentage of par: at par, above (premium) or below (discount).
+- **Coupon rate and frequency:** fixed or floating, paid annually, semi-annually or quarterly; zero-coupon bonds pay no coupons.
+- **Currency:** bonds can pay in the issuer's currency, a foreign currency, or one currency for coupons and another for principal (dual-currency bonds).
+- **Seniority and security:** secured bonds are backed by specific assets (collateral); unsecured bonds rely on the issuer's general credit. Credit enhancements (guarantees, letters of credit, overcollateralization) add protection.
+
+## The indenture and covenants
+- The **indenture** (trust deed) is the legal contract between issuer and bondholders: terms, payments, collateral, covenants and remedies. A **trustee** monitors the issuer on behalf of the bondholders.
+- **Affirmative covenants** say what the issuer must do: pay interest and principal on time, keep proper accounts, maintain insurance and assets, comply with laws, report regularly. They rarely cost the issuer much.
+- **Negative covenants** say what the issuer must not do: take on more debt beyond limits, pledge assets already securing other debt (**negative pledge**), sell key assets, pay excessive dividends, or merge without meeting conditions. They protect bondholders but limit management's flexibility, so they are more common for riskier issuers.`,
+ traps:[
+  "Affirmative covenants require actions; negative covenants restrict them.",
+  "A negative pledge clause stops the issuer from giving other lenders a prior claim on its assets.",
+  "The trustee acts for the bondholders, not for the issuer.",
+  "Price quoted as 98 means 98% of par value, not 98 currency units.",
+  "Secured debt ranks ahead of unsecured debt only on the assets that secure it."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-instrument-features/","Fixed-Income Instrument Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/i/indenture.asp"],
+  ["w:Bond_(finance)"],
+  ["w:Covenant_(law)"]
+ ]},
+{name:"Fixed-Income Cash Flows and Types",
+ core:/\bbullet\b|amortiz|sinking fund|zero-coupon|floating-rate note|\bFRN\b|step-up|payment-in-kind|\bPIK\b|deferred coupon|inflation-linked|index-linked|\bTIPS\b|callable|call (option|provision|protection|price|feature|schedule)|make-whole|putable|put (option|provision|feature)|convertible|conversion (ratio|price|value|premium)|contingent convertible|\bCoCos?\b|eurobond|foreign bond|domestic bond|global bond|bearer|tax-exempt|original issue discount|balloon/,
+ match:/bullet|amortiz|sinking|zero|floating|step-up|PIK|deferred|inflation|index-linked|call|make-whole|put|convertib|conversion|contingent|eurobond|foreign bond|global bond|bearer|registered|tax|withholding|balloon/,
+ ideas:`**Bonds differ in how and when they pay, in options that change those payments, and in the legal and tax regime they are issued under.**
+
+## Principal repayment
+- **Bullet:** all principal at maturity. **Fully amortizing:** each payment covers interest and part of the principal, nothing left at the end. **Partially amortizing:** a large final (balloon) payment.
+- A **sinking fund** retires part of the issue each year (by calls at par or open-market purchases). It lowers credit risk, but bondholders may lose high-coupon bonds when rates have fallen.
+
+## Coupon structures
+- Fixed; **zero-coupon** (issued at a discount); **floating-rate notes** (reference rate + a fixed quoted margin, possibly with a cap or floor); **step-up** coupons that rise on a schedule; **credit-linked** coupons that rise if the rating falls; **payment-in-kind** (interest paid with more bonds); **deferred** coupons; **inflation-linked** bonds whose principal or coupons follow a price index.
+
+## Contingency provisions
+- **Callable:** the issuer may redeem early, usually after a protection period, and does so when rates fall. This benefits the issuer, so investors demand a higher yield. A **make-whole** call pays the present value of the remaining cash flows, so it costs the issuer more.
+- **Putable:** the investor may sell back at a set price, useful when rates rise; it benefits the investor, so the yield is lower.
+- **Convertible:** the investor may swap the bond for shares. Conversion price = par / conversion ratio; conversion value = conversion ratio × share price. A ratio of 25 per 1,000 of par means a conversion price of 40; at a share price of 44 the conversion value is 1,100.
+- **Contingent convertibles** convert automatically when a trigger (such as a bank's capital ratio) is hit, which protects the issuer.
+
+## Legal, regulatory and tax points
+- **Domestic** bonds: issued at home in the home currency. **Foreign** bonds: issued in another country's market and currency. **Eurobonds:** issued outside any single national market, usually in bearer form and less regulated. **Global bonds:** issued in a Eurobond market and at least one domestic market at once.
+- Interest is usually taxed as income and price gains as capital gains; some government bonds (such as many US municipal bonds) are tax-exempt; the discount on zero-coupon bonds may be taxed each year.`,
+ traps:[
+  "A call option benefits the issuer, so a callable bond yields more than an otherwise identical option-free bond.",
+  "A put option benefits the investor, so a putable bond yields less.",
+  "Conversion price = par value / conversion ratio.",
+  "A sinking fund lowers credit risk but adds reinvestment risk for bondholders.",
+  "A Eurobond is defined by where it is issued and regulated, not by being denominated in euros."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-cash-flows-and-types/","Fixed-Income Cash Flows and Types: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/callablebond.asp"],
+  ["i:terms/c/convertiblebond.asp"],
+  ["i:terms/t/tips.asp"],
+  ["w:Sinking_fund"]
+ ]},
+{name:"Fixed-Income Issuance and Trading",
+ core:/market segments?|bond (index|indexes|indices)|fixed-income index|aggregate (bond )?index|primary (bond |fixed-income )?market|secondary (bond |fixed-income )?market|underwrit|best[- ]efforts|shelf registration|over-the-counter|dealer market|institutional investors|retail investors|bond market (is|are|differs)/,
+ match:/segment|investment grade|high-yield|emerging|index|primary|secondary|underwrit|best efforts|auction|shelf|private placement|over-the-counter|OTC|dealer|liquid|bid-ask|transparen|settle|participant|investor|issuer/,
+ ideas:`**The bond market is larger than the equity market and works differently: most bonds are issued to institutions and traded between dealers, not on exchanges.**
+
+## Market segments and participants
+- Segments by **issuer** (governments, non-financial companies, banks and other financials, securitized products), **credit quality** (investment grade versus high yield), **maturity** (money market versus capital market), **currency** and **geography** (developed versus emerging markets).
+- **Issuers:** governments and their agencies, supranational bodies, companies, banks and special purpose entities.
+- **Investors:** central banks, pension funds, insurers, mutual funds and ETFs, banks, hedge funds, and individuals (mostly through funds).
+
+## Fixed-income indexes
+- Broad aggregate indexes and narrower ones by segment: government, investment-grade corporate, high yield, emerging markets, inflation-linked.
+- They are usually weighted by the market value of debt outstanding, so the most indebted issuers get the largest weights. They contain thousands of bonds, many of which trade rarely and keep maturing, so indexes rebalance often and are hard to replicate exactly; funds often sample them instead.
+
+## Primary markets
+- **Public offerings:** underwritten (the bank buys the issue and resells it, taking price risk) or best efforts (the bank sells as agent). **Shelf registration** lets a frequent issuer sell bonds in pieces over time under one filing. Governments usually sell through regular **auctions**. **Private placements** go to a few qualified investors.
+
+## Compared with equities
+- Secondary bond trading is mostly **over-the-counter** through dealers, not on exchanges. Trades are larger, prices less transparent, and many issues trade rarely; bid-ask spreads are narrow for government benchmarks and wider for small or lower-rated issues.
+- A company has one or two share classes but may have dozens of bonds outstanding, which fragments liquidity.`,
+ traps:[
+  "Bond indexes weight issuers by debt outstanding, so more borrowing means a larger index weight.",
+  "In an underwritten offering the bank bears the price risk; in a best-efforts offering it does not.",
+  "Most corporate bonds trade over the counter, not on exchanges.",
+  "Liquidity varies widely: on-the-run government bonds trade constantly, many corporate bonds rarely.",
+  "A bond index is harder to replicate than an equity index because of its size, illiquidity and constant maturing."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-issuance-and-trading/","Fixed-Income Issuance and Trading: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Bond_market"],
+  ["w:Bond_market_index"]
+ ]},
+{name:"Fixed-Income Markets for Corporate Issuers",
+ core:/commercial paper|line of credit|credit lines?|revolving|revolver|factoring|asset-based (loan|lending)|repurchase agreement|\brepos?\b|haircut|certificates? of deposit|interbank|wholesale funding|short-term funding|rollover risk|backup line|reverse repo/,
+ match:/commercial paper|line of credit|credit line|revolving|factoring|asset-based|repurchase|repo|haircut|certificate|interbank|wholesale|deposit|short-term|rollover|backup|collateral|investment-grade|high-yield|secured|covenant|maturit|central bank/,
+ ideas:`**Companies and banks borrow short term to fund working capital and long term to fund investment; the instruments differ for strong and weak credits.**
+
+## Short-term funding of non-financial companies
+- **Bank lines of credit:** uncommitted (the bank may refuse), committed (a fee for guaranteed access) and revolving credit agreements (multi-year, the strongest form).
+- **Secured loans:** asset-based lending against receivables or inventory, and **factoring** (selling receivables to a lender).
+- **Commercial paper:** short-term unsecured notes sold by strong issuers, usually backed by bank lines because maturing paper must be refinanced (**rollover risk**).
+
+## Short-term funding of banks
+- Retail deposits (stable), wholesale funding: interbank loans, certificates of deposit, central bank facilities, and repurchase agreements.
+
+## Repurchase agreements (repos)
+- A repo is a sale of securities with an agreement to buy them back later at a higher price: in effect a loan secured by the securities. The difference is the **repo rate**.
+- The **haircut** is the margin by which the collateral's value exceeds the cash lent. Example: collateral worth 10 million with a 2% haircut supports a loan of 9.8 million; at a 3% repo rate for 30 days (360-day year), the repurchase price is 9.8 × (1 + 0.03 × 30 / 360) = 9.8245 million.
+- Haircuts and repo rates are higher for riskier or less liquid collateral, longer terms and weaker counterparties.
+- Uses: financing bond positions cheaply, borrowing securities to cover short sales, and central bank operations. Risks: the counterparty may default, the collateral may lose value, and lenders may pull funding in a crisis.
+
+## Long-term funding: investment grade versus high yield
+- **Investment-grade** issuers sell mostly unsecured, fixed-rate bonds with long maturities and few covenants; investors focus on interest rate and spread risk.
+- **High-yield** issuers rely more on secured bank loans (often floating rate) and bonds with shorter maturities, call features after a few years and tighter covenants; investors focus on default risk and recovery.`,
+ traps:[
+  "In a repo the cash lender holds the collateral; the haircut protects the lender.",
+  "Riskier collateral and longer terms mean larger haircuts and higher repo rates.",
+  "Commercial paper is unsecured and depends on rollover, so it is backed by bank credit lines.",
+  "A committed credit line costs a fee even when unused; an uncommitted one can be refused.",
+  "High-yield bonds carry more covenants and shorter maturities than investment-grade bonds."
+ ],
+ formulas:["F1-FI-14"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-markets-for-corporate-issuers/","Fixed-Income Markets for Corporate Issuers: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/r/repurchaseagreement.asp"],
+  ["w:Commercial_paper"],
+  ["w:High-yield_debt"]
+ ]},
+{name:"Fixed-Income Markets for Government Issuers",
+ core:/sovereign (bond|debt|issuer|issue)|government (bonds?|debt|issuers?|securities)|Treasur(y|ies)|non-sovereign|municipal|local government|regional government|agency (bond|debt|issue)|quasi-government|supranational|World Bank|on-the-run|off-the-run|single-price auction|multiple-price auction|Dutch auction/,
+ match:/sovereign|government|Treasur|non-sovereign|municipal|local|regional|agency|quasi|supranational|World Bank|on-the-run|off-the-run|auction|benchmark|central bank|inflation-linked|bills?|notes/,
+ ideas:`**Governments borrow to cover deficits and refinance debt. Their bonds set the benchmark yields against which other bonds are priced.**
+
+## Sovereign governments
+- National governments issue mainly in their own currency: short-term **bills** (a year or less, sold at a discount), and coupon-paying notes and bonds; many also issue **inflation-linked** bonds. Some, especially emerging markets, also borrow in foreign currencies, which adds currency risk for the borrower.
+- They sell through regular, published **auctions**. In a single-price auction all winning bidders pay the same price; in a multiple-price auction each pays its own bid.
+- The most recently issued bond of each maturity is **on-the-run**: the most liquid, and used as the benchmark. Older issues are off-the-run.
+
+## Other public issuers
+- **Non-sovereign** governments (states, provinces, cities) issue **general obligation** bonds backed by their taxing power and **revenue bonds** repaid from a specific project such as a toll road.
+- **Quasi-government** entities and agencies carry an explicit or implicit government guarantee, so their yields are close to sovereign yields.
+- **Supranational** agencies (such as the World Bank or regional development banks) are owned by several governments, usually rated highly and issue in many currencies.
+
+## Government versus corporate debt
+- Governments issue on a regular calendar by auction; companies issue when they need funds, mostly through underwriters.
+- Government bonds are larger, more liquid and more standardized, and trade at narrower bid-ask spreads. Corporate bonds are more numerous and varied, trade less often, and carry credit spreads over government yields.
+- Central banks also buy and sell government bonds to implement monetary policy, which adds demand and liquidity.`,
+ traps:[
+  "On-the-run issues are the most liquid and trade at slightly higher prices (lower yields) than similar off-the-run issues.",
+  "General obligation bonds rely on taxing power; revenue bonds rely only on the project's income.",
+  "A government's foreign-currency debt carries more default risk than its local-currency debt.",
+  "In a single-price auction every winning bidder pays the same price.",
+  "Government bond yields are the benchmark from which credit spreads are measured."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-markets-for-government-issuers/","Fixed-Income Markets for Government Issuers: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/sovereign-debt.asp"],
+  ["w:Government_bond"],
+  ["w:Supranational_union"]
+ ]},
+{name:"Fixed-Income Bond Valuation: Prices and Yields",
+ core:/bond('s)? (price|value)|price of (a|the|this) bond|full price|flat price|clean price|dirty price|accrued interest|matrix pricing|between coupon|price (will|would) (rise|fall|increase|decrease)|trades? at a (premium|discount)|priced at (a )?(premium|discount|par)/,
+ match:/price|value|full|flat|clean|dirty|accrued|matrix|premium|discount|par|coupon|yield-to-maturity|YTM|maturity|discount rate|present value/,
+ ideas:`**A bond's price is the present value of its promised cash flows, discounted at its yield-to-maturity (YTM).**
+
+## Price on a coupon date
+- P = Σ C / (1 + r)^t + FV / (1 + r)^N, with r and N per period. Example: a 5-year bond with a 4% annual coupon priced at a 5% YTM: P = 95.67 per 100 of par.
+
+## Price between coupon dates
+- The **full (dirty) price** is the present value at the settlement date: full price = PV at the last coupon date × (1 + r)^(t/T), where t/T is the fraction of the period that has passed.
+- **Accrued interest** = coupon × t/T: the part of the next coupon the seller has earned. The **flat (clean) price** quoted by dealers = full price − accrued interest.
+- Example: a quarter of the year after the last coupon, the bond above has a full price of 95.67 × 1.05^0.25 = 96.84, accrued interest of 4 × 0.25 = 1.00, and a flat price of 95.84.
+
+## Relationships between price, coupon, maturity and yield
+- Price and yield move in opposite directions.
+- Coupon equal to yield: priced at par. Coupon below yield: discount. Coupon above yield: premium.
+- With an unchanged yield, a discount or premium bond's price moves toward par as maturity approaches (pull to par).
+- For the same coupon, a longer maturity means larger price changes for a given change in yield; a lower coupon also means larger percentage changes.
+- **Convexity:** a fall in yield raises the price more than an equal rise in yield lowers it.
+
+## Matrix pricing
+- For a bond that rarely trades, estimate its yield from the yields of traded bonds with similar credit quality, coupon and maturity, interpolating between maturities, and then price it at that yield. It is also used to set the coupon of a new issue.`,
+ traps:[
+  "The flat price excludes accrued interest; the buyer actually pays the full price.",
+  "A bond trades at a premium when its coupon is above its yield, not when its yield is high.",
+  "Use per-period yield and per-period coupons: a semi-annual bond with a 6% yield is discounted at 3% per half-year.",
+  "Accrued interest is the coupon × the fraction of the period elapsed, not interest at the market yield.",
+  "With yield unchanged, premium bonds fall and discount bonds rise toward par over time."
+ ],
+ formulas:["F1-FI-01","F1-FI-04"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-bond-valuation-prices-and-yields/","Fixed-Income Bond Valuation: Prices and Yields: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/b/bond-valuation.asp"],
+  ["i:terms/d/dirtyprice.asp"],
+  ["w:Bond_valuation"]
+ ]},
+{name:"Yield and Yield Spread Measures for Fixed-Rate Bonds",
+ core:/current yield|yield to call|yield to worst|yield to first call|option-adjusted yield|street convention|true yield|semi-?annual(ly)? (bond )?(basis|yield|compounding|periodicity)|bond[- ]equivalent yield|effective annual yield|periodicity|G-spread|I-spread|Z-spread|zero-volatility|option-adjusted spread|\bOAS\b|benchmark spread|yield spread/,
+ match:/yield|current|call|worst|street|true|semi|annual|periodicity|compounding|spread|benchmark|interpolat|swap|government|OAS|option/,
+ ideas:`**The same bond can be described by several yields, and its extra return over a benchmark by several spreads.**
+
+## Yields and compounding
+- YTM assumes the bond is held to maturity, every payment is made, and coupons are reinvested at the same YTM.
+- Yields must be compared on the same periodicity. A 4% yield compounded semi-annually equals (1 + 0.04 / 2)² − 1 = 4.04% compounded annually. More frequent compounding means a lower stated rate for the same effective return.
+- **Street convention** assumes payments on scheduled dates; **true yield** uses actual dates, including weekends and holidays, and is slightly lower.
+- **Current yield** = annual coupon / flat price: it ignores price changes and reinvestment.
+
+## Bonds with call options
+- **Yield to call** assumes the bond is redeemed at a call date and call price. **Yield to worst** is the lowest of the yield to maturity and the yields to each call date: a conservative measure.
+- **Option-adjusted yield** removes the value of the call option to show the yield of an equivalent option-free bond.
+
+## Yield spreads
+- **G-spread:** yield over a government bond of the same maturity (interpolated if needed). **I-spread:** yield over the swap rate of the same maturity.
+- **Benchmark spread:** over a specific benchmark; it reflects credit and liquidity risk (and tax differences).
+- **Z-spread (zero-volatility spread):** the constant spread added to every government spot rate that makes the present value of the cash flows equal the price; more accurate than a single-yield spread when the curve is not flat.
+- **Option-adjusted spread (OAS)** = Z-spread − option value (in basis points). For a callable bond the OAS is below the Z-spread; for a putable bond it is above.`,
+ traps:[
+  "Compare yields only after converting them to the same compounding frequency.",
+  "Yield to worst is the lowest of the yield to maturity and all the yields to call.",
+  "The current yield ignores capital gains and losses as the bond moves toward par.",
+  "For a callable bond, OAS = Z-spread − option cost, so the OAS is smaller.",
+  "The Z-spread uses the whole spot curve; the G-spread uses a single government yield."
+ ],
+ formulas:["F1-FI-03","F1-FI-15","F1-QM-07"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-yield-measures-fixed-rate-bonds/","Yield and Yield Spread Measures for Fixed-Rate Bonds: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/y/yieldtomaturity.asp"],
+  ["i:terms/y/yieldtoworst.asp"],
+  ["i:terms/z/zspread.asp"],
+  ["i:terms/o/optionadjustedspread.asp"]
+ ]},
+{name:"Yield and Yield Spread Measures for Floating-Rate Instruments",
+ core:/floating-rate|floater|quoted margin|required margin|discount margin|reference rate|\bSOFR\b|\bLIBOR\b|\bMRR\b|money market (yield|instrument|security|securities)|T-bills?|Treasury bills?|discount (rate )?basis|add-on (rate|basis|yield)|bank discount|360-day year|365-day year/,
+ match:/floating|floater|margin|reference rate|SOFR|LIBOR|MRR|money market|bill|discount|add-on|360|365|days|certificate|reset|bond equivalent/,
+ ideas:`**Floating-rate notes pay a coupon that resets with a reference rate; money market instruments use their own yield conventions.**
+
+## Floating-rate notes
+- Coupon = market reference rate (MRR, such as SOFR) + a fixed **quoted margin** set at issue.
+- The **required (discount) margin** is the spread investors demand now. If it equals the quoted margin, the note trades at par on reset dates. If credit quality worsens and the required margin rises above the quoted margin, the note trades at a discount; if it falls, at a premium.
+- Because the coupon resets, a floater's price is very stable with respect to interest rates: its duration is roughly the time to the next reset. Its price still moves with changes in credit spreads.
+
+## Money market yields
+- Instruments maturing within a year: Treasury bills, commercial paper, certificates of deposit, repos.
+- **Discount basis** (such as US T-bills): price = face value × (1 − days / year × discount rate). A 90-day bill with a 4% discount rate on a 360-day year costs 100 × (1 − 90/360 × 0.04) = 99.00. A discount rate understates the return, because it is computed on face value, not on the amount invested.
+- **Add-on basis** (such as CDs and repos): interest is added to the amount invested; add-on rate = (face value / price − 1) × year / days.
+- To compare, convert to one basis: the bill above earns (100 / 99 − 1) × 365 / 90 = 4.10% on a 365-day add-on basis (the **bond equivalent yield**).
+- Watch the day-count year: some markets use 360 days, others 365.`,
+ traps:[
+  "If the required margin rises above the quoted margin, the floater trades below par.",
+  "A floater has low interest rate risk but still carries credit spread risk.",
+  "A discount rate is based on face value and understates the return on the money invested.",
+  "Convert all money market rates to the same basis and day count before comparing them.",
+  "The quoted margin is fixed at issue; the required margin changes with the market."
+ ],
+ formulas:["F1-FI-06","F1-FI-16"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-yield-measures-floating-rate-instruments/","Yield and Yield Spread Measures for Floating-Rate Instruments: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/f/frn.asp"],
+  ["w:Money_market"],
+  ["w:Discount_yield"]
+ ]},
+{name:"The Term Structure of Interest Rates: Spot, Par, and Forward Curves",
+ core:/spot rates?|spot curve|zero (coupon )?curve|par (rate|curve|yield)|forward (rate|curve)|\d+y\d+y|implied forward|term structure|yield curve|bootstrap/,
+ match:/spot|zero|par|forward|term structure|yield curve|bootstrap|upward|downward|inverted|flat|curve/,
+ ideas:`**Rates differ by maturity. The term structure can be described by three related curves: spot, par and forward.**
+
+## Spot rates
+- A **spot rate** is the yield on a zero-coupon bond for a given maturity; the **spot curve** plots them. Pricing with spot rates discounts each cash flow at the rate for its own date, which is more precise than a single YTM.
+- Example: spot rates of 2.5% (1 year) and 3.5% (2 years). A 2-year bond with a 6% annual coupon is worth 6 / 1.025 + 106 / 1.035² = 104.81.
+
+## Par rates
+- A **par rate** is the coupon rate at which a bond of that maturity would be priced at par, given the spot curve. The par curve is used to set coupons on new bonds. With the spot rates above, the 2-year par rate is 3.48%.
+- Spot rates can be **bootstrapped** from par rates: solve maturity by maturity, using the spot rates already found.
+
+## Forward rates
+- A **forward rate** is the rate agreed today for a loan starting in the future. Written "1y1y" for a one-year loan starting in one year.
+- No arbitrage links forwards to spots: (1 + S2)² = (1 + S1) × (1 + f1y1y). With the spot rates above, f1y1y = 1.035² / 1.025 − 1 = 4.51%. A bond can be priced with forward rates as well, by discounting through the chain of one-period forwards; the result equals spot-rate pricing.
+
+## Comparing the curves
+- When the spot curve slopes upward, the forward curve lies above it and the par curve slightly below it; when it slopes downward, the order is reversed; when it is flat, all three coincide.
+- An upward-sloping curve is usual (term premium or expected rate rises); an inverted curve often signals expected rate cuts or a slowdown.`,
+ traps:[
+  "Forward rates come from compounding spot rates, not from averaging or subtracting them.",
+  "With an upward-sloping spot curve, forward rates are above spot rates and par rates are below spot rates.",
+  "Pricing with spot rates and with the matching forward rates gives the same price.",
+  "A par rate is a coupon rate, not a zero-coupon yield.",
+  "'2y3y' means a three-year rate starting in two years."
+ ],
+ formulas:["F1-FI-02","F1-FI-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-term-structure-spot-par-forward/","The Term Structure of Interest Rates: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/spot_rate.asp"],
+  ["i:terms/f/forwardrate.asp"],
+  ["i:terms/y/yieldcurve.asp"],
+  ["w:Bootstrapping_(finance)"]
+ ]},
+{name:"Interest Rate Risk and Return",
+ core:/sources of return|reinvestment risk|reinvest(ed|ment) (the |of )?coupons|investment horizon|holding period|Macaulay|duration gap|immuniz|horizon (yield|return)|carrying value|market price risk|coupon reinvestment/,
+ match:/return|reinvest|horizon|holding|Macaulay|duration|gap|immuniz|price risk|sell|coupon|capital gain|capital loss|yield (rises|falls|increases|decreases)/,
+ ideas:`**A bondholder's return has three sources, and the investment horizon decides which interest rate risk matters most.**
+
+## Sources of return
+- **Coupon payments.**
+- **Reinvestment income:** interest earned on reinvested coupons.
+- **Capital gain or loss** when the bond is sold before maturity (zero if held to maturity, apart from the move to par).
+- If yields do not change and the bond is held to maturity, the investor earns the YTM. If yields rise right after purchase: reinvestment income rises but the sale price falls; if yields fall: the reverse.
+
+## Two opposing risks
+- **Market price risk** dominates for short horizons: a rate rise lowers the price at which the bond is sold.
+- **Coupon reinvestment risk** dominates for long horizons: a rate fall lowers the income from reinvesting coupons.
+
+## Macaulay duration
+- The weighted average time to receive the bond's cash flows, using each cash flow's share of the price as its weight. Example: a 3-year bond with a 5% annual coupon, priced at par (YTM 5%), has a Macaulay duration of 2.86 years. A zero-coupon bond's Macaulay duration equals its maturity.
+- **When the investment horizon equals the Macaulay duration**, the two risks roughly offset for a one-time parallel change in yield, so the realized return stays close to the original YTM (the idea behind immunization).
+- **Duration gap** = Macaulay duration − investment horizon. A positive gap (horizon shorter than duration) means the investor is exposed to rising rates; a negative gap, to falling rates.`,
+ traps:[
+  "Short horizon: price risk dominates. Long horizon: reinvestment risk dominates.",
+  "Matching the horizon to Macaulay duration protects only against a one-time parallel shift in yields.",
+  "A zero-coupon bond has no reinvestment risk if held to maturity, and its Macaulay duration equals its maturity.",
+  "A positive duration gap means losses if rates rise.",
+  "Held to maturity with no rate change, the realized return equals the YTM only if coupons are reinvested at that YTM."
+ ],
+ formulas:["F1-FI-07"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-interest-rate-risk-and-return/","Interest Rate Risk and Return: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/m/macaulayduration.asp"],
+  ["w:Bond_duration"],
+  ["w:Immunization_(finance)"]
+ ]},
+{name:"Yield-Based Bond Duration Measures and Properties",
+ core:/modified duration|money duration|\bPVBP\b|price value of a basis point|basis point value|\bBPV\b|\bDV01\b|duration (is|of|increases|decreases|rises|falls|will)|higher duration|lower duration|longer duration|shorter duration/,
+ match:/duration|modified|money duration|PVBP|basis point|BPV|DV01|maturity|coupon|yield level|interest rate risk|price change|sensitiv/,
+ ideas:`**Duration turns a change in yield into an estimated change in price.**
+
+## Modified duration
+- Modified duration = Macaulay duration / (1 + yield per period). Then %ΔP ≈ −modified duration × Δyield.
+- Example: the 3-year, 5% bond priced at par has a Macaulay duration of 2.86 and a modified duration of 2.86 / 1.05 = 2.72; a one-percentage-point rise in yield lowers its price by about 2.72%.
+- **Approximate modified duration** can be estimated from prices: (PV− − PV+) / (2 × Δyield × PV0), where PV− and PV+ are the prices after a yield fall and a yield rise of the same size.
+
+## Money duration and PVBP
+- **Money duration** = modified duration × full price: the estimated change in money value (per 100 of par, or for a position) for a 100% change in yield; multiply by Δyield for the amount.
+- **Price value of a basis point (PVBP)**: the price change for a 1 basis point change in yield; about money duration × 0.0001.
+
+## What drives interest rate risk
+- **Longer maturity:** higher duration (almost always; very long deep-discount bonds can be an exception).
+- **Lower coupon:** higher duration, because more of the value comes at the end. A zero-coupon bond has the highest duration for its maturity.
+- **Lower yield level:** higher duration, because distant cash flows are discounted less.
+- Embedded options cut duration: a call caps price gains when yields fall; a put limits losses when yields rise.
+- Between coupon dates, Macaulay duration falls smoothly, then jumps up just after each coupon is paid.`,
+ traps:[
+  "Modified duration divides Macaulay duration by (1 + yield per period), not by (1 + annual yield) for a semi-annual bond.",
+  "Duration estimates are linear; for large yield changes add convexity.",
+  "Lower coupons and lower yields both raise duration.",
+  "PVBP is a money amount for one basis point, not a percentage.",
+  "The sign matters: higher yields mean lower prices."
+ ],
+ formulas:["F1-FI-07","F1-FI-08","F1-FI-10"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-yield-based-duration-measures/","Yield-Based Bond Duration Measures and Properties: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/m/modifiedduration.asp"],
+  ["i:terms/d/duration.asp"],
+  ["w:Bond_duration"]
+ ]},
+{name:"Yield-Based Bond Convexity and Portfolio Properties",
+ core:/(?<!effective |negative )convexity|convexity adjustment|portfolio duration|portfolio convexity|weighted average (of the )?(durations?)|duration of (the|a|this) portfolio/,
+ match:/convexity|curvature|duration|portfolio|weighted|parallel|cash flow yield|limitation|price change|large change/,
+ ideas:`**Duration draws a straight line through a curved price-yield relationship; convexity measures the curve.**
+
+## Convexity
+- For an option-free bond, the price-yield curve bends upward: prices rise more when yields fall than they drop when yields rise by the same amount. That is **positive convexity**, and it benefits the holder.
+- The estimate becomes %ΔP ≈ −modified duration × Δy + ½ × convexity × (Δy)².
+- Example: modified duration 7 and convexity 60. For a one-percentage-point rise in yield: −7 × 0.01 + ½ × 60 × 0.0001 = −6.7%. For a one-point fall: +7.3%. The convexity term is always added, whatever the direction of the yield change.
+- Convexity is higher for longer maturities, lower coupons, lower yields and more dispersed cash flows. **Approximate convexity** = (PV− + PV+ − 2PV0) / [(Δy)² × PV0].
+- **Money convexity** = convexity × full price, for estimating changes in money value.
+
+## Portfolio duration and convexity
+- Practical approach: the market-value-weighted average of the bonds' durations (and convexities).
+- Theoretically better: compute duration from the portfolio's combined cash flows and its cash flow yield, but this is rarely used.
+- Limitations: the weighted average assumes all yields change by the same amount (a parallel shift), which real curves rarely do, and it ignores convexity between different parts of the curve.`,
+ traps:[
+  "The convexity adjustment is added for both rises and falls in yield when convexity is positive.",
+  "Remember the ½ and square the yield change in decimals: (0.01)² = 0.0001.",
+  "For a bond with positive convexity, duration alone overstates the loss and understates the gain.",
+  "Portfolio duration as a weighted average assumes a parallel shift of the yield curve.",
+  "Weights are market values, not par values."
+ ],
+ formulas:["F1-FI-09","F1-FI-11"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-yield-based-convexity-portfolio-properties/","Yield-Based Bond Convexity and Portfolio Properties: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/convexity.asp"],
+  ["w:Bond_convexity"]
+ ]},
+{name:"Curve-Based and Empirical Fixed-Income Risk Measures",
+ core:/effective duration|effective convexity|negative convexity|embedded option|key rate|partial duration|empirical duration|analytical duration|benchmark (yield )?curve|parallel shift|non-parallel|shaping risk|curve duration/,
+ match:/effective|negative convexity|embedded|callable|putable|option|key rate|partial|empirical|analytical|benchmark|parallel|shift|steepen|flatten|curve/,
+ ideas:`**Bonds with embedded options, and real-world yield curves, need risk measures based on the benchmark curve rather than on the bond's own yield.**
+
+## Effective duration and convexity
+- When a bond has a call or put, its future cash flows depend on rates, so a yield-based duration is wrong. **Effective duration** shifts the benchmark curve up and down, revalues the bond with a model each time, and measures the change: effective duration = (PV− − PV+) / (2 × Δcurve × PV0).
+- Example: price 100; after a 25 basis point fall in the curve the price is 101.20, after a 25 basis point rise 98.85: effective duration = (101.20 − 98.85) / (2 × 0.0025 × 100) = 4.70.
+- **Effective convexity** = (PV− + PV+ − 2PV0) / [(Δcurve)² × PV0]. %ΔP ≈ −effective duration × Δcurve + ½ × effective convexity × (Δcurve)².
+- A **callable** bond shows **negative convexity** at low yields: its price is capped near the call price as yields fall. A **putable** bond has more convexity than an option-free bond, because the put supports its price when yields rise.
+- Effective duration is also the right measure for floaters and mortgage-backed securities.
+
+## Key rate duration
+- A **key rate (partial) duration** measures sensitivity to a change in one maturity point of the curve, holding the others fixed. Key rate durations add up to the effective duration. They reveal **shaping risk**: exposure to steepening, flattening or twisting of the curve.
+
+## Empirical versus analytical duration
+- **Analytical** duration comes from formulas or models assuming that government yields and spreads move independently.
+- **Empirical** duration comes from regressing actual bond returns on changes in benchmark yields. For high-yield bonds, spreads often widen when government yields fall (bad economic news), which offsets part of the move, so their empirical duration is usually below their analytical duration.`,
+ traps:[
+  "Use effective duration, not modified duration, for bonds with embedded options.",
+  "A callable bond's convexity turns negative when yields are low.",
+  "Key rate durations sum to the effective duration.",
+  "Empirical duration for high-yield bonds is usually lower than analytical duration.",
+  "Effective duration shifts the benchmark curve, not the bond's own yield."
+ ],
+ formulas:["F1-FI-08","F1-FI-09"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-curve-based-and-empirical-risk-measures/","Curve-Based and Empirical Fixed-Income Risk Measures: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/e/effectiveduration.asp"],
+  ["i:terms/k/keyrateduration.asp"],
+  ["i:terms/n/negative_convexity.asp"]
+ ]},
+{name:"Credit Risk",
+ core:/credit risk|default risk|probability of default|loss given default|\bLGD\b|recovery rate|expected loss|credit rating|rating agenc|downgrad|upgrad|investment[- ]grade|speculative[- ]grade|spread risk|credit spreads? (widen|narrow|change)|credit migration|fallen angel/,
+ match:/credit|default|probability|loss given|LGD|recovery|expected loss|rating|agency|downgrade|upgrade|investment grade|speculative|spread|migration|liquidity|cycle|economic/,
+ ideas:`**Credit risk is the risk of loss because a borrower fails to pay as promised. It shows up as default losses and as wider spreads before any default.**
+
+## Components
+- **Probability of default (POD):** the chance the issuer fails to pay over a period.
+- **Loss given default (LGD):** the share of the exposure lost if default happens = 1 − recovery rate.
+- **Expected loss** = probability of default × loss given default. Example: a 2% default probability and a 40% recovery rate give an expected loss of 2% × 60% = 1.2% of the exposure.
+- Recovery depends on seniority and collateral: secured debt recovers more than subordinated debt.
+
+## Credit ratings
+- Agencies (S&P, Moody's, Fitch) grade issuers and issues. **Investment grade** is BBB− / Baa3 and above; below is **speculative grade** (high yield). Many investors may hold only investment-grade bonds, so a fall below BBB− (a "fallen angel") forces selling.
+- Uses: a simple, comparable measure of credit quality used in regulation, mandates and contracts.
+- Limitations: ratings change slowly and can lag the market; agencies can be wrong (as with some structured products before 2008); issuers pay for their ratings; ratings say little about the price of the risk; and events such as litigation or takeovers can hit suddenly.
+
+## What moves yield spreads
+- **Macroeconomic:** the credit cycle. Spreads widen in downturns as defaults are expected to rise, and narrow in expansions; lower-rated bonds react most.
+- **Market:** liquidity, dealer capacity, supply of new bonds and investor demand.
+- **Issuer-specific:** leverage, profitability, cash flow, events such as buyouts.
+- Spread = compensation for expected loss + a credit risk premium + a liquidity premium. A wider spread lowers the bond's price: ΔP% ≈ −modified duration × Δspread.`,
+ traps:[
+  "Expected loss = probability of default × loss given default, and LGD = 1 − recovery rate.",
+  "Investment grade starts at BBB− (S&P, Fitch) or Baa3 (Moody's).",
+  "Ratings lag the market; spreads often widen before a downgrade.",
+  "Spreads on lower-rated bonds widen more in a downturn.",
+  "A spread widening hurts the price even if the issuer never defaults."
+ ],
+ formulas:["F1-FI-13","F1-FI-12"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-credit-risk/","Credit Risk: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/d/defaultprobability.asp"],
+  ["i:terms/l/lossgivendefault.asp"],
+  ["i:terms/c/creditrating.asp"],
+  ["i:terms/c/creditspread.asp"]
+ ]},
+{name:"Credit Analysis for Government Issuers",
+ core:/sovereign (credit|rating|default|risk|analysis)|ability (and|to) (willingness|pay)|willingness to pay|fiscal (deficit|position|flexibility)|external (debt|position)|reserve currency|general obligation|revenue bonds?|debt service coverage|tax base|local[- ]currency (debt|bonds?)|foreign[- ]currency (debt|bonds?)|non-sovereign (credit|debt)/,
+ match:/sovereign|government|ability|willingness|fiscal|deficit|debt-to-GDP|external|reserve currency|exchange rate|institution|political|monetary|general obligation|revenue bond|debt service|tax|local currency|foreign currency|municipal/,
+ ideas:`**Governments rarely go bankrupt in a legal sense, so their credit depends on both the ability and the willingness to pay.**
+
+## Sovereign governments
+- **Institutional and political:** effective, stable institutions, rule of law, a record of honoring debt; willingness matters because creditors cannot seize a country's assets.
+- **Economic:** income per head, growth prospects, diversification.
+- **Fiscal:** debt relative to GDP, deficits, interest costs relative to revenue, and the ability to raise taxes or cut spending.
+- **Monetary:** an independent central bank and credible inflation control. A government that borrows in its own currency can always create money to pay, so local-currency debt is usually rated higher than foreign-currency debt; the risk shifts to inflation.
+- **External:** foreign currency reserves, current account balance, foreign-currency debt, and whether the currency is a **reserve currency** (such as the US dollar), which makes financing much easier.
+
+## Non-sovereign governments
+- **General obligation bonds** are backed by the issuer's taxing power: analyze the local economy, tax base, budget balance, debt and pension obligations. Unlike sovereigns, local governments usually cannot print money and often must balance their budgets.
+- **Revenue bonds** are repaid only from a project's income (toll roads, airports, utilities): analyze them like a business, especially the **debt service coverage ratio** (cash available for debt service / debt service). They carry more risk than general obligation bonds of the same issuer.`,
+ traps:[
+  "Willingness to pay matters for sovereigns because creditors cannot enforce claims through bankruptcy.",
+  "Local-currency sovereign debt is usually rated higher than the same government's foreign-currency debt.",
+  "Reserve-currency status makes it easier for a government to borrow.",
+  "Revenue bonds depend on the project's cash flows, not on the issuer's taxing power.",
+  "Local governments usually cannot print money, unlike national governments borrowing in their own currency."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-credit-analysis-government-issuers/","Credit Analysis for Government Issuers: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/sovereign-debt.asp"],
+  ["w:Sovereign_default"],
+  ["w:Municipal_bond"]
+ ]},
+{name:"Credit Analysis for Corporate Issuers",
+ core:/four Cs|\bcapacity\b|\bcharacter\b|EBITDA\s*(\/|to|-to-)\s*interest|debt\s*(\/|to|-to-)\s*EBITDA|\bFFO\b|leverage ratio|coverage ratio|seniority|senior (secured|unsecured)|subordinated|\bjunior\b|first lien|second lien|priority of claims|absolute priority|bankruptcy|notching|issuer rating|issue rating|secured (debt|bonds?|creditors)|unsecured (debt|bonds?|creditors)/,
+ match:/capacity|character|capital|collateral|covenant|EBITDA|interest|coverage|leverage|debt|FFO|cash flow|seniority|senior|secured|unsecured|subordinated|junior|lien|priority|bankrupt|recovery|notch|rating|liquidity/,
+ ideas:`**Corporate credit analysis asks whether a company can and will pay its debt, and how much lenders would recover if it does not.**
+
+## The four Cs
+- **Capacity:** the ability to pay from cash flow: industry structure and cyclicality, competitive position, operating record, and management's strategy.
+- **Capital:** other resources, such as the equity cushion under the debt and access to other funding.
+- **Collateral:** assets pledged and their quality and value.
+- **Covenants:** the terms of the debt that protect lenders.
+- **Character** (management's integrity and record) is often added as a fifth C.
+
+## Key ratios
+- **Profitability and cash flow:** EBITDA, funds from operations (FFO), free cash flow.
+- **Coverage:** EBIT or EBITDA / interest expense; higher is safer.
+- **Leverage:** debt / EBITDA, FFO / debt, debt / capital; lower debt / EBITDA is safer.
+- Example: EBITDA 400, interest 50 and debt 1,200 give EBITDA coverage of 8× and debt / EBITDA of 3×.
+- Liquidity also matters: cash, unused credit lines and the timing of debt maturities.
+
+## Seniority and recovery
+- Order of claims: **secured** debt (first lien, then second lien) on the pledged assets, then **senior unsecured**, then **subordinated** and junior subordinated debt, then preferred and common equity.
+- In bankruptcy, the absolute priority rule says senior claims are paid in full before junior ones get anything, but negotiated outcomes often give junior classes something.
+- **Notching:** individual issues are rated above or below the issuer's rating to reflect seniority. Notching is wider for low-rated issuers, because recovery differences matter more when default is more likely.`,
+ traps:[
+  "Higher coverage ratios and lower leverage ratios mean stronger credit.",
+  "Senior unsecured debt ranks behind secured debt on the pledged assets, but ahead of subordinated debt.",
+  "Absolute priority is the rule, but in practice junior creditors often recover something.",
+  "Notching widens as the issuer's rating falls.",
+  "An issue rating can differ from the issuer rating because of seniority and collateral."
+ ],
+ formulas:["F1-CI-13","F1-FSA-16"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-credit-analysis-corporate-issuers/","Credit Analysis for Corporate Issuers: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Credit_analysis"],
+  ["w:Seniority_(financial)"]
+ ]},
+{name:"Fixed-Income Securitization",
+ core:/securitiz|special purpose (entity|vehicle)|\bSPE\b|\bSPV\b|bankruptcy[- ]remote|originator|\bservicer\b|true sale|pool of (loans|assets|receivables|mortgages)/,
+ match:/securitiz|special purpose|SPE|SPV|bankruptcy|originator|servicer|trustee|sale|pool|loans|receivables|tranche|investor|balance sheet|funding|liquidity/,
+ ideas:`**Securitization pools loans or receivables and turns them into securities sold to investors, who are paid from the pool's cash flows.**
+
+## How it works and who is involved
+- The **originator (seller)** makes loans (mortgages, car loans, credit card balances) and sells them to a **special purpose entity (SPE)** created for the deal.
+- The SPE is **bankruptcy remote**: if the originator fails, its creditors cannot claim the pooled assets, so investors depend on the assets, not on the originator's credit.
+- The SPE issues securities, often in **tranches** with different priorities, to investors. A **servicer** collects payments, handles delinquencies and forwards cash; a **trustee** protects investors' interests. Rating agencies, underwriters and credit enhancers may also be involved.
+
+## Benefits
+- **Issuers:** a cheaper and wider source of funding than the originator's own credit rating would allow, assets moved off the balance sheet, capital freed to make new loans.
+- **Investors:** access to asset classes they could not otherwise hold directly (such as pools of mortgages), with the risk and maturity they choose through tranches.
+- **Economy and markets:** banks can lend more, credit becomes cheaper, loans become tradable, and risk is spread among investors best able to bear it.
+
+## Risks
+- Complex structures can hide risk; originators may lower lending standards when they sell the loans on; and poor ratings and weak underwriting of subprime mortgage securities helped cause the 2007 to 2009 financial crisis.`,
+ traps:[
+  "Bankruptcy remoteness means investors look to the pooled assets, not to the originator's credit.",
+  "The servicer collects and passes on payments; the trustee protects investors.",
+  "A securitized bond can be rated higher than its originator.",
+  "Securitization frees capital for new lending; it does not remove the loans' risk from the system.",
+  "Investors in different tranches of the same pool face different risks."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-securitization/","Fixed-Income Securitization: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/securitization.asp"],
+  ["w:Securitization"],
+  ["w:Special-purpose_entity"]
+ ]},
+{name:"Asset-Backed Security (ABS) Instrument and Market Features",
+ core:/asset-backed|\bABS\b|covered bonds?|credit enhancement|overcollateraliz|excess spread|subordination|waterfall|reserve (account|fund)|auto loans?|credit card (receivables|ABS|debt)|student loans?|lockout|early amortization|\bCDOs?\b|collateralized debt obligation|collateralized loan obligation|\bCLOs?\b|collateral manager|equity tranche|mezzanine/,
+ match:/asset-backed|ABS|covered|enhancement|overcollateral|excess spread|subordinat|waterfall|reserve|auto|credit card|student|lockout|amortiz|CDO|CLO|collateral|tranche|senior|mezzanine|equity|dual recourse|cover pool/,
+ ideas:`**Asset-backed securities (ABS) are paid from pools of non-mortgage loans and receivables; their structure decides who bears the losses.**
+
+## Covered bonds
+- Issued by a bank and backed by a segregated **cover pool** of assets, often mortgages, that stays on the bank's balance sheet.
+- **Dual recourse:** investors have a claim on the bank and on the cover pool. The pool is **dynamic**: non-performing assets must be replaced. So covered bonds usually carry less credit risk and lower yields than comparable ABS.
+
+## Credit enhancement
+- **Internal:** **subordination** (junior tranches absorb losses first: the "waterfall"); **overcollateralization** (the pool is worth more than the securities issued); **excess spread** (the pool's interest exceeds what is paid to investors and fees, creating a buffer); **reserve accounts** of cash.
+- **External:** guarantees, insurance or letters of credit from a third party; only as strong as that party.
+
+## Non-mortgage ABS
+- **Auto loan ABS:** amortizing loans with scheduled principal payments and some prepayments; backed by the cars.
+- **Credit card receivable ABS:** non-amortizing. During a **lockout (revolving) period**, principal repaid by cardholders buys new receivables, and investors receive only interest; principal is then paid out later. **Early amortization** triggers (such as high losses) end the revolving period early to protect investors.
+- Others: student loans, equipment leases, small business loans.
+
+## Collateralized debt obligations (CDOs)
+- Securities backed by a portfolio of debt (corporate bonds, loans in a **CLO**), run by a **collateral manager**. Tranches: senior, mezzanine and equity (first loss).
+- An arbitrage CDO profits if the collateral's return exceeds the cost of paying the tranches. Equity tranche investors gain most when defaults stay low and lose first when they rise.`,
+ traps:[
+  "Covered bonds stay on the bank's balance sheet and give dual recourse; most ABS do not.",
+  "Subordinated tranches absorb losses first, protecting the senior tranches.",
+  "External enhancement is only as strong as the guarantor.",
+  "Credit card ABS pay no principal during the lockout period.",
+  "The equity tranche of a CDO is first to lose and earns the highest expected return."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-abs-instrument-and-market-features/","Asset-Backed Security Instrument and Market Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/a/asset-backedsecurity.asp"],
+  ["w:Covered_bond"],
+  ["w:Collateralized_debt_obligation"]
+ ]},
+{name:"Mortgage-Backed Security (MBS) Instrument and Market Features",
+ core:/mortgage-backed|\bMBS\b|\bRMBS\b|\bCMBS\b|pass-through|prepayment|contraction risk|extension risk|collateralized mortgage obligation|\bCMOs?\b|sequential(-pay)?|planned amortization|\bPAC\b|support tranche|loan-to-value|\bLTV\b|balloon risk|defeasance|yield maintenance|commercial mortgage|residential mortgage|time tranching/,
+ match:/mortgage|MBS|RMBS|CMBS|pass-through|prepay|contraction|extension|CMO|sequential|PAC|support|tranche|loan-to-value|LTV|balloon|defeasance|yield maintenance|agency|non-agency|servicing|recourse|amortiz/,
+ ideas:`**Mortgage-backed securities pass homeowners' and property owners' payments to investors. Their key risk is that borrowers can repay early.**
+
+## Prepayment risk
+- Borrowers can usually repay early, typically by refinancing when rates fall. **Contraction risk:** when rates fall, prepayments speed up and investors get money back just when reinvestment rates are low. **Extension risk:** when rates rise, prepayments slow and the securities last longer just when investors would want to reinvest at higher rates.
+- This gives MBS negative convexity, like callable bonds.
+
+## Residential mortgage loans
+- Features: maturity (often 15 to 30 years), fixed or adjustable rates, amortizing or interest-only, prepayment penalties or not, and **recourse** or not (whether the lender can claim the borrower's other assets). The **loan-to-value** ratio is key: a lower LTV means more borrower equity and lower default risk.
+
+## Residential MBS
+- **Agency** RMBS are guaranteed by government agencies or government-sponsored enterprises, so credit risk is minimal; **non-agency** RMBS carry credit risk and use credit enhancement.
+- **Mortgage pass-through securities:** investors receive a pro rata share of all interest (minus servicing and guarantee fees) and principal, including prepayments.
+- **Collateralized mortgage obligations (CMOs)** split pass-through cash flows into tranches that redistribute prepayment risk. **Sequential-pay** tranches receive principal in order (**time tranching**): the first tranche has the least extension risk, the last the least contraction risk. **Planned amortization class (PAC)** tranches follow a schedule within a range of prepayment speeds, while **support** tranches absorb the variation.
+
+## Commercial MBS
+- Backed by loans on income-producing property. Credit analysis uses the **debt service coverage ratio** (net operating income / debt service) and the LTV.
+- Prepayment is limited by **call protection**: prepayment lockouts, defeasance, prepayment penalties and yield maintenance charges. **Balloon risk:** many loans need refinancing of a large final payment, and failure extends the loan.`,
+ traps:[
+  "Falling rates speed up prepayments (contraction risk); rising rates slow them (extension risk).",
+  "Time tranching in CMOs redistributes prepayment risk; it does not remove it.",
+  "Support tranches absorb prepayment variation so that PAC tranches stay on schedule.",
+  "Agency RMBS have little credit risk; their main risk is prepayment.",
+  "CMBS have strong call protection, so their main risks are credit and balloon risk."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/fi-mbs-instrument-and-market-features/","Mortgage-Backed Security Instrument and Market Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/m/mbs.asp"],
+  ["i:terms/p/prepaymentrisk.asp"],
+  ["w:Collateralized_mortgage_obligation"],
+  ["w:Commercial_mortgage-backed_security"]
+ ]}
 ]);
 /* Learning map, Derivatives and Risk Management: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
