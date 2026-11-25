@@ -14117,16 +14117,364 @@ CFA_DATA.formulas(3,"Private Markets Pathway","F3-PRM",[
 /* Learning map, Ethical and Professional Standards: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Ethical and Professional Standards","LM-ETH",[
-{name:"Ethics and Trust in the Investment Profession"},
-{name:"Code of Ethics and Standards of Professional Conduct"},
-{name:"Guidance for Standard I: Professionalism"},
-{name:"Guidance for Standard II: Integrity of Capital Markets"},
-{name:"Guidance for Standard III: Duties to Clients"},
-{name:"Guidance for Standard IV: Duties to Employers"},
-{name:"Guidance for Standard V: Investment Analysis, Recommendations, and Actions"},
-{name:"Guidance for Standard VI: Conflicts of Interest"},
-{name:"Guidance for Standard VII: Responsibilities as a CFA Institute Member or CFA Candidate"},
-{name:"Application of the Code and Standards: Level I"}
+{name:"Ethics and Trust in the Investment Profession",
+ core:/\btrust\b|framework|legal standard|legal but|but legal|legally|situational influence|overconfiden|\bprofession\b|professions|code of ethics (is|helps|serves)|what (is|are) ethics|ethics is/,
+ match:/\btrust|framework|legal|law (sets|is)|situational|overconfiden|profession\b|professions|stakeholder|short-term|reflect|ethical decision|moral|principles/,
+ ideas:`**Ethics is a set of moral principles that guide behavior: doing what is right even when no rule forces it.** The investment profession depends on it, because clients hand their savings to people whose work they cannot easily check.
+
+## Professions and trust
+- A **profession** combines specialized knowledge, a commitment to serve clients before self-interest, a code of ethics that sets minimum standards, and a body that enforces it. Trust lets clients rely on professionals without checking every decision.
+- A code of ethics tells clients and the public what to expect, gives members a common standard, and supports self-regulation.
+- High standards matter especially in investment management: the professional knows far more than the client (**information asymmetry**), large sums are at stake, and unethical conduct drives investors away from markets and raises the cost of capital.
+
+## Ethical versus legal standards
+- Laws set the minimum that society enforces; ethics often asks for more. An act can be legal but unethical, and laws change slowly and differ between countries.
+- "It is legal" therefore does not settle whether it is right, and the CFA Institute Code can demand more than local law.
+
+## Challenges to ethical behavior
+- **Overconfidence:** believing you are more ethical than others, so you stop questioning your own conduct.
+- **Situational influences:** money, prestige, loyalty to colleagues or the firm, pressure from a manager and short-term targets can lead decent people to bad decisions.
+- A strong firm culture, compliance procedures and taking time to reflect help to resist these pressures.
+
+## A framework for ethical decisions
+- **Identify:** the relevant facts, the stakeholders and the duties owed to each, the ethical principles at stake, and any conflicts of interest.
+- **Consider:** situational influences, extra guidance (the Code, firm policy, compliance staff, a trusted colleague) and the alternative actions.
+- **Decide and act.**
+- **Reflect:** did the outcome match what you expected, and what would you do differently next time?`,
+ traps:[
+  "Legal does not mean ethical: where the law asks less than the Code, the Code's higher standard applies.",
+  "Situational influences are outside pressures (pay, loyalty, a manager's demands), not gaps in knowledge.",
+  "Overconfidence in one's own ethics is itself a challenge to ethical behavior.",
+  "The framework does not end with the decision: reflecting on the outcome is its last step.",
+  "A code of ethics sets minimum standards and cannot cover every case, so judgment is still needed."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-ethics-and-trust/","Ethics and Trust in the Investment Profession: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/sites/default/files/-/media/documents/ethics-in-practice/code_of_ethics_and_standards_of_professional_conduct_2024.pdf","Code of Ethics and Standards of Professional Conduct, effective 1 January 2024 (PDF)","CFA Institute"],
+  ["w:Professional_ethics"]
+ ]},
+{name:"Code of Ethics and Standards of Professional Conduct",
+ core:/Professional Conduct Program|Disciplinary Review|sanction|revoc|censure|hearing panel|Professional Conduct Statement|components of the Code|Code of Ethics (requires|says|asks)|enforce|cautionary letter/,
+ match:/Professional Conduct|Disciplinary|sanction|revoc|censure|hearing|investigat|complaint|self-disclos|components|Code of Ethics|enforce|cautionary/,
+ ideas:`**The Code of Ethics sets out the principles; the seven Standards of Professional Conduct turn them into specific duties.** Both bind CFA Institute members (charterholders included) and CFA candidates. The current version took effect on 1 January 2024.
+
+## The six components of the Code of Ethics, in short
+- Act with integrity, competence, diligence and respect toward everyone in the capital markets.
+- Put the integrity of the profession and the interests of clients ahead of personal interests.
+- Use reasonable care and independent professional judgment.
+- Behave professionally and ethically, and encourage others to do so.
+- Promote the integrity and viability of global capital markets.
+- Maintain and improve your own competence, and help other professionals improve theirs.
+
+## The seven Standards
+- **I Professionalism:** (A) Knowledge of the Law, (B) Independence and Objectivity, (C) Misrepresentation, (D) Misconduct, (E) Competence.
+- **II Integrity of Capital Markets:** (A) Material Nonpublic Information, (B) Market Manipulation.
+- **III Duties to Clients:** (A) Loyalty, Prudence, and Care, (B) Fair Dealing, (C) Suitability, (D) Performance Presentation, (E) Preservation of Confidentiality.
+- **IV Duties to Employers:** (A) Loyalty, (B) Additional Compensation Arrangements, (C) Responsibilities of Supervisors.
+- **V Investment Analysis, Recommendations, and Actions:** (A) Diligence and Reasonable Basis, (B) Communication with Clients and Prospective Clients, (C) Record Retention.
+- **VI Conflicts of Interest:** (A) Avoid or Disclose Conflicts, (B) Priority of Transactions, (C) Referral Fees.
+- **VII Responsibilities as a CFA Institute Member or CFA Candidate:** (A) Conduct as Participants in CFA Institute Programs, (B) Reference to CFA Institute, the CFA Designation, and the CFA Program.
+
+## Enforcement: the Professional Conduct Program
+- CFA Institute's professional conduct staff investigate possible violations, overseen by the **Disciplinary Review Committee** of volunteer members.
+- An inquiry can start from self-disclosure on the annual **Professional Conduct Statement**, a written complaint, reports of misconduct in the press or from regulators, a report from an exam proctor, or analysis of exam materials.
+- Outcomes range from no action or a **cautionary letter** to a proposed **sanction**: public censure, suspension of membership and of the right to use the CFA designation, revocation of the charter, and for candidates suspension or prohibition from the exams. A member who rejects a proposed sanction can ask for a hearing before a panel of the committee.`,
+ traps:[
+  "The Code and Standards bind candidates from the moment they enroll, not only charterholders.",
+  "Self-disclosure happens through the annual Professional Conduct Statement.",
+  "A cautionary letter ends an inquiry without a sanction; sanctions are censure, suspension and revocation.",
+  "The 2024 version added Standard I(E) Competence and renamed VI(A) to Avoid or Disclose Conflicts.",
+  "Recognizing which duty a situation involves matters more than memorizing Standard numbers."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-code-of-ethics-and-standards/","Code of Ethics and Standards of Professional Conduct: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/sites/default/files/-/media/documents/ethics-in-practice/code_of_ethics_and_standards_of_professional_conduct_2024.pdf","Code of Ethics and Standards of Professional Conduct, effective 1 January 2024 (PDF)","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards","Code of Ethics and Standards of Professional Conduct: overview and guidance pages","CFA Institute"]
+ ]},
+{name:"Guidance for Standard I: Professionalism",
+ core:/Standard I\(|Knowledge of the Law|Independence and Objectivity|Misrepresentation|Misconduct|\bCompetence\b|plagiar|dissociat|stricter|issuer-paid/,
+ match:/Standard I\(|law|regulat|independen|objectiv|gift|travel|issuer|misrepresent|guarantee|plagiar|cite|credit|source|misconduct|dishonest|fraud|competen|dissociat|stricter|pressure/,
+ ideas:`**Standard I asks members and candidates to know the rules, think independently, tell the truth, behave honestly and stay competent.**
+
+## I(A) Knowledge of the Law
+- Know and follow the laws and rules that govern your work, the Code included. When the law and the Code differ, follow the **stricter** one.
+- Do not knowingly take part in or help a violation; **dissociate** from it (stop participating, raise it with your supervisor or compliance, and resign if needed). The Standard does not require reporting a violation to regulators, though that may be advisable or required by law.
+
+## I(B) Independence and Objectivity
+- Do not offer, ask for or accept gifts or benefits that could reasonably compromise your own or someone else's independence. Modest, customary gifts are fine; gifts from clients for past good service should be disclosed to the employer.
+- Typical pressures: companies you cover (pay for your own travel to visit them where practical), investment banking colleagues, large clients, and **issuer-paid research** (acceptable when the fee is flat, agreed in advance, unrelated to the conclusion and disclosed).
+
+## I(C) Misrepresentation
+- Make no knowingly false or misleading statements about analysis, recommendations, performance, qualifications or services, and do not promise guaranteed returns on risky investments.
+- **Plagiarism** is misrepresentation: credit the work of others. Factual data from recognized financial and statistical reporting services can be used without credit.
+
+## I(D) Misconduct
+- No professional dishonesty, fraud or deceit, and no act that reflects badly on your professional reputation, integrity or competence. Personal conduct matters when it affects professional life (working while impaired, for example); the Standard is not a tool for settling political or personal disputes.
+
+## I(E) Competence (added in 2024)
+- Have and keep the knowledge and skills your responsibilities need. Recognize the limits of your expertise and get help or refer the work when a task goes beyond them.`,
+ traps:[
+  "Follow the stricter of the applicable law and the Code.",
+  "Dissociating means stopping your participation; the Standard does not require reporting to the authorities.",
+  "Issuer-paid research is allowed when the fee is fixed in advance, unrelated to the conclusion and disclosed.",
+  "Using someone's analysis without credit is plagiarism; standard data from a recognized reporting service is not.",
+  "A private act unrelated to work, such as a peaceful protest arrest, is usually not misconduct under I(D)."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-i-professionalism/","Standard I: Professionalism: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-i-a","Standard I(A) Knowledge of the Law: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-i-b","Standard I(B) Independence and Objectivity: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-i-c","Standard I(C) Misrepresentation: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-i-d","Standard I(D) Misconduct: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-i-e","Standard I(E) Competence: official guidance","CFA Institute"]
+ ]},
+{name:"Guidance for Standard II: Integrity of Capital Markets",
+ core:/Standard II\(|material nonpublic|nonpublic|inside information|insider|mosaic|market manipulation|manipulat|rumou?r|pump|wash trad|artificial(ly)?/,
+ match:/Standard II\(|material|nonpublic|inside|mosaic|manipulat|rumou?r|pump|wash|artificial|firewall|information barrier|tip|merger|takeover|acquisition|selective(ly)? disclos|volume|corner/,
+ ideas:`**Standard II protects fair markets: do not trade on information others cannot have, and do not create false prices or volume.**
+
+## II(A) Material Nonpublic Information
+- Information is **material** if its release would probably move the price, or if a reasonable investor would want it before deciding. It is **nonpublic** until it has been made available to the market in general; telling a few analysts or a single investor does not make it public.
+- Anyone who has material nonpublic information must not trade on it and must not cause others to trade (no tips), whatever the source and even outside work.
+- **Mosaic theory:** an analyst may combine public information with nonmaterial nonpublic information to reach a conclusion, even if that conclusion would be material had the company announced it.
+- Sensible steps: urge the company to make the information public. Firms use **information barriers** (firewalls) between deal teams and research or trading, restricted and watch lists, and monitoring of employee trades.
+
+## II(B) Market Manipulation
+- Practices that distort prices or artificially inflate trading volume in order to mislead other participants are prohibited.
+- **Information-based manipulation:** spreading false rumors, or promoting a security to sell it at the inflated price ("pump and dump").
+- **Transaction-based manipulation:** trades that give a false picture of price or activity, such as wash trades between related accounts or cornering supply to dictate the price.
+- **Intent to mislead** is the test: legitimate trading, such as arbitrage, hedging or a large block trade, is not manipulation just because it moves the price.`,
+ traps:[
+  "Information given to a room of analysts is still nonpublic until it reaches the market as a whole.",
+  "The ban applies to anyone holding material nonpublic information, not only company insiders.",
+  "The mosaic theory covers public plus nonmaterial pieces; one material nonpublic piece breaks it.",
+  "Telling a friend or client to trade is a violation even if you do not trade yourself.",
+  "A large trade that moves the price is not manipulation unless it is meant to mislead."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-ii-integrity-of-capital-markets/","Standard II: Integrity of Capital Markets: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-ii-a","Standard II(A) Material Nonpublic Information: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-ii-b","Standard II(B) Market Manipulation: official guidance","CFA Institute"],
+  ["i:terms/m/mosaictheory.asp"],
+  ["w:Insider_trading"],
+  ["w:Market_manipulation"]
+ ]},
+{name:"Guidance for Standard III: Duties to Clients",
+ core:/Standard III\(|Loyalty, Prudence|Fair Dealing|Suitability|Performance Presentation|Confidentiality|soft dollar|client brokerage|best execution|proxy|proxies|policy statement|\bIPS\b|oversubscribed|\bIPO\b|beneficiar|composite|GIPS/,
+ match:/Standard III\(|loyalty|prudence|care|fair|suitab|performance|confidential|soft dollar|brokerage|execution|proxy|proxies|policy statement|\bIPS\b|allocat|pro rata|IPO|oversubscribed|risk tolerance|objectives|constraints|beneficiar|pension|disseminat|simultaneous|client/,
+ ideas:`**Standard III covers what every client is owed: loyalty, fair treatment, suitable advice, honest performance figures and confidentiality.**
+
+## III(A) Loyalty, Prudence, and Care
+- Act for the client's benefit and put clients' interests ahead of the employer's and your own. First identify the client: for a pension plan it is the participants and beneficiaries, not the sponsoring company's managers.
+- Prudence is the care a knowledgeable professional would use in the same situation. **Client brokerage** (soft dollars) belongs to the client: use it only for research that benefits the client, and seek **best execution**.
+- Voting proxies is part of the duty; vote in the clients' interest (cost and benefit can justify not voting every proxy).
+
+## III(B) Fair Dealing
+- Treat all clients fairly, which is not the same as identically. Send changes in recommendations to all clients concerned at the same time, and allocate trades and new issues pro rata. Premium service levels are allowed if disclosed and offered to every client willing to pay.
+
+## III(C) Suitability
+- In an advisory relationship: learn the client's investment experience, return and risk objectives and constraints before acting, record them (usually in an **investment policy statement**), and update them regularly, at least once a year and after major changes. Judge each investment within the client's **whole portfolio**.
+- When managing a fund to a mandate or style: stay within its stated objectives and constraints.
+
+## III(D) Performance Presentation
+- Performance must be fair, accurate and complete: no hand-picked accounts or periods, clear labels on simulated results, and terminated accounts kept in the history. Complying with the GIPS standards is one way to meet the Standard, but it is not required.
+
+## III(E) Preservation of Confidentiality
+- Keep information about current, former and prospective clients confidential unless it concerns illegal activity by the client, the law requires disclosure, or the client allows it. Sharing information with the CFA Institute Professional Conduct Program during an investigation is not a breach.`,
+ traps:[
+  "Fair dealing means fair, not equal: different service levels are fine if disclosed and open to all clients.",
+  "For a pension plan, loyalty is owed to the participants and beneficiaries, not to the sponsor's management.",
+  "Suitability is judged for the whole portfolio, not for each security on its own.",
+  "GIPS compliance is optional; misleading performance is a violation with or without it.",
+  "The duty of confidentiality continues after the client relationship ends (former clients are covered)."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-iii-duties-to-clients/","Standard III: Duties to Clients: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iii-a","Standard III(A) Loyalty, Prudence, and Care: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iii-b","Standard III(B) Fair Dealing: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iii-c","Standard III(C) Suitability: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iii-d","Standard III(D) Performance Presentation: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iii-e","Standard III(E) Preservation of Confidentiality: official guidance","CFA Institute"],
+  ["i:terms/s/softdollars.asp"]
+ ]},
+{name:"Guidance for Standard IV: Duties to Employers",
+ core:/Standard IV\(|Additional Compensation|Responsibilities of Supervisors|supervis|written consent|leav(e|es|ing) (the|his|her|their) (firm|employer|job)|new (firm|employer|job)|start(s|ing)? (a|her|his|their) own|whistleblow|non-compete|independent practice/,
+ match:/Standard IV\(|employer|loyalty|compensation|consent|supervis|compliance|leav|resign|new firm|solicit|client list|records|compete|whistleblow|independent practice|bonus|board/,
+ ideas:`**Standard IV is about the employer: loyalty in work matters, consent for outside pay, and real supervision.**
+
+## IV(A) Loyalty
+- In matters related to the job, act for the employer's benefit: do not deprive it of your skills, reveal its confidential information or otherwise harm it.
+- **Leaving a firm:** you may prepare to leave (for example, plan a new business on your own time), but you must not solicit current clients or take client lists, files, models or other employer property before you go. Afterwards, contacting former clients from memory or public sources is generally allowed, unless a non-compete agreement prevents it.
+- Independent practice that competes with the employer needs the employer's consent before it starts.
+- Loyalty to an employer never requires breaking the law or the Code, and **whistleblowing** to protect clients or market integrity is not disloyalty.
+
+## IV(B) Additional Compensation Arrangements
+- Get **written consent from all parties involved** (in practice, the employer) before accepting gifts, pay or other benefits that compete with, or could create a conflict with, the employer's interest. Examples: a client's bonus for beating a return target, or a paid seat on an outside board.
+
+## IV(C) Responsibilities of Supervisors
+- Make reasonable efforts to ensure that everyone under your supervision complies with the law and the Code. That requires adequate compliance procedures and checking that they are followed.
+- If the firm's procedures are inadequate, decline supervisory responsibility in writing until they are improved.
+- When you learn of a possible violation: respond promptly, investigate, and limit the person's activities while you investigate; a warning alone is not enough. Delegating supervision does not remove the responsibility.`,
+ traps:[
+  "Planning a new firm on your own time is allowed; soliciting the employer's clients before leaving is not.",
+  "Taking client lists or models when you leave is a violation, even if you built them yourself at that firm.",
+  "Additional compensation needs written consent; a verbal mention to the employer is not enough.",
+  "A supervisor who learns of a violation must investigate and restrict the employee, not merely issue a warning.",
+  "Whistleblowing to protect clients or the market does not breach the duty of loyalty."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-iv-duties-to-employers/","Standard IV: Duties to Employers: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iv-a","Standard IV(A) Loyalty: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iv-b","Standard IV(B) Additional Compensation Arrangements: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-iv-c","Standard IV(C) Responsibilities of Supervisors: official guidance","CFA Institute"],
+  ["w:Whistleblowing"]
+ ]},
+{name:"Guidance for Standard V: Investment Analysis, Recommendations, and Actions",
+ core:/Standard V\(|Diligence and Reasonable Basis|Communication with Clients|Record Retention|reasonable (and adequate )?basis|third-party research|fact (and|from) opinion|seven years|7 years|investment process|quantitative model/,
+ match:/Standard V\(|diligen|reasonable basis|adequate basis|research|third-party|due diligence|model|assumption|opinion|fact|forecast|record|retain|retention|investment process|risks|limitations|disclose|costs|fees|group|consensus|name/,
+ ideas:`**Standard V covers the quality of the work: careful analysis, clear communication and records to back it up.**
+
+## V(A) Diligence and Reasonable Basis
+- Analyze investments with diligence, independence and thoroughness, and have a reasonable and adequate basis, supported by research, for every recommendation or action.
+- **Third-party research:** check that it is sound (assumptions, rigor, timeliness, objectivity) before relying on it. The same care applies to quantitative models (know their assumptions and limits) and to choosing outside managers.
+- **Group research:** you may keep your name on a team report you disagree with, as long as the conclusion has a reasonable basis; you may also ask for your name to be removed and record your dissent.
+
+## V(B) Communication with Clients and Prospective Clients
+- Disclose the nature of the services and **what they cost the client** (stated explicitly since 2024).
+- Explain the basic format and general principles of the investment process, and promptly disclose changes that could materially affect it.
+- Disclose the significant limitations and risks of the investment process.
+- Use judgment to include the factors that matter in communications, and **separate fact from opinion**: a forecast is an opinion.
+
+## V(C) Record Retention
+- Keep records that support analysis, recommendations, actions and communications with clients, in any medium, e-mail and social media included. Records belong to the firm, not to the employee.
+- Where no law or regulation sets a period, CFA Institute recommends keeping records for at least **seven years**.`,
+ traps:[
+  "Presenting a forecast as a certainty breaks V(B): opinions must be labelled as opinions.",
+  "Third-party research may be used only after checking that it is reasonable.",
+  "Disagreeing with a team report does not force you to remove your name if the report has a reasonable basis.",
+  "Records belong to the employer: after changing jobs, rebuild your support from public sources instead of taking files.",
+  "Seven years is CFA Institute's recommendation when no regulation applies; legal requirements come first."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-v-investment-analysis/","Standard V: Investment Analysis, Recommendations, and Actions: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-v-a","Standard V(A) Diligence and Reasonable Basis: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-v-b","Standard V(B) Communication with Clients and Prospective Clients: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-v-c","Standard V(C) Record Retention: official guidance","CFA Institute"]
+ ]},
+{name:"Guidance for Standard VI: Conflicts of Interest",
+ core:/Standard VI\(|Avoid or Disclose|Disclosure of Conflicts|Priority of Transactions|Referral Fees|conflicts? of interest|front[- ]run|personal (trading|account|transaction|holding)|beneficial own|blackout|pre-?clear|referral/,
+ match:/Standard VI\(|conflict|disclos|priority|front|personal|own account|beneficial|blackout|pre-?clear|referral|family|IPO|private placement|director|board|own(s|ed)? shares|stock options|commission|plain language|prominent/,
+ ideas:`**Standard VI deals with conflicts of interest: avoid them or disclose them properly, put clients' trades first, and disclose referral payments.**
+
+## VI(A) Avoid or Disclose Conflicts
+- Avoid, or fully and fairly disclose, anything that could reasonably be expected to impair your independence and objectivity or interfere with your duties to clients, prospective clients and the employer.
+- Since 2024 the Standard requires disclosures to be **prominent, in plain language and effective**: buried fine print does not meet it.
+- Typical conflicts: owning shares you recommend, sitting on the board of a company you cover, pay that rewards selling certain products, and the firm's investment banking or market-making ties with an issuer.
+- Conflicts that affect the employer, such as a stake in a supplier or competitor, must be disclosed to the employer.
+
+## VI(B) Priority of Transactions
+- Trades for clients and the employer come before trades in which you have a beneficial ownership interest. Never trade ahead of a client's order (front-running).
+- A family member's fee-paying account is a client account and should be treated like any other, not traded last.
+- Common firm procedures: limits on employees buying IPOs and private placements, blackout periods around client trades, pre-clearance of personal trades, and reporting of personal holdings.
+
+## VI(C) Referral Fees
+- Disclose to the employer, clients and prospective clients, as appropriate, any payment or benefit received or paid for recommending products or services, including its nature and value, before the client agrees to the service.`,
+ traps:[
+  "Disclosure must be prominent and in plain language; a small-print footnote is not full and fair disclosure.",
+  "Front-running a client's order is a violation even if the client still gets a good price.",
+  "A family member's fee-paying account is a client account; it should not be traded last.",
+  "Referral benefits must be disclosed even when they are small or not in cash, such as reciprocal referrals.",
+  "Owning shares in a company you recommend is allowed if disclosed; hiding it is the violation."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-vi-conflicts-of-interest/","Standard VI: Conflicts of Interest: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-vi-a","Standard VI(A) Avoid or Disclose Conflicts: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-vi-b","Standard VI(B) Priority of Transactions: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-vi-c","Standard VI(C) Referral Fees: official guidance","CFA Institute"],
+  ["i:terms/f/frontrunning.asp"]
+ ]},
+{name:"Guidance for Standard VII: Responsibilities as a CFA Institute Member or CFA Candidate",
+ core:/Standard VII\(|CFA Institute Programs|Reference to CFA Institute|CFA designation|CFA charter|\bcharterholder|CFA Program|CFA candidate|candidate in the CFA|\bCFA exam|Level (I|II|III) (exam|candidate)|cheat/,
+ match:/Standard VII\(|CFA|charter|candidate|exam|Level (I|II|III)|cheat|formula|questions|designation|dues|membership|resume|business card|first attempt/,
+ ideas:`**Standard VII protects the CFA designation and the exams: no misconduct in CFA Institute programs, and no exaggeration of what the charter means.**
+
+## VII(A) Conduct as Participants in CFA Institute Programs
+- Do not compromise the reputation or integrity of CFA Institute or the CFA designation, or the integrity, validity or security of its programs.
+- Violations include cheating, using unauthorized materials, revealing confidential exam content (specific questions, topics or formulas tested) during or after the exam, misusing confidential information as a volunteer, and giving false information on the Professional Conduct Statement.
+- Saying the exam was difficult is fine, and so is criticizing CFA Institute's policies; members are free to express their views.
+
+## VII(B) Reference to CFA Institute, the CFA Designation, and the CFA Program
+- Do not misrepresent or exaggerate what membership, the charter or candidacy means: for example, do not claim that charterholders achieve better investment results.
+- To use the designation, a **charterholder** must keep membership active: pay the annual dues and file the Professional Conduct Statement.
+- A **CFA candidate** is someone registered for the next exam or waiting for results. There is no partial designation such as "CFA Level II".
+- "CFA" is an adjective ("a CFA charterholder"), never a noun ("a CFA"), and it must not be made more prominent than the holder's name.
+- Accurate facts are allowed: "passed all three levels on the first attempt" is fine if true.`,
+ traps:[
+  "Revealing which formulas or specific topics were tested is a violation, even after the exam.",
+  "'I am a CFA' is wrong; 'I am a CFA charterholder' is right.",
+  "Someone who passed Level I but is not registered for the next exam is not a CFA candidate.",
+  "Claiming the charter leads to superior performance exaggerates what it means.",
+  "A charterholder who stops paying dues or filing the Professional Conduct Statement cannot use the designation until reinstated."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-standard-vii-responsibilities-as-member-or-candidate/","Standard VII: Responsibilities as a Member or Candidate: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-vii-a","Standard VII(A) Conduct as Participants in CFA Institute Programs: official guidance","CFA Institute"],
+  ["https://www.cfainstitute.org/standards/professionals/code-ethics-standards/standards-of-practice-vii-b","Standard VII(B) Reference to CFA Institute, the CFA Designation, and the CFA Program: official guidance","CFA Institute"]
+ ]},
+{name:"Application of the Code and Standards: Level I",
+ pool:"topic",
+ ideas:`**This module puts the Standards together. Exam questions describe a situation and ask whether a Standard was violated, which one, or what the person should do.** Practice here draws on every Ethics question in the bank.
+
+## A method for case questions
+- Identify the person's role (member, candidate, supervisor) and to whom duties are owed: clients, the employer, the market, CFA Institute.
+- Spot the trigger: material nonpublic information, gifts, performance claims, leaving a firm, personal trades, referral arrangements, exam content.
+- Match the facts to a Standard, then check whether the conduct really breaks it: intent, disclosure and consent often decide.
+- When several answers look plausible, choose the one the facts fully support. Conduct is not a violation just because it is risky or unpopular.
+
+## Patterns that decide many questions
+- The stricter of the law and the Code applies (I(A)).
+- Clients first, then the employer, then yourself (III(A), VI(B)).
+- Fair is not the same as equal (III(B)); suitability is judged for the whole portfolio (III(C)).
+- Disclosure resolves many conflicts (VI(A), VI(C)); outside compensation needs written consent (IV(B)).
+- Supervisors need adequate procedures and must act on violations (IV(C)).
+- Every recommendation needs a reasonable basis, and opinions must be shown as opinions (V(A), V(B)).
+- Exam content stays confidential, and "CFA" is an adjective (VII).
+
+## Wrong answers that look right
+- "No violation, because it was legal": legality is not enough.
+- "No violation, because the client lost nothing": a duty can be breached without a loss.
+- "Violation, because the analyst changed her recommendation": changing a view is fine if it has a reasonable basis and reaches all clients fairly.`,
+ traps:[
+  "Identify who the client is before answering a loyalty question.",
+  "Look for disclosure and consent: they often make the same conduct acceptable.",
+  "A violation does not require that a client was harmed.",
+  "Recommended procedures, such as blackout periods, are good practice rather than requirements; not adopting one is not by itself a violation."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eth-application-of-code-and-standards/","Application of the Code and Standards: full lesson (free account)","FreeFellow"],
+  ["https://www.cfainstitute.org/sites/default/files/-/media/documents/ethics-in-practice/code_of_ethics_and_standards_of_professional_conduct_2024.pdf","Code of Ethics and Standards of Professional Conduct, effective 1 January 2024 (PDF)","CFA Institute"],
+  ["https://www.cfainstitute.org/sites/default/files/-/media/documents/code/code-ethics-standards/standards-practice-handbook-12th-edition.pdf","Standards of Practice Handbook, 12th edition, 2024 (PDF)","CFA Institute"]
+ ]}
 ]);
 /* Learning map, Quantitative Methods: the 11 learning modules of the 2027 Level I topic outline, in its order.
    Module names are CFA Institute's; every note below is our own wording (never copied from the curriculum).
@@ -17292,9 +17640,11 @@ function modQuestions(){
   if(!MODQ) MODQ = D.moduleMap ? D.moduleMap(SETS.filter(s=>s.level===1 && s.type==='mc').map(s=>({id:s.id, level:1, topic:s.topic, stem:s.stem, key:s.options[s.answer], expl:s.explanation}))) : {};
   return MODQ;
 }
-const topicMapped = t=>(D.modules||[]).some(m=>m.topic===t && m.match);
+const topicMapped = t=>(D.modules||[]).some(m=>m.topic===t && (m.match || m.pool));
+/* a module with pool:'topic' (such as Ethics' Application of the Code and Standards) practises every question of its topic */
+const modIds = m=>m.pool==='topic' ? SETS.filter(s=>s.level===1 && s.type==='mc' && s.topic===m.topic).map(s=>s.id) : (modQuestions()[m.id]||[]);
 function modStats(m){
-  const qs = (modQuestions()[m.id]||[]).map(id=>SETMAP[id].questions[0]);
+  const qs = modIds(m).map(id=>SETMAP[id].questions[0]);
   let seen = 0, score = 0;
   qs.forEach(q=>{ const h=DB.history[q.qid]; if(h){ seen++; score+=h.last; } });
   return {n:qs.length, seen, acc:pct(score,seen)};
@@ -17320,7 +17670,7 @@ function readLink(r){
 }
 /* "Practice this module": 10 questions (or all), unseen first, then missed, then the rest, played from easy to hard */
 function startModule(m, all){
-  const ids = modQuestions()[m.id]||[];
+  const ids = modIds(m);
   if(!ids.length){ toast('No questions match this module yet.'); return; }
   const rank = s=>{ const q=s.questions[0]; return !isSeen(q) ? 0 : isMissed(q) ? 1 : 2; };
   let pick = shuffle(ids.map(id=>SETMAP[id])).sort((a,b)=>rank(a)-rank(b)); // the sort is stable, so each group stays shuffled
