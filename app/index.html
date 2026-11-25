@@ -14134,13 +14134,115 @@ CFA_DATA.learn(1,"Ethical and Professional Standards","LM-ETH",[
 CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 {name:"Returns of Financial Assets and Instruments",
  core:/holding[- ]period return|build-up|risk premi|real (interest )?rate|nominal (interest )?rate|inflation premium|default (risk )?premium|liquidity premium|maturity premium|equities have|historical(ly)? (returns|risk premium|periods)|asset classes/,
- match:/holding[- ]period|required (rate of )?return|risk[- ]free (rate|asset)|risk premi|real (interest )?rate|real (risk-free|return)|nominal (interest )?rate|nominal (risk-free|return)|inflation premium|default (risk )?premium|liquidity premium|maturity premium|build-up|opportunity cost|interest rates? (as|can be|is) /},
+ match:/holding[- ]period|required (rate of )?return|risk[- ]free (rate|asset)|risk premi|real (interest )?rate|real (risk-free|return)|nominal (interest )?rate|nominal (risk-free|return)|inflation premium|default (risk )?premium|liquidity premium|maturity premium|build-up|opportunity cost|interest rates? (as|can be|is) /,
+ ideas:`**A return is what an investment earns over a period relative to what was put in.** It has two parts: income (dividends, coupons, rent) and the change in price. Holding period return: HPR = (P1 − P0 + income) / P0. Buying at 50, receiving 1.50 of dividends and selling at 53 gives (53 − 50 + 1.50) / 50 = 9%.
+
+## Three ways to read an interest rate
+- A **required rate of return**: the minimum return investors accept for the risk taken.
+- A **discount rate**: the rate that brings future cash flows back to today.
+- An **opportunity cost**: the return given up by spending or holding cash instead of investing.
+
+## Building a required return
+- **Real risk-free rate:** the return on a riskless investment when no inflation is expected; it rewards giving up spending today.
+- **Nominal risk-free rate:** the real rate plus an **inflation premium** for the inflation expected over the investment's life. Short-term government bills are the usual proxy.
+- Then add a premium for each risk the instrument carries: **default risk** (the issuer may not pay), **liquidity risk** (it may not sell quickly at fair value) and **maturity risk** (long-term prices react more to rate changes).
+- Additive build-up: r ≈ real risk-free + inflation + default + liquidity + maturity premiums. A premium is zero where the risk is absent; a short government bill has none of the last three.
+- The exact link is multiplicative: (1 + nominal) = (1 + real) × (1 + inflation). A 2% real rate with 3% inflation gives 1.02 × 1.03 − 1 = 5.06%, not 5%.
+
+## Risk and return across asset classes
+- Over long periods, equities have earned more than government bonds, and bonds more than bills, with more volatility at each step: higher expected return is the reward for bearing more risk.
+- Real returns, after inflation, are what preserve purchasing power.
+- The risk-free rate should match the currency and horizon of the cash flows being valued: a 10-year euro project calls for a 10-year euro government yield.`,
+ traps:[
+  "Nominal ≈ real + inflation is only an approximation. When the exact rate is asked, multiply: (1 + real)(1 + inflation) − 1.",
+  "The holding period return includes income received during the period, not only the price change.",
+  "The inflation premium reflects inflation expected over the instrument's life, not last year's inflation.",
+  "A long-term government bond is free of default risk but still carries a maturity premium.",
+  "The equity premium is a long-run average: equities can and do earn less than bonds over shorter periods."
+ ],
+ formulas:["F1-QM-01","F1-QM-33","F1-QM-40"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-returns-of-financial-assets-and-instruments/","Returns of Financial Assets and Instruments: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/h/holdingperiodreturn-yield.asp"],
+  ["i:terms/e/equityriskpremium.asp"],
+  ["w:Real_interest_rate"],
+  ["w:Fisher_equation","Fisher equation (real and nominal rates)"]
+ ]},
 {name:"Types of Financial Returns",
  core:/borrows|arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded|leverag|after-tax|gross return|net return|effective annual|stated annual|compounded (monthly|quarterly|semi-?annually|daily)/,
- match:/arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded (return|rate)|gross return|net return|after-tax|pre-tax|leverag|compound annual growth|\bCAGR\b|effective annual|\bEAR\b|stated annual|periodic rate|compounded (monthly|quarterly|semi-?annually|daily)|compounding frequenc/},
+ match:/arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded (return|rate)|gross return|net return|after-tax|pre-tax|leverag|compound annual growth|\bCAGR\b|effective annual|\bEAR\b|stated annual|periodic rate|compounded (monthly|quarterly|semi-?annually|daily)|compounding frequenc/,
+ ideas:`**Many return measures exist because each answers a different question.** The skill tested is choosing the right one and computing it.
+
+## Averaging returns over several periods
+- **Arithmetic mean:** the simple average of period returns. It is the best estimate of a single future period's expected return, but it overstates what was earned over several periods.
+- **Geometric mean:** [(1 + R1)(1 + R2)…(1 + Rn)]^(1/n) − 1, the constant rate that turns the starting value into the ending value. A return of +20% followed by −20% has an arithmetic mean of 0% but a geometric mean of √(1.20 × 0.80) − 1 = −2.02%, and the money did shrink: 100 → 120 → 96.
+- The geometric mean is never above the arithmetic mean; the gap widens with volatility.
+- **Harmonic mean:** n / Σ(1/Xi), the average cost per share when the same amount is invested each period (cost averaging). For positive values, harmonic ≤ geometric ≤ arithmetic.
+
+## Annualizing and compounding
+- Annualize by compounding: (1 + HPR)^(365/days) − 1, or (1 + monthly return)^12 − 1. This assumes the short-period return repeats all year, which is rarely realistic.
+- **Effective annual rate:** EAR = (1 + stated rate / m)^m − 1. More frequent compounding raises the EAR for the same stated rate.
+- **Continuously compounded return:** r = ln(P1 / P0) = ln(1 + HPR). These returns add up over time: the multi-period figure is the sum of the period figures. With continuous compounding, EAR = e^r − 1.
+
+## Other return measures
+- **Gross return** is before management and administrative fees (trading costs are already deducted); **net return** is after all fees, what the investor actually receives.
+- **Pre-tax and after-tax returns:** taxes on income and realized gains reduce what the investor keeps.
+- **Real return:** (1 + nominal) / (1 + inflation) − 1, the gain in purchasing power.
+- **Leveraged return:** borrowing to invest magnifies gains and losses, R_L = r + (V_B / V_E) × (r − r_D), where V_B is the amount borrowed and V_E the investor's own equity.`,
+ traps:[
+  "Forecasting next year's return calls for the arithmetic mean; describing compound growth over past years calls for the geometric mean.",
+  "Annualize a 90-day return by compounding, (1 + r)^(365/90) − 1, not by multiplying r × 365/90.",
+  "Continuously compounded returns add over time; holding period returns multiply.",
+  "Gross return already deducts trading costs; it excludes management and administrative fees.",
+  "Leverage helps only when the asset's return beats the borrowing cost; below it, losses deepen.",
+  "To get an EAR, divide the stated rate by the number of periods and compound; never multiply the periodic rate."
+ ],
+ formulas:["F1-QM-02","F1-QM-03","F1-QM-04","F1-QM-11","F1-QM-07","F1-QM-08","F1-QM-35","F1-QM-33"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-types-of-financial-returns/","Types of Financial Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/g/geometricmean.asp"],
+  ["i:terms/h/harmonicaverage.asp"],
+  ["i:terms/c/continuouscompounding.asp"],
+  ["i:terms/e/effectiveinterest.asp"],
+  ["w:Rate_of_return"]
+ ]},
 {name:"Benchmarking Returns",
  core:/money[- ]weighted|time[- ]weighted|\bindex\b|indexes|indices|benchmark/,
- match:/money[- ]weighted|time[- ]weighted|\bMWRR?\b|\bTWRR?\b|internal rate of return of the portfolio|\bindex\b|indexes|indices|price[- ]weighted|equal(ly)?[- ]weighted index|(market[- ]cap(italization)?|value)[- ]weighted|float[- ]adjusted|fundamental weighting|rebalanc|reconstitut|total return index|price return index|benchmark|external cash flow|deposits? (made )?(into|to) the (portfolio|account)|withdraw/},
+ match:/money[- ]weighted|time[- ]weighted|\bMWRR?\b|\bTWRR?\b|internal rate of return of the portfolio|\bindex\b|indexes|indices|price[- ]weighted|equal(ly)?[- ]weighted index|(market[- ]cap(italization)?|value)[- ]weighted|float[- ]adjusted|fundamental weighting|rebalanc|reconstitut|total return index|price return index|benchmark|external cash flow|deposits? (made )?(into|to) the (portfolio|account)|withdraw/,
+ ideas:`**Two jobs: measure a portfolio's return fairly, and build the index it is compared with.**
+
+## Money-weighted versus time-weighted return
+- **Money-weighted return (MWRR):** the internal rate of return of all cash flows into and out of the portfolio, including the investor's deposits and withdrawals. It reflects the investor's timing: adding money just before a good period raises it.
+- **Time-weighted return (TWRR):** split the period at each external cash flow, compute each sub-period's holding period return, and link them: (1 + R1)(1 + R2)…(1 + Rn) − 1, then annualize with a geometric mean for periods longer than a year. The timing of cash flows has no effect.
+- Managers do not control when clients add or withdraw money, so the **TWRR is the standard for judging a manager**. The MWRR suits managers who control the timing, such as private equity funds that call capital.
+- Example: 100 grows to 125 in year 1; the investor adds 100; the 225 falls to 202.50 in year 2. TWRR = 1.25 × 0.90 − 1 = 12.5% over two years, 6.07% a year. The MWRR is only about 0.83% a year, because more money was invested in the bad year.
+
+## Building an index
+- **Price-weighted:** the sum of prices divided by a divisor. Higher-priced shares weigh more whatever the company's size. After a stock split the divisor is changed so the index value does not jump.
+- **Equal-weighted:** every constituent has the same weight. It tilts toward small companies and needs frequent rebalancing.
+- **Market-capitalization-weighted:** weight = the company's market value / the total. Large companies dominate. **Float-adjusted** versions count only shares available to the public.
+- **Fundamental weighting:** weights based on sales, earnings, book value or dividends rather than price; it tilts toward value stocks.
+- A **price return** index counts price changes only; a **total return** index also reinvests dividends and interest, so it grows faster when constituents pay income.
+- **Rebalancing** brings weights back to target; **reconstitution** changes which securities are in the index.`,
+ traps:[
+  "When a question asks how well the manager did, choose the time-weighted return; the money-weighted return mixes in the client's timing.",
+  "Sub-period returns in the TWRR are linked by multiplying (1 + R), never by adding them.",
+  "In a price-weighted index a 10% move in the highest-priced share matters most, even if that company is the smallest.",
+  "A stock split needs a new divisor in a price-weighted index but changes nothing in a market-cap-weighted one.",
+  "A price return index understates what investors earned when the constituents pay dividends."
+ ],
+ formulas:["F1-QM-05","F1-QM-06","F1-EQ-04","F1-EQ-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-benchmarking-returns/","Benchmarking Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/m/money-weighted-return.asp"],
+  ["i:terms/t/time-weightedror.asp"],
+  ["i:terms/p/priceweightedindex.asp"],
+  ["i:terms/c/capitalizationweightedindex.asp"],
+  ["w:Stock_market_index"]
+ ]},
 {name:"The Time Value of Money in Finance",
  core:/present value|future value|annuit|perpetuit|loan|mortgage|deposits? [0-9,]+|zero[- ]coupon|coupon|dividend discount|constant[- ]growth|expected to pay a dividend|forever|cash flow additivity|arbitrage|forward (interest )?rate|implied (growth|return|forward|yield)|simple interest|compound(ing|ed)? interest|compounding is|\bdoubl|discount rate/,
  match:/present value|future value|annuit|perpetuit|time value|zero[- ]coupon|coupon|yield to maturity|\bYTM\b|dividend discount|gordon|constant[- ]growth|implied (growth|return|forward|yield|rate)|cash flow additivity|no[- ]arbitrage|arbitrage|forward (interest )?rate|forward exchange|amorti[sz]|loan|mortgage|retire|simple interest|compound interest|\bdoubl|discount(ed)? (each|the|all|future) cash flows?|price of (a|the) bond|bond's price|fair value of (the|a) (bond|share|stock)/,
@@ -14187,25 +14289,273 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
  ]},
 {name:"Statistical Characteristics of Asset Returns",
  core:/\bmedian\b|\bmode\b|quartile|percentile|quantile|\brange\b|mean absolute deviation|skew|kurtosis|semi-?deviation|coefficient of variation|box[- ]and[- ]whisker|outlier|trimmed|winsori|spurious|sample standard deviation|sample variance|correlation (between|coefficient)|standard deviation of an asset|variance of a stock/,
- match:/\bmedian\b|\bmode\b|modal|quartile|quintile|decile|percentile|quantile|\brange\b|mean absolute deviation|\bMAD\b|variance|standard deviation|skew|kurtosis|leptokurtic|platykurtic|mesokurtic|fat tails?|covariance|correlation|scatter ?plot|spurious|semi-?deviation|downside deviation|coefficient of variation|dispersion|box (and whisker )?plot|interquartile|outlier|trimmed|winsori/},
+ match:/\bmedian\b|\bmode\b|modal|quartile|quintile|decile|percentile|quantile|\brange\b|mean absolute deviation|\bMAD\b|variance|standard deviation|skew|kurtosis|leptokurtic|platykurtic|mesokurtic|fat tails?|covariance|correlation|scatter ?plot|spurious|semi-?deviation|downside deviation|coefficient of variation|dispersion|box (and whisker )?plot|interquartile|outlier|trimmed|winsori/,
+ ideas:`**Describing a set of returns: where its center is, how widely it spreads, what shape it has, and how it moves with other assets.**
+
+## Central tendency and location
+- **Mean** (pulled by outliers), **median** (the middle of the sorted data, robust to outliers) and **mode** (the most frequent value).
+- A **trimmed mean** drops a set share of the smallest and largest values; a **winsorized mean** replaces them with the nearest values left.
+- **Quantiles** split sorted data into equal parts: quartiles (4), quintiles (5), deciles (10), percentiles (100). The median is the 50th percentile. The **interquartile range**, Q3 − Q1, holds the middle half of the data and forms the box of a box-and-whisker plot.
+
+## Dispersion
+- **Range** = maximum − minimum. **Mean absolute deviation** = the average of |Xi − mean|.
+- **Sample variance** s² = Σ(Xi − mean)² / (n − 1); the **standard deviation** s is its square root and is in the same units as the data. A sample divides by n − 1 so that dispersion is not understated.
+- **Target semideviation** counts only observations below a target return: the downside that investors worry about.
+- **Coefficient of variation** = s / mean: risk per unit of return, so lower is better.
+
+## Shape
+- **Skewness:** positive (right) skew has a long right tail, and usually mean > median > mode; negative skew is the reverse. Investors prefer positive skew: small frequent losses and occasional large gains.
+- **Kurtosis** measures the weight of the tails. A normal distribution has kurtosis 3, so excess kurtosis 0. **Leptokurtic** (fat-tailed) returns produce more extreme outcomes than the normal predicts; platykurtic returns fewer.
+
+## Covariance and correlation
+- **Covariance** shows whether two variables move together, but its size depends on their units. **Correlation** = covariance / (s_X × s_Y) is always between −1 and +1.
+- Correlation captures only linear association. A correlation of zero can hide a non-linear relation, and a high correlation can be **spurious**: due to chance or to a third variable that drives both. It never proves causation.`,
+ traps:[
+  "Divide by n − 1, not n, when the data are a sample.",
+  "With positive skew the mean is above the median: a few large values pull it up.",
+  "Excess kurtosis = kurtosis − 3. A kurtosis of 4 means fat tails (excess kurtosis of 1).",
+  "A correlation of zero means no linear relation, not that the variables are independent.",
+  "The target semideviation sums only the observations below the target but still divides by n − 1 for the whole sample."
+ ],
+ formulas:["F1-QM-12","F1-QM-13","F1-QM-14","F1-QM-17"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-statistical-characteristics-of-asset-returns/","Statistical Characteristics of Asset Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/standarddeviation.asp"],
+  ["i:terms/s/skewness.asp"],
+  ["i:terms/k/kurtosis.asp"],
+  ["i:terms/c/correlationcoefficient.asp"],
+  ["w:Spurious_relationship"]
+ ]},
 {name:"Statistical Distributions for Financial Asset Prices and Returns",
  core:/probabilit|expected value|bayes|normal(ly)? distribut|lognormal|binomial|uniform distribution|\bodds\b|safety-first|chebyshev|\bways\b|permutation|combination|number of (different|possible)/,
- match:/probabilit|expected value|conditional|bayes|\bprior\b|posterior|normal(ly)? distribut|standard normal|\bz[- ](score|value|statistic)|\bz ?=|lognormal|log-normal|student'?s t|t-distribution|chi-square distribution|F-distribution|binomial|bernoulli|uniform distribution|joint|independent events|tree diagram|probability tree|\bodds\b|safety-first|shortfall|\bways\b|permutation|combination|factorial|confidence that|within (one|two|three|1|2|3) standard deviations|chebyshev/},
+ match:/probabilit|expected value|conditional|bayes|\bprior\b|posterior|normal(ly)? distribut|standard normal|\bz[- ](score|value|statistic)|\bz ?=|lognormal|log-normal|student'?s t|t-distribution|chi-square distribution|F-distribution|binomial|bernoulli|uniform distribution|joint|independent events|tree diagram|probability tree|\bodds\b|safety-first|shortfall|\bways\b|permutation|combination|factorial|confidence that|within (one|two|three|1|2|3) standard deviations|chebyshev/,
+ ideas:`**From describing past data to modeling what could happen: probabilities, expected values, and the distributions used for prices and returns.**
+
+## Expected value, variance and covariance
+- **Expected value** E(X) = Σ P(xi) × xi, the probability-weighted average of the outcomes. **Variance** σ² = Σ P(xi) × [xi − E(X)]²; a covariance works the same way with the paired deviations of two variables.
+- Example: a return of 12% with probability 0.6 and −3% with probability 0.4 gives E(R) = 0.6 × 12% + 0.4 × (−3%) = 6%, and σ² = 0.6 × 6² + 0.4 × 9² = 54 (in %²), so σ = 7.35%.
+- **Conditional** expected values and variances use probabilities given a scenario, such as a recession. The **total probability rule** combines them: E(X) = Σ E(X | Si) × P(Si).
+- **Bayes' formula** updates a prior probability with new information: P(A | B) = P(B | A) × P(A) / P(B). Example: 40% of firms are strong; strong firms raise dividends 80% of the time, the others 20%. After a dividend increase, P(strong) = 0.8 × 0.4 / (0.8 × 0.4 + 0.2 × 0.6) = 72.7%.
+
+## Distributions used in finance
+- **Binomial:** n independent trials, each a success with the same probability p; mean np and variance np(1 − p). It is the basis of binomial price trees.
+- **Normal:** symmetric and fully described by its mean and variance. About 68%, 95% and 99% of outcomes lie within 1, 1.96 and 2.58 standard deviations of the mean. Standardize with z = (X − μ) / σ. A weighted sum of normal variables is also normal.
+- **Lognormal:** X is lognormal when ln(X) is normal. It cannot go below zero and is skewed to the right, which suits asset prices; prices are lognormal when continuously compounded returns are normal.
+- **Student's t:** bell-shaped like the normal but with fatter tails, set by its degrees of freedom; it approaches the normal as the degrees of freedom grow. It is used when the variance has to be estimated from a sample.
+- **Chi-square** and **F:** built from squared normal variables, never negative and skewed to the right; used to test a single variance (chi-square) or compare two variances (F).`,
+ traps:[
+  "A variance built from probabilities weights each squared deviation by its probability; there is no division by n − 1.",
+  "In Bayes' formula the denominator is the unconditional probability of the new information, summed over all scenarios.",
+  "Prices are modeled as lognormal (never negative); continuously compounded returns as normal.",
+  "A normal distribution has skewness 0 and kurtosis 3; real return data usually have fatter tails.",
+  "Binomial trials must be independent, with the same probability of success in each."
+ ],
+ formulas:["F1-QM-19","F1-QM-20","F1-QM-21","F1-QM-22"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-statistical-distributions-for-financial-asset-prices-and-returns/","Statistical Distributions for Financial Asset Prices and Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/n/normaldistribution.asp"],
+  ["i:terms/l/log-normal-distribution.asp"],
+  ["i:terms/b/bayes-theorem.asp"],
+  ["i:terms/b/binomialdistribution.asp"],
+  ["w:Student%27s_t-distribution"]
+ ]},
 {name:"Estimation and Hypothesis Testing",
  core:/sampl(e|ing) (method|error|bias|distribution)|central limit|confidence interval|hypothes|\bnull\b|type i\b|type ii\b|significance|p-value|t-statistic|test statistic|parametric|spearman|contingency|chi-square test|tests? (whether|of the equality|for)|testing|sample mean|(?<=limit )theorem|survivorship|look-ahead|data[- ]snooping|stratified|cluster sampl/,
- match:/sampl|central limit|standard error of the (sample )?mean|confidence interval|hypothes|null|type i\b|type ii\b|significance level|level of significance|statistically significant|power of (a|the) test|p-value|t-test|z-test|test statistic|critical value|reject|fail to reject|parametric|nonparametric|non-parametric|spearman|rank correlation|contingency|chi-square test|data[- ]snooping|data[- ]mining|survivorship|look-ahead|time-period bias|stratified|cluster/},
+ match:/sampl|central limit|standard error of the (sample )?mean|confidence interval|hypothes|null|type i\b|type ii\b|significance level|level of significance|statistically significant|power of (a|the) test|p-value|t-test|z-test|test statistic|critical value|reject|fail to reject|parametric|nonparametric|non-parametric|spearman|rank correlation|contingency|chi-square test|data[- ]snooping|data[- ]mining|survivorship|look-ahead|time-period bias|stratified|cluster/,
+ ideas:`**Using a sample to say something about a population, and deciding whether the evidence is strong enough.**
+
+## Sampling
+- **Simple random sampling** gives every member the same chance of selection. **Stratified random sampling** splits the population into groups (strata) and samples each in proportion, which is how bond index funds are often built. **Cluster sampling** selects whole groups. Non-probability methods, **convenience** and **judgmental** sampling, are cheaper but can be biased.
+- **Sampling error** is the gap between a sample statistic and the true population value.
+- Biases to recognize: **survivorship** (only firms that still exist), **look-ahead** (using data not yet available at the time), **data snooping** (testing many ideas on the same data until one works) and **time-period bias** (results that hold only in the period studied).
+
+## Central limit theorem and confidence intervals
+- For a large sample (n of 30 or more by convention), the sample mean is approximately normal with mean μ and **standard error** σ / √n, **whatever the shape of the population**.
+- Confidence interval = sample mean ± reliability factor × standard error. Use z when the population variance is known, and t with n − 1 degrees of freedom when it is estimated from the sample (for large samples z is an acceptable approximation). Example: mean 1.2%, s = 4%, n = 64 give a standard error of 0.5% and a 95% interval of 1.2% ± 1.96 × 0.5%, from 0.22% to 2.18%.
+- A larger sample shrinks the standard error; a higher confidence level widens the interval.
+
+## Hypothesis testing
+- State the null hypothesis H0 (it contains the equal sign) and the alternative Ha; choose the test statistic and significance level α; compute; reject H0 when the statistic falls beyond the critical value, or equivalently when the **p-value** is below α.
+- **Type I error:** rejecting a true H0; its probability is α. **Type II error:** failing to reject a false H0. **Power** = 1 − P(Type II error). With a fixed sample, a lower α means more Type II errors; a larger sample reduces both.
+- Common tests: t for a mean or a correlation, chi-square for one variance, F for comparing two variances.
+- **Parametric** tests assume a distribution and test its parameters. **Non-parametric** tests, such as the Spearman rank correlation, suit ranked data, outliers or data whose distribution is unknown.
+- Statistical significance is not economic significance: an effect can be significant in a large sample and still too small to cover trading costs.`,
+ traps:[
+  "'Fail to reject H0' does not mean H0 is true.",
+  "The p-value is the smallest significance level at which H0 is rejected, not the probability that H0 is true.",
+  "A one-tailed test puts all of α in one tail: at 5% the z critical value is 1.645, not 1.96.",
+  "The central limit theorem makes the distribution of the sample mean normal, not the population itself.",
+  "With an unknown population variance and a small sample, use t, which gives a wider interval than z."
+ ],
+ formulas:["F1-QM-23","F1-QM-24"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-estimation-and-hypothesis-testing/","Estimation and Hypothesis Testing: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/central_limit_theorem.asp"],
+  ["i:terms/h/hypothesistesting.asp"],
+  ["i:terms/p/p-value.asp"],
+  ["i:terms/n/nonparametric-statistics.asp"],
+  ["w:Type_I_and_type_II_errors"]
+ ]},
 {name:"The Return and Risk of a Financial Portfolio",
  core:/portfolio(\x27s)? (expected )?(return|variance|standard deviation|risk)|(standard deviation|variance) of (the|a|an|this) .{0,30}portfolio|weights? of|two assets|two-asset|asset A\b|diversif|efficient frontier|capital allocation|capital market line|risk aversion|utility|indifference|minimum[- ]variance|optimal (risky )?portfolio|sharpe|equally weighted portfolio holds|portfolios of risky assets|risky assets|portfolio is \d|portfolio (holds|consists)|in asset [AB]\b|asset B\b/,
- match:/portfolio('s)? (expected )?(return|variance|standard deviation|risk|volatility)|(variance|standard deviation|return|risk) of (the|a|an|this) (equally weighted |two-asset |two-stock )?portfolio|two-asset|two-stock|three-asset|equally weighted portfolio|diversif|minimum[- ]variance|efficient frontier|capital allocation line|\bCAL\b|capital market line|\bCML\b|risk aversion|risk[- ]averse|utility|indifference curve|optimal (risky )?portfolio|market portfolio|two-fund separation|growing number of assets/},
+ match:/portfolio('s)? (expected )?(return|variance|standard deviation|risk|volatility)|(variance|standard deviation|return|risk) of (the|a|an|this) (equally weighted |two-asset |two-stock )?portfolio|two-asset|two-stock|three-asset|equally weighted portfolio|diversif|minimum[- ]variance|efficient frontier|capital allocation line|\bCAL\b|capital market line|\bCML\b|risk aversion|risk[- ]averse|utility|indifference curve|optimal (risky )?portfolio|market portfolio|two-fund separation|growing number of assets/,
+ ideas:`**A portfolio's expected return is a weighted average of its assets' returns. Its risk is not, because imperfect correlation lets risks offset each other.**
+
+## Portfolio return and risk
+- Expected return: E(Rp) = Σ wi × E(Ri).
+- Two assets: σp² = w1²σ1² + w2²σ2² + 2 w1 w2 ρ12 σ1 σ2. With ρ = +1 the portfolio standard deviation is the weighted average of the two; any lower correlation gives less, and ρ = −1 allows a combination with zero risk.
+- Example: 70% in A (σ 25%) and 30% in B (σ 15%) with ρ = 0.1: σp² = 0.49 × 0.0625 + 0.09 × 0.0225 + 2 × 0.7 × 0.3 × 0.1 × 0.25 × 0.15 = 0.034225, so σp = 18.50%, well below the 22% weighted average.
+- In a large equally weighted portfolio the variance tends to the average covariance: diversification removes the risk specific to each asset, not the risk they share.
+
+## The efficient frontier
+- The **minimum-variance frontier** gives the lowest risk for each level of expected return. Its leftmost point is the **global minimum-variance portfolio**; the part above it is the **efficient frontier**, where no portfolio offers more return for the same risk.
+- Investors are **risk-averse**: they need a higher expected return to accept more risk. Utility U = E(R) − ½ A σ² scores a portfolio for an investor with risk aversion A; more risk-averse investors have steeper **indifference curves**.
+
+## Adding a risk-free asset
+- Mixing the risk-free asset with a risky portfolio gives a straight **capital allocation line (CAL)**: E(Rp) = Rf + [(E(Ri) − Rf) / σi] × σp. Its slope is the risky portfolio's Sharpe ratio.
+- The steepest CAL touches the efficient frontier at the **optimal risky portfolio**. Every investor holds that same risky portfolio and chooses a point on the line by risk aversion (two-fund separation): cautious investors lend at Rf, aggressive ones borrow.
+- If investors share the same expectations, the optimal risky portfolio is the **market portfolio** and that line is the **capital market line (CML)**.`,
+ traps:[
+  "Portfolio standard deviation equals the weighted average of the assets' standard deviations only when the correlation is +1.",
+  "The diversification benefit depends on correlation, not on how risky each asset is.",
+  "In the utility formula, enter returns and variances as decimals (0.10, not 10) and keep the ½.",
+  "Portfolios below the efficient frontier are inefficient; points above it cannot be reached.",
+  "On a CAL only the risky part carries risk: σp = (weight in the risky portfolio) × σ of that portfolio.",
+  "The CML measures risk with standard deviation; the security market line (CAPM) uses beta. Do not mix them."
+ ],
+ formulas:["F1-QM-18","F1-QM-39","F1-QM-41","F1-PM-01","F1-PM-03","F1-QM-15"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-return-and-risk-of-a-financial-portfolio/","The Return and Risk of a Financial Portfolio: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/cml.asp"],
+  ["w:Modern_portfolio_theory"],
+  ["w:Efficient_frontier"],
+  ["w:Capital_allocation_line"]
+ ]},
 {name:"Simulation of Financial Asset Prices and Returns",
  core:/simulat|monte carlo|bootstrap|resampl|jackknife|repeatedly draw/,
- match:/simulat|monte carlo|bootstrap|resampl|jackknife|trials|random (number|draw)|price path|lognormal (distribution )?(of|for) (prices|asset prices)/},
+ match:/simulat|monte carlo|bootstrap|resampl|jackknife|trials|random (number|draw)|price path|lognormal (distribution )?(of|for) (prices|asset prices)/,
+ ideas:`**Simulation generates many possible future paths of prices or returns, so the analyst sees a whole distribution of outcomes instead of a single forecast.**
+
+## Three ways to generate scenarios
+- **Historical simulation:** apply the changes actually observed in the past (for example, each daily return of the last five years) to today's portfolio. No distribution has to be assumed, but only events present in the sample can appear.
+- **Bootstrap resampling:** draw observations at random, **with replacement**, from the historical sample to build many new samples of the same size. The spread of an estimate (a mean, a median, a risk measure) across those samples measures its precision, even when no formula for its standard error exists.
+- **Monte Carlo simulation:** specify a model and probability distributions for the risk factors, draw random values, value the portfolio in each trial, and repeat thousands of times. Uses include value at risk, retirement planning and valuing securities with complex features.
+
+## Steps of a Monte Carlo simulation
+- Define the quantity to estimate and the time steps.
+- Choose the risk factors, their distributions and parameters.
+- Draw random values (random numbers converted to the chosen distributions) and compute the outcome along each path.
+- Repeat many times and read the results from the distribution of outcomes: the mean, percentiles, the probability of a loss.
+
+## Lognormal prices
+- Continuously compounded returns add up over time: P_T = P0 × e^(r1 + r2 + … + rT). When those returns are independent and normal, the ending price is **lognormal**: never below zero and skewed to the right.
+- Over T periods the continuously compounded return has mean Tμ and variance Tσ², so its volatility grows with √T.
+
+## Limits
+- Results are only as good as the model and inputs. Monte Carlo gives statistical estimates, not the exact cause-and-effect insight of an analytical formula, so it complements analytical methods rather than replacing them.
+- The sampling error of a simulated estimate falls with 1 / √(number of trials): four times as many trials halve it.`,
+ traps:[
+  "Historical simulation cannot produce a loss larger than the worst one in its data.",
+  "Bootstrap samples are drawn with replacement; without replacement each new sample would just reshuffle the original data.",
+  "Halving the standard error of a Monte Carlo estimate takes four times as many trials, not twice as many.",
+  "A Monte Carlo result depends on the assumed distributions: assuming normal returns can understate the risk of extreme losses.",
+  "Volatility scales with the square root of time, not with time."
+ ],
+ formulas:["F1-QM-29","F1-QM-30","F1-QM-08"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-simulation-of-financial-asset-prices-and-returns/","Simulation of Financial Asset Prices and Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/m/montecarlosimulation.asp"],
+  ["w:Bootstrapping_(statistics)"],
+  ["w:Historical_simulation_(finance)"],
+  ["w:Monte_Carlo_methods_in_finance"]
+ ]},
 {name:"Applications of Simple Linear Regression in Finance",
  core:/regress|slope|intercept|dependent variable|independent variable|R²|coefficient of determination|ANOVA|sum of squares|standard error of (the )?estimate|log-lin|lin-log|log-log|least squares|residual/,
- match:/regress|slope|intercept|dependent variable|independent variable|explanatory variable|\bR²|r-squared|coefficient of determination|ANOVA|sum of squares|\bSSE\b|\bSST\b|\bRSS\b|F-statistic|standard error of (the )?estimate|\bSEE\b|residual|homoskedast|heteroskedast|prediction interval|log-lin|lin-log|log-log|fitted|least squares|\bOLS\b|predicted value/},
+ match:/regress|slope|intercept|dependent variable|independent variable|explanatory variable|\bR²|r-squared|coefficient of determination|ANOVA|sum of squares|\bSSE\b|\bSST\b|\bRSS\b|F-statistic|standard error of (the )?estimate|\bSEE\b|residual|homoskedast|heteroskedast|prediction interval|log-lin|lin-log|log-log|fitted|least squares|\bOLS\b|predicted value/,
+ ideas:`**Simple linear regression explains a dependent variable Y with one independent variable X: Y = b0 + b1X + ε.**
+
+## Estimating the line
+- **Least squares** chooses b0 and b1 to minimize the sum of squared residuals (actual Y minus fitted Y). The slope is b1 = Cov(X, Y) / Var(X) and the intercept b0 = mean of Y − b1 × mean of X, so the line passes through the two means.
+- The slope is the change in Y for a one-unit change in X. Regressing a stock's excess return on the market's excess return gives its **beta** as the slope and its alpha as the intercept: this is how the CAPM inputs are estimated.
+
+## Assumptions and residuals
+- The relation is linear; the residuals have constant variance (**homoskedasticity**), are independent of each other and are normally distributed.
+- Plotting the residuals reveals problems: a funnel shape signals heteroskedasticity, a pattern over time signals dependence, and a curve signals a non-linear relation.
+
+## Goodness of fit and ANOVA
+- Total variation splits into explained and unexplained parts: SST = RSS (regression sum of squares) + SSE (sum of squared errors).
+- **R²** = RSS / SST, the share of the variation in Y explained by X; in simple regression it equals the squared correlation of X and Y.
+- **Standard error of estimate:** SEE = √[SSE / (n − 2)], the typical size of a residual; smaller means a better fit.
+- **F-statistic** = (RSS / 1) / [SSE / (n − 2)] tests whether the slope is zero; in simple regression F equals the slope's t-statistic squared.
+- Example: n = 32, SST = 0.0500 and SSE = 0.0200 give RSS = 0.0300, R² = 0.60, SEE = √(0.0200 / 30) = 0.0258 and F = 0.0300 / (0.0200 / 30) = 45.
+- **t-test of the slope:** t = (b1 − B1) / s_b1 with n − 2 degrees of freedom; B1 can be any hypothesized value, such as 1.0 to test whether a beta equals one.
+
+## Prediction and functional forms
+- Forecast: Ŷ = b0 + b1 × Xf. The **prediction interval** around it is wider than the SEE alone, and widens further as Xf moves away from the mean of X.
+- For non-linear relations, transform the variables: **log-lin** (ln Y on X), **lin-log** (Y on ln X) or **log-log** (ln Y on ln X, where the slope is an elasticity).`,
+ traps:[
+  "Simple regression has n − 2 degrees of freedom because two coefficients are estimated.",
+  "RSS is the explained part and SSE the unexplained part; R² = RSS / SST, not SSE / SST.",
+  "Testing whether beta equals one uses (b1 − 1) in the numerator, not b1.",
+  "A high R² shows fit, not causation.",
+  "Forecasts for X values far outside the sample range are unreliable.",
+  "In a log-lin model the slope is a continuously compounded rate: the percentage change in Y is e^b1 − 1."
+ ],
+ formulas:["F1-QM-25","F1-QM-26","F1-QM-27","F1-QM-37","F1-QM-28","F1-QM-38","F1-PM-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-applications-of-simple-linear-regression-in-finance/","Applications of Simple Linear Regression in Finance: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/r/regression.asp"],
+  ["i:terms/r/r-squared.asp"],
+  ["i:terms/a/anova.asp"],
+  ["i:terms/h/heteroskedasticity.asp"],
+  ["w:Simple_linear_regression"]
+ ]},
 {name:"Introduction to Financial Data Science",
  core:/big data|machine learning|artificial intelligence|neural|overfit|natural language|\btext\b|sentiment|alternative data|data (cleansing|wrangling|exploration|science|scientist|types?)|structured|unstructured|fintech|algorithm|visuali|histogram|frequency distribution|heat ?map|categorical|ordinal|cross-sectional|time[- ]series|panel data/,
- match:/big data|machine learning|artificial intelligence|\bAI\b|supervised|unsupervised|deep learning|neural network|overfit|underfit|natural language|\bNLP\b|text (analytics|mining)|sentiment|alternative data|data (cleansing|wrangling|exploration|scientist|science|preprocessing|curation)|structured data|unstructured|volume, velocity|veracity|fintech|algorithm|training (data|set)|feature (selection|engineering)|tokeniz|word cloud|visuali[sz]|histogram|frequency (distribution|polygon)|heat ?map|bar chart|categorical|ordinal|nominal data|cross-sectional|time[- ]series data|panel data/}
+ match:/big data|machine learning|artificial intelligence|\bAI\b|supervised|unsupervised|deep learning|neural network|overfit|underfit|natural language|\bNLP\b|text (analytics|mining)|sentiment|alternative data|data (cleansing|wrangling|exploration|scientist|science|preprocessing|curation)|structured data|unstructured|volume, velocity|veracity|fintech|algorithm|training (data|set)|feature (selection|engineering)|tokeniz|word cloud|visuali[sz]|histogram|frequency (distribution|polygon)|heat ?map|bar chart|categorical|ordinal|nominal data|cross-sectional|time[- ]series data|panel data/,
+ ideas:`**Financial data science combines large, varied data sets with algorithms that learn from them, to support investment decisions.**
+
+## Big data
+- Defined by **volume** (the amount of data), **velocity** (how fast it arrives, up to real time), **variety** (structured, semi-structured and unstructured) and **veracity** (how reliable it is).
+- **Structured** data fit rows and columns (prices, financial statements); **unstructured** data do not (text, images, audio) and must be processed before most models can use them.
+- **Alternative data** come from individuals (social media posts, product reviews), business processes (card transactions, supply-chain records) and sensors (satellite images, geolocation, connected devices).
+
+## Machine learning and artificial intelligence
+- **Artificial intelligence (AI):** computer systems that perform tasks needing human-like judgment. **Machine learning (ML)** is the part of AI that learns patterns from data without explicit rules.
+- **Supervised learning** trains on labeled data (inputs with known outcomes) to predict or classify, such as default or no default. **Unsupervised learning** has no labels and finds structure, such as clusters of similar stocks. **Deep learning** uses neural networks with many layers for complex patterns in images or language.
+- **Overfitting:** the model learns the noise in its training data and predicts badly on new data. **Underfitting:** the model is too simple to capture the pattern. Models are therefore checked on data they were not trained on.
+- **Natural language processing (NLP)** turns text, such as earnings calls, filings and news, into measures like sentiment.
+
+## From raw data to analysis
+- Data are captured, then **cleansed** (errors, missing values and duplicates fixed), stored, searched and transferred.
+- **Exploration and visualization** come before modeling: summary statistics, histograms, scatter plots, heat maps, and word clouds for text.
+
+## Uses and limits in investment management
+- Uses: text and sentiment analysis, nowcasting economic data before official releases, fraud and anomaly detection, algorithmic trading, robo-advice and credit scoring.
+- Limits: complex models can be hard to explain ("black boxes"), data can be biased or badly sourced, and privacy and data-use rules apply. People still frame the question and judge the answer.`,
+ traps:[
+  "Labeled outcomes mean supervised learning; no labels mean unsupervised learning.",
+  "A model that fits its training data almost perfectly is a warning of overfitting, not proof of a good model.",
+  "Unstructured data such as text must be turned into structured inputs before most models can use them.",
+  "Velocity is how fast data arrive, not how fast a computer processes them.",
+  "Data being available does not make it legal or ethical to use: privacy rules still apply."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-introduction-to-financial-data-science/","Introduction to Financial Data Science: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/b/big-data.asp"],
+  ["i:terms/m/machine-learning.asp"],
+  ["i:terms/n/neuralnetwork.asp"],
+  ["w:Natural_language_processing"],
+  ["w:Overfitting"]
+ ]}
 ]);
 /* Learning map, Economics: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
