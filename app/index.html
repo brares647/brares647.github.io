@@ -305,6 +305,15 @@ button.erow .chev{color:var(--text-3)}
 .trow.lm-off{color:var(--text-2)}
 .trow.lm-off .tn span{font-weight:400}
 .lm-read .learn-link .ltext b{white-space:normal}
+.lm-text h4{font-size:15px;font-weight:600;margin:16px 0 0;color:var(--text-2)}
+.lm-ex{margin:16px 0 4px;padding:4px 16px 14px;border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0}
+.lm-ex p:first-child{margin-top:10px}
+details.lm-lesson > summary{list-style:none;cursor:pointer}
+details.lm-lesson > summary::-webkit-details-marker{display:none}
+details.lm-lesson:not([open]) > summary{border-bottom:0}
+details.lm-lesson .lm-tog::after{content:'Hide'}
+details.lm-lesson:not([open]) .lm-tog::after{content:'Show'}
+.lm-lesson .lm-text{padding-bottom:24px}
 .fsheet{margin-top:16px}
 .fsheet b{font-size:14px}
 .content.narrow{max-width:640px}
@@ -14594,6 +14603,122 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 {name:"The Time Value of Money in Finance",
  core:/present value|future value|annuit|perpetuit|loan|mortgage|deposits? [0-9,]+|zero[- ]coupon|coupon|dividend discount|constant[- ]growth|expected to pay a dividend|forever|cash flow additivity|arbitrage|forward (interest )?rate|implied (growth|return|forward|yield)|simple interest|compound(ing|ed)? interest|compounding is|\bdoubl|discount rate/,
  match:/present value|future value|annuit|perpetuit|time value|zero[- ]coupon|coupon|yield to maturity|\bYTM\b|dividend discount|gordon|constant[- ]growth|implied (growth|return|forward|yield|rate)|cash flow additivity|no[- ]arbitrage|arbitrage|forward (interest )?rate|forward exchange|amorti[sz]|loan|mortgage|retire|simple interest|compound interest|\bdoubl|discount(ed)? (each|the|all|future) cash flows?|price of (a|the) bond|bond's price|fair value of (the|a) (bond|share|stock)/,
+ lesson:`## 1. Why a sum today is worth more than the same sum later
+Imagine someone offers you 1,000 today or 1,000 in a year. Almost everyone takes the money today, and there are three good reasons. You could invest it and have more than 1,000 in a year. Prices may rise, so 1,000 next year buys less. And a promise of future money might not be kept. Together these explain why investors demand a **return** for waiting: the **required rate of return**, r.
+
+Two operations follow from this idea:
+- **Compounding** moves money forward in time: 1,000 invested at 5% grows to 1,000 × 1.05 = 1,050 after one year and 1,000 × 1.05² = 1,102.50 after two. Interest earns interest, which is why the growth is not simply 50 a year.
+- **Discounting** moves money back in time: the value today of 1,102.50 due in two years at 5% is 1,102.50 / 1.05² = 1,000.
+
+The whole module rests on one equation and its reverse:
+- FV = PV × (1 + r)^N and PV = FV / (1 + r)^N,
+
+where r is the rate **per period** and N the number of **periods**. If payments are monthly, r is the monthly rate and N the number of months. Mixing an annual rate with monthly periods is the most common mistake in this topic.
+
+A useful habit is to draw a **timeline**: a horizontal line with t = 0 (today), t = 1, t = 2… and each cash flow written under its date, with a sign. Money you pay out is negative; money you receive is positive. The BA II Plus calculator follows the same rule, so if you enter both PV and FV with the same sign it returns an error.
+
+## 2. Valuing any instrument: add up the present values
+A financial instrument is nothing more than a set of future cash flows. Its fair value today is the sum of the present values of those cash flows, each discounted at the rate investors require for that risk and timing. This principle works for a bond, a loan, a share and even a derivative. What changes from one instrument to another is only the pattern of cash flows.
+
+### Fixed-income instruments
+- **Zero-coupon (discount) bond:** a single payment at maturity. Its price is simply PV = FV / (1 + r)^N, below face value; the gap between price and face value is the investor's entire return.
+- **Coupon bond:** regular interest payments (coupons) plus the face value at maturity. It is an annuity plus a single payment.
+- **Amortizing loan (annuity instrument):** equal payments that cover interest and repay principal step by step, so nothing is left at the end. Mortgages and car loans work this way.
+- **Perpetual bond:** equal payments forever, with no repayment of principal. Its value has a neat shortcut: PV = PMT / r.
+
+> **Worked example 1: a coupon bond**
+> A bond has a face value of 100, pays a 6% annual coupon (6 a year) and matures in three years. Investors require 5%.
+> - Year 1: 6 / 1.05 = 5.71
+> - Year 2: 6 / 1.05² = 5.44
+> - Year 3: 106 / 1.05³ = 91.57
+> - Price = 5.71 + 5.44 + 91.57 = 102.72
+> On the calculator: \`N = 3, I/Y = 5, PMT = 6, FV = 100, CPT PV\` gives −102.72 (negative because you pay it).
+> The price is above 100 because the bond pays 6% while the market asks only 5%. Investors pay a **premium** for the extra coupon.
+
+That last point generalizes into a rule you should know without calculating:
+- coupon rate = market rate → price = par (100);
+- coupon rate > market rate → price above par (premium);
+- coupon rate < market rate → price below par (discount).
+
+And when the market rate rises, every bond's price falls, because each future payment is divided by a larger number.
+
+> **Worked example 2: a mortgage**
+> You borrow 200,000 for 20 years at 6% a year, with monthly payments. Per period: r = 6% / 12 = 0.5% and N = 20 × 12 = 240.
+> The payment solves 200,000 = PMT × [1 − 1.005^−240] / 0.005, giving PMT = 1,432.86 a month.
+> On the calculator: \`N = 240, I/Y = 0.5, PV = 200,000, FV = 0, CPT PMT\` gives −1,432.86.
+> Split of the first payment: interest = 200,000 × 0.5% = 1,000.00; principal = 1,432.86 − 1,000.00 = 432.86. The balance falls to 199,567.14.
+> Next month the interest is a little smaller (it is charged on a smaller balance), so a little more of the same payment repays principal. That is why early payments are mostly interest.
+
+### Annuities in more detail
+An **ordinary annuity** pays at the end of each period; an **annuity due** pays at the start (rent paid in advance, for example). Each payment of an annuity due arrives one period earlier, so its value is the ordinary annuity value × (1 + r). On the calculator, switch to BGN mode (\`2ND PMT\`, \`2ND ENTER\`) and remember to switch back to END afterwards.
+
+A **deferred** annuity or perpetuity starts later. The formulas PMT × [1 − (1 + r)^−N] / r and PMT / r always give the value **one period before the first payment**. So if the first payment comes at t = 5, the formula gives a value at t = 4, which you then discount four more years. Exams test this "one period before" rule constantly.
+
+### Equity instruments
+Shares are harder because their cash flows (dividends) are not promised. The same present value logic applies, with assumptions about the dividends.
+- **Preferred shares** usually pay a fixed dividend with no maturity, so they are perpetuities: V0 = D / r.
+- **Common shares with constant dividend growth:** if dividends grow at g forever and r > g, the sum of all discounted dividends simplifies to the **Gordon growth model**: V0 = D1 / (r − g), where D1 = D0 × (1 + g) is next year's dividend.
+
+Why must r exceed g? If dividends grew faster than the discount rate, each later dividend would be worth more today than the one before, and the sum would never stop growing. The formula would give a nonsensical value.
+
+Many companies grow fast for a while and then slow down. The **multistage** approach handles this: value each dividend of the fast-growth years separately, then, at the point where growth becomes stable, apply the Gordon formula to get a **terminal value**, and discount that back too.
+
+> **Worked example 3: two stages of growth**
+> A company just paid D0 = 1.00. Dividends will grow 15% for two years, then 5% a year forever. The required return is 10%.
+> - D1 = 1.00 × 1.15 = 1.15
+> - D2 = 1.15 × 1.15 = 1.3225
+> - D3 = 1.3225 × 1.05 = 1.3886
+> - Terminal value at t = 2: V2 = D3 / (r − g) = 1.3886 / (0.10 − 0.05) = 27.77
+> - V0 = 1.15 / 1.10 + (1.3225 + 27.7725) / 1.10² = 1.045 + 24.045 = 25.09
+> Notice the terminal value is placed at t = 2 (one period before D3) and discounted two years, not three. Notice also how much of the value comes from it: about 23 of the 25.
+
+## 3. Running the equation backwards: implied returns and growth
+So far we knew the required return and computed a value. Often the price is known (the market tells you) and you want the return it implies.
+- For a bond, the **yield to maturity (YTM)** is the single discount rate that makes the present value of its promised cash flows equal to its price. It is the bond's internal rate of return if you hold it to maturity and everything is paid.
+- For a share, rearranging the Gordon model gives the **implied required return**, r = D1 / P0 + g (dividend yield plus growth), or the **implied growth**, g = r − D1 / P0.
+
+> **Worked example 4: a yield to maturity**
+> A four-year bond with a 5% annual coupon trades at 97. What does it yield?
+> On the calculator: \`N = 4, PV = −97, PMT = 5, FV = 100, CPT I/Y\` gives 5.86%.
+> Sense check: the bond trades below par, so its yield must be above its 5% coupon. It is.
+
+> **Worked example 5: the growth the market expects**
+> A share trades at 50, next year's dividend is expected to be 2.00, and investors require 9%. Implied growth: g = 0.09 − 2.00 / 50 = 0.09 − 0.04 = 5%.
+> If the price rose to 60 with the same dividend and required return, implied growth would be 9% − 3.33% = 5.67%: a higher price means the market is pricing in faster growth.
+
+## 4. Cash flow additivity and no arbitrage
+The **cash flow additivity principle** says that the present value of a stream of cash flows equals the sum of the present values of its parts, and that you can split or recombine cash flows without changing their total value. It sounds obvious, but it has a powerful consequence: **two strategies that produce identical future cash flows must cost the same today**. If they did not, you could buy the cheaper one, sell the more expensive one, and pocket the difference with no risk. That riskless profit is called **arbitrage**, and in liquid markets traders remove it almost instantly. Three applications appear in this module.
+
+> **Worked example 6: an implied forward rate**
+> The one-year spot rate is 1.5% and the two-year spot rate is 2.5%. Strategy A: invest for two years at 2.5% a year: 1 grows to 1.025² = 1.0506. Strategy B: invest for one year at 1.5%, then reinvest for the second year at a rate f agreed today. Both must end with the same amount:
+> 1.015 × (1 + f) = 1.025², so f = 1.025² / 1.015 − 1 = 3.51%.
+> The second-year rate is higher than both spot rates, because the 2.5% average has to make up for the low first year.
+
+**Forward exchange rates** follow the same logic. Converting money now and investing it abroad must give the same result as investing at home and converting at a forward rate agreed today. Writing quotes as price currency per unit of base currency:
+- F = S × (1 + r_price) / (1 + r_base) for one year.
+
+> **Worked example 7a: a forward exchange rate**
+> The spot rate is 0.9500 CHF per EUR, the one-year CHF rate is 1.0% and the EUR rate is 2.5%. The forward rate is F = 0.9500 × 1.010 / 1.025 = 0.9361 CHF per EUR.
+> The euro, with the higher interest rate, buys fewer francs forward than spot: it trades at a forward discount. Otherwise everyone would earn the higher euro rate and convert back at no cost.
+
+**Options** can be valued the same way: if a portfolio of the underlying asset plus borrowing reproduces the option's payoffs exactly, the option must cost what that portfolio costs.
+
+> **Worked example 7b: replicating an option**
+> A share trades at 40 and in one period will be worth either 50 or 32. A call option with a strike of 40 will then pay either 10 or 0. The risk-free rate is 2% per period.
+> Buy h shares and borrow B so the portfolio pays the same as the call in both states:
+> - up: 50h − 1.02B = 10; down: 32h − 1.02B = 0
+> - subtracting: 18h = 10, so h = 0.5556 shares; then B = 0.5556 × 32 / 1.02 = 17.43
+> Cost of the portfolio today: 0.5556 × 40 − 17.43 = 4.79. So the call is worth 4.79.
+> Nothing in this calculation needed the probability that the share goes up. That surprising fact is the basis of option pricing, which you will meet again in Derivatives.
+
+## 5. Checklist before you answer
+- Draw the timeline and mark the dates and signs of every cash flow.
+- Match the rate to the period (annual, semi-annual, monthly).
+- For an annuity or perpetuity, remember the value lands one period before the first payment.
+- For Gordon, use D1, not D0, and check that r > g.
+- For a bond price, compare the coupon with the market rate to predict premium or discount before calculating.
+- For forward rates and forward exchange rates, compound; do not average.
+- On the calculator: clear the TVM registers (\`2ND FV\`), check END or BGN, and give cash paid and received opposite signs.`,
  ideas:`**The idea behind the whole module:** a cash flow at time t is worth CF / (1 + r)^t today, where r is the return investors require for its risk and timing. An instrument is a bundle of cash flows, so its value is the sum of their present values. Read backwards, a known price gives the return or the growth that the market implies.
 
 ## Fixed-income instruments
@@ -20535,18 +20660,24 @@ function modStats(m){
   qs.forEach(q=>{ const h=DB.history[q.qid]; if(h){ seen++; score+=h.last; } });
   return {n:qs.length, seen, acc:pct(score,seen)};
 }
-/* module text: blank-line paragraphs, "## " subheads and "- " bullet lines, plus the usual **bold** and `code` */
-function learnMd(text){
-  return String(text||'').trim().split(/\n\s*\n/).map(b=>{
-    const out = []; let list = [], tag = 'ul';
-    const flush = ()=>{ if(list.length){ out.push('<'+tag+'>'+list.map(x=>'<li>'+inline(x)+'</li>').join('')+'</'+tag+'>'); list = []; } };
-    b.split('\n').forEach(line=>{ const t = line.trim(), num = /^\d+\.\s/.test(t);
-      if(t.startsWith('## ')){ flush(); out.push('<h3>'+inline(t.slice(3))+'</h3>'); }
-      else if(t.startsWith('- ') || num){ const k = num?'ol':'ul'; if(k!==tag) flush(); tag = k; list.push(t.replace(/^(- |\d+\.\s)/,'')); }
-      else if(t){ flush(); out.push('<p>'+inline(t)+'</p>'); } });
-    flush(); return out.join('');
-  }).join('');
+/* module text: blank-line paragraphs, "## " and "### " subheads, "- " and "1. " list lines, the usual **bold** and `code`,
+   and blocks whose lines start with "> " (worked examples), drawn as a box */
+function learnBlock(b){
+  const out = []; let list = [], tag = 'ul';
+  const flush = ()=>{ if(list.length){ out.push('<'+tag+'>'+list.map(x=>'<li>'+inline(x)+'</li>').join('')+'</'+tag+'>'); list = []; } };
+  b.split('\n').forEach(line=>{ const t = line.trim(), num = /^\d+\.\s/.test(t);
+    if(t.startsWith('### ')){ flush(); out.push('<h4>'+inline(t.slice(4))+'</h4>'); }
+    else if(t.startsWith('## ')){ flush(); out.push('<h3>'+inline(t.slice(3))+'</h3>'); }
+    else if(t.startsWith('- ') || num){ const k = num?'ol':'ul'; if(k!==tag) flush(); tag = k; list.push(t.replace(/^(- |\d+\.\s)/,'')); }
+    else if(t){ flush(); out.push('<p>'+inline(t)+'</p>'); } });
+  flush(); return out.join('');
 }
+function learnMd(text){
+  return String(text||'').trim().split(/\n\s*\n/).map(b=>
+    b.trim().startsWith('> ') ? '<div class="lm-ex">'+learnBlock(b.split('\n').map(l=>l.trim().replace(/^>\s?/,'')).join('\n'))+'</div>' : learnBlock(b)
+  ).join('');
+}
+const readMins = t=>Math.max(1, Math.round(String(t||'').split(/\s+/).length/200));
 /* a reading link: [link code ('i:'/'w:'/URL), title, site name for plain URLs] */
 function readLink(r){
   const [ref, title, site] = r, info = linkInfo(ref, title), web = /^https?:/.test(ref);
@@ -20594,7 +20725,8 @@ function learnModule(app, m){
     <div class="lm-nav"><button class="btn ghost sm" id="lmBack">${icon('arrowL')}Learning map</button><span class="faint small num">Module ${m.n} of ${m.of}</span></div>
     <div class="page-head"><div><div class="eyebrow">${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
       ${st.n?`<div class="row"><button class="btn primary lg" id="lmGo" title="10 questions, unseen first, easy to hard">${icon('zap')}Practice this module</button>${st.n>10?`<button class="btn ghost" id="lmAll" title="Every question of this module, easy to hard">All ${st.n}</button>`:''}</div>`:''}</div>
-    <div class="panel"><div class="panel-head"><h2>Key ideas</h2></div><div class="lm-text">${learnMd(m.ideas)}</div></div>
+    ${m.lesson?`<details class="panel lm-lesson" open><summary class="panel-head"><div><h2>Lesson</h2><p>About ${readMins(m.lesson)} minutes of reading, with worked examples</p></div><span class="btn ghost sm lm-tog"></span></summary><div class="lm-text">${learnMd(m.lesson)}</div></details>`:''}
+    <div class="panel"><div class="panel-head"><div><h2>Key ideas</h2>${m.lesson?'<p>The short version, for review</p>':''}</div></div><div class="lm-text">${learnMd(m.ideas)}</div></div>
     ${m.traps&&m.traps.length?`<div class="panel"><div class="panel-head"><h2>Traps the exam likes</h2></div><ol class="lm-traps">${m.traps.map(t=>`<li>${inline(t)}</li>`).join('')}</ol></div>`:''}
     ${fs.length?`<div class="panel"><div class="panel-head"><div><h2>Formulas</h2><p>From the formula sheet, where the flashcards are.</p></div><button class="btn ghost sm" data-goto="formulas">Formulas ${icon('chevR')}</button></div>${fs.map(f=>`<div class="frow"><div class="fhead"><b>${esc(f.name)}</b>${f.topic!==m.topic?`<span class="tag">${esc(short(f.topic))}</span>`:''}${cardStatus(f)}</div>${fBlock(f)}</div>`).join('')}</div>`:''}
     ${m.read&&m.read.length?`<div class="panel lm-read"><div class="panel-head"><div><h2>Further reading</h2><p>The official outline first, then a full lesson, then reference pages.</p></div></div>${m.read.map(readLink).join('')}</div>`:''}
