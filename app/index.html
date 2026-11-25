@@ -14908,14 +14908,306 @@ CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
 /* Learning map, Economics: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Economics","LM-ECON",[
-{name:"The Firm and Market Structures"},
-{name:"Understanding Business Cycles"},
-{name:"Fiscal Policy"},
-{name:"Monetary Policy"},
-{name:"Introduction to Geopolitics"},
-{name:"International Trade"},
-{name:"Capital Flows and the FX Market"},
-{name:"Exchange Rate Calculations"}
+{name:"The Firm and Market Structures",
+ core:/perfect(ly)? competit|monopolistic competition|oligopol|monopol|cartel|kinked demand|Cournot|Stackelberg|Nash|dominant firm|market structure|breakeven|shutdown|shut down|economies of scale|diseconomies|minimum efficient scale|concentration ratio|\bHHI\b|Herfindahl|marginal (revenue|cost)|average (total|variable) cost|economic profit|price taker|elasticit/,
+ match:/competit|monopol|oligopol|cartel|kinked|Cournot|Stackelberg|Nash|dominant|market structure|breakeven|shutdown|scale|concentration|HHI|marginal|average|cost|economic profit|price taker|demand|supply|elastic|differentiat|barrier|entry/,
+ ideas:`**How many competitors a firm faces, how similar their products are and how hard it is to enter decide how the firm sets price and output.**
+
+## Costs, breakeven and shutdown
+- Profit is maximized where **marginal revenue = marginal cost**.
+- **Breakeven:** price equals average total cost (zero economic profit). **Shutdown:** in the short run, keep producing as long as price covers average variable cost, since fixed costs are paid anyway; in the long run, exit if price stays below average total cost.
+- **Economies of scale:** long-run average cost falls as output grows; **diseconomies** set in when the firm becomes too large to manage well. The **minimum efficient scale** is the smallest output at which long-run average cost is lowest.
+
+## The four structures
+- **Perfect competition:** many firms, identical products, free entry. Firms are price takers (price = marginal revenue); in the long run economic profit is zero.
+- **Monopolistic competition:** many firms, differentiated products (brands, advertising), easy entry. Each faces a downward-sloping demand curve and sets output where MR = MC, pricing above marginal cost; entry pushes long-run economic profit to zero, with some excess capacity.
+- **Oligopoly:** a few large firms whose decisions depend on one another; high barriers to entry. Models: the **kinked demand curve** (rivals follow price cuts but not increases, so prices are sticky), **Cournot** (firms choose quantities), **Stackelberg** (a leader moves first), **dominant firm** (others follow its price), and **Nash equilibrium** (no firm gains by changing its choice alone). Firms may collude in cartels, which tend to break down because each member gains by cheating.
+- **Monopoly:** a single seller, high barriers, no close substitutes. Sets output where MR = MC and charges the price on the demand curve; can earn lasting economic profit, often regulated. **Price discrimination** charges different groups different prices.
+
+## Identifying the structure
+- Look at the number and size of firms, product differentiation, barriers to entry and pricing power.
+- **Concentration ratio** (share of the largest firms) and the **Herfindahl-Hirschman index** (sum of squared market shares) measure concentration. Limitations: they ignore barriers to entry, potential competitors and the elasticity of demand, and depend on how the market is defined.`,
+ traps:[
+  "In the short run a firm keeps producing while price covers average variable cost, even at a loss.",
+  "Under monopolistic competition, long-run economic profit is zero but price is still above marginal cost.",
+  "A monopolist does not charge the highest possible price; it charges the demand-curve price at the output where MR = MC.",
+  "High concentration does not prove pricing power if entry is easy.",
+  "Cartels are unstable because each member gains by producing more than its quota."
+ ],
+ formulas:["F1-ECON-03","F1-ECON-04","F1-ECON-01"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-firm-and-market-structures/","The Firm and Market Structures: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/h/hhi.asp"],
+  ["w:Market_structure"],
+  ["w:Oligopoly"]
+ ]},
+{name:"Understanding Business Cycles",
+ core:/business cycle|credit cycle|recession|expansion|contraction|recovery|slowdown|peak|trough|leading indicator|lagging indicator|coincident indicator|capacity utiliz|inventory[- ]to[- ]sales|inventory[- ]sales|housing (sector|starts|activity)|building permits/,
+ match:/cycle|recession|expansion|contraction|recovery|slowdown|peak|trough|indicator|leading|lagging|coincident|capacity|inventory|unemploy|hiring|overtime|consumer|spending|confidence|housing|construction|exports|imports|credit|GDP|output gap/,
+ ideas:`**Economies grow in waves: periods of expansion alternate with slowdowns and contractions, and credit tends to amplify the swings.**
+
+## Phases of the business cycle
+- **Recovery:** output starts rising from the trough; firms rebuild inventories; unemployment is still high.
+- **Expansion:** output grows above trend; hiring and investment increase; inflation pressures build.
+- **Slowdown:** growth slows from the peak; costs and interest rates are high.
+- **Contraction:** output falls (a recession, often taken as two consecutive quarters of falling GDP); firms cut production, hiring and investment.
+
+## Credit cycles
+- Lenders loosen standards in good times (more credit, rising asset and property prices) and tighten them in bad times. Credit cycles last longer than business cycles and make booms and busts deeper, especially when property prices are involved.
+
+## How activity moves over the cycle
+- **Resource use:** firms adjust hours worked and **inventories** first; the inventory-to-sales ratio rises at the start of a downturn as sales fall unexpectedly. **Capacity utilization** rises in expansions, eventually prompting new investment.
+- **Labor:** employers delay hiring in a recovery and delay firing at a peak, so unemployment lags the cycle.
+- **Consumers:** spending on durable goods (cars, appliances) is the most cyclical; spending on staples is stable.
+- **Businesses:** investment in equipment and structures swings strongly with expectations.
+- **Housing:** very sensitive to interest rates and credit; it often leads the cycle.
+- **External trade:** imports rise with domestic growth; exports depend on foreign growth and on the exchange rate.
+
+## Economic indicators
+- **Leading** indicators turn before the economy: building permits, new orders, average weekly hours, initial jobless claims, stock prices, consumer expectations, the slope of the yield curve.
+- **Coincident** indicators move with it: industrial production, employment, personal income, sales.
+- **Lagging** indicators turn after it: unemployment duration, the inventory-to-sales ratio, unit labor costs, the bank lending rate, inflation in services.`,
+ traps:[
+  "Unemployment lags the cycle: it can keep rising early in a recovery.",
+  "The inventory-to-sales ratio rises at the start of a downturn, because sales fall faster than firms cut stock.",
+  "Durable goods spending is more cyclical than spending on necessities.",
+  "Stock prices and the yield curve slope are leading indicators; unemployment duration is lagging.",
+  "Credit cycles are longer than business cycles and deepen booms and busts."
+ ],
+ formulas:["F1-ECON-11","F1-ECON-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-business-cycles/","Understanding Business Cycles: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Business_cycle"],
+  ["w:Credit_cycle"],
+  ["w:Economic_indicator"]
+ ]},
+{name:"Fiscal Policy",
+ core:/fiscal policy|fiscal multiplier|government spending|budget (deficit|surplus|balance)|national debt|debt[- ]to[- ]GDP|automatic stabiliz|discretionary|tax (cut|increase|rate)s?|transfer payments|direct tax|indirect tax|crowding out|crowd out|Ricardian|structural deficit|cyclical(ly adjusted)? deficit|balanced budget/,
+ match:/fiscal|multiplier|government spending|budget|deficit|surplus|debt|GDP|automatic|discretionary|tax|transfer|crowd|Ricardian|structural|cyclical|expansionary|contractionary|lag|marginal propensity|MPC/,
+ ideas:`**Fiscal policy is the government's use of spending and taxes to influence the economy; monetary policy is the central bank's use of money and interest rates.**
+
+## Roles and objectives
+- Allocate resources (public goods such as defense and infrastructure), redistribute income and wealth (progressive taxes, transfers), and stabilize the economy (support demand in downturns, restrain it in booms).
+
+## Does the size of the national debt matter?
+- Reasons for concern: high interest costs, a possible need for higher future taxes, **crowding out** (government borrowing pushes up rates and displaces private investment), and the risk that lenders lose confidence.
+- Reasons for less concern: debt owed to domestic residents is partly owed to ourselves, borrowing that funds productive investment can pay for itself, and **Ricardian equivalence** suggests households save more when deficits rise, offsetting their effect.
+
+## Tools
+- **Spending:** transfer payments (pensions, unemployment benefits), current spending (wages, goods and services) and capital spending (infrastructure).
+- **Revenue:** direct taxes on income and wealth, and indirect taxes on goods and services (such as VAT and excise duties).
+- Indirect taxes can be changed quickly and raise revenue efficiently; direct taxes and spending programs take longer to change; spending can target needs directly.
+- **Fiscal multiplier** = 1 / [1 − MPC × (1 − t)]. With a marginal propensity to consume of 0.8 and a tax rate of 25%, the multiplier is 1 / (1 − 0.6) = 2.5.
+
+## Implementation and its difficulties
+- **Automatic stabilizers** (progressive taxes, unemployment benefits) act without new decisions. **Discretionary** policy needs decisions and faces lags: **recognition** (seeing the problem), **action** (passing laws) and **impact** (the effect reaching the economy).
+- Other difficulties: uncertainty about where the economy is, crowding out, supply-side limits near full capacity, and political pressures.
+- **Expansionary** policy raises spending or cuts taxes (a rising deficit); **contractionary** policy does the reverse. Judge the stance from the **structural (cyclically adjusted) deficit**, because the actual deficit also moves automatically with the cycle.`,
+ traps:[
+  "A deficit that grows in a recession may reflect automatic stabilizers, not an expansionary decision: check the structural deficit.",
+  "The fiscal multiplier falls as the tax rate rises or the marginal propensity to consume falls.",
+  "Crowding out weakens fiscal expansion through higher interest rates.",
+  "Ricardian equivalence says tax cuts financed by debt may not raise spending, because households save for future taxes.",
+  "Discretionary fiscal policy suffers from recognition, action and impact lags."
+ ],
+ formulas:["F1-ECON-07"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-fiscal-policy/","Fiscal Policy: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/f/fiscal-multiplier.asp","Fiscal Multiplier"],
+  ["w:Fiscal_policy"],
+  ["w:Ricardian_equivalence"]
+ ]},
+{name:"Monetary Policy",
+ core:/monetary policy|central bank|policy rate|open market operations?|reserve requirement|quantitative easing|\bQE\b|transmission mechanism|inflation target|neutral (interest )?rate|lender of last resort|money supply|money multiplier|liquidity trap|zero lower bound|exchange rate target|independen(t|ce) of the central bank|discount rate (set|charged) by|refinancing rate/,
+ match:/monetary|central bank|policy rate|open market|reserve|quantitative|QE|transmission|inflation|target|neutral|lender of last resort|money supply|multiplier|liquidity trap|zero lower bound|exchange rate|independen|credib|expansionary|contractionary|interest rate|bond purchases/,
+ ideas:`**Central banks steer short-term interest rates and the supply of money to keep prices stable and, in many cases, to support growth and employment.**
+
+## Roles and objectives
+- Roles: monopoly issuer of the currency, banker to the government and to banks, **lender of last resort**, often regulator and supervisor of banks, manager of foreign reserves and of the payment system, and conductor of monetary policy.
+- The main objective is **price stability**, usually an inflation target (often around 2%). Some central banks also aim at maximum employment or stable growth, and at financial stability.
+
+## Tools and transmission
+- **Policy rate** (the rate at which the central bank lends to or pays banks), **open market operations** (buying or selling securities to add or drain reserves), and **reserve requirements**. When rates hit zero, **quantitative easing** buys large amounts of bonds to push down longer-term yields.
+- **Transmission mechanism:** a change in the policy rate moves interbank and bank lending rates, asset prices, expectations and the exchange rate, which then change spending, investment and net exports, and eventually inflation. A rate cut usually lowers borrowing costs, raises asset prices and weakens the currency.
+- The **neutral rate** neither stimulates nor restrains the economy: roughly the trend real growth rate plus the inflation target, for example 2% + 2% = 4%. A policy rate above it is contractionary; below it, expansionary.
+
+## Effective central banks and their targets
+- Qualities: **independence** from politics, **credibility** (people believe it will hit its target), and **transparency** about its goals and reasoning.
+- **Inflation targeting** is the most common framework. **Exchange rate targeting** (pegging to another currency) imports the anchor country's monetary policy and requires defending the peg with reserves and interest rates.
+- Limitations: long and variable lags, limited control over long-term rates, the zero lower bound and liquidity traps (people hoard cash however low rates go), and banks that will not lend in a crisis.
+
+## Interaction with fiscal policy
+- Easy fiscal + easy monetary: strong stimulus. Tight fiscal + tight monetary: falling demand. Easy fiscal + tight monetary: higher interest rates and a larger public sector share. Tight fiscal + easy monetary: low rates and a larger private sector share.`,
+ traps:[
+  "A policy rate above the neutral rate is contractionary even if it has just been cut.",
+  "Buying securities in open market operations adds reserves and is expansionary.",
+  "With a fixed exchange rate, the central bank gives up independent monetary policy if capital moves freely.",
+  "Quantitative easing targets longer-term yields when short-term rates are already near zero.",
+  "Credibility matters: if people trust the inflation target, expectations stay anchored."
+ ],
+ formulas:["F1-ECON-06"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-monetary-policy/","Monetary Policy: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Monetary_policy"],
+  ["w:Monetary_transmission_mechanism"],
+  ["w:Inflation_targeting"]
+ ]},
+{name:"Introduction to Geopolitics",
+ core:/geopolit|globaliz|nationalis|autarky|hegemony|bilateralism|multilateralism|International Monetary Fund|\bIMF\b|World Bank|World Trade Organization|\bWTO\b|sanctions?|state actors?|non-state actors?|event risk|exogenous risk|thematic risk|cooperation (and|versus|vs\.?) competition|armed conflict|national security/,
+ match:/geopolit|globaliz|nationalis|autarky|hegemony|bilateral|multilateral|IMF|World Bank|WTO|sanction|actor|risk|cooperat|competition|conflict|security|alliance|tariff|trade war|election|velocity|scenario|reserve currency|capital controls/,
+ ideas:`**Geopolitics studies how geography, power and politics shape relations between countries, and how those relations affect economies and investments.**
+
+## Cooperation versus competition
+- **State actors** (governments) and **non-state actors** (companies, international organizations, individuals) pursue national security, economic interests and influence.
+- Countries cooperate when shared rules and trade bring benefits (standards, treaties, open markets), and compete when security, resources or power are at stake. Cooperation is easier among countries with similar institutions and interests.
+
+## Geopolitics and globalization
+- Two axes describe a country's stance: **cooperation versus non-cooperation**, and **globalization versus nationalism** (openness to trade and capital versus putting domestic interests first).
+- Four archetypes follow: **autarky** (non-cooperative and nationalist: self-sufficient), **hegemony** (non-cooperative but globalized: a dominant power setting the rules), **bilateralism** (cooperative but nationalist: deals one partner at a time), and **multilateralism** (cooperative and globalized: many partners, common rules).
+
+## International organizations
+- **International Monetary Fund (IMF):** promotes monetary and financial stability, monitors economies, and lends to countries with balance-of-payments problems, usually with policy conditions.
+- **World Bank:** provides long-term financing and advice for development and poverty reduction.
+- **World Trade Organization (WTO):** sets the rules of international trade, hosts trade negotiations and settles trade disputes.
+
+## Geopolitical risk and its tools
+- Types: **event risk** (known timing, such as elections), **exogenous risk** (sudden and unexpected, such as wars or coups) and **thematic risk** (lasting trends, such as climate change, cyber threats or migration).
+- Assess its **likelihood**, its **velocity** (how fast it hits markets) and the **size and breadth** of its impact.
+- Tools: **national security** tools (alliances, armed conflict, espionage), **economic** tools (trade agreements, tariffs, export controls) and **financial** tools (sanctions, capital controls, control of the reserve currency and payment systems).
+
+## Impact on investments
+- Geopolitical risk raises volatility and risk premiums, can disrupt supply chains and trade, and can trap or devalue assets through sanctions or capital controls. Investors use scenario analysis, diversification and hedging, and focus on risks with high likelihood and high impact.`,
+ traps:[
+  "Autarky = non-cooperative + nationalist; multilateralism = cooperative + globalized.",
+  "The IMF lends for balance-of-payments problems; the World Bank finances long-term development.",
+  "The WTO sets and enforces trade rules; it does not lend money.",
+  "Event risk has known timing; exogenous risk is a surprise; thematic risk unfolds over time.",
+  "Velocity is how quickly a risk affects markets, not how likely it is."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-introduction-to-geopolitics/","Introduction to Geopolitics: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Geopolitics"],
+  ["w:International_Monetary_Fund"],
+  ["w:World_Trade_Organization"]
+ ]},
+{name:"International Trade",
+ core:/international trade|comparative advantage|absolute advantage|tariffs?|quotas?|export subsid|voluntary export restraint|trade (restriction|bloc|barrier|agreement|creation|diversion)|free trade area|customs union|common market|economic union|monetary union|dumping|protectionis/,
+ match:/trade|comparative|absolute|tariff|quota|subsid|export|import|restraint|bloc|free trade|customs union|common market|economic union|monetary union|deadweight|welfare|consumer surplus|producer surplus|protection|terms of trade/,
+ ideas:`**Trade lets countries specialize in what they do relatively best; restrictions protect some groups at a cost to the economy as a whole.**
+
+## Benefits and costs of trade
+- Benefits: gains from specializing according to **comparative advantage** (the lowest opportunity cost), economies of scale, more variety and lower prices for consumers, more competition and innovation, and the spread of technology.
+- Costs: job losses and lower wages in industries that compete with imports, adjustment costs for workers and regions, and possible greater inequality. Overall gains exceed losses, but the losers need not be compensated.
+
+## Trade restrictions
+- **Tariff** (a tax on imports): the domestic price rises; domestic producers gain, consumers lose, the government collects revenue, and there is a net welfare loss (deadweight loss) for a small country.
+- **Quota** (a limit on the quantity imported): similar price effects, but instead of tariff revenue there are **quota rents**, kept by whoever holds the import licenses (possibly foreign exporters).
+- **Voluntary export restraint:** the exporting country limits its own exports; the rents go to foreign exporters, so the importing country loses more than with a tariff.
+- **Export subsidy:** a payment to domestic exporters; it raises the domestic price of the good, benefits exporters, and costs taxpayers and consumers.
+- A large country can sometimes gain from a tariff by pushing down world prices (better terms of trade), at its trading partners' expense.
+
+## Trading blocs and their stages of integration
+- **Free trade area:** no barriers between members; each keeps its own policy toward non-members.
+- **Customs union:** + a common external trade policy (common tariffs).
+- **Common market:** + free movement of labor and capital.
+- **Economic union:** + common economic institutions and coordinated policies.
+- **Monetary union:** + a common currency.
+- Motivations: larger markets and economies of scale, more competition, political cooperation and stability. Bloc membership creates trade among members (**trade creation**) but can divert trade from cheaper outside producers (**trade diversion**).`,
+ traps:[
+  "Comparative advantage, not absolute advantage, explains why trade benefits both countries.",
+  "With a tariff the government collects revenue; with a quota that revenue becomes quota rents.",
+  "A voluntary export restraint hurts the importing country more than an equivalent tariff.",
+  "A customs union adds a common external tariff to a free trade area; a common market adds free movement of labor and capital.",
+  "Trade diversion within a bloc can lower welfare."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-international-trade/","International Trade: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/a/absoluteadvantage.asp"],
+  ["w:Comparative_advantage"],
+  ["w:Trade_bloc"]
+ ]},
+{name:"Capital Flows and the FX Market",
+ core:/foreign exchange market|FX market|exchange rate regime|currency board|dollariz|fixed (exchange rate|peg)|crawling peg|target zone|managed float|free(ly)? float|real exchange rate|nominal exchange rate|appreciat|depreciat|capital (flows|controls|restrictions)|impossible trinity|trilemma|Marshall|J-curve|balance of payments|current account/,
+ match:/foreign exchange|FX|currency|regime|board|peg|crawling|float|real exchange|nominal exchange|apprecia|deprecia|capital|controls|trinity|trilemma|Marshall|J-curve|balance of payments|current account|reserves|dealer|central bank|hedg|speculat|base currency|price currency/,
+ ideas:`**The foreign exchange market lets money move between currencies for trade, investment, hedging and speculation; exchange rate regimes decide how much governments steer it.**
+
+## The FX market
+- The largest financial market, mostly over the counter. **Sell side:** dealing banks. **Buy side:** companies, real-money investors (funds, insurers), leveraged investors (hedge funds), individuals, governments, central banks and sovereign wealth funds.
+- Functions: paying for trade and foreign investment, hedging currency risk, and speculating.
+- Quotes follow price currency / base currency: USD/EUR = 1.10 means 1 euro costs 1.10 dollars.
+- **Percentage change:** if USD/EUR rises from 1.10 to 1.155, the euro has appreciated 5% against the dollar, but the dollar has depreciated by only 4.76% (1/1.155 ÷ 1/1.10 − 1). Always compute from the quote with the right base.
+- **Real exchange rate** adjusts the nominal rate for price levels: real (d/f) = nominal (d/f) × (foreign price level / domestic price level). It measures purchasing power and competitiveness.
+
+## Exchange rate regimes
+- From hardest to softest: no separate currency (using another country's, such as dollarization), a **currency board** (domestic money fully backed by a foreign reserve currency), a **conventional fixed peg**, a target zone (wider band), a **crawling peg** (adjusted in small steps), managed floating, and **independent floating**.
+- **Impossible trinity:** a country cannot have a fixed exchange rate, free capital movement and an independent monetary policy all at once; it must give one up.
+
+## Effects on trade and capital flows
+- A depreciation makes exports cheaper and imports dearer. The trade balance improves if export and import demand are elastic enough (the **Marshall-Lerner condition**); at first it may worsen because contracts are fixed in the short run (the **J-curve**).
+- Capital flows respond to expected returns and risk; large inflows can push up the currency and asset prices, and sudden outflows can cause crises.
+
+## Capital restrictions
+- Governments restrict capital flows to reduce the volatility of domestic asset prices, defend a fixed exchange rate, keep domestic interest rates low, and protect strategic industries from foreign ownership. Costs: less investment, less efficient markets and evasion.`,
+ traps:[
+  "A 5% appreciation of one currency is not a 5% depreciation of the other.",
+  "In 'USD/EUR = 1.10' the euro is the base currency.",
+  "A currency board fully backs domestic money with foreign reserves; a conventional peg does not.",
+  "Under the impossible trinity, a peg with free capital flows means giving up independent monetary policy.",
+  "The J-curve: after a depreciation the trade balance often worsens before it improves."
+ ],
+ formulas:["F1-ECON-10"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-capital-flows-and-the-fx-market/","Capital Flows and the FX Market: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Foreign_exchange_market"],
+  ["w:Impossible_trinity"],
+  ["w:Exchange-rate_regime"]
+ ]},
+{name:"Exchange Rate Calculations",
+ core:/cross[- ]rates?|forward (exchange )?rate|forward points|forward premium|forward discount|covered interest|interest rate parity|triangular arbitrage|spot (exchange )?rate|pips?\b/,
+ match:/cross|forward|points|premium|discount|covered|parity|arbitrage|spot|pip|base currency|price currency|interest rate|days|360/,
+ ideas:`**Exchange rate calculations combine quotes to find cross rates, and use interest rates to find forward rates.**
+
+## Cross rates
+- To get A/C from A/B and B/C, multiply so the common currency cancels: A/C = A/B × B/C. Example: USD/EUR = 1.08 and JPY/USD = 152 give JPY/EUR = 1.08 × 152 = 164.16 yen per euro.
+- If a quote has the currencies the wrong way round, invert it first (B/A = 1 / (A/B)).
+- If a dealer's cross rate differs from the one implied by the other two rates, **triangular arbitrage** earns a riskless profit until the rates line up.
+
+## Forward rates from interest rates
+- **Covered interest rate parity:** investing at home must earn the same as converting, investing abroad and converting back at the forward rate. For price currency P and base currency B:
+- F(P/B) = S(P/B) × [1 + i(P) × days/360] / [1 + i(B) × days/360].
+- Example: spot 1.3000 USD per GBP, 180 days, USD rate 4%, GBP rate 5%: F = 1.3000 × 1.02 / 1.025 = 1.29366.
+- The currency with the higher interest rate trades at a **forward discount** (here GBP: fewer dollars per pound forward); the one with the lower rate at a **forward premium**.
+
+## Forward points and percentages
+- **Forward points** = (forward − spot) quoted in the last decimal place, usually × 10,000 for four-decimal quotes. Above: 1.29366 − 1.3000 = −0.00634, or −63.4 points.
+- To get the forward from points: forward = spot + points / 10,000.
+- As a percentage: (F − S) / S = −0.49% here, a forward discount on the base currency (GBP).
+- The forward rate is not a forecast of the future spot rate; it simply removes the interest rate advantage from a hedged position.`,
+ traps:[
+  "Check which currency is the base before inverting or multiplying quotes.",
+  "The higher-interest-rate currency trades at a forward discount.",
+  "Use the base currency's interest rate in the denominator of the forward formula.",
+  "Forward points are added to the spot rate after dividing by 10,000 (for four-decimal quotes).",
+  "A forward rate is set by no-arbitrage, not by forecasts of where the spot rate will go."
+ ],
+ formulas:["F1-ECON-08","F1-ECON-09"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/eco-exchange-rate-calculations/","Exchange Rate Calculations: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/covered-interest-rate-parity.asp"],
+  ["i:terms/f/forwardpremium.asp"],
+  ["i:terms/c/crossrate.asp","Cross Rate"],
+  ["w:Interest_rate_parity"]
+ ]}
 ]);
 /* Learning map, Financial Statement Analysis: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
@@ -15397,13 +15689,261 @@ CFA_DATA.learn(1,"Financial Statement Analysis","LM-FSA",[
 /* Learning map, Corporate Finance: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Corporate Finance","LM-CI",[
-{name:"Organizational Forms, Corporate Issuer Features, and Ownership"},
-{name:"Investors and Other Stakeholders"},
-{name:"Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits"},
-{name:"Working Capital and Liquidity"},
-{name:"Capital Investments and Capital Allocation"},
-{name:"Capital Structure"},
-{name:"Business Models"}
+{name:"Organizational Forms, Corporate Issuer Features, and Ownership",
+ core:/sole proprietor|partnership|general partner|limited partner|limited liability|corporation|legal (entity|identity)|double taxation|unlimited liability|publicly (owned|listed|traded) (and|versus|vs\.?|or) private|private(ly)? (owned|held) (company|companies|firm)|go(ing)? private|take (a|the) company private|direct listing|\bSPAC\b|organizational form/,
+ match:/proprietor|partnership|partner|liability|corporation|legal|tax|owner|public|private|listed|IPO|direct listing|SPAC|buyout|disclosure|separation of ownership/,
+ ideas:`**The legal form of a business decides who owns it, who runs it, who is liable for its debts and how its profits are taxed.**
+
+## Forms of business
+- **Sole proprietorship:** one owner who runs the business, bears **unlimited liability** and pays tax on the profits personally. Simple, but growth depends on the owner's own resources.
+- **General partnership:** two or more partners share ownership, management and unlimited liability.
+- **Limited partnership:** at least one general partner with unlimited liability who manages the business, plus limited partners whose liability is limited to their investment and who do not manage. Common for private equity and real estate funds.
+- **Corporation (limited company):** a separate legal entity owned by shareholders, with **limited liability**, unlimited life and easy transfer of ownership. Owners and managers are usually different people, and it can raise large amounts of capital. Profits are often taxed twice: at the company level and again as dividends, though many countries soften this with credits or exemptions.
+
+## Features of corporate issuers
+- The board of directors, elected by shareholders, oversees managers who run the company day to day. This separation creates principal-agent conflicts (next modules).
+- Corporations raise capital through equity and debt and can be **public** (shares listed and traded) or **private**.
+
+## Public versus private companies
+- **Public:** shares trade on an exchange, prices are visible, ownership is widely spread, and strict disclosure and governance rules apply. Advantages: access to capital and liquidity for owners; costs: compliance, disclosure to competitors and pressure for short-term results.
+- **Private:** few owners, no public market, lighter disclosure, more control and a longer horizon, but harder access to capital and illiquid shares.
+- Moving between them: a private company can list through an IPO, a direct listing or a merger with a special purpose acquisition company (SPAC); a public company can be taken private, for example through a leveraged buyout. Growing private capital markets let companies stay private longer.`,
+ traps:[
+  "Limited partners have limited liability only as long as they do not take part in management.",
+  "A corporation is a separate legal person: its shareholders are not personally liable for its debts.",
+  "Double taxation applies to corporations, not to sole proprietorships or partnerships, whose profits pass through to the owners.",
+  "Separation of ownership and control is a feature of corporations and the root of agency problems.",
+  "A direct listing lists existing shares without raising new capital, unlike an IPO."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-organizational-forms-and-ownership/","Organizational Forms, Corporate Issuer Features, and Ownership: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/l/llc.asp"],
+  ["w:Limited_partnership"],
+  ["w:Corporation"]
+ ]},
+{name:"Investors and Other Stakeholders",
+ core:/stakeholders?|lenders? (and|versus|vs\.?) shareholders|shareholders? (and|versus|vs\.?) (lenders|creditors|bondholders)|creditors' (interests|claims)|\bESG\b|environmental, social|social factors|governance factors|materiality|employees, customers|suppliers, (and )?(the )?(community|government)/,
+ match:/stakeholder|lender|creditor|bondholder|shareholder|equity holder|claim|upside|downside|risk|employee|customer|supplier|government|community|ESG|environmental|social|governance|climate|material/,
+ ideas:`**Different groups have claims on, or interests in, a company. They want different things, which shapes how it is financed and run.**
+
+## Lenders versus shareholders
+- **Lenders (debt holders)** have a contractual, fixed claim: interest and principal, paid before shareholders, often with collateral and covenants. Their upside is capped at full repayment, so they prefer stable cash flows and lower risk.
+- **Shareholders** have a residual claim: they get what is left after everyone else. The upside is unlimited and the downside limited to their investment, so they gain more from riskier strategies than lenders do. That difference is a source of conflict, especially when a company is highly indebted.
+
+## Other stakeholders
+- **Board of directors:** oversees management on behalf of shareholders.
+- **Managers:** run the company; care about pay, job security, power and reputation.
+- **Employees:** wages, working conditions, job security, skills.
+- **Customers:** product quality, safety, price, service, data protection.
+- **Suppliers:** being paid on time, a lasting relationship.
+- **Governments and regulators:** tax revenue, compliance with laws, employment, the stability of the economy.
+- The **community** and society: jobs, environmental impact, local effects.
+
+## ESG factors considered by investors
+- **Environmental:** climate change and carbon emissions, pollution, water and resource use, biodiversity.
+- **Social:** labor practices, health and safety, human rights in the supply chain, product safety, data privacy, community relations.
+- **Governance:** board independence and skills, executive pay, shareholder rights, accounting and audit quality, bribery and corruption.
+- Investors focus on factors that are **material** to a company's value in its industry, and use them to spot risks and opportunities, screen investments, or engage with management.`,
+ traps:[
+  "Shareholders' payoff is like an option: limited loss, unlimited gain, so they tolerate more risk than lenders.",
+  "A lender's best case is full repayment; it does not share in extra profits.",
+  "Materiality depends on the industry: emissions matter more for a utility than for a software firm.",
+  "Governance is part of ESG: board independence and executive pay are governance factors.",
+  "Stakeholders include parties with no financial claim, such as customers, suppliers and communities."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-investors-and-other-stakeholders/","Investors and Other Stakeholders: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Stakeholder_(corporate)"],
+  ["w:Environmental,_social,_and_governance"]
+ ]},
+{name:"Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits",
+ core:/corporate governance|principal-agent|agency (problem|cost|conflict|relationship)|conflicts? (of interest )?between|independent directors?|board (committee|independence|of directors)|audit committee|compensation committee|nomination committee|say[- ]on[- ]pay|clawback|activis|proxy (fight|contest)|entrench|empire building|perquisites|perks|takeover defen|poison pill|staggered board|minority shareholders/,
+ match:/governance|principal|agent|conflict|board|director|independent|committee|audit|compensation|pay|clawback|activis|proxy|takeover|entrench|empire|perk|minority|controlling|covenant|creditor|shareholder|manager|risk|transparen/,
+ ideas:`**Corporate governance is the set of rules and practices that control a company and balance the interests of its stakeholders.**
+
+## The principal-agent problem
+- Shareholders (principals) hire managers (agents) who know more than they do and may pursue their own interests.
+- **Shareholders versus managers:** excessive pay and perks, empire building through acquisitions, entrenchment (resisting takeovers), and taking too little risk (to protect their jobs) or too much (to chase bonuses).
+- **Controlling versus minority shareholders:** a dominant owner can steer decisions, related-party deals or board seats to its own benefit.
+- **Shareholders versus creditors:** shareholders may prefer riskier projects, more debt or large dividends, which shift value away from lenders.
+- Conflicts also arise with employees, customers, suppliers and governments.
+
+## Mechanisms that manage the conflicts
+- **Shareholders:** the annual meeting and voting rights (including on pay), proxy contests, activism, lawsuits, and the threat of takeover.
+- **Creditors:** contracts (indentures), covenants, collateral and creditor committees.
+- **The board:** independent directors and specialist **committees**: audit (oversees financial reporting and auditors), compensation, nomination (board candidates), and often risk.
+- **Managers:** pay linked to long-term performance, shareholding requirements, **clawbacks** of bonuses paid on results later restated.
+- **Employees, customers, suppliers:** employment law, contracts, and the market for their business.
+- **Governments and regulators:** company law, listing rules and disclosure requirements.
+
+## Risks and benefits
+- Poor governance brings weak internal controls, poor decisions, legal, regulatory and reputational damage, and higher default risk.
+- Good governance supports efficient operations, better control and financial performance, lower risk and a lower cost of capital.`,
+ traps:[
+  "Managers can take too little risk as well as too much; both are agency problems.",
+  "Takeover defenses such as poison pills can entrench management at shareholders' expense.",
+  "The audit committee oversees financial reporting and the external auditor; it does not prepare the accounts.",
+  "Conflicts between controlling and minority shareholders are common where ownership is concentrated.",
+  "Creditors protect themselves mainly through contracts and covenants, not through votes."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-corporate-governance/","Corporate Governance: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Corporate_governance"],
+  ["w:Principal%E2%80%93agent_problem"]
+ ]},
+{name:"Working Capital and Liquidity",
+ core:/working capital|cash conversion cycle|operating cycle|liquidity|liquid (assets|funds)|days (of )?(inventory|sales|payables)|\bDSO\b|\bDOH\b|\bDPO\b|trade credit|early payment discount|\d+\/\d+,? net \d+|line of credit|commercial paper|short-term (financing|investments|borrowing)|drags? on liquidity|pulls? on liquidity|current ratio|quick ratio/,
+ match:/working capital|cash conversion|operating cycle|liquid|days|inventory|receivable|payable|supplier|trade credit|discount|net \d+|credit line|commercial paper|short-term|drag|pull|current ratio|quick|conservative|aggressive|cash/,
+ ideas:`**Working capital management keeps enough liquidity to run the business while tying up as little money as possible.**
+
+## The cash conversion cycle
+- Cash conversion cycle = days of inventory on hand + days of sales outstanding − days of payables outstanding: the number of days cash is tied up between paying suppliers and collecting from customers. Example: 45 + 35 − 25 = 55 days.
+- A shorter cycle needs less financing. It can be shortened by holding less inventory, collecting faster or paying suppliers later, each with trade-offs (lost sales, unhappy customers, worse supplier terms). Compare companies within the same industry, since business models differ widely.
+
+## Liquidity
+- **Primary sources:** cash and short-term investments, cash flow from operations, and short-term funding (trade credit, bank lines, commercial paper).
+- **Secondary sources:** selling assets, renegotiating debt, or bankruptcy reorganization. Using them signals trouble and may change the company's financial position.
+- **Drags** delay cash in (slow-paying customers, obsolete inventory, tighter credit); **pulls** speed cash out (suppliers demanding faster payment, banks cutting credit lines).
+- Compare liquidity with ratios (current, quick, cash ratios) and the cash conversion cycle, against peers and over time.
+
+## Managing working capital
+- Objective: enough liquidity to meet obligations and seize opportunities at the lowest cost.
+- **Conservative** approach: more current assets and more long-term financing: safer but costlier. **Aggressive** approach: fewer current assets and more short-term financing: cheaper but riskier if short-term funding dries up.
+- **Trade credit:** skipping an early-payment discount is expensive borrowing. Terms of 3/15, net 45 (3% discount if paid within 15 days, otherwise due in 45) cost (1 + 3/97)^(365/30) − 1 = 44.9% a year to forgo.
+- Short-term investments for surplus cash favor safety and liquidity over yield.`,
+ traps:[
+  "Paying suppliers later shortens the cash conversion cycle; collecting later lengthens it.",
+  "The cost of forgoing a trade discount uses the extra days of credit (net days − discount days).",
+  "An aggressive working capital policy lowers cost but raises refinancing risk.",
+  "Secondary liquidity sources (selling assets, renegotiating debt) signal financial stress.",
+  "Compare cash conversion cycles within an industry; a retailer and a shipbuilder are not comparable."
+ ],
+ formulas:["F1-FSA-14","F1-CI-11","F1-FSA-12"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-working-capital-and-liquidity/","Working Capital and Liquidity: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/cashconversioncycle.asp"],
+  ["i:terms/w/workingcapital.asp"],
+  ["i:terms/t/trade-credit.asp"]
+ ]},
+{name:"Capital Investments and Capital Allocation",
+ core:/net present value|\bNPV\b|internal rate of return|\bIRR\b|payback|profitability index|capital (budgeting|allocation|investment|project)|return on invested capital|\bROIC\b|real options?|sunk cost|opportunity cost|cannibaliz|externalit|mutually exclusive|independent projects?|incremental cash flows?|post-audit|abandon/,
+ match:/NPV|net present value|IRR|internal rate|payback|profitability index|capital|project|invest|ROIC|real option|sunk|opportunity|cannibal|externalit|mutually exclusive|incremental|cash flows|discount rate|hurdle|expansion|replacement|abandon|timing option|flexibility/,
+ ideas:`**Capital allocation decides which long-term investments a company makes. Good decisions earn more than the cost of capital.**
+
+## Types of capital investment
+- **Going-concern** projects (maintaining or replacing assets), **regulatory and compliance** projects (required by law), **expansion** projects, and **other** projects such as new, high-risk ventures.
+
+## The process
+- Generate ideas, analyze them (forecast cash flows, evaluate), plan and prioritize within the budget, then monitor and **post-audit** (compare results with forecasts and learn from mistakes).
+
+## Evaluating projects
+- **Net present value (NPV):** present value of the incremental after-tax cash flows minus the investment. Accept if NPV > 0. Example: invest 1,000, receive 400, 450 and 500 over three years, discount rate 10%: NPV = 111.19.
+- **Internal rate of return (IRR):** the discount rate at which NPV = 0; accept if IRR exceeds the required return. The example's IRR is about 16%.
+- **Return on invested capital (ROIC)** = after-tax operating profit / average invested capital: an accounting measure of how well past capital has been used; value is created when ROIC exceeds the cost of capital.
+- When NPV and IRR disagree on mutually exclusive projects (because of differences in size or timing), follow **NPV**: it measures the value added and assumes reinvestment at the cost of capital, while IRR assumes reinvestment at the IRR. Unconventional cash flows (signs changing more than once) can give several IRRs or none.
+
+## Principles and pitfalls
+- Use incremental, after-tax cash flows; include opportunity costs and externalities (such as cannibalizing existing sales); ignore sunk costs; leave financing costs out of the cash flows, because they are in the discount rate.
+- Pitfalls: inertia (repeating last year's budget), allocating capital by who generated it, not considering alternatives, pet projects, chasing EPS or accounting returns instead of value, and over-reliance on IRR.
+
+## Real options
+- **Timing** (delay the investment), **sizing** (expand, or abandon if results disappoint), **flexibility** (change prices or production), and **fundamental** options whose payoff depends on an underlying price (such as a mine's output). They add value: project NPV + option value.`,
+ traps:[
+  "Sunk costs are ignored; opportunity costs are included.",
+  "Do not subtract interest from project cash flows: financing costs are in the discount rate.",
+  "For mutually exclusive projects, choose the higher NPV even if the other has a higher IRR.",
+  "A project with cash flow signs changing several times can have more than one IRR.",
+  "Real options add value, so a project with a slightly negative NPV can still be worth undertaking."
+ ],
+ formulas:["F1-CI-01","F1-CI-02","F1-CI-03","F1-CI-04","F1-CI-14"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-capital-investments-and-capital-allocation/","Capital Investments and Capital Allocation: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/n/npv.asp"],
+  ["i:terms/i/irr.asp"],
+  ["i:terms/r/realoption.asp"],
+  ["i:terms/c/capitalbudgeting.asp"]
+ ]},
+{name:"Capital Structure",
+ core:/capital structure|degree of (operating|financial|total) leverage|\bDOL\b|\bDFL\b|interest coverage|\bWACC\b|weighted[- ]average cost of capital|cost of (debt|equity|preferred|capital)|Modigliani|\bMM\b|tax shield|financial distress|bankruptcy costs|trade-off theory|static trade-off|pecking order|target (capital structure|weights)|optimal capital structure|debt-to-equity ratio|leverage (and|increases|raises)/,
+ match:/capital structure|leverage|EBIT|interest expense|coverage|breakeven|WACC|cost of|Modigliani|MM|tax shield|distress|bankruptcy|trade-off|pecking|target|optimal|debt|equity|leverage|D\/E|weights|market value|signal/,
+ ideas:`**Capital structure is the mix of debt and equity a company uses; it affects the cost of capital and therefore the value of the firm.**
+
+## Weighted average cost of capital
+- WACC = wd × rd × (1 − t) + wp × rp + we × re, using **market-value** (or target) weights. Debt's cost is taken after tax because interest is deductible.
+- Example: 30% debt at 5% before tax, a 21% tax rate, and 70% equity at 10%: WACC = 0.30 × 5% × 0.79 + 0.70 × 10% = 8.19%.
+
+## What shapes capital structure
+- **Internal factors:** the business model and how stable its cash flows are, asset types (tangible assets support more debt), existing leverage, the tax rate, ownership and governance.
+- **External factors:** market conditions and investor demand, interest rates, regulation, and industry norms.
+- Companies at different life-cycle stages differ: start-ups rely on equity, mature firms with steady cash flows carry more debt.
+
+## Modigliani–Miller propositions
+- **Without taxes:** Proposition I says firm value does not depend on capital structure. Proposition II says the cost of equity rises linearly with the debt-to-equity ratio: re = r0 + (r0 − rd) × D/E, so cheaper debt is exactly offset and WACC stays constant.
+- **With taxes:** interest is deductible, so V(levered) = V(unlevered) + t × D. The cost of equity rises more slowly: re = r0 + (r0 − rd) × (1 − t) × D/E, and WACC falls as debt rises. Taken literally, 100% debt would be optimal.
+- Adding the costs of **financial distress** (direct bankruptcy costs and indirect costs such as lost customers and suppliers) gives the **static trade-off theory**: value is maximized, and WACC minimized, where the marginal tax benefit of more debt equals its marginal distress cost.
+
+## Optimal and target structures
+- The **optimal** structure is the one that maximizes firm value. Companies set a **target** around it, and actual weights drift with markets and financing needs.
+- **Pecking order theory:** because managers know more than investors, firms prefer internal funds first, then debt, and issue equity last; a share issue is read as a sign that managers think the shares are overvalued.`,
+ traps:[
+  "Use market values (or target weights), not book values, for WACC weights.",
+  "The cost of debt in WACC is after tax: rd × (1 − t).",
+  "Under MM without taxes, more debt raises the cost of equity but leaves WACC unchanged.",
+  "Under MM with taxes, the value of the levered firm exceeds the unlevered one by t × D.",
+  "The static trade-off optimum balances the tax shield against financial distress costs."
+ ],
+ formulas:["F1-CI-05","F1-CI-06","F1-CI-07","F1-CI-12","F1-CI-09"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-capital-structure/","Capital Structure: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/w/wacc.asp"],
+  ["i:terms/m/modigliani-millertheorem.asp"],
+  ["w:Trade-off_theory_of_capital_structure"],
+  ["w:Pecking_order_theory"]
+ ]},
+{name:"Business Models",
+ core:/business models?|value proposition|value chain|pricing (strategy|model)|freemium|subscription|razor|bundling|dynamic pricing|platform (business|company)|network effects?|marketplace|franchis|licensing|asset-light|unit economics|recurring revenue|crowdsourc/,
+ match:/business model|value proposition|value chain|pricing|freemium|subscription|razor|bundl|dynamic|platform|network|marketplace|franchis|licens|asset-light|unit economics|recurring|customer|channel|cost structure/,
+ ideas:`**A business model explains how a company creates value for customers and captures part of it as profit.**
+
+## Key features
+- **Customers and market:** who the customers are and which need is met.
+- **Value proposition:** why customers choose this product over alternatives (price, quality, convenience).
+- **Value chain:** how the product is made and delivered: sourcing, production, distribution channels, and which parts the company does itself or outsources.
+- **Pricing and revenue model:** how and when the company is paid.
+- **Cost structure and profitability:** fixed versus variable costs, margins, the capital needed, and **unit economics** (revenue and cost per customer or per unit).
+
+## Pricing approaches
+- Value-based or cost-plus pricing; **freemium** (a free basic version, paid upgrades); **razor-and-blades** (cheap device, profitable refills); **subscription** (recurring revenue, often valued highly because it is predictable); **bundling**; **dynamic pricing** (prices that change with demand, as in airlines and hotels); **price discrimination** between customer groups.
+
+## Types of business models
+- **By channel:** direct to the customer, through distributors or retailers, **franchising** (the franchisee runs outlets under the brand and pays fees), **licensing** of brands or technology.
+- **Platform and network businesses** connect several groups (buyers and sellers, users and advertisers); **network effects** make the platform more valuable as more people use it and can create winner-takes-most markets.
+- **Asset-light** models outsource assets to grow quickly with little capital; **conglomerates** combine unrelated businesses.
+- New and private companies are judged mostly on their business model, because they have little history: the key questions are whether unit economics become profitable at scale and how long cash lasts.`,
+ traps:[
+  "Revenue growth is not enough: unit economics must turn profitable as the business scales.",
+  "Network effects can create strong positions, but also winner-takes-most outcomes for competitors.",
+  "Recurring subscription revenue is more predictable, which supports higher valuations.",
+  "In franchising, the franchisor earns fees and royalties while franchisees bear most operating costs and capital.",
+  "A razor-and-blades model loses money on the first sale and earns it back on later purchases."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ci-business-models/","Business Models: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Business_model"],
+  ["w:Network_effect"],
+  ["w:Freemium"]
+ ]}
 ]);
 /* Learning map, Equities: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
