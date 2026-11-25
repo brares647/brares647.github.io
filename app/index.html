@@ -15129,6 +15129,137 @@ The **cash flow additivity principle** says that the present value of a stream o
 {name:"Statistical Characteristics of Asset Returns",
  core:/\bmedian\b|\bmode\b|quartile|percentile|quantile|\brange\b|mean absolute deviation|skew|kurtosis|semi-?deviation|coefficient of variation|box[- ]and[- ]whisker|outlier|trimmed|winsori|spurious|sample standard deviation|sample variance|correlation (between|coefficient)|standard deviation of an asset|variance of a stock/,
  match:/\bmedian\b|\bmode\b|modal|quartile|quintile|decile|percentile|quantile|\brange\b|mean absolute deviation|\bMAD\b|variance|standard deviation|skew|kurtosis|leptokurtic|platykurtic|mesokurtic|fat tails?|covariance|correlation|scatter ?plot|spurious|semi-?deviation|downside deviation|coefficient of variation|dispersion|box (and whisker )?plot|interquartile|outlier|trimmed|winsori/,
+ lesson:`## 1. Why describe returns with statistics
+A fund's yearly returns over a decade are just a list of numbers until you summarize them. Four questions cover almost everything an investor wants to know:
+- **Where is the center?** What is a typical return?
+- **How wide is the spread?** How far do returns stray from that typical value, which is what investors call risk?
+- **What is the shape?** Are big surprises more likely on the upside or the downside, and how often do extreme outcomes occur?
+- **How does it move with other assets?** Which matters for building portfolios.
+
+Throughout the first sections we use one data set: the yearly returns (%) of a fund over eight years: 6, −4, 11, 3, 15, −9, 8, 2. Sorted: −9, −4, 2, 3, 6, 8, 11, 15.
+
+These eight years are a **sample**: a part of all the returns the fund could produce (the **population**). Most formulas below are sample versions, because in finance we almost never observe the whole population.
+
+## 2. Central tendency: the typical value
+### Mean, median and mode
+- **Arithmetic mean:** the sum divided by the number of observations. Here 32 / 8 = 4.0%. Every observation pulls on it, so one extreme value can move it a lot.
+- **Median:** the middle value of the sorted data. With an even number of observations it is the average of the two middle ones: (3 + 6) / 2 = 4.5%. It ignores how extreme the extremes are, so it is **robust to outliers**.
+- **Mode:** the most frequent value. Here no value repeats, so there is no mode. For grouped data (returns sorted into ranges), the range with the most observations is the **modal interval**.
+
+### Dealing with outliers
+An **outlier** is an observation far from the rest, perhaps a genuine crisis year, perhaps a data error. Two ways of limiting its influence on the mean:
+- A **trimmed mean** discards a set percentage of the smallest and largest values and averages the rest.
+- A **winsorized mean** replaces those extreme values with the nearest values that remain, then averages all of them, so the number of observations stays the same.
+
+> **Worked example 1: three versions of the center**
+> Take the 25% trimmed and winsorized means of the fund (12.5% from each end, so one observation from each side of eight).
+> - Trimmed: drop −9 and 15, average the other six: (−4 + 2 + 3 + 6 + 8 + 11) / 6 = 4.33%
+> - Winsorized: replace −9 by −4 and 15 by 11, then average all eight: (−4 − 4 + 2 + 3 + 6 + 8 + 11 + 11) / 8 = 4.13%
+> - Plain mean 4.00%, median 4.50%.
+> Here the measures are close, because the two extremes roughly offset each other. With one huge outlier on one side, the plain mean would stand apart from the other three.
+
+## 3. Location: quantiles
+**Quantiles** split sorted data into equal parts: **quartiles** into four, **quintiles** into five, **deciles** into ten and **percentiles** into a hundred. The median is the 50th percentile, the second quartile and the fifth decile at once.
+
+The position of the yth percentile in data sorted from smallest to largest is:
+- L_y = (n + 1) × y / 100.
+If L_y is not a whole number, interpolate between the two neighbouring observations.
+
+> **Worked example 2: quartiles and the interquartile range**
+> n = 8, sorted: −9, −4, 2, 3, 6, 8, 11, 15.
+> - Q1 (25th percentile): L = 9 × 0.25 = 2.25, between the 2nd (−4) and 3rd (2) values: −4 + 0.25 × (2 − (−4)) = −2.50%
+> - Q3 (75th percentile): L = 9 × 0.75 = 6.75, between the 6th (8) and 7th (11): 8 + 0.75 × 3 = 10.25%
+> - Interquartile range (IQR) = 10.25 − (−2.50) = 12.75 percentage points: the middle half of the years lies in this band.
+
+A **box-and-whisker plot** draws this: a box from Q1 to Q3 with a line at the median, and whiskers reaching out toward the extremes (often to the furthest values within 1.5 × IQR of the box; points beyond are marked as outliers). Quantiles are widely used in investing, for example to rank funds into performance quartiles or to sort shares into quintiles by a characteristic and compare the returns of the top and bottom groups.
+
+## 4. Dispersion: how wide the spread is
+- **Range** = maximum − minimum = 15 − (−9) = 24 points. Easy, but it depends only on two observations.
+- **Mean absolute deviation** (MAD) = average of |Xi − mean|. Deviations from 4: 2, 8, 7, 1, 11, 13, 4, 2, which sum to 48, so MAD = 48 / 8 = 6.0 points.
+- **Sample variance:** s² = Σ(Xi − mean)² / (n − 1).
+- **Sample standard deviation:** s = √s², in the same units as the data (percent), which makes it the usual measure of risk.
+
+Why divide by n − 1 rather than n? The deviations are measured from the sample mean, which is itself computed from the same data and sits closer to the observations than the true mean would. Dividing by n would understate the true dispersion on average; dividing by n − 1 corrects this. For a whole population you divide by N.
+
+> **Worked example 3: variance and standard deviation**
+> Squared deviations from 4: 4, 64, 49, 1, 121, 169, 16, 4, summing to 428.
+> - s² = 428 / 7 = 61.14 (%²); s = √61.14 = 7.82%
+> On the calculator, the data worksheet does it: \\\`2ND 7\\\` (DATA), \\\`2ND CE|C\\\` to clear, enter X01 = 6, X02 = −4 and so on (press \\\`↓\\\` twice after each value to skip its Y entry); then \\\`2ND 8\\\` (STAT), switch to 1-V with \\\`2ND ENTER\\\` if another mode shows, and scroll down: x̄ = 4, Sx = 7.82 (the sample version), σx = 7.31 (the population version, dividing by n).
+> Pick Sx for a sample. σx is the answer only if the question says the data are the whole population.
+
+## 5. Downside risk and risk per unit of return
+### Target semideviation
+Investors rarely mind returns that are higher than expected. **Target semideviation** (downside deviation) measures only the shortfall below a target B:
+- s_target = √[ Σ over Xi < B of (Xi − B)² / (n − 1) ].
+Only observations below the target enter the sum, but the divisor is still n − 1 for the **whole** sample.
+
+> **Worked example 4: downside deviation against a 0% target**
+> Below 0%: −4 and −9. Sum of squared shortfalls = 16 + 81 = 97.
+> - s_target = √(97 / 7) = 3.72%
+> Against a target equal to the mean (4%), the years below are −4, 3, −9 and 2: squared shortfalls 64 + 1 + 169 + 4 = 238, so √(238 / 7) = 5.83%.
+> The higher the target, the more observations count as shortfalls and the larger the downside deviation.
+
+### Coefficient of variation
+Comparing standard deviations is unfair when means differ a lot. The **coefficient of variation** (CV) puts risk on a per-unit-of-return basis:
+- CV = s / mean.
+For the fund, CV = 7.82 / 4.00 = 1.95: 1.95 units of risk per unit of average return. A second fund with a mean of 2.5% and s of 7% has CV = 2.80, so it offers less return per unit of risk even though its standard deviation is lower. **Lower CV is better.** The measure becomes meaningless when the mean is close to zero or negative.
+
+## 6. Shape: skewness and kurtosis
+### Skewness
+**Skewness** measures asymmetry.
+- A **symmetric** distribution, like the normal, has skewness 0, and its mean, median and mode coincide.
+- **Positive (right) skew:** a long tail to the right, many small losses or modest outcomes and a few very large gains. The large values pull the mean up, so typically mean > median > mode.
+- **Negative (left) skew:** a long tail to the left, frequent small gains and occasional large losses. Typically mean < median < mode.
+
+Investors generally prefer positive skew. Strategies that sell insurance-like products, such as writing options, tend to have negative skew: steady small income punctuated by rare large losses. A standard deviation alone hides this difference.
+
+For large samples, sample skewness ≈ (1/n) × Σ(Xi − mean)³ / s³. Cubing keeps the sign of each deviation, so large deviations on one side dominate.
+
+### Kurtosis
+**Kurtosis** measures how much weight sits in the **tails** compared with a normal distribution. For large samples, sample kurtosis ≈ (1/n) × Σ(Xi − mean)⁴ / s⁴. The normal distribution has kurtosis 3, so analysts usually report **excess kurtosis** = kurtosis − 3.
+- **Leptokurtic** (excess kurtosis > 0): fat tails, so extreme outcomes are more frequent than a normal distribution predicts. Most asset returns, especially daily ones, look like this.
+- **Mesokurtic** (= 0): like the normal.
+- **Platykurtic** (< 0): thin tails, fewer extremes.
+
+> **Worked example 5: shape of the fund's returns**
+> Using the formulas above with s = 7.82%:
+> - Skewness = (1/8) × Σ(dev³) / 7.82³ = −0.25: slightly negative, consistent with the mean (4.00) being below the median (4.50).
+> - Kurtosis = 1.67, excess kurtosis = −1.33: thin tails.
+> With only eight observations these measures are unreliable; skewness and kurtosis need large samples. Monthly or daily data of most equity indices show fat tails.
+
+The practical message: if returns are fat-tailed and negatively skewed, risk measures that assume a normal distribution **understate the chance of a large loss**.
+
+## 7. Covariance and correlation
+### Covariance
+**Covariance** measures whether two variables move together:
+- sample Cov(X, Y) = Σ(Xi − mean X)(Yi − mean Y) / (n − 1).
+Positive when they tend to be above (or below) their means at the same time, negative when one tends to be high while the other is low. Its size depends on the units (%² for returns), so it is hard to interpret on its own.
+
+### Correlation
+**Correlation** rescales covariance to a number between −1 and +1:
+- ρ = Cov(X, Y) / (s_X × s_Y).
++1 means a perfect positive straight-line relation, −1 a perfect negative one, and 0 no linear relation. A **scatter plot** of the paired observations shows the relation at a glance.
+
+> **Worked example 6: two funds over five years**
+> Fund X: 6, −4, 11, 3, 9 (mean 5.0%). Fund Y: 4, −1, 7, 5, 3 (mean 3.6%).
+> - Products of deviations: (1)(0.4), (−9)(−4.6), (6)(3.4), (−2)(1.4), (4)(−0.6) = 0.4, 41.4, 20.4, −2.8, −2.4, summing to 57.0
+> - Cov = 57.0 / 4 = 14.25 (%²)
+> - s_X = 5.87%, s_Y = 2.97%; ρ = 14.25 / (5.87 × 2.97) = 0.82
+> Most of the covariance comes from one year, the −4% / −1% year, when both funds were well below their means. One shared bad year can dominate a short sample.
+
+### Limits of correlation
+- It captures only **linear** relations. Y = X² over values symmetric around zero has a correlation of zero, yet Y is completely determined by X.
+- **Outliers** can create or hide correlation, as the example shows.
+- **Spurious correlation:** two series can be correlated by chance, or because a third variable drives both (ice-cream sales and drowning deaths both rise in summer). Correlation never proves causation.
+
+## 8. Checklist before you answer
+- Sample statistics divide by n − 1; use the population formula only when told the data are the whole population.
+- Quantile position: (n + 1) × y / 100, then interpolate.
+- Mean > median suggests positive skew; mean < median suggests negative skew.
+- Excess kurtosis = kurtosis − 3; positive means fat tails and more extreme outcomes than the normal.
+- Target semideviation: only shortfalls below the target in the sum, but n − 1 for the whole sample in the divisor.
+- Coefficient of variation: lower is better; useless when the mean is near zero.
+- Correlation is between −1 and +1, measures only linear association and does not imply causation.`,
  ideas:`**Describing a set of returns: where its center is, how widely it spreads, what shape it has, and how it moves with other assets.**
 
 ## Central tendency and location
@@ -15169,6 +15300,126 @@ The **cash flow additivity principle** says that the present value of a stream o
 {name:"Statistical Distributions for Financial Asset Prices and Returns",
  core:/probabilit|expected value|bayes|normal(ly)? distribut|lognormal|binomial|uniform distribution|\bodds\b|safety-first|chebyshev|\bways\b|permutation|combination|number of (different|possible)/,
  match:/probabilit|expected value|conditional|bayes|\bprior\b|posterior|normal(ly)? distribut|standard normal|\bz[- ](score|value|statistic)|\bz ?=|lognormal|log-normal|student'?s t|t-distribution|chi-square distribution|F-distribution|binomial|bernoulli|uniform distribution|joint|independent events|tree diagram|probability tree|\bodds\b|safety-first|shortfall|\bways\b|permutation|combination|factorial|confidence that|within (one|two|three|1|2|3) standard deviations|chebyshev/,
+ lesson:`## 1. From describing the past to modeling the future
+The previous module summarized returns that already happened. Investment decisions are about returns that have **not** happened yet, so we need a way to describe what could happen and how likely each outcome is. That is the job of a **probability distribution**: a list (or a curve) of every possible outcome of a **random variable** with its probability.
+
+Two kinds matter:
+- A **discrete** random variable takes a countable set of values: the number of defaults in a bond portfolio, or the number of up-moves of a share price in a tree. Each value has a probability.
+- A **continuous** random variable can take any value in a range, such as a return. The probability of any single exact value is zero, so we talk about the probability of falling within an interval, read from the area under the curve.
+
+Every distribution can be summarized by its **moments**: the mean (first moment, the center), the variance (second, the spread), skewness (third, asymmetry) and kurtosis (fourth, tail weight). This module computes them from probabilities, then meets the distributions used most in finance.
+
+## 2. Expected value, variance and covariance from probabilities
+When outcomes come with probabilities, every statistic is a **probability-weighted** average:
+- **Expected value:** E(X) = Σ P(xi) × xi.
+- **Variance:** σ² = Σ P(xi) × [xi − E(X)]².
+- **Covariance** of two variables: Cov(X, Y) = Σ P(i) × [xi − E(X)] × [yi − E(Y)], using the paired outcomes of each scenario.
+- **Correlation:** ρ = Cov(X, Y) / (σX × σY).
+
+There is no division by n − 1 here: the probabilities already sum to 1, and we are describing a model, not estimating from a sample. These are **unconditional** expected values: they average over every scenario.
+
+> **Worked example 1: two assets in three scenarios**
+> Scenarios: boom (probability 0.25), normal (0.50), recession (0.25). Share A returns 20%, 9%, −8%. Bond B returns 3%, 5%, 7%.
+> - E(A) = 0.25 × 20 + 0.50 × 9 + 0.25 × (−8) = 7.50%; E(B) = 0.25 × 3 + 0.50 × 5 + 0.25 × 7 = 5.00%
+> - Var(A) = 0.25 × 12.5² + 0.50 × 1.5² + 0.25 × (−15.5)² = 100.25, so σA = 10.01%
+> - Var(B) = 0.25 × (−2)² + 0 + 0.25 × 2² = 2.00, so σB = 1.41%
+> - Cov(A, B) = 0.25 × (12.5)(−2) + 0.50 × (1.5)(0) + 0.25 × (−15.5)(2) = −14.0
+> - ρ = −14.0 / (10.01 × 1.41) = −0.99
+> The bond does best exactly when the share does worst, so combining them would reduce risk sharply. The portfolio module builds on this.
+
+## 3. Conditional expectations and the total probability rule
+Often the outcome depends on a scenario: a company's earnings depend on whether interest rates fall. A **conditional expected value** E(X | S) is the expected value computed with the probabilities that apply **given** scenario S. A **conditional variance** measures the spread within that scenario.
+
+The **total probability rule for expected value** combines them:
+- E(X) = E(X | S1) × P(S1) + E(X | S2) × P(S2) + …, where the scenarios are mutually exclusive and cover every possibility.
+
+A probability tree is the easiest way to organize this: the first branches are the scenarios, the second the outcomes within each.
+
+> **Worked example 2: earnings that depend on interest rates**
+> Rates fall with probability 0.40. If they fall, EPS will be 2.60 (probability 0.70) or 2.20 (0.30). If they do not, EPS will be 2.10 or 1.80 (0.50 each).
+> - E(EPS | rates fall) = 0.70 × 2.60 + 0.30 × 2.20 = 2.48
+> - E(EPS | rates do not fall) = 0.50 × 2.10 + 0.50 × 1.80 = 1.95
+> - Unconditional E(EPS) = 0.40 × 2.48 + 0.60 × 1.95 = 2.162
+> - Conditional variances: 0.70 × 0.12² + 0.30 × 0.28² = 0.0336 if rates fall; 0.50 × 0.15² + 0.50 × 0.15² = 0.0225 if not.
+> - Unconditional variance, using the four end-points of the tree with their joint probabilities (0.28, 0.12, 0.30, 0.30): Σ P × (EPS − 2.162)² = 0.0944, so σ = 0.31.
+> The unconditional variance (0.0944) is larger than both conditional ones, because it also includes the uncertainty about which scenario happens: 0.40 × 0.0336 + 0.60 × 0.0225 = 0.0269 of average variance within scenarios, plus 0.0674 from the gap between the two conditional means.
+
+Conditional **covariances** work the same way: compute the covariance of two assets using only the outcomes and probabilities of one scenario. Correlations between assets often rise in crises, so a covariance estimated in calm times can understate risk in a recession.
+
+## 4. Bayesian updating
+Expectations should change when new information arrives. **Bayes' formula** gives the updated (posterior) probability of an event A after observing information B:
+- P(A | B) = P(B | A) × P(A) / P(B),
+
+where P(A) is the **prior** probability, P(B | A) the probability of seeing the information if A is true, and P(B) the unconditional probability of the information, found with the total probability rule: P(B) = P(B | A) × P(A) + P(B | not A) × P(not A).
+
+> **Worked example 3: is the manager skilled?**
+> Before seeing any results you believe 30% of managers in a group are skilled. A skilled manager beats the benchmark in a given year with probability 0.70, an unskilled one with probability 0.45 (luck). A manager beats the benchmark this year.
+> - P(beat) = 0.70 × 0.30 + 0.45 × 0.70 = 0.21 + 0.315 = 0.525
+> - P(skilled | beat) = 0.21 / 0.525 = 0.40
+> The next year the manager beats it again. Yesterday's posterior becomes today's prior:
+> - P(skilled | two beats) = 0.70 × 0.40 / (0.70 × 0.40 + 0.45 × 0.60) = 0.28 / 0.55 = 0.509
+> Two good years raised the probability from 30% to about 51%, but not to certainty: because unskilled managers also win often, each win is only weak evidence.
+
+Formulating an investment problem the Bayesian way means stating a prior, defining what the new evidence would look like under each possibility, and updating. Typical uses: revising the probability of a default after a downgrade, of a recession after a weak indicator, or of a takeover after unusual trading.
+
+## 5. Key distributions and their moments
+### Binomial distribution
+A **Bernoulli trial** has two outcomes: success (probability p) or failure (1 − p). The **binomial** random variable counts the successes in n independent trials with the same p:
+- P(X = x) = [n! / (x!(n − x)!)] × p^x × (1 − p)^(n − x)
+- Mean = np; variance = np(1 − p).
+
+> **Worked example 4: a share price tree**
+> Each period a share moves up with probability 0.55 or down with 0.45, independently, for four periods.
+> - P(exactly 3 ups) = 4 × 0.55³ × 0.45 = 0.2995
+> - P(4 ups) = 0.55⁴ = 0.0915, so P(at least 3 ups) = 0.391
+> - Expected number of ups = 4 × 0.55 = 2.2; variance = 4 × 0.55 × 0.45 = 0.99
+> On the calculator, the number of combinations is \\\`4 2ND +\\\` (nCr) \\\`3 =\\\`, which gives 4.
+> Binomial trees like this are the basis of option pricing in Derivatives.
+
+### Uniform distribution
+Every outcome in a range is equally likely. For a continuous uniform between a and b: mean (a + b) / 2, variance (b − a)² / 12, and the probability of an interval is its length divided by (b − a). Random number generators in simulations start from it.
+
+### Normal distribution
+The **normal** distribution is the bell curve, fully described by its mean μ and variance σ². It is symmetric (skewness 0) with kurtosis 3. Useful properties:
+- About 68% of outcomes lie within ±1σ of the mean, 90% within ±1.645σ, 95% within ±1.96σ and 99% within ±2.58σ.
+- Any normal variable can be **standardized**: z = (X − μ) / σ follows the standard normal (mean 0, σ 1), whose probabilities are in the z-table.
+- A linear combination of normal variables (such as a portfolio of assets with normal returns) is also normal.
+
+> **Worked example 5: probability of a large loss**
+> A portfolio's annual return is normal with mean 8% and standard deviation 15%.
+> - P(return below −10%): z = (−10 − 8) / 15 = −1.20; the z-table gives N(−1.20) = 0.1151, about 11.5%.
+> - 90% of years should fall within 8 ± 1.645 × 15: from −16.7% to 32.7%.
+> If real returns have fat tails, the true probability of a loss below −10% is higher than the 11.5% this model gives.
+
+### Lognormal distribution
+A variable is **lognormal** if its natural logarithm is normal. It is bounded below by zero and skewed to the right, which matches **asset prices**: a price cannot fall below zero but can rise without limit. Prices are lognormal when **continuously compounded returns are normal**, because P_T = P0 × e^(r).
+
+Its moments come from the mean μ and variance σ² of the underlying normal:
+- Median = e^μ; mean = e^(μ + σ²/2). The mean is above the median, the signature of right skew.
+
+> **Worked example 6: the distribution of next year's price**
+> A share costs 50. Its continuously compounded annual return is normal with mean 6% and standard deviation 25%.
+> - Median price in a year = 50 × e^0.06 = 53.09
+> - Mean price = 50 × e^(0.06 + 0.5 × 0.25²) = 50 × e^0.09125 = 54.78
+> On the calculator: \\\`0.09125 2ND LN × 50 =\\\` gives 54.78 (\\\`2ND LN\\\` is e^x).
+> Half of the outcomes lie below 53.09, but a few very high prices pull the average up to 54.78.
+
+### Student's t, chi-square and F
+These three are used to test hypotheses about samples (next module):
+- **Student's t:** symmetric and bell-shaped like the normal but with fatter tails, defined by its **degrees of freedom** (df). Mean 0 and variance df / (df − 2), which is above 1. As df grows, it approaches the standard normal. It replaces the normal when the population variance is unknown and must be estimated from the sample.
+- **Chi-square** with k df: the sum of k squared independent standard normal variables. Never negative, skewed to the right; mean k and variance 2k. Used to test a single variance.
+- **F**: the ratio of two independent chi-square variables, each divided by its df. Never negative, skewed to the right, defined by two df (numerator and denominator). Used to compare two variances and in regression.
+
+## 6. Checklist before you answer
+- With probabilities, weight every outcome by its probability; never divide by n − 1.
+- For covariance, use the paired outcomes of the same scenario.
+- Total probability rule: E(X) = Σ E(X | Si) × P(Si), with scenarios that are mutually exclusive and exhaustive.
+- Unconditional variance ≥ the probability-weighted average of conditional variances, because it adds the uncertainty about the scenario.
+- Bayes: posterior = P(info | event) × prior / P(info); compute P(info) over all events. Each posterior becomes the next prior.
+- Binomial: n independent trials, same p; mean np, variance np(1 − p).
+- Normal: symmetric, kurtosis 3, 1.645 / 1.96 / 2.58 for 90% / 95% / 99%.
+- Prices lognormal (never negative, mean above median); continuously compounded returns normal.
+- t has fatter tails than the normal; chi-square and F are never negative.`,
  ideas:`**From describing past data to modeling what could happen: probabilities, expected values, and the distributions used for prices and returns.**
 
 ## Expected value, variance and covariance
@@ -15203,6 +15454,143 @@ The **cash flow additivity principle** says that the present value of a stream o
 {name:"Estimation and Hypothesis Testing",
  core:/sampl(e|ing) (method|error|bias|distribution)|central limit|confidence interval|hypothes|\bnull\b|type i\b|type ii\b|significance|p-value|t-statistic|test statistic|parametric|spearman|contingency|chi-square test|tests? (whether|of the equality|for)|testing|sample mean|(?<=limit )theorem|survivorship|look-ahead|data[- ]snooping|stratified|cluster sampl/,
  match:/sampl|central limit|standard error of the (sample )?mean|confidence interval|hypothes|null|type i\b|type ii\b|significance level|level of significance|statistically significant|power of (a|the) test|p-value|t-test|z-test|test statistic|critical value|reject|fail to reject|parametric|nonparametric|non-parametric|spearman|rank correlation|contingency|chi-square test|data[- ]snooping|data[- ]mining|survivorship|look-ahead|time-period bias|stratified|cluster/,
+ lesson:`## 1. The problem: we only ever see a sample
+An analyst wants to know a fund's true average monthly return, or whether a strategy really beats the market. The true value, a **parameter** of the **population**, is unknown. What the analyst has is a **sample**: 36 months of returns, or 200 companies out of thousands. From it they compute a **statistic** (such as the sample mean) and use it to say something about the parameter. Two questions follow:
+- **Estimation:** what is our best guess of the parameter, and how precise is it?
+- **Hypothesis testing:** is the evidence strong enough to reject a particular claim about the parameter?
+
+Both depend on how the sample was drawn, so we start there.
+
+## 2. Sampling methods and biases
+### Probability sampling
+- **Simple random sampling:** every member of the population has the same chance of being chosen. **Systematic sampling** (every kth member of a list) approximates it.
+- **Stratified random sampling:** split the population into groups (**strata**) by a characteristic, then draw randomly from each in proportion to its size. It guarantees that every group is represented, so the estimates are more precise. Bond index funds use it: they cannot buy every bond in the index, so they hold a sample matched to the index by sector, maturity and credit quality.
+- **Cluster sampling:** split the population into groups that each resemble the whole (such as cities), then sample entire groups. Cheaper, but usually less precise.
+
+### Non-probability sampling
+- **Convenience sampling:** use whatever data are easy to get. Fast and cheap, but possibly unrepresentative.
+- **Judgmental sampling:** an expert chooses which observations to use. Useful when judgment adds information, but open to the expert's bias.
+
+### Sampling error and biases
+**Sampling error** is the difference between a sample statistic and the true parameter. It is unavoidable but shrinks as samples grow. **Biases**, by contrast, do not go away with more data:
+- **Survivorship bias:** only funds or companies that still exist are in the data. The failures, with their poor returns, are missing, so average performance looks better than it was.
+- **Look-ahead bias:** a test uses information that was not available at the time, such as annual earnings that were published months after the year ended.
+- **Data-snooping bias:** testing many rules on the same data until one "works". With enough attempts, something looks significant by pure chance.
+- **Time-period bias:** a result holds only in the particular period studied, such as a strategy that worked only in a long bull market.
+- **Sample selection bias** in general: the data are excluded or included in a way that is not random.
+
+## 3. The central limit theorem
+The sample mean is itself a random variable: draw a different sample and you get a different mean. Its distribution is the **sampling distribution of the mean**. The **central limit theorem** (CLT) says that for a large sample (by convention n ≥ 30), drawn from a population with mean μ and finite variance σ²:
+- the sample mean is approximately **normally** distributed, **whatever the shape of the population**;
+- its mean is μ;
+- its standard deviation, called the **standard error**, is σ / √n.
+
+When σ is unknown, which is almost always, it is replaced by the sample standard deviation s: standard error = s / √n.
+
+The CLT is what makes inference possible even though returns themselves are skewed and fat-tailed. And the √n tells you how precision grows: to halve the standard error you need **four times** as many observations.
+
+## 4. Confidence intervals
+A **point estimate** is a single number, such as the sample mean. A **confidence interval** gives a range that, with a stated level of confidence, contains the parameter:
+- point estimate ± reliability factor × standard error.
+
+The **reliability factor** comes from the distribution of the statistic:
+- **z** (standard normal) when the population variance is known: 1.645 for 90%, 1.96 for 95%, 2.58 for 99%.
+- **t** with n − 1 degrees of freedom when the variance is estimated from the sample. t values are larger than z values, especially for small samples, so intervals are wider. For large samples z is an acceptable approximation.
+
+> **Worked example 1: how precise is a fund's average return?**
+> 36 months of returns have a mean of 1.1% and a standard deviation of 4.2%.
+> - Standard error = 4.2 / √36 = 0.70%
+> - 95% interval with z: 1.1 ± 1.96 × 0.70 = −0.27% to 2.47%
+> - 95% interval with t (35 df, t = 2.030): 1.1 ± 2.030 × 0.70 = −0.32% to 2.52%
+> The interval includes zero: three years of data cannot rule out that the fund's true average return is zero, even though the sample mean looks healthy. This is typical: return means are estimated very imprecisely.
+
+The correct reading of a 95% interval: if we repeated the sampling many times, 95% of the intervals built this way would contain the true mean. A wider interval comes from a higher confidence level, a more dispersed population or a smaller sample.
+
+## 5. Hypothesis testing step by step
+1. **State the hypotheses.** The **null hypothesis** H0 is the claim being tested and always contains the equal sign (=, ≤ or ≥). The **alternative** Ha is what you conclude if you reject H0, usually what the researcher hopes to show.
+2. **Choose the test statistic** and its distribution (z, t, chi-square, F).
+3. **Set the significance level** α, the probability of rejecting H0 when it is actually true (commonly 5%).
+4. **State the decision rule:** the **critical value(s)** that mark the rejection region.
+5. **Collect data and compute** the test statistic.
+6. **Decide:** reject H0 if the statistic falls in the rejection region; otherwise **fail to reject** it.
+7. **Interpret** the result for the investment question, including whether it is economically meaningful.
+
+### One tail or two
+- **Two-tailed** test: Ha says the parameter is **different** (≠). α is split between both tails: at 5%, reject if |z| > 1.96.
+- **One-tailed** test: Ha says **greater** (or **less**). All of α sits in one tail: at 5%, reject if z > 1.645 (or < −1.645).
+
+### The p-value
+The **p-value** is the smallest significance level at which H0 would be rejected: the probability, if H0 were true, of a test statistic at least as extreme as the one observed. Reject H0 when p < α. A p-value of 0.011 means "rejected at 5% and at 2%, not at 1%". It is **not** the probability that H0 is true.
+
+> **Worked example 2: does the manager add value?**
+> A manager's monthly excess return over 36 months averages 0.6%, with a standard deviation of 1.5%. Test at 5% whether the true mean is above zero.
+> - H0: μ ≤ 0; Ha: μ > 0 (one-tailed)
+> - t = (0.6 − 0) / (1.5 / √36) = 0.6 / 0.25 = 2.40, with 35 df
+> - Critical value t(35, 5% one tail) = 1.690. Since 2.40 > 1.690, reject H0.
+> - p-value ≈ 0.011.
+> The evidence supports positive excess returns. Whether 0.6% a month survives fees and trading costs is a separate, economic question.
+
+## 6. Errors and power
+Every test can go wrong in two ways:
+- **Type I error:** rejecting H0 when it is true (a false alarm). Its probability is the significance level α.
+- **Type II error:** failing to reject H0 when it is false (a missed discovery). Its probability is called β.
+- **Power** of the test = 1 − β: the probability of correctly rejecting a false H0.
+
+With a fixed sample size, lowering α (making false alarms rarer) raises β (more missed discoveries). The only way to reduce both at once is a **larger sample**. Think of a smoke detector: make it less sensitive and it stops beeping at toast, but it may also miss a real fire.
+
+> **Worked example 3: choosing α**
+> A bank tests whether a new credit model predicts defaults better than the old one. H0: no improvement.
+> - Type I error: adopting a model that is no better, paying for a costly switch.
+> - Type II error: rejecting a genuinely better model and keeping higher losses.
+> If wrongly switching is very costly, choose a small α (1%) and accept lower power; if missing a better model is the bigger cost, a larger α (10%) or a bigger test sample is appropriate.
+
+**Statistical significance is not economic significance.** With a huge sample, a strategy earning 0.02% a year more than the market can be "significant" and still worthless after costs. Conversely, an important effect may be insignificant in a small sample.
+
+## 7. Common parametric tests
+**Parametric tests** make assumptions about the distribution (usually normality, or a large sample) and test its parameters:
+- **A single mean:** t = (x̄ − μ0) / (s / √n), n − 1 df (as in example 2).
+- **Difference between two means:** for independent samples, a t-test on x̄1 − x̄2; for **paired** observations (the same months for two strategies, or before and after an event), a t-test on the average of the differences: t = d̄ / (s_d / √n).
+- **A single variance:** χ² = (n − 1) s² / σ0², chi-square with n − 1 df.
+- **Equality of two variances:** F = s1² / s2² (larger variance on top), with n1 − 1 and n2 − 1 df.
+- **A correlation:** t = r √(n − 2) / √(1 − r²), with n − 2 df.
+
+> **Worked example 4: has risk increased?**
+> A strategy's annual volatility is believed to be 18%. A sample of 31 years shows s = 22%. Test at 5% whether the true volatility is above 18%.
+> - H0: σ² ≤ 0.0324; Ha: σ² > 0.0324
+> - χ² = 30 × 0.22² / 0.18² = 30 × 0.0484 / 0.0324 = 44.81, with 30 df
+> - Critical value χ²(30, upper 5%) = 43.77. Since 44.81 > 43.77, reject H0: the evidence suggests volatility is higher.
+
+> **Worked example 5: is the correlation real?**
+> Over 50 months, two assets show a sample correlation of 0.30. Test at 5% (two-tailed) whether the true correlation is zero.
+> - t = 0.30 × √48 / √(1 − 0.09) = 2.078 / 0.954 = 2.18, with 48 df
+> - Critical value ±2.011. Since 2.18 > 2.011, reject H0: the correlation is significantly different from zero (p ≈ 0.034).
+> With the same r of 0.30 but only 30 months, t would be 1.66 and the correlation would not be significant: sample size matters as much as the estimate.
+
+## 8. Non-parametric tests
+**Non-parametric tests** make few or no assumptions about the distribution, or test something other than a parameter. They are the right choice when:
+- the data are **ranks** or ordinal (fund rankings, credit ratings);
+- the distribution is unknown or clearly non-normal and the sample is too small for the CLT;
+- **outliers** would distort a parametric test;
+- the question is not about a parameter, for example whether a series is random (a **runs test**).
+
+The best-known example is the **Spearman rank correlation**: rank both variables, then compute r_s = 1 − 6Σd² / [n(n² − 1)], where d is the difference between each pair of ranks.
+
+> **Worked example 6: are fund rankings persistent?**
+> Eight funds are ranked on returns in two consecutive years. Ranks year 1: 1 to 8. Ranks year 2 for the same funds: 2, 1, 4, 3, 7, 5, 8, 6.
+> - Differences d: −1, 1, −1, 1, −2, 1, −1, 2; Σd² = 14
+> - r_s = 1 − 6 × 14 / (8 × 63) = 1 − 84 / 504 = 0.833
+> The rankings are strongly persistent. With only eight funds, significance is checked against a special table of Spearman critical values; for samples above about 30, use t = r_s √(n − 2) / √(1 − r_s²) with n − 2 df.
+
+Non-parametric tests have a cost: when the parametric assumptions do hold, they are less powerful. Use them when the assumptions fail, not by default.
+
+## 9. Checklist before you answer
+- Standard error = s / √n; quadrupling n halves it.
+- Variance unknown: t with n − 1 df, wider intervals than z.
+- H0 always holds the equal sign; "greater than" or "less than" in Ha means a one-tailed test.
+- Reject H0 when the statistic is beyond the critical value, or when the p-value is below α. Never say "accept H0".
+- Type I = rejecting a true H0 (probability α); Type II = keeping a false H0; power = 1 − β. Only a larger sample cuts both errors.
+- Pick the test by what is tested: mean (t), variance (chi-square), two variances (F), correlation (t with n − 2 df), ranks or non-normal small samples (non-parametric).
+- Check for survivorship, look-ahead, data-snooping and time-period bias before trusting any significant result.`,
  ideas:`**Using a sample to say something about a population, and deciding whether the evidence is strong enough.**
 
 ## Sampling
@@ -15241,6 +15629,123 @@ The **cash flow additivity principle** says that the present value of a stream o
 {name:"The Return and Risk of a Financial Portfolio",
  core:/portfolio(\x27s)? (expected )?(return|variance|standard deviation|risk)|(standard deviation|variance) of (the|a|an|this) .{0,30}portfolio|weights? of|two assets|two-asset|asset A\b|diversif|efficient frontier|capital allocation|capital market line|risk aversion|utility|indifference|minimum[- ]variance|optimal (risky )?portfolio|sharpe|equally weighted portfolio holds|portfolios of risky assets|risky assets|portfolio is \d|portfolio (holds|consists)|in asset [AB]\b|asset B\b/,
  match:/portfolio('s)? (expected )?(return|variance|standard deviation|risk|volatility)|(variance|standard deviation|return|risk) of (the|a|an|this) (equally weighted |two-asset |two-stock )?portfolio|two-asset|two-stock|three-asset|equally weighted portfolio|diversif|minimum[- ]variance|efficient frontier|capital allocation line|\bCAL\b|capital market line|\bCML\b|risk aversion|risk[- ]averse|utility|indifference curve|optimal (risky )?portfolio|market portfolio|two-fund separation|growing number of assets/,
+ lesson:`## 1. The one idea of this module
+Put two risky assets together and the risk of the mix is usually **less** than the average risk of the two. Return does not behave like this: a portfolio's expected return is simply the weighted average of its assets' expected returns. Risk falls below the average because assets do not move in perfect lockstep, so some of their ups and downs cancel out. That is **diversification**, and the rest of the module follows from it: which mixes are worth holding, which one a particular investor should choose, and how a risk-free asset changes the answer.
+
+## 2. Expected return and risk of a portfolio
+### Expected return
+With weights wi (the share of the portfolio's value in each asset, summing to 1):
+- E(Rp) = w1 E(R1) + w2 E(R2) + … + wn E(Rn).
+
+### Variance of two assets
+- σp² = w1² σ1² + w2² σ2² + 2 w1 w2 Cov(R1, R2),
+- where Cov(R1, R2) = ρ12 σ1 σ2.
+
+The first two terms are each asset's own risk; the third is how they move together. Everything interesting happens in that third term.
+
+> **Worked example 1: a 60/40 portfolio**
+> 60% in shares (expected return 9%, σ 18%) and 40% in bonds (4%, σ 6%), with correlation 0.2.
+> - E(Rp) = 0.6 × 9 + 0.4 × 4 = 7.0%
+> - Cov = 0.2 × 0.18 × 0.06 = 0.00216
+> - σp² = 0.36 × 0.0324 + 0.16 × 0.0036 + 2 × 0.6 × 0.4 × 0.00216 = 0.011664 + 0.000576 + 0.001037 = 0.013277
+> - σp = √0.013277 = 11.52%
+> The weighted average of the two standard deviations is 0.6 × 18 + 0.4 × 6 = 13.2%. Diversification removed 1.7 points of risk at no cost in expected return.
+
+### The role of correlation
+Keeping everything else in example 1 fixed and changing only ρ:
+- ρ = +1: σp = 13.20%, exactly the weighted average. No diversification benefit.
+- ρ = 0.2: σp = 11.52%.
+- ρ = 0: σp = 11.06%.
+- ρ = −1: σp = |0.6 × 18 − 0.4 × 6| = 8.40%; with the right weights (25% shares, 75% bonds here) risk would be zero.
+
+The lower the correlation, the larger the benefit. Notice that the expected return is 7.0% in every case: correlation changes risk, never expected return.
+
+### Many assets
+With n assets the variance adds up every pair: σp² = Σ Σ wi wj Cov(Ri, Rj), where Cov(Ri, Ri) is the variance. The number of covariance terms grows much faster than the number of variances (n assets have n(n − 1)/2 distinct pairs), so in a large portfolio the covariances dominate.
+
+> **Worked example 2: how far diversification goes**
+> Equal weights, each asset with σ = 35% (variance 0.1225) and an average covariance between pairs of 0.03. Then σp² = 0.1225 / n + (n − 1)/n × 0.03:
+> - 1 asset: 35.0%; 5 assets: 22.0%; 20 assets: 18.6%; 100 assets: 17.6%
+> - Limit with infinitely many assets: √0.03 = 17.3%
+> The first few assets remove most of the removable risk. What remains, the average covariance, is **systematic** (market) risk that no amount of diversification removes. The part that disappears is **unsystematic** (specific) risk.
+
+## 3. The minimum-variance frontier and the efficient frontier
+Combine the available risky assets in every possible way and plot each portfolio by its standard deviation (horizontal axis) and expected return (vertical axis). For each level of expected return, keep only the portfolio with the **lowest** risk. The curve traced by those portfolios is the **minimum-variance frontier**, shaped like a bullet lying on its side.
+- Its leftmost point is the **global minimum-variance portfolio** (GMV): the lowest risk achievable with these assets.
+- The upper half of the curve, from the GMV upward, is the **efficient frontier**. For any portfolio below it there is one on the frontier with the same risk and higher return, so a rational investor holds only efficient portfolios.
+- Portfolios to the right of or below the frontier are inefficient; points above and to the left cannot be reached with these assets.
+
+For two assets, the weight of asset 1 in the minimum-variance portfolio is:
+- w1 = (σ2² − Cov) / (σ1² + σ2² − 2 Cov).
+
+> **Worked example 3: the least risky mix of shares and bonds**
+> Same inputs as example 1 (Cov = 0.00216):
+> - w(shares) = (0.0036 − 0.00216) / (0.0324 + 0.0036 − 0.00432) = 0.00144 / 0.03168 = 4.5%; bonds 95.5%
+> - E(R) = 0.045 × 9 + 0.955 × 4 = 4.23%; σ = 5.95%
+> Even a very cautious investor should hold some shares: a small share position lowers risk below that of bonds alone (6%) and raises return. Bond-only, with these inputs, is inefficient.
+
+## 4. Investors, risk aversion and utility
+Which efficient portfolio should a given investor hold? That depends on their **risk aversion**. A **risk-averse** investor, offered two investments with the same expected return, chooses the less risky one, and accepts more risk only for more expected return. Finance assumes investors are risk-averse.
+
+A convenient way to score portfolios for an investor is the **utility function**:
+- U = E(R) − ½ A σ²,
+
+where A measures risk aversion (higher A, more averse; A = 0 is risk-neutral). Returns and variances go in as decimals. U is the risk-free return the investor would consider equally attractive, a "certainty equivalent".
+
+> **Worked example 4: the same choice, two investors**
+> Portfolio X: E(R) = 7%, σ = 12%. Portfolio Y: E(R) = 9%, σ = 18%.
+> - Investor with A = 4: U(X) = 0.07 − 0.5 × 4 × 0.0144 = 0.0412; U(Y) = 0.09 − 0.5 × 4 × 0.0324 = 0.0252. Chooses X.
+> - Investor with A = 1.5: U(X) = 0.07 − 0.75 × 0.0144 = 0.0592; U(Y) = 0.09 − 0.75 × 0.0324 = 0.0657. Chooses Y.
+> The extra 2% of return is worth the extra risk only to the less risk-averse investor.
+
+An **indifference curve** joins all the portfolios with the same utility for one investor. For risk-averse investors the curves slope upward (more risk must be paid with more return), and they are steeper for more risk-averse investors. Without a risk-free asset, the **optimal portfolio** is the point where the investor's highest attainable indifference curve touches the efficient frontier.
+
+## 5. Adding a risk-free asset: the capital allocation line
+Now let investors also lend or borrow at the risk-free rate Rf. Combining the risk-free asset (σ = 0, no correlation with anything) with a risky portfolio P produces a **straight line**, the **capital allocation line** (CAL):
+- E(Rc) = Rf + [(E(RP) − Rf) / σP] × σc.
+
+Its slope, (E(RP) − Rf) / σP, is the **Sharpe ratio** of P: the extra return per unit of risk. Because the risk-free asset has no risk, the combination's risk is just the risky weight times σP.
+
+> **Worked example 5: moving along a CAL**
+> Rf = 3%; risky portfolio P: E(R) = 9%, σ = 18%. Sharpe ratio = 6 / 18 = 0.333.
+> - Target risk of 12%: risky weight = 12 / 18 = 66.7%, so 33.3% is lent at Rf. E(R) = 3 + 0.667 × 6 = 7.0%.
+> - Target return of 11%: risky weight = (11 − 3) / 6 = 133.3%, so the investor borrows 33.3% of their money at Rf. σ = 1.333 × 18 = 24.0%.
+> Lending puts you on the line between Rf and P; borrowing extends it beyond P.
+
+### The optimal risky portfolio and two-fund separation
+Every efficient risky portfolio gives a different CAL, and the **steepest** one dominates all others: for any risk level it offers the highest return. The steepest CAL is the one **tangent** to the efficient frontier; the tangency point is the **optimal risky portfolio**.
+
+This splits the investment decision into two separate steps, known as **two-fund separation**:
+1. **Investment decision:** find the optimal risky portfolio. It is the same for every investor who shares the same expectations, regardless of their risk aversion.
+2. **Financing decision:** choose how much to put in it versus the risk-free asset, according to risk aversion.
+
+The optimal weight in the risky portfolio follows from maximizing utility along the CAL:
+- w* = (E(RP) − Rf) / (A σP²).
+
+> **Worked example 6: how much an investor with A = 4 puts at risk**
+> Using P from example 5: w* = 0.06 / (4 × 0.0324) = 46.3% in P and 53.7% at the risk-free rate.
+> - E(R) = 3 + 0.463 × 6 = 5.78%; σ = 0.463 × 18 = 8.33%.
+> A more aggressive investor (A = 1.5) would get w* = 0.06 / (1.5 × 0.0324) = 123%, borrowing to hold more than 100% in P. Both investors hold the same risky portfolio; only the mix with the risk-free asset differs.
+
+## 6. The market portfolio and the capital market line
+If all investors have the same expectations (**homogeneous expectations**) about returns, risks and correlations, they all identify the same optimal risky portfolio. Since together they must hold every risky asset in existence, that portfolio must be the **market portfolio**: all risky assets, each weighted by its market value. The CAL through the market portfolio is called the **capital market line** (CML):
+- E(Rp) = Rf + [(E(RM) − Rf) / σM] × σp.
+
+- Portfolios on the CML between Rf and M are **lending portfolios**; beyond M they are **borrowing (leveraged) portfolios**.
+- The CML's slope is the market's Sharpe ratio, the market price of risk.
+- Because borrowing usually costs more than lending, the real CML bends down to the right of M; the straight line is a simplification.
+
+This is the theoretical case for **passive investing**: if the market portfolio is optimal, an investor simply buys a broad index fund and adjusts risk with cash or borrowing. The CML measures risk with **total** risk (standard deviation) and applies to efficient portfolios. The security market line of the CAPM, met in Portfolio Management, uses **beta** instead and applies to every asset.
+
+## 7. Checklist before you answer
+- Expected return of a portfolio is a weighted average; its standard deviation is not, unless ρ = +1.
+- Two-asset variance has three terms; do not forget 2 w1 w2 ρ σ1 σ2.
+- Lower correlation means more diversification benefit; correlation does not affect expected return.
+- Large portfolios: variance tends to the average covariance (systematic risk remains).
+- Efficient frontier = upper part of the minimum-variance frontier, starting at the global minimum-variance portfolio.
+- Utility: decimals, keep the ½, higher A penalizes variance more.
+- On a CAL, σ = weight in the risky portfolio × σ of that portfolio; weights above 100% mean borrowing.
+- Everyone holds the same optimal risky portfolio; risk aversion only sets the mix with the risk-free asset. Under homogeneous expectations it is the market portfolio, and the line is the CML.`,
  ideas:`**A portfolio's expected return is a weighted average of its assets' returns. Its risk is not, because imperfect correlation lets risks offset each other.**
 
 ## Portfolio return and risk
