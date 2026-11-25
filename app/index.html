@@ -15526,6 +15526,7 @@ The **p-value** is the smallest significance level at which H0 would be rejected
 > A manager's monthly excess return over 36 months averages 0.6%, with a standard deviation of 1.5%. Test at 5% whether the true mean is above zero.
 > - H0: μ ≤ 0; Ha: μ > 0 (one-tailed)
 > - t = (0.6 − 0) / (1.5 / √36) = 0.6 / 0.25 = 2.40, with 35 df
+> On the calculator: \\\`36 √x\\\` gives 6, \\\`1.5 ÷ 6 =\\\` gives 0.25, then \\\`0.6 ÷ 0.25 =\\\` gives 2.40.
 > - Critical value t(35, 5% one tail) = 1.690. Since 2.40 > 1.690, reject H0.
 > - p-value ≈ 0.011.
 > The evidence supports positive excess returns. Whether 0.6% a month survives fees and trading costs is a separate, economic question.
@@ -15558,6 +15559,7 @@ With a fixed sample size, lowering α (making false alarms rarer) raises β (mor
 > A strategy's annual volatility is believed to be 18%. A sample of 31 years shows s = 22%. Test at 5% whether the true volatility is above 18%.
 > - H0: σ² ≤ 0.0324; Ha: σ² > 0.0324
 > - χ² = 30 × 0.22² / 0.18² = 30 × 0.0484 / 0.0324 = 44.81, with 30 df
+> On the calculator: \\\`0.22 x² × 30 ÷ 0.18 x² =\\\` gives 44.81.
 > - Critical value χ²(30, upper 5%) = 43.77. Since 44.81 > 43.77, reject H0: the evidence suggests volatility is higher.
 
 > **Worked example 5: is the correlation real?**
@@ -15649,6 +15651,7 @@ The first two terms are each asset's own risk; the third is how they move togeth
 > - Cov = 0.2 × 0.18 × 0.06 = 0.00216
 > - σp² = 0.36 × 0.0324 + 0.16 × 0.0036 + 2 × 0.6 × 0.4 × 0.00216 = 0.011664 + 0.000576 + 0.001037 = 0.013277
 > - σp = √0.013277 = 11.52%
+> On the calculator: \\\`0.013277 √x\\\` gives 0.1152. Store each term with \\\`STO 1\\\`, \\\`STO 2\\\`… and add them with \\\`RCL\\\` to avoid retyping.
 > The weighted average of the two standard deviations is 0.6 × 18 + 0.4 × 6 = 13.2%. Diversification removed 1.7 points of risk at no cost in expected return.
 
 ### The role of correlation
@@ -15724,6 +15727,7 @@ The optimal weight in the risky portfolio follows from maximizing utility along 
 
 > **Worked example 6: how much an investor with A = 4 puts at risk**
 > Using P from example 5: w* = 0.06 / (4 × 0.0324) = 46.3% in P and 53.7% at the risk-free rate.
+> On the calculator: \\\`0.06 ÷ 4 ÷ 0.18 x² =\\\` gives 0.463.
 > - E(R) = 3 + 0.463 × 6 = 5.78%; σ = 0.463 × 18 = 8.33%.
 > A more aggressive investor (A = 1.5) would get w* = 0.06 / (1.5 × 0.0324) = 123%, borrowing to hold more than 100% in P. Both investors hold the same risky portfolio; only the mix with the risk-free asset differs.
 
@@ -15782,6 +15786,119 @@ This is the theoretical case for **passive investing**: if the market portfolio 
 {name:"Simulation of Financial Asset Prices and Returns",
  core:/simulat|monte carlo|bootstrap|resampl|jackknife|repeatedly draw/,
  match:/simulat|monte carlo|bootstrap|resampl|jackknife|trials|random (number|draw)|price path|lognormal (distribution )?(of|for) (prices|asset prices)/,
+ lesson:`## 1. Why simulate?
+Many investment questions have no neat formula. What is the chance that a retiree runs out of money in 30 years, given uncertain returns and fixed withdrawals? How much could a portfolio of shares, bonds and options lose on a bad day? What is a fair price for an option whose payoff depends on the average price over a year? Each depends on how many uncertain variables interact over time.
+
+**Simulation** answers such questions by brute force: generate a large number of possible futures (scenarios or paths), compute the outcome in each, and study the resulting **distribution of outcomes**. Instead of one forecast you get the whole picture: the average, the spread, the probability of a loss, the worst 5% of cases.
+
+This module covers three ways of generating the scenarios: replaying history (**historical simulation**), resampling history (**bootstrap**) and drawing from an assumed model (**Monte Carlo**). Before that, one building block: how prices are linked to returns over time.
+
+## 2. Building price paths from returns
+Simulated prices are almost always built from **continuously compounded returns**, because they add up over time:
+- P_T = P0 × e^(r1 + r2 + … + rT).
+
+If each period's continuously compounded return is normal and independent of the others, their sum is also normal, so the ending price is **lognormal**: never below zero and skewed to the right, as real prices are.
+
+> **Worked example 1: a three-month price path**
+> A share at 40 has monthly continuously compounded returns of +2.0%, −3.5% and +1.2%.
+> - Sum = −0.3%, so P3 = 40 × e^(−0.003) = 39.88
+> On the calculator: \\\`0.003 +/- 2ND LN × 40 =\\\` gives 39.88.
+> You do not need to compute the price month by month: adding the log returns and exponentiating once gives the same answer.
+
+If monthly returns are independent with mean μ and standard deviation σ, the return over T months has:
+- mean T × μ and variance T × σ², so standard deviation σ × √T.
+
+> **Worked example 2: scaling to a year**
+> Monthly continuously compounded returns have a mean of 0.8% and a standard deviation of 4.5%.
+> - Annual mean = 12 × 0.8 = 9.6%
+> - Annual standard deviation = 4.5 × √12 = 15.59%
+> Risk grows with the square root of time, not with time: twelve months are not twelve times as risky as one.
+
+These scaling rules rely on returns being independent from one period to the next. If they are not (for example, if bad months tend to follow bad months), the √T rule understates long-horizon risk.
+
+## 3. Historical simulation
+**Historical simulation** takes the changes in risk factors actually observed over a past window (for example, every daily return of each asset over the last 500 trading days) and applies each of them to **today's** portfolio. Each historical day becomes one scenario: "what would my current portfolio have done on that day?"
+
+> **Worked example 3: a one-day value at risk**
+> A portfolio is worth 10,000,000. Applying each of the last 500 daily changes in its assets to today's holdings gives 500 simulated profits and losses. Sorted from worst to best, the 25th worst (the 5th percentile) is a loss of 2.1%.
+> - One-day 5% value at risk (VaR) = 2.1% × 10,000,000 = 210,000.
+> Read it as: on 95% of days, based on the last two years, the loss should not exceed 210,000. On 1 day in 20 it will.
+
+Strengths:
+- No distribution needs to be assumed: fat tails, skewness and the correlations between assets that actually occurred are all built in.
+- Simple to explain and to audit.
+
+Weaknesses:
+- **Only events in the window can happen.** If the last 500 days were calm, a crash is simply not among the scenarios, and the worst simulated loss is the worst loss of the window.
+- Each scenario occurs exactly once, in the order it happened, so the method cannot produce combinations that history has not shown.
+- Results depend on the length of the window: too short misses rare events, too long includes conditions that no longer apply.
+- It cannot answer "what if" questions about situations that have not occurred.
+
+## 4. Bootstrap resampling
+**Bootstrap resampling** treats the observed sample as if it were the population, and draws many new samples from it **at random, with replacement**, each of the same size as the original. "With replacement" means each drawn observation is put back before the next draw, so it can appear several times in a new sample, and some original observations will not appear at all.
+
+For each bootstrap sample you compute the statistic of interest (a mean, a median, a Sharpe ratio, a VaR). After thousands of samples you have a distribution of that statistic, and its **standard deviation is the bootstrap estimate of the statistic's standard error**. Confidence intervals can be read directly from its percentiles.
+
+> **Worked example 4: one bootstrap sample**
+> Original sample of five annual returns (%): 4, −2, 7, 1, 5. Mean 3.0%.
+> - A bootstrap draw with replacement might give: 7, 1, 1, −2, 5 (1 appears twice, 4 not at all). Its mean is 12 / 5 = 2.4%.
+> - Repeat this 10,000 times and compute the standard deviation of the 10,000 means: that is the bootstrap standard error of the mean.
+> For the mean a formula already exists, s / √n = 3.54 / √5 = 1.58%, and the bootstrap gives a figure of similar size (slightly smaller in very small samples). Its real value is for statistics like the median, a ratio or a percentile, where no simple formula exists.
+
+Why it is useful in investing:
+- It estimates the precision of almost any statistic, without assuming a distribution.
+- It can generate many alternative return histories with the same characteristics as the actual one, to test how a strategy might have done under different orderings of events.
+
+Limits: it can only recombine what is in the sample, so like historical simulation it cannot create an outcome more extreme than the most extreme observation. And drawing observations independently destroys any dependence between consecutive periods, unless blocks of consecutive observations are drawn together.
+
+A related method, the **jackknife**, recomputes the statistic leaving out one observation at a time, without replacement. It needs fewer computations, but the bootstrap is generally more accurate and more widely used.
+
+## 5. Monte Carlo simulation
+**Monte Carlo simulation** does not replay history; it draws scenarios from a **model** that the analyst specifies. The steps:
+1. **Define the problem:** the quantity to estimate (a portfolio value, a pension surplus, an option payoff) and the time horizon, divided into steps.
+2. **Specify the risk factors** (returns, interest rates, exchange rates) and their **probability distributions**, with parameters such as means, standard deviations and correlations, usually estimated from history or set by judgment.
+3. **Generate random values** for each factor at each step. Computers produce random numbers uniformly between 0 and 1, which are converted into draws from the chosen distribution (for a normal, by finding the z with that cumulative probability).
+4. **Compute the outcome** along the path.
+5. **Repeat** thousands of times (each repetition is a **trial**).
+6. **Analyze** the distribution of outcomes: mean, standard deviation, percentiles, probability of a shortfall.
+
+> **Worked example 5: one trial of a retirement plan**
+> A retiree has 500,000, withdraws 30,000 at the end of each year, and annual returns are assumed normal with mean 7% and standard deviation 12%. The computer draws three uniform random numbers: 0.80, 0.10 and 0.55.
+> - Converted to standard normal values: z = 0.8416, −1.2816, 0.1257 (the z with those cumulative probabilities)
+> - Returns = 7% + 12% × z: 17.10%, −8.38%, 8.51%
+> - Wealth: 500,000 × 1.1710 − 30,000 = 555,497; then 555,497 × 0.91621 − 30,000 = 478,954; then 478,954 × 1.08508 − 30,000 = 489,703
+> That is one path. Run 10,000 of them over 30 years and count the share of paths in which wealth hits zero: that is the estimated probability of running out of money.
+
+Uses in investment management:
+- Risk measures such as VaR for portfolios with options or other non-linear payoffs.
+- Valuing complex securities, such as path-dependent options or mortgage-backed securities whose cash flows depend on future interest rates.
+- Planning: retirement income, pension fund surpluses, endowment spending rules.
+- Testing how an investment strategy might perform across many possible futures.
+
+### Accuracy and limits
+A Monte Carlo estimate has **sampling error**, because it rests on a finite number of random draws. Its standard error falls with the square root of the number of trials.
+
+> **Worked example 6: how many trials?**
+> With 2,500 trials, the estimated average outcome has a standard error of 12 / √2,500 = 0.24 (in % if the outcomes have a standard deviation of 12%). To halve it to 0.12 you need four times as many trials: 10,000.
+
+Weaknesses to remember:
+- **Garbage in, garbage out.** The results are only as good as the assumed distributions and parameters. Assuming normal returns when real returns have fat tails understates the chance of extreme losses.
+- Correlations between factors must be modeled explicitly, and they tend to change in crises.
+- It gives statistical estimates, not the clear cause-and-effect insight of an analytical formula. It complements analytical methods rather than replacing them.
+- Complex models with many factors and steps can be computationally heavy.
+
+### Comparing the three methods
+- **Historical simulation:** real history, no distribution assumed, but only past events can occur, each once.
+- **Bootstrap:** real history recombined at random; good for the precision of estimates; still bounded by the observed values.
+- **Monte Carlo:** any distribution, any number of scenarios, including events never seen; but only as good as the model.
+
+## 6. Checklist before you answer
+- Build prices from continuously compounded returns: P_T = P0 × e^(sum of returns). Ending prices are lognormal.
+- Over T periods: mean × T, standard deviation × √T (with independent returns).
+- Historical simulation cannot produce a loss worse than the worst in its window.
+- Bootstrap = random draws **with** replacement, same sample size; the standard deviation of the resampled statistic estimates its standard error.
+- Monte Carlo: specify distributions and parameters, draw, compute, repeat, analyze. Results depend on those assumptions.
+- Sampling error of a simulation falls with 1 / √(trials): four times the trials, half the error.`,
  ideas:`**Simulation generates many possible future paths of prices or returns, so the analyst sees a whole distribution of outcomes instead of a single forecast.**
 
 ## Three ways to generate scenarios
@@ -15821,6 +15938,138 @@ This is the theoretical case for **passive investing**: if the market portfolio 
 {name:"Applications of Simple Linear Regression in Finance",
  core:/regress|slope|intercept|dependent variable|independent variable|R²|coefficient of determination|ANOVA|sum of squares|standard error of (the )?estimate|log-lin|lin-log|log-log|least squares|residual/,
  match:/regress|slope|intercept|dependent variable|independent variable|explanatory variable|\bR²|r-squared|coefficient of determination|ANOVA|sum of squares|\bSSE\b|\bSST\b|\bRSS\b|F-statistic|standard error of (the )?estimate|\bSEE\b|residual|homoskedast|heteroskedast|prediction interval|log-lin|lin-log|log-log|fitted|least squares|\bOLS\b|predicted value/,
+ lesson:`## 1. What a regression does
+Does a share tend to rise more than the market when the market rises? Do companies with higher earnings growth trade at higher multiples? **Regression** answers such questions by fitting a line through data. **Simple** linear regression uses one explanatory variable:
+- Yi = b0 + b1 Xi + εi.
+
+- Y is the **dependent** (explained) variable: what we want to explain or predict.
+- X is the **independent** (explanatory) variable.
+- b0 is the **intercept**: the value of Y when X is zero.
+- b1 is the **slope**: how much Y changes, on average, when X rises by one unit.
+- ε is the **error term**: everything about Y that X does not explain.
+
+The most important application at Level I is the **market model**, which regresses a share's excess return on the market's excess return. Its slope is the share's **beta**, the input to the capital asset pricing model (CAPM), and its intercept is the share's **alpha**. Throughout the module we use one small data set of this kind.
+
+> **The data used in all examples**
+> Six months of excess returns (%), market X and share Y:
+> - X: 2, −1, 3, 0, 4, −2 (mean 1.0)
+> - Y: 2.5, 0.5, 5.0, −1.0, 4.5, −2.5 (mean 1.5)
+> Six observations are far too few for a real estimate; they keep the arithmetic visible. Real betas use 36 to 60 months or more.
+
+## 2. Estimating the line: least squares
+Many lines could pass through a cloud of points. **Ordinary least squares** (OLS) picks the one that minimizes the **sum of squared residuals**, where a residual is the vertical gap between an actual Y and the fitted Ŷ on the line. Squaring stops positive and negative errors from cancelling and penalizes large misses heavily. The solution:
+- b1 = Cov(X, Y) / Var(X) = Σ(Xi − X̄)(Yi − Ȳ) / Σ(Xi − X̄)²
+- b0 = Ȳ − b1 X̄, so the line always passes through the point of means (X̄, Ȳ).
+
+> **Worked example 1: estimating beta and alpha**
+> - Σ(X − X̄)² = 1 + 4 + 4 + 1 + 9 + 9 = 28
+> - Σ(X − X̄)(Y − Ȳ) = (1)(1) + (−2)(−1) + (2)(3.5) + (−1)(−2.5) + (3)(3) + (−3)(−4) = 33.5
+> - b1 = 33.5 / 28 = 1.196; b0 = 1.5 − 1.196 × 1.0 = 0.304
+> Fitted line: Ŷ = 0.304 + 1.196 X. The share moves about 1.2% for every 1% move of the market, and earned about 0.30% a month more than its beta alone would explain.
+> On the calculator: \\\`2ND 7\\\` (DATA), enter the X and Y pairs, then \\\`2ND 8\\\` (STAT), choose LIN, and scroll: a = 0.304 (intercept), b = 1.196 (slope), r = 0.939.
+
+## 3. The assumptions behind the model
+OLS estimates are reliable, and the usual tests valid, only if four assumptions hold:
+1. **Linearity:** the true relation between X and Y is a straight line.
+2. **Homoskedasticity:** the variance of the error term is the same for every observation.
+3. **Independence:** the errors are not correlated with each other, so one period's error tells you nothing about the next.
+4. **Normality:** the errors are normally distributed (matters most for hypothesis tests in small samples).
+
+The best diagnostic is a plot of the **residuals** against X or against time:
+- A **curved pattern** means the relation is not linear: a different functional form is needed (section 7).
+- A **funnel** that widens or narrows means **heteroskedasticity**: the errors are larger for some values of X, as when small firms' returns are noisier than large firms'.
+- **Runs** of positive residuals followed by runs of negative ones over time means the errors are **not independent** (serial correlation), common with economic time series.
+- A few points far from the rest are **outliers**, which can pull the line strongly toward themselves.
+
+When assumptions fail, the coefficients may still be estimated, but their standard errors and tests are unreliable, so conclusions about significance can be wrong.
+
+## 4. How good is the fit? ANOVA, R² and the standard error
+### Breaking down the variation
+The total variation of Y around its mean splits into a part the line explains and a part it does not:
+- **SST** (total sum of squares) = Σ(Yi − Ȳ)²
+- **RSS** (regression sum of squares, explained) = Σ(Ŷi − Ȳ)²
+- **SSE** (sum of squared errors, unexplained) = Σ(Yi − Ŷi)²
+- SST = RSS + SSE.
+
+The **analysis of variance (ANOVA)** table organizes these. Each sum of squares divided by its degrees of freedom gives a mean square: **MSR** = RSS / 1 (one slope) and **MSE** = SSE / (n − 2) (two coefficients estimated).
+
+### Three measures of fit
+- **Coefficient of determination**, R² = RSS / SST: the share of the variation in Y explained by X. In simple regression it equals the squared correlation between X and Y.
+- **Standard error of the estimate**, SEE = √MSE: the typical size of a residual, in the units of Y. Smaller is better.
+- **F-statistic** = MSR / MSE: tests whether the slope is zero (H0: b1 = 0), with 1 and n − 2 degrees of freedom. In simple regression F equals the square of the slope's t-statistic, so the two tests always agree.
+
+> **Worked example 2: the ANOVA of the beta regression**
+> - SST = Σ(Y − 1.5)² = 1 + 1 + 12.25 + 6.25 + 9 + 16 = 45.50
+> - SSE (sum of the squared residuals) = 5.42; RSS = 45.50 − 5.42 = 40.08
+> - R² = 40.08 / 45.50 = 0.881: the market explains 88% of the share's monthly variation (and 0.939² = 0.881)
+> - MSE = 5.42 / 4 = 1.355; SEE = √1.355 = 1.16%
+> - F = 40.08 / 1.355 = 29.58
+> With 1 and 4 degrees of freedom the 5% critical F is 7.71, so the slope is clearly different from zero.
+
+## 5. Testing the coefficients
+Each coefficient is an estimate with a **standard error**. For the slope:
+- s_b1 = SEE / √Σ(Xi − X̄)².
+A t-test of the hypothesis that the true slope equals some value B1 uses:
+- t = (b1 − B1) / s_b1, with n − 2 degrees of freedom.
+
+B1 is usually zero ("does X matter at all?"), but in finance other values are often more interesting, such as B1 = 1 ("is this share as risky as the market?").
+
+> **Worked example 3: is beta different from 0, and from 1?**
+> s_b1 = 1.164 / √28 = 0.220. Critical t with 4 df at 5% (two-tailed) = 2.776.
+> - H0: b1 = 0: t = 1.196 / 0.220 = 5.44. Reject: the market clearly explains the share's returns. (5.44² = 29.58, the F-statistic.)
+> - H0: b1 = 1: t = (1.196 − 1) / 0.220 = 0.89. Fail to reject: the estimate of 1.2 is not significantly different from 1.
+> A beta of 1.2 looks higher than average, but with this little data we cannot say it truly is. The same test of the intercept (alpha) gives t = 0.304 / 0.524 = 0.58 (its standard error is SEE × √[1/n + X̄² / Σ(Xi − X̄)²]): no evidence of abnormal return either.
+
+The **p-value** of each coefficient, reported by regression software, is the smallest significance level at which its H0 would be rejected; compare it with α as in any hypothesis test.
+
+## 6. Prediction
+Once estimated, the line forecasts Y for a chosen value of X: Ŷf = b0 + b1 Xf. A forecast is uncertain for two reasons: the error term of the new observation, and the uncertainty in the estimated coefficients. Both enter the **standard error of the forecast**:
+- s_f = SEE × √[1 + 1/n + (Xf − X̄)² / Σ(Xi − X̄)²].
+
+The **prediction interval** is Ŷf ± t_c × s_f, with n − 2 degrees of freedom. The last term inside the square root grows as Xf moves away from X̄: forecasts are most precise near the middle of the data and least precise far from it.
+
+> **Worked example 4: forecasting the share in a strong month**
+> Suppose the market's excess return next month is 5%.
+> - Ŷ = 0.304 + 1.196 × 5 = 6.29%
+> - s_f = 1.164 × √(1 + 1/6 + (5 − 1)² / 28) = 1.164 × √1.738 = 1.53%
+> - 95% prediction interval: 6.29 ± 2.776 × 1.53 = 2.03% to 10.55%
+> At the mean of X (1%) the standard error of the forecast would be only 1.26%. And X = 5% is beyond the largest value in the sample (4%), so the forecast relies on the line holding outside the data, which it may not.
+
+## 7. Functional forms
+If the residual plot shows a curve, transforming one or both variables with natural logarithms often makes the relation linear:
+- **Log-lin model:** ln Y = b0 + b1 X. The slope is the relative (continuously compounded) change in Y for a one-unit change in X. Typical for growth over time.
+- **Lin-log model:** Y = b0 + b1 ln X. The slope is the absolute change in Y for a relative change in X.
+- **Log-log model:** ln Y = b0 + b1 ln X. The slope is an **elasticity**: the percentage change in Y for a 1% change in X.
+
+> **Worked example 5: interpreting transformed models**
+> - Log-lin: ln(sales) = 4.2 + 0.065 × year. Sales grow at a continuously compounded 6.5% a year, which is e^0.065 − 1 = 6.72% a year. Predicted sales in year 10 = e^(4.2 + 0.65) = 127.7 (in the units of the data).
+> - Log-log: ln(quantity) = 3.0 − 1.4 × ln(price). A 1% price increase lowers quantity sold by about 1.4%.
+> On the calculator, e^4.85 is \\\`4.85 2ND LN\\\` = 127.74.
+> Remember to convert a log-lin forecast back with e^x before reporting it; the regression predicts ln Y, not Y.
+
+Choose between forms by comparing R², SEE, F-statistics and, above all, the residual plots: the right form leaves residuals with no visible pattern. R² is comparable only between models with the same dependent variable (Y versus ln Y are different).
+
+## 8. Estimating the CAPM's inputs
+The CAPM says a share's expected return is Rf + β × (E(RM) − Rf). Regression turns this into something measurable:
+- (Ri − Rf) = α + β (RM − Rf) + ε.
+
+- The **slope** is the share's **beta**: its sensitivity to market movements, its systematic risk.
+- The **intercept** is **Jensen's alpha**: the average return above (or below) what the CAPM predicts for that beta. A significantly positive alpha suggests outperformance, if the model is right.
+- **R²** shows how much of the share's variance is systematic; 1 − R² is the share's specific (diversifiable) risk.
+
+In example 1, β = 1.196 and α = 0.30% a month. With a risk-free rate of 0.3% a month and an expected market return of 0.8% a month, the CAPM's required return for this share would be 0.3 + 1.196 × 0.5 = 0.90% a month.
+
+Practical choices affect the answer: the index used as the market, the return frequency (daily, weekly, monthly), the length of the window and whether to adjust the raw beta toward 1, since estimated betas tend to drift toward the average over time.
+
+## 9. Checklist before you answer
+- Slope = Cov(X, Y) / Var(X); intercept = Ȳ − b1 X̄. The line passes through the means.
+- Degrees of freedom in simple regression: n − 2.
+- SST = RSS + SSE; R² = RSS / SST, equal to r² in simple regression.
+- SEE = √[SSE / (n − 2)]; F = MSR / MSE = t² of the slope.
+- Testing beta against 1 uses (b1 − 1) / s_b1, not b1 / s_b1.
+- Residual patterns: curve = wrong form, funnel = heteroskedasticity, runs = dependence.
+- Prediction intervals widen as X moves away from its mean and are always wider than SEE alone.
+- Log-lin slope = continuously compounded growth; log-log slope = elasticity. Convert ln forecasts back with e^x.`,
  ideas:`**Simple linear regression explains a dependent variable Y with one independent variable X: Y = b0 + b1X + ε.**
 
 ## Estimating the line
@@ -15863,6 +16112,124 @@ This is the theoretical case for **passive investing**: if the market portfolio 
 {name:"Introduction to Financial Data Science",
  core:/big data|machine learning|artificial intelligence|neural|overfit|natural language|\btext\b|sentiment|alternative data|data (cleansing|wrangling|exploration|science|scientist|types?)|structured|unstructured|fintech|algorithm|visuali|histogram|frequency distribution|heat ?map|categorical|ordinal|cross-sectional|time[- ]series|panel data/,
  match:/big data|machine learning|artificial intelligence|\bAI\b|supervised|unsupervised|deep learning|neural network|overfit|underfit|natural language|\bNLP\b|text (analytics|mining)|sentiment|alternative data|data (cleansing|wrangling|exploration|scientist|science|preprocessing|curation)|structured data|unstructured|volume, velocity|veracity|fintech|algorithm|training (data|set)|feature (selection|engineering)|tokeniz|word cloud|visuali[sz]|histogram|frequency (distribution|polygon)|heat ?map|bar chart|categorical|ordinal|nominal data|cross-sectional|time[- ]series data|panel data/,
+ lesson:`## 1. What financial data science is
+For most of history, investment analysis ran on a small set of tidy numbers: prices, financial statements, economic releases. Today analysts can also use the text of every earnings call, satellite photos of car parks, millions of card transactions and the position data of ships. **Financial data science** is the combination of these large and varied data sets with computing methods, many of them from **machine learning**, that can find useful patterns in them, to support investment decisions.
+
+This module has no formulas to memorize. The exam tests whether you can recognize the concepts: what kind of data something is, what kind of learning a task needs, what can go wrong, and where these tools are used in the investment industry. The examples below are written as short cases, the way questions present them.
+
+## 2. Big data
+**Big data** refers to data sets too large or complex for traditional tools. It is usually described by four characteristics, the **four Vs**:
+- **Volume:** the sheer quantity, measured in terabytes or more.
+- **Velocity:** how fast new data arrive, up to real time (streaming prices, social media).
+- **Variety:** the range of forms and sources: numbers, text, images, audio, video.
+- **Veracity:** how reliable and accurate the data are. Big data sets often contain errors, duplicates, bots and noise, so veracity is a real concern, not a formality.
+Some authors add a fifth V, **value**: whether the data actually help decisions.
+
+### Structured and unstructured data
+- **Structured** data are organized in rows and columns with defined fields: prices, volumes, balance sheets.
+- **Semi-structured** data have some organization but no fixed table: web pages, emails with headers, data in formats such as JSON or XML.
+- **Unstructured** data have no predefined model: free text, images, audio and video. Most new data are unstructured, and they must be transformed into structured inputs (counts, scores, labels) before most models can use them.
+
+### Sources of alternative data
+**Traditional** data come from markets, companies and governments. **Alternative data** come from elsewhere, usually grouped by who or what produces them:
+- **Individuals:** social media posts, product reviews, web searches, app usage.
+- **Business processes:** credit and debit card transactions, point-of-sale and supply-chain records, corporate data exhaust.
+- **Sensors:** satellite images, geolocation from mobile phones, ship and aircraft tracking, connected devices (the **Internet of Things**).
+
+> **Worked example 1: classifying a data set**
+> An analyst buys daily satellite images of the car parks of 300 shopping centres, to estimate retail sales before companies report.
+> - Source: sensors. Form: unstructured (images), turned into structured counts of cars per day.
+> - Volume: high (images every day for 300 sites). Velocity: daily. Variety: images combined with sales data. Veracity: clouds, snow and closed car parks create gaps and errors.
+> Being early is the point of alternative data: the information becomes less valuable as more investors buy the same data set.
+
+## 3. Artificial intelligence and machine learning
+- **Artificial intelligence (AI)** is the broad field of computer systems that perform tasks that normally need human intelligence: understanding language, recognizing images, making decisions.
+- **Machine learning (ML)** is the part of AI in which systems **learn patterns from data** instead of following rules written by a programmer. Given enough examples, an ML algorithm builds its own model of the relation between inputs (**features**) and outputs (**targets**).
+
+### Three types of learning
+- **Supervised learning:** the training data are **labeled**: each example comes with the correct answer. The model learns to map inputs to answers. If the target is a category (default or no default, fraud or not), it is a **classification** task; if it is a number (next month's return), a **regression** task.
+- **Unsupervised learning:** no labels. The model looks for structure on its own, such as **clustering** similar companies or reducing many correlated variables to a few underlying factors (**dimension reduction**).
+- **Deep learning:** uses **neural networks** with many layers, loosely inspired by the brain, which can learn very complex patterns. It powers image recognition, speech recognition and language models. Deep learning can be supervised or unsupervised; **reinforcement learning**, in which an agent learns by trial and reward, often uses it too.
+
+> **Worked example 2: which kind of learning?**
+> - Predicting which loan applicants will default, using 10 years of past loans marked "repaid" or "defaulted": supervised (classification).
+> - Grouping 3,000 shares by the similarity of their return patterns, with no predefined categories, to check whether the official industry classification is useful: unsupervised (clustering).
+> - Reading scanned invoices and extracting amounts: deep learning (image and text recognition).
+> The giveaway is the label: a known correct answer in the training data means supervised learning.
+
+### Training, testing and overfitting
+An ML model is built in steps: the data are split into a **training sample** used to fit the model, a **validation sample** used to tune it, and a **test sample** kept aside to measure how it performs on data it has never seen.
+- **Overfitting:** the model is so complex that it learns the **noise** of the training data along with the pattern. It looks excellent on the training data and does poorly on new data.
+- **Underfitting:** the model is too simple to capture the pattern, and does poorly everywhere.
+The aim is a model that **generalizes**: one whose performance holds up out of sample.
+
+> **Worked example 3: spotting overfitting**
+> Two models predict whether a share will beat its sector next month.
+> - Model A (thousands of parameters): 97% correct on training data, 62% on test data.
+> - Model B (a few parameters): 78% on training data, 75% on test data.
+> Model A has overfit: the 35-point drop shows it memorized the training data. Model B generalizes better and is the one to use. A near-perfect training score is a warning sign, not a success.
+
+Another limit of complex ML models is that they can be **black boxes**: hard to explain why they reach a given answer. In investment management, where clients, regulators and risk managers need to understand decisions, explainability matters.
+
+## 4. From raw data to analysis
+Before any model runs, data go through a series of steps:
+- **Capture:** collecting data from their sources (feeds, files, web pages, sensors).
+- **Curation:** checking quality and cleaning: correcting errors, removing duplicates, handling missing values and outliers, making formats consistent. This is often most of the work.
+- **Storage:** choosing databases able to hold the volume and type of data.
+- **Search and transfer:** making data easy to query and moving them to where they are analyzed.
+
+**Data exploration** comes next: summary statistics, histograms, scatter plots, correlation heat maps and, for text, word clouds that show the most frequent words. Exploration reveals problems and suggests which features might be useful.
+
+### Working with text: natural language processing
+**Natural language processing (NLP)** lets computers handle human language. Typical steps: split text into words or tokens, remove very common words and punctuation, reduce words to their root form, then count words or phrases (a **bag-of-words**) or use more advanced models that keep word order and context. The output is structured: a sentiment score, a topic, a flag.
+
+> **Worked example 4: a simple sentiment score**
+> An algorithm reads a company's earnings call transcript and counts words from finance-specific dictionaries: 42 positive words and 18 negative words.
+> - Net sentiment = (positive − negative) / (positive + negative) = (42 − 18) / 60 = 0.40
+> On the calculator: \\\`42 − 18 = ÷ 60 =\\\` gives 0.40.
+> The score is then compared with the company's previous calls and with peers: a sharp drop from one quarter to the next is a signal worth investigating. General-purpose word lists can mislead: "liability" or "tax" are neutral in finance but negative in everyday language.
+
+**Large language models**, deep learning models trained on huge amounts of text, can summarize documents, answer questions and draft reports. They are useful for research productivity, but they can state false information with confidence, so their output must be checked against sources.
+
+## 5. Uses in fintech and investment management
+**Fintech** means technological innovation in the design and delivery of financial services. Areas the curriculum highlights:
+- **Text and sentiment analysis:** reading news, filings, earnings calls and social media at scale to measure sentiment or detect events.
+- **Nowcasting:** estimating economic variables or company results in real time, before official figures appear, from card spending, web searches or shipping data.
+- **Fraud and anomaly detection:** spotting unusual transactions or trading patterns.
+- **Credit scoring:** using broader data to assess borrowers, including those with little credit history.
+- **Algorithmic trading:** computers executing orders by pre-set rules, splitting large orders to reduce market impact; **high-frequency trading** does this at speeds of microseconds.
+- **Robo-advisers:** online platforms that build and rebalance portfolios (often of index funds) from a questionnaire on goals and risk tolerance, at low cost. Their advice is only as good as their questionnaire and rules, and they may be less suited to complex situations.
+- **Risk analysis:** monitoring many risk factors in real time and running large numbers of scenarios.
+- **Distributed ledger technology (DLT):** shared databases, such as blockchain, kept in identical copies across a network, which could speed up trade settlement and record keeping.
+
+> **Worked example 5: a nowcasting case**
+> A fund wants to forecast a retailer's quarterly sales three weeks before the results. It buys anonymized card transaction data covering about 5% of the retailer's customers, scales the spending up to the whole customer base, and adjusts for seasonality.
+> - Data type: alternative, from business processes; structured once aggregated.
+> - Method: a supervised regression trained on past quarters, where the label is the reported sales figure.
+> - Risks: the 5% panel may not represent all customers (veracity), and privacy rules govern how personal data may be used.
+
+> **Worked example 6: why a strong backtest can fail**
+> An analyst tests 500 ML signals on 15 years of data and finds one that would have returned 14% a year. Before investing:
+> - Was the signal tested on data held out of the search, or chosen because it happened to work (data snooping)?
+> - Did the data include only information available at each date (no look-ahead bias)?
+> - Would the returns survive trading costs?
+> With 500 attempts, a few strong results are expected by chance alone. The concepts of the hypothesis testing module apply just as much to machine learning.
+
+## 6. Limits and responsibilities
+- **Data quality and bias:** models learn whatever is in the data, including errors and historical biases; a credit model trained on biased past decisions can repeat them.
+- **Explainability:** black-box models are hard to justify to clients and regulators.
+- **Privacy and legality:** having access to data does not mean being allowed to use them; personal data and material non-public information are governed by law and by the Code and Standards.
+- **Crowding:** when many investors use the same data and models, the advantage fades and trades can become crowded.
+- **Human judgment** remains essential: people frame the question, choose the data, interpret the results and take responsibility for decisions.
+
+## 7. Checklist before you answer
+- Four Vs: volume (how much), velocity (how fast it arrives), variety (how many forms), veracity (how reliable).
+- Structured = tables; unstructured = text, images, audio; unstructured data must be converted before most models use them.
+- Alternative data sources: individuals, business processes, sensors.
+- Labeled data = supervised (classification or regression); no labels = unsupervised (clustering, dimension reduction); deep learning = many-layer neural networks.
+- Great in-sample, poor out-of-sample = overfitting; judge models on test data.
+- NLP turns text into structured measures such as sentiment scores.
+- Uses: sentiment, nowcasting, fraud detection, credit scoring, algorithmic trading, robo-advice, risk analysis, DLT. Limits: bias, black boxes, privacy, crowding.`,
  ideas:`**Financial data science combines large, varied data sets with algorithms that learn from them, to support investment decisions.**
 
 ## Big data
