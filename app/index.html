@@ -290,6 +290,21 @@ button.erow .chev{color:var(--text-3)}
 .frow{padding:16px 20px;border-top:1px solid var(--border)}
 .frow:first-of-type{border-top:0}
 .fhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+/* learning map */
+.lm-text{padding:4px 20px 20px;font-size:16px;line-height:1.6;max-width:72ch}
+.lm-text p{margin:12px 0 0}
+.lm-text h3{font-size:16px;font-weight:600;margin:20px 0 0}
+.lm-text ul{margin:8px 0 0;padding-left:20px}
+.lm-text li{margin:6px 0 0}
+.lm-text li::marker{color:var(--text-3)}
+.lm-traps{margin:0;padding:12px 20px 20px 40px;font-size:16px;line-height:1.55;max-width:76ch}
+.lm-traps li{margin:8px 0 0}
+.lm-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.lm-pager{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.lm-pager .btn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trow.lm-off{color:var(--text-2)}
+.trow.lm-off .tn span{font-weight:400}
+.lm-read .learn-link .ltext b{white-space:normal}
 .fsheet{margin-top:16px}
 .fsheet b{font-size:14px}
 .content.narrow{max-width:640px}
@@ -658,7 +673,7 @@ label.rub:hover{background:var(--surface-2)}
   .mtop{display:flex;position:sticky;top:0;z-index:30;height:var(--top-h);align-items:center;gap:12px;padding:0 12px 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
   .mtop .brand{align-self:center;padding:0;font-size:14px}
   .mtop .seg button{height:26px;padding:0 12px;font-size:13px}
-  .tabbar{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--border);padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
+  .tabbar{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--border);padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
   .tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;color:var(--text-3);font-size:13px;font-weight:500;padding:4px 0;cursor:pointer;border-radius:8px}
   .tab .ic{width:20px;height:20px}
   .tab.active{color:var(--accent-text)}
@@ -787,6 +802,36 @@ window.CFA_DATA = {
   formulaList: [],
   formulas(level, topic, prefix, rows){
     rows.forEach((r,i)=>this.formulaList.push({id:prefix+'-'+String(i+1).padStart(2,'0'), level, topic, name:r[0], f:r[1], notes:r[2], keys:r[3]||''}));
+  },
+  /* learning map (Level I, data in src/data/learn/): one row per learning module of the 2027 topic outline, ids by
+     position like formulas (LM-QM-04), so only ever append. Row: {name, match, ideas, traps, formulas, read}
+       core     – regex of terms that name the module on their own: +10 per distinct term in the stem, else +3 if one is in the answer or explanation
+       match    – wider regex, one point per distinct term found: stem ×3, correct option ×2, explanation ×1 (breaks ties)
+       ideas    – original summary text (same formatting as questions, plus "- " bullet lines); traps – list of strings
+       formulas – formula ids from src/data/formulas (never copied); read – [[url, title, site], ...] */
+  modules: [],
+  learn(level, topic, prefix, rows){
+    rows.forEach((r,i)=>this.modules.push(Object.assign({id:prefix+'-'+String(i+1).padStart(2,'0'), level, topic, n:i+1, of:rows.length}, r)));
+  },
+  /* each question goes to the module(s) of its topic whose keywords it matches best (ties go to all of them);
+     list = [{id, level, topic, stem, key, expl}]. Returns {moduleId: [ids]}, '' = matched no module of a mapped topic. */
+  moduleMap(list){
+    const mods = this.modules.filter(m=>m.match).map(m=>({id:m.id, level:m.level, topic:m.topic, re:new RegExp(m.match.source,'gi'), core:m.core ? new RegExp(m.core.source,'gi') : null}));
+    const out = {'':[]}; mods.forEach(m=>out[m.id]=[]);
+    const mapped = new Set(mods.map(m=>m.level+'|'+m.topic));
+    const hits = (t,re)=>new Set((String(t||'').match(re)||[]).map(x=>x.toLowerCase())).size;
+    list.forEach(q=>{
+      if(!mapped.has(q.level+'|'+q.topic)) return;
+      let best = 0, ids = [];
+      mods.forEach(m=>{
+        if(m.level!==q.level || m.topic!==q.topic) return;
+        const sc = 3*hits(q.stem,m.re) + 2*hits(q.key,m.re) + hits(q.expl,m.re)
+          + (!m.core ? 0 : 10*hits(q.stem,m.core) || 3*Math.min(1,hits((q.key||'')+' '+(q.expl||''),m.core)));
+        if(sc>best){ best=sc; ids=[m.id]; } else if(sc && sc===best) ids.push(m.id);
+      });
+      (ids.length ? ids : ['']).forEach(id=>out[id].push(q.id));
+    });
+    return out;
   },
   /* tag existing questions as "basic" (recall of a definition or a one-step idea) */
   basic(ids){ const set=new Set(ids); this.items.forEach(it=>{ if(set.has(it.id)) it.diff='basic'; }); },
@@ -14069,6 +14114,212 @@ CFA_DATA.formulas(3,"Private Markets Pathway","F3-PRM",[
 ["Commitment needed for a target allocation","Commitments = target net asset value / peak NAV as a share of commitments","Net asset value stays below commitments because capital is called gradually and returned early.","peaks at"],
 ["Weighted average anti-dilution","New conversion price = old price × (shares before + shares the new money would buy at the old price) / (shares before + shares actually issued)","Full ratchet instead drops the conversion price to the new round's price.","weighted average price"]
 ]);
+/* Learning map, Ethical and Professional Standards: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Ethical and Professional Standards","LM-ETH",[
+{name:"Ethics and Trust in the Investment Profession"},
+{name:"Code of Ethics and Standards of Professional Conduct"},
+{name:"Guidance for Standard I: Professionalism"},
+{name:"Guidance for Standard II: Integrity of Capital Markets"},
+{name:"Guidance for Standard III: Duties to Clients"},
+{name:"Guidance for Standard IV: Duties to Employers"},
+{name:"Guidance for Standard V: Investment Analysis, Recommendations, and Actions"},
+{name:"Guidance for Standard VI: Conflicts of Interest"},
+{name:"Guidance for Standard VII: Responsibilities as a CFA Institute Member or CFA Candidate"},
+{name:"Application of the Code and Standards: Level I"}
+]);
+/* Learning map, Quantitative Methods: the 11 learning modules of the 2027 Level I topic outline, in its order.
+   Module names are CFA Institute's; every note below is our own wording (never copied from the curriculum).
+   Each fact and formula was checked against the cited pages and recomputed by script before saving. */
+CFA_DATA.learn(1,"Quantitative Methods","LM-QM",[
+{name:"Returns of Financial Assets and Instruments",
+ core:/holding[- ]period return|build-up|risk premi|real (interest )?rate|nominal (interest )?rate|inflation premium|default (risk )?premium|liquidity premium|maturity premium|equities have|historical(ly)? (returns|risk premium|periods)|asset classes/,
+ match:/holding[- ]period|required (rate of )?return|risk[- ]free (rate|asset)|risk premi|real (interest )?rate|real (risk-free|return)|nominal (interest )?rate|nominal (risk-free|return)|inflation premium|default (risk )?premium|liquidity premium|maturity premium|build-up|opportunity cost|interest rates? (as|can be|is) /},
+{name:"Types of Financial Returns",
+ core:/borrows|arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded|leverag|after-tax|gross return|net return|effective annual|stated annual|compounded (monthly|quarterly|semi-?annually|daily)/,
+ match:/arithmetic (mean|average)|geometric (mean|average)|harmonic|annuali[sz]|continuously compounded (return|rate)|gross return|net return|after-tax|pre-tax|leverag|compound annual growth|\bCAGR\b|effective annual|\bEAR\b|stated annual|periodic rate|compounded (monthly|quarterly|semi-?annually|daily)|compounding frequenc/},
+{name:"Benchmarking Returns",
+ core:/money[- ]weighted|time[- ]weighted|\bindex\b|indexes|indices|benchmark/,
+ match:/money[- ]weighted|time[- ]weighted|\bMWRR?\b|\bTWRR?\b|internal rate of return of the portfolio|\bindex\b|indexes|indices|price[- ]weighted|equal(ly)?[- ]weighted index|(market[- ]cap(italization)?|value)[- ]weighted|float[- ]adjusted|fundamental weighting|rebalanc|reconstitut|total return index|price return index|benchmark|external cash flow|deposits? (made )?(into|to) the (portfolio|account)|withdraw/},
+{name:"The Time Value of Money in Finance",
+ core:/present value|future value|annuit|perpetuit|loan|mortgage|deposits? [0-9,]+|zero[- ]coupon|coupon|dividend discount|constant[- ]growth|expected to pay a dividend|forever|cash flow additivity|arbitrage|forward (interest )?rate|implied (growth|return|forward|yield)|simple interest|compound(ing|ed)? interest|compounding is|\bdoubl|discount rate/,
+ match:/present value|future value|annuit|perpetuit|time value|zero[- ]coupon|coupon|yield to maturity|\bYTM\b|dividend discount|gordon|constant[- ]growth|implied (growth|return|forward|yield|rate)|cash flow additivity|no[- ]arbitrage|arbitrage|forward (interest )?rate|forward exchange|amorti[sz]|loan|mortgage|retire|simple interest|compound interest|\bdoubl|discount(ed)? (each|the|all|future) cash flows?|price of (a|the) bond|bond's price|fair value of (the|a) (bond|share|stock)/,
+ ideas:`**The idea behind the whole module:** a cash flow at time t is worth CF / (1 + r)^t today, where r is the return investors require for its risk and timing. An instrument is a bundle of cash flows, so its value is the sum of their present values. Read backwards, a known price gives the return or the growth that the market implies.
+
+## Fixed-income instruments
+- **Zero-coupon bond:** one payment at maturity, PV = FV / (1 + r)^N. Example: 1,000 due in 5 years at 4% is worth 1,000 / 1.04^5 = 821.93.
+- **Coupon bond:** coupons plus the face value. Priced at par when the market rate equals the coupon rate, at a discount when the market rate is higher, at a premium when it is lower.
+- **Mortgage or amortizing loan:** level payments, each covering the period's interest first, so the principal part grows over time.
+- **Perpetual bond:** PV = PMT / r.
+
+## Equity instruments
+- **Preferred share** (fixed dividend, no maturity): V0 = D / r.
+- **Gordon growth model:** V0 = D1 / (r − g), only when r is above g. Example: D0 = 1.50, g = 5% and r = 10% give D1 = 1.575 and V0 = 31.50.
+- **Changing growth:** discount the dividends of the fast-growth years, then add the terminal value D(n+1) / (r − g), discounted back n years.
+
+## Implied return and implied growth
+- A bond's implied return is its **yield to maturity**: the one rate at which the present value of its cash flows equals its price. The zero above, bought at 821.93, yields (1,000 / 821.93)^(1/5) − 1 = 4%.
+- For a share, r = D1 / P0 + g (dividend yield plus growth) and g = r − D1 / P0. At the same required return, a higher price means the market expects faster growth.
+
+## Cash flow additivity and no arbitrage
+- Present values add up, so two strategies with the same future cash flows must cost the same today. Otherwise buying the cheaper one and selling the dearer one is a riskless profit (arbitrage).
+- **Forward rate:** two years at the 2-year spot rate must equal one year at the 1-year rate, rolled over at the forward rate. Spot rates of 2% and 3.5% imply 1.035² / 1.02 − 1 = 5.02%.
+- **Forward exchange rate:** with spot at 1.2500 USD per GBP, a 4% USD rate and a 2% GBP rate, the one-year forward is 1.2500 × 1.04 / 1.02 = 1.2745. The higher-rate currency (USD) trades at a forward discount.
+- **Options:** a mix of the underlying and borrowing or lending that copies an option's payoffs must cost the same as the option.`,
+ traps:[
+  "The Gordon model needs next year's dividend, D1. Given the dividend just paid (D0), multiply it by (1 + g) first.",
+  "Annuity and perpetuity formulas value the stream one period before the first payment. A perpetuity of 4 at 10% starting at the end of year 3 is worth 40 at the end of year 2, so discount it 2 years, not 3: 40 / 1.10² = 33.06.",
+  "Payments that start today are an annuity due: multiply by (1 + r), or set the calculator to BGN (and back to END afterwards).",
+  "Match rate and period: monthly payments need the annual rate divided by 12 and the number of months.",
+  "Forward rates compound: 2 × 3.5% − 2% = 5.0% only approximates the exact 5.02%.",
+  "On the calculator, cash paid and cash received take opposite signs, or CPT I/Y returns an error."
+ ],
+ formulas:["F1-QM-09","F1-QM-34","F1-QM-10","F1-FI-01","F1-EQ-09","F1-EQ-06","F1-EQ-07","F1-EQ-08","F1-FI-05","F1-ECON-09","F1-DER-09"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/qm-time-value-of-money-in-finance/","The Time Value of Money in Finance: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/t/timevalueofmoney.asp"],
+  ["i:terms/y/yieldtomaturity.asp"],
+  ["i:terms/g/gordongrowthmodel.asp"],
+  ["w:Forward_rate"],
+  ["w:Interest_rate_parity"],
+  ["w:Rational_pricing","Rational pricing (arbitrage-free pricing and replication)"]
+ ]},
+{name:"Statistical Characteristics of Asset Returns",
+ core:/\bmedian\b|\bmode\b|quartile|percentile|quantile|\brange\b|mean absolute deviation|skew|kurtosis|semi-?deviation|coefficient of variation|box[- ]and[- ]whisker|outlier|trimmed|winsori|spurious|sample standard deviation|sample variance|correlation (between|coefficient)|standard deviation of an asset|variance of a stock/,
+ match:/\bmedian\b|\bmode\b|modal|quartile|quintile|decile|percentile|quantile|\brange\b|mean absolute deviation|\bMAD\b|variance|standard deviation|skew|kurtosis|leptokurtic|platykurtic|mesokurtic|fat tails?|covariance|correlation|scatter ?plot|spurious|semi-?deviation|downside deviation|coefficient of variation|dispersion|box (and whisker )?plot|interquartile|outlier|trimmed|winsori/},
+{name:"Statistical Distributions for Financial Asset Prices and Returns",
+ core:/probabilit|expected value|bayes|normal(ly)? distribut|lognormal|binomial|uniform distribution|\bodds\b|safety-first|chebyshev|\bways\b|permutation|combination|number of (different|possible)/,
+ match:/probabilit|expected value|conditional|bayes|\bprior\b|posterior|normal(ly)? distribut|standard normal|\bz[- ](score|value|statistic)|\bz ?=|lognormal|log-normal|student'?s t|t-distribution|chi-square distribution|F-distribution|binomial|bernoulli|uniform distribution|joint|independent events|tree diagram|probability tree|\bodds\b|safety-first|shortfall|\bways\b|permutation|combination|factorial|confidence that|within (one|two|three|1|2|3) standard deviations|chebyshev/},
+{name:"Estimation and Hypothesis Testing",
+ core:/sampl(e|ing) (method|error|bias|distribution)|central limit|confidence interval|hypothes|\bnull\b|type i\b|type ii\b|significance|p-value|t-statistic|test statistic|parametric|spearman|contingency|chi-square test|tests? (whether|of the equality|for)|testing|sample mean|(?<=limit )theorem|survivorship|look-ahead|data[- ]snooping|stratified|cluster sampl/,
+ match:/sampl|central limit|standard error of the (sample )?mean|confidence interval|hypothes|null|type i\b|type ii\b|significance level|level of significance|statistically significant|power of (a|the) test|p-value|t-test|z-test|test statistic|critical value|reject|fail to reject|parametric|nonparametric|non-parametric|spearman|rank correlation|contingency|chi-square test|data[- ]snooping|data[- ]mining|survivorship|look-ahead|time-period bias|stratified|cluster/},
+{name:"The Return and Risk of a Financial Portfolio",
+ core:/portfolio(\x27s)? (expected )?(return|variance|standard deviation|risk)|(standard deviation|variance) of (the|a|an|this) .{0,30}portfolio|weights? of|two assets|two-asset|asset A\b|diversif|efficient frontier|capital allocation|capital market line|risk aversion|utility|indifference|minimum[- ]variance|optimal (risky )?portfolio|sharpe|equally weighted portfolio holds|portfolios of risky assets|risky assets|portfolio is \d|portfolio (holds|consists)|in asset [AB]\b|asset B\b/,
+ match:/portfolio('s)? (expected )?(return|variance|standard deviation|risk|volatility)|(variance|standard deviation|return|risk) of (the|a|an|this) (equally weighted |two-asset |two-stock )?portfolio|two-asset|two-stock|three-asset|equally weighted portfolio|diversif|minimum[- ]variance|efficient frontier|capital allocation line|\bCAL\b|capital market line|\bCML\b|risk aversion|risk[- ]averse|utility|indifference curve|optimal (risky )?portfolio|market portfolio|two-fund separation|growing number of assets/},
+{name:"Simulation of Financial Asset Prices and Returns",
+ core:/simulat|monte carlo|bootstrap|resampl|jackknife|repeatedly draw/,
+ match:/simulat|monte carlo|bootstrap|resampl|jackknife|trials|random (number|draw)|price path|lognormal (distribution )?(of|for) (prices|asset prices)/},
+{name:"Applications of Simple Linear Regression in Finance",
+ core:/regress|slope|intercept|dependent variable|independent variable|R²|coefficient of determination|ANOVA|sum of squares|standard error of (the )?estimate|log-lin|lin-log|log-log|least squares|residual/,
+ match:/regress|slope|intercept|dependent variable|independent variable|explanatory variable|\bR²|r-squared|coefficient of determination|ANOVA|sum of squares|\bSSE\b|\bSST\b|\bRSS\b|F-statistic|standard error of (the )?estimate|\bSEE\b|residual|homoskedast|heteroskedast|prediction interval|log-lin|lin-log|log-log|fitted|least squares|\bOLS\b|predicted value/},
+{name:"Introduction to Financial Data Science",
+ core:/big data|machine learning|artificial intelligence|neural|overfit|natural language|\btext\b|sentiment|alternative data|data (cleansing|wrangling|exploration|science|scientist|types?)|structured|unstructured|fintech|algorithm|visuali|histogram|frequency distribution|heat ?map|categorical|ordinal|cross-sectional|time[- ]series|panel data/,
+ match:/big data|machine learning|artificial intelligence|\bAI\b|supervised|unsupervised|deep learning|neural network|overfit|underfit|natural language|\bNLP\b|text (analytics|mining)|sentiment|alternative data|data (cleansing|wrangling|exploration|scientist|science|preprocessing|curation)|structured data|unstructured|volume, velocity|veracity|fintech|algorithm|training (data|set)|feature (selection|engineering)|tokeniz|word cloud|visuali[sz]|histogram|frequency (distribution|polygon)|heat ?map|bar chart|categorical|ordinal|nominal data|cross-sectional|time[- ]series data|panel data/}
+]);
+/* Learning map, Economics: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Economics","LM-ECON",[
+{name:"The Firm and Market Structures"},
+{name:"Understanding Business Cycles"},
+{name:"Fiscal Policy"},
+{name:"Monetary Policy"},
+{name:"Introduction to Geopolitics"},
+{name:"International Trade"},
+{name:"Capital Flows and the FX Market"},
+{name:"Exchange Rate Calculations"}
+]);
+/* Learning map, Financial Statement Analysis: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Financial Statement Analysis","LM-FSA",[
+{name:"Introduction to Financial Statement Analysis"},
+{name:"Analyzing Income Statements"},
+{name:"Analyzing Balance Sheets"},
+{name:"Analyzing Statements of Cash Flows I"},
+{name:"Analyzing Statements of Cash Flows II"},
+{name:"Analysis of Inventories"},
+{name:"Analysis of Long-Term Assets"},
+{name:"Topics in Long-Term Liabilities and Equity"},
+{name:"Analysis of Income Taxes"},
+{name:"Financial Reporting Quality"},
+{name:"Financial Analysis Techniques"},
+{name:"Introduction to Financial Statement Modeling"}
+]);
+/* Learning map, Corporate Finance: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Corporate Finance","LM-CI",[
+{name:"Organizational Forms, Corporate Issuer Features, and Ownership"},
+{name:"Investors and Other Stakeholders"},
+{name:"Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits"},
+{name:"Working Capital and Liquidity"},
+{name:"Capital Investments and Capital Allocation"},
+{name:"Capital Structure"},
+{name:"Business Models"}
+]);
+/* Learning map, Equities: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Equities","LM-EQ",[
+{name:"Equity Instrument Features"},
+{name:"Equity Jurisdictions, Classes, and the Voting Process"},
+{name:"Equity Issuance and Trading"},
+{name:"Sources of Equity Returns"},
+{name:"Introduction to Equity Valuation"},
+{name:"Discounted Cash Flow (DCF) and Growth Models"},
+{name:"Relative Value Equity Valuation Approaches"},
+{name:"Financial Statement Forecasting in Equity Valuation"},
+{name:"Industry and Competitive Analysis"},
+{name:"Company Analysis: Past, Present, and Future"},
+{name:"Equity Analyst Research Reports"},
+{name:"The Capital Asset Pricing Model, Market Model, and Other Factor-Based Equity Models"}
+]);
+/* Learning map, Fixed Income: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Fixed Income","LM-FI",[
+{name:"Fixed-Income Instrument Features"},
+{name:"Fixed-Income Cash Flows and Types"},
+{name:"Fixed-Income Issuance and Trading"},
+{name:"Fixed-Income Markets for Corporate Issuers"},
+{name:"Fixed-Income Markets for Government Issuers"},
+{name:"Fixed-Income Bond Valuation: Prices and Yields"},
+{name:"Yield and Yield Spread Measures for Fixed-Rate Bonds"},
+{name:"Yield and Yield Spread Measures for Floating-Rate Instruments"},
+{name:"The Term Structure of Interest Rates: Spot, Par, and Forward Curves"},
+{name:"Interest Rate Risk and Return"},
+{name:"Yield-Based Bond Duration Measures and Properties"},
+{name:"Yield-Based Bond Convexity and Portfolio Properties"},
+{name:"Curve-Based and Empirical Fixed-Income Risk Measures"},
+{name:"Credit Risk"},
+{name:"Credit Analysis for Government Issuers"},
+{name:"Credit Analysis for Corporate Issuers"},
+{name:"Fixed-Income Securitization"},
+{name:"Asset-Backed Security (ABS) Instrument and Market Features"},
+{name:"Mortgage-Backed Security (MBS) Instrument and Market Features"}
+]);
+/* Learning map, Derivatives and Risk Management: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
+{name:"Derivative Instrument and Derivative Market Features"},
+{name:"Forward Commitment and Contingent Claim Features and Instruments"},
+{name:"Derivative Benefits, Risks, and Issuer and Investor Uses"},
+{name:"Arbitrage, Replication, and the Cost of Carry in Pricing Derivatives"},
+{name:"Pricing and Valuation of Forward Contracts and for an Underlying with Varying Maturities"},
+{name:"Pricing and Valuation of Futures Contracts"},
+{name:"Pricing and Valuation of Interest Rate and Other Swaps"},
+{name:"Pricing and Valuation of Options"},
+{name:"Option Replication Using Put–Call Parity"},
+{name:"Valuing a Derivative Using a One-Period Binomial Model"}
+]);
+/* Learning map, Alternative Investments: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Alternative Investments","LM-ALT",[
+{name:"Alternative Investment Features, Methods, and Structures"},
+{name:"Alternative Investment Performance and Returns"},
+{name:"Investments in Private Capital: Equity and Debt"},
+{name:"Real Estate and Infrastructure"},
+{name:"Natural Resources"},
+{name:"Hedge Funds"},
+{name:"Introduction to Digital Assets"}
+]);
+/* Learning map, Portfolio Construction: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
+   reading and question matching are added module by module; see 02-quant.js for a complete entry). */
+CFA_DATA.learn(1,"Portfolio Construction","LM-PM",[
+{name:"Portfolio Risk and Return: Part I"},
+{name:"Portfolio Risk and Return: Part II"},
+{name:"Portfolio Management: An Overview"},
+{name:"Basics of Portfolio Planning and Construction"},
+{name:"The Behavioral Biases of Individuals"},
+{name:"Introduction to Risk Management"}
+]);
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
      areas  – space-separated concept areas (see AREAS) the concept belongs to
@@ -14929,6 +15180,7 @@ const short = t=>SHORT[t]||t;
 const IC = {
   home:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
   book:'<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
+  map:'<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
   timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/>',
   review:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>',
   chart:'<path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V8"/><path d="M18 17v-7"/>',
@@ -15113,7 +15365,7 @@ function topicStats(level){
 }
 
 /* ---------- state ---------- */
-const S = { view:'home', practice:null, exam:null, review:{tab:'missed',open:null,topic:'',q:''}, fx:{topic:'',q:''}, cards:null, pconf:null, econf:null, justRevealed:null, vigCollapsed:null };
+const S = { view:'home', practice:null, exam:null, review:{tab:'missed',open:null,topic:'',q:''}, fx:{topic:'',q:''}, learn:{open:null}, cards:null, pconf:null, econf:null, justRevealed:null, vigCollapsed:null };
 let timerHandle = null;
 let MODAL_OPEN = false;
 
@@ -15259,7 +15511,7 @@ function toggleCalc(force){
 document.addEventListener('click', e=>{ if(e.target.closest('[data-calc]')) toggleCalc(); });
 
 /* =========================== chrome ============================ */
-const NAV = [['home','Home','home'],['practice','Practice','book'],['exam','Mock exam','timer'],['review','Review','review'],['formulas','Formulas','sigma'],['progress','Progress','chart']];
+const NAV = [['home','Home','home'],['learn','Learn','map'],['practice','Practice','book'],['exam','Mock exam','timer'],['review','Review','review'],['formulas','Formulas','sigma'],['progress','Progress','chart']];
 function examRunning(){ return !!(S.exam && S.exam.phase==='running'); }
 /* the mock clock stops while the candidate is away from the exam screen and restarts on return */
 const examLeft = ex => (ex.endAt - (ex.pausedAt || Date.now()))/1000;
@@ -15306,6 +15558,7 @@ async function go(v){
     if(!ok) return;
     pauseExam(S.exam);
   }
+  if(v==='learn' && S.view==='learn') S.learn.open = null; // the Learn tab inside a module goes back to the map
   S.view=v; render(true); window.scrollTo(0,0);
 }
 function render(anim){
@@ -15313,7 +15566,7 @@ function render(anim){
   paintChrome();
   const app = $('#app');
   app.classList.toggle('anim', !!anim);
-  ({home:vHome,practice:vPractice,exam:vExam,review:vReview,formulas:vFormulas,progress:vProgress}[S.view])(app);
+  ({home:vHome,learn:vLearn,practice:vPractice,exam:vExam,review:vReview,formulas:vFormulas,progress:vProgress}[S.view])(app);
   ensureTimer();
   watchColumns();
 }
@@ -16024,12 +16277,13 @@ function practiceSummary(app){
   p.sets.forEach(id=>{ const s=SETMAP[id]; s.questions.forEach(q=>{ const st=p.states[q.qid]; if(!st||!st.revealed) return; const t=byTopic[s.topic]=byTopic[s.topic]||{n:0,c:0}; t.n++; if(q.kind==='cr'){ t.c += crEarned(q,st.rubric)/q.points; } else if(st.choice===q.answer) t.c++; }); });
   const missed = p.sets.filter(id=>SETMAP[id].questions.some(q=>{ const st=p.states[q.qid]; return st&&st.revealed&&isMissed(q); }));
   const acc = p.done?pct(p.correct,p.done):0;
+  const mod = p.module && MODS[p.module]; // a session started from a learning module goes back to it
   const entries = Object.entries(byTopic).sort((a,b)=>TOPICS[p.level].indexOf(a[0])-TOPICS[p.level].indexOf(b[0]));
   app.innerHTML = `<div class="content">
     <div class="page-head"><div><div class="eyebrow">${LEVELS[p.level]} · practice</div><h1>Session complete</h1></div></div>
     <div class="panel hero">
       <div class="hero-main"><div class="hero-figure">${p.done?acc+'%':'–'}</div><p style="margin:12px 0 16px">${p.done?`${r1(p.correct)} of ${p.done} answered questions correct.`:'No questions answered in this session.'}${practiceSplitLine(p)}${practicePaceLine(p)}</p>
-        <div class="row"><button class="btn primary lg" id="again">${icon('zap')}New session</button>${missed.length?`<button class="btn lg" id="redo">${icon('review')}Redo missed <span class="faint num">${missed.length}</span></button>`:''}<button class="btn ghost lg" id="home">Home</button></div>
+        <div class="row"><button class="btn primary lg" id="again">${icon('zap')}${mod?'Practice this module again':'New session'}</button>${missed.length?`<button class="btn lg" id="redo">${icon('review')}Redo missed <span class="faint num">${missed.length}</span></button>`:''}<button class="btn ghost lg" id="home">${mod?'Back to the module':'Home'}</button></div>
       </div>
     </div>
     <div class="tiles">
@@ -16040,9 +16294,9 @@ function practiceSummary(app){
     </div>
     <div class="panel"><div class="panel-head"><h2>By topic</h2></div>${entries.length?entries.map(([t,v])=>topicRow(t,`${r1(v.c)} / ${v.n} correct`,pct(v.c,v.n),true)).join(''):`<div class="empty">${icon('list')}<span>Nothing answered.</span></div>`}</div>
   </div>`;
-  $('#again').onclick=()=>{ S.practice=null; render(true); };
+  $('#again').onclick=()=>{ S.practice=null; if(mod) startModule(mod); else render(true); };
   if(missed.length) $('#redo').onclick=()=>startPractice({level:p.level}, shuffle(missed));
-  $('#home').onclick=()=>{ S.practice=null; go('home'); };
+  $('#home').onclick=()=>{ S.practice=null; if(mod){ S.learn.open=mod.id; go('learn'); } else go('home'); };
 }
 
 /* =========================== EXAM ============================ */
@@ -16674,6 +16928,96 @@ function cardsView(app, l){
   $('#back').onclick = ()=>{ S.cards=null; render(true); };
   if(s.flipped){ $('#no').onclick=()=>gradeCard(false); $('#yes').onclick=()=>gradeCard(true); }
   else $('#flip').onclick = ()=>{ s.flipped=true; render(); };
+}
+
+/* =========================== LEARN ============================ */
+/* Learning map (Level I): one page per learning module of the 2027 topic outline (data in src/data/learn/): key ideas
+   in our own words, exam traps, the module's formulas (taken from the formula sheet, never copied), trusted reading,
+   and practice on that module alone. Questions join a module by keywords (CFA_DATA.moduleMap in _index.js), so new
+   questions are matched without any tagging. Check the matching with tools/learn-check.js. */
+const MODS = {}; (D.modules||[]).forEach(m=>MODS[m.id]=m);
+const OUTLINE_URL = 'https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf';
+let MODQ = null;
+function modQuestions(){
+  if(!MODQ) MODQ = D.moduleMap ? D.moduleMap(SETS.filter(s=>s.level===1 && s.type==='mc').map(s=>({id:s.id, level:1, topic:s.topic, stem:s.stem, key:s.options[s.answer], expl:s.explanation}))) : {};
+  return MODQ;
+}
+const topicMapped = t=>(D.modules||[]).some(m=>m.topic===t && m.match);
+function modStats(m){
+  const qs = (modQuestions()[m.id]||[]).map(id=>SETMAP[id].questions[0]);
+  let seen = 0, score = 0;
+  qs.forEach(q=>{ const h=DB.history[q.qid]; if(h){ seen++; score+=h.last; } });
+  return {n:qs.length, seen, acc:pct(score,seen)};
+}
+/* module text: blank-line paragraphs, "## " subheads and "- " bullet lines, plus the usual **bold** and `code` */
+function learnMd(text){
+  return String(text||'').trim().split(/\n\s*\n/).map(b=>{
+    const out = []; let list = [];
+    const flush = ()=>{ if(list.length){ out.push('<ul>'+list.map(x=>'<li>'+inline(x)+'</li>').join('')+'</ul>'); list = []; } };
+    b.split('\n').forEach(line=>{ const t = line.trim();
+      if(t.startsWith('## ')){ flush(); out.push('<h3>'+inline(t.slice(3))+'</h3>'); }
+      else if(t.startsWith('- ')) list.push(t.slice(2));
+      else if(t){ flush(); out.push('<p>'+inline(t)+'</p>'); } });
+    flush(); return out.join('');
+  }).join('');
+}
+/* a reading link: [link code ('i:'/'w:'/URL), title, site name for plain URLs] */
+function readLink(r){
+  const [ref, title, site] = r, info = linkInfo(ref, title), web = /^https?:/.test(ref);
+  const src = web ? (site || new URL(ref).hostname.replace(/^www\./,'')) : info.src;
+  const badge = !web ? info.badge : site==='FreeFellow' ? 'FF' : site==='CFA Institute' ? 'CFA' : src.slice(0,2).toUpperCase();
+  return `<a class="learn-link" href="${esc(info.url)}" target="_blank" rel="noopener noreferrer"><span class="src">${esc(badge)}</span><span class="ltext"><b>${esc(title||info.title||src)}</b><small>${esc(src)}</small></span>${icon('external')}</a>`;
+}
+/* "Practice this module": 10 questions (or all), unseen first, then missed, then the rest, played from easy to hard */
+function startModule(m, all){
+  const ids = modQuestions()[m.id]||[];
+  if(!ids.length){ toast('No questions match this module yet.'); return; }
+  const rank = s=>{ const q=s.questions[0]; return !isSeen(q) ? 0 : isMissed(q) ? 1 : 2; };
+  let pick = shuffle(ids.map(id=>SETMAP[id])).sort((a,b)=>rank(a)-rank(b)); // the sort is stable, so each group stays shuffled
+  if(!all) pick = pick.slice(0,10);
+  pick.sort((a,b)=>tierOf(a)-tierOf(b));
+  startPractice({level:1}, pick.map(s=>s.id));
+  S.practice.module = m.id;
+}
+function modRow(m){
+  const st = topicMapped(m.topic) ? modStats(m) : null;
+  const sub = st ? `${plural(st.n,'question')}${st.seen?` · ${st.seen} answered`:''}` : '';
+  const name = `${m.n}. ${m.name}`;
+  if(!m.ideas) return topicRow(name, sub, st?st.acc:0, !!(st&&st.seen), {tag:'<span class="tag">Notes coming</span>'}).replace('class="trow"','class="trow lm-off"');
+  return topicRow(name, sub, st?st.acc:0, !!(st&&st.seen), {attr:`data-mod="${m.id}" title="Open this module"`});
+}
+function vLearn(app){
+  const l = LV();
+  if(l!==1){ app.innerHTML = `<div class="content"><div class="page-head"><div><div class="eyebrow">${LEVELS[l]}</div><h1>Learn</h1></div></div><div class="panel"><div class="empty">${icon('map')}<b>The learning map covers Level I</b><span class="small">Switch to Level I to see it.</span></div></div></div>`; return; }
+  const open = S.learn.open && MODS[S.learn.open];
+  if(open && open.ideas) return learnModule(app, open);
+  const mods = (D.modules||[]).filter(m=>m.level===1);
+  app.innerHTML = `<div class="content">
+    <div class="page-head"><div><div class="eyebrow">${LEVELS[1]} · ${CURRICULUM_YEAR} curriculum · ${mods.length} learning modules</div><h1>Learning map</h1><p>One page per learning module of the official topic outline: the key ideas, the traps the exam likes, the formulas, where to read the full lesson, and practice on that module alone. It sums up the curriculum; it does not replace it.</p></div></div>
+    ${TOPICS[1].map(t=>{ const tm = mods.filter(m=>m.topic===t); if(!tm.length) return ''; const done = tm.filter(m=>m.ideas).length;
+      return `<div class="panel"><div class="panel-head"><div><h2>${esc(t)}</h2><p>${plural(tm.length,'module')}${done?` · ${done} ready`:''}</p></div></div>${tm.map(modRow).join('')}</div>`; }).join('')}
+    <p class="faint small">Module names follow the <a href="${OUTLINE_URL}" target="_blank" rel="noopener noreferrer">${CURRICULUM_YEAR} Level I topic outline</a> of CFA Institute. The notes are our own summary, written for this app.</p>
+  </div>`;
+  $$('[data-mod]',app).forEach(b=>b.onclick=()=>{ S.learn.open=b.dataset.mod; render(true); window.scrollTo(0,0); });
+}
+function learnModule(app, m){
+  const st = modStats(m), sib = D.modules.filter(x=>x.topic===m.topic), i = sib.indexOf(m);
+  const prev = sib.slice(0,i).reverse().find(x=>x.ideas), next = sib.slice(i+1).find(x=>x.ideas);
+  const fs = (m.formulas||[]).map(id=>FMAP[id]).filter(Boolean);
+  app.innerHTML = `<div class="content">
+    <div class="lm-nav"><button class="btn ghost sm" id="lmBack">${icon('arrowL')}Learning map</button><span class="faint small num">Module ${m.n} of ${m.of}</span></div>
+    <div class="page-head"><div><div class="eyebrow">${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
+      ${st.n?`<div class="row"><button class="btn primary lg" id="lmGo" title="10 questions, unseen first, easy to hard">${icon('zap')}Practice this module</button>${st.n>10?`<button class="btn ghost" id="lmAll" title="Every question of this module, easy to hard">All ${st.n}</button>`:''}</div>`:''}</div>
+    <div class="panel"><div class="panel-head"><h2>Key ideas</h2></div><div class="lm-text">${learnMd(m.ideas)}</div></div>
+    ${m.traps&&m.traps.length?`<div class="panel"><div class="panel-head"><h2>Traps the exam likes</h2></div><ol class="lm-traps">${m.traps.map(t=>`<li>${inline(t)}</li>`).join('')}</ol></div>`:''}
+    ${fs.length?`<div class="panel"><div class="panel-head"><div><h2>Formulas</h2><p>From the formula sheet, where the flashcards are.</p></div><button class="btn ghost sm" data-goto="formulas">Formulas ${icon('chevR')}</button></div>${fs.map(f=>`<div class="frow"><div class="fhead"><b>${esc(f.name)}</b>${f.topic!==m.topic?`<span class="tag">${esc(short(f.topic))}</span>`:''}${cardStatus(f)}</div>${fBlock(f)}</div>`).join('')}</div>`:''}
+    ${m.read&&m.read.length?`<div class="panel lm-read"><div class="panel-head"><div><h2>Further reading</h2><p>The official outline first, then a full lesson, then reference pages.</p></div></div>${m.read.map(readLink).join('')}</div>`:''}
+    <div class="lm-pager">${prev?`<button class="btn ghost" data-mod="${prev.id}">${icon('arrowL')}${esc(prev.name)}</button>`:'<span></span>'}${next?`<button class="btn ghost" data-mod="${next.id}">${esc(next.name)}${icon('arrowR')}</button>`:''}</div>
+  </div>`;
+  $('#lmBack').onclick = ()=>{ S.learn.open=null; render(true); window.scrollTo(0,0); };
+  if(st.n){ $('#lmGo').onclick = ()=>startModule(m); if($('#lmAll')) $('#lmAll').onclick = ()=>startModule(m, true); }
+  $$('[data-mod]',app).forEach(b=>b.onclick=()=>{ S.learn.open=b.dataset.mod; render(true); window.scrollTo(0,0); });
+  $$('[data-goto]',app).forEach(b=>b.onclick=()=>go(b.dataset.goto));
 }
 
 /* =========================== PROGRESS ============================ */
