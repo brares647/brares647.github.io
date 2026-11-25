@@ -19106,12 +19106,13 @@ function setLevel(l){
   render(true);
 }
 const isFocus = ()=> (S.view==='practice' && !!S.practice && S.practice.pos<S.practice.sets.length) || (S.view==='exam' && !!S.exam && (S.exam.phase==='running'||S.exam.phase==='review'));
+async function leaveExamOk(){
+  const ok = await modal({title:'Leave the exam?', body:'Your answers are kept and the clock pauses until you come back from Mock exam. Closing or reloading the page ends the exam.', ok:'Leave', cancel:'Stay'});
+  if(ok) pauseExam(S.exam);
+  return ok;
+}
 async function go(v){
-  if(S.view==='exam' && examRunning() && v!=='exam'){
-    const ok = await modal({title:'Leave the exam?', body:'Your answers are kept and the clock pauses until you come back from Mock exam. Closing or reloading the page ends the exam.', ok:'Leave', cancel:'Stay'});
-    if(!ok) return;
-    pauseExam(S.exam);
-  }
+  if(S.view==='exam' && examRunning() && v!=='exam' && !(await leaveExamOk())) return;
   if(v==='learn' && S.view==='learn') S.learn.open = null; // the Learn tab inside a module goes back to the map
   S.view=v; render(true); window.scrollTo(0,0);
 }
@@ -19123,7 +19124,36 @@ function render(anim){
   ({home:vHome,learn:vLearn,practice:vPractice,exam:vExam,review:vReview,formulas:vFormulas,progress:vProgress}[S.view])(app);
   ensureTimer();
   watchColumns();
+  syncRoute();
 }
+/* ---------- browser history ----------
+   Every screen has its own address (#learn, #learn/LM-QM-04, #practice, ...; Home is the bare /app/), so the browser's
+   and the mouse's Back and Forward buttons move between screens, and a reload or bookmark reopens the same screen.
+   A practice session stays in memory when you step back from it; a running mock still asks before it is left. */
+const VIEWS = ['home','learn','practice','exam','review','formulas','progress'];
+let ROUTED = false, POPPING = false;
+const routeOf = ()=> S.view==='home' ? '' : '#'+S.view+(S.view==='learn' && S.learn.open ? '/'+S.learn.open : '');
+function syncRoute(){
+  const want = routeOf();
+  if((location.hash||'') === want) return;
+  const url = want || (location.pathname + location.search);
+  try{ if(ROUTED && !POPPING) history.pushState(null, '', url); else history.replaceState(null, '', url); }catch(e){}
+}
+function readRoute(){
+  const m = /^#([a-z]+)(?:\/([A-Za-z0-9-]+))?$/.exec(location.hash||'');
+  if(!m || !VIEWS.includes(m[1])) return {view:'home', mod:null};
+  return {view:m[1], mod: m[1]==='learn' && m[2] && MODS[m[2]] ? m[2] : null};
+}
+window.addEventListener('popstate', async ()=>{
+  const r = readRoute();
+  if(r.view===S.view && r.mod===(S.view==='learn' ? S.learn.open : r.mod)) return;
+  if(MODAL_OPEN) return;
+  if(S.view==='exam' && examRunning() && r.view!=='exam' && !(await leaveExamOk())){ syncRoute(); return; } // stayed: put the exam address back
+  POPPING = true;
+  S.view = r.view; S.learn.open = r.mod;
+  render(true);
+  POPPING = false;
+});
 /* Wide screens: the two columns of Home and the Mock exam setup are sticky. A column shorter than the window stays
    24px from the top; a taller one scrolls until its bottom is 24px from the window's bottom, then stays. So whichever
    column ends first keeps filling its side instead of leaving an empty band. */
@@ -20705,8 +20735,10 @@ window.addEventListener('beforeunload', e=>{ const ex = S.exam; if(ex && ['runni
 
 /* ---------- boot ---------- */
 $$('.logo').forEach(el=>el.innerHTML=icon('logo'));
+{ const r = readRoute(); S.view = r.view; S.learn.open = r.mod; } // open the screen named in the address (reload, bookmark)
 applyTheme();
 render(true);
+ROUTED = true;
 /* build the concept weights for study links while the app is idle, so the first wrong answer shows links instantly */
 if(LK) (window.requestIdleCallback || (f=>setTimeout(f,1500)))(()=>conceptIdf());
 })();
