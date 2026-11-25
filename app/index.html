@@ -17048,37 +17048,831 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 /* Learning map, Derivatives and Risk Management: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
-{name:"Derivative Instrument and Derivative Market Features"},
-{name:"Forward Commitment and Contingent Claim Features and Instruments"},
-{name:"Derivative Benefits, Risks, and Issuer and Investor Uses"},
-{name:"Arbitrage, Replication, and the Cost of Carry in Pricing Derivatives"},
-{name:"Pricing and Valuation of Forward Contracts and for an Underlying with Varying Maturities"},
-{name:"Pricing and Valuation of Futures Contracts"},
-{name:"Pricing and Valuation of Interest Rate and Other Swaps"},
-{name:"Pricing and Valuation of Options"},
-{name:"Option Replication Using Put–Call Parity"},
-{name:"Valuing a Derivative Using a One-Period Binomial Model"}
+{name:"Derivative Instrument and Derivative Market Features",
+ core:/derivatives? (is|are|contract|instrument|market)|underlying|exchange-traded|over-the-counter|\bOTC\b|clearinghouse|clearing house|central counterparty|\bCCP\b|counterparty (credit )?risk|standardiz|customiz/,
+ match:/derivative|underlying|exchange|over-the-counter|OTC|clearing|counterparty|standard|customiz|margin|collateral|liquid|transparen|notional|contract size|expiration/,
+ ideas:`**A derivative is a contract whose value comes from the price of something else, the underlying: a share, an index, a bond, an interest rate, a currency, a commodity, a credit event.**
+
+## Basic features
+- Two parties agree on terms today for an exchange of cash flows or assets in the future: the underlying, the size (notional amount), the price or rate, the maturity, and how it settles (delivery of the asset or a cash payment).
+- Derivatives need little or no money up front compared with the exposure they create, so they carry **leverage**: small price moves produce large gains or losses relative to the money invested.
+
+## Exchange-traded versus over-the-counter
+- **Exchange-traded** derivatives (futures, listed options) are **standardized**: fixed sizes, expiration dates and terms. A **clearinghouse** stands between buyer and seller as central counterparty and requires margin, which almost removes counterparty risk. Prices are transparent and contracts liquid, but they cannot be tailored.
+- **Over-the-counter (OTC)** derivatives (forwards, swaps, most exotic options) are negotiated privately between parties, usually with a dealer. They can be **customized** to exact needs, but they are less transparent and less liquid, and expose each party to the other's default.
+- After the 2008 crisis, regulators required many standardized OTC derivatives (especially interest rate swaps) to be cleared through central counterparties and reported to trade repositories, with collateral posted on uncleared trades.
+
+## Who uses derivative markets
+- Hedgers (companies, banks, investors protecting against price moves), speculators (taking views), and arbitrageurs (exploiting price differences), with dealers in the middle making markets.`,
+ traps:[
+  "Exchange-traded derivatives are standardized and cleared; OTC derivatives are customized and carry counterparty risk unless cleared.",
+  "The clearinghouse is the counterparty to both sides of every exchange-traded trade.",
+  "Low upfront cost means leverage, not low risk.",
+  "Customization is the main advantage of OTC contracts; liquidity and transparency are their weaknesses.",
+  "Many standardized OTC swaps must now be centrally cleared."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-instrument-and-market-features/","Derivative Instrument and Derivative Market Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Derivative_(finance)"],
+  ["w:Central_counterparty_clearing"]
+ ]},
+{name:"Forward Commitment and Contingent Claim Features and Instruments",
+ core:/forward contract|futures contract|call option|put option|credit derivative|credit default swap|\bCDS\b|payoff|profit (on|from|at|for)|breakeven|break-even|long (a |the )?(call|put|forward)|short (a |the )?(call|put|forward)|contingent claim|forward commitment|option (buyer|writer|seller|holder)|writes? (a )?(call|put)/,
+ match:/forward|futures|swap|call|put|option|credit derivative|CDS|payoff|profit|breakeven|long|short|contingent|commitment|premium|strike|exercise|writer|holder|expiration/,
+ ideas:`**Derivatives come in two families: forward commitments, which oblige both sides to transact, and contingent claims, which give one side a right but not an obligation.**
+
+## Forward commitments
+- **Forward contract:** a private (OTC) agreement to buy or sell an asset at a fixed price on a future date. The long side gains if the price rises above the forward price; the short side if it falls. Payoffs are symmetric and nothing is paid up front.
+- **Futures contract:** like a forward, but standardized, exchange-traded and settled daily through margin accounts.
+- **Swap:** an agreement to exchange a series of cash flows, such as fixed for floating interest payments. It works like a series of forward contracts.
+
+## Contingent claims
+- **Call option:** the right to buy at the strike (exercise) price. **Put option:** the right to sell at the strike price. The buyer pays a **premium** and can lose only that; the seller (writer) receives the premium and takes on the obligation.
+- At expiration: call payoff = max(0, S − X); put payoff = max(0, X − S). Profit = payoff − premium for the buyer, and the reverse for the writer.
+- Example: a call with a strike of 50 and a premium of 4 is worth 8 at a final price of 58, a profit of 4; its breakeven price is 54. A put with a strike of 50 and a premium of 3 is worth 6 at 44, a profit of 3; its breakeven is 47.
+- Maximum loss: call or put buyer, the premium; call writer, unlimited; put writer, the strike minus the premium.
+- **Credit derivatives**, such as a **credit default swap (CDS)**, pay the protection buyer if a reference borrower defaults, in exchange for periodic premiums.
+
+## Forward commitments versus contingent claims
+- Forward commitments have linear, symmetric payoffs and no upfront cost. Contingent claims have asymmetric payoffs (limited loss for the buyer), and the buyer pays a premium for that asymmetry.`,
+ traps:[
+  "An option buyer's maximum loss is the premium; a call writer's potential loss is unlimited.",
+  "Profit = payoff − premium for the buyer; the writer's profit is the mirror image.",
+  "Call breakeven = strike + premium; put breakeven = strike − premium.",
+  "Forwards and futures oblige both parties; options oblige only the writer.",
+  "A CDS buyer is buying protection against default, so it is short the credit risk."
+ ],
+ formulas:["F1-DER-07"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-forward-commitment-and-contingent-claim-features/","Forward Commitment and Contingent Claim Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/f/forwardcontract.asp"],
+  ["i:terms/c/calloption.asp"],
+  ["i:terms/p/putoption.asp"],
+  ["i:terms/c/creditdefaultswap.asp"]
+ ]},
+{name:"Derivative Benefits, Risks, and Issuer and Investor Uses",
+ core:/benefits? of derivatives|risks? of (using )?derivatives|hedg|speculat|issuers? (use|uses)|investors? (use|uses)|uses of derivatives|basis risk|systemic risk|operational advantage|cash flow hedge|fair value hedge|net investment hedge|hedge accounting/,
+ match:/benefit|risk|hedg|speculat|issuer|investor|use|basis|systemic|leverage|liquidity|transaction cost|short|exposure|accounting|cash flow hedge|fair value hedge/,
+ ideas:`**Derivatives let companies and investors transfer risk, but their leverage and complexity create risks of their own.**
+
+## Benefits
+- **Risk allocation and transfer:** those who want to shed a risk pass it to those willing to bear it.
+- **Information discovery:** futures and options prices reveal expectations of future prices and volatility.
+- **Operational advantages:** lower transaction costs than trading the underlying, high liquidity, easy short positions, and exposure without buying the asset.
+- **Market efficiency:** arbitrage keeps derivative and underlying prices in line.
+
+## Risks
+- **Leverage:** small price moves can cause large losses relative to the capital used.
+- **Basis risk:** the hedge and the exposure may not move together exactly.
+- **Liquidity risk:** margin calls or collateral demands can force cash out at bad times.
+- **Counterparty risk** in uncleared OTC contracts.
+- **Complexity and model risk:** users may misunderstand or misprice the contracts.
+- **Systemic risk:** heavy, interconnected use can spread losses through the financial system, as in 2008.
+
+## How issuers use derivatives
+- Companies hedge interest rate, currency and commodity exposures that arise from their business and financing, such as swapping floating-rate debt to fixed or locking in an exchange rate for future revenue.
+- Hedge accounting lets them match the timing of gains and losses on the hedge with the item hedged: **fair value hedges** (of an asset or liability's value), **cash flow hedges** (of future cash flows, gains and losses parked in other comprehensive income first) and **net investment hedges** (of foreign subsidiaries).
+
+## How investors use derivatives
+- To change exposures quickly and cheaply (adding or reducing equity or duration exposure), to hedge, to replicate an index, to express views with leverage, to earn income (writing options), and to implement strategies that are hard to execute in the cash market.`,
+ traps:[
+  "Derivatives transfer risk between parties; they do not make it disappear.",
+  "Basis risk remains when the hedge does not match the exposure exactly.",
+  "Issuers mostly hedge business and financing exposures; investors use derivatives to adjust portfolio exposures.",
+  "Margin calls on hedges can create liquidity problems even when the hedge works economically.",
+  "In a cash flow hedge, gains and losses go first to other comprehensive income."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-benefits-risks-and-uses/","Derivative Benefits, Risks, and Issuer and Investor Uses: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/h/hedge.asp"],
+  ["w:Hedge_(finance)"]
+ ]},
+{name:"Arbitrage, Replication, and the Cost of Carry in Pricing Derivatives",
+ core:/arbitrage|replicat|cost of carry|\bcarry\b|convenience yield|law of one price|storage costs?|expected (future )?(spot )?price|risk-free (asset|bond) (and|plus)|no-arbitrage/,
+ match:/arbitrage|replicat|carry|convenience|one price|storage|expected|risk-free|borrow|lend|financing|dividend|income|cost|benefit|spot|forward price|riskless/,
+ ideas:`**Derivatives are priced by arbitrage: a derivative and a portfolio that copies its payoffs must cost the same, otherwise a riskless profit is possible.**
+
+## Arbitrage and replication
+- **Arbitrage** exploits two ways of getting identical future cash flows at different prices today: buy the cheap one, sell the dear one, and lock in a riskless profit. Traders' actions remove such gaps quickly (the law of one price).
+- **Replication:** a derivative's payoff can be created by combining the underlying asset with risk-free borrowing or lending. Long the asset and borrowing its price at the risk-free rate replicates a long forward; so the forward price must equal the cost of that replication.
+- Because the replicating portfolio is riskless when combined with the derivative, the derivative's price does not depend on investors' risk preferences or on the expected future price of the underlying.
+
+## Spot price, expected price and the cost of carry
+- The **expected future price** of an asset includes a risk premium investors demand for holding it. Derivative prices do not need that expectation: they come from the **spot price** and the **cost of carry** of holding the asset until the contract matures.
+- **Costs** of carrying: financing at the risk-free rate, storage and insurance (for commodities). **Benefits** of carrying: dividends, coupons, and the **convenience yield** of physically holding a commodity.
+- Forward price with no costs or benefits: F0 = S0 × (1 + r)^T. With them: F0 = (S0 + PV of costs − PV of benefits) × (1 + r)^T.
+- Example: S0 = 100, r = 4%, one year: F0 = 104. If the asset pays income worth 2 in present value, F0 = (100 − 2) × 1.04 = 101.92.
+- If the quoted forward is above this value, sell the forward and buy the asset with borrowed money (cash-and-carry arbitrage); if below, do the reverse.`,
+ traps:[
+  "Forward prices depend on the spot price and the cost of carry, not on the expected future spot price.",
+  "Income from the underlying (dividends, coupons, convenience yield) lowers the forward price; storage costs raise it.",
+  "If the market forward price is too high, sell the forward and buy the underlying with borrowed money.",
+  "Arbitrage pricing does not depend on investors' risk preferences.",
+  "Arbitrage requires identical future cash flows at different prices, not merely a cheap-looking asset."
+ ],
+ formulas:["F1-DER-01","F1-DER-02"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-arbitrage-replication-and-cost-of-carry/","Arbitrage, Replication, and the Cost of Carry: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/a/arbitrage.asp"],
+  ["i:terms/c/costofcarry.asp"],
+  ["w:Rational_pricing"]
+ ]},
+{name:"Pricing and Valuation of Forward Contracts and for an Underlying with Varying Maturities",
+ core:/value of (a|the) (long )?forward|forward (price|contract) (at initiation|during|is set)|forward rate agreement|\bFRAs?\b|at initiation|during the life|at expiration|implied forward rate|forward rates? (for|on) interest/,
+ match:/forward|value|price|initiation|during|expiration|FRA|forward rate|interest rate|spot rate|discount|settle|notional|MRR|lock in/,
+ ideas:`**A forward's price is fixed when it is agreed; its value starts at zero and then changes as the spot price moves.**
+
+## Price versus value
+- **At initiation:** the forward price F0 is set so that the contract's value is zero for both sides: F0 = S0 × (1 + r)^T, adjusted for carrying costs and benefits.
+- **During its life:** the value to the long side is the spot price now minus the present value of the forward price: Vt = St − F0 / (1 + r)^(T − t) (adjusted for any remaining income). Example: F0 = 104 agreed for one year; six months later the spot price is 103 and r = 4%: V = 103 − 104 / 1.04^0.5 = 1.02 for the long side.
+- **At expiration:** value = ST − F0. The short side's value is always the negative of the long side's.
+
+## Forward rates for interest rate contracts
+- Interest rate forwards fix a rate today for borrowing or lending over a future period. The implied forward rate comes from spot rates by no arbitrage: (1 + S_B)^B = (1 + S_A)^A × (1 + f)^(B − A).
+- A **forward rate agreement (FRA)** locks in a rate on a notional amount. At settlement, the payment is based on the difference between the market reference rate (MRR) and the FRA rate, discounted because it is paid at the start of the period. The long (pay-fixed) side gains if the reference rate ends above the FRA rate.
+
+## Uses of forward rates
+- Locking in borrowing or lending costs for a future period, pricing and valuing swaps and bonds, and hedging interest rate exposure. Forward rates also show the rate path the market currently prices in, though they include term premiums and are not pure forecasts.`,
+ traps:[
+  "A forward's value is zero at initiation, even though its price is not zero.",
+  "During the life, value = spot − present value of the forward price, not spot − forward price.",
+  "The long FRA side (pay fixed) gains when the reference rate rises above the FRA rate.",
+  "FRA settlement amounts are discounted because they are paid at the start of the interest period.",
+  "Long and short values are equal and opposite."
+ ],
+ formulas:["F1-DER-03","F1-DER-04","F1-FI-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-pricing-and-valuation-of-forwards/","Pricing and Valuation of Forward Contracts: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/f/fra.asp"],
+  ["i:terms/f/forwardcontract.asp"],
+  ["w:Forward_contract"]
+ ]},
+{name:"Pricing and Valuation of Futures Contracts",
+ core:/futures (prices?|contracts?)s? (and|versus|vs\.?|compared) forward|mark(ed|ing)?[- ]to[- ]market|daily settlement|initial margin|maintenance margin|variation margin|margin call|futures price|settlement price|futures contracts?/,
+ match:/futures|mark|daily|settle|margin|clearing|correlat|interest rates?|forward|price|value|reset|convergence/,
+ ideas:`**Futures are standardized forwards with daily settlement, which changes how their value behaves and can make their prices differ slightly from forward prices.**
+
+## Daily settlement and margin
+- Each day the clearinghouse **marks to market**: gains are added to and losses taken from each side's margin account, based on the settlement price.
+- **Initial margin** is posted when the position is opened. If the account falls below the **maintenance margin**, the holder receives a margin call and must deposit **variation margin** to bring it back to the initial margin level.
+
+## Price and value
+- As with forwards, the futures price is set so that the contract has zero value when it is entered.
+- Because gains and losses are paid every day, the value of a futures contract is **reset to zero** after each settlement. Between settlements its value is the change in the futures price since the last settlement.
+- At expiration, the futures price converges to the spot price.
+
+## Why futures and forward prices differ
+- With constant (or perfectly predictable) interest rates, futures and forward prices for the same underlying and maturity are equal.
+- If futures prices are **positively correlated with interest rates**, the long side receives gains when rates are high (and can reinvest them at those rates) and pays losses when rates are low (and can borrow cheaply); futures are then more attractive and their prices are higher than forward prices. With negative correlation, futures prices are lower.
+- Other differences: credit risk (forwards carry counterparty risk), liquidity and standardization.`,
+ traps:[
+  "A futures contract's value resets to zero after each daily settlement.",
+  "A margin call requires topping up to the initial margin, not just to the maintenance margin.",
+  "With positive correlation between futures prices and interest rates, futures prices exceed forward prices.",
+  "Futures prices converge to the spot price at expiration.",
+  "With constant interest rates, futures and forward prices are equal."
+ ],
+ formulas:["F1-DER-11","F1-DER-01"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-pricing-and-valuation-of-futures/","Pricing and Valuation of Futures Contracts: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/f/futures.asp"],
+  ["w:Futures_contract"]
+ ]},
+{name:"Pricing and Valuation of Interest Rate and Other Swaps",
+ core:/\bswaps?\b|swap rate|fixed-for-floating|notional (principal|amount)|series of forwards?|fixed (rate )?(payer|receiver)|floating (rate )?(payer|receiver)|fixed leg|floating leg/,
+ match:/swap|fixed|floating|notional|series|forward|payer|receiver|leg|discount factor|par|value|currency swap|equity swap|net payment|settle/,
+ ideas:`**A swap exchanges a series of cash flows; it can be viewed as a package of forward contracts, all at the same fixed rate.**
+
+## Swaps and forwards
+- In a plain interest rate swap, one party pays a fixed rate and the other a floating rate on the same notional amount; only the net payment changes hands, and the notional is not exchanged.
+- Each payment date is like a forward contract. But a single swap rate applies to every date, whereas separate forwards would each have their own rate. So individual "forwards" inside the swap have non-zero values (some positive, some negative) that add up to zero at initiation.
+- Differences from forwards: one contract instead of many, periodic net settlement, mostly OTC (often centrally cleared), and maturities of many years.
+
+## Price versus value
+- The **swap rate** (price) is the fixed rate that gives the swap zero value at initiation. It equals the par rate implied by the discount factors: swap rate = (1 − DF_N) / (DF_1 + DF_2 + … + DF_N). With spot rates of 3% (one year) and 4% (two years), the two-year annual swap rate is 3.98%.
+- After initiation, the **value** changes as rates move. If market swap rates rise above the contract's fixed rate, the **fixed-rate payer** gains (it pays less than the current market rate) and the receiver loses. The value equals the present value of the difference between the current and the original fixed rates over the remaining payments.
+- Other swaps: **currency swaps** (exchanging principal and interest in two currencies) and **equity swaps** (exchanging an equity return for a fixed or floating rate).`,
+ traps:[
+  "A new swap has zero value but a non-zero price: the swap rate.",
+  "When rates rise, the pay-fixed side of an existing swap gains.",
+  "An interest rate swap exchanges net interest payments; the notional is not exchanged.",
+  "A swap is like a series of off-market forwards that share one fixed rate.",
+  "Currency swaps usually exchange principal at the start and the end; interest rate swaps do not."
+ ],
+ formulas:["F1-DER-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-pricing-and-valuation-of-swaps/","Pricing and Valuation of Interest Rate and Other Swaps: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/i/interestrateswap.asp"],
+  ["i:terms/c/currencyswap.asp"],
+  ["i:terms/e/equityswap.asp"]
+ ]},
+{name:"Pricing and Valuation of Options",
+ core:/exercise value|intrinsic value|moneyness|in-the-money|out-of-the-money|at-the-money|time value|volatility|factors? (that )?(affect|determine|influence)|lower bound|option('s)? value (increase|decrease|rise|fall)|value of (a|an|the) (call|put|option)/,
+ match:/exercise value|intrinsic|moneyness|in-the-money|out-of-the-money|at-the-money|time value|volatil|factor|bound|American|European|value|strike|underlying|time to expir|interest rate|dividend|carry|premium/,
+ ideas:`**An option's value has two parts: what it would be worth if exercised now, and the extra value of the chance that it becomes more valuable before expiration.**
+
+## Exercise value, moneyness and time value
+- **Exercise (intrinsic) value:** call = max(0, S − X); put = max(0, X − S).
+- **Moneyness:** a call is in the money when S > X, at the money when S = X, out of the money when S < X; a put is the reverse.
+- **Time value** = option price − exercise value. It is positive before expiration and falls to zero at expiration (time decay).
+
+## Arbitrage and replication for options
+- Forward commitments can be replicated with a fixed position in the underlying and borrowing; options cannot be replicated with a fixed position, because their payoffs are not linear. The replicating portfolio must be adjusted as the price moves (as the binomial model shows).
+- No-arbitrage still sets bounds: a call is worth at least max(0, S − X / (1 + r)^T) and at most S; a European put at least max(0, X / (1 + r)^T − S) and at most X / (1 + r)^T.
+
+## What drives option values (other things equal)
+- **Underlying price ↑:** call ↑, put ↓.
+- **Strike price ↑:** call ↓, put ↑.
+- **Volatility ↑:** call ↑ and put ↑: more chance of a large favorable move, while the loss stays capped at the premium.
+- **Time to expiration ↑:** usually both ↑ (a European put deep in the money can be an exception).
+- **Risk-free rate ↑:** call ↑, put ↓ (paying the strike later is worth more).
+- **Income from the underlying ↑** (dividends): call ↓, put ↑. **Costs of carry ↑:** call ↑, put ↓.
+- An American option is worth at least as much as an otherwise identical European option, because it can be exercised early.`,
+ traps:[
+  "Higher volatility raises both call and put values.",
+  "Higher interest rates raise call values and lower put values.",
+  "Dividends lower call values and raise put values.",
+  "Time value is zero at expiration; before it, an option is worth more than its exercise value (for calls on non-dividend assets).",
+  "An out-of-the-money option has zero exercise value but positive time value before expiration."
+ ],
+ formulas:["F1-DER-08"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-pricing-and-valuation-of-options/","Pricing and Valuation of Options: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/i/intrinsicvalue.asp"],
+  ["i:terms/g/greeks.asp"],
+  ["w:Option_(finance)"]
+ ]},
+{name:"Option Replication Using Put–Call Parity",
+ core:/put[- ]call parity|put[- ]call[- ]forward parity|synthetic (call|put|stock|bond|forward|long|short)|protective put|fiduciary call|covered call/,
+ match:/put|call|parity|synthetic|protective|fiduciary|covered|replicat|risk-free bond|zero-coupon|strike|arbitrage|forward/,
+ ideas:`**Put–call parity links the prices of a European call, a European put, the underlying and a risk-free bond with the same strike and expiration.**
+
+## Put–call parity
+- A **fiduciary call** (a call + a risk-free bond paying the strike X at expiration) and a **protective put** (the underlying + a put) have the same payoff at expiration: the larger of S_T and X. So they must cost the same today:
+- S0 + p0 = c0 + X / (1 + r)^T.
+- Rearranging creates synthetic positions: a synthetic call = S0 + p0 − X / (1 + r)^T; a synthetic put = c0 + X / (1 + r)^T − S0; a synthetic underlying = c0 − p0 + X / (1 + r)^T.
+- Example: S0 = 52, X = 50, r = 5%, T = 1 year, c0 = 6. The put must be worth 6 + 50 / 1.05 − 52 = 1.62. If it trades higher, sell the put and buy the synthetic put (buy the call, buy the bond, short the underlying) to earn a riskless profit.
+
+## Put–call forward parity
+- Replace the underlying with a forward contract on it: buying a forward at F0 and holding a bond that pays F0 at expiration gives the underlying at T. So:
+- F0 / (1 + r)^T + p0 = c0 + X / (1 + r)^T.
+- Equivalently, c0 − p0 = (F0 − X) / (1 + r)^T: a long call and a short put with the same strike equal a long forward (at that strike), in present value terms.
+
+## Uses
+- Checking option prices for arbitrage, creating positions that are cheaper or easier to trade synthetically, and understanding how options, forwards and the underlying relate.`,
+ traps:[
+  "Put–call parity holds for European options with the same strike and expiration.",
+  "Long call + short put (same strike) = long forward at that strike.",
+  "In the parity formula, the bond pays the strike, so its value is X / (1 + r)^T.",
+  "Protective put = underlying + put; fiduciary call = call + bond.",
+  "If the put is overpriced relative to parity, sell it and buy the synthetic put."
+ ],
+ formulas:["F1-DER-06","F1-DER-10"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-option-replication-put-call-parity/","Option Replication Using Put–Call Parity: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/putcallparity.asp"],
+  ["i:terms/p/protective-put.asp"],
+  ["w:Put%E2%80%93call_parity"]
+ ]},
+{name:"Valuing a Derivative Using a One-Period Binomial Model",
+ core:/binomial|risk[- ]neutral|hedge ratio|up (move|factor|state)|down (move|factor|state)|replicating portfolio|one-period/,
+ match:/binomial|risk-neutral|risk neutral|hedge ratio|up|down|replicat|probability|payoff|discount|tree|one-period/,
+ ideas:`**In a one-period binomial model the underlying can move to only two prices. That is enough to show how options are priced by replication and risk neutrality.**
+
+## Setting up the model
+- Today's price S0 can rise to S0 × u or fall to S0 × d by the end of the period. The option's payoff is known in each state.
+- Example: S0 = 50, u = 1.2 (up to 60), d = 0.9 (down to 45), risk-free rate 5% per period, call with a strike of 50: payoffs 10 up and 0 down.
+
+## Replication and the hedge ratio
+- Hold h units of the underlying against one short call so the portfolio is worth the same in both states. The **hedge ratio** h = (payoff up − payoff down) / (S up − S down) = (10 − 0) / (60 − 45) = 0.667.
+- That riskless portfolio must earn the risk-free rate; solving gives the call price.
+
+## Risk-neutral pricing
+- The same answer comes from the **risk-neutral probability** of an up move: π = (1 + r − d) / (u − d) = (1.05 − 0.90) / (1.20 − 0.90) = 0.5.
+- Option value = [π × payoff up + (1 − π) × payoff down] / (1 + r) = (0.5 × 10 + 0.5 × 0) / 1.05 = 4.76.
+- **Risk neutrality:** the price is found as if investors did not care about risk, using probabilities that make the underlying earn the risk-free rate. It does not mean investors are actually risk-neutral, and π is not the real-world probability of an up move.
+- The real-world probability and the expected return on the underlying do not enter the formula: the arbitrage argument has already priced the risk.`,
+ traps:[
+  "Risk-neutral probabilities are not real-world probabilities.",
+  "Discount the expected payoff at the risk-free rate, not at a risk-adjusted rate.",
+  "Hedge ratio = difference in option payoffs / difference in underlying prices.",
+  "The model needs d < 1 + r < u, otherwise arbitrage is possible.",
+  "The expected return on the underlying does not affect the option's value."
+ ],
+ formulas:["F1-DER-09"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/der-one-period-binomial-model/","Valuing a Derivative Using a One-Period Binomial Model: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/b/binomialoptionpricing.asp"],
+  ["i:terms/b/binomial_tree.asp"],
+  ["w:Binomial_options_pricing_model"]
+ ]}
 ]);
 /* Learning map, Alternative Investments: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Alternative Investments","LM-ALT",[
-{name:"Alternative Investment Features, Methods, and Structures"},
-{name:"Alternative Investment Performance and Returns"},
-{name:"Investments in Private Capital: Equity and Debt"},
-{name:"Real Estate and Infrastructure"},
-{name:"Natural Resources"},
-{name:"Hedge Funds"},
-{name:"Introduction to Digital Assets"}
+{name:"Alternative Investment Features, Methods, and Structures",
+ core:/alternative investments?|categories of alternative|direct investment|co-investment|fund investment|limited partnership|general partner|limited partners?|\bGPs?\b|\bLPs?\b|management fee|incentive fee|performance fee|carried interest|hurdle rate|high[- ]water mark|clawback|waterfall|fund of funds|capital commitment|capital call|drawdown/,
+ match:/alternative|direct|co-invest|fund|partnership|general partner|limited partner|fee|carried|hurdle|water|clawback|commitment|capital call|illiquid|leverage|transparen|due diligence|traditional/,
+ ideas:`**Alternative investments are assets outside traditional long-only stocks, bonds and cash: private capital, real estate, infrastructure, natural resources, hedge funds and digital assets.**
+
+## Common features
+- Specialized and often illiquid assets, managed by specialists; less transparency and regulation; high fees; leverage in some strategies; limited and irregular price data (appraisals instead of market prices); and returns with low correlation to traditional assets.
+- Investors seek diversification, access to return sources not found in public markets, and in some cases inflation protection, accepting illiquidity and complexity in exchange.
+
+## Ways to invest
+- **Fund investment:** commit capital to a fund run by a manager. Least effort and expertise needed and diversified, but the highest fees and least control.
+- **Co-investment:** invest in a fund and also directly in some of its deals alongside the manager, usually with lower fees, more control, and a chance to learn; requires the ability to assess deals quickly.
+- **Direct investment:** buy assets or companies directly. Lowest fees and most control, but needs large capital, expertise and a team, and gives less diversification.
+
+## Ownership and compensation structures
+- Most funds are **limited partnerships**: the **general partner (GP)** manages the fund and has unlimited liability; **limited partners (LPs)** provide most of the capital, have limited liability and no say in daily decisions. LPs commit capital, which the GP draws down (calls) as deals arise.
+- Fees: a **management fee** (often 1% to 2% of assets or committed capital) and an **incentive fee (carried interest)**, typically 20% of profits, sometimes only above a **hurdle rate**.
+- **High-water mark:** incentive fees are paid only on gains above the fund's previous peak value, so investors do not pay twice for the same gains. **Clawback:** the GP returns incentive fees already received if later losses mean it was overpaid.
+- The **waterfall** sets the order of distributions: deal by deal (American) or for the whole fund first (European, more favorable to LPs).`,
+ traps:[
+  "Fund investing needs the least expertise but costs the most; direct investing costs least but needs the most expertise.",
+  "Limited partners have limited liability and no management role; the general partner runs the fund.",
+  "A high-water mark stops incentive fees being paid twice on recovered losses.",
+  "A whole-of-fund (European) waterfall favors LPs over a deal-by-deal (American) waterfall.",
+  "Appraisal-based prices make alternative returns look smoother, and their risk lower, than it really is."
+ ],
+ formulas:["F1-ALT-01"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-features-methods-and-structures/","Alternative Investment Features, Methods, and Structures: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/privateequity.asp"],
+  ["w:Alternative_investment"],
+  ["w:Carried_interest"]
+ ]},
+{name:"Alternative Investment Performance and Returns",
+ core:/performance appraisal|after fees|net of fees|net return|gross return|fee (structure|calculation)|\bMOIC\b|multiple of invested capital|\bTVPI\b|\bDPI\b|\bRVPI\b|vintage|J-curve|smooth(ed|ing)|appraisal-based|Sortino|Calmar|drawdown|IRR (of|for) (the |a )?fund/,
+ match:/performance|after fees|net|gross|fee|MOIC|multiple|TVPI|DPI|RVPI|vintage|J-curve|smooth|apprais|Sortino|Calmar|drawdown|IRR|Sharpe|return|hurdle|incentive|management|high-water/,
+ ideas:`**Judging alternative investments takes care: returns come net of complex fees, prices are often appraisals, and cash flows are irregular.**
+
+## Performance appraisal
+- Use measures that fit the asset: the **internal rate of return** and **multiples** for private funds, risk-adjusted ratios for hedge funds.
+- The **Sharpe ratio** can mislead because returns are smoothed and not normally distributed. Downside measures help: the **Sortino ratio** (excess return per unit of downside deviation), maximum **drawdown** (largest peak-to-trough fall), and the Calmar ratio (return / maximum drawdown).
+- Private funds show a **J-curve**: negative returns in early years (fees and costs before investments mature), then gains as investments are sold. Compare funds with others of the same **vintage** (starting year).
+- Appraisal-based values react slowly, understating volatility and correlation with public markets; survivorship and backfill biases flatter hedge fund indexes.
+
+## Multiples for private funds
+- **DPI** (distributed to paid-in) = distributions / capital paid in; **RVPI** (residual value to paid-in) = remaining net asset value / paid-in capital; **TVPI** = DPI + RVPI. Example: 100 paid in, 60 distributed, 90 still held: DPI 0.6, RVPI 0.9, TVPI 1.5.
+- Multiples ignore timing; the IRR includes it but can be distorted by the timing of capital calls.
+
+## Returns before and after fees
+- Typical structure: a management fee on assets plus an incentive fee on profits, possibly above a hurdle and subject to a high-water mark. The details of each calculation (fees on start or end assets; incentive fee before or after the management fee; hard or soft hurdle) change the result, so read the terms.
+- Example (management fee 2% of year-end assets; incentive fee 20% of the gain after the management fee; no hurdle): a fund grows from 100 to 125. Management fee = 2.5; incentive fee = 20% × (25 − 2.5) = 4.5; the investor's net return = (125 − 2.5 − 4.5 − 100) / 100 = 18%, against 25% gross.
+- With a **hard hurdle**, the incentive fee applies only to returns above the hurdle; with a **soft hurdle**, once the hurdle is cleared the fee applies to the whole return.`,
+ traps:[
+  "Always check the fee conventions: they change the net return.",
+  "A soft hurdle charges the incentive fee on the whole gain once the hurdle is passed; a hard hurdle only on the excess.",
+  "TVPI = DPI + RVPI; only DPI is realized cash.",
+  "Smoothed appraisal values understate risk and correlation.",
+  "Early negative returns in private funds (the J-curve) are normal, not a sign of failure."
+ ],
+ formulas:["F1-ALT-01","F1-ALT-02"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-performance-and-returns/","Alternative Investment Performance and Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:J_curve"],
+  ["w:Sortino_ratio"]
+ ]},
+{name:"Investments in Private Capital: Equity and Debt",
+ core:/private equity|venture capital|leveraged buyout|\bLBOs?\b|buyout|private debt|private credit|direct lending|mezzanine|distressed (debt|investing)|unitranche|growth (equity|capital)|exit (strategy|route|via)|portfolio compan|management buyout|\bMBO\b|seed|angel/,
+ match:/private equity|venture|buyout|LBO|private debt|private credit|direct lending|mezzanine|distressed|unitranche|growth|exit|IPO|trade sale|secondary|portfolio compan|management|seed|early stage|later stage|leverage|covenant|floating|illiquid|diversif/,
+ ideas:`**Private capital provides equity and debt to companies outside public markets, in exchange for illiquidity and higher expected returns.**
+
+## Private equity
+- **Leveraged buyouts (LBOs):** a fund buys a mature company, mostly with borrowed money, improves operations and governance, pays down debt, and sells. A **management buyout** is led by the company's own managers.
+- **Venture capital:** minority stakes in young companies, from early stages (seed and start-up) to later stages (expansion). Most investments fail; a few large successes drive returns.
+- **Growth equity:** minority stakes in established, growing companies that need capital to expand.
+- **Exits:** sale to a strategic buyer (trade sale), sale to another fund (secondary), an IPO, or a recapitalization (new debt paying a dividend to the owners); write-off for failures.
+- Characteristics: long horizons (often 10-year funds), illiquidity, high fees, active ownership, and returns tied to the manager's skill, with wide differences between top and bottom managers.
+
+## Private debt
+- **Direct lending:** loans from funds to mid-sized companies, usually senior secured and floating rate, with covenants.
+- **Mezzanine debt:** subordinated debt, often with warrants or equity kickers; higher yield, behind senior lenders.
+- **Distressed debt:** buying the debt of troubled companies cheaply, often to influence a restructuring.
+- **Unitranche** loans combine senior and subordinated debt in one loan at a blended rate; specialty lending finances niche assets.
+- Characteristics: higher yields than public bonds as compensation for illiquidity and credit risk; floating rates reduce interest rate risk.
+
+## Diversification
+- Private capital gives exposure to companies and stages not available in public markets. Reported correlations with public equity look low, partly because appraisal values are smoothed; true economic exposure to the business cycle is substantial, especially for buyouts using leverage.`,
+ traps:[
+  "Venture capital returns depend on a few big winners; most investments fail.",
+  "Buyouts use high leverage; venture capital uses little or none.",
+  "Mezzanine debt is subordinated and often carries equity kickers.",
+  "Direct lending is usually senior secured and floating rate.",
+  "Low reported correlation with public markets partly reflects smoothed valuations."
+ ],
+ formulas:["F1-ALT-02"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-private-capital-equity-and-debt/","Investments in Private Capital: Equity and Debt: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/privateequity.asp"],
+  ["i:terms/v/venturecapital.asp"],
+  ["i:terms/l/leveragedbuyout.asp"],
+  ["w:Private_credit"]
+ ]},
+{name:"Real Estate and Infrastructure",
+ core:/real estate|\bREITs?\b|propert(y|ies)|cap(italization)? rate|net operating income|\bNOI\b|infrastructure|brownfield|greenfield|core (real estate|strategy)|value-add|opportunistic|commercial (property|real estate)|residential (property|real estate)|public-private partnership|\bPPP\b|toll road|airport|utilit/,
+ match:/real estate|REIT|property|cap rate|capitalization rate|NOI|net operating income|rent|lease|appraisal|infrastructure|brownfield|greenfield|core|value-add|opportunistic|commercial|residential|toll|airport|utility|regulated|inflation|income|leverage|mortgage/,
+ ideas:`**Real estate and infrastructure are real assets that produce steady income from long-lived physical assets, often with some protection against inflation.**
+
+## Real estate: features
+- **Property types:** residential, office, industrial and logistics, retail, hotels, and specialized properties.
+- **Ways to invest:** direct ownership, private real estate funds, publicly traded **REITs** (listed, liquid, required in many countries to distribute most of their income), and real estate debt (mortgages and mortgage-backed securities).
+- **Strategies by risk:** core (stable, fully leased properties), value-add (properties needing improvement or re-leasing) and opportunistic (development, distressed assets, high leverage).
+
+## Real estate: investment characteristics
+- Returns come from rental income and price appreciation. Income is fairly stable and leases can include inflation adjustments.
+- Valuation: the **income approach** (direct capitalization: value = net operating income / cap rate; NOI of 500,000 at a 5% cap rate implies a value of 10 million), the **cost approach** (replacement cost) and the **sales comparison** approach.
+- Risks: illiquidity, large lot sizes, leverage, property-specific and location risk, interest rate risk (higher rates usually raise cap rates and lower values). Appraisal-based indexes understate volatility; REITs behave more like equities in the short run.
+
+## Infrastructure: features
+- Long-lived assets that provide essential services: transport (roads, airports, ports), energy and utilities, communications, and social infrastructure (schools, hospitals).
+- **Greenfield** projects are to be built (construction and demand risk, higher expected return); **brownfield** assets already operate (stable, known cash flows).
+- Often owned through public-private partnerships, unlisted funds, or listed infrastructure companies.
+
+## Infrastructure: investment characteristics
+- Stable, long-term cash flows, frequently under regulated tariffs or long contracts, often linked to inflation; low correlation with other assets; high barriers to entry.
+- Risks: regulatory and political risk, construction risk (greenfield), leverage, illiquidity and very long horizons.`,
+ traps:[
+  "Value = NOI / cap rate: a higher cap rate means a lower value.",
+  "Greenfield infrastructure carries construction and demand risk; brownfield assets already produce cash flow.",
+  "Core real estate is the lowest-risk strategy; opportunistic the highest.",
+  "REITs trade like stocks in the short run, so they are more volatile than appraisal-based property indexes.",
+  "Net operating income is before financing costs and income taxes."
+ ],
+ formulas:["F1-ALT-03"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-real-estate-and-infrastructure/","Real Estate and Infrastructure: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/r/reit.asp"],
+  ["i:terms/c/capitalizationrate.asp"],
+  ["i:terms/n/noi.asp"],
+  ["i:terms/i/infrastructure.asp"]
+ ]},
+{name:"Natural Resources",
+ core:/commodit|timberland|timber|farmland|raw land|natural resources?|roll (yield|return)|contango|backwardation|collateral (yield|return)|spot (price )?return|convenience yield|crops?\b/,
+ match:/commodit|timber|farm|land|natural resource|roll|contango|backwardation|collateral|spot|convenience|crop|harvest|futures|inflation|storage|energy|metal|agricultur|weather/,
+ ideas:`**Natural resource investments include land that produces something (timber, crops) and commodities themselves, usually held through futures.**
+
+## Raw land, timberland and farmland
+- **Raw land:** undeveloped land held for its option value (future development or use); no income, so returns come only from price changes.
+- **Timberland:** trees grow whatever the market does, giving a natural return; the owner can delay harvesting when prices are low and harvest more when they are high, a valuable flexibility. Returns come from timber sales, biological growth and land value.
+- **Farmland:** income from crops (owned or rented to farmers) and land appreciation. Unlike timber, crops must be harvested when ready, so there is less flexibility; risks include weather, disease and commodity prices.
+- Characteristics: long horizons, illiquidity, real-asset protection against inflation, and low correlation with financial assets.
+
+## Commodities
+- Categories: energy, metals (industrial and precious) and agricultural products. Most investors gain exposure through **futures** (or funds that hold them), not physical holdings, because of storage costs.
+- The return on a fully collateralized futures position has three parts: **spot price return** (change in the commodity's spot price), **roll return** (gain or loss from replacing expiring contracts with longer-dated ones), and **collateral return** (interest on the cash held as margin).
+- **Backwardation:** futures prices are below spot; rolling into cheaper longer contracts gives a positive roll return. **Contango:** futures prices are above spot (often because of storage costs); rolling gives a negative roll return.
+- Futures prices reflect the cost of carry: storage and financing costs push them up; the **convenience yield** of holding the physical good pushes them down.
+
+## Risk, return and diversification
+- Commodities tend to do well when inflation rises and in supply shocks, offering inflation protection and diversification. Their returns are volatile and depend on supply (weather, geopolitics) and demand (economic growth). Land and timber have lower volatility, partly because of appraisal-based valuation.`,
+ traps:[
+  "In contango the roll return is negative; in backwardation it is positive.",
+  "Total futures return = spot return + roll return + collateral return.",
+  "Timberland lets the owner delay harvesting; farmland crops must be harvested when ready.",
+  "Raw land produces no income, so its return is price appreciation only.",
+  "Storage costs raise futures prices relative to spot; convenience yield lowers them."
+ ],
+ formulas:["F1-ALT-04"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-natural-resources/","Natural Resources: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/commodity.asp"],
+  ["i:terms/c/contango.asp"],
+  ["i:terms/r/roll-yield.asp"]
+ ]},
+{name:"Hedge Funds",
+ core:/hedge funds?|long\/short|long-short|equity hedge|event[- ]driven|merger arbitrage|relative value|global macro|macro (fund|strategy|strategies)|managed futures|\bCTA\b|fund of hedge funds|lock-?up|redemption|notice period|gat(e|ing)|side pocket|backfill|survivorship|multi-strategy|convertible arbitrage|fixed[- ]income arbitrage/,
+ match:/hedge fund|long|short|equity hedge|event|merger|arbitrage|relative value|macro|managed futures|CTA|fund of funds|lock|redemption|notice|gate|side pocket|backfill|survivorship|leverage|fee|transparen|absolute return|separately managed|UCITS/,
+ ideas:`**Hedge funds are lightly regulated, actively managed pools that can short, use leverage and trade derivatives, aiming at returns less tied to the market.**
+
+## Features compared with other asset classes
+- Flexible mandates (long and short positions, leverage, derivatives, many markets), absolute-return goals rather than beating an index, limited transparency and regulation, fees of the "management plus incentive" type, and limited liquidity for investors.
+- **Liquidity terms:** **lockup periods** (no withdrawals at first), redemption notice periods, redemption fees, **gates** limiting withdrawals, and side pockets for illiquid assets.
+
+## Main strategies
+- **Equity hedge:** long/short equity, market-neutral, short bias; returns depend on stock picking.
+- **Event-driven:** merger arbitrage (buying the target, often shorting the acquirer), distressed securities, activist investing.
+- **Relative value:** exploiting price differences between related securities, such as convertible arbitrage or fixed-income arbitrage; often heavily leveraged.
+- **Opportunistic:** global macro (views on rates, currencies, commodities, equity markets) and managed futures (often trend-following).
+- **Multi-strategy** funds combine several, with central risk management.
+
+## Investment forms and vehicles
+- Direct investment in a fund (usually a limited partnership), **funds of hedge funds** (diversification and due diligence, at the cost of a second layer of fees), separately managed accounts (more transparency and control for large investors), and regulated liquid alternative funds that imitate hedge fund strategies with daily liquidity.
+
+## Risk, return and diversification
+- Returns vary greatly by strategy and manager. Many strategies sell insurance-like risks: steady small gains and occasional large losses (fat left tails).
+- Reported index returns are flattered by **survivorship bias** (failed funds drop out) and **backfill bias** (funds add past returns only when they look good).
+- Correlations with equities rise in market stress, reducing diversification exactly when it is needed.`,
+ traps:[
+  "Fund-of-funds investors pay two layers of fees.",
+  "Survivorship and backfill biases make hedge fund indexes look better than reality.",
+  "Merger arbitrage typically buys the target's shares and shorts the acquirer's.",
+  "Relative value strategies often rely on high leverage to make small price gaps worthwhile.",
+  "Hedge fund diversification tends to weaken in market crises."
+ ],
+ formulas:["F1-ALT-01"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-hedge-funds/","Hedge Funds: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/h/hedgefund.asp"],
+  ["i:terms/m/mergerarbitrage.asp"],
+  ["w:Hedge_fund"]
+ ]},
+{name:"Introduction to Digital Assets",
+ core:/digital assets?|crypto|bitcoin|ether|blockchain|distributed ledger|\bDLT\b|tokeni[sz]|tokens?\b|stablecoins?|non-fungible|\bNFTs?\b|proof of (work|stake)|smart contracts?|decentralized finance|\bDeFi\b|central bank digital|\bCBDCs?\b|permissionless|permissioned/,
+ match:/digital|crypto|bitcoin|ether|blockchain|ledger|DLT|token|stablecoin|NFT|proof of|smart contract|DeFi|decentralized|CBDC|permission|wallet|exchange|custod|volatil|regulat|mining|validator/,
+ ideas:`**Digital assets are assets created, stored and transferred using distributed ledger technology.**
+
+## Distributed ledger technology (DLT)
+- A **distributed ledger** is a database shared across a network of participants, with a consensus mechanism to agree on its contents and cryptography to secure them. A **blockchain** groups transactions into linked blocks.
+- **Consensus mechanisms:** **proof of work** (miners spend computing power to add blocks) and **proof of stake** (validators lock up coins as collateral; far less energy).
+- **Permissionless** networks are open to anyone; **permissioned** networks admit only approved participants (common in finance).
+- **Smart contracts** are programs on the ledger that execute automatically when conditions are met.
+- Financial applications: settlement and clearing with fewer intermediaries, **tokenization** of real assets (bonds, real estate, funds), record keeping, cross-border payments, and decentralized finance (lending and trading without traditional intermediaries).
+
+## Types of digital assets
+- **Cryptocurrencies** (such as bitcoin) with no central issuer; **stablecoins** pegged to a currency or asset; **tokens** representing rights or assets (security tokens, utility tokens); **non-fungible tokens (NFTs)**, each unique; and **central bank digital currencies**, issued by central banks.
+
+## Investment features compared with other assets
+- No cash flows for most cryptocurrencies, so value rests on adoption, scarcity and sentiment rather than on discounted cash flows; extreme volatility; 24-hour trading on many venues; evolving regulation.
+- Ways to invest: direct holdings in a wallet or on an exchange, funds and ETFs (where allowed), futures, shares of related companies, and tokenized products.
+
+## Risk, return and diversification
+- Risks: very high volatility and large drawdowns, fraud and hacking, custody (losing private keys means losing the asset), exchange failures, regulatory changes, and stablecoins losing their peg.
+- Historically very high returns with very high risk; correlation with equities has varied and tended to rise in stress, so diversification benefits are uncertain.`,
+ traps:[
+  "Most cryptocurrencies produce no cash flows, so discounted cash flow valuation does not apply.",
+  "Proof of stake uses locked collateral; proof of work uses computing power.",
+  "A stablecoin can lose its peg; 'stable' is a design goal, not a guarantee.",
+  "Losing the private keys means losing the asset: custody is a key risk.",
+  "Permissioned ledgers restrict participants; permissionless ones are open to all."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ai-introduction-to-digital-assets/","Introduction to Digital Assets: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/b/blockchain.asp"],
+  ["i:terms/c/cryptocurrency.asp"],
+  ["w:Distributed_ledger"]
+ ]}
 ]);
 /* Learning map, Portfolio Construction: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Portfolio Construction","LM-PM",[
-{name:"Portfolio Risk and Return: Part I"},
-{name:"Portfolio Risk and Return: Part II"},
-{name:"Portfolio Management: An Overview"},
-{name:"Basics of Portfolio Planning and Construction"},
-{name:"The Behavioral Biases of Individuals"},
-{name:"Introduction to Risk Management"}
+{name:"Portfolio Risk and Return: Part I",
+ core:/risk aver|risk-aver|risk seek|risk neutral|utility|indifference curves?|optimal (risky )?portfolio|efficient frontier|minimum[- ]variance|portfolio('s)? (standard deviation|variance|risk)|correlation (of|between|coefficient)|diversif|asset classes|historical (mean|returns|risk|variance)/,
+ match:/risk aver|utility|indifference|optimal|efficient|minimum-variance|portfolio|standard deviation|variance|covariance|correlat|diversif|asset class|historical|mean|return|risk/,
+ ideas:`**Part I covers the raw material of portfolio choice: how asset classes have behaved, how investors trade risk for return, and how combining assets reduces risk.**
+
+## Asset classes
+- Over long periods, small-company and large-company equities have earned the highest returns with the highest risk, followed by long-term bonds and then short-term bills; real returns and risk premiums vary across countries and periods.
+- Mean, variance and covariance estimated from history are inputs to portfolio choice, but past figures are only estimates of the future.
+
+## Risk aversion and utility
+- A **risk-averse** investor prefers the certain outcome to a gamble with the same expected value; a risk-neutral investor cares only about expected return; a risk seeker prefers the gamble.
+- Utility U = E(R) − ½ A σ², where A measures risk aversion (higher = more averse). Example: E(R) = 10%, σ = 20%, A = 4: U = 0.10 − 0.5 × 4 × 0.04 = 0.02, or 2%.
+- **Indifference curves** connect portfolios with equal utility; they are steeper for more risk-averse investors.
+
+## Portfolio risk
+- Two assets: σp² = w1²σ1² + w2²σ2² + 2 w1 w2 ρ σ1 σ2. With correlation below +1, portfolio risk is less than the weighted average of the assets' risks; the lower the correlation, the greater the benefit.
+- For many assets, the risk of an equally weighted portfolio approaches the average covariance: diversification removes the risk specific to each asset but not the risk they share.
+
+## Efficient frontier and optimal choice
+- The **minimum-variance frontier** gives the lowest risk for each expected return; its left tip is the **global minimum-variance portfolio**; the upper part is the **efficient frontier**.
+- Combining the risk-free asset with a risky portfolio gives the **capital allocation line (CAL)**. The best CAL is tangent to the efficient frontier, and each investor picks the point on it where an indifference curve touches it: more risk-averse investors hold more of the risk-free asset.`,
+ traps:[
+  "In the utility formula use decimals and keep the ½: U = E(R) − 0.5 × A × σ².",
+  "A higher risk-aversion coefficient A means a steeper indifference curve.",
+  "Diversification benefits come from correlation below +1, not from adding risky assets as such.",
+  "The global minimum-variance portfolio has the lowest risk of all risky portfolios, not the best risk-return trade-off.",
+  "Portfolios below the efficient frontier are dominated."
+ ],
+ formulas:["F1-PM-01","F1-PM-02","F1-PM-03","F1-QM-18"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-portfolio-risk-and-return-part-i/","Portfolio Risk and Return: Part I: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Modern_portfolio_theory"],
+  ["w:Risk_aversion"],
+  ["w:Efficient_frontier"]
+ ]},
+{name:"Portfolio Risk and Return: Part II",
+ core:/capital market line|\bCML\b|systematic|nonsystematic|unsystematic|diversifiable|market model|return[- ]generating|\bbetas?\b|\bCAPM\b|capital asset pricing|security market line|\bSML\b|Sharpe|Treynor|M-squared|\bM²|\bM2\b|Jensen|\balpha\b|market portfolio/,
+ match:/CML|capital market|systematic|nonsystematic|unsystematic|diversifiable|market model|factor|beta|CAPM|capital asset|SML|security market|Sharpe|Treynor|M-squared|M²|Jensen|alpha|market portfolio|risk-free|premium/,
+ ideas:`**Part II shows which risk is rewarded and how to measure performance once that is known.**
+
+## The capital market line
+- When all investors share the same expectations, the optimal risky portfolio is the **market portfolio**, and the best capital allocation line is the **capital market line (CML)**: E(Rp) = Rf + [(E(Rm) − Rf) / σm] × σp. Lending gives points below the market portfolio, borrowing points above it.
+
+## Systematic and nonsystematic risk
+- **Total risk** = **systematic** (market) risk + **nonsystematic** (company-specific) risk. Nonsystematic risk can be removed by diversification at almost no cost, so investors are **not paid** for bearing it; only systematic risk earns a premium.
+
+## Return-generating models and beta
+- Multi-factor models explain returns with several factors; the **market model** uses one: Ri = αi + βi Rm + εi.
+- **Beta** = Cov(Ri, Rm) / σm² = ρ × σi / σm: sensitivity to the market. Beta 1 moves with the market; above 1 amplifies it; below 1 dampens it.
+
+## CAPM and the security market line
+- E(Ri) = Rf + βi [E(Rm) − Rf]. The **security market line (SML)** plots expected return against beta. Assumptions include risk-averse, utility-maximizing investors with the same expectations, frictionless markets, borrowing and lending at the risk-free rate, and a single period.
+- Applications: estimating required returns and the cost of equity, capital budgeting, and judging securities: one plotting above the SML (expected return above its required return) is undervalued; below it, overvalued.
+
+## Performance measures
+- **Sharpe ratio** = (Rp − Rf) / σp: excess return per unit of total risk.
+- **Treynor ratio** = (Rp − Rf) / βp: excess return per unit of systematic risk.
+- **M²** = (Rp − Rf) × σm / σp − (Rm − Rf): return difference from the market at the same total risk.
+- **Jensen's alpha** = Rp − [Rf + βp (Rm − Rf)]: return above the CAPM prediction.
+- Example: Rp = 12%, σp = 20%, βp = 1.2, Rf = 3%, Rm = 10%, σm = 16%: Sharpe 0.45, Treynor 7.5%, M² 0.20%, alpha 0.60%.
+- Sharpe and M² suit a portfolio that is the investor's whole wealth (total risk matters); Treynor and alpha suit a well-diversified part of a larger portfolio.`,
+ traps:[
+  "The CML uses total risk (σ) and applies only to efficient portfolios; the SML uses beta and applies to any asset.",
+  "Only systematic risk is rewarded; nonsystematic risk can be diversified away.",
+  "A security plotting above the SML is undervalued.",
+  "Treynor and Jensen's alpha use beta; Sharpe and M² use standard deviation.",
+  "Beta = covariance with the market / market variance, not / market standard deviation."
+ ],
+ formulas:["F1-PM-04","F1-PM-05","F1-PM-06","F1-PM-07","F1-PM-08","F1-QM-15"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-portfolio-risk-and-return-part-ii/","Portfolio Risk and Return: Part II: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/cml.asp"],
+  ["i:terms/s/sml.asp"],
+  ["i:terms/t/treynorratio.asp"],
+  ["i:terms/j/jensensmeasure.asp"]
+ ]},
+{name:"Portfolio Management: An Overview",
+ core:/portfolio approach|portfolio management process|planning,? execution|execution step|feedback step|types of investors|individual investors?|institutional investors?|defined[- ]benefit|defined[- ]contribution|pension (fund|plan)|endowments?|foundations?|insurance compan|sovereign wealth|asset management (industry|firms?)|mutual funds?|open-end|closed-end|exchange-traded funds?|\bETFs?\b|separately managed|pooled investment|passive (management|investing)|active management/,
+ match:/portfolio approach|process|planning|execution|feedback|investor|individual|institutional|pension|defined|endowment|foundation|insurance|bank|sovereign wealth|asset manag|mutual fund|open-end|closed-end|ETF|separately managed|pooled|passive|active|NAV|fees|liquidity|horizon/,
+ ideas:`**The portfolio approach judges each investment by its effect on the whole portfolio, not on its own.**
+
+## Why a portfolio approach
+- Diversification lowers risk without necessarily lowering expected return; the diversification ratio (portfolio risk / average risk of its holdings) shows the gain. Diversification can fail in crises, when correlations rise.
+
+## The portfolio management process
+- **Planning:** understand the client's needs and constraints, and write an investment policy statement (IPS).
+- **Execution:** asset allocation, security analysis and portfolio construction (including trading).
+- **Feedback:** monitor and rebalance, and measure and report performance.
+
+## Types of investors
+- **Individuals:** goals such as retirement, education or a home; risk tolerance and horizons vary widely; taxes matter.
+- **Defined benefit pension plans:** promised benefits; long horizon; liquidity needs depend on the members' ages. **Defined contribution plans:** the employee bears the investment risk and chooses among options.
+- **Endowments and foundations:** very long horizons and spending needs (often a set percentage of assets), so they can take more risk and illiquidity.
+- **Banks:** match assets to deposits; low risk tolerance, high liquidity needs. **Insurers:** life insurers have long liabilities; property and casualty insurers need more liquidity and shorter horizons.
+- **Sovereign wealth funds:** government-owned, often long horizons; **investment companies** (funds) manage money for others.
+
+## The asset management industry
+- Firms manage money for others for fees. Trends: growth of **passive** investing (index funds, ETFs) and fee pressure, consolidation, growth of alternatives, and the use of big data and technology. Active managers aim to beat a benchmark; passive managers aim to track it.
+
+## Pooled investment products
+- **Open-end mutual funds:** buy and sell shares at net asset value (NAV) daily; the fund issues and redeems shares. **Closed-end funds:** fixed number of shares traded on an exchange, possibly at a premium or discount to NAV.
+- **ETFs:** trade on exchanges all day; creation and redemption by authorized participants keep prices close to NAV; usually low cost and tax efficient.
+- **Separately managed accounts:** individually owned portfolios with more customization, for larger investors. **Hedge funds** and **private equity funds** are pooled vehicles for qualified investors.`,
+ traps:[
+  "In a defined contribution plan the employee bears the investment risk; in a defined benefit plan the employer does.",
+  "Endowments can accept more illiquidity because of their very long horizons.",
+  "Open-end funds trade at NAV; closed-end funds can trade at a premium or discount to NAV.",
+  "Diversification benefits shrink in crises when correlations rise.",
+  "The IPS is written in the planning step, before asset allocation."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-portfolio-management-overview/","Portfolio Management: An Overview: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/e/endowment.asp"],
+  ["i:terms/d/definedbenefitpensionplan.asp"],
+  ["i:terms/e/etf.asp"],
+  ["w:Mutual_fund"]
+ ]},
+{name:"Basics of Portfolio Planning and Construction",
+ core:/investment policy statement|\bIPS\b|risk tolerance|ability (and|to) (willingness|take|bear)|willingness (and|to) (ability|take|bear)|capacity (for|to take|to bear) risk|liquidity (need|constraint|requirement)|time horizon|tax (concern|constraint|status)|legal and regulatory|unique circumstances|strategic asset allocation|tactical asset allocation|rebalanc|core-satellite|\bESG\b|negative screening|positive screening|best-in-class|impact investing|thematic investing|asset class(es)? (specification|should)/,
+ match:/IPS|policy statement|risk tolerance|ability|willingness|capacity|objective|constraint|liquidity|horizon|tax|legal|regulatory|unique|strategic|tactical|rebalanc|core-satellite|ESG|screening|best-in-class|impact|thematic|engagement|asset class|allocation|benchmark/,
+ ideas:`**Portfolio planning turns a client's goals and limits into a written policy, then into an asset allocation.**
+
+## The investment policy statement (IPS)
+- A written plan that guides decisions, keeps them disciplined in turbulent markets, and lets the client and manager judge performance against agreed rules. It should be reviewed regularly and whenever circumstances change.
+- Typical contents: an introduction, the purpose of the statement, duties and responsibilities, procedures for updating it, the investment **objectives**, the **constraints**, investment guidelines, evaluation and review, and appendices (strategic allocation, rebalancing policy).
+
+## Objectives
+- **Return objectives:** absolute (such as 6% a year) or relative to a benchmark; they must be consistent with the risk objectives.
+- **Risk objectives:** absolute (such as limiting volatility or the chance of a loss) or relative (tracking error against a benchmark).
+- **Ability (capacity) to take risk** depends on the horizon, wealth relative to needs, income stability and liabilities. **Willingness** is psychological. When they differ, the advisor usually follows the lower one and discusses the gap with the client.
+
+## Constraints
+- **Liquidity** (cash needs), **time horizon**, **taxes**, **legal and regulatory** factors (for example rules for pension funds or trusts), and **unique circumstances** (ethical preferences, concentrated holdings, special needs).
+
+## From IPS to portfolio
+- **Asset classes** should be internally similar, distinct from one another (low correlations), together cover the investable universe, and be large enough to absorb investment.
+- **Strategic asset allocation** sets long-term target weights from the IPS; it explains most of the variation of a portfolio's returns over time. **Tactical allocation** deviates temporarily to exploit views. **Rebalancing** brings weights back within set ranges.
+- **Core-satellite:** a passive or low-risk core plus actively managed satellites.
+
+## ESG in planning and construction
+- Approaches: negative (exclusionary) screening, positive screening or best-in-class selection, ESG integration into analysis, thematic investing (such as clean energy), impact investing (measurable social or environmental results alongside returns), and engagement or active ownership (voting and dialogue). Clients' ESG preferences are usually recorded in the IPS.`,
+ traps:[
+  "When ability and willingness to take risk differ, the lower one usually governs.",
+  "Return objectives must be consistent with risk objectives and constraints.",
+  "Strategic allocation is long-term and policy-based; tactical allocation is a short-term deviation.",
+  "Asset classes should have low correlations with one another and similar assets within each.",
+  "Negative screening excludes; impact investing targets measurable outcomes as well as returns."
+ ],
+ formulas:["F1-PM-10"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-portfolio-planning-and-construction/","Basics of Portfolio Planning and Construction: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/i/ips.asp"],
+  ["i:terms/s/strategicassetallocation.asp"],
+  ["i:terms/t/tacticalassetallocation.asp"],
+  ["i:terms/e/environmental-social-and-governance-esg-criteria.asp"]
+ ]},
+{name:"The Behavioral Biases of Individuals",
+ core:/cognitive (error|bias)|emotional bias|behavioral|loss aversion|overconfidence|self-control|status quo|endowment (bias|effect)|regret|anchoring|mental accounting|framing|availability|conservatism|confirmation|representativeness|illusion of control|hindsight|herding|bubbles?/,
+ match:/cognitive|emotional|behavioral|bias|loss aversion|overconfiden|self-control|status quo|endowment|regret|anchor|mental accounting|framing|availability|conservatism|confirmation|representativeness|illusion|hindsight|herd|bubble|momentum|anomal|disposition|traditional finance/,
+ ideas:`**Behavioral finance studies how real people decide, and how their biases can push prices away from what traditional finance predicts.**
+
+## Cognitive errors versus emotional biases
+- **Cognitive errors** come from faulty reasoning or memory; they can often be corrected with better information, education or rules.
+- **Emotional biases** come from feelings and impulses; they are hard to correct, so advisors usually adapt to them rather than fight them.
+
+## Cognitive errors
+- **Belief perseverance:** **conservatism** (slow to update views on new information), **confirmation** (seeking evidence that agrees), **representativeness** (judging by stereotypes, ignoring base rates), **illusion of control** (believing you can influence outcomes you cannot), **hindsight** (believing past events were predictable).
+- **Processing errors:** **anchoring and adjustment** (sticking too close to an initial number), **mental accounting** (treating money differently by its source or purpose), **framing** (answers depend on how a question is posed), **availability** (judging likelihood by how easily examples come to mind).
+
+## Emotional biases
+- **Loss aversion:** losses hurt more than equal gains please, leading investors to hold losers too long and sell winners too early (the disposition effect).
+- **Overconfidence:** overestimating one's knowledge and skill; leads to excessive trading and too little diversification.
+- **Self-control:** favoring spending now over saving for long-term goals.
+- **Status quo:** preferring to do nothing. **Endowment:** valuing what you own more than you would pay to buy it. **Regret aversion:** avoiding decisions that could later be regretted, often by following the crowd.
+
+## Effects on markets
+- Biases help explain patterns traditional finance struggles with: **momentum** (underreaction then herding), **bubbles and crashes** (overconfidence, herding, availability), the value effect (overreaction to bad news about cheap stocks), and too little diversification (home bias, familiarity).`,
+ traps:[
+  "Overconfidence and loss aversion are emotional biases; anchoring and mental accounting are cognitive errors.",
+  "Cognitive errors are easier to correct with information; emotional biases are usually adapted to.",
+  "The disposition effect, selling winners too early and holding losers too long, comes from loss aversion.",
+  "Representativeness ignores base rates; availability relies on what is easy to recall.",
+  "Regret aversion can lead to herding: following the crowd feels safer."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-behavioral-biases-of-individuals/","The Behavioral Biases of Individuals: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/b/behavioralfinance.asp"],
+  ["i:terms/a/anchoring.asp"],
+  ["i:terms/m/mentalaccounting.asp"],
+  ["w:List_of_cognitive_biases"]
+ ]},
+{name:"Introduction to Risk Management",
+ core:/risk management|risk governance|risk budget(ing)?|value at risk|\bVaR\b|\bCVaR\b|stress test|scenario analysis|operational risk|model risk|settlement risk|liquidity risk|market risk|tail risk|solvency risk|longevity risk|mortality risk|risk transfer|self-insur|risk shifting|risk avoidance|chief risk officer|risk framework|risk tolerance of the|enterprise risk/,
+ match:/risk management|governance|budget|VaR|value at risk|stress|scenario|operational|model risk|settlement|liquidity|market risk|credit risk|tail|solvency|longevity|mortality|transfer|insur|shift|avoid|accept|prevent|diversif|derivative|hedg|board|committee|tolerance|appetite|measure|sensitiv|delta|duration|beta/,
+ ideas:`**Risk management is the process of deciding how much risk to take, measuring the risks actually taken, and adjusting them to match. It is not the same as minimizing risk.**
+
+## A risk management framework
+- Features: **risk governance**, identification and measurement of risks, infrastructure (data, systems, people), policies and processes, monitoring, mitigation and management, communication, and strategic analysis that links risk to the organization's goals.
+
+## Risk governance, tolerance and budgeting
+- **Risk governance** is top-down: the board sets the overall approach and oversees it, often through a risk committee; management, sometimes led by a chief risk officer, implements it. Good governance gives an enterprise-wide view of risk.
+- **Risk tolerance** is how much risk the organization is willing and able to accept, given its objectives, resources and constraints; it is set before risks are taken.
+- **Risk budgeting** allocates that total risk among activities, managers or asset classes (for example with volatility, tracking error or value-at-risk limits) so risk is spent where it is expected to earn the most.
+
+## Sources of risk
+- **Financial risks:** market (prices, rates, exchange rates), credit (a counterparty fails to pay) and liquidity (cannot trade without a large price impact).
+- **Non-financial risks:** operational (people, systems, processes, external events including cyber attacks), settlement, legal, compliance and regulatory, accounting, model, tail, and solvency risk; for individuals, mortality and longevity risk.
+- Risks interact: in a crisis, market losses, credit problems and vanishing liquidity reinforce one another, and margin calls can turn market risk into liquidity and solvency risk.
+
+## Measuring and modifying risk
+- **Measures:** standard deviation, beta (equity), duration (bonds), the option "Greeks", **value at risk** (the minimum loss expected with a given probability over a period, such as a 5% chance of losing at least 2 million in a month), conditional VaR (average loss beyond VaR), and stress tests and scenarios.
+- **Modifying risk:** **prevention or avoidance** (not taking the activity), **acceptance** (keeping it, through self-insurance or diversification), **transfer** (insurance), and **shifting** (derivatives that change the distribution of outcomes). The choice weighs cost against benefit.`,
+ traps:[
+  "Risk management aims at the right amount of risk, not the least risk.",
+  "Risk tolerance is set first; risk budgeting then allocates it.",
+  "VaR is a minimum loss at a given probability, not the maximum possible loss.",
+  "Insurance transfers risk; derivatives shift it; diversification and self-insurance accept it.",
+  "Non-financial risks such as operational and model risk can be as damaging as market risk."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/pm-introduction-to-risk-management/","Introduction to Risk Management: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/r/riskmanagement.asp"],
+  ["i:terms/v/var.asp"],
+  ["i:terms/c/conditional_value_at_risk.asp"],
+  ["w:Enterprise_risk_management"]
+ ]}
 ]);
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
