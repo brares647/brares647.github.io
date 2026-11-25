@@ -17962,6 +17962,110 @@ Paying employees with shares or options aligns them with shareholders, conserves
 {name:"Analysis of Income Taxes",
  core:/deferred tax|income tax expense|taxes payable|taxable income|tax base|temporary difference|permanent difference|valuation allowance|effective tax rate|statutory (tax )?rate|cash tax rate|tax loss|carry ?forward|carryforward/,
  match:/tax|deferred|temporary|permanent|valuation allowance|carry|statutory|effective rate|reconciliation|depreciation|warranty/,
+ lesson:`## 1. Two sets of books, one company
+A company calculates profit twice: once under accounting standards (IFRS or US GAAP) for investors, and once under tax law for the tax authority. The two sets of rules have different goals, so the numbers differ. Deferred taxes are how the financial statements deal with that difference.
+
+### The vocabulary
+- **Accounting profit** (pretax income, profit before tax): from the income statement.
+- **Taxable income**: profit calculated under tax rules, the base on which tax is paid.
+- **Taxes payable** (current tax): taxable income × tax rate, owed to the authority for this period.
+- **Income tax expense**: the tax charge in the income statement = taxes payable + change in deferred tax liabilities − change in deferred tax assets.
+- **Tax base**: the value of an asset or liability for tax purposes. **Carrying amount**: its value on the balance sheet.
+
+## 2. Temporary and permanent differences
+### Temporary differences
+A **temporary difference** arises when the carrying amount of an asset or liability differs from its tax base, and the difference will reverse in future periods. It creates deferred taxes.
+- **Deferred tax liability (DTL)**: the company has paid **less** tax so far than its accounting profit implies, and will pay more later. Classic cause: **accelerated depreciation for tax** while the books use straight-line, so the asset's carrying amount exceeds its tax base.
+- **Deferred tax asset (DTA)**: the company has paid **more** tax so far than its accounting profit implies, and will pay less later. Classic causes: **warranty or restructuring provisions** expensed in the books but deductible only when paid; **tax loss carryforwards**; revenue taxed when received in advance but recognized later in the books.
+
+A simple test: for an **asset**, carrying amount > tax base gives a DTL, carrying amount < tax base a DTA. For a **liability**, it is the reverse: carrying amount > tax base gives a DTA.
+
+### Permanent differences
+A **permanent difference** never reverses: income that is never taxed (some tax-exempt interest or dividends), or expenses that are never deductible (fines, some entertainment costs). Permanent differences create **no deferred tax**; they make the **effective tax rate** differ from the statutory rate.
+
+> **Worked example 1: a DTL from accelerated depreciation**
+> A company buys equipment for 600. The books depreciate it straight-line over 6 years (100 a year). Tax rules allow 200 a year over 3 years. Tax rate 25%.
+> - End of year 1: carrying amount = 600 − 100 = 500; tax base = 600 − 200 = 400.
+> - Temporary difference = 500 − 400 = 100 (asset carrying amount above tax base).
+> - DTL = 100 × 25% = **25**.
+> By the end of year 3 the tax base is zero and the carrying amount 300, so the DTL peaks at 75. In years 4 to 6 the books still depreciate but tax does not, taxable income exceeds accounting profit, and the DTL unwinds to zero.
+
+> **Worked example 2: the year-1 tax charge**
+> Same company. Accounting profit before tax is 1,000 (after 100 of book depreciation).
+> - Taxable income = 1,000 + 100 − 200 = 900; taxes payable = 900 × 25% = **225**.
+> - Increase in DTL = 25.
+> - Income tax expense = 225 + 25 = **250**, which is exactly 25% of accounting profit.
+> Deferred tax makes the expense match the accounting profit; the cash (225) follows the tax return.
+
+> **Worked example 3: a DTA from a warranty provision**
+> A company records a warranty provision of 80 this year; tax rules allow a deduction only when repairs are paid. Tax rate 25%.
+> - The liability's carrying amount is 80 and its tax base is 0.
+> - DTA = 80 × 25% = **20**.
+> This year taxes payable are higher than the expense implies; when the repairs are paid, the deduction reduces future taxes and the DTA unwinds.
+
+## 3. Recognizing and measuring deferred taxes
+- Deferred taxes are measured at the tax rates **expected to apply when the difference reverses**, using rates enacted (US GAAP) or enacted or substantively enacted (IFRS) at the balance sheet date. They are **not discounted**.
+- When the tax rate changes, existing DTLs and DTAs are **remeasured**, and the change goes through income tax expense (or OCI if the item came from OCI).
+- **DTAs must be recoverable.** IFRS recognizes a DTA only to the extent it is **probable** that future taxable profit will be available. US GAAP recognizes the full DTA and then a **valuation allowance** if it is **more likely than not** that some of it will not be realized.
+- On the balance sheet, deferred tax assets and liabilities are presented as **non-current** under both IFRS and US GAAP.
+
+> **Worked example 4: a tax rate cut**
+> A company has a DTL of 300, based on temporary differences of 1,200 at a 25% rate. A new law cuts the rate to 20%.
+> - New DTL = 1,200 × 20% = **240**; the 60 decrease **reduces income tax expense** this year.
+> - If the company instead had a net DTA, a rate cut would **increase** tax expense: future deductions are worth less.
+> These one-off effects can be large; analysts remove them when judging the underlying tax rate.
+
+> **Worked example 5: a valuation allowance**
+> A US company has tax loss carryforwards that create a DTA of 150. After three years of losses, management concludes that only 60 is more likely than not to be used.
+> - Valuation allowance = 150 − 60 = **90**; the net DTA shown is 60.
+> - Setting up the allowance adds 90 to income tax expense.
+> - If the company returns to profit, releasing the allowance reduces tax expense and boosts net income.
+> Changes in the allowance are management judgments; a release just before a reporting target is met deserves a second look.
+
+## 4. Three tax rates
+- **Statutory tax rate**: the rate set by law in the company's home jurisdiction.
+- **Effective tax rate** = income tax expense ÷ pretax income. It differs from the statutory rate because of permanent differences, different rates in foreign jurisdictions, tax credits, changes in valuation allowances and rate changes.
+- **Cash tax rate** = cash taxes paid ÷ pretax income. It differs from the effective rate because of deferred taxes (and timing of payments).
+
+> **Worked example 6: statutory, effective and cash rates**
+> Pretax income is 1,000, which includes 40 of tax-exempt interest income and is after a 20 fine that is not deductible. Statutory rate 25%. No temporary differences this year, so taxes payable = income tax expense. Cash taxes paid during the year were 210 (part of the bill is due next year).
+> - Taxable income = 1,000 − 40 + 20 = 980; tax expense = 980 × 25% = **245**.
+> - Effective tax rate = 245 / 1,000 = **24.5%**, below the statutory 25%.
+> - Cash tax rate = 210 / 1,000 = **21.0%**.
+> \`1000 − 40 + 20 = × .25 = ÷ 1000 = \` → 0.245
+
+## 5. Reading the disclosures
+### The rate reconciliation
+Companies reconcile the statutory rate (or tax at the statutory rate) to the effective rate (or actual tax expense), line by line: foreign rate differences, tax-exempt income, non-deductible expenses, credits, valuation allowance changes, rate changes, prior-year adjustments. For each line, ask whether it is **recurring**:
+- Lower foreign rates on profits from low-tax countries recur as long as the profit mix holds.
+- A one-off rate change or allowance release does not; exclude it when forecasting the effective rate.
+
+### The deferred tax note
+It lists the main sources of DTAs and DTLs (depreciation, provisions, loss carryforwards, leases, pensions) and the valuation allowance. Trends tell a story:
+- A **growing DTL from depreciation** means capex keeps rising, so the DTL may never reverse in practice.
+- A **large DTA from loss carryforwards** depends on future profit; an increasing valuation allowance suggests management doubts it.
+
+### How analysts treat deferred taxes
+- If a DTL is **not expected to reverse** (for example a growing company that keeps investing), treat it as **equity**: the tax is effectively never paid.
+- If it is **expected to reverse**, treat it as a **liability**, ideally at its present value.
+- If timing and amount are **too uncertain**, exclude it from both debt and equity.
+The choice changes debt-to-equity ratios, sometimes a lot.
+
+> **Worked example 7: does the DTL count as debt?**
+> A utility has debt of 2,000, equity of 1,600 and a DTL of 500, almost all from accelerated tax depreciation. Its capex has grown every year for a decade, and it plans more.
+> - Reported debt-to-equity (DTL ignored) = 2,000 / 1,600 = **1.25**.
+> - Treating the DTL as equity: 2,000 / 2,100 = **0.95**.
+> - Treating it as debt: 2,500 / 1,600 = **1.56**.
+> With capex still growing, new timing differences will keep replacing the ones that reverse, so the DTL is closer to equity. The analyst should say which treatment was used.
+
+## 6. Checklist before you answer
+- Income tax expense = taxes payable + ΔDTL − ΔDTA.
+- Asset carrying amount above tax base (e.g., accelerated tax depreciation) → DTL; provisions and loss carryforwards → DTA.
+- Permanent differences: no deferred tax; they move the effective rate away from the statutory rate.
+- Effective rate = tax expense ÷ pretax income; cash rate = cash taxes paid ÷ pretax income.
+- Rate change: remeasure DTL and DTA; a rate cut lowers expense for a net DTL and raises it for a net DTA.
+- IFRS: DTA only if recovery is probable; US GAAP: full DTA less a valuation allowance (more likely than not).
+- DTL not expected to reverse → equity; expected to reverse → liability; uncertain → exclude.`,
  ideas:`**Companies keep two sets of rules: accounting standards for reported profit and tax law for taxable income. Deferred taxes bridge the gap.**
 
 ## Key terms
@@ -18000,6 +18104,138 @@ Paying employees with shares or options aligns them with shareholders, conserves
 {name:"Financial Reporting Quality",
  core:/reporting quality|earnings quality|quality of (earnings|reported|financial reporting|the earnings)|aggressive accounting|conservative accounting|earnings management|manag(e|ed|es|ing) earnings|non-GAAP|non-IFRS|pro forma earnings|adjusted (earnings|EBITDA)|red flag|warning sign|manipulat|fraud|channel stuffing|bill-and-hold|cookie jar|big bath/,
  match:/quality|aggressive|conservative|manage|non-GAAP|non-IFRS|pro forma|adjusted|red flag|warning|manipulat|fraud|channel stuff|bill-and-hold|cookie|bath|bias|motivat|opportunity|rationaliz|auditor|regulator|covenant|bonus|estimate|sustainab/,
+ lesson:`## 1. Two different kinds of quality
+Analysts ask two separate questions about a set of financial statements:
+- **Financial reporting quality**: does the report give a **faithful, useful picture** of what actually happened? Is it complete, unbiased and in line with the standards?
+- **Quality of results** (or earnings quality): are the results themselves **good and sustainable**? Is profit high enough to earn the cost of capital, and is it likely to recur?
+
+The two are linked but different. A company can report poor results faithfully (high reporting quality, low earnings quality). And you cannot judge earnings quality if reporting quality is low: if the numbers are biased, you do not know what the results really were.
+
+The same idea applies to the other statements:
+- **Cash flow quality**: is operating cash flow generated by the core business and sustainable, or by one-off moves such as delaying payments to suppliers?
+- **Balance sheet quality**: are assets and liabilities complete, fairly measured and clearly classified? Are there obligations off the balance sheet?
+
+## 2. A spectrum of quality
+Think of reporting quality as a ladder, from best to worst:
+1. **GAAP-compliant, decision-useful, with sustainable earnings of adequate level.** The ideal.
+2. **GAAP-compliant, decision-useful, but earnings are not sustainable or too low.** Honest reporting of weak results.
+3. **GAAP-compliant, but biased accounting choices.** Choices and estimates are within the rules but tilted (aggressive or conservative).
+4. **GAAP-compliant, but earnings management through real actions** (cutting research or advertising, delaying maintenance, pushing sales into the quarter with extra discounts) to hit a target.
+5. **Departures from GAAP**: the numbers do not follow the standards. Not decision-useful.
+6. **Fictitious transactions**: fraud, recording sales that never happened or hiding liabilities.
+
+Below the third rung the analyst can still use the numbers with adjustments; below the fifth, they cannot be relied on at all.
+
+> **Worked example 1: placing companies on the spectrum**
+> - Company A reports a sharp profit fall honestly and explains it in detail: rung 2 (good reporting, poor results).
+> - Company B extends the useful lives of its trucks from 8 to 12 years, well above peers, to lift profit: rung 3 (biased choice within the rules).
+> - Company C offers big year-end discounts so that customers order early and the quarter meets guidance: rung 4 (real earnings management).
+> - Company D books revenue on goods shipped to its own warehouse: rung 5 or 6, depending on intent.
+> The analyst adjusts B, discounts C's quarter, and stops relying on D.
+
+## 3. Conservative versus aggressive accounting
+- **Aggressive** choices increase current profit or improve the current financial position: recognizing revenue early, capitalizing costs, long useful lives, low bad-debt allowances, low warranty provisions.
+- **Conservative** choices decrease current profit or the current position: early expensing, short lives, generous provisions.
+
+Neither is "good". **Conservatism is still bias**: provisions built up in a good year ("cookie jar reserves") can be released later to smooth profit, and a big write-off now ("big bath") makes future years look better. What analysts want is **neutral** reporting. Some conservatism is built into the standards themselves (for example inventory at the lower of cost and net realisable value, research expensed).
+
+> **Worked example 2: one estimate, a lot of profit**
+> A company has fleet assets costing 2,400 with no residual value. Peers depreciate over 8 years; the company switches to 12.
+> - Depreciation at 8 years = 2,400 / 8 = 300; at 12 years = 2,400 / 12 = **200**.
+> - Pretax profit rises by **100** a year, with no change in the business.
+> A change in estimate is applied prospectively and only disclosed in the notes, so it is easy to miss. Compare useful lives with peers and with the company's own history.
+
+> **Worked example 3: the bad-debt allowance**
+> Gross receivables are 5,000. The company lowers its allowance from 4% to 3% of receivables while customers are paying more slowly.
+> - Allowance falls from 200 to 150; bad-debt expense is **50** lower and pretax profit 50 higher.
+> Cutting the allowance while days sales outstanding rise is a classic sign of aggressive estimates.
+
+## 4. Why managers bend the numbers
+### Motivations
+- **Meeting expectations**: analysts' forecasts, management's own guidance, a trend of steady growth.
+- **Compensation**: bonuses and share awards tied to profit or EPS targets.
+- **Career concerns**: keeping the job, building a reputation.
+- **Debt covenants**: avoiding a breach of a maximum leverage or minimum coverage ratio.
+- **Raising capital**: looking good before a share or bond issue.
+- **Other**: lower political or regulatory attention (sometimes lower profit), tax considerations.
+
+### Conditions that make low quality more likely
+The **fraud triangle** describes three conditions that tend to be present together:
+- **Opportunity**: weak internal controls, an ineffective board or audit committee, complex transactions, many estimates and judgments.
+- **Motivation** (incentive or pressure): the motivations above, or personal financial pressure.
+- **Rationalization**: the person convinces themselves it is justified ("it is only temporary", "everyone does it").
+
+## 5. What keeps reporting honest, and its limits
+- **Markets**: companies compete for capital; poor reporting raises the cost of capital.
+- **Regulators**: securities regulators (the SEC in the United States, members of IOSCO elsewhere) set registration and disclosure rules, review filings and punish violations. Limits: resources are finite and enforcement comes after the fact.
+- **Auditors**: give an opinion on whether the statements are fairly presented. Limits: reasonable assurance only, sampling, and the company pays the auditor, which can weaken independence.
+- **Private contracting**: lenders and investors write covenants and monitor results.
+- **Corporate governance**: independent boards and audit committees, internal controls, management's certification of the statements (in the United States, executives personally certify them).
+
+None of these is complete. That is why the analyst's own skepticism is the last line of defence.
+
+## 6. Presentation choices and non-GAAP measures
+Management chooses how to present the numbers, not only how to measure them:
+- **Non-GAAP measures** ("adjusted EBITDA", "underlying profit", "core earnings") exclude items management calls unusual. Regulators generally require that they are reconciled to the most comparable standard measure and not given more prominence; From 2027, IFRS 18 also requires such "management-defined performance measures" to be explained and reconciled in the notes.
+- Watch for **recurring "non-recurring" items**: restructuring every year is a cost of doing business.
+- Watch for excluding real costs: **share-based compensation**, or customer-acquisition costs.
+- Classification choices: putting an expense below operating profit, or a recurring gain inside it.
+
+> **Worked example 4: adjusted EBITDA**
+> A company reports net income 120, tax 40, interest 30, depreciation and amortization 90: EBITDA = **280**. Its press release then adds back restructuring 25 (also charged in each of the last three years), share-based compensation 35 and "acquisition-related costs" 20, for adjusted EBITDA of **360**.
+> - The adjustments add 80, or 29% of EBITDA.
+> - Restructuring is recurring and share-based pay is a real cost: a fairer figure is 280 + 20 = **300**, at most.
+> \`80 ÷ 280 = \` → 0.2857
+
+## 7. Methods used to manage earnings, cash flow and the balance sheet
+### Revenue
+- Recognizing revenue too early (bill-and-hold, shipping ahead of demand, "channel stuffing" into distributors), recording gross instead of net, low returns estimates.
+
+### Expenses and assets
+- Capitalizing costs that should be expensed; long useful lives and high residual values; low allowances for bad debts, inventory obsolescence or warranties; delaying impairments.
+- Big baths and cookie-jar reserves to move profit between years.
+
+### Cash flow
+- **Stretching payables** (paying suppliers later) or selling receivables (factoring) raises operating cash flow temporarily.
+- **Classification**: capitalizing costs moves outflows from operating to investing; IFRS choices for interest and dividends move flows between sections.
+
+### Balance sheet
+- Keeping liabilities off the balance sheet (guarantees, some joint arrangements), and goodwill and acquired intangibles that are never impaired.
+
+> **Worked example 5: a cash flow boost that will reverse**
+> A company with CFO of 400 delays 100 of supplier payments until just after year-end and sells 150 of receivables to a bank.
+> - Reported CFO = 400 + 100 + 150 = **650**.
+> - Next year the 100 must be paid, and the receivables sold no longer turn into cash, so CFO falls unless the company does it again on a bigger scale.
+> Check days payable outstanding and the notes on receivable sales; compare CFO with net income over several years, not one.
+
+## 8. Warning signs and how to detect manipulation
+No single sign proves manipulation, but several together call for deeper work:
+- **Revenue**: receivables growing faster than sales (rising days sales outstanding), revenue growth well above peers, unusual fourth-quarter revenue, changes in revenue policy.
+- **Inventory**: inventory growing faster than sales (falling turnover) without a write-down.
+- **Capitalization**: rising capitalized costs, longer lives than peers.
+- **Cash versus profit**: operating cash flow persistently below net income. A simple accruals measure: (net income − CFO) ÷ average total assets; high and rising values mean profit relies on accruals.
+- **Other**: frequent "one-off" charges, related-party transactions, a change of auditor, late filings, management with a history of hitting targets exactly, heavy reliance on non-GAAP measures.
+
+> **Worked example 6: receivables racing ahead of sales**
+> Revenue grows 10%, from 6,570 to 7,227. Receivables grow 35%, from 810 to 1,094.
+> - Days sales outstanding = 810 / (6,570 / 365) = 810 / 18 = **45 days** last year; 1,094 / (7,227 / 365) = 1,094 / 19.8 = **55.3 days** this year.
+> - Customers are taking 10 more days to pay, or some of the revenue was booked without a real sale behind it.
+> Next steps: read the revenue policy note, check the bad-debt allowance and look at fourth-quarter revenue and any changes in payment terms.
+> \`1094 ÷ ( 7227 ÷ 365 ) = \` → 55.25
+
+> **Worked example 7: profit without cash**
+> Over three years a company reports net income of 380, 420 and 470, while CFO is 300, 260 and 210. Average total assets are 4,000 in the last year.
+> - Accruals measure last year = (470 − 210) / 4,000 = **6.5%**, and the gap between profit and cash has widened every year.
+> Rising profit with falling cash is the pattern that preceded many accounting scandals. It does not prove fraud, but it means profit depends more and more on estimates.
+
+## 9. Checklist before you answer
+- Reporting quality = faithful picture; earnings quality = good and sustainable results. Low reporting quality makes earnings quality impossible to judge.
+- Spectrum: decision-useful and sustainable → not sustainable → biased choices → real earnings management → departure from GAAP → fiction.
+- Conservative is still biased; neutral is the goal. Big baths and cookie-jar reserves shift profit between years.
+- Fraud triangle: opportunity, motivation, rationalization.
+- Discipline: markets, regulators, auditors, contracts, governance, each with limits.
+- Non-GAAP measures must be reconciled; check what is excluded and whether it recurs.
+- Warnings: receivables or inventory growing faster than sales, CFO persistently below net income, longer lives than peers, recurring "one-offs".`,
  ideas:`**Reporting quality asks whether the reports give a faithful, useful picture; results quality (earnings quality) asks whether the earnings themselves are adequate and sustainable.** A company can report honestly about poor results.
 
 ## A spectrum, from best to worst
@@ -18041,6 +18277,158 @@ Paying employees with shares or options aligns them with shareholders, conserves
 {name:"Financial Analysis Techniques",
  core:/\bratios?\b|turnover|days of inventory|days of sales|days sales|\bDSO\b|\bDOH\b|days payable|cash conversion cycle|DuPont|return on equity|\bROE\b|\bROA\b|return on assets|interest coverage|financial leverage|debt-to-(equity|assets|capital)|current ratio|quick ratio|defensive interval|tax burden|interest burden/,
  match:/ratio|turnover|days|DSO|DOH|DPO|cash conversion|DuPont|ROE|ROA|return on|coverage|leverage|debt-to|current ratio|quick|cash ratio|defensive|margin|tax burden|interest burden|asset turnover|common-size|trend|cross-sectional|benchmark|industry|peer/,
+ lesson:`## 1. The analyst's toolkit
+Raw financial statements are hard to compare: companies differ in size, currency and accounting choices, and a number on its own says little. Analysts use a few standard tools to turn statements into comparable information:
+- **Ratios**: one number divided by another, so size drops out.
+- **Common-size analysis**: **vertical** (each line as a percentage of revenue or total assets in the same year) and **horizontal** (each line as a percentage of a base year, showing growth).
+- **Graphs**: stacked columns for the mix of assets or costs, lines for trends.
+- **Regression and other statistics**: to relate a company's numbers to drivers such as GDP or a sector index.
+
+A ratio means something only when compared:
+- with the **company's own history** (trend or time-series analysis);
+- with **peers** (cross-sectional analysis);
+- with the **industry average** or a **benchmark** such as a covenant level.
+
+### Limits of ratio analysis
+- Different **accounting methods** (FIFO versus LIFO, IFRS versus US GAAP) distort comparisons unless adjusted.
+- **Diversified companies** do not fit any single industry benchmark; use segment data.
+- **Judgment** is needed: a current ratio of 3 can mean strong liquidity or idle cash and slow inventory.
+- Year-end figures can be **seasonal** or **window-dressed**; use averages where possible.
+
+## 2. Activity ratios: how efficiently are assets used?
+Activity ratios mix an income statement flow with a balance sheet stock, so use the **average** of beginning and ending balances.
+- **Receivables turnover** = revenue ÷ average receivables; **days of sales outstanding (DSO)** = 365 ÷ receivables turnover.
+- **Inventory turnover** = cost of goods sold ÷ average inventory; **days of inventory on hand (DOH)** = 365 ÷ inventory turnover.
+- **Payables turnover** = purchases ÷ average payables; **days of payables (DPO)** = 365 ÷ payables turnover. Purchases = COGS + ending inventory − beginning inventory.
+- **Working capital turnover** = revenue ÷ average working capital.
+- **Fixed asset turnover** = revenue ÷ average net fixed assets.
+- **Total asset turnover** = revenue ÷ average total assets.
+
+Higher turnover usually means efficiency, but too high can mean too little inventory (lost sales) or credit terms so tight that customers leave.
+
+> **Worked example 1: the operating cycle**
+> Company K: revenue 10,950; COGS 7,300; purchases 7,665; average receivables 1,350; average inventory 1,400; average payables 735.
+> - Receivables turnover = 10,950 / 1,350 = 8.11; DSO = 1,350 / (10,950 / 365) = 1,350 / 30 = **45 days**.
+> - Inventory turnover = 7,300 / 1,400 = 5.21; DOH = 1,400 / (7,300 / 365) = 1,400 / 20 = **70 days**.
+> - Payables turnover = 7,665 / 735 = 10.43; DPO = 735 / (7,665 / 365) = 735 / 21 = **35 days**.
+> - **Cash conversion cycle** = DSO + DOH − DPO = 45 + 70 − 35 = **80 days**.
+> K's cash is tied up for 80 days between paying suppliers and collecting from customers. Cutting DOH by 10 days would free about 10 × 20 = 200 of cash.
+
+## 3. Liquidity ratios: can short-term obligations be met?
+- **Current ratio** = current assets ÷ current liabilities.
+- **Quick ratio** = (cash + short-term marketable investments + receivables) ÷ current liabilities.
+- **Cash ratio** = (cash + short-term marketable investments) ÷ current liabilities.
+- **Defensive interval** = (cash + short-term marketable investments + receivables) ÷ daily cash expenditures: how many days the company could pay its cash expenses with no new revenue.
+- **Cash conversion cycle**: shorter is better for liquidity.
+
+> **Worked example 2: Company K's liquidity**
+> Cash 300, marketable securities 100, receivables 1,350, inventory 1,400; current liabilities 1,800; annual cash operating expenses 9,490.
+> - Current ratio = 3,150 / 1,800 = **1.75**
+> - Quick ratio = 1,750 / 1,800 = **0.97**
+> - Cash ratio = 400 / 1,800 = **0.22**
+> - Defensive interval = 1,750 / (9,490 / 365) = 1,750 / 26 = **67.3 days**
+> Comfortable on the current ratio, but almost half of current assets is inventory that takes 70 days to sell, so the quick ratio just under 1 is the more honest picture.
+
+## 4. Solvency ratios: can long-term obligations be met?
+Debt ratios (debt = interest-bearing debt, usually including lease liabilities):
+- **Debt-to-assets** = total debt ÷ total assets
+- **Debt-to-capital** = total debt ÷ (total debt + total equity)
+- **Debt-to-equity** = total debt ÷ total equity
+- **Financial leverage** = average total assets ÷ average total equity
+
+Coverage ratios:
+- **Interest coverage** = EBIT ÷ interest payments
+- **Fixed charge coverage** = (EBIT + lease payments) ÷ (interest payments + lease payments)
+
+> **Worked example 3: Company K's solvency**
+> Average total assets 7,300; average equity 3,318.18; debt 2,000; EBIT 1,095; interest 219; lease payments 100.
+> - Debt-to-equity = 2,000 / 3,318.18 = **0.60**; debt-to-capital = 2,000 / 5,318.18 = **0.38**; financial leverage = 7,300 / 3,318.18 = **2.2**
+> - Interest coverage = 1,095 / 219 = **5.0**
+> - Fixed charge coverage = (1,095 + 100) / (219 + 100) = 1,195 / 319 = **3.75**
+> Lenders often set covenants on coverage ratios; a fall from 5.0 toward 3 would get their attention.
+
+## 5. Profitability ratios
+Return on sales:
+- **Gross margin** = gross profit ÷ revenue; **operating margin** = operating income ÷ revenue; **pretax margin** = EBT ÷ revenue; **net margin** = net income ÷ revenue.
+
+Return on investment:
+- **ROA** = net income ÷ average total assets (some analysts add back after-tax interest); **operating ROA** = operating income ÷ average total assets.
+- **Return on total capital** = EBIT ÷ (average debt + average equity).
+- **ROE** = net income ÷ average total equity; **return on common equity** = (net income − preferred dividends) ÷ average common equity.
+
+> **Worked example 4: Company K's profitability**
+> Revenue 10,950; gross profit 3,650; EBIT 1,095; EBT 876; net income 657.
+> - Gross margin = **33.3%**; operating margin = **10.0%**; pretax margin = **8.0%**; net margin = **6.0%**.
+> - ROA = 657 / 7,300 = **9.0%**; operating ROA = 1,095 / 7,300 = **15.0%**.
+> - ROE = 657 / 3,318.18 = **19.8%**.
+
+## 6. How ratios fit together: DuPont analysis
+Ratios are linked, and **DuPont analysis** shows how ROE is built.
+
+### Three-way DuPont
+ROE = (net income ÷ revenue) × (revenue ÷ average assets) × (average assets ÷ average equity)
+= **net margin × total asset turnover × financial leverage**.
+
+### Five-way DuPont
+Split the net margin further:
+ROE = (NI ÷ EBT) × (EBT ÷ EBIT) × (EBIT ÷ revenue) × (revenue ÷ assets) × (assets ÷ equity)
+= **tax burden × interest burden × EBIT margin × asset turnover × leverage**.
+- **Tax burden** = 1 − effective tax rate: higher means less tax.
+- **Interest burden**: higher means less interest; it falls when the company borrows more.
+- Note the tension: more debt raises leverage but lowers the interest burden. ROE rises with leverage only while the return on assets exceeds the after-tax cost of debt.
+
+> **Worked example 5: decomposing Company K's ROE**
+> - Three-way: 6.0% × 1.5 × 2.2 = **19.8%**.
+> - Five-way: tax burden 657 / 876 = 0.75; interest burden 876 / 1,095 = 0.80; EBIT margin 10%; asset turnover 1.5; leverage 2.2.
+> - 0.75 × 0.80 × 0.10 × 1.5 × 2.2 = **0.198**
+> \`.75 × .8 × .1 × 1.5 × 2.2 = \` → 0.198
+
+> **Worked example 6: what changed?**
+> Next year K's ROE falls to 17.3%. Two possible stories:
+> - Interest costs rise and the interest burden drops to 0.70, everything else unchanged: 0.75 × 0.70 × 0.10 × 1.5 × 2.2 = **17.3%**.
+> - Or the EBIT margin falls to 8.75%: 0.75 × 0.80 × 0.0875 × 1.5 × 2.2 = **17.3%**.
+> Same ROE, different problems: one is about financing, the other about operations. DuPont tells you which. Conversely, ROE rising only because leverage rose from 2.2 to 2.5 (to 22.5%) is not better performance, it is more risk.
+
+## 7. Industry-specific ratios
+General ratios do not capture every business model, so industries have their own:
+- **Banks**: capital adequacy (capital ÷ risk-weighted assets), net interest margin (net interest income ÷ average interest-earning assets), liquidity coverage, non-performing loans.
+- **Retailers**: **same-store (like-for-like) sales growth**, which strips out new store openings, and sales per square metre.
+- **Hotels**: occupancy rate, average daily rate, and **RevPAR** (revenue per available room = occupancy × average daily rate).
+- **Airlines**: revenue and cost per available seat-kilometre, load factor.
+- **Subscription and software businesses**: recurring revenue, customer churn, customer acquisition cost.
+- **Resource companies**: reserve life, production cost per unit.
+
+> **Worked example 7: RevPAR**
+> Hotel group A: occupancy 72%, average daily rate 150. Group B: occupancy 85%, rate 125.
+> - RevPAR A = 0.72 × 150 = **108**; RevPAR B = 0.85 × 125 = **106.25**.
+> A earns slightly more per available room despite emptier hotels, because of its higher prices. Neither rate nor occupancy alone tells you that.
+
+## 8. Using ratios to model and forecast
+Ratios are the bridge from history to forecasts. A typical approach:
+- forecast revenue (from industry growth, market share and price);
+- apply forecast margins and turnover ratios to derive costs, profit and the balance sheet;
+- test how sensitive the result is to the key assumptions.
+
+Three techniques handle uncertainty:
+- **Sensitivity analysis**: change one assumption at a time and see how the output moves.
+- **Scenario analysis**: change several assumptions together into consistent stories (base, bull, bear case).
+- **Simulation** (Monte Carlo): draw many random combinations of the inputs from assumed distributions to get a distribution of outcomes.
+
+> **Worked example 8: a quick earnings forecast**
+> K expects revenue growth of 8%: 10,950 × 1.08 = 11,826.
+> - At a 6% net margin, net income = **709.56**.
+> - Sensitivity: at 5% it would be 591.30; at 7%, 827.82.
+> A one-point change in margin moves earnings by about 17%. The margin assumption deserves more research than the growth assumption.
+
+## 9. Checklist before you answer
+- Activity ratios use averages; DSO = 365 ÷ receivables turnover; payables turnover uses purchases.
+- Cash conversion cycle = DSO + DOH − DPO.
+- Quick ratio excludes inventory; defensive interval = liquid assets ÷ daily cash expenditures.
+- Fixed charge coverage adds lease payments to both numerator and denominator.
+- ROE = net margin × asset turnover × leverage = tax burden × interest burden × EBIT margin × asset turnover × leverage.
+- More debt raises leverage but lowers the interest burden.
+- Compare ratios with history, peers and benchmarks; adjust for accounting differences first.
+- Sensitivity = one variable; scenario = a consistent set; simulation = many random draws.`,
  ideas:`**Ratios turn raw statements into comparable measures of activity, liquidity, solvency and profitability, and DuPont analysis explains what drives return on equity.**
 
 ## Tools and their limits
@@ -18079,6 +18467,125 @@ Paying employees with shares or options aligns them with shareholders, conserves
 {name:"Introduction to Financial Statement Modeling",
  core:/pro forma|forecast(ing|s)?|projection|five forces|Porter|explicit forecast|forecast horizon|terminal|overconfidence|illusion of control|conservatism bias|representativeness|confirmation bias|base rate|top-down|bottom-up|market share|normaliz/,
  match:/forecast|project|model|five forces|Porter|horizon|terminal|bias|overconfiden|illusion|conservatism|representativ|confirmation|top-down|bottom-up|market share|price inflation|pricing power|pass(ed)? (on|through)|volume|steady state|normaliz|cycle|sales growth/,
+ lesson:`## 1. Why build a model
+Valuation needs forecasts: of earnings, cash flows and the balance sheet. A **pro forma model** is a set of projected financial statements built from explicit assumptions. Its value is less in the final number than in the discipline: every assumption is written down, can be checked against history and peers, and can be changed to see what matters.
+
+Most company models are **sales-based**: forecast revenue first, then link costs, assets and financing to revenue. This module covers how to build such a model, how competition and inflation shape the assumptions, how long to forecast for, and how the analyst's own biases get into the numbers.
+
+## 2. Forecasting revenue
+### Approaches
+- **Top-down**: start from the economy or the industry. For example, forecast nominal GDP growth, relate industry sales to it, then apply the company's market share.
+- **Bottom-up**: start from the company's own drivers: volume × price by product or segment, number of stores × sales per store, subscribers × revenue per subscriber, capacity × utilization.
+- **Hybrid**: combine both, and check one against the other. Most analysts work this way.
+
+Useful inputs: segment data from the notes, management guidance, industry data, and **revenue drivers** that can be checked against history.
+
+> **Worked example 1: top-down revenue**
+> An industry has sales of 50 billion. Real GDP is expected to grow 2% and inflation to be 3%; the industry has historically grown in line with nominal GDP. The company's market share is expected to rise from 10.0% to 10.5%.
+> - Nominal growth = 1.02 × 1.03 − 1 = 5.06%; industry sales = 50 × 1.0506 = 52.53 billion.
+> - Company revenue = 52.53 × 10.5% = **5.516 billion**, up from 5.0 billion: **+10.3%**.
+> Half of the growth comes from the market and half from share gains. The share gain is the assumption to challenge.
+> \`1.02 × 1.03 × 50 × .105 = \` → 5.51565
+
+## 3. Building the pro forma statements
+### Income statement
+- **Cost of goods sold**: usually a percentage of revenue (gross margin), adjusted for expected input costs, mix and scale.
+- **Operating expenses (SG&A)**: partly fixed, partly variable; using a single percentage of sales overstates costs when sales rise fast and understates them when sales fall. Split fixed and variable where possible.
+- **Depreciation**: linked to the fixed asset base and capex, not directly to sales.
+- **Interest expense**: average debt × interest rate; **interest income**: average cash × rate.
+- **Taxes**: an effective tax rate based on the tax note's reconciliation, excluding one-off items.
+- **Shares outstanding**: include planned buybacks and dilution.
+
+### Balance sheet and cash flow
+- **Working capital** from turnover or days ratios: receivables = revenue × DSO ÷ 365; inventory = COGS × DOH ÷ 365; payables = COGS (or purchases) × DPO ÷ 365.
+- **Fixed assets**: opening + capex − depreciation. Capex is often forecast as a percentage of revenue, or in relation to depreciation (maintenance) plus growth capex.
+- **Financing**: dividends from the payout policy; debt from the company's plans and target leverage. The model balances through cash or a revolving credit line.
+- The **cash flow statement** is then derived from the forecast income statement and balance sheet changes, which is also a check that the model is consistent.
+
+> **Worked example 2: a one-year pro forma**
+> Revenue this year is 5,000 and is forecast to grow 6%. Assumptions: COGS 58% of revenue; SG&A 20% of revenue (including depreciation); average debt 2,000 at 5%; tax rate 24%; DSO 50 days; DOH 60 days and DPO 45 days, both on COGS.
+> - Revenue = 5,000 × 1.06 = **5,300**
+> - COGS = 0.58 × 5,300 = 3,074; SG&A = 0.20 × 5,300 = 1,060; operating profit = **1,166**
+> - Interest = 2,000 × 5% = 100; pretax profit = 1,066; tax = 255.84; net income = **810.16**
+> - Receivables = 5,300 × 50 / 365 = **726.03**; inventory = 3,074 × 60 / 365 = **505.32**; payables = 3,074 × 45 / 365 = **378.99**
+> Operating working capital = 726.03 + 505.32 − 378.99 = 852.36. If it was 800 this year, the working capital investment of 52.36 reduces next year's free cash flow.
+> \`5300 × 50 ÷ 365 = \` → 726.03
+
+## 4. Competitive position: Porter's five forces
+Margins depend on how much pricing power a company has and how much its costs can be pushed up. **Porter's five forces** organize that question:
+- **Threat of substitutes**: if customers can switch to other products, prices are capped.
+- **Rivalry among existing competitors**: many similar competitors, high fixed costs, slow growth and high exit barriers mean price wars and low margins.
+- **Bargaining power of buyers**: concentrated or large buyers, and low switching costs, push prices down.
+- **Bargaining power of suppliers**: few suppliers of a critical input push input costs up.
+- **Threat of new entrants**: low barriers (capital, scale, regulation, brand, network effects) let newcomers compete away profits.
+
+Strong forces mean **lower and more volatile margins** and a weaker ability to pass on cost increases; weak forces allow high and stable margins.
+
+> **Worked example 3: two industries, two margin forecasts**
+> - A regional airline: high rivalry, easy price comparison online (strong buyers), powerful aircraft makers and airports (strong suppliers), substitutes (rail, video calls). Forecast thin margins that swing with fuel prices and demand, and assume little pass-through of cost increases.
+> - A design-software company with an industry-standard product: high switching costs, network effects among users, few close substitutes, low supplier power. Forecast high, stable margins and an ability to raise prices with inflation.
+> The five forces analysis decides whether the historical margin should be extrapolated, compressed or expanded.
+
+## 5. Inflation and deflation
+When prices change, revenue = **volume × price** must be modelled in both parts.
+- **Revenue**: how much of an increase in costs or general prices can the company pass on, and how much volume will it lose? That depends on its competitive position and on the **price elasticity** of demand for its products.
+- **Costs**: identify the main inputs (raw materials, energy, wages) and their own inflation. Companies may be protected for a while by **hedging** or long-term contracts, and the cost flow method (FIFO) delays the effect on COGS.
+- **Industry versus company**: industry-wide cost inflation tends to be passed on in strong industries; a cost increase that only one company faces usually cannot be.
+- In **deflation**, prices fall; companies with high fixed costs see margins squeezed.
+- Different segments and geographies may face different inflation rates: forecast them separately.
+
+> **Worked example 4: passing on an input price shock**
+> A coffee roaster has revenue of 1,000 and COGS of 600, of which green coffee is 240. Coffee prices rise 25%. The roaster raises its prices 3.6% and expects volume to fall 1.5%.
+> - Coffee cost increase = 240 × 25% = 60; COGS before the volume effect = 660.
+> - Revenue = 1,000 × 1.036 × 0.985 = **1,020.46**; COGS = 660 × 0.985 = **650.10**.
+> - Gross profit = 370.36, gross margin **36.3%**, down from 40%.
+> The price rise covered only 60% of the cost increase (36 of 60), and lost volume did the rest of the damage. A company with stronger pricing power would protect its margin better.
+
+## 6. The forecast horizon and beyond
+### Choosing the explicit horizon
+The **explicit forecast period** is the number of years modelled in detail. It depends on:
+- the **investment strategy**: a short-term trader needs one or two years; a long-term investor needs longer;
+- **cyclicality**: the horizon should cover a full business cycle, so that the end year is not a peak or a trough;
+- **company-specific factors**: a recent acquisition or restructuring, a new plant ramping up, or a turnaround should be completed inside the horizon;
+- the analyst's **firm** may have a standard horizon for consistency.
+
+### Beyond the horizon
+After the explicit period, the analyst needs a **terminal value**, usually:
+- a **perpetual growth** value: next year's cash flow ÷ (discount rate − long-term growth rate), with growth no higher than long-run nominal GDP;
+- or a **multiple** (P/E, EV/EBITDA) applied to final-year results, which should be a normalized, mid-cycle figure.
+
+The terminal value is often more than half of the total value, so its assumptions deserve as much scrutiny as the explicit forecasts. The end year should represent a **steady state**: normal margins, normal growth, capex roughly in line with growth.
+
+> **Worked example 5: a terminal value**
+> Free cash flow in the last forecast year (year 5) is 200. From then on it is expected to grow at 2.5% a year; the discount rate is 9%.
+> - Terminal value at the end of year 5 = 200 × 1.025 / (0.09 − 0.025) = 205 / 0.065 = **3,153.85**
+> - Present value today = 3,153.85 / 1.09^5 = **2,049.78**
+> \`200 × 1.025 = ÷ .065 = \` → 3,153.85; then \`÷ 1.09 y^x 5 = \` → 2,049.78
+> At 3% growth instead of 2.5%, the terminal value rises to 3,433.33, about 9% more: small changes in long-run growth matter a lot.
+
+## 7. Behavioural biases in forecasting
+Analysts are human, and well-known biases creep into models:
+- **Overconfidence**: forecast ranges are too narrow; analysts trust their point estimate too much. Remedy: record past forecasts and compare them with outcomes; use scenario analysis with genuinely wide bull and bear cases.
+- **Illusion of control**: believing that more data or more detailed models give more control over the outcome. Remedy: keep models as simple as the decision needs; focus on the few assumptions that drive value.
+- **Conservatism**: updating too slowly when new information arrives, anchoring on old forecasts. Remedy: deliberately reassess assumptions with each new data point; think in terms of base rates and how much the evidence should move them.
+- **Representativeness**: judging by similarity to a familiar pattern ("this company looks like the last winner") and ignoring base rates. Remedy: check the base rate (how often do companies sustain 20% growth for five years?) and consider the full range of outcomes.
+- **Confirmation bias**: seeking information that supports the existing view and ignoring the rest. Remedy: actively look for disconfirming evidence, talk to people who disagree, ask a colleague to argue the opposite case.
+
+> **Worked example 6: spotting the bias**
+> An analyst who has rated a stock "buy" for three years reads a quarterly report showing falling orders. They lower next year's revenue forecast by only 1%, attributing the drop to "timing", and highlight a customer interview that was positive.
+> - Lowering the forecast too little in response to new evidence: **conservatism** (anchoring on the old view).
+> - Highlighting only the positive interview: **confirmation bias**.
+> Remedy: rebuild the revenue forecast from the order data, list the evidence against the thesis, and set out a bear case with explicit probabilities.
+
+## 8. Checklist before you answer
+- Sales-based model: forecast revenue first; link COGS, SG&A, working capital and capex to it; interest to debt; taxes to the normalized effective rate.
+- Top-down = economy → industry → market share; bottom-up = company drivers; hybrid checks one against the other.
+- Working capital: receivables = revenue × DSO ÷ 365; inventory and payables on COGS.
+- Strong five forces (rivalry, buyers, suppliers, substitutes, entrants) mean lower, less stable margins and weak cost pass-through.
+- Inflation: model price and volume separately; pass-through depends on competitive position and elasticity.
+- Horizon: long enough to cover a full cycle and to finish one-off events; end in a normalized steady state.
+- Terminal value = next cash flow ÷ (r − g); keep g at or below long-run nominal GDP growth.
+- Biases: overconfidence, illusion of control, conservatism, representativeness, confirmation; each has a remedy.`,
  ideas:`**A financial statement model projects the income statement, balance sheet and cash flows, usually starting from a forecast of sales.**
 
 ## Building a sales-based model
