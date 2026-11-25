@@ -16861,10 +16861,10 @@ Basic EPS = (net income − preferred dividends) ÷ weighted average number of o
 - **Stock splits and stock dividends** are applied retroactively to all periods, as if they had always existed.
 
 > **Worked example 6: basic EPS with share changes**
-> Net income 5.4 million; preferred dividends 0.6 million. 2.0 million shares at 1 January; 0.6 million issued on 1 April; 0.3 million bought back on 1 October.
-> - Weighted shares = 2.0 + 0.6 × 9/12 − 0.3 × 3/12 = 2.0 + 0.45 − 0.075 = **2.375 million**
-> - Basic EPS = (5.4 − 0.6) / 2.375 = **2.02**
-> \`5.4 − 0.6 = ÷ 2.375 = \` → 2.0211
+> Net income 9.0 million; preferred dividends 1.0 million. 3.0 million shares at 1 January; 0.8 million issued on 1 April; 0.4 million bought back on 1 October.
+> - Weighted shares = 3.0 + 0.8 × 9/12 − 0.4 × 3/12 = 3.0 + 0.6 − 0.1 = **3.5 million**
+> - Basic EPS = (9.0 − 1.0) / 3.5 = **2.29**
+> \`9 − 1 = ÷ 3.5 = \` → 2.2857
 
 ### Diluted EPS
 A **complex capital structure** contains securities that could become ordinary shares: convertible preferred shares, convertible bonds, options and warrants. Diluted EPS shows EPS as if they had been converted, using only those that **reduce** EPS:
@@ -16875,14 +16875,14 @@ A **complex capital structure** contains securities that could become ordinary s
 A security is **antidilutive** if its conversion would **increase** EPS (its numerator add-back per new share is higher than EPS). It is left out of diluted EPS. Diluted EPS is therefore never above basic EPS.
 
 > **Worked example 7: diluted EPS**
-> Same company as example 6 (basic EPS 2.02). Also outstanding:
-> - The preferred shares are convertible into 0.4 million ordinary shares.
-> - Convertible bonds: 10 million face, 5% coupon, tax rate 25%, convertible into 0.25 million shares. After-tax interest = 10 × 5% × 0.75 = 0.375 million.
-> - Options on 0.2 million shares, exercise price 30, average share price 40. New shares = 0.2 − 0.2 × 30 / 40 = 0.05 million.
-> Check each one: preferred 0.6 / 0.4 = 1.50 per share and bonds 0.375 / 0.25 = 1.50 per share, both below 2.02, so dilutive; options add shares and nothing to income, so dilutive.
-> - Diluted EPS = (4.8 + 0.6 + 0.375) / (2.375 + 0.4 + 0.25 + 0.05) = 5.775 / 3.075 = **1.88**
-> If the bonds converted into only 0.1 million shares, their effect would be 0.375 / 0.1 = 3.75 per share, above basic EPS: **antidilutive**, excluded.
-> \`4.8 + 0.6 + 0.375 = ÷ ( 2.375 + 0.4 + 0.25 + 0.05 ) = \` → 1.8780
+> Same company as example 6 (basic EPS 2.29). Also outstanding:
+> - The preferred shares are convertible into 0.5 million ordinary shares.
+> - Convertible bonds: 12 million face, 5% coupon, tax rate 25%, convertible into 0.3 million shares. After-tax interest = 12 × 5% × 0.75 = 0.45 million.
+> - Options on 0.25 million shares, exercise price 36, average share price 45. New shares = 0.25 − 0.25 × 36 / 45 = 0.05 million.
+> Check each one: preferred 1.0 / 0.5 = 2.00 per share and bonds 0.45 / 0.3 = 1.50 per share, both below 2.29, so dilutive; options add shares and nothing to income, so dilutive.
+> - Diluted EPS = (8.0 + 1.0 + 0.45) / (3.5 + 0.5 + 0.3 + 0.05) = 9.45 / 4.35 = **2.17**
+> If the bonds converted into only 0.1 million shares, their effect would be 0.45 / 0.1 = 4.50 per share, above basic EPS: **antidilutive**, excluded.
+> \`8 + 1 + .45 = ÷ ( 3.5 + .5 + .3 + .05 ) = \` → 2.1724
 
 ## 6. Common-size statements and ratios
 A **common-size income statement** divides every line by revenue. It removes the effect of size, so you can compare a company with itself over time and with peers of different size, and see where costs are moving.
@@ -17299,6 +17299,138 @@ So an IFRS company that puts interest paid in financing reports a higher CFO tha
 {name:"Analyzing Statements of Cash Flows II",
  core:/free cash flow|\bFCFF\b|\bFCFE\b|cash flow (to|per) |coverage ratio|reinvestment ratio|debt coverage|cash return on|cash flow to revenue|common-size cash flow|dividend payment ratio|cash-to-income|cash to income/,
  match:/free cash flow|FCFF|FCFE|capital expenditure|capex|net borrowing|coverage|reinvestment|cash return|common-size cash|cash flow ratio|per share|sustainab|quality of cash|cash flow statement/,
+ lesson:`## 1. From preparing the statement to reading it
+The first cash flow module was about building the statement. This one is about using it. Three questions guide the analysis:
+- **Where does cash come from?** A healthy, mature company funds itself mainly from operating cash flow (CFO). A company that keeps borrowing or issuing shares to cover operating shortfalls is living on outside money.
+- **Is operating cash flow sustainable?** Is CFO driven by profits, or by one-off working capital moves such as squeezing suppliers or selling down inventory?
+- **Where does cash go?** Into maintaining and growing the business (capital expenditure, acquisitions), or back to investors (debt repayment, dividends, buybacks)?
+
+## 2. Analyzing the reported statement
+Start with the big picture, then drill into each section.
+
+### The operating section
+- Compare **CFO with net income** over several years. CFO consistently below net income means profit is not turning into cash: often growing receivables or inventory, or aggressive revenue recognition.
+- Look at the **main drivers** of the difference: non-cash charges (depreciation, impairments), and working capital changes. A big positive contribution from "increase in accounts payable" may simply mean the company is paying suppliers later, which cannot continue forever.
+- Check for **classification choices**: under IFRS, interest and dividends can move between sections; buying trading securities or selling receivables (factoring) can shift cash between periods or sections.
+
+### The investing section
+- Compare **capital expenditure with depreciation**. Capex well below depreciation for several years can mean the asset base is aging; well above means expansion.
+- Note acquisitions and disposals: large one-off sales of assets can make total cash flow look healthy while the operations are not.
+
+### The financing section
+- Is the company **raising** money (debt or shares) or **returning** it (repayments, dividends, buybacks)?
+- Is it borrowing to pay dividends? That is a warning sign.
+
+### Life-cycle patterns
+- **Start-up or fast growth:** negative CFO or small CFO, large investing outflows, financing inflows.
+- **Mature:** strong positive CFO that covers investing, with the surplus used to repay debt and pay shareholders.
+- **Decline or distress:** weakening CFO, investing inflows from selling assets, financing used to stay afloat.
+
+> **Worked example 1: two companies, same net income**
+> Both report net income of 150. Company P: CFO 240, capex 120, dividends 60, debt repaid 50. Company Q: CFO 70 (receivables up 90 this year), capex 130, new borrowing 110.
+> - P generates more cash than profit, funds its investment internally and returns money to investors: high-quality, self-funding.
+> - Q turns less than half its profit into cash and borrows to fund capex. Its profit depends on customers who have not paid yet.
+> Same bottom line, opposite conclusions. The cash flow statement is often where earnings quality problems first appear.
+
+## 3. Common-size cash flow statements
+Two approaches:
+- **Percentage of revenue:** each line ÷ net revenue. Useful for forecasting (for example capex as a percentage of sales) and for comparing companies of different sizes.
+- **Percentage of total inflows and outflows:** each inflow ÷ total cash inflows, each outflow ÷ total cash outflows. It shows the mix of sources and uses of cash.
+
+> **Worked example 2: common-size by revenue**
+> Revenue 2,000; CFO 220; capex 180; dividends 40; debt repaid 30; new borrowing 80.
+> - CFO / revenue = 220 / 2,000 = **11.0%**
+> - Capex / revenue = 180 / 2,000 = **9.0%**
+> - Dividends / revenue = 2.0%
+> Read it as: of every 100 of sales, 11 become operating cash, 9 go back into fixed assets, 2 are paid out as dividends. If next year's sales forecast is 2,300 and the capex ratio holds, expect capex of about 207.
+
+## 4. Free cash flow
+**Free cash flow** is the cash available after the company has paid its operating costs and made the investments needed to keep and grow the business. Two versions matter, depending on who the cash belongs to.
+
+### Free cash flow to the firm (FCFF)
+Cash available to **all capital providers**, lenders and shareholders together:
+- FCFF = CFO + interest paid × (1 − t) − fixed capital investment
+- FCFF = net income + non-cash charges + interest expense × (1 − t) − fixed capital investment − working capital investment
+
+Why add after-tax interest back to CFO? Under US GAAP interest paid is already deducted inside CFO, but interest belongs to the lenders, who are among the capital providers FCFF serves. (If an IFRS company already shows interest paid in financing, it is not deducted in CFO, so it is not added back.)
+
+**Fixed capital investment** is capex minus proceeds from sales of long-term assets. **Working capital investment** is the increase in operating working capital (excluding cash and short-term debt).
+
+### Free cash flow to equity (FCFE)
+Cash available to **shareholders** after lenders have been paid and after net new borrowing:
+- FCFE = CFO − fixed capital investment + net borrowing
+- FCFE = FCFF − interest × (1 − t) + net borrowing
+
+**Net borrowing** = debt issued − debt repaid.
+
+> **Worked example 3: FCFF two ways**
+> Net income 150; depreciation 90; working capital investment 20; interest expense (all paid in cash, inside CFO) 40; tax rate 25%; capex 180, no asset sales.
+> - CFO = 150 + 90 − 20 = **220**
+> - From CFO: FCFF = 220 + 40 × (1 − 0.25) − 180 = 220 + 30 − 180 = **70**
+> - From net income: FCFF = 150 + 90 + 30 − 180 − 20 = **70**
+> \`40 × .75 = \` → 30; \`220 + 30 − 180 = \` → 70
+
+> **Worked example 4: FCFE**
+> Same company. It borrowed 80 and repaid 30 during the year, so net borrowing = 50.
+> - FCFE = CFO − fixed capital investment + net borrowing = 220 − 180 + 50 = **90**
+> - Check: FCFE = FCFF − after-tax interest + net borrowing = 70 − 30 + 50 = **90**
+> FCFE of 90 is what the company could pay to shareholders without touching its cash balance. It paid 40 in dividends, so 50 stayed in the company. Be careful: a high FCFE driven by heavy borrowing is not sustainable.
+
+Free cash flow is the basis of the discounted cash flow valuation models in Equity and Corporate Issuers: FCFF discounted at the WACC values the whole firm; FCFE discounted at the cost of equity values the shares.
+
+## 5. Performance ratios
+These measure how much cash the company generates relative to its size or profit:
+- **Cash flow to revenue** = CFO ÷ net revenue: operating cash per unit of sales.
+- **Cash return on assets** = CFO ÷ average total assets.
+- **Cash return on equity** = CFO ÷ average shareholders' equity.
+- **Cash to income** = CFO ÷ operating income: how much of operating profit turns into cash. Persistently well below 1 is a warning.
+- **Cash flow per share** = (CFO − preferred dividends) ÷ weighted average number of ordinary shares. (If preferred dividends were classified in CFO, they are not subtracted again.)
+
+> **Worked example 5: performance ratios**
+> Same company: CFO 220, revenue 2,000, average total assets 1,600, average equity 900, operating income 240, 100 shares, no preferred.
+> - Cash flow to revenue = 220 / 2,000 = **11.0%**
+> - Cash return on assets = 220 / 1,600 = **13.75%**
+> - Cash return on equity = 220 / 900 = **24.4%**
+> - Cash to income = 220 / 240 = **0.92**
+> - Cash flow per share = 220 / 100 = **2.20**
+> A cash-to-income ratio of 0.92 is healthy: most operating profit becomes cash, with the working capital build absorbing part of it.
+
+## 6. Coverage ratios
+These measure the company's ability to meet its obligations from operating cash:
+- **Debt coverage** = CFO ÷ total debt: higher means less financial risk.
+- **Interest coverage** = (CFO + interest paid + taxes paid) ÷ interest paid: interest and taxes are added back because CFO is after both.
+- **Reinvestment** = CFO ÷ cash paid for long-term assets: above 1 means investment is funded internally.
+- **Debt payment** = CFO ÷ cash paid for long-term debt repayment.
+- **Dividend payment** = CFO ÷ dividends paid.
+- **Investing and financing** = CFO ÷ cash outflows for investing and financing activities: above 1 means operating cash covers all of them.
+
+> **Worked example 6: coverage ratios**
+> Same company: total debt 800; interest paid 40; taxes paid 48; capex 180; debt repaid 30; dividends 40.
+> - Debt coverage = 220 / 800 = **0.275**: about 3.6 years of CFO to repay all debt.
+> - Interest coverage = (220 + 40 + 48) / 40 = 308 / 40 = **7.7**
+> - Reinvestment = 220 / 180 = **1.22**
+> - Debt payment = 220 / 30 = **7.33**
+> - Dividend payment = 220 / 40 = **5.5**
+> - Investing and financing = 220 / (180 + 30 + 40) = 220 / 250 = **0.88**
+> \`220 + 40 + 48 = ÷ 40 = \` → 7.7
+> The last ratio is below 1: operating cash covered capex, repayments and dividends only with the help of the 80 of new borrowing. Fine for one year of expansion; worrying if it repeats while CFO is flat.
+
+## 7. Putting it together
+A short routine for any company:
+1. Trend of CFO versus net income over three to five years.
+2. The main working capital drivers of CFO this year: sustainable or one-off?
+3. Capex versus depreciation, and FCFF and FCFE.
+4. How financing flows are used: are they covering an operating gap?
+5. Cash flow ratios against the company's own history and its peers, after adjusting IFRS and US GAAP classification differences.
+
+## 8. Checklist before you answer
+- Healthy mature company: CFO funds capex, the rest goes to lenders and shareholders.
+- CFO persistently below net income, or boosted by delaying payables, is a quality warning.
+- Common-size: each line ÷ revenue, or each inflow (outflow) ÷ total inflows (outflows).
+- FCFF = CFO + Int(1 − t) − FCInv; FCFE = CFO − FCInv + net borrowing; FCFE = FCFF − Int(1 − t) + net borrowing.
+- Add after-tax interest back to CFO only if interest paid was deducted in CFO.
+- Interest coverage on cash = (CFO + interest paid + taxes paid) ÷ interest paid.
+- Reinvestment, debt payment, dividend payment, investing and financing: CFO divided by that cash outflow.`,
  ideas:`**Once the cash flow statement is built, the analyst asks whether operations generate enough cash, how sustainable it is, and how much is free for capital providers.**
 
 ## Reading the statement
@@ -17333,6 +17465,121 @@ So an IFRS company that puts interest paid in financing reports a higher CFO tha
 {name:"Analysis of Inventories",
  core:/inventor(y|ies)|\bLIFO\b|\bFIFO\b|weighted average cost|net realisable|net realizable|lower of cost|write-?down/,
  match:/inventor|LIFO|FIFO|weighted average cost|specific identification|NRV|realisable|realizable|lower of cost|COGS|cost of (goods )?sold|write-?down|reversal|inflation|deflation|rising prices|falling prices|gross margin|turnover|reserve/,
+ lesson:`## 1. Why inventory accounting matters
+For retailers, manufacturers and distributors, inventory is often the largest current asset and cost of goods sold (COGS) the largest expense. Every unit sold has to be assigned a cost, and when purchase prices change over time, **which** cost you assign changes gross profit, taxes, the balance sheet and most ratios, without any change in the physical business.
+
+### What goes into inventory cost
+- **Included:** purchase price, import duties and non-refundable taxes, transport and handling to bring goods to their present location, and **conversion costs** (direct labour and a systematic allocation of production overhead).
+- **Excluded, expensed as incurred:** abnormal waste, storage costs (unless storage is a necessary part of production, such as ageing wine), administrative overhead not related to production, and selling costs.
+
+Capitalizing a cost into inventory delays the expense until the goods are sold, so the boundary matters for profit.
+
+## 2. The cost flow methods
+- **Specific identification:** each item carries its own actual cost. Used for unique, high-value items (cars, jewellery, real estate).
+- **FIFO (first in, first out):** the oldest costs go to COGS first; ending inventory holds the newest costs.
+- **Weighted average cost:** COGS and ending inventory both use the average cost of goods available for sale.
+- **LIFO (last in, first out):** the newest costs go to COGS; ending inventory holds the oldest costs. **Allowed under US GAAP only, prohibited under IFRS.** US companies use it mainly for tax: in the United States, a company that uses LIFO for taxes must also use it in its financial statements (the LIFO conformity rule).
+
+A company can use a **periodic** system (count inventory at period-end, COGS = beginning inventory + purchases − ending inventory) or a **perpetual** system (update after every sale). FIFO and specific identification give the same result under both; LIFO and weighted average can differ.
+
+> **Worked example 1: the same year under three methods**
+> Beginning inventory 80 units at 20. Purchases: 120 units at 22, then 100 units at 25. Units sold: 210. Periodic system.
+> - Goods available: 300 units costing 1,600 + 2,640 + 2,500 = 6,740.
+> - **FIFO:** COGS = 80 × 20 + 120 × 22 + 10 × 25 = **4,490**; ending inventory = 90 × 25 = **2,250**.
+> - **LIFO:** COGS = 100 × 25 + 110 × 22 = **4,920**; ending inventory = 10 × 22 + 80 × 20 = **1,820**.
+> - **Weighted average:** cost per unit = 6,740 / 300 = 22.467; COGS = 210 × 22.467 = **4,718**; ending inventory = **2,022**.
+> \`6740 ÷ 300 = × 210 = \` → 4,718
+> In every case COGS + ending inventory = 6,740. The methods only decide how the total is split between the income statement and the balance sheet.
+
+## 3. Rising and falling prices
+### When costs are rising (inflation)
+Compared with FIFO, **LIFO** gives:
+- **higher COGS**, so lower gross profit, operating profit and net income;
+- **lower income taxes**, so **higher operating cash flow** (the only real economic difference);
+- **lower ending inventory**, so lower current assets, working capital and equity.
+
+FIFO gives the opposite: a balance sheet close to current replacement cost, but an income statement that matches old, cheap costs with current prices, so profit includes **inventory holding gains**. LIFO gives a more current income statement and an outdated balance sheet. Weighted average sits in between.
+
+### When costs are falling (deflation)
+Everything reverses: LIFO gives lower COGS and higher profit than FIFO, and higher taxes.
+
+### Effects on ratios when prices rise (LIFO relative to FIFO)
+- **Inventory turnover** (COGS ÷ inventory): higher, because COGS is higher and inventory lower. Days of inventory on hand: lower.
+- **Gross, operating and net margins**: lower.
+- **Current ratio**: lower (smaller current assets).
+- **Debt-to-equity**: higher (smaller equity).
+- **Return on assets and equity**: usually lower profit, but also a smaller base, so the direction must be computed.
+
+> **Worked example 2: ratios move without any change in the business**
+> From example 1 (using ending inventory for simplicity):
+> - Inventory turnover under FIFO = 4,490 / 2,250 = **2.00**; under LIFO = 4,920 / 1,820 = **2.70**.
+> - With a 25% tax rate, LIFO's extra COGS of 430 cuts taxes by **107.50**, so LIFO's operating cash flow is 107.50 higher.
+> The LIFO company looks more efficient (faster turnover) and less profitable, but the only real difference is the tax saving.
+
+## 4. Converting LIFO to FIFO
+US GAAP companies using LIFO must disclose the **LIFO reserve**: the difference between inventory at FIFO (or current cost) and inventory at LIFO. That lets an analyst restate a LIFO company to FIFO to compare it with IFRS peers:
+- FIFO inventory = LIFO inventory + LIFO reserve
+- FIFO COGS = LIFO COGS − (ending LIFO reserve − beginning LIFO reserve)
+- Balance sheet: the cumulative extra profit = LIFO reserve. Equity (retained earnings) rises by reserve × (1 − t); the tax part, reserve × t, is added to liabilities (deferred taxes, or taxes payable if the company would actually have paid them).
+
+> **Worked example 3: restating to FIFO**
+> A US company reports LIFO inventory of 6,000 and COGS of 24,000. Its LIFO reserve was 1,100 at the start of the year and 1,350 at the end. Tax rate 25%.
+> - FIFO inventory = 6,000 + 1,350 = **7,350**
+> - FIFO COGS = 24,000 − (1,350 − 1,100) = **23,750**: pretax profit is 250 higher, net income 187.5 higher.
+> - Equity rises by 1,350 × 0.75 = **1,012.5**; liabilities by 1,350 × 0.25 = **337.5**.
+> \`1350 × .75 = \` → 1,012.5
+
+### LIFO liquidation
+If a LIFO company sells more units than it buys, old, cheap layers flow into COGS. When prices have been rising, that **boosts gross margin** temporarily, a gain that does not reflect better operations and will not repeat. It is also taxed. The signal is a **fall in the LIFO reserve** while prices are still rising; the notes usually quantify the effect.
+
+> **Worked example 4: spotting a liquidation**
+> A LIFO company's gross margin rose from 31% to 34% while input prices kept rising. Its LIFO reserve fell from 900 to 700 and unit inventory fell 20%.
+> - Old layers costed far below current prices were charged to COGS, adding about 200 to pretax profit.
+> - Removing it, gross margin is roughly flat. Management may have cut purchases deliberately to lift profit, or demand may have outrun supply; either way, the improvement is not sustainable.
+
+## 5. Lower of cost and net realisable value
+Inventory cannot be carried above what the company expects to recover from it.
+- **Net realisable value (NRV)** = estimated selling price − estimated costs to complete and sell.
+- **IFRS:** inventory is measured at the **lower of cost and NRV**. A write-down goes to profit (usually in COGS). If NRV later recovers, the write-down is **reversed**, but only up to the original cost.
+- **US GAAP:** lower of cost and NRV for FIFO and weighted average; **lower of cost or market** for LIFO and the retail method, where market = replacement cost, but not above NRV and not below NRV minus a normal profit margin. **Reversals are not allowed.**
+- Some industries (agricultural produce after harvest, minerals, commodity broker-traders) may carry inventory at NRV or fair value less costs to sell, with changes in profit.
+
+> **Worked example 5: a write-down and its reversal**
+> A batch of phones cost 500. Because of a new model, the expected selling price is 480 and selling costs are 30.
+> - NRV = 480 − 30 = 450, below cost: write down by **50** to 450.
+> - Next year a supply shortage lifts NRV to 520. Under IFRS the company reverses the write-down, but only to the original cost of 500 (a 50 gain, not 70). Under US GAAP the batch stays at 450.
+> Write-downs lower current profit, inventory, current ratio and equity, and make future margins look better when the goods are sold at their reduced carrying amount.
+
+## 6. Presentation, disclosures and what to look for
+### What companies disclose
+- The **accounting policy** and cost formula (FIFO, weighted average, LIFO).
+- Carrying amounts by **category**: raw materials, work in progress, finished goods, merchandise.
+- Inventory carried at fair value less costs to sell, if any.
+- The amount of **write-downs** and **reversals** in the period, and the reasons for reversals.
+- Inventory **pledged** as security for liabilities.
+- Under US GAAP for LIFO users: the LIFO reserve and any LIFO liquidation effect.
+
+### Analyst checks
+- **Inventory growing faster than sales**, or days of inventory on hand rising: possible slowing demand, obsolete stock and a coming write-down.
+- **The mix**: finished goods piling up while raw materials fall suggests weak demand; raw materials and work in progress rising suggests the company expects higher sales.
+- **Frequent write-downs and reversals**: the IFRS reversal can be used to smooth profit.
+- **Changes of method**: a change in inventory policy is applied retrospectively, and the reason should be convincing (for example matching industry practice), not a one-year profit boost.
+- **Other information**: industry and economic data on demand and input prices, peers' turnover, and management commentary on pricing and supply chains.
+
+> **Worked example 6: reading the inventory note**
+> A clothing retailer's sales grew 4%, but finished goods inventory grew 22% and days of inventory on hand rose from 95 to 112. No write-downs were recorded, and management commentary calls the build-up "strategic".
+> - Stock is selling more slowly; fashion inventory loses value quickly.
+> - Next year's profit is at risk of markdowns or a write-down, and this year's gross margin is probably overstated.
+> - Check peers: if their days on hand are stable, the problem is company-specific.
+
+## 7. Checklist before you answer
+- Rising prices: LIFO = higher COGS, lower profit, lower taxes, higher CFO, lower inventory, higher turnover, lower current ratio. Falling prices: the reverse.
+- FIFO inventory is closest to current cost; LIFO COGS is closest to current cost.
+- LIFO is banned under IFRS; LIFO reserve = FIFO inventory − LIFO inventory.
+- FIFO COGS = LIFO COGS − change in LIFO reserve; equity up by reserve × (1 − t).
+- A falling LIFO reserve while prices rise = LIFO liquidation, a non-recurring margin boost.
+- NRV = selling price − costs to complete and sell. IFRS reverses write-downs (up to cost); US GAAP never does.
+- Inventory up much faster than sales, especially finished goods, warns of future write-downs.`,
  ideas:`**Inventory links the balance sheet and the income statement: the method used to assign costs decides how much cost goes to cost of goods sold and how much stays in inventory.**
 
 ## Measurement
@@ -17370,6 +17617,139 @@ So an IFRS company that puts interest paid in financing reports a higher CFO tha
 {name:"Analysis of Long-Term Assets",
  core:/impair(ment|ed)|recoverable amount|value in use|derecogni|revaluation|depreciat|useful li(fe|ves)|PP&E|property, plant|residual value|research and development|\bR&D\b|development costs|internally (developed|generated)|average age|held for sale/,
  match:/impair|recoverable|value in use|fair value less costs|derecogni|disposal|sale of (equipment|an asset|the asset)|held for sale|revaluation|depreciat|amortiz|useful li(fe|ves)|PP&E|property, plant|residual|research|development|R&D|internally|purchased|acquired|patent|licen[cs]e|brand|software|average age|capital expenditure|intangible|straight-line|accelerated/,
+ lesson:`## 1. What counts as a long-term asset
+Long-term assets are resources expected to bring benefits for more than one year:
+- **Tangible**: property, plant and equipment (PP&E): land, buildings, machinery, vehicles.
+- **Intangible**: patents, licences, software, customer lists, brands, and goodwill.
+- **Financial**: long-term investments in other companies' shares or bonds (covered elsewhere).
+
+The cost of a long-term asset is spread over the years it helps generate revenue, through **depreciation** (tangible) or **amortization** (intangible). This module covers three questions: how intangible assets first get on the balance sheet, what happens when an asset loses value or leaves the company, and what the notes tell an analyst.
+
+## 2. Intangible assets: three routes onto the balance sheet
+### Purchased separately
+Recorded at **cost**: the price plus directly attributable costs. A patent bought from an inventor, a licence bought from a regulator, a customer list bought from a competitor.
+
+### Internally developed
+This is where IFRS and US GAAP differ most.
+- **IFRS:** spending is split into a **research** phase (always expensed, because future benefits are uncertain) and a **development** phase (capitalized once the company can show technical feasibility, the intention and ability to complete and use or sell the asset, how it will bring future benefits, the resources to finish it, and reliable measurement of the cost).
+- **US GAAP:** research and development costs are generally **expensed**. Exceptions concern software: for software to be sold, costs are expensed until **technological feasibility** and capitalized after; for software for internal use, costs in the application development stage are capitalized.
+- Under both standards, internally generated **brands, mastheads, customer lists and goodwill are never capitalized**.
+
+> **Worked example 1: one R&D budget, two answers**
+> A medical-device company spends 50 on research and 80 on development during the year; 60 of the development spending came after all capitalization criteria were met.
+> - **IFRS:** expense 50 + 20 = **70**; capitalize **60** as an intangible asset, amortized once the product is available for use.
+> - **US GAAP:** expense all **130**.
+> The IFRS company shows higher profit (by 60 before tax this year), more assets, higher equity, and higher operating cash flow (the 60 is an investing outflow). To compare with US peers, an analyst often expenses the capitalized amount.
+
+### Acquired in a business combination
+The buyer records every **identifiable** intangible of the target at **fair value**, including those the target never recognized itself: its brand, customer relationships, order backlog, technology. What is left of the price after all identifiable assets and liabilities is **goodwill**.
+
+This makes two otherwise identical companies look different: the one that grew by acquisition shows large intangible assets and goodwill (and their amortization or impairment), the one that grew organically shows almost none.
+
+### After recognition
+- **Finite life**: amortized over the useful life, usually straight-line, with residual value normally zero.
+- **Indefinite life**: not amortized; tested for impairment at least annually and whenever there is an indication.
+- Goodwill: never amortized (public companies), tested annually.
+
+## 3. Impairment of PP&E and intangible assets
+An asset is **impaired** when its carrying amount is more than the company can recover from it. Companies review assets for signs of impairment (a fall in market value, physical damage, technological change, worse economic performance), and test indefinite-life intangibles and goodwill every year.
+
+### IFRS: one step
+- **Recoverable amount** = the higher of **fair value less costs to sell** and **value in use** (present value of the future cash flows the asset will generate).
+- If carrying amount > recoverable amount, write the asset down to recoverable amount; the loss goes to profit.
+- **Reversals are allowed** (except for goodwill) if the recoverable amount rises later, but only up to the carrying amount the asset would have had without the impairment.
+
+### US GAAP: two steps for assets held for use
+1. **Recoverability test:** the asset is impaired only if its carrying amount exceeds the **undiscounted** future cash flows it is expected to generate.
+2. **Measurement:** the loss = carrying amount − **fair value** (or discounted cash flows).
+- **Reversals are not allowed** for assets held for use.
+
+Because undiscounted cash flows are larger than discounted ones, US GAAP generally recognizes impairments later than IFRS.
+
+> **Worked example 2: an IFRS impairment**
+> A factory has a carrying amount of 1,000. Its fair value less costs to sell is 760 and its value in use is 810.
+> - Recoverable amount = higher of 760 and 810 = **810**.
+> - Impairment loss = 1,000 − 810 = **190**; new carrying amount 810.
+> The company would rather keep using the plant (worth 810) than sell it (760), so the higher value is the right measure of what can be recovered.
+
+> **Worked example 3: the same factory under US GAAP**
+> Carrying amount 1,000; fair value 780.
+> - Case A: undiscounted future cash flows are 950 < 1,000. The asset fails the recoverability test; loss = 1,000 − 780 = **220**.
+> - Case B: undiscounted future cash flows are 1,050 > 1,000. The asset passes; **no impairment**, even though IFRS might require one.
+
+### Effects of an impairment
+- **This year:** lower assets and equity, lower profit (a non-cash loss, usually in operating profit). No direct effect on cash flow (tax deductibility aside).
+- **Later years:** lower depreciation or amortization, so higher profit; a smaller asset base, so **higher** asset turnover, return on assets and return on equity.
+- **Signals:** an impairment confirms that management overpaid or that the business has weakened. Watch the timing: large write-downs right after a new CEO arrives ("big bath") make later results look better.
+
+## 4. Assets held for sale and derecognition
+### Held for sale
+A long-term asset that the company has decided to sell, where the sale is highly probable within a year, is reclassified as **held for sale**:
+- it is no longer depreciated;
+- it is measured at the lower of carrying amount and **fair value less costs to sell**;
+- under both IFRS and US GAAP a later recovery can be recognized, but only up to the loss previously recognized.
+
+### Derecognition
+An asset leaves the balance sheet when it is sold, abandoned or exchanged.
+- **Sale:** gain or loss = proceeds − carrying amount. It appears in the income statement (often in "other gains and losses"); the proceeds are an investing inflow, and the gain is subtracted (a loss added back) in the indirect-method CFO.
+- **Abandonment** (retired with no proceeds): a loss equal to the carrying amount.
+- **Exchange** for another asset: usually recorded at fair value, with a gain or loss on the asset given up.
+
+> **Worked example 4: selling a machine**
+> A machine cost 400 and has accumulated depreciation of 260. It is sold for 110.
+> - Carrying amount = 400 − 260 = 140.
+> - Loss on sale = 110 − 140 = **−30**.
+> - Cash flow: investing inflow of **110**; in indirect-method CFO, add back the 30 loss.
+> A gain or loss on sale mainly tells you whether past depreciation was too fast or too slow. Frequent gains on disposals suggest assets are depreciated too quickly; frequent losses, too slowly.
+
+## 5. The revaluation model (IFRS only)
+IFRS lets a company carry a whole class of PP&E (or intangibles with an active market) at **fair value**, revalued regularly. US GAAP requires the cost model.
+- A **revaluation increase** goes to OCI and accumulates in equity as **revaluation surplus**, except to the extent it reverses an earlier decrease that went through profit (that part goes to profit).
+- A **revaluation decrease** goes to profit, except to the extent it reverses an earlier surplus for the same asset (that part reduces the surplus in OCI).
+- Depreciation is based on the revalued amount.
+
+> **Worked example 5: revaluing land**
+> Land bought for 300 is revalued to 360 in year 1, then to 280 in year 2.
+> - Year 1: +60 to OCI; revaluation surplus 60. Profit unaffected.
+> - Year 2: the fall is 80. The first 60 reverses the surplus (OCI); the remaining **20** goes to profit as a loss.
+> If the land then rose to 310 in year 3, the first 20 would go to profit (reversing the earlier loss) and the next 10 to OCI.
+> Revaluation raises assets and equity, so it lowers debt-to-equity and, when depreciation rises on the higher base, it lowers return on assets. Revaluation gains in OCI are never recycled to profit.
+
+## 6. Reading PP&E and intangible disclosures
+### What the notes contain
+- For each class of PP&E: the measurement model (cost or revaluation), depreciation methods, useful lives or rates, gross carrying amount, accumulated depreciation and impairment, and a reconciliation from opening to closing balance (additions, disposals, depreciation, impairments, revaluations).
+- For intangibles: which have finite or indefinite lives, amortization methods, and the main assumptions behind impairment tests (discount rates, growth rates).
+- Impairment losses and reversals, with the events that caused them.
+
+### Ratios from the notes
+Using straight-line depreciation as an approximation:
+- **Average age** ≈ accumulated depreciation ÷ annual depreciation expense
+- **Total useful life** ≈ gross PP&E ÷ annual depreciation expense
+- **Remaining useful life** ≈ net PP&E ÷ annual depreciation expense
+- **Capex to depreciation**: above 1 means the asset base is growing; persistently below 1 means it is shrinking or aging.
+
+> **Worked example 6: how old are the assets?**
+> Gross PP&E 2,700; accumulated depreciation 1,200; depreciation expense 180; capex 150.
+> - Average age = 1,200 / 180 = **6.7 years**
+> - Total useful life = 2,700 / 180 = **15 years**
+> - Remaining useful life = (2,700 − 1,200) / 180 = **8.3 years**
+> - Capex / depreciation = 150 / 180 = **0.83**
+> The assets are almost halfway through their lives and the company is not fully replacing them. Expect a jump in capex within a few years, which will hit free cash flow, unless management plans to shrink capacity. Land is not depreciated, so remove it from gross PP&E if it is disclosed separately.
+
+### Comparability adjustments
+- Longer useful lives or higher residual values than peers mean lower depreciation and higher profit: check the policy notes.
+- IFRS companies that capitalize development costs or revalue assets show higher assets and equity than US GAAP peers.
+- Acquisitive companies carry more intangibles; compare returns with and without acquired intangibles and goodwill.
+
+## 7. Checklist before you answer
+- Purchased intangibles at cost; acquired in a combination at fair value; internally developed mostly expensed (IFRS: research expensed, development capitalized after criteria).
+- IFRS impairment: carrying amount vs recoverable amount (higher of fair value less costs to sell and value in use); reversals allowed except goodwill.
+- US GAAP impairment: recoverability test with undiscounted cash flows, loss = carrying amount − fair value; no reversals for held-for-use assets.
+- Impairment: lower assets, equity and current profit; higher future profit and asset turnover; no cash effect.
+- Held for sale: no depreciation, lower of carrying amount and fair value less costs to sell.
+- Gain or loss on sale = proceeds − carrying amount; proceeds in investing cash flow.
+- Revaluation increase to OCI (unless reversing a loss); decrease to profit (unless reversing a surplus).
+- Average age = accumulated depreciation ÷ depreciation; remaining life = net PP&E ÷ depreciation.`,
  ideas:`**Long-term assets (property, plant and equipment, and intangibles) are reported at cost less depreciation or amortization and less impairment, so the analyst must understand how each kind is recorded and how impairments and disposals change the numbers.**
 
 ## Intangible assets by origin
@@ -17409,6 +17789,140 @@ So an IFRS company that puts interest paid in financing reports a higher CFO tha
 {name:"Topics in Long-Term Liabilities and Equity",
  core:/\bleases?\b|lessee|lessor|right-of-use|pension|defined benefit|defined contribution|projected benefit|plan assets|funded status|share-based|stock-based|stock options? (granted|expense|compensation)|vesting|grant date|stock appreciation|bonds? (issued|payable)|effective interest|covenant/,
  match:/lease|lessee|lessor|right-of-use|ROU|pension|defined|benefit obligation|plan assets|funded|service cost|actuarial|OCI|share-based|stock-based|option|vesting|grant|bond|coupon|effective interest|premium|discount|covenant|debt|liabilit/,
+ lesson:`## 1. Obligations that look different from debt
+Bonds and bank loans are easy to recognize as debt. This module is about three obligations that are just as real but less obvious: **leases**, **pensions** and **share-based compensation**. Each one affects leverage, profit and cash flow in its own way, and each one is driven by estimates that the analyst should read in the notes.
+
+## 2. Leases: the lessee
+A **lease** is a contract that gives the right to control the use of an identified asset for a period of time in exchange for payments. Companies lease because it needs less upfront cash than buying, the lessor may be better at owning and reselling the asset, and leases can be more flexible.
+
+### IFRS 16: one model
+At the start of the lease the lessee records:
+- a **lease liability** = present value of the lease payments, discounted at the rate implicit in the lease (or the lessee's incremental borrowing rate);
+- a **right-of-use (ROU) asset**, normally the same amount plus any initial direct costs and prepayments.
+
+Afterwards:
+- the ROU asset is **depreciated**, usually straight-line;
+- the liability accrues **interest** (liability × rate) and falls by each payment.
+
+Total expense is therefore **front-loaded**: interest is highest when the liability is largest. Exemptions: **short-term leases** (12 months or less) and **low-value assets** can simply be expensed.
+
+In the cash flow statement, the principal part of each payment is a **financing** outflow; the interest part is operating or financing, following the company's policy for interest.
+
+### US GAAP (ASC 842): two kinds of lease
+Both kinds put an ROU asset and a lease liability on the balance sheet. The difference is the income statement and cash flows:
+- **Finance lease** (the lease transfers ownership, has a purchase option the lessee is reasonably certain to use, covers the major part of the asset's life, has payments worth substantially all of its fair value, or the asset is so specialized only the lessee can use it): same as IFRS: depreciation plus interest; interest paid in CFO, principal in CFF.
+- **Operating lease** (all others): a single **straight-line lease cost** in operating expenses; all cash payments in **CFO**.
+
+> **Worked example 1: one lease, two income statements**
+> A three-year lease of equipment, payments of 15,000 at the end of each year, rate 7%.
+> - Lease liability and ROU asset: \`N = 3\`, \`I/Y = 7\`, \`PMT = 15000\`, \`FV = 0\`, \`CPT PV\` → **39,364.74**
+> - Year 1 interest = 39,364.74 × 7% = **2,755.53**; principal repaid = 15,000 − 2,755.53 = 12,244.47; liability at year-end = **27,120.27**
+> - Year 1 depreciation = 39,364.74 / 3 = 13,121.58
+> - **IFRS (or US GAAP finance lease):** year 1 expense = 13,121.58 + 2,755.53 = **15,877.11**; EBITDA unaffected by the lease; CFF outflow 12,244.47.
+> - **US GAAP operating lease:** year 1 expense = **15,000**, all in operating expenses; whole payment in CFO.
+> Over three years both total 45,000; IFRS puts more in year 1 and less in year 3. An IFRS lessee shows higher EBITDA and higher CFO than a US GAAP operating lessee with the same lease.
+
+### Analytical effects of on-balance-sheet leases
+- Higher total assets and liabilities: higher debt-to-equity, lower asset turnover and return on assets.
+- Under IFRS, operating profit and EBITDA are higher (rent is replaced by depreciation and interest, and interest is below operating profit).
+- Analysts usually count lease liabilities as debt.
+
+## 3. Leases: the lessor
+### IFRS
+The lessor classifies each lease by whether it transfers **substantially all the risks and rewards** of ownership, using indicators similar to the US GAAP finance lease tests:
+- **Finance lease:** the lessor derecognizes the asset and records a **lease receivable** (net investment in the lease); it earns **interest income** over the lease. A manufacturer or dealer also records a **selling profit** at the start.
+- **Operating lease:** the lessor keeps the asset, depreciates it and recognizes lease income, usually straight-line.
+
+### US GAAP
+- **Sales-type lease:** meets a finance-lease test; like a sale with financing: selling profit at the start, then interest income.
+- **Direct financing lease:** does not meet those tests but payments plus a third-party guarantee cover substantially all the asset's value; interest income only, no upfront selling profit.
+- **Operating lease:** as under IFRS.
+
+> **Worked example 2: a dealer's finance lease**
+> An equipment maker leases the machine from example 1 to a customer. The machine cost 33,000 to make; the present value of the lease payments is 39,364.74.
+> - At the start: revenue 39,364.74, cost of sales 33,000, selling profit **6,364.74**; a lease receivable of 39,364.74 replaces the machine.
+> - Year 1: interest income = 39,364.74 × 7% = **2,755.53**; receivable falls to 27,120.27.
+> Under an operating lease the dealer would instead keep the machine, depreciate it, and book 15,000 of lease income each year.
+
+## 4. Pensions and other post-employment benefits
+### Defined contribution plans
+The employer promises only to **pay contributions** (for example 5% of salary) into the employee's account. The employee bears the investment risk. Accounting is simple: **pension expense = the contribution owed for the period**; a liability appears only for contributions not yet paid.
+
+### Defined benefit plans
+The employer promises a **benefit** (for example 1.5% of final salary per year of service, paid for life). The employer bears the investment, longevity and salary risks.
+- **Defined benefit obligation (DBO)**, called projected benefit obligation in the United States: the present value of benefits earned to date, based on actuarial assumptions (discount rate, salary growth, life expectancy).
+- **Plan assets**: investments held in a separate fund to pay the benefits.
+- **Funded status** = plan assets − DBO. A deficit is a **net pension liability** on the balance sheet; a surplus is a net pension asset (under IFRS limited by an asset ceiling).
+
+### What goes into the periodic cost
+Under **IFRS**:
+- **Service cost** (benefits earned this year, plus past service cost from plan changes) and **net interest** (discount rate × net pension liability or asset) go to **profit**.
+- **Remeasurements** (actuarial gains and losses, and the return on plan assets above or below the interest income built into net interest) go to **OCI** and are **never recycled** to profit.
+
+Under **US GAAP**:
+- Profit includes service cost, **interest cost** on the obligation, minus the **expected return** on plan assets, plus amortization of amounts previously recorded in OCI.
+- Actuarial gains and losses and past service cost go first to OCI and are **amortized** into profit over time.
+
+> **Worked example 3: IFRS pension cost**
+> At the start of the year the DBO is 1,000 and plan assets are 820 (deficit 180). Discount rate 5%; current service cost 60; actual return on plan assets 30; no actuarial changes to the obligation.
+> - Net interest = 5% × 180 = **9**
+> - Expense in profit = 60 + 9 = **69**
+> - Interest income built into net interest on assets = 5% × 820 = 41; actual return 30; remeasurement **loss of 11** in OCI.
+> - Total periodic pension cost = 69 + 11 = **80**, equal to service cost 60 + interest on the DBO 50 − actual return 30.
+> \`1000 × .05 = + 60 − 30 = \` → 80
+
+### Assumptions that move the numbers
+- A **higher discount rate** lowers the DBO and (usually) the service cost.
+- **Higher salary growth** or **longer life expectancy** raises the DBO.
+- Under US GAAP, a higher **expected return** on plan assets lowers reported pension expense without changing anything real.
+Compare these assumptions with peers; aggressive ones flatter the balance sheet and profit.
+
+## 5. Share-based compensation
+Paying employees with shares or options aligns them with shareholders, conserves cash and helps retain staff. It is still a cost.
+- **Measurement:** at **fair value on the grant date**. For restricted shares, the share price; for options, an option pricing model (Black–Scholes or binomial) using volatility, expected life, dividends and the risk-free rate.
+- **Recognition:** expensed over the **vesting (service) period**, with the other side in equity for equity-settled awards.
+- **Cash-settled** awards (share appreciation rights paid in cash, phantom shares) create a **liability**, remeasured at fair value each period until settled.
+- It is a non-cash expense, so it is **added back** in indirect-method CFO; dilution shows up later in diluted EPS.
+
+> **Worked example 4: options and restricted shares**
+> A company grants options on 300,000 shares, fair value 4.00 per option at grant, vesting over 3 years. It also grants 50,000 restricted shares when the share price is 30, vesting over 4 years.
+> - Option expense = 300,000 × 4.00 / 3 = **400,000** a year.
+> - Restricted share expense = 50,000 × 30 / 4 = **375,000** a year.
+> - Total compensation expense = 775,000 a year, credited to equity; no cash paid. Later changes in the share price do not change the expense (equity-settled).
+> Higher assumed volatility or a longer expected life would raise the option value and the expense.
+
+## 6. Presentation, disclosures and analyst adjustments
+### What to look for in the notes
+- **Debt:** maturities by year, interest rates, collateral, **covenants**, and fair value.
+- **Leases:** ROU assets and lease liabilities, a maturity analysis of undiscounted payments, the discount rate, and short-term lease expense.
+- **Pensions:** reconciliation of the DBO and plan assets, funded status, the key assumptions and **sensitivity** of the DBO to each, and expected contributions.
+- **Share-based pay:** number and terms of awards outstanding, valuation assumptions, the expense recognized and unrecognized cost still to come.
+
+### Common adjustments
+- Add lease liabilities and **pension deficits** to debt when measuring leverage.
+- Restate the US GAAP pension expense with actual returns, or compare IFRS and US GAAP companies on service cost only.
+- Treat share-based pay as a real operating cost when comparing margins with companies that pay in cash.
+
+> **Worked example 5: leverage including the pension deficit**
+> A company reports debt of 400 and equity of 500 (debt-to-equity 0.80). Its pension plan is 120 underfunded; the tax rate is 25%.
+> - The deficit is already on the balance sheet as a liability, so equity already reflects it; only debt changes. Adjusted debt = 400 + 120 = 520; adjusted debt-to-equity = 520 / 500 = **1.04**.
+> - Some analysts use the after-tax deficit (120 × 0.75 = 90), since contributions are tax-deductible: 490 / 500 = **0.98**.
+> Either way the company is noticeably more levered than the headline 0.80 suggests.
+
+> **Worked example 6: retiring a bond early**
+> A company repurchases bonds with a carrying amount of 1,020 for 1,005.
+> - Gain on extinguishment = 1,020 − 1,005 = **15**, reported in profit (usually not in operating profit).
+> - The 1,005 is a financing outflow.
+> The gain usually reflects higher market interest rates since issue. It is one-off, so exclude it from recurring earnings.
+
+## 7. Checklist before you answer
+- IFRS lessee: ROU asset + lease liability; depreciation + interest, front-loaded; principal in CFF.
+- US GAAP operating lease: same balance sheet, but single straight-line cost in operating expenses and all payments in CFO.
+- Lessor: finance (or sales-type) lease = receivable + interest income (+ selling profit for dealers); operating lease = keep and depreciate the asset.
+- Defined contribution: expense = contribution. Defined benefit: funded status = plan assets − DBO.
+- IFRS: service cost + net interest in profit; remeasurements in OCI, never recycled. US GAAP: expected return in profit, actuarial items amortized from OCI.
+- Share-based pay: grant-date fair value over the vesting period; cash-settled awards are liabilities remeasured each period.
+- Add lease liabilities and pension deficits to debt for leverage analysis.`,
  ideas:`**This module covers obligations that stretch over many years: leases, pensions and share-based pay, plus how long-term liabilities are presented.**
 
 ## Leases: the lessee
