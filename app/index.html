@@ -15408,18 +15408,444 @@ CFA_DATA.learn(1,"Corporate Finance","LM-CI",[
 /* Learning map, Equities: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
 CFA_DATA.learn(1,"Equities","LM-EQ",[
-{name:"Equity Instrument Features"},
-{name:"Equity Jurisdictions, Classes, and the Voting Process"},
-{name:"Equity Issuance and Trading"},
-{name:"Sources of Equity Returns"},
-{name:"Introduction to Equity Valuation"},
-{name:"Discounted Cash Flow (DCF) and Growth Models"},
-{name:"Relative Value Equity Valuation Approaches"},
-{name:"Financial Statement Forecasting in Equity Valuation"},
-{name:"Industry and Competitive Analysis"},
-{name:"Company Analysis: Past, Present, and Future"},
-{name:"Equity Analyst Research Reports"},
-{name:"The Capital Asset Pricing Model, Market Model, and Other Factor-Based Equity Models"}
+{name:"Equity Instrument Features",
+ core:/common (stock|shares?)(holders)? (have|give|are|is)|preferred (stock|shares?)|cumulative|participating|convertible preferred|callable (common|preferred)|putable|retractable|residual claim|limited liability|private (equity )?(company|companies|securities)|publicly (listed|traded)|depositary receipt|depository receipt|\bADRs?\b|\bGDRs?\b/,
+ match:/common|preferred|cumulative|participating|convertible|callable|putable|residual|liquidation|private|public|listed|depositary|depository|ADR|GDR|sponsored|unsponsored|limited liability|preemptive/,
+ ideas:`**Equity is ownership: a residual claim on a company's assets and earnings after all creditors have been paid.**
+
+## Common shares
+- Holders share in profits (dividends are paid at the board's discretion), vote on directors and major decisions, and in a liquidation receive what is left after creditors and preferred shareholders. Some jurisdictions give **preemptive rights** to buy new shares before outsiders.
+- Common shares carry the most risk in the capital structure and unlimited upside, but **limited liability**: an investor can lose at most what was invested.
+- **Callable** common shares can be bought back by the issuer at a set price (good for the issuer); **putable** shares can be sold back by the holder at a set price (good for the investor).
+
+## Preferred shares
+- A fixed dividend with priority over common dividends and in liquidation, usually without voting rights: a hybrid of debt and equity.
+- **Cumulative:** unpaid dividends build up and must be paid before any common dividend. **Non-cumulative:** missed dividends are lost. **Participating:** extra dividends when profits exceed a level. **Convertible:** can be exchanged for common shares.
+- Their risk sits between bonds and common shares; cumulative preferred is less risky than non-cumulative.
+
+## Public versus private equity
+- **Public** shares trade on an exchange: liquid, prices visible every day, strict disclosure rules, many small owners.
+- **Private** equity (venture capital, buyouts, private investments in public companies) has no public market: illiquid, less disclosure, valued from transactions or models, investors often take board seats or control and hold for years, and managers can focus on the long term without quarterly pressure.
+
+## Owning foreign shares
+- Directly on a foreign exchange, or through **depositary receipts** issued by a bank against shares it holds. **Sponsored** receipts involve the issuer and give voting rights; **unsponsored** ones do not, and the depositary keeps the votes. ADRs trade in the US; global depositary receipts trade outside the issuer's home market and the US.`,
+ traps:[
+  "Cumulative preferred dividends in arrears must be paid before any common dividend; non-cumulative ones are lost.",
+  "Preferred shareholders usually have no vote.",
+  "Limited liability caps a shareholder's loss at the amount invested.",
+  "A call feature favors the issuer and lowers value to investors; a put feature favors the investor and raises it.",
+  "With an unsponsored depositary receipt, the depositary bank keeps the voting rights."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-equity-instrument-features/","Equity Instrument Features: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/preferredstock.asp"],
+  ["i:terms/a/adr.asp"],
+  ["w:Common_stock"],
+  ["w:Preferred_stock"]
+ ]},
+{name:"Equity Jurisdictions, Classes, and the Voting Process",
+ core:/\bvot(e|es|ing)\b|proxy|proxies|dual-class|class (A|B) (shares|stock)|super-?voting|proxy advis|stewardship|annual (general )?meeting|shareholder (meeting|proposal|resolution)|jurisdiction/,
+ match:/vot|proxy|dual|class|board|shareholder|meeting|stewardship|engagement|asset owner|asset manager|jurisdiction|minority|control|activis|resolution/,
+ ideas:`**Shares of the same company can carry different economic and voting rights, and those rights also depend on the country where the company is incorporated.**
+
+## Share classes and voting rights
+- **Dual-class** structures give one class more votes per share (often held by founders) and another class fewer or none, while dividends may be the same. They keep control with insiders but weaken the voice of other shareholders, and such shares often trade at a discount.
+- **Statutory voting:** one vote per share for each board seat. **Cumulative voting:** a holder can put all votes (shares × seats) on one candidate, which helps minority shareholders win a seat. With 3 seats, 1,000 shares give 3,000 votes that can all go to one candidate.
+
+## Differences between jurisdictions
+- Laws differ on shareholder protection, board structure (a single board, or a management board under a separate supervisory board), shareholder votes on executive pay ("say on pay"), takeover rules and minority rights.
+- Ownership also differs: widely dispersed in the US and UK, often controlled by families, the state or other companies elsewhere, where the main conflict is between controlling and minority shareholders.
+
+## The voting process and who does what
+- **Management** prepares the proposals and the meeting; the **board** recommends how to vote and oversees management.
+- Shareholders vote at the annual general meeting in person or by **proxy**, authorizing someone else to vote for them; they can also file their own proposals.
+- **Proxy advisors** research the resolutions and recommend how to vote; many institutions rely on them.
+- **Asset managers** vote the shares held in their funds on behalf of their clients and must vote in the clients' interest. **Asset owners** (pension funds, endowments, insurers) vote themselves or delegate the vote, and stewardship codes expect both to engage with companies and vote responsibly.`,
+ traps:[
+  "Cumulative voting helps minority shareholders; statutory voting favors the majority.",
+  "Dual-class shares separate voting control from economic ownership.",
+  "Proxy advisors recommend how to vote; the fund manager or asset owner casts the vote.",
+  "An asset manager votes on behalf of its clients and must vote in their interest.",
+  "Rights depend on both the jurisdiction and the share class."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-equity-jurisdictions-classes-and-voting/","Equity Jurisdictions, Classes, and the Voting Process: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Dual-class_stock"],
+  ["w:Cumulative_voting"],
+  ["w:Proxy_voting"]
+ ]},
+{name:"Equity Issuance and Trading",
+ core:/primary market|secondary market|initial public offering|\bIPO\b|seasoned offering|follow-on offering|secondary offering|rights offering|private placement|shelf registration|underwrit|over-the-counter|\bOTC\b|dark pool|bid-ask|market maker|\bdealers?\b|\bbrokers?\b|free float|\bfloat\b|average daily volume|margin|short sale|short sell|sold short|sells? short|limit order|stop order|market order|stop-loss|order-driven|quote-driven|\bindex\b|indexes|indices|price-weighted|equal-weighted|cap(italization)?-weighted/,
+ match:/primary|secondary|offering|IPO|placement|underwrit|exchange|OTC|over-the-counter|dark pool|order|bid|ask|spread|dealer|broker|float|volume|liquid|margin|short|leverage|index|weighted|rebalanc|reconstitut|ETF/,
+ ideas:`**The primary market is where companies sell new shares; the secondary market is where investors trade existing ones.**
+
+## Primary market
+- **Initial public offering (IPO):** the first public sale of shares, usually underwritten by investment banks that gauge demand to set the price. **Seasoned (follow-on) offering:** more shares sold by a listed company. **Rights offering:** existing holders get rights to buy new shares at a discount, which protects them from dilution. **Private placement:** shares sold to a few qualified investors, with less disclosure and lower cost.
+- A **direct listing** lists existing shares without raising new money.
+
+## Secondary market
+- It raises no money for the company, but its liquidity and price discovery make new issues cheaper.
+- **Exchanges:** order-driven markets match buy and sell orders by rules (price first, then time); in quote-driven markets dealers post bid and ask prices and trade from their own inventory.
+- **Off-exchange** venues include alternative trading systems and dark pools, which hide orders so large trades move the price less. **Over-the-counter** trading runs through dealer networks for securities that are not listed or trade rarely.
+- **Orders:** a market order executes at once at the best available price (certain execution, uncertain price); a limit order sets a worst acceptable price (certain price, uncertain execution); a stop order becomes active only when a trigger price is reached.
+- Buying **on margin** (borrowing part of the price) magnifies gains and losses, and a margin call comes when the investor's equity falls below the maintenance margin. A **short sale** borrows shares and sells them, hoping to buy them back cheaper; the possible loss has no upper limit.
+
+## Liquidity measures
+- A narrow **bid-ask spread**, a large **float** (shares available to the public, excluding those held by insiders, governments and strategic holders) and a high **average daily volume** mean better liquidity.
+- Example: 100 million shares outstanding, 30 million held by founders and a strategic investor: float = 70 million. Daily volumes of 1.2, 0.8, 1.0, 1.5 and 0.5 million shares give an average daily volume of 1.0 million.
+
+## Types of equity indexes
+- Broad market, sector, style (value or growth, large or small companies), country or region, and thematic indexes (such as sustainability). Weighting can be by price, equally, by float-adjusted market value, or by fundamentals.
+- Indexes serve as benchmarks, as the basis for index funds and ETFs, and as gauges of market moves.`,
+ traps:[
+  "A market order guarantees execution, not price; a limit order guarantees the price or better, not execution.",
+  "A rights offering protects existing holders from dilution if they use or sell their rights.",
+  "Float excludes shares held by insiders and strategic holders, so it is smaller than shares outstanding.",
+  "Secondary-market trades raise no money for the company.",
+  "A short seller's potential loss is unlimited because the price can rise without limit."
+ ],
+ formulas:["F1-EQ-01","F1-EQ-02","F1-EQ-03","F1-EQ-14","F1-EQ-04","F1-EQ-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-equity-issuance-and-trading/","Equity Issuance and Trading: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/i/ipo.asp"],
+  ["i:terms/l/limitorder.asp"],
+  ["i:terms/m/margincall.asp"],
+  ["i:terms/s/shortselling.asp"],
+  ["w:Dark_pool"]
+ ]},
+{name:"Sources of Equity Returns",
+ core:/dividends? (yield|payment|policy|chronology|per share)|ex-dividend|record date|payment date|declaration date|share repurchase|buyback|buy back|repurchas|stock split|reverse (stock )?split|stock dividend|total return|price return|special dividend|tender offer|Dutch auction/,
+ match:/dividend|ex-|record|declar|repurchas|buyback|buy back|split|total return|price return|capital gain|reinvest|tender|Dutch|EPS|book value per share/,
+ ideas:`**Shareholders earn returns from price changes and from dividends; companies return cash through dividends and buybacks, and change their share count through splits.**
+
+## Dividends
+- **Cash dividends** can be regular, special (one-off) or liquidating; they reduce the company's cash and equity. Steady dividends signal confidence, and a cut is usually read as bad news.
+- **Stock dividends** give holders new shares in proportion to what they own: no cash leaves the company, ownership shares do not change, and the price per share falls in proportion.
+
+## Payment chronology
+- **Declaration date:** the board announces the dividend and its dates.
+- **Ex-dividend date:** the first day on which a buyer no longer receives the dividend; the price usually falls by about the dividend amount. Because trades take time to settle, it falls on or before the record date, depending on the market's settlement cycle.
+- **Holder-of-record date:** owners on the register that day receive the dividend.
+- **Payment date:** the cash is paid.
+
+## Share repurchases
+- Methods: buying on the open market (the most common and flexible), a fixed-price tender offer, a Dutch auction (holders state the prices at which they would sell), or direct negotiation with a large holder.
+- Effects: fewer shares outstanding. EPS rises if the earnings yield (E/P) exceeds the after-tax cost of the money used. Book value per share rises if the price paid is below book value per share and falls if it is above.
+- Reasons: signal that management thinks the shares are undervalued, flexibility (no commitment like a dividend), and offsetting dilution from employee options. With no taxes or costs, a buyback and a cash dividend of the same amount leave shareholders' total wealth unchanged.
+
+## Splits
+- A **stock split** (such as 2-for-1) doubles the shares and halves the price: no change in value or ownership. A **reverse split** cuts the number of shares and raises the price, often to meet an exchange's minimum price.
+
+## Measuring the return
+- Price return = (P1 − P0) / P0; total return = (P1 − P0 + dividends) / P0. Bought at 40, with a dividend of 1.20 and a final price of 42: price return 5%, total return 8%.
+- Over long periods, reinvested dividends have made up a large part of equity total returns.`,
+ traps:[
+  "Buying on or after the ex-dividend date means you do not receive that dividend.",
+  "Splits and stock dividends do not change a shareholder's wealth or percentage ownership.",
+  "A buyback raises EPS only if the earnings yield exceeds the after-tax cost of the funds used.",
+  "Buying back shares above book value per share lowers book value per share.",
+  "Total return includes dividends; price return does not."
+ ],
+ formulas:["F1-QM-01"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-sources-of-equity-returns/","Sources of Equity Returns: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/s/sharerepurchase.asp"],
+  ["i:terms/s/stocksplit.asp"],
+  ["i:terms/s/stockdividend.asp"],
+  ["w:Ex-dividend_date"]
+ ]},
+{name:"Introduction to Equity Valuation",
+ core:/intrinsic value|undervalued|overvalued|price (and|versus|vs\.?) value|book value of equity|market capitalization|enterprise value|valuation models?|asset-based|efficient market|market efficiency|weak[- ]form|semi-?strong|strong[- ]form|anomal|mispric/,
+ match:/intrinsic|value|undervalued|overvalued|book value|market cap|enterprise value|\bEV\b|model|asset-based|efficient|weak|strong|anomal|mispric|behavioral|calendar|momentum|january|fundamental analysis|technical analysis/,
+ ideas:`**Price is what the market pays today; intrinsic value is what an analyst estimates the share is worth from its expected cash flows and risk.**
+
+## Price versus value
+- Estimated value above price suggests the share is undervalued; below price, overvalued. How much to trust the gap depends on the model, the inputs, and whether the market may know something the analyst does not.
+- In largely efficient markets, prices already reflect public information, so gaps should be small or short-lived; a large gap calls first for checking one's own assumptions.
+
+## Book value, market capitalization and enterprise value
+- **Book value of equity** = assets − liabilities at accounting amounts. It relies on historical costs and leaves out internally built intangibles, so it is a weak guide to intrinsic value for most companies (it works better for banks and other firms holding financial assets).
+- **Market capitalization** = share price × shares outstanding: the market's current price for the equity, not necessarily its intrinsic value.
+- **Enterprise value (EV)** = market value of equity + debt + preferred shares + noncontrolling interests − cash and short-term investments: the value of the operating business to all capital providers. Market cap 800, debt 300 and cash 100 give EV = 1,000. EV helps compare companies with different amounts of debt.
+
+## Families of valuation models
+- **Present value (discounted cash flow) models:** dividends, free cash flow or residual income. Grounded in theory, but very sensitive to growth and discount-rate assumptions.
+- **Multiples (relative valuation):** price or EV relative to earnings, book value, sales or EBITDA. Quick and market-based, but they assume the comparable companies are fairly priced.
+- **Asset-based models:** the market value of assets minus liabilities. Useful for natural resource companies, holding companies and liquidations; weak for companies whose value lies in intangibles.
+- Choose models that fit the company: steady dividend payers suit dividend models; companies that pay no dividend, or valuations from a control perspective, suit free cash flow; banks suit residual income or price-to-book.`,
+ traps:[
+  "Market capitalization is a price, not an estimate of intrinsic value.",
+  "Enterprise value adds debt and subtracts cash: it values the business, not just the shares.",
+  "Book value uses accounting amounts and misses internally built intangibles.",
+  "A gap between price and estimated value matters only if the analyst's inputs are better than the market's.",
+  "Asset-based valuation suits companies with tangible, marketable assets, not technology firms."
+ ],
+ formulas:["F1-EQ-13"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-introduction-to-equity-valuation/","Introduction to Equity Valuation: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/e/enterprisevalue.asp"],
+  ["w:Intrinsic_value_(finance)"],
+  ["w:Stock_valuation"]
+ ]},
+{name:"Discounted Cash Flow (DCF) and Growth Models",
+ core:/dividend discount|\bDDM\b|Gordon|constant[- ]growth|multistage|multi-stage|two-stage|terminal value|\bFCFE\b|\bFCFF\b|free cash flow|residual income|preferred (stock|shares?)'?s? (value|is worth|valued|intrinsic)|value (of|per) (a|the|each) preferred|sustainable growth|retention (ratio|rate)/,
+ match:/dividend|discount|Gordon|growth|stage|terminal|FCFE|FCFF|free cash|residual income|present value|preferred|required (rate of )?return|retention|payout|ROE|intrinsic value/,
+ ideas:`**Present value models estimate intrinsic value as the discounted value of the cash flows a shareholder can expect.**
+
+## Choosing the cash flow
+- **Dividend discount model (DDM):** dividends, discounted at the required return on equity. Suits companies with steady, meaningful dividends.
+- **Free cash flow to equity (FCFE):** cash left for shareholders after reinvestment and net borrowing, discounted at the cost of equity. Suits companies whose dividends differ from what they could pay.
+- **Free cash flow to the firm (FCFF):** cash for all capital providers, discounted at the weighted average cost of capital (WACC) to give firm value; subtract debt to get equity value. Suits companies with high or changing leverage.
+- **Residual income:** current book value plus the present value of future earnings above the required return on book equity. Suits companies without dividends or with negative free cash flow.
+
+## Constant growth
+- Gordon growth model: V0 = D1 / (r − g), with r above g. Rearranged: implied g = r − D1 / P0. Sustainable growth g = retention ratio × ROE.
+- Example: D0 = 2.00, g = 4%, r = 9%: D1 = 2.08 and V0 = 2.08 / 0.05 = 41.60. The same form applies to FCFE: V0 = FCFE1 / (r − g).
+
+## Multistage growth
+- High growth for some years, then stable growth forever. Value each cash flow of the high-growth years, add a **terminal value** at the end of that period (the Gordon formula applied to the first stable-growth cash flow), and discount it back.
+
+## Shortcomings
+- Value is very sensitive to the gap r − g; constant growth forever is unrealistic for young companies; a sudden switch from high to stable growth is artificial; the terminal value often makes up most of the total; and distant forecasts are uncertain.
+
+## Preferred shares
+- A non-callable, non-convertible perpetual preferred share: V0 = D / r. A dividend of 5 a year at a required return of 6.5% gives 76.92.
+- A **call** feature lets the issuer redeem when rates fall, capping the price: lower value to the investor. A **put** (retractable) feature lets the investor sell back: higher value. A **conversion** option is worth at least the value of the shares it converts into.`,
+ traps:[
+  "Discount FCFF at the WACC to get firm value; discount FCFE at the cost of equity to get equity value.",
+  "The Gordon model needs next year's dividend, D1, and a required return above growth.",
+  "In a multistage model the terminal value at the end of year n is discounted back n years.",
+  "Small changes in r − g cause large changes in value.",
+  "A call feature lowers a preferred share's value to investors; a put feature raises it."
+ ],
+ formulas:["F1-EQ-06","F1-EQ-07","F1-EQ-08","F1-EQ-09","F1-EQ-11","F1-FSA-05","F1-FSA-06"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-dcf-and-growth-models/","Discounted Cash Flow and Growth Models: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/d/ddm.asp"],
+  ["i:terms/g/gordongrowthmodel.asp"],
+  ["i:terms/r/residualincome.asp"],
+  ["w:Dividend_discount_model"]
+ ]},
+{name:"Relative Value Equity Valuation Approaches",
+ core:/multiples?\b|P\/E|price-to-earnings|price-earnings|price-to-book|P\/B\b|price-to-sales|P\/S\b|price-to-cash|EV\/EBITDA|EV\/sales|EBITDA multiple|comparables|comparable companies|peer group|justified|trailing|forward (P\/E|earnings)|forecasted fundamentals|\bPEG\b/,
+ match:/multiple|P\/E|P\/B|P\/S|EBITDA|EV\/|price-to|comparab|peer|justified|trailing|forward|earnings yield|PEG|benchmark|cheap|expensive|relative/,
+ ideas:`**Multiples value a share by comparing it with similar companies, or with the multiple its fundamentals justify.**
+
+## Two methods
+- **Method of comparables:** compare the company's multiple with peers (often the median), the industry or its own history. A lower multiple suggests relative undervaluation, assuming the peers are fairly priced.
+- **Method of forecasted fundamentals:** derive the multiple a discounted cash flow model justifies. Justified forward P/E = payout ratio / (r − g); justified trailing P/E = payout × (1 + g) / (r − g); justified P/B = (ROE − g) / (r − g). With a 40% payout, r = 10% and g = 6%, the justified forward P/E is 0.40 / 0.04 = 10.
+
+## Price and enterprise value multiples
+- **P/E:** the most widely used; meaningless with negative earnings and distorted by accounting choices and one-off items. Trailing P/E uses the last 12 months' earnings; forward P/E uses forecast earnings.
+- **P/B:** useful for financial firms whose assets are close to market value; book value can be negative or miss intangibles.
+- **P/S:** works for loss-making companies, but ignores costs and profitability. **P/CF:** cash flow is harder to manipulate than earnings.
+- **EV/EBITDA:** neutral to capital structure and to depreciation policy, so it compares companies with different leverage; EBITDA ignores capital spending. An EV of 1,000 and EBITDA of 125 give 8×.
+- Match numerator and denominator: equity value with equity measures (earnings, book value); enterprise value with measures before interest (EBITDA, sales).
+
+## Choosing peers
+- Start from an industry classification (such as GICS or ICB), then refine by the drivers of value: growth, profitability, risk, size and business model. Adjust for differences, for example with the PEG ratio (P/E divided by expected growth).
+
+## Past, current and future values
+- Trailing multiples use reported figures (objective but possibly stale); forward multiples use forecasts (reflect the future but depend on them). Apply the same basis to every peer, and use normalized earnings for cyclical companies.`,
+ traps:[
+  "A low P/E is not automatically cheap: it may reflect higher risk or lower growth.",
+  "Never divide enterprise value by net income, or equity value by EBITDA: match the claims.",
+  "P/E is meaningless for loss-making companies; use P/S or EV/sales instead.",
+  "Comparables assume peers are fairly valued: if the whole sector is overpriced, so is the 'cheap' stock.",
+  "Holding the other inputs constant, a justified P/E rises with the payout ratio and growth and falls as the required return rises."
+ ],
+ formulas:["F1-EQ-10","F1-EQ-12","F1-EQ-13"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-relative-value-valuation/","Relative Value Equity Valuation Approaches: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/price-earningsratio.asp"],
+  ["i:terms/p/price-to-bookratio.asp"],
+  ["i:terms/e/ev-ebitda.asp"],
+  ["i:terms/p/pegratio.asp"],
+  ["w:Valuation_using_multiples"]
+ ]},
+{name:"Financial Statement Forecasting in Equity Valuation",
+ core:/forecast(ing)? (model|revenue|sales|the income|earnings)|pro forma|financial (statement )?model|forecast horizon|explicit forecast|scenario analysis|sensitivity analysis|sum of the parts|exit multiple/,
+ match:/forecast|pro forma|model|projection|horizon|scenario|sensitivity|assumption|driver|segment|normaliz|exit multiple|terminal/,
+ ideas:`**A forecast model projects a company's financial statements so the analyst can estimate the earnings or cash flows that drive its value.**
+
+## Why build one, and how
+- Value depends on future results, not past ones. A model links operating drivers to all three statements and keeps them consistent: the balance sheet balances and the cash flow statement agrees with both.
+- Typical steps: revenue (volume, price, segments, the economy), costs and margins (fixed and variable parts, operating leverage), working capital (days ratios), capital spending and depreciation (maintenance versus growth), financing (debt, dividends, buybacks), tax rate, and share count.
+- Uses: inputs for discounted cash flow valuation, scenario and sensitivity analysis, testing management's guidance, and credit analysis.
+
+## Fit the model to the company
+- **Mature, stable** companies: few drivers and steady growth.
+- **Cyclical** companies: forecast across a whole cycle with normalized margins, not by extending the latest year.
+- **Young, fast-growing** companies: customer and unit economics, and a long horizon before reaching a steady state.
+- **Banks and insurers:** driven by the balance sheet (loans, deposits, interest margins).
+- **Conglomerates:** model each segment and add them up (sum of the parts).
+- Put detail where it matters: model the key drivers carefully and the minor lines as a percentage of sales.
+
+## From the model to a value
+- Forecast free cash flow (or dividends) for the explicit period, add a terminal value (stable growth or an exit multiple), and discount. For FCFF: firm value − debt and other claims + non-operating assets = equity value; divide by diluted shares for value per share.
+- Cross-check with multiples; build base, optimistic and pessimistic scenarios and weight them; find which assumptions move the value most.`,
+ traps:[
+  "A detailed model is not necessarily accurate: detail does not fix wrong key assumptions.",
+  "The terminal value often makes up most of a DCF value; test it with both a growth rate and an exit multiple.",
+  "Capital spending must be consistent with the growth assumed: high growth needs reinvestment.",
+  "Equity value = firm value − debt and other senior claims (+ non-operating assets); then divide by diluted shares.",
+  "For cyclical companies, forecast through a full cycle instead of extrapolating the latest year."
+ ],
+ formulas:["F1-EQ-11","F1-FSA-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-financial-statement-forecasting/","Financial Statement Forecasting in Equity Valuation: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Financial_modeling"],
+  ["w:Discounted_cash_flow"]
+ ]},
+{name:"Industry and Competitive Analysis",
+ core:/industry (analysis|classification|life[- ]cycle|structure|concentration|growth|size)|\bGICS\b|\bICB\b|sector classification|five forces|Porter|PESTLE|PEST\b|barriers? to entry|market share|life[- ]cycle|cyclical (industry|company|companies|firms?)|defensive (industry|company|companies|sector)|concentration ratio|\bHHI\b|Herfindahl|shakeout|embryonic/,
+ match:/industry|sector|GICS|ICB|classif|five forces|Porter|PESTLE|barrier|entry|substitut|supplier|buyer|bargaining|rival|market share|life cycle|embryonic|growth stage|mature|decline|shakeout|cyclical|defensive|concentrat|HHI|Herfindahl|commodit|regulat|demograph/,
+ ideas:`**Industry analysis explains the environment a company competes in: how big the market is, how fast it grows, how profitable it is, and which forces shape it.**
+
+## The process
+- Define the industry (products, customers, geography); measure its size and growth; examine its structure and external influences; judge where each company stands; then use the results in forecasts of growth and margins.
+
+## Classifying companies
+- Commercial systems such as **GICS** and **ICB** assign each company by its principal business activity, mainly the source of most of its revenue, at several levels (sector down to sub-industry).
+- Other groupings: sensitivity to the business cycle (**cyclical** versus **defensive**), similarity of share returns, or shared drivers of value. A company with several businesses fits no single label, so peer groups should share drivers, not just a code.
+
+## Size, growth, profitability and market share
+- Size and growth come from history and from drivers such as demographics, technology and the economy.
+- **Life cycle:** embryonic (slow growth, high prices), growth (fast growth, rising profits, little competition), shakeout (slowing growth, fierce competition, consolidation), mature (slow growth, stable leaders), decline (shrinking demand, overcapacity).
+- Profitability: margins and returns on capital across the industry. Concentration: the share of the largest firms, or the **Herfindahl-Hirschman index** (sum of squared market shares). Shares of 35%, 25%, 20% and 20% give an HHI of 2,650.
+
+## Porter's five forces
+- Threat of new entrants (barriers such as scale, capital needs, regulation, brands), threat of substitutes, bargaining power of buyers, bargaining power of suppliers, and rivalry among existing competitors. The stronger the forces, the lower the industry's profitability.
+
+## PESTLE
+- External influences: **Political**, **Economic**, **Social**, **Technological**, **Legal** and **Environmental**, for example regulation, interest rates, demographics, innovation, litigation and climate rules.`,
+ traps:[
+  "High concentration supports pricing power only if barriers to entry are high.",
+  "Cyclical industries track the economy; defensive ones (food, utilities, healthcare) are steadier.",
+  "Classification systems place a company by its main source of revenue.",
+  "The shakeout stage comes between growth and maturity: growth slows and competition intensifies.",
+  "Strong buyer or supplier power squeezes margins even in a growing industry."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-industry-and-competitive-analysis/","Industry and Competitive Analysis: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/p/porter.asp"],
+  ["i:terms/h/hhi.asp"],
+  ["w:Global_Industry_Classification_Standard"],
+  ["w:PEST_analysis"]
+ ]},
+{name:"Company Analysis: Past, Present, and Future",
+ core:/competitive (strategy|advantage|position)|cost leadership|differentiation|focus strategy|pricing power|revenue drivers?|operating (profitability|leverage)|unit economics|return on invested capital|\bROIC\b|company analysis|moat|switching costs|network effect/,
+ match:/strategy|cost leader|differentiat|focus|pricing power|revenue|driver|margin|profitab|working capital|capex|capital expenditure|capital structure|leverage|return on (invested )?capital|ROIC|DuPont|moat|brand|patent|scale|switching|network/,
+ ideas:`**Company analysis connects the industry picture to one company: its strategy, how it earns its revenue and profit, and how it uses capital.**
+
+## Strategy and competitive position
+- Porter's generic strategies: **cost leadership** (lowest costs, compete on price, often through scale), **differentiation** (a product customers pay more for), or a **focus** on a niche using either approach. A company that achieves neither is "stuck in the middle".
+- Lasting advantages (a "moat") come from brands, patents, network effects, switching costs, scale or regulation.
+
+## Revenue drivers and profitability
+- Revenue = volume × price, broken down by segment, region and customer type; growth comes from the market growing or from gaining share; recurring revenue is worth more than one-off sales.
+- **Pricing power:** raising prices without losing much volume, possible when demand is inelastic or the company's position is strong; it protects margins when costs rise.
+- Operating profitability: gross and operating margins, the mix of fixed and variable costs (**operating leverage**: high fixed costs amplify swings in profit), and economies of scale.
+
+## Working capital, investment and capital structure
+- **Working capital:** days of inventory, receivables and payables, and the cash conversion cycle. A growing company ties up cash in working capital even while profits rise.
+- **Capital investment:** separate maintenance from growth spending; compare capital spending with depreciation. Growth creates value only when the **return on invested capital (ROIC)** exceeds the cost of capital: NOPAT of 120 on invested capital of 1,000 is a 12% ROIC, value-creating against a 9% cost of capital.
+- **Capital structure:** leverage, interest coverage and debt maturities. Debt raises ROE (as DuPont analysis shows) but also risk. Sustainable growth = retention ratio × ROE.`,
+ traps:[
+  "Growth creates value only when return on invested capital exceeds the cost of capital.",
+  "High operating leverage magnifies profits in good years and losses in bad ones.",
+  "Pricing power shows up as stable margins when input costs rise.",
+  "Fast growth usually consumes working capital, so cash flow can lag profit.",
+  "A higher ROE achieved through more debt is not better operating performance."
+ ],
+ formulas:["F1-EQ-11","F1-FSA-15"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-company-analysis/","Company Analysis: Past, Present, and Future: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Porter%27s_generic_strategies"],
+  ["w:Return_on_invested_capital"],
+  ["w:Economic_moat"]
+ ]},
+{name:"Equity Analyst Research Reports",
+ core:/research report|sell-side|buy-side|analyst('s)? report|investment thesis|target price|price target|rating (of )?(buy|sell|hold)|buy rating|sell rating/,
+ match:/report|sell-side|buy-side|analyst|recommend|target|thesis|rating|assumption|catalyst|value range|disclos/,
+ ideas:`**A research report turns analysis into a recommendation that its readers can follow and challenge.**
+
+## What a detailed company report covers
+- The **recommendation** (buy, hold, sell, or a rating relative to peers) and a **target price** or value range with a time horizon.
+- The **investment thesis**: why the market's view is wrong and what could make the price move (catalysts).
+- The company and its industry, the financial analysis and forecasts, and the **valuation**: methods, key assumptions and how sensitive the value is to them.
+- **Risks** to the thesis (what would prove it wrong), environmental, social and governance factors where relevant, and **disclosures** of conflicts of interest.
+- A good report separates facts from opinions and states its assumptions, so readers can disagree with specific inputs.
+
+## Sell-side versus buy-side reports
+- **Sell-side** analysts work for brokers and investment banks and publish for many clients. Their reports are longer and formal, cover many companies, and face conflicts (investment banking ties, trading business); ratings lean toward "buy".
+- **Buy-side** analysts work for asset managers and funds and write for their own portfolio managers. Their reports are shorter, focused on a decision for the portfolio (position size, fit with the benchmark), and not published. They often use sell-side research as one input.
+- Their conclusions can differ because their purpose differs: broad coverage and client relationships on one side, returns relative to a benchmark on the other.
+
+## Why value estimates differ
+- Two analysts using the same model can reach very different values through their assumptions on revenue growth, margins, reinvestment (capital spending and working capital), financing (debt, buybacks), the discount rate and long-term growth. Small changes in long-run growth or margins compound into large differences in value.`,
+ traps:[
+  "A target price is useful only with its time horizon and key assumptions.",
+  "Sell-side ratings lean toward 'buy': read the reasoning and the disclosures, not just the rating.",
+  "The same DCF model can give very different values under different growth, margin, reinvestment and financing assumptions.",
+  "A good report says what would prove the thesis wrong.",
+  "Buy-side reports serve internal decisions and are generally not published."
+ ],
+ formulas:[],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-equity-analyst-research-reports/","Equity Analyst Research Reports: full lesson with worked examples (free account)","FreeFellow"],
+  ["w:Securities_research"],
+  ["w:Financial_analyst"]
+ ]},
+{name:"The Capital Asset Pricing Model, Market Model, and Other Factor-Based Equity Models",
+ core:/\bCAPM\b|capital asset pricing|market model|\bbetas?\b|arbitrage pricing|\bAPT\b|multi-?factor|factor model|Fama|equity risk premium|cost of equity|required return on equity|smart beta/,
+ match:/CAPM|capital asset|market model|beta|alpha|arbitrage pricing|APT|factor|Fama|French|premium|risk-free|cost of equity|required return|systematic|diversifiable|SML|security market line/,
+ ideas:`**The required return on equity is the return investors demand for the risk they cannot diversify away.**
+
+## The CAPM
+- E(Ri) = Rf + βi × [E(Rm) − Rf]. Beta measures sensitivity to market (systematic) risk; risk that diversification removes earns no premium. With Rf = 3%, a beta of 1.2 and an equity risk premium of 5%, the required return is 3% + 1.2 × 5% = 9%.
+- Assumptions: risk-averse, diversified investors with the same expectations; borrowing and lending at the risk-free rate; no taxes or trading costs; a single period.
+- Inputs: a risk-free rate matching the currency and horizon, an equity risk premium (from history or forward-looking estimates), and a beta from a regression on a market index. For an unlisted company, use the betas of listed peers adjusted for differences in leverage.
+
+## The market model
+- Ri = αi + βi × Rm + εi: a regression of the stock's returns on the market's. The slope estimates beta, the intercept is alpha, and the residual is firm-specific risk.
+- Estimates depend on the period, the data frequency and the index chosen. Raw betas tend to drift toward 1 over time, so analysts often use an adjusted beta (about two-thirds raw beta plus one-third × 1).
+
+## Arbitrage pricing theory and multi-factor models
+- **APT:** E(R) = Rf + β1λ1 + β2λ2 + … + βkλk, where each λ is the risk premium for one factor. It rests on the absence of arbitrage and needs fewer assumptions than the CAPM (no market portfolio), but it does not say which factors to use. With Rf = 3%, a sensitivity of 1.0 to a factor priced at 4% and 0.5 to one priced at 2%: 3% + 4% + 1% = 8%.
+- **Multi-factor models** use macroeconomic factors (growth, inflation surprises, credit spreads), fundamental factors (size, value, momentum, quality) or statistical factors. The Fama-French model adds size and value to the market factor; a momentum factor is often added too.
+- Why they matter: they explain returns better than a single factor, show which risks a portfolio carries, underpin factor ("smart beta") products, and separate true skill (alpha) from factor exposure.`,
+ traps:[
+  "In the CAPM only systematic risk (beta) is rewarded, not total risk.",
+  "Multiply beta by the equity risk premium, E(Rm) − Rf, not by the market return.",
+  "Alpha in the market model is a regression intercept, not a promised excess return.",
+  "The APT does not specify its factors; theory or data must supply them.",
+  "Raw betas tend toward 1 over time, which is why adjusted betas are used."
+ ],
+ formulas:["F1-CI-06","F1-PM-04","F1-PM-05"],
+ read:[
+  ["https://www.cfainstitute.org/sites/default/files/2027levelitopicoutline_online.pdf","2027 Level I topic outline: what this module must cover (PDF)","CFA Institute"],
+  ["https://freefellow.org/free/cfa-level-1/lessons/ei-capm-market-model-and-factor-models/","The CAPM, Market Model, and Factor Models: full lesson with worked examples (free account)","FreeFellow"],
+  ["i:terms/c/capm.asp"],
+  ["i:terms/b/beta.asp"],
+  ["i:terms/a/apt.asp"],
+  ["i:terms/f/famaandfrenchthreefactormodel.asp"],
+  ["w:Single-index_model"]
+ ]}
 ]);
 /* Learning map, Fixed Income: the learning modules of the 2027 Level I topic outline, in its order (notes, formulas,
    reading and question matching are added module by module; see 02-quant.js for a complete entry). */
