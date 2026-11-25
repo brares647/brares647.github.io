@@ -15017,11 +15017,47 @@ const setText = s=>s._txt || (s._txt = (s.id+' '+s.topic+' '+(s.vignette||'')+' 
 /* ---------- persistence ---------- */
 let DB = load();
 function blank(settings){ return {history:{},bookmarks:{},exams:[],srs:{},plans:{},cards:{},settings:Object.assign({theme:'auto',level:1},settings||{})}; }
+/* Progress read from this browser or from an imported file keeps only well-formed parts, so a damaged or edited file
+   can neither stop the app from starting nor put markup on the page: every number shown is forced to a number.
+   Returns null when the data has no answer history at all. (Helpers are inside: this runs before the consts below.) */
+function cleanDB(d){
+  const isObj = v=>!!v && typeof v==='object' && !Array.isArray(v);
+  const num = (v,def)=>{ v = Number(v); return isFinite(v) ? v : def; };
+  const map = (o,f)=>{ const out={}; if(isObj(o)) Object.entries(o).forEach(([k,v])=>{ const x=f(v); if(x!==undefined) out[k]=x; }); return out; };
+  const pair = v=>isObj(v) ? {c:num(v.c,0), n:num(v.n,0)} : {c:0,n:0};
+  if(!isObj(d) || !isObj(d.history)) return null;
+  const b = blank(isObj(d.settings) ? d.settings : {});
+  const out = Object.assign(b, d, {settings:b.settings});
+  if(out.settings.lastBackup!=null) out.settings.lastBackup = num(out.settings.lastBackup, undefined);
+  out.history = map(d.history, h=>isObj(h) ? {a:num(h.a,0), s:num(h.s,0), last:h.last==null?null:num(h.last,0), t:num(h.t,0)} : undefined);
+  out.bookmarks = map(d.bookmarks, v=>v ? true : undefined);
+  out.srs = map(d.srs, r=>isObj(r) ? {step:num(r.step,0), due:num(r.due,0)} : undefined);
+  out.cards = map(d.cards, c=>isObj(c) ? {step:num(c.step,0), due:c.due==null?null:num(c.due,0)} : undefined);
+  out.plans = map(d.plans, p=>isObj(p) && /^\d{4}-\d{2}-\d{2}$/.test(p.exam) ? {exam:p.exam, hours:num(p.hours,10), start:num(p.start,0), skip:Array.isArray(p.skip)?p.skip.filter(x=>typeof x==='string'):[]} : undefined);
+  out.exams = (Array.isArray(d.exams) ? d.exams : []).filter(isObj).map(e=>{
+    const r = {date:num(e.date,0), level:[1,2,3].includes(+e.level)?+e.level:1, total:num(e.total,0), correct:num(e.correct,0), score:num(e.score,0), duration:num(e.duration,0), byTopic:map(e.byTopic,pair)};
+    if(typeof e.form==='string') r.form = e.form;
+    if(Array.isArray(e.sets)) r.sets = e.sets.filter(x=>typeof x==='string');
+    if(isObj(e.answers)) r.answers = map(e.answers, a=>isObj(a) ? a : undefined);
+    if(isObj(e.time)) r.time = map(e.time, s=>num(s,0));
+    if(isObj(e.hl)) r.hl = map(e.hl, l=>Array.isArray(l) ? l.filter(x=>Array.isArray(x)&&x.length===2).map(x=>[num(x[0],0),num(x[1],0)]) : undefined);
+    if(isObj(e.parts)) r.parts = {mc:pair(e.parts.mc), cr:pair(e.parts.cr)};
+    return r;
+  });
+  return out;
+}
 function load(){
-  try{ const raw = localStorage.getItem(KEY); if(raw){ const d = JSON.parse(raw); const b = blank(d.settings); return Object.assign(b,d,{settings:b.settings}); } }catch(e){}
+  let raw = null;
+  try{ raw = localStorage.getItem(KEY); if(raw){ const d = cleanDB(JSON.parse(raw)); if(d) return d; } }catch(e){}
+  // unreadable progress is set aside, not overwritten, so it can still be recovered by hand
+  if(raw) try{ localStorage.setItem(KEY+'-damaged', raw); }catch(e){}
   return blank();
 }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){} }
+let saveFailed = false; // warn once when the browser refuses to store progress (storage full or blocked)
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(DB)); saveFailed = false; }
+  catch(e){ if(!saveFailed){ saveFailed = true; setTimeout(()=>toast('Your progress could not be saved in this browser (storage full or blocked). Export a backup from Progress.', 7000), 0); } } // after the action's own message, so it is not replaced
+}
 function record(qid, score){ // score 0..1
   const h = DB.history[qid] || {a:0,s:0,last:null,t:0};
   h.a++; h.s += score; h.last = score; h.t = Date.now();
@@ -15089,10 +15125,15 @@ function modal(o){
     ov.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="modal-body"><h2 id="mTitle">${esc(opt.title)}</h2>${opt.body?`<p>${opt.body}</p>`:''}</div><div class="modal-actions">${opt.cancel?`<button class="btn" data-r="0">${esc(opt.cancel)}</button>`:''}<button class="btn ${opt.danger?'danger-solid':'primary'}" data-r="1">${esc(opt.ok)}</button></div></div>`;
     const prev = document.activeElement;
     const close = v=>{ ov.remove(); document.removeEventListener('keydown',onKey,true); MODAL_OPEN=false; try{ if(prev&&prev.focus&&document.contains(prev)) prev.focus({preventScroll:true}); }catch(e){} res(v); };
-    const onKey = e=>{ if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); close(false); } else if(e.key==='Enter'){ e.preventDefault(); e.stopPropagation(); close(true); } };
+    /* Enter presses the button that has focus (Cancel stays Cancel); with focus elsewhere it confirms, except in a
+       dangerous dialog, which opens on Cancel and confirms only from its own red button */
+    const onKey = e=>{
+      if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); close(false); }
+      else if(e.key==='Enter'){ e.stopPropagation(); const f=document.activeElement; if(f && ov.contains(f) && f.tagName==='BUTTON') return; e.preventDefault(); if(!opt.danger) close(true); }
+    };
     ov.addEventListener('click',e=>{ if(e.target===ov) return close(false); const b=e.target.closest('[data-r]'); if(b) close(b.dataset.go!=null ? {go:+b.dataset.go} : b.dataset.r==='1'); });
     document.addEventListener('keydown',onKey,true); MODAL_OPEN=true;
-    document.body.appendChild(ov); $('[data-r="1"]',ov).focus();
+    document.body.appendChild(ov); $(opt.danger && opt.cancel ? '[data-r="0"]' : '[data-r="1"]',ov).focus();
   });
 }
 /* Error reports go by email: "Send report" opens the reporter's email app with the report written out to
@@ -15132,10 +15173,10 @@ function sheet(html, bind){
   document.addEventListener('keydown',onKey,true); MODAL_OPEN=true;
   document.body.appendChild(ov); bind && bind(ov,close);
 }
-function toast(msg){
+function toast(msg, ms){
   $$('.toast').forEach(t=>t.remove());
   const t = document.createElement('div'); t.className='toast'; t.setAttribute('role','status'); t.textContent=msg; document.body.appendChild(t);
-  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),260); },2600);
+  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),260); }, ms||2600);
 }
 
 /* =========================== calculator (BA II Plus) ============================ */
@@ -16191,7 +16232,7 @@ function examHelp(){
     <div>${icon('pen')}<span><b>Highlight</b>Select text in a case or question, then choose Highlight. Select a highlight again to remove it.</span></div>
     <div>${icon('layers')}<span><b>Sessions</b>A full mock runs as two sessions with an optional break. Ending a session locks its answers.</span></div>
     <div>${icon('check')}<span><b>Finish</b>Before you end a session or submit, you see every open and flagged question and can jump straight to it.</span></div>
-    <div>${icon('exit')}<span><b>Leaving</b>Leave from the top left and the clock pauses until you return. Closing or reloading the page ends the exam.</span></div>
+    <div>${icon('exit')}<span><b>Leaving</b>Leave from the top left and the clock pauses until you return. Closing or reloading the page ends the exam; your browser asks first.</span></div>
   </div></div>`);
 }
 function openNavigator(){ sheet(navPanel(S.exam), (ov,close)=>bindPal(ov,close)); }
@@ -16663,7 +16704,18 @@ function vProgress(app){
   $$('[data-ptopic]',app).forEach(b=>b.onclick=()=>startQuick([b.dataset.ptopic]));
   $$('[data-goto]',app).forEach(b=>b.onclick=()=>go(b.dataset.goto));
   $('#exp').onclick=exportProgress;
-  $('#imp').onchange=e=>{ const f=e.target.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ try{ const d=JSON.parse(rd.result); if(!d.history) throw 0; const b=blank(d.settings); DB=Object.assign(b,d,{settings:b.settings}); save(); applyTheme(); render(); toast('Progress imported'); }catch(err){ modal({title:'Import failed', body:'That file is not a valid progress export.', cancel:null}); } }; rd.readAsText(f); };
+  /* import replaces the progress in this browser, so it shows both sides and asks first (unless this browser has nothing yet) */
+  $('#imp').onchange=e=>{ const inp=e.target, f=inp.files[0]; inp.value=''; if(!f) return; const rd=new FileReader(); rd.onload=async()=>{
+    let d = null; try{ d = cleanDB(JSON.parse(rd.result)); }catch(err){}
+    if(!d){ modal({title:'Import failed', body:'That file is not a valid progress export.', cancel:null}); return; }
+    const answers = x=>Object.values(x.history).reduce((a,h)=>a+h.a,0), side = x=>`${plural(answers(x),'answer')} and ${plural(x.exams.length,'mock exam')}`;
+    if(answers(DB) || DB.exams.length){
+      const saved = d.settings.lastBackup ? `, saved on ${esc(fmtDate(d.settings.lastBackup))},` : '';
+      const ok = await modal({title:'Replace your progress?', body:`This browser has ${side(DB)}. The file${saved} has ${side(d)}. Importing replaces everything in this browser with the file and cannot be undone. If you are unsure, export a backup first.`, ok:'Replace with file', cancel:'Cancel', danger:true});
+      if(!ok) return;
+    }
+    DB = d; save(); applyTheme(); render(); toast('Progress imported');
+  }; rd.readAsText(f); };
   $('#reset').onclick=async()=>{ if(await modal({title:'Reset all progress?', body:'This deletes your history, bookmarks and exam results for every level. It cannot be undone.', ok:'Delete everything', cancel:'Cancel', danger:true})){ DB=blank(DB.settings); save(); render(); toast('Progress reset'); } };
 }
 function drawChart(){
@@ -16739,6 +16791,17 @@ document.addEventListener('keydown',e=>{
   }
 });
 if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ applyTheme(); if(S.view==='progress') drawChart(); });
+/* Another tab of the app saved progress: take it over, so this tab's next save keeps it instead of writing an older copy
+   over it. Every change here is saved at once, so nothing of this tab's is lost. The level stays as chosen in this tab. */
+window.addEventListener('storage', e=>{
+  if(e.key!==KEY || e.newValue==null) return;
+  const lvl = DB.settings.level; DB = load(); DB.settings.level = lvl;
+  applyTheme();
+  if(!MODAL_OPEN && !isFocus() && !S.cards && (S.view==='home' || S.view==='progress')) render(); else paintChrome();
+});
+/* a mock lives only in memory: the browser asks before the tab is closed or reloaded while one is running, on its break
+   or waiting for its essays to be graded */
+window.addEventListener('beforeunload', e=>{ const ex = S.exam; if(ex && ['running','break','grade'].includes(ex.phase)){ e.preventDefault(); e.returnValue = ''; } });
 
 /* ---------- boot ---------- */
 $$('.logo').forEach(el=>el.innerHTML=icon('logo'));
