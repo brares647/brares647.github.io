@@ -21268,6 +21268,125 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Credit Risk",
  core:/credit risk|default risk|probability of default|loss given default|\bLGD\b|recovery rate|expected loss|credit rating|rating agenc|downgrad|upgrad|investment[- ]grade|speculative[- ]grade|spread risk|credit spreads? (widen|narrow|change)|credit migration|fallen angel/,
  match:/credit|default|probability|loss given|LGD|recovery|expected loss|rating|agency|downgrade|upgrade|investment grade|speculative|spread|migration|liquidity|cycle|economic/,
+ lesson:`## 1. What credit risk is
+**Credit risk** is the risk of loss because a borrower does not pay interest or principal in full and on time. It has two faces:
+- **Default risk:** the borrower actually fails to pay, and the lender recovers only part of what is owed.
+- **Spread risk** (or credit migration risk): the market starts to see the borrower as riskier, its bonds' yield spreads widen, and their prices fall, even if the borrower never defaults.
+
+For most investment-grade investors, spread risk causes far more day-to-day losses than defaults do. Defaults among highly rated companies are rare; changes in how the market prices their risk happen every day.
+
+## 2. Measuring default losses
+### Probability of default and loss given default
+Two numbers describe default risk:
+- **Probability of default (POD):** the likelihood that the borrower defaults over a given period, usually a year.
+- **Loss given default (LGD):** the share of the exposure lost if default happens. It is the complement of the **recovery rate**: LGD = 1 − recovery rate.
+
+Their product is the **expected loss**:
+- expected loss = POD × LGD
+
+It can be expressed as a percentage of the exposure, or in money: POD × LGD × exposure.
+
+> **Worked example 1: expected loss**
+> A bond fund holds 8 million of a BB-rated issuer's senior unsecured bonds. The annual probability of default is estimated at 3%, and the expected recovery rate is 35%.
+> - LGD = 1 − 0.35 = 65%
+> - Expected loss = 3% × 65% = **1.95%** of the exposure a year, that is 156,000
+> A bond whose yield spread is below about 1.95% would not even cover the losses expected on average, before any reward for bearing the uncertainty.
+
+### What drives recovery
+Recovery depends mostly on **where the bond ranks** and **what backs it**:
+- Secured debt recovers more than unsecured, and senior more than subordinated.
+- Recoveries are lower in recessions, when many companies fail at once and their assets sell cheaply.
+- Recoveries differ by industry: companies with hard assets (utilities, real estate) tend to recover more than those whose value lies in people and brands.
+
+## 3. Credit ratings
+### What ratings are
+**Credit rating agencies**, the largest being S&P Global, Moody's and Fitch, publish opinions on credit quality using letter grades. S&P and Fitch run from **AAA** (highest) through AA, A, BBB, BB, B, CCC and below, down to D (in default), with + and − modifiers. Moody's uses Aaa, Aa, A, Baa, Ba, B, Caa and below, with modifiers 1, 2 and 3.
+
+The key line is between:
+- **Investment grade:** BBB− (S&P, Fitch) or Baa3 (Moody's) and above.
+- **Speculative grade** (high yield, non-investment grade): below that.
+
+A bond cut from investment grade to speculative grade is a **fallen angel**. Because many investors (pension funds, insurers, some funds) are allowed to hold only investment-grade bonds, fallen angels often face forced selling and sharp price drops around the downgrade.
+
+Agencies rate both **issuers** (the company's overall credit) and **issues** (a specific bond). An issue can be rated above or below the issuer depending on its seniority and collateral (see the corporate credit module).
+
+### Why ratings are useful
+- They give a simple, comparable measure of credit quality across issuers, industries and countries.
+- They are built into regulation (bank capital rules), investment mandates ("investment grade only") and contracts (loan terms that change with ratings).
+- They are tracked over long periods, so investors can study default rates and rating changes by grade.
+
+### Why ratings are not enough
+- **Ratings change slowly.** Agencies aim for stable opinions, so market prices often move well before a rating changes. Spreads frequently widen months before a downgrade.
+- **Agencies make mistakes.** Many highly rated mortgage-related securities defaulted in the 2007–2009 crisis.
+- **Conflicts of interest:** issuers pay for their ratings.
+- **Event risk** is hard to rate: a lawsuit, a takeover funded with debt, a natural disaster or a fraud can change a company's credit overnight.
+- **Ratings do not price risk.** Two BBB bonds may deserve very different spreads, and a rating says nothing about whether a bond is cheap or expensive at its current price.
+
+So investors use ratings as a starting point, then do their own credit analysis.
+
+## 4. What a yield spread pays for
+A corporate bond's yield exceeds a government yield of the same maturity because of several distinct things:
+- spread ≈ compensation for **expected loss** + **credit risk premium** + **liquidity premium** (+ any tax effects)
+
+- The **expected loss** part covers average defaults, as in example 1.
+- The **credit risk premium** rewards investors for bearing the uncertainty: defaults cluster in recessions, exactly when investors' other assets are also falling. Investors want to be paid for that, beyond the average loss.
+- The **liquidity premium** compensates for higher trading costs and the risk of not being able to sell quickly at a fair price.
+
+In practice, spreads are usually much larger than expected losses for investment-grade bonds. Most of their spread is risk and liquidity premium.
+
+## 5. What moves spreads
+### The credit cycle
+Spreads follow the economy:
+- In **expansions**, profits are strong, defaults are low and investors are confident: spreads **narrow**.
+- In **downturns**, defaults are expected to rise and investors become more risk-averse: spreads **widen**.
+- **Lower-rated** bonds react far more. A recession might widen AA spreads by tens of basis points and CCC spreads by many hundreds.
+
+### Market factors
+- **Liquidity and dealer capacity:** if dealers hold less inventory, bonds become harder to sell and spreads include more liquidity premium.
+- **Supply and demand:** a wave of new issues can push spreads wider; strong inflows into bond funds can push them narrower.
+- **Overall risk appetite**: spreads tend to widen when equity markets fall and volatility rises.
+
+### Issuer-specific factors
+- Changes in leverage, profitability, cash flow, and competitive position.
+- **Corporate events:** a debt-financed acquisition or leveraged buyout, a large share buyback, a major lawsuit.
+
+## 6. Spread changes and bond prices
+A change in the spread moves a bond's price through its **duration**, just like a change in the government yield. Using the duration and convexity formulas with the spread change Δs:
+- %ΔP ≈ −modified duration × Δs + ½ × convexity × (Δs)²
+
+> **Worked example 2: the cost of spread widening**
+> A corporate bond has a modified duration of 6.2 and convexity of 48. Its spread widens by 80 basis points while government yields stay the same.
+> - Duration effect: −6.2 × 0.008 = −4.96%
+> - Convexity effect: ½ × 48 × 0.008² = +0.15%
+> - Estimated price change ≈ **−4.81%**
+> No default happened; the market simply priced more risk. This is spread risk.
+
+### Spread income versus spread risk
+Over a holding period, a corporate bond earns its **spread** as extra income, but loses or gains from changes in that spread. A rough estimate of the excess return over a government bond:
+- excess return ≈ spread × time held − modified duration × Δs (− any default losses)
+
+> **Worked example 3: when does widening wipe out the extra yield?**
+> The bond in example 2 yields a spread of 1.90% over governments. Over one year, ignoring convexity and defaults:
+> - If the spread does not change: excess return ≈ +1.90%
+> - If it widens by 80 bp: 1.90% − 6.2 × 0.008 = **−3.06%**
+> - Breakeven widening: 1.90% / 6.2 = 0.0031, about **31 bp**. A widening of more than 31 bp in a year would make the corporate bond underperform the government bond.
+> The longer the bond's duration, the smaller the widening it can absorb.
+
+## 7. Ability and willingness to pay
+Credit analysis, which the next two modules cover, asks two questions:
+- **Ability to pay:** does the borrower have, or will it have, the cash? For companies this is about cash flow, leverage and liquidity.
+- **Willingness to pay:** will the borrower choose to pay? For companies, legal enforcement through bankruptcy makes willingness less of an issue. For governments it is central, because creditors cannot seize a country's assets.
+
+## Checklist before you answer
+- Credit risk = default risk + spread (migration) risk.
+- Expected loss = POD × LGD, and LGD = 1 − recovery rate.
+- Recovery is higher for secured and senior debt, and lower in recessions.
+- Investment grade = BBB− / Baa3 and above; a fallen angel crosses the line and may face forced selling.
+- Ratings lag markets, can be wrong, are paid for by issuers and miss event risk.
+- Spread ≈ expected loss + credit risk premium + liquidity premium.
+- Spreads widen in downturns, most for low-rated bonds.
+- %ΔP from a spread change ≈ −ModDur × Δs + ½ × convexity × (Δs)².
+- Breakeven spread widening over a year ≈ spread / modified duration.`,
  ideas:`**Credit risk is the risk of loss because a borrower fails to pay as promised. It shows up as default losses and as wider spreads before any default.**
 
 ## Components
@@ -21305,6 +21424,109 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Credit Analysis for Government Issuers",
  core:/sovereign (credit|rating|default|risk|analysis)|ability (and|to) (willingness|pay)|willingness to pay|fiscal (deficit|position|flexibility)|external (debt|position)|reserve currency|general obligation|revenue bonds?|debt service coverage|tax base|local[- ]currency (debt|bonds?)|foreign[- ]currency (debt|bonds?)|non-sovereign (credit|debt)/,
  match:/sovereign|government|ability|willingness|fiscal|deficit|debt-to-GDP|external|reserve currency|exchange rate|institution|political|monetary|general obligation|revenue bond|debt service|tax|local currency|foreign currency|municipal/,
+ lesson:`## 1. Why governments are a special kind of borrower
+When a company cannot pay, its creditors can take it to court, seize collateral and, in bankruptcy, take control of its assets. When a **national government** cannot or will not pay, none of that works: there is no international bankruptcy court that can liquidate a country, and creditors cannot seize its roads, schools or tax revenue. A defaulting sovereign usually negotiates a **restructuring** with its creditors (lower coupons, longer maturities, a cut in principal), and the main thing that pushes it to keep paying is the cost of losing access to markets afterwards.
+
+That makes sovereign credit analysis about two things:
+- **Ability to pay:** will the government have the resources?
+- **Willingness to pay:** will it choose to use them for its creditors?
+
+Governments with ample resources have defaulted for political reasons; governments under severe strain have kept paying to protect their reputation.
+
+## 2. The five areas of sovereign analysis
+Rating agencies and analysts group the factors into qualitative and quantitative areas. A useful framework has five.
+
+### Institutional and political assessment
+- **Effectiveness and stability** of government and institutions: can policy be made and carried out?
+- **Rule of law, property rights, low corruption**, and an independent judiciary.
+- **Debt record:** has the country honoured its debts in the past? A history of defaults weighs on willingness.
+- **Geopolitical risk:** conflict, sanctions, regional tensions.
+
+This is where **willingness** to pay is judged.
+
+### Economic assessment
+- **Income per head:** a richer population gives a wider tax base and more room to raise revenue.
+- **Growth prospects:** a growing economy makes a given debt easier to carry.
+- **Size and diversification:** an economy dependent on one export (oil, a single metal) is exposed to price swings.
+- **Demographics:** an ageing population raises pension and health spending.
+
+### Fiscal assessment
+This measures the government's own finances:
+- **Debt burden:** government debt relative to GDP (the most quoted ratio), and debt relative to revenue.
+- **Debt affordability:** interest payments relative to revenue. A high debt at very low rates can be easier to carry than a smaller debt at high rates.
+- **Deficit trend:** is the debt stabilizing or growing faster than the economy?
+- **Fiscal flexibility:** can the government raise taxes or cut spending without political crisis?
+- **Debt structure:** maturity profile (much debt coming due soon raises rollover risk), share in foreign currency, share held by foreign investors.
+
+> **Worked example 1: a fiscal snapshot**
+> A country has GDP of 1,850 billion, government debt of 1,340 billion, government revenue of 540 billion, interest payments of 62 billion and a budget deficit of 74 billion.
+> - Debt / GDP = 1,340 / 1,850 = **72.4%**
+> - Interest / revenue = 62 / 540 = **11.5%**: more than a tenth of every unit of tax goes on interest
+> - Deficit / GDP = 74 / 1,850 = **4.0%**
+> If nominal GDP grows by 3% a year, the debt ratio stays roughly stable only if the deficit is about 3% × 72.4% ≈ 2.2% of GDP. A deficit of 4.0% means the debt ratio is rising.
+
+### Monetary assessment
+- **Central bank independence and credibility:** an independent central bank with a record of controlling inflation makes the currency, and debt in it, more trustworthy.
+- **Exchange rate regime:** a freely floating currency gives a buffer against shocks; a hard peg can break under pressure and leave large foreign-currency debts.
+- **Depth of domestic markets:** a large local investor base and bond market make borrowing in local currency easier.
+
+A government that borrows in **its own currency** can, in the last resort, have its central bank create money to pay. It is unlikely to default outright; the risk shifts to **inflation and currency depreciation**, which erode the real value of the debt. That is why the same sovereign is usually rated **higher on local-currency debt** than on foreign-currency debt.
+
+### External assessment
+- **Foreign exchange reserves** relative to imports and short-term foreign debt: the buffer for paying foreign-currency obligations.
+- **Current account balance:** a persistent deficit means the country depends on foreign capital.
+- **External debt** relative to GDP and to export earnings.
+- **Reserve currency status:** a government whose currency is widely held as a reserve (the US dollar above all, also the euro, yen, sterling) finds it much easier to borrow, because foreign investors and central banks want its bonds.
+
+> **Worked example 2: two sovereigns compared**
+> Country X: debt 95% of GDP, all in its own currency, freely floating exchange rate, independent central bank, current account roughly balanced.
+> Country Y: debt 55% of GDP, 60% of it in US dollars, exchange rate pegged to the dollar, reserves covering three months of imports, current account deficit of 5% of GDP.
+> Despite its higher debt, X is likely to have the stronger credit, especially for its local-currency bonds: it can always pay in its own money, and its floating currency absorbs shocks. Y's dollar debt, thin reserves and external deficit make it vulnerable to a sudden stop in foreign capital, which would also put pressure on its peg.
+
+## 3. Non-sovereign government debt
+Regions, states, provinces and cities issue bonds to fund schools, transport, water systems and hospitals. Their credit differs from a sovereign's in three ways:
+- They usually **cannot print money**.
+- Many are required by law to **balance their operating budgets**.
+- They may receive **support** from the national government, explicit or implied, which can lift their credit.
+
+### General obligation bonds
+**General obligation (GO)** bonds are backed by the issuer's full taxing power. Analysis resembles a smaller version of sovereign analysis:
+- The **local economy**: employment, income levels, diversity of industries and major employers.
+- The **tax base**: property values, sales and income tax revenue, and their stability.
+- **Budget performance**: balanced budgets, reserves, how revenue reacts in a downturn.
+- **Debt and long-term obligations**: debt per resident, debt relative to the tax base, and especially **unfunded pension and retiree health obligations**, which can dwarf the bonded debt.
+- **Demographics and governance**: population growth or decline, quality of financial management.
+
+### Revenue bonds
+**Revenue bonds** are repaid only from the income of a specific project or enterprise: a toll road, an airport, a water utility, a hospital. They are analysed like a business:
+- Is there steady **demand** for the service, and does the issuer have pricing power (can it raise tolls or water rates)?
+- Are operating costs under control?
+- Is the project's income enough to cover its debt payments? The key ratio is the **debt service coverage ratio (DSCR)**:
+  - DSCR = (revenue − operating expenses) / debt service (interest + scheduled principal)
+
+A DSCR above 1.0 means the project earns more than it must pay its bondholders; investors and covenants typically look for a comfortable margin above 1.
+
+> **Worked example 3: a toll road's coverage**
+> A toll road collects 96 million a year, spends 38 million on operations and maintenance, and must pay 41 million of interest and principal.
+> - DSCR = (96 − 38) / 41 = **1.41×**
+> Revenue could fall by (58 − 41) / 96 = about 18% before the road could no longer cover its debt service from operations. A covenant might require the issuer to raise tolls if the DSCR falls below 1.25×.
+
+Because they lack the backing of general taxes, revenue bonds usually carry **more risk** and **higher yields** than GO bonds of the same issuer.
+
+## 4. Putting it together
+1. For a **sovereign**: start with institutions and willingness; then economic strength; then fiscal, monetary and external positions; and distinguish local-currency from foreign-currency debt.
+2. For a **non-sovereign GO bond**: the local economy and tax base, budget discipline, debt and pension obligations, and any national support.
+3. For a **revenue bond**: the project's demand, pricing power, costs and DSCR.
+
+## Checklist before you answer
+- Sovereign creditors cannot use bankruptcy to seize assets, so willingness to pay matters as much as ability.
+- Five areas: institutional/political, economic, fiscal, monetary, external.
+- Key fiscal ratios: debt / GDP, interest / revenue, deficit trend.
+- Local-currency sovereign debt is usually rated above the same government's foreign-currency debt.
+- Reserve currency status, high reserves and a current account surplus strengthen external credit.
+- Non-sovereigns usually cannot print money and often must balance budgets.
+- GO bonds rely on taxing power; revenue bonds only on the project's income.
+- DSCR = (revenue − operating expenses) / debt service; higher is safer.`,
  ideas:`**Governments rarely go bankrupt in a legal sense, so their credit depends on both the ability and the willingness to pay.**
 
 ## Sovereign governments
@@ -21335,6 +21557,121 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Credit Analysis for Corporate Issuers",
  core:/four Cs|\bcapacity\b|\bcharacter\b|EBITDA\s*(\/|to|-to-)\s*interest|debt\s*(\/|to|-to-)\s*EBITDA|\bFFO\b|leverage ratio|coverage ratio|seniority|senior (secured|unsecured)|subordinated|\bjunior\b|first lien|second lien|priority of claims|absolute priority|bankruptcy|notching|issuer rating|issue rating|secured (debt|bonds?|creditors)|unsecured (debt|bonds?|creditors)/,
  match:/capacity|character|capital|collateral|covenant|EBITDA|interest|coverage|leverage|debt|FFO|cash flow|seniority|senior|secured|unsecured|subordinated|junior|lien|priority|bankrupt|recovery|notch|rating|liquidity/,
+ lesson:`## 1. The lender's question
+An equity analyst asks how much a company could be worth if things go well. A credit analyst asks something narrower and more defensive: **will the company pay its debt in full and on time, and how much would lenders get back if it does not?** The upside for a bondholder is capped at the promised payments, while the downside can be most of the investment. So credit analysis focuses on what could go wrong: weak years, falling cash flow, a debt that comes due at a bad moment.
+
+## 2. The four Cs (and a fifth)
+A traditional framework groups the questions into four areas, often with a fifth added.
+
+### Capacity
+The ability to pay from the business's own cash flow. This is the heart of the analysis:
+- **Industry structure:** how intense is competition, how strong are suppliers and customers, how easy is it for new firms to enter? A stable industry with high barriers to entry supports steady cash flow.
+- **Cyclicality:** a cyclical company (building materials, airlines, autos) faces deep falls in revenue in recessions; a defensive one (utilities, food) does not.
+- **Competitive position:** market share, cost position, brands, technology.
+- **Operating history and track record:** how did the company do in the last downturn?
+- **Management's strategy and execution**, and its attitude to debt.
+
+### Capital
+Resources other than current cash flow that could support repayment: the **equity cushion** under the debt (how much the business's value would have to fall before lenders lose), access to capital markets, and support from a parent company.
+
+### Collateral
+The **assets pledged** to lenders and their quality: how easily they could be sold, at what value, and whether that value would hold up in a downturn. Even for unsecured debt, the quality of the company's assets matters, because it affects recovery in a default.
+
+### Covenants
+The terms in the loan or bond documents that protect lenders: limits on further debt, on dividends and buybacks, on asset sales, and financial ratio tests. Tight covenants give lenders a say before things become desperate.
+
+### Character
+The integrity, competence and record of management, including the quality of its accounting and its treatment of creditors in the past. A management that has used aggressive accounting or loaded companies with debt to pay owners is a warning sign.
+
+## 3. Financial ratios
+Ratios turn the capacity question into numbers. Credit analysts use three groups.
+
+### Profitability and cash flow measures
+- **EBITDA:** earnings before interest, taxes, depreciation and amortization. A rough proxy for operating cash flow, widely used but it ignores capital spending, working capital and taxes.
+- **Funds from operations (FFO):** net income plus depreciation, amortization and other non-cash items. Closer to cash flow.
+- **Free cash flow:** cash from operations minus capital expenditure (and, in some definitions, dividends): the cash truly available to repay debt.
+
+### Coverage ratios
+How many times the company's earnings or cash flow cover its interest:
+- EBITDA / interest expense, or EBIT / interest expense.
+**Higher is safer.**
+
+### Leverage ratios
+How large the debt is relative to earnings, cash flow or capital:
+- **Debt / EBITDA:** years of EBITDA needed to repay the debt. **Lower is safer.**
+- **FFO / debt:** the share of debt cash flow could repay in a year. **Higher is safer.**
+- **Debt / capital** (debt / (debt + equity)): the share of the company financed with debt. **Lower is safer.**
+
+Analysts often adjust debt to include obligations that act like debt, such as lease liabilities and underfunded pensions, so that companies are compared on the same basis.
+
+> **Worked example 1: two companies, one sector**
+> - Company A: EBITDA 540, interest 72, debt 1,890, FFO 410, equity 1,260.
+> - Company B: EBITDA 310, interest 95, debt 2,170, FFO 190, equity 430.
+> Ratios:
+> - EBITDA / interest: A = 540 / 72 = **7.5×**; B = 310 / 95 = **3.3×**
+> - Debt / EBITDA: A = 1,890 / 540 = **3.5×**; B = 2,170 / 310 = **7.0×**
+> - FFO / debt: A = 410 / 1,890 = **21.7%**; B = 190 / 2,170 = **8.8%**
+> - Debt / capital: A = 1,890 / 3,150 = **60.0%**; B = 2,170 / 2,600 = **83.5%**
+> Every ratio favours A. B would likely be rated well into speculative grade, and its bonds would carry a much wider spread. Never judge one ratio alone, and always compare within the same industry: 3.5× debt / EBITDA is normal for a utility but high for a software company with volatile earnings.
+
+### Liquidity
+A company can be solvent on these ratios and still fail if it runs out of cash. Analysts look at:
+- **Cash and unused committed credit lines** against debt coming due in the next year or two.
+- The **maturity profile**: a large amount of debt maturing in one year (a "maturity wall") is dangerous if markets are closed then.
+- Dependence on short-term funding such as commercial paper.
+
+> **Worked example 2: a liquidity check**
+> A company has cash of 180 million and an undrawn committed revolver of 400 million. It must repay 450 million of bonds next year and expects free cash flow of 60 million.
+> - Sources: 180 + 400 + 60 = 640 million
+> - Uses: 450 million
+> - Coverage of next year's maturities = 640 / 450 = **1.42×**
+> Even if bond markets were closed for a year, it could repay. If the revolver were uncommitted, the analyst could not count on it, and coverage would be only 240 / 450 = 0.53×.
+
+## 4. Seniority, recovery and notching
+### The priority of claims
+When a company defaults, claims are ranked. From first to last:
+1. **Secured debt**, on the value of its collateral: first lien before second lien.
+2. **Senior unsecured debt.**
+3. **Senior subordinated, subordinated and junior subordinated debt.**
+4. **Preferred shares**, then **common shares**.
+
+Any part of a secured claim not covered by its collateral joins the senior unsecured claims.
+
+### Absolute priority, and what happens in practice
+The **absolute priority rule** says that each class must be paid in full before the next one gets anything. In practice, bankruptcy outcomes are **negotiated**: senior creditors often agree to give junior creditors or even shareholders a small share, to avoid long court fights that would reduce everyone's recovery. So junior classes frequently recover something, and senior classes slightly less than full priority would give them.
+
+Average recovery rates by seniority show the pattern clearly: first-lien loans recover the most, senior unsecured bonds less, and subordinated bonds the least.
+
+### Notching
+Rating agencies rate the **issuer** (often on its senior unsecured debt) and then **notch** individual issues up or down to reflect their expected recovery:
+- Secured debt may be rated one or more notches **above** the issuer rating; subordinated debt one or more notches **below**.
+- **Notching is wider for lower-rated issuers.** When default is unlikely (investment grade), differences in recovery matter little, so notches are small. When default is a real possibility (high yield), recovery differences matter a lot, and notches widen.
+
+> **Worked example 3: issue ratings within one company**
+> An issuer is rated BB. Its secured term loan might be rated BB+ or BBB−, its senior unsecured bonds BB, and its subordinated notes B+ or B. If the same capital structure belonged to an A-rated issuer, the subordinated notes might be only one notch lower, at A−.
+
+### Structural subordination
+In a group of companies, bonds issued by the **holding company** rank behind the debts of the **operating subsidiaries**, because the subsidiaries' creditors are paid from the subsidiaries' assets first, and only what is left flows up to the parent as dividends. This is **structural subordination**: a "senior" bond of a holding company can in practice rank below a subsidiary's debt.
+
+## 5. Special considerations for high-yield issuers
+For high-yield companies the analysis gives more weight to:
+- **Liquidity and refinancing** risk, because markets can close to weak borrowers.
+- **The detailed capital structure:** who ranks where, which subsidiary owes what.
+- **Covenants**, which are tighter and matter more.
+- **Equity-like analysis** of enterprise value: when default is possible, bondholders must judge what the business would be worth in a restructuring, almost like owners.
+- **Projections** under stressed scenarios, not just the base case.
+
+For investment-grade companies, the analysis focuses more on **spread risk**: how earnings, leverage and events might push the rating up or down.
+
+## Checklist before you answer
+- The four Cs: capacity, capital, collateral, covenants; plus character.
+- Capacity (cash flow from the business) is the core; industry, cyclicality and competitive position drive it.
+- Coverage (EBITDA or EBIT / interest): higher is safer. Leverage (debt / EBITDA, debt / capital): lower is safer. FFO / debt: higher is safer.
+- Compare ratios within an industry, and look at liquidity and maturities, not just ratios.
+- Order of claims: secured, senior unsecured, subordinated, preferred, common.
+- Absolute priority is the rule, but negotiated outcomes often give junior classes something.
+- Notching: secured above, subordinated below the issuer rating; wider notching for lower-rated issuers.
+- Holding company debt is structurally subordinated to subsidiary debt.`,
  ideas:`**Corporate credit analysis asks whether a company can and will pay its debt, and how much lenders would recover if it does not.**
 
 ## The four Cs
@@ -21372,6 +21709,96 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Fixed-Income Securitization",
  core:/securitiz|special purpose (entity|vehicle)|\bSPE\b|\bSPV\b|bankruptcy[- ]remote|originator|\bservicer\b|true sale|pool of (loans|assets|receivables|mortgages)/,
  match:/securitiz|special purpose|SPE|SPV|bankruptcy|originator|servicer|trustee|sale|pool|loans|receivables|tranche|investor|balance sheet|funding|liquidity/,
+ lesson:`## 1. Turning loans into securities
+A bank that makes a 25-year mortgage has tied up its money for decades. It could keep the loan and collect the payments, or it could **sell** the loan and use the cash to make new ones. Selling a single mortgage is hard; selling a share in a pool of thousands of them is easy. **Securitization** is the process of pooling loans or receivables and issuing securities whose payments come from that pool.
+
+Almost any asset that generates predictable cash flows can be securitized: residential and commercial mortgages, car loans, credit card balances, student loans, equipment leases, trade receivables, even music royalties. The resulting bonds are called **asset-backed securities (ABS)**; those backed by mortgages are **mortgage-backed securities (MBS)**.
+
+## 2. How a securitization is built
+### The parties
+- **Originator** (also called the seller or depositor): the bank or finance company that made the loans. It sells them to the special purpose entity.
+- **Special purpose entity (SPE)**, also called a special purpose vehicle (SPV) or the trust: a separate legal entity created only for the deal. It buys the loans with the money raised from investors and issues the securities.
+- **Servicer:** collects payments from borrowers, chases late payers, handles defaults and foreclosures, and passes the cash to the SPE. Often the originator itself, for a fee.
+- **Trustee:** watches over the deal on behalf of investors: holds the documents, checks that cash is distributed according to the rules, and acts if they are broken.
+- **Investors:** buy the securities, each class with its own claim on the pool's cash.
+- Supporting parties: the **underwriter** (structures and sells the deal), **rating agencies** (rate each class) and sometimes a **credit enhancement provider**.
+
+### The steps
+1. The originator makes loans to borrowers in its normal business.
+2. It sells a pool of these loans to the SPE.
+3. The SPE pays for them by issuing securities to investors.
+4. Borrowers keep paying interest and principal, collected by the servicer.
+5. The cash passes through the SPE to investors, according to a set order of priority (the **waterfall**).
+
+> **Worked example 1: a simple deal**
+> A car finance company has 600 million of 5-year car loans paying an average of 8.5%. It sells them to a newly created SPE, which raises 600 million by issuing three classes of bonds:
+> - Senior class: 480 million paying 4.6%
+> - Mezzanine class: 75 million paying 6.8%
+> - Subordinated (equity) class: 45 million, receiving whatever cash is left after the other two
+> The finance company receives 600 million in cash to lend again, and keeps earning a fee for servicing the loans. Investors now own the loans' cash flows, divided into three slices with very different risks.
+
+### Why bankruptcy remoteness matters
+The whole structure depends on one legal feature: the SPE is **bankruptcy remote**. The sale of the loans is a **true sale**, so if the originator later goes bankrupt, its creditors cannot claim the pooled loans; they belong to the SPE and its investors.
+
+This means investors are exposed to the **credit quality of the loans**, not of the originator. A finance company rated BB can therefore issue senior securities rated AAA, if the pool and its protections are strong enough. That is the core economic advantage: the originator borrows on the strength of its assets rather than its own balance sheet.
+
+## 3. Tranching: slicing the risk
+Most deals issue several classes, or **tranches**, that share the same pool but differ in priority:
+- **Credit tranching** (subordination): losses are absorbed from the bottom up. The most junior tranche loses first; only when it is wiped out does the next one start to lose. The senior tranche is hit only after all the tranches below it are gone.
+- **Time tranching:** principal payments are allocated in order, so some tranches are repaid early and others late (used mainly with mortgages, next modules).
+
+> **Worked example 2: losses through the tranches**
+> In the deal from example 1, suppose that over its life the pool suffers losses of 90 million.
+> - Subordinated class (45 million) absorbs the first 45 million: wiped out.
+> - Mezzanine class (75 million) absorbs the next 45 million: it loses 45 / 75 = 60% of its principal.
+> - Senior class: no loss.
+> With losses of 30 million, only the subordinated class would be hit (it would lose two thirds of its value); with losses above 120 million, the senior class would start losing.
+
+Each tranche gets the credit rating and yield that match its position. Investors can choose the risk they want: an insurer buys the AAA senior tranche, a hedge fund the high-yielding subordinated tranche.
+
+## 4. Benefits of securitization
+### For issuers (originators)
+- **Cheaper and wider funding:** borrowing against a strong pool can cost less than borrowing on the originator's own credit, and reaches investors who would not lend to the originator directly.
+- **Capital relief:** selling the loans moves them off the balance sheet, which frees capital that regulations require banks to hold against loans, so they can lend more.
+- **Fee income:** the originator keeps earning origination and servicing fees.
+
+### For investors
+- **Access to assets** they could not hold directly. An investor cannot easily buy thousands of car loans, but can buy a security backed by them.
+- **Choice of risk and maturity** through tranching.
+- Usually **higher yields** than government or corporate bonds of the same rating, partly for complexity and lower liquidity.
+- Diversification across many small borrowers.
+
+### For the economy
+- **More credit at lower cost:** banks can recycle capital into new loans.
+- **Liquidity:** loans that were illiquid become tradable securities.
+- **Risk transfer:** risk is spread to investors who choose to bear it, rather than concentrated in banks.
+
+## 5. Risks and the lessons of 2007–2009
+Securitization also created serious problems, most visibly in the global financial crisis:
+- **Weaker lending standards:** an originator that sells its loans no longer bears their losses, so it may care less about who it lends to (an incentive problem known as "originate to distribute"). Many US subprime mortgages were made to borrowers who could not afford them.
+- **Complexity and opacity:** securities built from other securities (such as CDOs of mortgage-backed bonds) made it hard to see the underlying risk.
+- **Rating failures:** many senior tranches rated AAA lost heavily when house prices fell nationwide, because models had assumed losses would be spread out rather than correlated.
+- **Liquidity collapse:** when trust vanished, the market for these securities froze, and banks holding them had to mark them down sharply.
+
+Since the crisis, regulators in many markets require originators to keep part of the risk (**risk retention**, often 5% of the deal), disclose more about the pools, and use stronger ratings processes.
+
+> **Worked example 3: why correlation matters**
+> A pool of 1,000 mortgages has an expected default rate of 4% and a 50% loss severity, so expected losses are 2% of the pool. A senior tranche protected by 15% of subordination looks very safe.
+> - If defaults are **independent** (spread evenly), losses almost never come close to 15%.
+> - If defaults are **correlated** (all borrowers hit by one nationwide fall in house prices), the default rate might jump to 35%, giving losses of 17.5% and eating into the senior tranche.
+> The average loss is the same in both cases; the danger lies in the tails, which is where the senior tranche's risk sits.
+
+## 6. Securitization versus covered bonds
+A **covered bond** is related but different. A bank issues it directly, backed by a pool of assets (usually mortgages) that **stays on the bank's balance sheet**. Investors have **dual recourse**: a claim on the bank and on the pool. The pool is dynamic: bad loans must be replaced with good ones. Covered bonds are covered in detail in the ABS module; the key point here is that securitization moves assets **off** the originator's balance sheet into a separate entity, while covered bonds keep them **on**.
+
+## Checklist before you answer
+- Securitization: originator → SPE (true sale) → securities sold to investors, paid from the pool.
+- Servicer collects and passes on payments; trustee protects investors.
+- Bankruptcy remoteness means investors depend on the pool, not on the originator; securities can be rated above the originator.
+- Credit tranching: losses hit the most junior tranche first; the senior tranche is hit last.
+- Benefits: cheaper funding, capital relief, access and choice for investors, more lending and liquidity.
+- Risks: weaker lending standards, complexity, rating errors, correlated defaults, liquidity freezes.
+- Securitization removes assets from the balance sheet; covered bonds keep them on it with dual recourse.`,
  ideas:`**Securitization pools loans or receivables and turns them into securities sold to investors, who are paid from the pool's cash flows.**
 
 ## How it works and who is involved
@@ -21404,6 +21831,82 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Asset-Backed Security (ABS) Instrument and Market Features",
  core:/asset-backed|\bABS\b|covered bonds?|credit enhancement|overcollateraliz|excess spread|subordination|waterfall|reserve (account|fund)|auto loans?|credit card (receivables|ABS|debt)|student loans?|lockout|early amortization|\bCDOs?\b|collateralized debt obligation|collateralized loan obligation|\bCLOs?\b|collateral manager|equity tranche|mezzanine/,
  match:/asset-backed|ABS|covered|enhancement|overcollateral|excess spread|subordinat|waterfall|reserve|auto|credit card|student|lockout|amortiz|CDO|CLO|collateral|tranche|senior|mezzanine|equity|dual recourse|cover pool/,
+ lesson:`## 1. The family of asset-backed securities
+The previous module explained how securitization works in general. This one looks at the specific instruments built from **non-mortgage** assets, at the tools that protect their investors, and at two relatives: **covered bonds**, which are not securitizations in the strict sense, and **collateralized debt obligations**, which securitize pools of corporate debt.
+
+## 2. Covered bonds
+A **covered bond** is a senior bond issued by a bank and backed by a segregated pool of assets, the **cover pool**, usually residential or commercial mortgages or public sector loans. It differs from an ABS in three ways:
+- **The assets stay on the bank's balance sheet.** There is no separate SPE buying them; the pool is ring-fenced by law for the covered bondholders.
+- **Dual recourse:** if the bank defaults, investors have a claim on the cover pool first, and for any shortfall, an unsecured claim on the rest of the bank. An ABS investor has a claim only on the pool.
+- **The pool is dynamic:** if loans in the cover pool stop performing or are repaid, the bank must replace them with good assets to keep the pool's value above the bonds outstanding. An ABS pool is usually static.
+
+Covered bonds are governed by specific laws in many European countries, and their use goes back centuries. Because of dual recourse and the dynamic pool, they carry **lower credit risk** and **lower yields** than comparable ABS, often rated AAA even when the issuing bank is rated lower. Their redemption may be **hard bullet** (failure to pay on time is a default), **soft bullet** (the maturity can be extended, typically by a year), or **conditional pass-through** (if the bank defaults, the bonds turn into pass-through securities paid as the pool's cash comes in).
+
+## 3. Credit enhancement
+ABS rely on the pool, so the structure must protect senior investors against losses on the loans. Credit enhancement does that.
+
+### Internal credit enhancement
+Built into the deal itself:
+- **Subordination:** junior tranches absorb losses before senior ones. This is the most important form.
+- **Overcollateralization:** the pool's principal exceeds the securities issued. The extra collateral absorbs the first losses.
+- **Excess spread:** the pool's interest income exceeds what is needed to pay the securities' coupons and the deal's fees. The surplus is a first line of defence each period; if not needed, it may build up a reserve or flow to the junior holders.
+- **Reserve accounts:** cash set aside at the start (or built from excess spread) to cover shortfalls.
+
+> **Worked example 1: measuring the cushions**
+> A pool of equipment leases has a principal of 520 million and pays an average rate of 9.5%. The deal issues 500 million of securities with a weighted average coupon of 5.2%, and fees (servicing, trustee) cost 1.0% of the pool a year.
+> - Overcollateralization = 520 − 500 = **20 million**, about 3.8% of the pool
+> - Excess spread ≈ 9.5% − 5.2% − 1.0% = **3.3%** of the pool a year (roughly 17 million in the first year)
+> Before the first tranche loses anything, annual losses must exceed the excess spread, and cumulative losses must exhaust the overcollateralization. Then subordination starts to work.
+
+### External credit enhancement
+Protection from a third party: a **financial guarantee** or bond insurance, a bank **letter of credit**, or a guarantee from a parent company. It protects only as long as the provider remains strong. Before the 2008 crisis many ABS were "wrapped" by bond insurers; when the insurers were downgraded, so were the bonds. External enhancement is therefore less common today.
+
+## 4. Non-mortgage ABS
+### Auto loan ABS
+Backed by loans (or leases) to buy cars. The loans are **amortizing**: each monthly payment includes interest and scheduled principal, and borrowers may also prepay, for example when they sell the car. Their maturities are short (typically 3 to 6 years), so the securities have short lives. The cars serve as collateral, but used cars lose value quickly, so loss severity in a default can be substantial. Credit quality depends on the borrowers: **prime** pools have far lower losses than **subprime** pools, which need much more enhancement.
+
+### Credit card receivable ABS
+Credit card balances are very different from car loans: they are **non-amortizing**, revolving debt with no set repayment schedule. Card holders can repay and borrow again whenever they like. To create bonds with predictable lives, these deals are structured with:
+- A **lockout** (revolving) period: for several years, any principal that card holders repay is used to **buy new receivables**, keeping the pool's size steady. Investors receive **only interest** during this period.
+- An **amortization** period afterwards, when principal is passed to investors, often as a single bullet payment.
+- **Early amortization** triggers: if losses rise above a set level or the excess spread falls too low, the lockout ends early and principal starts flowing to investors right away, to protect them before the pool deteriorates further.
+
+> **Worked example 2: the lockout at work**
+> A credit card trust holds 800 million of receivables. In a month, card holders repay 8% of their balances (64 million) and pay interest and fees at an annual rate of 19%.
+> - During the lockout, the 64 million of principal buys new receivables; investors receive their coupons from the interest income.
+> - The pool stays at 800 million, and investors' principal stays outstanding.
+> - If the excess spread turned negative for three months in a row (a typical trigger), early amortization would begin: the next month's 64 million would go to investors instead.
+> Because the pool revolves, credit card ABS have no prepayment risk during the lockout, which makes their cash flows easier to predict than those of amortizing pools.
+
+### Other ABS
+Student loans, equipment leases, small business loans, aircraft leases and trade receivables are also securitized. Each has its own risks: student loans have long grace periods and, in some countries, government guarantees; equipment leases depend on the lessees' credit and the equipment's resale value.
+
+## 5. Collateralized debt obligations
+A **collateralized debt obligation (CDO)** is a securitization of a portfolio of **debt instruments**: corporate bonds, emerging market bonds, bank loans, or even tranches of other securitizations. The most common type today is the **collateralized loan obligation (CLO)**, backed by leveraged loans to companies.
+
+Key features:
+- The portfolio is chosen and managed by a **collateral manager**, who can buy and sell assets within rules (diversification, ratings, coverage tests). An ordinary ABS pool, by contrast, is static.
+- Tranches: **senior**, **mezzanine** and **equity** (or residual). The equity tranche receives what is left after the debt tranches are paid; it bears the first losses and earns the highest expected return.
+- **Coverage tests** (such as overcollateralization and interest coverage tests) redirect cash from junior to senior tranches if the portfolio deteriorates.
+
+Most CLOs are **arbitrage** deals: they make money if the yield on the loans exceeds the cost of funding the debt tranches. The equity investors keep that difference.
+
+> **Worked example 3: the arbitrage in a CLO**
+> A CLO holds 300 million of loans yielding 7.8%. It issues 220 million of senior notes at 5.0% and 50 million of mezzanine notes at 7.5%; the remaining 30 million is equity. Ignoring fees and defaults:
+> - Income from loans = 300 × 7.8% = 23.40 million
+> - Paid to senior and mezzanine = 220 × 5.0% + 50 × 7.5% = 11.00 + 3.75 = 14.75 million
+> - Left for equity = 8.65 million, a return of 8.65 / 30 = **28.8%**
+> Now suppose 15 million of loans default with no recovery. Income falls to 285 × 7.8% = 22.23 million, so equity receives 7.48 million (24.9% on its original 30 million), and the 15 million principal loss comes out of the equity's 30 million cushion first: half of it is gone. Leverage works both ways for the equity tranche.
+
+## Checklist before you answer
+- Covered bonds: assets stay on the bank's balance sheet, dual recourse, dynamic cover pool, so lower risk and yield than ABS.
+- Internal enhancement: subordination, overcollateralization, excess spread, reserve accounts.
+- External enhancement: guarantees, insurance, letters of credit; only as strong as the provider.
+- Excess spread ≈ pool rate − securities' coupon − fees.
+- Auto ABS are amortizing with prepayments; credit card ABS are non-amortizing.
+- Credit card ABS pay only interest during the lockout; early amortization triggers protect investors.
+- CDOs/CLOs are actively managed by a collateral manager; equity tranche = first loss and highest expected return.
+- Arbitrage CDO: profit = collateral income − cost of the debt tranches, kept by equity.`,
  ideas:`**Asset-backed securities (ABS) are paid from pools of non-mortgage loans and receivables; their structure decides who bears the losses.**
 
 ## Covered bonds
@@ -21440,6 +21943,107 @@ Empirical duration has its own limits: it depends on the past period chosen, and
 {name:"Mortgage-Backed Security (MBS) Instrument and Market Features",
  core:/mortgage-backed|\bMBS\b|\bRMBS\b|\bCMBS\b|pass-through|prepayment|contraction risk|extension risk|collateralized mortgage obligation|\bCMOs?\b|sequential(-pay)?|planned amortization|\bPAC\b|support tranche|loan-to-value|\bLTV\b|balloon risk|defeasance|yield maintenance|commercial mortgage|residential mortgage|time tranching/,
  match:/mortgage|MBS|RMBS|CMBS|pass-through|prepay|contraction|extension|CMO|sequential|PAC|support|tranche|loan-to-value|LTV|balloon|defeasance|yield maintenance|agency|non-agency|servicing|recourse|amortiz/,
+ lesson:`## 1. Bonds backed by home loans
+Mortgages are the largest pool of loans in most economies, and **mortgage-backed securities (MBS)** are the largest part of the securitized market. They pass homeowners' (or property owners') monthly payments through to investors. What makes them distinctive is not credit risk, which in the biggest segment is minimal, but **prepayment risk**: borrowers can repay their loans early, and they tend to do so exactly when it hurts investors.
+
+## 2. Residential mortgage loans
+### Main features
+- **Maturity:** often 15 to 30 years in the US; 20 to 35 years is common elsewhere.
+- **Interest rate:** **fixed** for the whole life; **adjustable** (variable), resetting periodically with a reference rate; or **hybrid**, fixed for a few years and then adjustable. In some countries, short fixed periods followed by resets are the norm.
+- **Amortization:** most are fully amortizing, with level monthly payments. Others are **interest-only** for an initial period, or end with a **balloon** payment.
+- **Prepayment:** borrowers can usually repay early, in full (selling the house, refinancing) or in part (**curtailment**). Some loans charge a **prepayment penalty**.
+- **Recourse:** with a **recourse** loan, a lender whose foreclosure sale does not cover the debt can claim the borrower's other assets; with a **non-recourse** loan, it can only take the house. Borrowers with non-recourse loans may simply walk away when the house is worth less than the loan (**strategic default**).
+
+> **Worked example 1: a level-payment mortgage**
+> A 320,000 mortgage at a 6.3% fixed rate for 30 years, paid monthly.
+> - Monthly payment: \`N = 360\`, \`I/Y = 0.525\`, \`PV = 320000\`, \`FV = 0\`, \`CPT PMT\` → **1,980.71**
+> - Month 1: interest = 320,000 × 0.525% = 1,680.00; scheduled principal = 300.71; balance = 319,699.29
+> Early payments are almost all interest; by the last years they are almost all principal. The home is worth 400,000, so the **loan-to-value ratio** (LTV) is 320,000 / 400,000 = **80%**.
+
+### Credit measures
+- **Loan-to-value (LTV)** = loan / property value. A lower LTV means more borrower equity: a greater cushion before the lender loses in a foreclosure, and a borrower less likely to walk away. It is the single most important predictor of default and loss severity.
+- **Debt-to-income (DTI)** = monthly debt payments / income: a measure of affordability.
+- **Credit scores** and documentation of income. **Prime** loans go to borrowers with strong credit and low LTVs; **subprime** loans to weaker borrowers.
+
+## 3. Prepayment risk
+Prepayment changes the timing of an MBS's cash flows in a way that always works against the investor:
+- **Contraction risk:** when rates **fall**, homeowners refinance into cheaper loans, so prepayments **speed up**. Investors get their principal back early, just when they can only reinvest it at lower rates. The security's life shortens and its price gains are capped, like a callable bond.
+- **Extension risk:** when rates **rise**, refinancing stops and prepayments **slow down**. Investors' money stays tied up at the old, low coupon for longer, just when they would like to reinvest at higher rates. The security's life lengthens and its price falls more.
+
+Together these give MBS **negative convexity**: they gain less than a comparable option-free bond when rates fall and lose more when rates rise. Investors demand a higher yield for this.
+
+Other factors also drive prepayments: house sales (people move for jobs or family), seasonality (more sales in summer), **burnout** (in a pool that has already seen a refinancing wave, the remaining borrowers are less likely to refinance), and house price trends (rising prices make refinancing easier).
+
+### Measuring prepayment speed
+- The **single monthly mortality rate (SMM)** is the share of the remaining balance (after scheduled principal) prepaid in a month.
+- The **conditional prepayment rate (CPR)** is its annualized form: 1 − (1 − SMM)^12. Conversely, SMM = 1 − (1 − CPR)^(1/12).
+
+> **Worked example 2: prepayments in one month**
+> The pool behind an MBS is expected to prepay at a CPR of 8%. In the first month of the mortgage from example 1:
+> - SMM = 1 − (1 − 0.08)^(1/12) = **0.6924%**
+> - Prepayment = 0.6924% × 319,699.29 = **2,213.72**
+> - Total principal passed to investors this month = 300.71 + 2,213.72 = 2,514.43
+> If rates fell and the CPR jumped to 30%, the SMM would be 2.93% and prepayments about four times larger, and the pool's principal would be returned years earlier.
+
+## 4. Residential MBS
+### Agency and non-agency
+- **Agency RMBS** are issued or guaranteed by government agencies or government-sponsored enterprises (in the US, Ginnie Mae, Fannie Mae and Freddie Mac). The guarantee covers timely payment of interest and principal, so credit risk is minimal. The loans must meet the agencies' standards on size, LTV and documentation (**conforming** loans). The main risk is prepayment.
+- **Non-agency** (private-label) RMBS are issued by banks and other private issuers, often backed by loans that do not meet agency standards. They carry credit risk, so they use credit enhancement (subordination, overcollateralization) and are tranched by credit as well as by time.
+
+### Mortgage pass-through securities
+The simplest MBS: investors own a **pro rata share** of the pool and receive their share of all cash collected: interest, scheduled principal and prepayments. Two differences from the underlying loans:
+- The **pass-through rate** (coupon to investors) is below the mortgages' average rate, because servicing and guarantee fees are deducted.
+- The pool's average features are summarized as the **weighted average coupon (WAC)** and **weighted average maturity (WAM)**, weighted by each loan's balance.
+
+Every investor in a pass-through bears the **same** prepayment risk, in proportion to their share.
+
+### Collateralized mortgage obligations
+A **collateralized mortgage obligation (CMO)** takes the cash flows of pass-throughs and divides them into tranches that receive principal in different ways. CMOs **redistribute** prepayment risk among investors; they do not remove it.
+
+- **Sequential-pay tranches:** all scheduled principal and prepayments go first to tranche A until it is paid off, then to tranche B, then to C. Every tranche receives interest on its outstanding balance throughout.
+
+> **Worked example 3: a sequential-pay CMO**
+> A 400 million pass-through is split into tranche A (160 million), tranche B (140 million) and tranche C (100 million).
+> - A receives all principal first. It is short-lived and its investors face little **extension risk**: even if prepayments slow, it is repaid early in the deal.
+> - C receives no principal until A and B are fully repaid. It is long-lived and protected against **contraction risk**: even if prepayments surge, A and B absorb them first.
+> - B sits in between.
+> A bank funding itself short term might buy A; a pension fund wanting long, predictable cash flows might buy C.
+
+- **Planned amortization class (PAC) tranches** receive principal according to a **schedule** that holds as long as prepayment speeds stay within a set range (the **PAC collar**). The certainty comes from **support** (companion) tranches, which absorb the variation: they receive principal early when prepayments are fast and late when they are slow. PAC tranches have low prepayment risk; support tranches have high prepayment risk, and yield more.
+- Other designs include **floating-rate** and **inverse floating-rate** tranches, created by splitting a fixed-rate tranche into two whose coupons move in opposite directions.
+
+## 5. Commercial MBS
+**Commercial mortgage-backed securities (CMBS)** are backed by loans on **income-producing** property: office buildings, shopping centres, apartments, hotels, warehouses. They differ from residential MBS in what drives their risk.
+
+### Credit risk comes first
+Commercial loans are usually **non-recourse**: the lender can rely only on the property and its income. So credit analysis focuses on the property:
+- **Debt service coverage ratio (DSCR)** = net operating income (NOI) / debt service. Above 1.0 the property earns enough to pay the loan; lenders look for a comfortable margin.
+- **LTV** = loan / appraised property value. Lower is safer.
+
+> **Worked example 4: a commercial loan in a CMBS pool**
+> An office building produces net operating income of 1.8 million a year and has a loan of 18 million, with annual debt service of 1.35 million. The building is appraised at 25 million.
+> - DSCR = 1.8 / 1.35 = **1.33×**
+> - LTV = 18 / 25 = **72%**
+> If a large tenant leaves and NOI falls 25% to 1.35 million, the DSCR falls to 1.00×: the building would just cover its payments, with no margin left.
+
+### Call protection limits prepayment
+Unlike homeowners, commercial borrowers face strong limits on prepaying, so CMBS have much less prepayment risk:
+- At the **loan level**: **prepayment lockouts** (no prepayment for several years), **prepayment penalty points**, **yield maintenance charges** (a penalty that compensates the lender for the lost interest), and **defeasance** (the borrower replaces the loan's collateral with government bonds that produce the same cash flows).
+- At the **structure level**: the deal is tranched sequentially by credit, so senior tranches are protected.
+
+### Balloon risk
+Many commercial loans are not fully amortizing: they end with a large **balloon payment** that the borrower must refinance. If credit markets are tight or the property has lost value when the loan matures, the borrower may be unable to refinance. The loan then goes into default or is extended, so the security's life is extended. This **balloon risk** is a form of extension risk specific to CMBS.
+
+## Checklist before you answer
+- Falling rates: faster prepayments, contraction risk. Rising rates: slower prepayments, extension risk.
+- MBS have negative convexity, like callable bonds, so they yield more than comparable option-free bonds.
+- SMM = 1 − (1 − CPR)^(1/12); prepayment = SMM × balance after scheduled principal.
+- LTV is the key credit measure for mortgages; non-recourse loans raise the risk of strategic default.
+- Agency RMBS: minimal credit risk, prepayment risk remains. Non-agency RMBS: credit risk plus enhancement.
+- Pass-throughs share prepayment risk pro rata; CMOs redistribute it (sequential, PAC and support tranches).
+- Sequential: first tranche least extension risk, last tranche least contraction risk.
+- PAC tranches are stable because support tranches absorb prepayment variation.
+- CMBS: credit analysis via DSCR and LTV, strong call protection, and balloon risk at maturity.`,
  ideas:`**Mortgage-backed securities pass homeowners' and property owners' payments to investors. Their key risk is that borrowers can repay early.**
 
 ## Prepayment risk
