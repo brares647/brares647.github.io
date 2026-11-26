@@ -305,6 +305,8 @@ button.erow .chev{color:var(--text-3)}
 .trow.lm-off{color:var(--text-2)}
 .trow.lm-off .tn span{font-weight:400}
 .lm-read .learn-link .ltext b{white-space:normal}
+.lm-beyond{margin-top:36px}
+.lm-books td{vertical-align:top;white-space:normal}
 .lm-text h4{font-size:15px;font-weight:600;margin:16px 0 0;color:var(--text-2)}
 .lm-ex{margin:16px 0 4px;padding:4px 16px 14px;border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0}
 .lm-ex p:first-child{margin-top:10px}
@@ -29889,6 +29891,891 @@ Which measures to use depends on:
   ["w:Enterprise_risk_management"]
  ]}
 ]);
+/* Beyond the curriculum, Interview technicals: the accounting and valuation questions of finance interviews (banking,
+   equity research, valuation). Not CFA exam content: lessons only, no match rules, shown under "Beyond the curriculum".
+   Every number in the worked examples was recomputed with a script (Nov 2026). Ids by position: only append. */
+CFA_DATA.learn(1,"Interview technicals","LM-IT",[
+{name:"How the three statements link",
+ lesson:`## 1. Why interviewers start here
+Almost every technical interview in banking, equity research or valuation opens with some version of "walk me through the three financial statements". The interviewer is not checking whether you know the definitions. They want to see whether you understand that the three statements describe **one** business and are tied together, so that a change in one shows up in the others.
+
+A good answer takes about a minute. A great answer explains the links, because every later question (a change in depreciation, a new loan, a DCF) is built on them.
+
+## 2. The three statements in one sentence each
+- The **income statement** shows performance over a period: revenue minus expenses gives **net income**. It is built on accrual accounting, so it records revenue when earned and costs when incurred, not when cash moves.
+- The **balance sheet** is a snapshot at one date: what the company owns (**assets**) equals what it owes (**liabilities**) plus what belongs to the owners (**equity**).
+- The **cash flow statement** explains how cash moved over the period, split into **operating**, **investing** and **financing** activities. It reconciles net income (an accounting figure) to the actual change in cash.
+
+## 3. The links
+1. **Net income flows to the cash flow statement.** Under the indirect method, the cash flow statement starts from net income.
+2. **Non-cash items and working capital adjust it.** Depreciation and amortization are added back (they reduced net income but used no cash). Increases in operating assets such as receivables and inventory are subtracted; increases in operating liabilities such as payables are added.
+3. **Net income flows to equity.** Net income minus dividends is added to **retained earnings** on the balance sheet.
+4. **The ending cash balance on the cash flow statement is the cash line on the balance sheet.**
+5. **Investing and financing flows change balance sheet lines.** Capital expenditure raises PP&E (and depreciation lowers it); new debt raises debt; buybacks and dividends reduce equity.
+
+If all five links hold, the balance sheet balances. In a model, a balance sheet that does not balance almost always means one of these links is broken.
+
+## 4. The answer, as you would say it
+
+> "The income statement shows the company's revenue, expenses and net income over a period. Net income links to the other two statements. On the cash flow statement it is the starting line: you add back non-cash charges like depreciation, adjust for changes in working capital to get cash from operations, then add investing and financing flows to get the net change in cash. On the balance sheet, net income less dividends goes into retained earnings, and the ending cash from the cash flow statement becomes the cash line. Capex, depreciation, debt and equity flows also change the balance sheet, which is why assets always equal liabilities plus equity."
+
+## 5. Follow-ups you should expect
+- **"If you could have only one statement, which would you pick?"** The usual answer is the **cash flow statement**: it shows whether the business actually generates cash, which is the hardest thing to fake. Some interviewers prefer the balance sheet (you can rebuild a lot from two balance sheets). Either is fine if you give a reason.
+- **"If you had two statements, which two?"** The balance sheet and income statement: with opening and closing balance sheets plus the income statement you can rebuild the cash flow statement.
+- **"Why can net income be positive while cash falls?"** Because of working capital (customers paying late, inventory building up) or heavy capital expenditure. A fast-growing company often has profits and shrinking cash.
+
+## 6. How this connects to what you study
+CFA Level I covers each statement in far more depth (revenue recognition, inventories, leases, taxes). Interviews use only the core links, but they want them instantly. The Financial Statement Analysis modules of this app are the deeper version of this lesson.`,
+ ideas:`**The three statements describe one business; net income and cash are the links between them.**
+
+- Income statement: performance over a period, ends in net income.
+- Balance sheet: one date, assets = liabilities + equity.
+- Cash flow statement: reconciles net income to the change in cash (operating, investing, financing).
+
+## The links
+- Net income starts the cash flow statement (indirect method) and, less dividends, goes into retained earnings.
+- Depreciation is added back; increases in receivables and inventory are subtracted; increases in payables are added.
+- Ending cash on the cash flow statement = cash on the balance sheet.
+- Capex raises PP&E, depreciation lowers it; borrowing raises debt; dividends and buybacks reduce equity.`,
+ traps:[
+  "Describing each statement in isolation without saying how they link.",
+  "Saying net income goes straight to cash: it goes to the cash flow statement and to retained earnings; cash comes out of the cash flow statement.",
+  "Forgetting that dividends reduce retained earnings but are not an expense on the income statement.",
+  "Answering 'which one statement' with no reason given."
+ ],
+ read:[
+  ["i:terms/c/cashflowstatement.asp","Cash flow statement",""],
+  ["i:articles/investing/111413/commonsize-analysis-financial-statements.asp","Common-size analysis of financial statements",""]
+ ]},
+
+{name:"Walking a change through the statements",
+ lesson:`## 1. The question
+"Depreciation goes up by $10. Walk me through the three statements." This is the most common technical question in banking interviews, and it comes in many versions: an inventory write-down, a new loan, a capex purchase. The method is always the same, so learn the method, not the answers.
+
+## 2. The method
+1. **Income statement:** does the change hit revenue or an expense? If so, work out the effect on pre-tax income, then tax, then **net income**.
+2. **Cash flow statement:** start from the change in net income, then add back anything non-cash, then add any investing or financing flow. Get the **change in cash**.
+3. **Balance sheet:** cash changes by the amount from step 2; the asset or liability involved changes; retained earnings change by the change in net income. **Check that both sides move by the same amount.**
+
+Unless told otherwise, assume a tax rate (25% here; interviewers often say 40% or 25% so the arithmetic is easy) and say it out loud.
+
+## 3. Depreciation up by $10 (tax rate 25%)
+
+> **Income statement:** operating income falls by 10. Tax falls by 10 × 25% = 2.5. Net income falls by 7.5.
+> **Cash flow statement:** net income −7.5, add back depreciation +10 (non-cash). Cash from operations **+2.5**. Net change in cash +2.5.
+> **Balance sheet:** cash +2.5, PP&E −10, so total assets −7.5. Retained earnings −7.5, so liabilities + equity −7.5. It balances.
+
+The insight interviewers look for: depreciation **raises cash** because it lowers taxes while using no cash itself. The cash gain equals depreciation × tax rate (the "tax shield").
+
+## 4. Buying $100 of inventory with cash
+
+> **Income statement:** nothing yet. Inventory becomes an expense (cost of goods sold) only when sold.
+> **Cash flow statement:** the increase in inventory is a use of cash in operating activities: −100.
+> **Balance sheet:** cash −100, inventory +100. Total assets unchanged; nothing else moves.
+
+## 5. Writing down $50 of inventory (tax rate 25%)
+
+> **Income statement:** a $50 expense. Tax −12.5. Net income −37.5.
+> **Cash flow statement:** net income −37.5, add back the write-down +50 (non-cash). Cash +12.5 (the tax saving).
+> **Balance sheet:** cash +12.5, inventory −50, assets −37.5. Retained earnings −37.5. Balanced.
+
+Notice it is the same shape as the depreciation case: any non-cash, tax-deductible expense lowers net income and **raises** cash by the tax saving.
+
+## 6. Borrowing $100 at 5% for a year (tax rate 25%)
+
+> **Income statement:** interest expense 5. Tax −1.25. Net income −3.75.
+> **Cash flow statement:** cash from operations −3.75 (interest is in operating cash flow under US GAAP); cash from financing +100. Net change in cash +96.25.
+> **Balance sheet:** cash +96.25. Debt +100, retained earnings −3.75, so liabilities + equity +96.25. Balanced.
+
+Under IFRS, interest paid can be shown in operating or financing activities. Saying so shows you know the difference, which CFA Level I tests too.
+
+## 7. Buying $100 of equipment with cash
+
+> **Income statement:** nothing at purchase. Depreciation starts later.
+> **Cash flow statement:** investing activities −100.
+> **Balance sheet:** cash −100, PP&E +100. Balanced.
+
+Follow-up: "And at the end of year 1, with straight-line depreciation over 10 years?" That is now the depreciation case with $10.
+
+## 8. The balance check is your safety net
+Under time pressure, people make sign errors. Always finish with: "So assets fall by X and liabilities plus equity fall by X, and it balances." If it doesn't balance, you missed either the tax effect or the add-back.`,
+ ideas:`**Method: income statement (pre-tax, tax, net income), then cash flow statement (net income, add back non-cash, investing/financing), then balance sheet (cash, the item, retained earnings), then check that it balances.**
+
+- Depreciation +10 at 25% tax: net income −7.5, cash +2.5, PP&E −10, retained earnings −7.5.
+- Any non-cash deductible expense (depreciation, write-down, impairment) lowers net income and raises cash by expense × tax rate.
+- Buying inventory or equipment with cash: no income statement effect at purchase; cash falls and the asset rises.
+- Borrowing: cash and debt rise; interest then reduces net income and operating cash flow (US GAAP).`,
+ traps:[
+  "Forgetting the tax effect, which leaves the balance sheet out of balance.",
+  "Saying depreciation lowers cash: it raises cash through the tax saving.",
+  "Putting an inventory purchase on the income statement before the goods are sold.",
+  "Not stating the tax rate you are assuming.",
+  "Ending without the balance check."
+ ],
+ read:[
+  ["i:terms/o/operatingcashflow.asp","Operating cash flow",""],
+  ["i:terms/w/workingcapital.asp","Working capital",""]
+ ]},
+
+{name:"Accounting items interviewers like to probe",
+ lesson:`## 1. Why these items
+Once you handle the basic walk-throughs, interviewers move to items where accounting and cash differ in less obvious ways. You do not need the full standards (CFA Level I and II go deeper); you need the effect on each statement and on valuation.
+
+## 2. Stock-based compensation (SBC)
+- **What it is:** paying employees in shares or options instead of cash.
+- **Statements:** an expense on the income statement, but non-cash, so it is **added back** on the cash flow statement. Equity rises by the same amount (the shares issued).
+- **Why it matters:** many technology companies show strong cash flow partly because SBC is added back. But SBC is a real cost to shareholders: it dilutes them. A careful analyst either treats SBC as a cash-like expense in free cash flow or counts the extra shares in the diluted share count, but **not neither**.
+
+## 3. Deferred taxes
+- **What they are:** differences between tax computed on accounting profit and tax actually payable, because tax rules and accounting rules differ (for example, faster depreciation for tax purposes).
+- A **deferred tax liability** arises when the company pays less tax now than its accounts show (for example, accelerated tax depreciation); it will pay more later. A **deferred tax asset** is the reverse, for example from tax losses carried forward.
+- **Cash flow:** an increase in a deferred tax liability is added back on the cash flow statement (tax expense was booked, but not paid).
+
+## 4. Tax losses (NOLs)
+- A company with past losses can often deduct them from future taxable profit. That makes future taxes lower and has value, so an acquirer may pay for it (limited by rules in many jurisdictions).
+- In a DCF, you can model lower taxes in early years, or value the losses separately.
+
+## 5. Goodwill and impairment
+- **Goodwill** arises in an acquisition: purchase price minus the fair value of the identifiable net assets acquired. It is not amortized under IFRS or US GAAP; it is tested for **impairment** at least yearly.
+- **Impairment:** a non-cash expense that reduces net income and goodwill. On the cash flow statement it is added back. It is usually not tax-deductible, so (unlike depreciation) there is often no tax saving: interviewers like that twist.
+- **Valuation:** impairments signal that the company overpaid for a past deal. Analysts usually exclude them from "adjusted" earnings but should remember what they say about management.
+
+## 6. Leases under IFRS 16
+- Since 2019, IFRS puts almost all leases on the balance sheet: a **right-of-use asset** and a **lease liability**. The income statement shows depreciation and interest instead of a rent expense, so **EBITDA rises** after adoption even though nothing changed in the business.
+- US GAAP (ASC 842) also puts operating leases on the balance sheet but keeps a single straight-line lease expense in operating costs.
+- **Interview point:** when comparing companies, be consistent. If EBITDA excludes lease costs (IFRS 16), enterprise value should include lease liabilities; otherwise the multiple is distorted.
+
+## 7. Working capital and the cash conversion cycle
+- **Net working capital** in valuation usually means operating current assets (receivables, inventory) minus operating current liabilities (payables, accrued expenses), **excluding cash and debt**.
+- **Cash conversion cycle** = days of inventory + days of receivables − days of payables. A longer cycle ties up more cash as the company grows.
+- Classic question: "A company grows fast and is profitable; why could it run out of cash?" Answer: growth needs more receivables and inventory, financed before customers pay.
+
+## 8. How to answer an item you have not seen
+Ask yourself three things, in order: **Does it hit net income? Is it cash? Is it tax-deductible?** Then walk it through the statements as in the previous lesson. Interviewers reward the method even if you are not sure of a detail, especially if you say what you are assuming.`,
+ ideas:`**For any item ask: does it hit net income, is it cash, is it tax-deductible? Then walk it through the statements.**
+
+- Stock-based compensation: expense, non-cash (added back), raises equity; still a real cost through dilution.
+- Deferred tax liability: less tax paid now than booked; its increase is added back in cash flow.
+- Goodwill: price minus fair value of net assets; not amortized, tested for impairment; impairment is non-cash and usually not tax-deductible.
+- IFRS 16: leases on balance sheet, EBITDA rises; include lease liabilities in EV if EBITDA excludes lease costs.
+- Net working capital excludes cash and debt; growth ties up cash in receivables and inventory.`,
+ traps:[
+  "Adding back stock-based compensation in free cash flow and then also ignoring the extra shares it creates.",
+  "Assuming a goodwill impairment saves tax like depreciation does.",
+  "Comparing EV/EBITDA across companies with and without lease liabilities in EV.",
+  "Including cash or short-term debt in net working capital in a DCF."
+ ],
+ read:[
+  ["i:terms/g/goodwill.asp","Goodwill",""],
+  ["i:terms/d/deferredtaxliability.asp","Deferred tax liability",""],
+  ["i:terms/c/cashconversioncycle.asp","Cash conversion cycle",""]
+ ]},
+
+{name:"Enterprise value and equity value",
+ lesson:`## 1. Two values for one company
+- **Equity value** (market capitalization for a listed company) is the value of the shareholders' claim: share price × diluted shares.
+- **Enterprise value (EV)** is the value of the operating business to **all** capital providers: shareholders, lenders, preferred holders and minority owners.
+
+Think of buying a house: the price of the house is EV; your equity is the price minus the mortgage. A second house with a bigger mortgage and the same price has the same EV but lower equity.
+
+## 2. The bridge
+EV = equity value + debt + preferred stock + non-controlling interest − cash (and other non-operating assets)
+
+Why each item:
+- **Debt and preferred stock:** other investors' claims on the same operations.
+- **Non-controlling interest (minority interest):** the parent consolidates 100% of a subsidiary's EBITDA but owns less than 100%; adding NCI keeps EV consistent with consolidated EBITDA.
+- **Cash:** subtracted because it is not needed to run the business (an acquirer effectively gets it back). Equity-method investments are often subtracted for the same reason: their income is not in EBITDA.
+- **Lease liabilities:** added when the EBITDA you use excludes lease costs (IFRS 16).
+
+## 3. Diluted shares: the treasury stock method
+Equity value uses **diluted** shares: options that are in the money are assumed exercised, and the exercise proceeds are assumed used to buy back shares at the current price.
+
+> Basic shares 48m, share price $40. Options on 5m shares with strike $32; 1m restricted stock units.
+> Options are in the money (40 > 32). Proceeds = 5m × 32 = $160m, buying back 160 / 40 = 4m shares. Net new shares = 5 − 4 = 1m.
+> Diluted shares = 48 + 1 + 1 (RSUs) = **50m**. Equity value = 50m × $40 = **$2,000m**.
+
+## 4. A full bridge
+
+> Equity value 2,000; debt 600; preferred 100; NCI 50; cash 250.
+> EV = 2,000 + 600 + 100 + 50 − 250 = **2,500**.
+> With EBITDA of 250, EV/EBITDA = 10.0x. With net income of 120, P/E = 2,000 / 120 = 16.7x.
+
+## 5. Match the multiple to the right value
+This is the point interviewers test most:
+- **EV multiples** use figures **before** interest, which belong to all capital providers: EV/Revenue, EV/EBITDA, EV/EBIT.
+- **Equity multiples** use figures **after** interest, which belong to shareholders: P/E (price / EPS), price/book, price/free cash flow to equity.
+
+EV/net income or P/EBITDA mix the two and are wrong. Classic follow-up: "Why can't you use EV/earnings?" Because earnings are after interest, so they belong only to shareholders.
+
+## 6. Questions on how EV changes
+- **"The company raises $100 of debt and keeps the cash. What happens to EV?"** Nothing: debt +100, cash +100.
+- **"It then spends the cash on a machine?"** Still nothing in theory: cash falls, but the business now owns an operating asset worth (in principle) what it paid.
+- **"It issues $100 of shares?"** Equity value +100, cash +100, EV unchanged.
+- **"It pays a $50 dividend?"** Equity value −50 (in theory the price falls), cash −50, EV unchanged.
+
+The logic: EV measures the operations, so pure financing transactions do not change it.
+
+## 7. Can EV be below equity value? Negative?
+Yes. A company with more cash than debt has EV below its market cap. A company with a huge cash pile relative to its value can even have a **negative EV**, which usually means the market expects the operations to destroy cash or doubts the cash is really available.
+
+## 8. Link to CFA
+Level I introduces EV and EV/EBITDA in Equity Investments; Level II uses them extensively. In interviews, the bridge and the matching rule are asked almost every time.`,
+ ideas:`**Equity value is the shareholders' claim; enterprise value is the value of the operations to all capital providers.**
+
+- EV = equity value + debt + preferred + non-controlling interest − cash (− equity-method investments; + leases if EBITDA excludes them).
+- Equity value uses diluted shares (treasury stock method for options; add RSUs and in-the-money convertibles).
+- EV multiples (EV/Revenue, EV/EBITDA, EV/EBIT) use pre-interest figures; equity multiples (P/E, P/B) use post-interest figures.
+- Financing transactions (raising debt, issuing shares, paying dividends) do not change EV.
+- Net cash companies have EV below market cap; EV can be negative.`,
+ traps:[
+  "Using basic instead of diluted shares.",
+  "Pairing EV with net income or equity value with EBITDA.",
+  "Saying raising debt increases EV: the cash raised offsets it.",
+  "Forgetting non-controlling interest when EBITDA is consolidated.",
+  "In the treasury stock method, counting out-of-the-money options."
+ ],
+ read:[
+  ["i:terms/e/enterprisevalue.asp","Enterprise value",""],
+  ["i:terms/e/ev-ebitda.asp","EV/EBITDA",""],
+  ["i:terms/d/dilutedeps.asp","Diluted EPS",""]
+ ]},
+
+{name:"Free cash flow: unlevered and levered",
+ lesson:`## 1. Why free cash flow
+Valuation discounts cash, not accounting profit. **Free cash flow** is the cash a business generates after paying for what it needs to keep running and growing (capital expenditure and working capital). The question is **free for whom?**
+
+- **Unlevered free cash flow (UFCF)**, also called free cash flow to the firm (FCFF): cash available to **all** capital providers, before any payment to lenders. It is used in a DCF that gives **enterprise value**, discounted at **WACC**.
+- **Levered free cash flow (LFCF)**, also called free cash flow to equity (FCFE): cash left for **shareholders** after interest and debt flows. Used to get **equity value** directly, discounted at the **cost of equity**.
+
+CFA Level I introduces FCFF and FCFE; Level II derives them in detail. Interviews mostly use UFCF.
+
+## 2. Building unlevered free cash flow
+UFCF = EBIT × (1 − tax rate) + depreciation & amortization − capital expenditure − increase in net working capital
+
+- **EBIT × (1 − t)** (often called NOPAT): operating profit after the tax the company would pay with no debt. Interest is ignored because it goes to lenders, who are paid out of this cash.
+- **+ D&A:** non-cash.
+- **− Capex:** investment in fixed assets.
+- **− Increase in NWC:** cash tied up in receivables and inventory, net of payables.
+
+> EBIT 300, tax rate 25%, D&A 60, capex 90, increase in NWC 15.
+> NOPAT = 300 × 0.75 = 225.
+> UFCF = 225 + 60 − 90 − 15 = **180**.
+
+## 3. From unlevered to levered
+LFCF = UFCF − interest × (1 − t) + net borrowing
+
+> Interest 40, so after-tax interest = 30. The company borrows a net 10 more this year.
+> LFCF = 180 − 30 + 10 = **160**.
+
+## 4. Starting from other lines
+Interviewers like asking you to start from somewhere else:
+- **From EBITDA:** UFCF = EBITDA − taxes on EBIT − capex − increase in NWC.
+- **From net income:** UFCF = net income + after-tax interest + D&A − capex − increase in NWC (add back other non-cash items too).
+- **From cash from operations:** UFCF = CFO + after-tax interest − capex (under US GAAP, where interest sits in CFO).
+
+They all give the same answer if done consistently. That consistency is the point.
+
+## 5. Matching cash flow, discount rate and value
+- **Unlevered FCF**, discounted at **WACC**, gives **enterprise value**.
+- **Levered FCF**, discounted at the **cost of equity**, gives **equity value**.
+
+Mixing them, for example discounting levered FCF at WACC, is one of the classic errors. Say the rule in one sentence: **the discount rate must match the capital providers the cash flow belongs to.**
+
+## 6. Why bankers prefer unlevered
+- It keeps the operating value separate from how the company is financed, which changes over time and in deals.
+- Comparable companies with different debt levels can be compared on the same basis.
+- In an acquisition, the buyer usually replaces the capital structure anyway.
+
+Levered DCFs are more common for banks and insurers, where debt is part of operations, and in some equity research models.
+
+## 7. Sanity checks
+- Capex well below D&A for many years implies the asset base is shrinking: fine for a declining business, not for one you project to grow.
+- Working capital usually grows with revenue; a growing company with NWC falling every year needs a reason.
+- Taxes in UFCF are on EBIT, not the reported tax line (which is lower because of interest deductions).`,
+ ideas:`**Unlevered FCF belongs to all capital providers (discount at WACC, get EV); levered FCF belongs to shareholders (discount at cost of equity, get equity value).**
+
+- UFCF = EBIT × (1 − t) + D&A − capex − increase in NWC.
+- LFCF = UFCF − interest × (1 − t) + net borrowing.
+- From net income: add back after-tax interest and non-cash items, then subtract capex and NWC.
+- Tax in UFCF is on EBIT, as if the company had no debt.
+- Bankers prefer unlevered: separates operations from financing; levered is used for banks and insurers.`,
+ traps:[
+  "Discounting levered FCF at WACC, or unlevered FCF at the cost of equity.",
+  "Subtracting interest when computing unlevered FCF.",
+  "Using reported tax (after the interest shield) instead of tax on EBIT.",
+  "Adding, instead of subtracting, an increase in net working capital."
+ ],
+ read:[
+  ["i:terms/f/freecashflow.asp","Free cash flow",""],
+  ["i:terms/f/freecashflowtoequity.asp","Free cash flow to equity",""]
+ ]},
+
+{name:"Walk me through a DCF",
+ lesson:`## 1. The question
+"Walk me through a DCF" is asked in nearly every banking and valuation interview, and in many equity research ones. Like the three statements, it has a one-minute answer you should be able to give in your sleep, and follow-ups that test whether you understand it.
+
+## 2. The one-minute answer
+
+> "A DCF values a company as the present value of the cash flows it will generate. First, I project unlevered free cash flow for five to ten years: revenue, then operating margins to get EBIT, then taxes, plus D&A, minus capex and the increase in working capital. Second, I estimate a terminal value for the cash flows after that, either with a perpetual growth rate or an exit multiple. Third, I discount the projected cash flows and the terminal value back to today at the WACC. That gives enterprise value. Finally, I subtract net debt and other claims to get equity value and divide by diluted shares to get a value per share."
+
+Four steps: **project, terminal value, discount, bridge to equity**.
+
+## 3. A worked DCF
+
+> Unlevered FCF for years 1–5: 100, 108, 116, 124, 130. WACC 9%. Long-term growth 2.5%. Net debt 400. Diluted shares 50m.
+> **Present value of each year** (cash flow ÷ 1.09^year): 91.7, 90.9, 89.6, 87.8, 84.5. Sum = **444.6**.
+> **Terminal value at year 5** (Gordon growth): 130 × 1.025 / (0.09 − 0.025) = 133.25 / 0.065 = **2,050**.
+> **Present value of terminal value:** 2,050 / 1.09^5 = **1,332.4**.
+> **Enterprise value** = 444.6 + 1,332.4 = **1,776.9** (differences from rounding).
+> **Equity value** = 1,776.9 − 400 = 1,376.9. **Per share** = 1,376.9 / 50 = **$27.54**.
+
+Note that the terminal value is **75%** of enterprise value. That is normal (60–80% is common), and it is why the terminal value assumptions matter so much.
+
+## 4. Sensitivity: the honest output
+Because small changes in WACC and growth move the answer a lot, a DCF is shown as a range. Value per share from the example:
+
+> Long-term growth of 2.0% / 2.5% / 3.0%:
+> - WACC 8%: $31.22 / $34.12 / $37.59
+> - WACC 9%: $25.51 / **$27.54** / $29.90
+> - WACC 10%: $21.24 / $22.72 / $24.41
+
+One point of WACC moves the value by roughly 20%. When an interviewer asks "how confident are you in your DCF?", this range is the answer.
+
+## 5. Typical follow-ups
+- **"Why five to ten years?"** Long enough for the company to reach a steady state (stable margins and growth); beyond that, forecasts are guesses, so the terminal value takes over.
+- **"Mid-year convention?"** Cash arrives through the year, not on 31 December, so discounting each year by (t − 0.5) is more accurate and gives a slightly higher value.
+- **"What if the company has negative cash flow now?"** Project further out, until it becomes positive and stable; or use other methods alongside.
+- **"Which affects value more: a 10% higher revenue forecast or 1% lower WACC?"** Usually the discount rate, because it affects the large terminal value; but check with the sensitivity table, not by guessing.
+- **"When is a DCF a bad tool?"** Banks and insurers (debt is operating, use a dividend discount or excess-return model), early-stage companies with no visible cash flow, and businesses whose cash flows depend on a commodity price.
+
+## 6. Why DCF and not just multiples?
+A DCF values the company on its own cash flows and assumptions, so it does not inherit a mispriced market. Multiples tell you what the market pays today. Professionals use both, and explain the gap.
+
+## 7. Connection to CFA
+The time value of money in Quantitative Methods, free cash flow and the Gordon growth model in Equity Investments, and WACC in Corporate Issuers are all CFA Level I. A DCF is those three ideas put together on one company.`,
+ ideas:`**A DCF: project unlevered FCF, estimate a terminal value, discount both at WACC to get EV, then bridge to equity value per share.**
+
+- Terminal value (Gordon) = FCF in the last year × (1 + g) / (WACC − g).
+- Terminal value is usually 60–80% of EV, so its assumptions matter most.
+- Show a sensitivity table (WACC × growth): one point of WACC can move value by about 20%.
+- Mid-year convention discounts each year at t − 0.5 and raises value slightly.
+- Poor fit for banks, insurers and companies with no visible cash flow.`,
+ traps:[
+  "Forgetting to discount the terminal value (it is a value at the end of the forecast, not today).",
+  "Using next year's FCF without growing it in the Gordon formula: the numerator is FCF × (1 + g).",
+  "Subtracting net debt to get EV: you subtract it from EV to get equity value.",
+  "Presenting a single DCF value without a range."
+ ],
+ read:[
+  ["i:terms/w/wacc.asp","WACC",""],
+  ["https://pages.stern.nyu.edu/~adamodar/","Aswath Damodaran's valuation pages and data","NYU Stern"]
+ ]},
+
+{name:"WACC in practice",
+ lesson:`## 1. What WACC is for
+The **weighted average cost of capital** is the return the company's investors, lenders and shareholders together require. It is the discount rate for unlevered free cash flow. CFA Level I covers the theory (Corporate Issuers and Equity); interviews test the practical choices.
+
+WACC = E/(D+E) × cost of equity + D/(D+E) × pre-tax cost of debt × (1 − tax rate)
+
+## 2. Cost of equity with CAPM
+Cost of equity = risk-free rate + beta × equity risk premium
+
+- **Risk-free rate:** a long government bond yield in the currency of the cash flows (10-year is common).
+- **Equity risk premium:** usually 4–6% for developed markets; sources include surveys and implied estimates (Damodaran publishes one monthly). Add a country risk premium for emerging markets.
+- **Beta:** the stock's sensitivity to the market. For a private company, or to avoid one noisy regression, use **peer betas**.
+
+## 3. Unlevering and relevering beta
+Peers have different debt levels, and debt raises equity beta. So you strip out each peer's leverage, average, and put back the target's leverage:
+
+Unlevered beta = levered beta / [1 + (1 − t) × D/E]
+Relevered beta = unlevered beta × [1 + (1 − t) × target D/E]
+
+> Peer levered beta 1.20, peer D/E 0.50, tax 25%.
+> Unlevered beta = 1.20 / (1 + 0.75 × 0.50) = 1.20 / 1.375 = **0.8727**.
+> Target D/E 0.25: relevered beta = 0.8727 × (1 + 0.75 × 0.25) = 0.8727 × 1.1875 = **1.0364**.
+> Risk-free 4%, ERP 5%: cost of equity = 4% + 1.0364 × 5% = **9.18%**.
+> Pre-tax cost of debt 6%: after-tax = 4.5%.
+> D/E of 0.25 means D/(D+E) = 0.25 / 1.25 = 20%, E/(D+E) = 80%.
+> WACC = 0.80 × 9.18% + 0.20 × 4.5% = **8.25%**.
+
+## 4. Choices interviewers probe
+- **Market or book weights?** Market values (target or long-run capital structure), not the book values on the balance sheet.
+- **Which cost of debt?** The current yield on the company's debt (or what it would pay to borrow today), not the coupon on old bonds.
+- **Why is debt cheaper than equity?** Lenders are paid first and have a claim on assets, so they take less risk; and interest is tax-deductible.
+- **"So why not finance with 100% debt?"** More debt raises the risk of financial distress and raises the cost of both debt and equity. WACC falls at first, then rises: there is an optimal range, not a corner.
+- **"WACC for a company with different divisions?"** Use a separate WACC per division (based on peers of each), not one company-wide rate.
+
+## 5. Typical ranges (estimates, not rules)
+- Large, stable developed-market companies: often 6–9%.
+- Smaller or riskier companies: 10–14%.
+- Emerging markets add a country risk premium; for Romania, Damodaran's tables are a common starting point.
+
+These ranges come from practice, not from a formula; check current data before using them.
+
+## 6. A quick check on your own WACC
+- Cost of equity should exceed the after-tax cost of debt.
+- WACC should sit between the after-tax cost of debt and the cost of equity.
+- If your WACC is below the long-term growth rate you use in the terminal value, the Gordon formula explodes: something is wrong.`,
+ ideas:`**WACC = E/V × cost of equity + D/V × cost of debt × (1 − t), with market-value weights.**
+
+- Cost of equity (CAPM) = risk-free + beta × equity risk premium (plus country risk premium in emerging markets).
+- Unlever peer betas: βu = βL / [1 + (1 − t) D/E]; relever at the target's D/E.
+- Example: peer β 1.20 at D/E 0.5 → βu 0.873 → relevered at D/E 0.25 → 1.036; Ke 9.18%; WACC 8.25%.
+- Use current market cost of debt and target market weights, not book values or old coupons.
+- More debt lowers WACC at first, then raises it as distress risk grows.`,
+ traps:[
+  "Using book values of equity for the weights.",
+  "Forgetting the (1 − t) on the cost of debt.",
+  "Averaging levered peer betas without unlevering them first.",
+  "Confusing D/E with D/(D+E) when computing weights.",
+  "Using the coupon on old bonds as the cost of debt."
+ ],
+ read:[
+  ["i:terms/u/unleveredbeta.asp","Unlevered beta",""],
+  ["i:terms/c/capm.asp","Capital asset pricing model",""],
+  ["i:terms/e/equityriskpremium.asp","Equity risk premium",""]
+ ]},
+
+{name:"Terminal value and sanity checks",
+ lesson:`## 1. Why terminal value deserves its own lesson
+In most DCFs, the terminal value is 60–80% of enterprise value. A model with careful five-year forecasts and a careless terminal value is a careless model. Interviewers know this and ask about it.
+
+## 2. Two methods
+- **Perpetuity growth (Gordon growth):** TV = FCF(n) × (1 + g) / (WACC − g). It assumes cash flow grows forever at g.
+- **Exit multiple:** TV = EBITDA(n) × an EV/EBITDA multiple, usually from comparable companies today. It assumes the business could be sold at that multiple.
+
+Bankers often lean on the exit multiple (it matches how deals are priced); academics and many equity analysts prefer perpetuity growth (it does not import today's market mood). The good practice: **compute one and check it with the other.**
+
+## 3. Cross-checking the two
+From the DCF lesson: final-year FCF 130, WACC 9%, g 2.5%, TV = 2,050. Suppose year-5 EBITDA is 220.
+
+> **Implied exit multiple** of the Gordon value = 2,050 / 220 = **9.3x**. If peers trade at 7–8x, the growth assumption may be too high.
+> Now the other way: an **exit multiple of 8.0x** gives TV = 8.0 × 220 = 1,760.
+> **Implied perpetual growth** = (TV × WACC − FCF) / (TV + FCF) = (1,760 × 0.09 − 130) / (1,760 + 130) = 28.4 / 1,890 = **1.5%**.
+> EV with the exit multiple = 444.6 + 1,760 / 1.09^5 = **1,588.4**, against 1,776.9 with g = 2.5%.
+
+Both checks are a few seconds of arithmetic and show you understand what each method assumes.
+
+## 4. Choosing g
+- **Long-term growth should not exceed the long-run nominal growth of the economy** (roughly inflation plus real growth; 2–3% in developed markets). A company growing faster than the economy forever would eventually become the economy.
+- Use the growth rate in the currency of the cash flows: a leu model can justify higher nominal growth than a euro model because of higher inflation, but then the WACC is higher too.
+- **Growth must be paid for.** Higher growth needs reinvestment: in the final year, capex and working capital should be consistent with the growth you assume. A useful link: reinvestment rate = g / return on new invested capital.
+
+## 5. The final year must be "normal"
+The terminal value multiplies the last forecast year forever, so that year should be steady state:
+- Margins at a sustainable level, not a cyclical peak.
+- Capex close to (or a bit above) D&A for a growing company.
+- No one-off items.
+
+If the business is still growing fast in year 5, extend the forecast, or add a second stage with growth fading down to g.
+
+## 6. Sanity checks for the whole DCF
+1. **Terminal value share of EV:** above ~85% means most of the value rests on one assumption; say so.
+2. **Implied multiples:** compute EV / current EBITDA and value per share / EPS. If your DCF implies 25x EBITDA for a utility, check your inputs.
+3. **Compare to market:** a value 50% above the share price needs a reason you can explain in one sentence.
+4. **WACC > g**, always, and by a sensible margin.
+5. **Sensitivity table** on WACC and g (and the exit multiple, if you use it).
+
+## 7. In an interview
+"How do you pick the terminal growth rate?" A good answer: "Around long-run nominal GDP growth or inflation, no higher, and consistent with the reinvestment in the final year; then I check the implied exit multiple against peers." That one sentence covers all of this lesson.`,
+ ideas:`**Terminal value is most of a DCF: compute it one way, check it the other.**
+
+- Gordon: TV = FCF(n) × (1 + g) / (WACC − g). Exit multiple: TV = EBITDA(n) × peer EV/EBITDA.
+- Implied exit multiple = Gordon TV / final EBITDA; implied g = (TV × WACC − FCF) / (TV + FCF).
+- g should not exceed long-run nominal economic growth (about 2–3% in developed markets) and must match reinvestment.
+- The final forecast year must be steady state: normal margins, capex near D&A, no one-offs.
+- Check TV share of EV, implied multiples and the gap to the market price.`,
+ traps:[
+  "A terminal growth rate above long-run economic growth.",
+  "Applying the terminal value to a peak-margin or still-high-growth year.",
+  "Using an exit multiple and never checking the growth rate it implies.",
+  "Forgetting to discount the terminal value back from year n."
+ ],
+ read:[
+  ["i:terms/e/ev-ebitda.asp","EV/EBITDA",""],
+  ["https://pages.stern.nyu.edu/~adamodar/","Aswath Damodaran's valuation pages and data","NYU Stern"]
+ ]}
+]);
+
+/* Books worth reading (Learn, under "Beyond the curriculum"): from a Nov 2026 review of reading lists for first
+   finance jobs (career sites, Wall Street Oasis, university career services); order = usefulness for interviews. */
+CFA_DATA.reading = [
+ {title:"Investment Banking: Valuation, LBOs, M&A and IPOs", author:"Joshua Rosenbaum and Joshua Pearl", why:"Comparables, precedent transactions, DCF and LBO step by step: the technical questions of banking and valuation interviews. The most often recommended title.", role:"Investment banking, equity research, private equity", overlap:"Partial: Level I covers multiples and DCF basics, not LBOs or M&A"},
+ {title:"The Little Book of Valuation (or Investment Valuation)", author:"Aswath Damodaran", why:"The reasoning behind DCF, cost of capital and multiples, so you can explain a valuation, not just compute it. The Little Book is the short version.", role:"Equity research, asset management, banking", overlap:"Partial: Equity Investments and Corporate Issuers; deeper at Level II"},
+ {title:"Best Practices for Equity Research Analysts", author:"James Valentine", why:"What the equity research job actually involves: models, forecasts, writing notes, talking to management.", role:"Equity research", overlap:"Almost none: practice, not theory"},
+ {title:"Financial Shenanigans", author:"Howard Schilit and Jeremy Perler", why:"How companies flatter their accounts and how to spot it: a strong topic for research and credit interviews.", role:"Equity research, credit, risk", overlap:"Partial: Financial Reporting Quality (FSA)"},
+ {title:"Options, Futures, and Other Derivatives / Risk Management and Financial Institutions", author:"John Hull", why:"The standard reference for derivatives and financial risk, also used for the FRM.", role:"Risk", overlap:"Partial: Level I Derivatives is an introduction"},
+ {title:"Valuation: Measuring and Managing the Value of Companies", author:"McKinsey & Company (Koller and others)", why:"The professional reference on value creation and ROIC. Use it as a reference, not cover to cover.", role:"Equity research, corporate finance", overlap:"Small at Level I"},
+ {title:"Liar's Poker (or Barbarians at the Gate)", author:"Michael Lewis (Burrough and Helyar)", why:"Industry culture and history; useful small talk in interviews, nothing technical.", role:"All", overlap:"None"},
+ {title:"The Intelligent Investor", author:"Benjamin Graham", why:"The value-investing mindset and margin of safety. Often recommended, but it will not help in a technical interview.", role:"Asset management, personal investing", overlap:"Small"}
+];
+/* Beyond the curriculum, Valuation practice: how comparables, precedent transactions, LBOs and accretion/dilution are
+   done in banking and equity research. Not CFA exam content: lessons only, no match rules. Every number in the worked
+   examples was recomputed with a script (Nov 2026). Ids by position: only append. */
+CFA_DATA.learn(1,"Valuation practice","LM-VP",[
+{name:"Comparable companies",
+ lesson:`## 1. The idea
+**Comparable companies analysis** ("trading comps") values a company by looking at what the market pays today for similar listed companies, expressed as multiples: EV/EBITDA, EV/Revenue, P/E. It is the fastest valuation method and the one used in almost every pitch book and research note.
+
+CFA Level I introduces price multiples and EV/EBITDA in Equity Investments. Here is how it is done in practice.
+
+## 2. The steps
+1. **Pick the peer group:** same industry and business model, similar growth, margins, size and geography. Five to ten good peers beat twenty loose ones.
+2. **Collect the data:** share price, diluted shares, debt, cash and other EV items, and the financials (last twelve months and forecasts).
+3. **Normalize:** remove one-off items, align fiscal years (calendarize), use the same accounting basis (for example IFRS 16 leases) across peers.
+4. **Compute multiples** for each peer, then the **median**, mean and range.
+5. **Apply** a chosen range to the target's metric and bridge from EV to equity value per share.
+
+## 3. A worked example
+
+> Peer EV/EBITDA multiples: 8.5x, 9.0x, 10.0x, 11.5x, 14.0x.
+> Median = **10.0x**; mean = 10.6x (pulled up by the 14.0x outlier, which is why bankers prefer the median).
+> Target EBITDA = 200. A range from the second to the fourth peer (9.0x–11.5x) gives EV of **1,800–2,300**, with 2,000 at the median.
+
+## 4. LTM and calendarization
+- **LTM (last twelve months)** = last full fiscal year + current year-to-date − prior year's same period.
+
+> Fiscal year EBITDA 400; first half this year 230; first half last year 210. LTM = 400 + 230 − 210 = **420**.
+
+- **Calendarization:** if peers have fiscal years ending in different months, convert their figures to the same calendar period (for example, a March year-end company: 25% of the year ending March this year + 75% of the year ending March next year gives the December calendar year).
+
+## 5. Which multiple?
+- **EV/EBITDA:** the default for most industries; ignores capital structure and depreciation policy.
+- **EV/EBIT:** better when capital intensity differs (D&A is a real cost).
+- **P/E:** common in research and for banks; affected by leverage and tax.
+- **EV/Revenue:** for companies with no or negative profits (early growth), weak on its own.
+- **Industry multiples:** price/book and P/E for banks and insurers; EV/EBITDAR for airlines and retailers with large leases; price per subscriber or per tonne in some sectors.
+
+## 6. Why the target may deserve a different multiple
+Higher growth, higher margins, lower risk and higher returns on capital justify a higher multiple. A single-sentence link from CFA: in the Gordon model, the forward P/E = payout ratio / (r − g), so a higher g or lower r raises the multiple. When you put the target at the top or bottom of the range, give one of these reasons.
+
+## 7. Strengths and weaknesses
+- **Strengths:** quick, market-based, easy to explain, reflects current sentiment.
+- **Weaknesses:** if the whole sector is overpriced, comps say the target is too; true peers are hard to find; accounting differences distort multiples.
+
+## 8. In an interview
+"How would you value this company with comps?" Name the peer selection criteria, the multiple you would use and why, the median, and one reason the target sits above or below it. That is enough for most first rounds.`,
+ ideas:`**Comps value a company at the multiples the market pays today for similar listed companies.**
+
+- Steps: pick peers, collect data, normalize (one-offs, fiscal years, leases), compute multiples, take the median and a range, apply, bridge to per-share value.
+- Prefer the median: outliers pull the mean.
+- LTM = last fiscal year + current year-to-date − prior year-to-date.
+- EV/EBITDA is the default; EV/EBIT when capital intensity differs; P/E and P/B for banks; EV/Revenue only for loss-makers.
+- Higher growth, margins and returns, or lower risk, justify a higher multiple.`,
+ traps:[
+  "Using the mean when one peer is an outlier.",
+  "Mixing LTM multiples for some peers with forecast multiples for others.",
+  "Choosing peers only by industry label, ignoring size, growth and business model.",
+  "Placing the target at the top of the range without saying why."
+ ],
+ read:[
+  ["i:terms/e/ev-ebitda.asp","EV/EBITDA",""],
+  ["i:terms/e/enterprisevalue.asp","Enterprise value",""]
+ ]},
+
+{name:"Precedent transactions",
+ lesson:`## 1. The idea
+**Precedent transactions** ("deal comps") value a company at the multiples paid in past acquisitions of similar companies. It answers a different question from trading comps: not "what is one share worth today?" but **"what would a buyer pay for control of the whole company?"**
+
+## 2. Why deal multiples are higher
+Buyers usually pay a **control premium** over the share price:
+- Control lets them change strategy, management and capital structure.
+- **Synergies:** cost savings or extra revenue from combining the two businesses; part of their value is paid away to the seller.
+- Competitive auctions push the price up.
+
+> Unaffected share price (before rumors) $20; offer $25. Premium = 25 / 20 − 1 = **25%**. Premiums of 20–40% are common in public deals; check current market data rather than relying on a rule.
+
+## 3. The steps
+1. **Screen deals:** same industry, similar size and geography, ideally in the last three to five years (older deals reflect different markets and interest rates).
+2. **Collect deal data:** enterprise value paid (offer price × diluted shares + net debt assumed) and the target's LTM revenue and EBITDA at the time.
+3. **Compute multiples**, take the median and a range.
+4. **Apply** to the target's LTM metric.
+
+> Deal EV/EBITDA multiples: 11.0x, 12.0x, 12.5x, 13.0x, 15.0x. Median **12.5x**.
+> Target LTM EBITDA 200: range 12.0x–13.0x gives EV of **2,400–2,600**.
+> Compare with the trading comps lesson (1,800–2,300 on the same EBITDA): deal values are higher because they include control.
+
+## 4. Things that distort deal multiples
+- **Market timing:** deals done at a market peak or when interest rates were very low carry higher multiples.
+- **Strategic vs financial buyers:** strategic buyers (competitors) can pay more because of synergies; private equity buyers are limited by what the debt and returns allow (see the LBO lessons).
+- **Distressed sales:** a forced seller gets a low multiple.
+- **Limited data:** private deals often disclose little, so the sample can be small.
+
+## 5. When it is used
+- Selling a company or advising a board on whether an offer is fair (fairness opinions).
+- As one bar of the football field (next lesson).
+- Not very useful for a minority stake in a listed company: an investor buying a few shares gets no control and pays no premium.
+
+## 6. In an interview
+- **"Why are precedent multiples usually higher than trading multiples?"** Control premium and synergies.
+- **"When could they be lower?"** Deals done in a weak market, distressed sales, or a sector that has re-rated upward since.
+- **"Which would you trust more?"** Neither alone: trading comps reflect today's market, deals reflect what buyers actually paid for control. Use both and explain the gap.`,
+ ideas:`**Precedent transactions value a company at the multiples paid for control in past deals.**
+
+- Deal multiples usually exceed trading multiples because of the control premium and synergies.
+- Premium = offer price / unaffected price − 1 (example: $25 / $20 → 25%).
+- Use recent, similar deals; LTM metrics at the time of the deal; take the median and a range.
+- Distortions: market timing, strategic vs financial buyer, distressed sales, thin data.
+- Relevant for selling a whole company, not for valuing a minority stake.`,
+ traps:[
+  "Measuring the premium from a price that already includes takeover rumors.",
+  "Using deals from a very different market or interest-rate environment without comment.",
+  "Applying precedent multiples to value a minority shareholding.",
+  "Mixing deal multiples on LTM EBITDA with forward EBITDA."
+ ],
+ read:[
+  ["i:terms/m/mergersandacquisitions.asp","Mergers and acquisitions",""],
+  ["i:terms/m/mergerarbitrage.asp","Merger arbitrage",""]
+ ]},
+
+{name:"The football field: putting methods together",
+ lesson:`## 1. What it is
+A **football field** is a chart of horizontal bars, one per valuation method, each showing a value range per share. It is the summary page of most valuation work in banking and of many research notes: it shows at a glance where the methods agree, where they differ, and where the current share price or offer sits.
+
+## 2. A worked football field
+Target: EBITDA 200, net debt 400, diluted shares 50m.
+
+> **Trading comps** 9.0x–11.5x → EV 1,800–2,300 → equity 1,400–1,900 → **$28–$38** per share.
+> **Precedent transactions** 12.0x–13.0x → EV 2,400–2,600 → equity 2,000–2,200 → **$40–$44**.
+> **DCF** (WACC 9–10%, growth 2–3%), suppose it gives **$26–$31**.
+> **52-week share price range:** $24–$33.
+
+Drawn as bars, the picture is clear: the market price and DCF overlap around $26–$31; trading comps reach higher, to $38; a takeover price would be in the low $40s.
+
+## 3. How to read it
+- **Where methods overlap** is the most defensible range.
+- **If a buyer offers $36**, it is above the DCF and most of the trading range, but below precedents: a shareholder may argue for more.
+- **If you are an equity analyst**, the question is whether today's price ($30, say) is below what the business is worth on fundamentals (DCF) and on peers. A target price is usually set from one main method, cross-checked with the others.
+
+## 4. Choosing and weighting methods
+- Bankers rarely average the methods mechanically; they explain which ones matter for the situation: precedents for a sale, comps and DCF for an IPO, DCF for a long-term investor.
+- Some analysts weight methods (for example, 50% DCF, 50% comps). If you do, say why.
+- **Include the bars that tell a different story**, not only the ones that support the conclusion. Leaving out an inconvenient method is a common criticism of fairness opinions.
+
+## 5. Common bars
+- 52-week trading range, analyst target prices.
+- Trading comps (on LTM and forward multiples, sometimes as two bars).
+- Precedent transactions.
+- DCF (often with ranges from the sensitivity table).
+- LBO analysis: the price a private equity buyer could pay and still reach its target return (see the next lessons). It often acts as a floor for a sale.
+
+## 6. In an interview
+"How would you value this company?" The full answer is a football field in words: "I'd use trading comps and a DCF, plus precedent transactions if it's for a sale, and an LBO as a floor if private equity is a likely buyer. Then I'd compare the ranges and explain where they overlap and why they differ."`,
+ ideas:`**A football field shows the value range from each method side by side, per share.**
+
+- Typical bars: 52-week range, analyst targets, trading comps, precedent transactions, DCF, LBO.
+- Convert each EV range to per-share values: (EV − net debt) / diluted shares.
+- The overlap of methods is the most defensible range; explain the gaps (control premium, market mood, assumptions).
+- Precedents matter for a sale; comps and DCF for an IPO or research; an LBO often sets a floor.
+- Do not drop the method that tells a different story.`,
+ traps:[
+  "Averaging methods mechanically without explaining which ones matter.",
+  "Showing EV ranges for some bars and per-share values for others.",
+  "Leaving out the method that does not support the conclusion.",
+  "Forgetting that precedent bars include a control premium."
+ ],
+ read:[
+  ["i:terms/e/enterprisevalue.asp","Enterprise value",""]
+ ]},
+
+{name:"How a leveraged buyout works",
+ lesson:`## 1. The idea
+In a **leveraged buyout (LBO)**, a private equity fund buys a company using a lot of borrowed money (often 50–70% of the price) and a smaller amount of its own equity. The company's own cash flow then pays down the debt. After three to seven years the fund sells the company, and the equity it put in has grown.
+
+The home analogy: buy a flat with a big mortgage, let the rent pay the mortgage down, sell after five years. Even at the same price, your equity has grown because the debt is lower.
+
+CFA Level I covers private equity and buyouts in Alternative Investments; Level II and III go further. Interviews for banking and private equity ask for the mechanics.
+
+## 2. Where the return comes from
+Three sources, in this usual order of reliability:
+1. **Debt paydown:** cash flow repays debt, so more of the enterprise value belongs to equity.
+2. **EBITDA growth:** revenue growth and margin improvements raise the value of the business.
+3. **Multiple expansion:** selling at a higher EV/EBITDA than the purchase multiple. Funds usually assume none (exit at the entry multiple) to be conservative.
+
+Leverage magnifies all three: because the equity is small relative to the business, a given gain in enterprise value is a large percentage gain on equity. It also magnifies losses.
+
+## 3. Sources and uses
+Every LBO starts with a table showing where the money comes from and where it goes; the two sides must be equal.
+
+> **Uses:** purchase of the company (EV) 800 (8.0x EBITDA of 100) + transaction fees 20 = **820**.
+> **Sources:** debt 500 (5.0x EBITDA) + sponsor equity 320 = **820**.
+
+## 4. What makes a good LBO candidate
+- **Stable, predictable cash flow** to service the debt (subscription businesses, consumer staples, business services).
+- **Low capital expenditure needs**, so cash goes to debt rather than to machines.
+- **Room to improve:** costs that can be cut, a division that can be sold.
+- **Strong market position** and a credible exit (a buyer or IPO in a few years).
+- **Not** a good candidate: a cyclical business with heavy capex and volatile margins, or an early-stage company with no profits.
+
+## 5. Returns: IRR and multiple of money
+- **Multiple of money (MoM or MOIC)** = equity received at exit / equity invested.
+- **IRR** = the annual return that makes the investment's cash flows worth zero; with one investment and one exit, IRR = MoM^(1/years) − 1.
+- Funds typically aim for IRRs of 20% or more and 2–3x money; actual targets vary by fund and market.
+
+Rules of thumb to know by heart (from MoM^(1/years) − 1):
+- 2x in 5 years ≈ **15%** IRR (14.9%).
+- 3x in 5 years ≈ **25%** IRR (24.6%).
+- 2x in 3 years ≈ **26%** IRR.
+
+## 6. Why the debt matters to the price
+More debt means less equity for the same purchase price, so a higher IRR if all goes well, but more risk of default if cash flow falls. Lenders limit leverage (often 4–6x EBITDA, depending on the market and the business), so in practice **the amount of debt available limits what a fund can pay**. That is why an LBO analysis often sets the floor price in a sale.
+
+## 7. In an interview
+- **"Walk me through an LBO."** Buy the company with mostly debt, project its cash flow, use it to pay down debt, sell after about five years, compute IRR and MoM on the equity.
+- **"Why use debt?"** It is cheaper than equity (and tax-deductible), and a smaller equity cheque magnifies returns.
+- **"What would you ask about a candidate?"** How stable is cash flow, how much capex does it need, and who will buy it at exit.`,
+ ideas:`**An LBO buys a company with mostly debt, uses its cash flow to repay the debt, and sells it after a few years.**
+
+- Return sources: debt paydown, EBITDA growth, multiple expansion (usually assumed zero).
+- Sources and uses must balance: debt + equity = purchase EV + fees.
+- Good candidates: stable cash flow, low capex, cost or asset upside, credible exit.
+- MoM = exit equity / equity invested; IRR = MoM^(1/years) − 1 for one entry and one exit.
+- 2x in 5 years ≈ 15% IRR; 3x in 5 years ≈ 25%; 2x in 3 years ≈ 26%.
+- Available debt limits the price a financial buyer can pay.`,
+ traps:[
+  "Assuming multiple expansion as the main source of return.",
+  "Forgetting transaction fees in the uses of funds.",
+  "Calling a capex-heavy cyclical company a good LBO candidate.",
+  "Confusing MoM with IRR: a 2x over 10 years is only about 7% a year."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/p/privateequity.asp","Private equity",""],
+  ["i:terms/i/irr.asp","Internal rate of return",""]
+ ]},
+
+{name:"A simple LBO worked through",
+ lesson:`## 1. The "paper LBO"
+Private equity interviews often include a **paper LBO**: a short case done with pen and paper (no Excel) in 10–30 minutes. The numbers are chosen to be easy; the test is whether you know the steps. This lesson works one through.
+
+## 2. The assumptions
+
+> Purchase at 8.0x EBITDA of 100 → EV 800. Fees 20.
+> Debt 500 (5.0x) at 7% interest, paid down with all free cash flow. Equity 320.
+> EBITDA grows 5% a year. D&A = capex = 20 a year. No change in working capital. Tax rate 25%.
+> Exit after 5 years at the entry multiple, 8.0x.
+
+## 3. Year by year
+Free cash flow for debt repayment = EBITDA − capex − interest − tax, where tax = 25% × (EBITDA − D&A − interest) and interest is on the opening debt.
+
+> **Year 1:** EBITDA 105.0; interest 7% × 500 = 35.0; tax 25% × (105 − 20 − 35) = 12.5; FCF = 105 − 20 − 35 − 12.5 = **37.5**; closing debt 462.5.
+> **Year 2:** EBITDA 110.3; interest 32.4; tax 14.5; FCF **43.4**; debt 419.1.
+> **Year 3:** EBITDA 115.8; interest 29.3; tax 16.6; FCF **49.8**; debt 369.3.
+> **Year 4:** EBITDA 121.6; interest 25.8; tax 18.9; FCF **56.8**; debt 312.5.
+> **Year 5:** EBITDA 127.6; interest 21.9; tax 21.4; FCF **64.3**; debt **248.2**.
+
+Free cash flow rises each year because EBITDA grows and interest falls as debt is repaid: a virtuous circle that is the heart of an LBO.
+
+## 4. The exit
+
+> Exit EV = 8.0 × 127.6 = **1,021**.
+> Exit equity = 1,021 − 248.2 = **772.8**.
+> MoM = 772.8 / 320 = **2.42x**. IRR = 2.42^(1/5) − 1 = **19.3%**.
+
+## 5. Where the gain came from
+Equity grew from 320 to 772.8, a gain of 452.8:
+
+> **EBITDA growth** at a constant 8.0x: (127.6 − 100) × 8.0 = **221**.
+> **Debt paydown:** 500 − 248.2 = **251.8**.
+> **Fees** paid at entry: **−20**.
+> 221 + 251.8 − 20 = 452.8. It reconciles.
+
+Here debt paydown contributes more than growth: typical of a stable, cash-generative LBO.
+
+## 6. Shortcuts for the exam room
+- Estimate IRR from MoM with the rules of thumb: 2.42x in 5 years lies between 2x (15%) and 3x (25%), so about 19–20%.
+- If asked "what purchase price gives a 20% IRR?", work backwards: required exit equity = equity × 1.2^5 = equity × 2.49.
+- Round boldly and say so; the interviewer wants the logic and a sensible number.
+
+## 7. Follow-ups to expect
+- **"How could you raise the IRR?"** More debt (riskier), a lower purchase price, faster growth or margin gains, an earlier exit, a dividend recapitalization (borrowing more later to pay the fund a dividend).
+- **"What if the exit multiple is 7.0x?"** Exit EV falls by 127.6, so equity falls to about 645 and MoM to about 2.0x: multiple risk is large.
+- **"What is the biggest risk?"** That cash flow falls while debt is still high, breaching covenants or leading to default.`,
+ ideas:`**Paper LBO: sources and uses, project EBITDA and free cash flow, repay debt, exit at a multiple, compute MoM and IRR.**
+
+- FCF for debt repayment = EBITDA − capex − interest − tax; interest on the opening debt.
+- Example: 8.0x entry on EBITDA 100, 500 debt, 320 equity, 5% growth → year-5 debt 248.2, exit equity 772.8, MoM 2.42x, IRR 19.3%.
+- Value creation reconciles: EBITDA growth × multiple + debt paydown − fees = equity gain.
+- Levers for IRR: price, leverage, growth, margins, exit timing, dividend recap.
+- A lower exit multiple hits equity hard: multiple risk is large.`,
+ traps:[
+  "Computing interest on the closing instead of the opening debt (or ignoring that it falls).",
+  "Forgetting tax when computing cash available for debt repayment.",
+  "Taking exit EV as the equity proceeds without subtracting remaining debt.",
+  "Leaving out fees, so the value-creation bridge does not reconcile."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/i/irr.asp","Internal rate of return",""]
+ ]},
+
+{name:"Mergers: accretion and dilution",
+ lesson:`## 1. The question
+When a listed company buys another, the first question analysts and boards ask is: **will the deal raise or lower our earnings per share (EPS)?** A deal that raises EPS is **accretive**; one that lowers it is **dilutive**. It is a standard banking interview topic.
+
+EPS is not value: an accretive deal can destroy value if the buyer overpays. But EPS impact is what the market looks at first, so you need to compute and explain it.
+
+## 2. The mechanics
+Pro forma EPS = (acquirer net income + target net income + after-tax synergies − after-tax cost of financing) / (acquirer shares + new shares issued)
+
+Financing costs:
+- **Cash on hand:** lost interest income on that cash, after tax.
+- **New debt:** interest expense, after tax.
+- **New shares:** no cost in net income, but more shares in the denominator.
+
+## 3. A worked example
+
+> Acquirer: net income 500, 100m shares, EPS $5.00, share price $50 (P/E 10x).
+> Target: net income 60. Purchase price 900 (P/E paid 15x).
+> Financing: 50% new shares (450 / $50 = 9m shares), 50% new debt (450 at 6%; after-tax cost 450 × 6% × 0.75 = 20.25).
+> Pre-tax synergies 20, after-tax 15.
+> **Pro forma net income** = 500 + 60 + 15 − 20.25 = **554.75**. **Shares** = 109m.
+> **Pro forma EPS** = 554.75 / 109 = **$5.0894**, up **1.79%**: accretive.
+> **Without synergies:** (500 + 60 − 20.25) / 109 = $4.9518, down **0.96%**: dilutive.
+> **Break-even synergies:** EPS of $5.00 needs net income of 5.00 × 109 = 545, i.e. 5.25 after tax or **7.0 pre-tax**.
+
+## 4. The shortcut: compare yields
+Without synergies, a deal is accretive if the **target's earnings yield** (net income / price paid) exceeds the **weighted cost of the acquisition currency**:
+- Cost of stock = acquirer's earnings yield = 1 / acquirer P/E = 1 / 10 = 10%.
+- Cost of debt = after-tax interest rate = 6% × 0.75 = 4.5%.
+- Cost of cash = after-tax interest forgone on cash.
+
+> Target earnings yield = 60 / 900 = 6.67%. Weighted cost = 50% × 10% + 50% × 4.5% = 7.25%.
+> 6.67% < 7.25%, so dilutive before synergies, as the full calculation showed.
+
+The consequences interviewers want you to state:
+- A **high-P/E acquirer buying a low-P/E target with stock** is usually accretive (its "currency" is expensive).
+- A **low-P/E acquirer buying a high-P/E target with stock** is usually dilutive.
+- Debt is usually the cheapest currency when interest rates are low, so debt-financed deals are more often accretive.
+
+## 5. What a full merger model adds
+- **Purchase price allocation:** writing target assets up to fair value creates extra depreciation and amortization, which lowers pro forma earnings; the rest is goodwill.
+- **Transaction fees** and integration costs.
+- **Revenue synergies** (less reliable than cost synergies) and the time it takes to achieve them.
+- **Credit impact:** new debt changes the acquirer's leverage ratios and rating.
+
+## 6. In an interview
+- **"Walk me through a merger model."** Project both companies' net income, add synergies, subtract financing costs and new D&A, divide by the new share count, compare with the acquirer's standalone EPS.
+- **"Is an accretive deal always good?"** No. Accretion says nothing about whether the price is below the value created; a DCF of the combined company, including synergies, answers that.
+- **"Why would a company do a dilutive deal?"** Strategic reasons: growth, technology, market access, expecting accretion once synergies arrive.`,
+ ideas:`**A deal is accretive if pro forma EPS exceeds the acquirer's standalone EPS, dilutive if lower.**
+
+- Pro forma EPS = (both net incomes + after-tax synergies − after-tax financing cost) / (old shares + new shares).
+- Example: 50/50 stock and debt for a 15x target by a 10x acquirer: −0.96% without synergies, +1.79% with 15 after-tax synergies; break-even synergies 7.0 pre-tax.
+- Shortcut: accretive if target earnings yield > weighted cost of the currency (stock = 1 / acquirer P/E; debt = after-tax rate).
+- High-P/E acquirer using stock on a low-P/E target: usually accretive; the reverse: usually dilutive.
+- Accretion is not value creation.`,
+ traps:[
+  "Treating accretion as proof the deal creates value.",
+  "Forgetting the tax shield on new interest expense.",
+  "Ignoring the extra amortization from writing up the target's assets.",
+  "Using the target's own P/E instead of the P/E paid (including the premium)."
+ ],
+ read:[
+  ["i:terms/m/mergersandacquisitions.asp","Mergers and acquisitions",""],
+  ["i:terms/d/dilutedeps.asp","Diluted EPS",""]
+ ]}
+]);
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
      areas  – space-separated concept areas (see AREAS) the concept belongs to
@@ -32541,6 +33428,8 @@ function modQuestions(){
   if(!MODQ) MODQ = D.moduleMap ? D.moduleMap(SETS.filter(s=>s.level===1 && s.type==='mc').map(s=>({id:s.id, level:1, topic:s.topic, stem:s.stem, key:s.options[s.answer], expl:s.explanation}))) : {};
   return MODQ;
 }
+/* modules outside the exam (topic not in TOPICS[1], e.g. Interview technicals): lessons only, listed under "Beyond the curriculum" */
+const isBeyond = m=>m.level===1 && !TOPICS[1].includes(m.topic);
 const topicMapped = t=>(D.modules||[]).some(m=>m.topic===t && (m.match || m.pool));
 /* a module with pool:'topic' (such as Ethics' Application of the Code and Standards) practises every question of its topic */
 const modIds = m=>m.pool==='topic' ? SETS.filter(s=>s.level===1 && s.type==='mc' && s.topic===m.topic).map(s=>s.id) : (modQuestions()[m.id]||[]);
@@ -32598,12 +33487,17 @@ function vLearn(app){
   if(l!==1){ app.innerHTML = `<div class="content"><div class="page-head"><div><div class="eyebrow">${LEVELS[l]}</div><h1>Learn</h1></div></div><div class="panel"><div class="empty">${icon('map')}<b>The learning map covers Level I</b><span class="small">Switch to Level I to see it.</span></div></div></div>`; return; }
   const open = S.learn.open && MODS[S.learn.open];
   if(open && open.ideas) return learnModule(app, open);
-  const mods = (D.modules||[]).filter(m=>m.level===1);
+  const all = (D.modules||[]).filter(m=>m.level===1), mods = all.filter(m=>!isBeyond(m));
+  const beyondTopics = [...new Set(all.filter(isBeyond).map(m=>m.topic))];
   app.innerHTML = `<div class="content">
     <div class="page-head"><div><div class="eyebrow">${LEVELS[1]} · ${CURRICULUM_YEAR} curriculum · ${mods.length} learning modules</div><h1>Learning map</h1><p>One page per learning module of the official topic outline: the key ideas, the traps the exam likes, the formulas, where to read the full lesson, and practice on that module alone. It sums up the curriculum; it does not replace it.</p></div></div>
     ${TOPICS[1].map(t=>{ const tm = mods.filter(m=>m.topic===t); if(!tm.length) return ''; const done = tm.filter(m=>m.ideas).length;
       return `<div class="panel"><div class="panel-head"><div><h2>${esc(t)}</h2><p>${plural(tm.length,'module')}${done?` · ${done} ready`:''}</p></div></div>${tm.map(modRow).join('')}</div>`; }).join('')}
     <p class="faint small">Module names follow the <a href="${OUTLINE_URL}" target="_blank" rel="noopener noreferrer">${CURRICULUM_YEAR} Level I topic outline</a> of CFA Institute. The notes are our own summary, written for this app.</p>
+    ${beyondTopics.length?`<div class="page-head lm-beyond"><div><div class="eyebrow">Not on the exam</div><h2>Beyond the curriculum</h2><p>What finance interviews and a first job in equity research, banking or valuation ask for on top of Level I. Lessons only: these modules have no practice questions and are not in mocks.</p></div></div>
+    ${beyondTopics.map(t=>{ const tm = all.filter(m=>m.topic===t);
+      return `<div class="panel"><div class="panel-head"><div><h2>${esc(t)}</h2><p>${plural(tm.length,'module')}</p></div></div>${tm.map(modRow).join('')}</div>`; }).join('')}`:''}
+    ${D.reading&&D.reading.length?`<div class="panel lm-books"><div class="panel-head"><div><h2>Books worth reading</h2><p>The titles most often recommended for a first finance job, in the order we would read them. Reading is optional; practice questions come first.</p></div></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Book</th><th>Why read it</th><th>Best for</th><th>Overlap with Level I</th></tr></thead><tbody>${D.reading.map(b=>`<tr><td><b>${esc(b.title)}</b><br><small class="faint">${esc(b.author)}</small></td><td>${inline(b.why)}</td><td>${esc(b.role)}</td><td>${esc(b.overlap)}</td></tr>`).join('')}</tbody></table></div></div>`:''}
   </div>`;
   $$('[data-mod]',app).forEach(b=>b.onclick=()=>{ S.learn.open=b.dataset.mod; render(true); window.scrollTo(0,0); });
 }
@@ -32613,13 +33507,13 @@ function learnModule(app, m){
   const fs = (m.formulas||[]).map(id=>FMAP[id]).filter(Boolean);
   app.innerHTML = `<div class="content">
     <div class="lm-nav"><button class="btn ghost sm" id="lmBack">${icon('arrowL')}Learning map</button><span class="faint small num">Module ${m.n} of ${m.of}</span></div>
-    <div class="page-head"><div><div class="eyebrow">${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
+    <div class="page-head"><div><div class="eyebrow">${isBeyond(m)?'Beyond the curriculum · ':''}${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${isBeyond(m)?'Interview and first-job preparation, not part of the CFA exam.':st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
       ${st.n?`<div class="row"><button class="btn primary lg" id="lmGo" title="10 questions, unseen first, easy to hard">${icon('zap')}Practice this module</button>${st.n>10?`<button class="btn ghost" id="lmAll" title="Every question of this module, easy to hard">All ${st.n}</button>`:''}</div>`:''}</div>
     ${m.lesson?`<details class="panel lm-lesson" open><summary class="panel-head"><div><h2>Lesson</h2><p>About ${readMins(m.lesson)} minutes of reading, with worked examples</p></div><span class="btn ghost sm lm-tog"></span></summary><div class="lm-text">${learnMd(m.lesson)}</div></details>`:''}
     <div class="panel"><div class="panel-head"><div><h2>Key ideas</h2>${m.lesson?'<p>The short version, for review</p>':''}</div></div><div class="lm-text">${learnMd(m.ideas)}</div></div>
-    ${m.traps&&m.traps.length?`<div class="panel"><div class="panel-head"><h2>Traps the exam likes</h2></div><ol class="lm-traps">${m.traps.map(t=>`<li>${inline(t)}</li>`).join('')}</ol></div>`:''}
+    ${m.traps&&m.traps.length?`<div class="panel"><div class="panel-head"><h2>${isBeyond(m)?'Mistakes interviewers catch':'Traps the exam likes'}</h2></div><ol class="lm-traps">${m.traps.map(t=>`<li>${inline(t)}</li>`).join('')}</ol></div>`:''}
     ${fs.length?`<div class="panel"><div class="panel-head"><div><h2>Formulas</h2><p>From the formula sheet, where the flashcards are.</p></div><button class="btn ghost sm" data-goto="formulas">Formulas ${icon('chevR')}</button></div>${fs.map(f=>`<div class="frow"><div class="fhead"><b>${esc(f.name)}</b>${f.topic!==m.topic?`<span class="tag">${esc(short(f.topic))}</span>`:''}${cardStatus(f)}</div>${fBlock(f)}</div>`).join('')}</div>`:''}
-    ${m.read&&m.read.length?`<div class="panel lm-read"><div class="panel-head"><div><h2>Further reading</h2><p>The official outline first, then a full lesson, then reference pages.</p></div></div>${m.read.map(readLink).join('')}</div>`:''}
+    ${m.read&&m.read.length?`<div class="panel lm-read"><div class="panel-head"><div><h2>Further reading</h2><p>${isBeyond(m)?'Reference pages to go further.':'The official outline first, then a full lesson, then reference pages.'}</p></div></div>${m.read.map(readLink).join('')}</div>`:''}
     <div class="lm-pager">${prev?`<button class="btn ghost" data-mod="${prev.id}">${icon('arrowL')}${esc(prev.name)}</button>`:'<span></span>'}${next?`<button class="btn ghost" data-mod="${next.id}">${esc(next.name)}${icon('arrowR')}</button>`:''}</div>
   </div>`;
   $('#lmBack').onclick = ()=>{ S.learn.open=null; render(true); window.scrollTo(0,0); };
