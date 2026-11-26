@@ -15672,7 +15672,7 @@ Over long horizons the difference between nominal and real growth becomes large:
 > - 1,000 invested at 6% a year grows to 1,000 × 1.06^10 = 1,790.85 in money terms.
 > - In today's purchasing power that is 1,790.85 / 1.03^10 = 1,332.56.
 > - The real growth rate is 1.06 / 1.03 − 1 = 2.91% a year, and 1,000 × (1.06 / 1.03)^10 gives the same 1,332.56.
-> On the calculator: \\\`N = 10, I/Y = 6, PV = −1,000, PMT = 0, CPT FV\\\` gives 1,790.85. Then change \\\`I/Y = 2.9126\\\` and \\\`CPT FV\\\` again for 1,332.56.
+> On the calculator: \`N = 10, I/Y = 6, PV = −1,000, PMT = 0, CPT FV\` gives 1,790.85. Then change \`I/Y = 2.9126\` and \`CPT FV\` again for 1,332.56.
 > More than half of the nominal gain (458.29 of 790.85, about 58%) was just keeping up with prices.
 
 Two consequences are worth remembering:
@@ -15762,7 +15762,7 @@ It describes **compound growth that actually happened**, which is why fund perfo
 > - Arithmetic mean = (15 − 10 + 8 + 5) / 4 = 4.50%
 > - Growth of 100: 100 × 1.15 × 0.90 × 1.08 × 1.05 = 117.37
 > - Geometric mean = 1.17369^(1/4) − 1 = 4.09%
-> On the calculator: \\\`1.17369 y^x 4 1/x =\\\` gives 1.04085, so 4.09%.
+> On the calculator: \`1.17369 y^x 4 1/x =\` gives 1.04085, so 4.09%.
 > Check: 100 × 1.0409^4 ≈ 117.37. Growing at 4.50% a year would have given 119.25, more than the investor actually had.
 
 The geometric mean is **never above** the arithmetic mean. They are equal only when every return is the same; the more the returns swing, the wider the gap. A rough rule: geometric ≈ arithmetic − variance / 2. This is why volatility is costly even when the average looks fine: a loss of 50% needs a gain of 100% to break even.
@@ -15813,7 +15813,7 @@ Banks quote a **stated annual rate** (also called nominal or quoted), then apply
 > - quarterly: 1.018^4 − 1 = 7.40%
 > - monthly: 1.006^12 − 1 = 7.44%
 > - daily: (1 + 0.072 / 365)^365 − 1 = 7.46%
-> On the calculator, use the interest conversion worksheet: \\\`2ND 2\\\` (ICONV), enter \\\`NOM = 7.2\\\`, \\\`C/Y = 12\\\`, then move to EFF and press \\\`CPT\\\`: 7.44.
+> On the calculator, use the interest conversion worksheet: \`2ND 2\` (ICONV), enter \`NOM = 7.2\`, \`C/Y = 12\`, then move to EFF and press \`CPT\`: 7.44.
 > More frequent compounding raises the EAR, but by less and less each time.
 
 ### Continuously compounded returns
@@ -15829,7 +15829,7 @@ Its great advantage is that it **adds up over time**: the continuously compounde
 > - Period 1: ln(46 / 40) = 13.98%
 > - Period 2: ln(43 / 46) = −6.74%
 > - Sum: 13.976 − 6.744 = 7.23%, which equals ln(43 / 40) = 7.23% directly.
-> On the calculator: \\\`43 ÷ 40 = LN\\\` gives 0.0723.
+> On the calculator: \`43 ÷ 40 = LN\` gives 0.0723.
 > The ordinary holding period return over both periods is 43 / 40 − 1 = 7.50%. The continuously compounded figure is always smaller than the HPR for a gain, and ln(1.075) = 7.23% links the two.
 
 ## 5. Returns after costs, taxes and inflation
@@ -15920,7 +15920,7 @@ Because every cash flow counts, the MWRR is shaped by **how much money was inves
 > An investor opens an account with 50,000. After one year it is worth 56,000 and they add 30,000, bringing it to 86,000. During the second year it loses 5% and ends at 81,700.
 > Cash flows from the investor's side: t = 0: −50,000; t = 1: −30,000; t = 2: +81,700.
 > Solve 50,000 × (1 + r)² + 30,000 × (1 + r) = 81,700, or use the calculator:
-> \\\`CF\\\`, \\\`2ND CE|C\\\`, \\\`CF0 = −50,000\\\`, \\\`C01 = −30,000\\\` (\\\`F01 = 1\\\`), \\\`C02 = 81,700\\\` (\\\`F02 = 1\\\`), \\\`IRR CPT\\\` gives 1.30%.
+> \`CF\`, \`2ND CE|C\`, \`CF0 = −50,000\`, \`C01 = −30,000\` (\`F01 = 1\`), \`C02 = 81,700\` (\`F02 = 1\`), \`IRR CPT\` gives 1.30%.
 > A money-weighted return of only 1.30% a year, even though the first year was very good. Most of the money was invested during the bad year.
 
 ## 3. Time-weighted rate of return
@@ -16177,7 +16177,7 @@ Example 6 found a one-year rate one year from now. The same no-arbitrage idea wo
 > - **1y1y** = 1.03² / 1.02 − 1 = **4.01%**
 > - **2y1y** = 1.035³ / 1.03² − 1 = 1.108718 / 1.060900 − 1 = **4.51%**
 > - **1y2y** (a two-year rate starting in one year) = (1.035³ / 1.02)^(1/2) − 1 = (1.086978)^0.5 − 1 = **4.26%**, an annual rate
-> On the calculator for 1y2y: \\\`1.035 yˣ 3 ÷ 1.02 = yˣ 0.5 − 1 =\\\` gives 0.0426.
+> On the calculator for 1y2y: \`1.035 yˣ 3 ÷ 1.02 = yˣ 0.5 − 1 =\` gives 0.0426.
 > Check: the 1y2y rate (4.26%) lies between 1y1y (4.01%) and 2y1y (4.51%), as it should, because it averages the two one-year forwards over the same two years: 1.0401 × 1.0451 ≈ 1.0426².
 
 ## 6. Checklist before you answer
@@ -16288,7 +16288,7 @@ Why divide by n − 1 rather than n? The deviations are measured from the sample
 > **Worked example 3: variance and standard deviation**
 > Squared deviations from 4: 4, 64, 49, 1, 121, 169, 16, 4, summing to 428.
 > - s² = 428 / 7 = 61.14 (%²); s = √61.14 = 7.82%
-> On the calculator, the data worksheet does it: \\\`2ND 7\\\` (DATA), \\\`2ND CE|C\\\` to clear, enter X01 = 6, X02 = −4 and so on (press \\\`↓\\\` twice after each value to skip its Y entry); then \\\`2ND 8\\\` (STAT), switch to 1-V with \\\`2ND ENTER\\\` if another mode shows, and scroll down: x̄ = 4, Sx = 7.82 (the sample version), σx = 7.31 (the population version, dividing by n).
+> On the calculator, the data worksheet does it: \`2ND 7\` (DATA), \`2ND CE|C\` to clear, enter X01 = 6, X02 = −4 and so on (press \`↓\` twice after each value to skip its Y entry); then \`2ND 8\` (STAT), switch to 1-V with \`2ND ENTER\` if another mode shows, and scroll down: x̄ = 4, Sx = 7.82 (the sample version), σx = 7.31 (the population version, dividing by n).
 > Pick Sx for a sample. σx is the answer only if the question says the data are the whole population.
 
 ## 5. Downside risk and risk per unit of return
@@ -16477,7 +16477,7 @@ A **Bernoulli trial** has two outcomes: success (probability p) or failure (1 �
 > - P(exactly 3 ups) = 4 × 0.55³ × 0.45 = 0.2995
 > - P(4 ups) = 0.55⁴ = 0.0915, so P(at least 3 ups) = 0.391
 > - Expected number of ups = 4 × 0.55 = 2.2; variance = 4 × 0.55 × 0.45 = 0.99
-> On the calculator, the number of combinations is \\\`4 2ND +\\\` (nCr) \\\`3 =\\\`, which gives 4.
+> On the calculator, the number of combinations is \`4 2ND +\` (nCr) \`3 =\`, which gives 4.
 > Binomial trees like this are the basis of option pricing in Derivatives.
 
 ### Uniform distribution
@@ -16505,7 +16505,7 @@ Its moments come from the mean μ and variance σ² of the underlying normal:
 > A share costs 50. Its continuously compounded annual return is normal with mean 6% and standard deviation 25%.
 > - Median price in a year = 50 × e^0.06 = 53.09
 > - Mean price = 50 × e^(0.06 + 0.5 × 0.25²) = 50 × e^0.09125 = 54.78
-> On the calculator: \\\`0.09125 2ND LN × 50 =\\\` gives 54.78 (\\\`2ND LN\\\` is e^x).
+> On the calculator: \`0.09125 2ND LN × 50 =\` gives 54.78 (\`2ND LN\` is e^x).
 > Half of the outcomes lie below 53.09, but a few very high prices pull the average up to 54.78.
 
 ### Student's t, chi-square and F
@@ -16639,7 +16639,7 @@ The **p-value** is the smallest significance level at which H0 would be rejected
 > A manager's monthly excess return over 36 months averages 0.6%, with a standard deviation of 1.5%. Test at 5% whether the true mean is above zero.
 > - H0: μ ≤ 0; Ha: μ > 0 (one-tailed)
 > - t = (0.6 − 0) / (1.5 / √36) = 0.6 / 0.25 = 2.40, with 35 df
-> On the calculator: \\\`36 √x\\\` gives 6, \\\`1.5 ÷ 6 =\\\` gives 0.25, then \\\`0.6 ÷ 0.25 =\\\` gives 2.40.
+> On the calculator: \`36 √x\` gives 6, \`1.5 ÷ 6 =\` gives 0.25, then \`0.6 ÷ 0.25 =\` gives 2.40.
 > - Critical value t(35, 5% one tail) = 1.690. Since 2.40 > 1.690, reject H0.
 > - p-value ≈ 0.011.
 > The evidence supports positive excess returns. Whether 0.6% a month survives fees and trading costs is a separate, economic question.
@@ -16672,7 +16672,7 @@ With a fixed sample size, lowering α (making false alarms rarer) raises β (mor
 > A strategy's annual volatility is believed to be 18%. A sample of 31 years shows s = 22%. Test at 5% whether the true volatility is above 18%.
 > - H0: σ² ≤ 0.0324; Ha: σ² > 0.0324
 > - χ² = 30 × 0.22² / 0.18² = 30 × 0.0484 / 0.0324 = 44.81, with 30 df
-> On the calculator: \\\`0.22 x² × 30 ÷ 0.18 x² =\\\` gives 44.81.
+> On the calculator: \`0.22 x² × 30 ÷ 0.18 x² =\` gives 44.81.
 > - Critical value χ²(30, upper 5%) = 43.77. Since 44.81 > 43.77, reject H0: the evidence suggests volatility is higher.
 
 > **Worked example 5: is the correlation real?**
@@ -16805,7 +16805,7 @@ The first two terms are each asset's own risk; the third is how they move togeth
 > - Cov = 0.2 × 0.18 × 0.06 = 0.00216
 > - σp² = 0.36 × 0.0324 + 0.16 × 0.0036 + 2 × 0.6 × 0.4 × 0.00216 = 0.011664 + 0.000576 + 0.001037 = 0.013277
 > - σp = √0.013277 = 11.52%
-> On the calculator: \\\`0.013277 √x\\\` gives 0.1152. Store each term with \\\`STO 1\\\`, \\\`STO 2\\\`… and add them with \\\`RCL\\\` to avoid retyping.
+> On the calculator: \`0.013277 √x\` gives 0.1152. Store each term with \`STO 1\`, \`STO 2\`… and add them with \`RCL\` to avoid retyping.
 > The weighted average of the two standard deviations is 0.6 × 18 + 0.4 × 6 = 13.2%. Diversification removed 1.7 points of risk at no cost in expected return.
 
 ### The role of correlation
@@ -16881,7 +16881,7 @@ The optimal weight in the risky portfolio follows from maximizing utility along 
 
 > **Worked example 6: how much an investor with A = 4 puts at risk**
 > Using P from example 5: w* = 0.06 / (4 × 0.0324) = 46.3% in P and 53.7% at the risk-free rate.
-> On the calculator: \\\`0.06 ÷ 4 ÷ 0.18 x² =\\\` gives 0.463.
+> On the calculator: \`0.06 ÷ 4 ÷ 0.18 x² =\` gives 0.463.
 > - E(R) = 3 + 0.463 × 6 = 5.78%; σ = 0.463 × 18 = 8.33%.
 > A more aggressive investor (A = 1.5) would get w* = 0.06 / (1.5 × 0.0324) = 123%, borrowing to hold more than 100% in P. Both investors hold the same risky portfolio; only the mix with the risk-free asset differs.
 
@@ -16972,7 +16972,7 @@ If each period's continuously compounded return is normal and independent of the
 > **Worked example 1: a three-month price path**
 > A share at 40 has monthly continuously compounded returns of +2.0%, −3.5% and +1.2%.
 > - Sum = −0.3%, so P3 = 40 × e^(−0.003) = 39.88
-> On the calculator: \\\`0.003 +/- 2ND LN × 40 =\\\` gives 39.88.
+> On the calculator: \`0.003 +/- 2ND LN × 40 =\` gives 39.88.
 > You do not need to compute the price month by month: adding the log returns and exponentiating once gives the same answer.
 
 If monthly returns are independent with mean μ and standard deviation σ, the return over T months has:
@@ -17136,7 +17136,7 @@ Many lines could pass through a cloud of points. **Ordinary least squares** (OLS
 > - Σ(X − X̄)(Y − Ȳ) = (1)(1) + (−2)(−1) + (2)(3.5) + (−1)(−2.5) + (3)(3) + (−3)(−4) = 33.5
 > - b1 = 33.5 / 28 = 1.196; b0 = 1.5 − 1.196 × 1.0 = 0.304
 > Fitted line: Ŷ = 0.304 + 1.196 X. The share moves about 1.2% for every 1% move of the market, and earned about 0.30% a month more than its beta alone would explain.
-> On the calculator: \\\`2ND 7\\\` (DATA), enter the X and Y pairs, then \\\`2ND 8\\\` (STAT), choose LIN, and scroll: a = 0.304 (intercept), b = 1.196 (slope), r = 0.939.
+> On the calculator: \`2ND 7\` (DATA), enter the X and Y pairs, then \`2ND 8\` (STAT), choose LIN, and scroll: a = 0.304 (intercept), b = 1.196 (slope), r = 0.939.
 
 ## 3. The assumptions behind the model
 OLS estimates are reliable, and the usual tests valid, only if four assumptions hold:
@@ -17214,7 +17214,7 @@ If the residual plot shows a curve, transforming one or both variables with natu
 > **Worked example 5: interpreting transformed models**
 > - Log-lin: ln(sales) = 4.2 + 0.065 × year. Sales grow at a continuously compounded 6.5% a year, which is e^0.065 − 1 = 6.72% a year. Predicted sales in year 10 = e^(4.2 + 0.65) = 127.7 (in the units of the data).
 > - Log-log: ln(quantity) = 3.0 − 1.4 × ln(price). A 1% price increase lowers quantity sold by about 1.4%.
-> On the calculator, e^4.85 is \\\`4.85 2ND LN\\\` = 127.74.
+> On the calculator, e^4.85 is \`4.85 2ND LN\` = 127.74.
 > Remember to convert a log-lin forecast back with e^x before reporting it; the regression predicts ln Y, not Y.
 
 Choose between forms by comparing R², SEE, F-statistics and, above all, the residual plots: the right form leaves residuals with no visible pattern. R² is comparable only between models with the same dependent variable (Y versus ln Y are different).
@@ -17356,7 +17356,7 @@ Before any model runs, data go through a series of steps:
 > **Worked example 4: a simple sentiment score**
 > An algorithm reads a company's earnings call transcript and counts words from finance-specific dictionaries: 42 positive words and 18 negative words.
 > - Net sentiment = (positive − negative) / (positive + negative) = (42 − 18) / 60 = 0.40
-> On the calculator: \\\`42 − 18 = ÷ 60 =\\\` gives 0.40.
+> On the calculator: \`42 − 18 = ÷ 60 =\` gives 0.40.
 > The score is then compared with the company's previous calls and with peers: a sharp drop from one quarter to the next is a signal worth investigating. General-purpose word lists can mislead: "liability" or "tax" are neutral in finance but negative in everyday language.
 
 **Large language models**, deep learning models trained on huge amounts of text, can summarize documents, answer questions and draft reports. They are useful for research productivity, but they can state false information with confidence, so their output must be checked against sources.
@@ -19279,14 +19279,35 @@ Here "debt" means interest-bearing obligations (and usually lease liabilities), 
 - Year-end figures can be **window-dressed** (for example repaying a loan just before year-end and borrowing again just after).
 - Off-balance-sheet items (guarantees, some purchase commitments) appear only in the notes.
 
-## 7. Checklist before you answer
+## 7. Expected credit losses on financial assets
+Receivables, loans and bonds held at amortized cost (or at FVOCI) carry a **loss allowance** for credit losses that is deducted from their carrying amount. Both IFRS and US GAAP now use **expected** losses: a company does not wait for a default to recognize a loss.
+
+### IFRS 9: three stages
+- **Stage 1 (performing):** credit risk has **not increased significantly** since the asset was first recognized. Allowance = **12-month** expected credit losses (losses from defaults possible in the next 12 months). Interest is calculated on the gross carrying amount.
+- **Stage 2 (underperforming):** credit risk has **increased significantly** (for example, payments more than 30 days past due). Allowance = **lifetime** expected credit losses. Interest is still on the gross amount.
+- **Stage 3 (credit-impaired):** there is objective evidence of impairment (default, bankruptcy). Allowance = **lifetime** expected losses, and interest is calculated on the **net** carrying amount (after the allowance).
+For **trade receivables** without a significant financing component, IFRS 9 allows (and usually requires) a **simplified approach**: lifetime expected losses from the start, often estimated with a provision matrix by age of the receivable.
+
+### US GAAP: CECL
+The **current expected credit loss (CECL)** model has no stages: from the first day, the allowance covers **lifetime** expected losses on all assets at amortized cost. So allowances under CECL are generally **larger and recognized earlier** than under IFRS 9's Stage 1.
+
+> **Worked example 7: moving from stage 1 to stage 2**
+> A bank holds a loan of 10 million. The probability of default is 1% over the next 12 months and 4% over the loan's remaining life; the loss given default is 50%.
+> - Stage 1 allowance (12-month): 10m × 1% × 50% = **50,000**
+> - If credit risk increases significantly, stage 2 allowance (lifetime): 10m × 4% × 50% = **200,000**
+> The move to stage 2 adds a 150,000 charge to profit, even though the borrower has not missed a payment. Under CECL the bank would have carried the lifetime allowance of 200,000 from the start.
+
+For analysts: rising allowances lower reported earnings and asset values early in a downturn; allowances that look small relative to past write-offs, or that fall while the economy weakens, can signal earnings management.
+
+## 8. Checklist before you answer
 - Purchased intangibles at cost; acquired in a combination at fair value; internally developed mostly expensed (IFRS capitalizes development once criteria are met).
 - Finite-life intangibles amortized; indefinite-life intangibles and goodwill only impairment-tested.
 - Goodwill = price − fair value of identifiable net assets; never amortized, impairment never reversed.
 - Amortized cost ignores fair value changes; FVOCI sends them to OCI; FVPL to net income.
 - Discount bond: interest expense = carrying amount × market rate at issue; carrying amount rises toward face.
 - Quick ratio excludes inventory; debt ratios use interest-bearing debt.
-- Common-size balance sheet: every line ÷ total assets.`,
+- Common-size balance sheet: every line ÷ total assets.
+- IFRS 9: stage 1 = 12-month ECL; stages 2 and 3 = lifetime ECL; stage 3 interest on the net amount. CECL (US GAAP): lifetime ECL from day one.`,
  ideas:`**The balance sheet shows what a company owns and owes at a date. This module focuses on intangibles, goodwill, financial instruments and long-term liabilities, and on reading the balance sheet with common-size figures and ratios.**
 
 ## Intangible assets
@@ -20261,14 +20282,30 @@ The choice changes debt-to-equity ratios, sometimes a lot.
 > - Treating it as debt: 2,500 / 1,600 = **1.56**.
 > With capex still growing, new timing differences will keep replacing the ones that reverse, so the DTL is closer to equity. The analyst should say which treatment was used.
 
-## 6. Checklist before you answer
+## 6. Reconciling the effective tax rate
+Companies disclose a **reconciliation** between the tax they would pay at the statutory rate and the tax expense they actually report. Analysts use it to find the **sustainable** tax rate for forecasting: items that will recur stay in, one-off items come out.
+
+> **Worked example 8: what tax rate should we forecast?**
+> Pre-tax income is 2,000 and the statutory rate is 25%. The reconciliation shows:
+> - Tax at the statutory rate: 2,000 × 25% = 500
+> - Lower tax rates on foreign profits: −30
+> - Tax-exempt income: −20
+> - Non-deductible expenses: +10
+> - One-off credit from settling a past tax dispute: −40
+> - **Reported tax expense = 420**, an effective rate of 420 / 2,000 = **21%**
+> The foreign-rate and exempt-income effects are likely to recur; the settlement is not. Underlying tax = 420 + 40 = 460, a rate of 460 / 2,000 = **23%**. Forecast with about 23%, not 21%, or next year's earnings will be overstated.
+
+Things to watch in the reconciliation: large or growing one-off items, a rate that depends on profits in low-tax countries that may change, and differences between the effective rate (tax **expense**) and the **cash** tax rate (taxes **paid**), which point to deferred taxes building up or unwinding.
+
+## 7. Checklist before you answer
 - Income tax expense = taxes payable + ΔDTL − ΔDTA.
 - Asset carrying amount above tax base (e.g., accelerated tax depreciation) → DTL; provisions and loss carryforwards → DTA.
 - Permanent differences: no deferred tax; they move the effective rate away from the statutory rate.
 - Effective rate = tax expense ÷ pretax income; cash rate = cash taxes paid ÷ pretax income.
 - Rate change: remeasure DTL and DTA; a rate cut lowers expense for a net DTL and raises it for a net DTA.
 - IFRS: DTA only if recovery is probable; US GAAP: full DTA less a valuation allowance (more likely than not).
-- DTL not expected to reverse → equity; expected to reverse → liability; uncertain → exclude.`,
+- DTL not expected to reverse → equity; expected to reverse → liability; uncertain → exclude.
+- Effective tax rate = tax expense / pre-tax income; strip out one-off reconciling items to get the rate to forecast with.`,
  ideas:`**Companies keep two sets of rules: accounting standards for reported profit and tax law for taxable income. Deferred taxes bridge the gap.**
 
 ## Key terms
@@ -20623,7 +20660,26 @@ Three techniques handle uncertainty:
 > - Sensitivity: at 5% it would be 591.30; at 7%, 827.82.
 > A one-point change in margin moves earnings by about 17%. The margin assumption deserves more research than the growth assumption.
 
-## 9. Checklist before you answer
+## 9. Operating cycle and EBITDA-based credit ratios
+### Operating cycle
+The **operating cycle** is the time from buying inventory to collecting cash from the customer:
+- **Operating cycle = DOH + DSO**
+- **Cash conversion cycle = operating cycle − DPO** (the part of the operating cycle the company finances itself, after supplier credit)
+For Company K in example 1: operating cycle = 70 + 45 = **115 days**; suppliers finance 35 of them, leaving the cash conversion cycle of **80 days**.
+
+### Ratios lenders and rating agencies use
+- **Debt / EBITDA:** how many years of operating cash earnings (before interest, tax, depreciation and amortization) it would take to repay the debt. Lower is safer; many investment-grade companies are below about 3×, but acceptable levels differ widely by industry.
+- **Net debt / EBITDA** uses debt minus cash.
+- **EBITDA interest coverage** = EBITDA ÷ interest expense: like EBIT coverage, but it adds back depreciation and amortization, which are non-cash, so it is always **higher** than EBIT coverage.
+
+> **Worked example 9: Company K through a lender's eyes**
+> From example 3: debt 2,000, EBIT 1,095, interest 219. Depreciation and amortization are 365.
+> - EBITDA = 1,095 + 365 = **1,460**
+> - Debt / EBITDA = 2,000 / 1,460 = **1.37×**
+> - EBITDA coverage = 1,460 / 219 = **6.67×** (versus 5.0× on EBIT)
+> K looks comfortably able to carry its debt. But EBITDA ignores the capital spending needed to keep the business running: for a capital-heavy company, a ratio using cash flow after capex is more conservative.
+
+## 10. Checklist before you answer
 - Activity ratios use averages; DSO = 365 ÷ receivables turnover; payables turnover uses purchases.
 - Cash conversion cycle = DSO + DOH − DPO.
 - Quick ratio excludes inventory; defensive interval = liquid assets ÷ daily cash expenditures.
@@ -20631,7 +20687,9 @@ Three techniques handle uncertainty:
 - ROE = net margin × asset turnover × leverage = tax burden × interest burden × EBIT margin × asset turnover × leverage.
 - More debt raises leverage but lowers the interest burden.
 - Compare ratios with history, peers and benchmarks; adjust for accounting differences first.
-- Sensitivity = one variable; scenario = a consistent set; simulation = many random draws.`,
+- Sensitivity = one variable; scenario = a consistent set; simulation = many random draws.
+- Operating cycle = DOH + DSO; CCC = operating cycle − DPO.
+- Debt/EBITDA (lower is safer); EBITDA coverage is always above EBIT coverage.`,
  ideas:`**Ratios turn raw statements into comparable measures of activity, liquidity, solvency and profitability, and DuPont analysis explains what drives return on equity.**
 
 ## Tools and their limits
@@ -21322,6 +21380,22 @@ A company compares sources by **cost**, **flexibility** and **reliability**: com
 > A distributor with a cash conversion cycle of 60 days and annual cost of sales of 365 million needs about 60 × 1 million = 60 million of working capital financing. If sales grow 25% with the same cycle, it needs about 75 million: an extra 15 million, even though profits are rising.
 > Growing companies often run into cash shortages for exactly this reason. Shortening the cycle to 50 days would free about 12.5 million at the new size.
 
+## 5. Comparing two issuers' liquidity
+The three balance sheet liquidity ratios move from broad to strict:
+- **Current ratio** = current assets ÷ current liabilities
+- **Quick ratio** = (cash + short-term marketable securities + receivables) ÷ current liabilities: leaves out inventory, the least liquid current asset
+- **Cash ratio** = (cash + short-term marketable securities) ÷ current liabilities
+
+> **Worked example 4: which issuer is more liquid?**
+> Both companies have current liabilities of 300.
+> - Issuer A: cash 100, receivables 150, inventory 250 (current assets 500)
+> - Issuer B: cash 175, receivables 125, inventory 100 (current assets 400)
+> Ratios:
+> - Current: A = 500 / 300 = **1.67**; B = 400 / 300 = **1.33**
+> - Quick: A = 250 / 300 = **0.83**; B = 300 / 300 = **1.00**
+> - Cash: A = 100 / 300 = **0.33**; B = 175 / 300 = **0.58**
+> A looks stronger on the current ratio only because half of its current assets are inventory. On the stricter ratios, B is clearly more liquid: it could pay all its short-term obligations from cash and receivables. A lender would also compare each issuer's ratios with its own history and its industry, and look at the cash conversion cycle and undrawn credit lines, which these ratios do not show.
+
 ## Checklist before you answer
 - Working capital = current assets − current liabilities; aim: enough liquidity at the lowest cost.
 - CCC = DOH + DSO − DPO; shorter frees cash, but each lever has a trade-off; compare within an industry.
@@ -21330,7 +21404,8 @@ A company compares sources by **cost**, **flexibility** and **reliability**: com
 - Ratios: current, quick (no inventory), cash.
 - Conservative policy: more current assets, long-term funding, safer and costlier. Aggressive: the reverse.
 - Cost of forgoing a discount = (1 + d/(1 − d))^(365/(net − discount days)) − 1; usually very high.
-- Surplus cash: safety and liquidity before yield.`,
+- Surplus cash: safety and liquidity before yield.
+- Current ⊃ quick ⊃ cash ratio; a high current ratio built on inventory can hide weak liquidity.`,
  ideas:`**Working capital management keeps enough liquidity to run the business while tying up as little money as possible.**
 
 ## The cash conversion cycle
@@ -21459,6 +21534,19 @@ The value of a project with options = NPV without options + value of the options
 > - Project value ≈ −40 + 100 = **+60**
 > Rejecting the pilot on its standalone NPV would throw away the option.
 
+## 10. ROIC in numbers, and how it differs from NPV and IRR
+> **Worked example 6: has the company created value?**
+> Last year a company had operating profit (EBIT) of 300 and a tax rate of 25%. Its invested capital (debt plus equity used in operations) averaged 1,900. Its WACC is 9%.
+> - NOPAT (after-tax operating profit) = 300 × (1 − 0.25) = **225**
+> - ROIC = 225 / 1,900 = **11.84%**
+> - ROIC − WACC = 11.84% − 9% = 2.84 points: the company earned more than its capital cost, so on average its past investments **created value**. The value created in the year is roughly 2.84% × 1,900 ≈ 54.
+
+How ROIC differs from NPV and IRR:
+- **Backward-looking vs forward-looking:** ROIC measures what the **existing** capital earned in a past period, from accounting figures. NPV and IRR evaluate a **new** project from its expected future **cash flows**.
+- **Accounting vs cash:** ROIC uses accounting profit and book capital, so depreciation methods, write-offs and acquisitions affect it. NPV and IRR use cash flows and the time value of money.
+- **Whole company vs single project:** ROIC is an average across all the company's investments; a company with a high ROIC can still accept bad projects (negative NPV), and one with a low ROIC can have good new ones.
+- **Use them together:** NPV decides whether to accept a project; ROIC above the cost of capital, sustained over time, shows that management's past allocation decisions worked.
+
 ## Checklist before you answer
 - Types: going-concern, regulatory, expansion, other (new ventures).
 - Process: ideas → analysis → planning → monitoring and post-audit.
@@ -21468,7 +21556,8 @@ The value of a project with options = NPV without options + value of the options
 - IRR assumes reinvestment at the IRR; unconventional cash flows can give multiple or no IRRs.
 - ROIC > cost of capital → value created.
 - Pitfalls: inertia, allocation by source, pet projects, EPS focus, no post-audit.
-- Real options (timing, sizing, flexibility, fundamental) add value: project value = NPV + option value.`,
+- Real options (timing, sizing, flexibility, fundamental) add value: project value = NPV + option value.
+- ROIC = NOPAT / average invested capital; compare with WACC. It is a past, accounting, company-wide measure; NPV/IRR are forward-looking, cash-based, per project.`,
  ideas:`**Capital allocation decides which long-term investments a company makes. Good decisions earn more than the cost of capital.**
 
 ## Types of capital investment
@@ -21600,6 +21689,19 @@ The pecking order explains why highly profitable companies often have **low** de
 - **Market timing:** companies issue equity when they believe their shares are expensive and buy back when they are cheap.
 - **Stakeholder considerations:** employees, customers and suppliers may avoid highly indebted companies.
 
+## 8. Market-value weights with preferred shares
+When the company does not publish a target structure, use the **market values** of each source of capital today, not their book values.
+
+> **Worked example 4: book weights versus market weights**
+> Book values: debt 400, preferred shares 100, common equity 300. Market values: the bonds trade at 95% of par (380), the preferred shares at 120, and the market capitalization is 700.
+> Costs: pre-tax cost of debt (yield to maturity) 6.2%, tax rate 25%; cost of preferred 6.5%; cost of equity 11%.
+> - After-tax cost of debt = 6.2% × 0.75 = 4.65%
+> - Market values total 380 + 120 + 700 = 1,200, so weights are debt **31.67%**, preferred **10.00%**, equity **58.33%**
+> - WACC = 0.3167 × 4.65% + 0.10 × 6.5% + 0.5833 × 11% = 1.47% + 0.65% + 6.42% = **8.54%**
+> With book weights (50% / 12.5% / 37.5%) the WACC would be only 7.26%, because book values understate the equity, the most expensive source. Using it would make projects look more attractive than they are.
+
+The cost of preferred shares is their dividend divided by their price (r_p = D_p / P_p); it is **not** adjusted for tax, because preferred dividends are not tax-deductible.
+
 ## Checklist before you answer
 - WACC = wd × rd(1 − t) + wp × rp + we × re, with market or target weights.
 - Stable cash flows, tangible assets and high taxes support more debt; start-ups rely on equity, mature firms carry more debt.
@@ -21607,7 +21709,8 @@ The pecking order explains why highly profitable companies often have **low** de
 - MM with taxes: V_L = V_U + t × D; re = r0 + (r0 − rd)(1 − t) × D/E; WACC falls with leverage.
 - Costs of financial distress: direct (legal, administrative) and indirect (lost customers, suppliers, employees, investments).
 - Static trade-off: optimum where marginal tax benefit = marginal distress cost; value max, WACC min.
-- Pecking order: internal funds → debt → equity; equity issues signal overvaluation.`,
+- Pecking order: internal funds → debt → equity; equity issues signal overvaluation.
+- Use market values (or the target structure) for WACC weights; preferred shares enter at r_p = D_p / P_p, with no tax adjustment.`,
  ideas:`**Capital structure is the mix of debt and equity a company uses; it affects the cost of capital and therefore the value of the firm.**
 
 ## Weighted average cost of capital
@@ -21890,6 +21993,19 @@ Companies issue equity to:
 
 The cost of equity is usually the highest cost of capital, because shareholders bear the most risk. The company must earn returns above that cost to create value.
 
+## 7. More on depositary receipts
+Beyond sponsored and unsponsored, ADRs are grouped into **levels** that differ in what the issuer must do and where the receipts can trade:
+- **Level I:** unlisted, traded over the counter; minimal US reporting; the company **cannot raise new capital** with them.
+- **Level II:** listed on a US exchange; the company must meet fuller SEC reporting, but still **raises no new capital**.
+- **Level III:** listed on a US exchange **and** used to **raise new capital** in a US public offering; the strictest disclosure.
+- **Rule 144A ADRs:** privately placed with large institutional investors (qualified institutional buyers) to raise capital without SEC registration; they do not trade publicly.
+
+Other ways to hold foreign shares through the local market:
+- **Global registered shares:** the same share trades in several markets in different currencies, without a depositary.
+- **Baskets of listed depositary receipts**, such as exchange-traded funds holding many DRs.
+
+Risks that remain for the DR holder: the **currency** risk of the underlying shares, the **foreign company's** risks and governance, possible differences in investor protection, and for unsponsored DRs, the lack of voting rights.
+
 ## Checklist before you answer
 - Equity = residual claim, voting rights, limited liability, highest risk and expected return.
 - Common dividends are discretionary; missing them is not a default.
@@ -21899,7 +22015,8 @@ The cost of equity is usually the highest cost of capital, because shareholders 
 - Cumulative preferred builds arrears that must be paid before common dividends; non-cumulative does not.
 - Participating and convertible preferred add upside for the investor.
 - Private equity: illiquid, less disclosure, active ownership, long-term focus.
-- DRs: sponsored (votes, full disclosure) vs unsponsored (depositary keeps votes); ADRs in the US, GDRs elsewhere; DR holders still carry currency risk.`,
+- DRs: sponsored (votes, full disclosure) vs unsponsored (depositary keeps votes); ADRs in the US, GDRs elsewhere; DR holders still carry currency risk.
+- ADR levels: I (OTC, no capital raised), II (listed, no capital raised), III (listed, raises capital); Rule 144A ADRs: private placement to institutions.`,
  ideas:`**Equity is ownership: a residual claim on a company's assets and earnings after all creditors have been paid.**
 
 ## Common shares
@@ -22157,6 +22274,26 @@ Index providers use the float, not total shares outstanding, to weight companies
 ### Uses
 Indexes serve as **benchmarks** for managers, as the basis for **index funds and ETFs**, as measures of market performance and risk (for computing betas), and as models for asset allocation.
 
+## 7. Exchange, off-exchange and over-the-counter trading compared
+The same share can often trade in several places. The differences matter for price, cost and risk:
+- **Exchange (lit market):** a regulated venue with listing rules, an order book open to all members, **pre-trade transparency** (quotes are visible) and **post-trade transparency** (trades are published). Trades are cleared through a central counterparty, so counterparty risk is very low. Best for ordinary-sized orders in listed shares.
+- **Off-exchange venues** (alternative trading systems, multilateral trading facilities, dark pools, broker crossing networks): they match orders electronically but are not exchanges. They may offer **lower fees**, faster execution or, in dark pools, **no pre-trade display**, so large orders do not move the price. Trades are still reported after execution. The cost: less visible price formation and possible information leakage or conflicts of interest at the operator.
+- **Over-the-counter (OTC) dealer market:** investors trade with a dealer, who quotes a bid and an ask and takes the other side from its own inventory. Used for unlisted or thinly traded shares, large blocks negotiated privately, and most bonds and many derivatives. Prices are negotiated, transparency is lower, and in bilateral (uncleared) trades the investor bears the dealer's **counterparty risk**.
+
+A quick way to remember the trade-off: exchanges give the most **transparency and certainty**; dark and off-exchange venues give **lower market impact** for large orders; OTC dealers give **immediacy for things that are hard to trade**, at the cost of a wider spread.
+
+### More on orders (instructions beyond market and limit)
+Every order carries three kinds of instruction:
+- **Execution instructions** (how to fill it): market, limit, **all-or-nothing**, **hidden** orders (not shown in the book), **iceberg** orders (only part of the size is displayed).
+- **Validity instructions** (when it can be filled): **day** orders, **good-till-cancelled**, **immediate-or-cancel** (fill what you can now, cancel the rest), **good-on-close** (execute at the closing price), **stop** orders (active only once the trigger price trades), and **stop-limit** orders, which become a limit order rather than a market order at the trigger, so they never fill at a terrible price but may not fill at all.
+- **Clearing instructions** (how to settle it): which broker clears the trade and, for sales, whether it is a **long sale** or a **short sale** (the broker must locate shares to borrow for a short sale).
+
+> **Worked example 5: stop or stop-limit?**
+> An investor holds a share at 50 and wants protection below 45. Overnight bad news opens the share at 41.
+> - A **stop** order at 45 becomes a market order at the open and sells near **41**.
+> - A **stop-limit** order with trigger 45 and limit 44 becomes a limit order to sell at 44 or better: it does **not** fill at 41, and the investor still holds the share.
+> The stop guarantees exit, not the price; the stop-limit guarantees the price, not the exit.
+
 ## Checklist before you answer
 - Primary market: the company sells new shares and gets the money (IPO, seasoned offering, rights offering, private placement); direct listings raise no money.
 - Rights offerings protect existing holders from dilution.
@@ -22165,7 +22302,9 @@ Indexes serve as **benchmarks** for managers, as the basis for **index funds and
 - Margin call price = P0 × (1 − initial margin) / (1 − maintenance margin); leverage magnifies returns both ways.
 - Short selling: borrow, sell, buy back; unlimited loss potential; pays dividends to the lender.
 - Float = shares outstanding − strategic/insider holdings; liquidity also from spread and ADV.
-- Price-weighted indexes are driven by high-priced shares; cap-weighted by large companies.`,
+- Price-weighted indexes are driven by high-priced shares; cap-weighted by large companies.
+- Exchanges: most transparency, central clearing; dark/off-exchange venues: lower impact for large orders; OTC: negotiated with a dealer, less transparent, counterparty risk if uncleared.
+- Orders = execution + validity + clearing instructions; stop-limit protects price but may not fill.`,
  ideas:`**The primary market is where companies sell new shares; the secondary market is where investors trade existing ones.**
 
 ## Primary market
@@ -22444,6 +22583,24 @@ The model should fit the company and the purpose:
 - **Sensitivity analysis** shows how much the value changes with the key assumptions. Presenting a range is more honest than a single number.
 - The quality of a valuation depends more on **understanding the business** (its industry, competitive position, management) than on the sophistication of the model.
 
+## 6. Strengths and limits of asset-based models
+Advantages:
+- **Grounded in today's values:** they rely on the current market value of assets rather than long-term forecasts of cash flows, which can be very uncertain.
+- **Easy to check** when the assets have observable prices: listed stakes, commodity reserves priced off the futures curve, property with recent comparable sales.
+- **A floor value:** for a company that may be liquidated or broken up, the net asset value shows what shareholders would get if the assets were sold.
+- **Useful when earnings are negative or volatile**, as in a cyclical trough, where earnings-based models fail.
+- **A cross-check** for other models: a DCF value far below net asset value raises the question of whether the business is worth more broken up.
+
+Limits:
+- Market values can be hard to estimate for specialized or unlisted assets; book values may be far from market values.
+- They miss **intangibles** and the value of the business as a going concern (customer relationships, brand, management), so they undervalue most operating companies.
+- In inflationary periods or for assets that are not traded, estimates of replacement cost and fair value are uncertain.
+
+> **Worked example 4: net asset value of a holding company**
+> A holding company owns listed stakes worth 1,200, a property valued at 300 by an appraiser, and cash of 100. It has debt of 400 and 50 million shares.
+> - Net asset value = 1,200 + 300 + 100 − 400 = **1,200**, or **24.00** per share
+> If the shares trade at 19, the holding company trades at a **discount** of about 21% to NAV, which is common for holding companies (holding costs, taxes on sale, lack of control over the stakes).
+
 ## Checklist before you answer
 - Intrinsic value is an estimate; price is a fact. Value > price → undervalued.
 - Before acting on a gap, question your own inputs; large, liquid shares are rarely far mispriced.
@@ -22451,7 +22608,8 @@ The model should fit the company and the purpose:
 - Market cap = price × shares; EV = equity + debt + preferred + noncontrolling interests − cash.
 - EV suits comparing firms with different leverage, paired with pre-interest measures (EBITDA, sales).
 - Model families: present value (DDM, FCFE, FCFF, residual income), multiples (P/E, P/B, P/S, EV/EBITDA), asset-based.
-- Match the model: dividend payers → DDM; no dividends or control view → FCF; banks → residual income/P/B; losses → P/S; resource or holding companies → asset-based.`,
+- Match the model: dividend payers → DDM; no dividends or control view → FCF; banks → residual income/P/B; losses → P/S; resource or holding companies → asset-based.
+- Asset-based models: good for resource, holding and liquidating companies and as a floor; poor for intangible-heavy going concerns.`,
  ideas:`**Price is what the market pays today; intrinsic value is what an analyst estimates the share is worth from its expected cash flows and risk.**
 
 ## Price versus value
@@ -22576,6 +22734,35 @@ Embedded features change the value:
 - **Convertible** preferred: can be exchanged for common shares; worth at least as much as the common shares it converts into, and at least as much as a straight preferred.
 - Preferred with a **maturity** is valued like a bond: present value of dividends plus the redemption value.
 
+## 7. Free cash flows and residual income in numbers
+### Computing FCFF and FCFE
+Starting from cash flow from operations (CFO):
+- **FCFF = CFO + interest × (1 − tax rate) − fixed capital investment**
+- **FCFE = CFO − fixed capital investment + net borrowing** = FCFF − interest × (1 − tax rate) + net borrowing
+Interest is added back for FCFF because FCFF belongs to lenders too; under IFRS, check whether interest paid sits in operating or financing cash flows before adding it back.
+
+> **Worked example 5: from CFO to FCFF and FCFE**
+> CFO = 250, interest paid (deducted in CFO) = 40, tax rate 25%, capital expenditure = 60, net new borrowing = 25.
+> - After-tax interest = 40 × 0.75 = 30
+> - FCFF = 250 + 30 − 60 = **220**
+> - FCFE = 220 − 30 + 25 = **215** (or directly: 250 − 60 + 25 = 215)
+> FCFF is discounted at the WACC to value the whole firm; FCFE at the cost of equity to value the shares.
+
+### The residual income model
+**Residual income (RI)** is the profit left after charging shareholders for the capital they provided:
+- **RI_t = EPS_t − r × B_(t−1)** = (ROE − r) × B_(t−1), where B is book value per share and r the cost of equity
+- **V0 = B0 + Σ RI_t / (1 + r)^t**
+- With constant ROE and growth: **V0 = B0 + (ROE − r) × B0 / (r − g)**
+
+> **Worked example 6: valuing a bank with residual income**
+> Book value per share is 100, expected ROE is 14% every year, the cost of equity is 10%, and all earnings are paid out (so book value and earnings stay flat, g = 0).
+> - RI each year = (0.14 − 0.10) × 100 = 4
+> - PV of RI as a perpetuity = 4 / 0.10 = 40
+> - V0 = 100 + 40 = **140.00**, a P/B of 1.4
+> If ROE were exactly 10%, RI would be zero and the share would be worth its book value (P/B = 1). A company earning less than its cost of equity is worth **less** than book.
+
+Residual income puts much of the value in today's **book value**, so it relies less on distant forecasts than a DDM, and it works for companies with no dividends or negative free cash flow. Its weakness is that it depends on the **quality of the accounting** (book value and earnings must be clean).
+
 ## Checklist before you answer
 - Equity cash flows (dividends, FCFE) at the cost of equity; FCFF at the WACC, then subtract debt.
 - Gordon model: V0 = D1 / (r − g), with D1 = D0 × (1 + g) and r > g.
@@ -22583,7 +22770,9 @@ Embedded features change the value:
 - Sustainable growth g = retention ratio × ROE.
 - Multistage: PV of explicit dividends + PV of terminal value; terminal value = D(n+1) / (r − g) at time n.
 - Value is very sensitive to r − g; terminal value is often most of the total.
-- Perpetual preferred: V0 = D / r; call feature lowers value, put feature raises it.`,
+- Perpetual preferred: V0 = D / r; call feature lowers value, put feature raises it.
+- FCFF = CFO + Int(1 − t) − FCInv; FCFE = CFO − FCInv + net borrowing.
+- Residual income: V0 = B0 + PV of (ROE − r) × B; ROE above r means value above book.`,
  ideas:`**Present value models estimate intrinsic value as the discounted value of the cash flows a shareholder can expect.**
 
 ## Choosing the cash flow
@@ -22725,6 +22914,21 @@ A company with faster expected growth deserves a higher P/E. The **PEG ratio** d
 ### Terminal value with a multiple
 In a DCF model, the terminal value can be estimated with an **exit multiple** (for example, EV/EBITDA applied to the final year's EBITDA) instead of the Gordon formula. It is easy and market-based, but imports today's market valuation into a value far in the future.
 
+## 7. Computing the multiples step by step
+- **P/E** = price per share ÷ earnings per share
+- **P/B** = price per share ÷ book value per share
+- **P/S** = price per share ÷ sales per share (or market capitalization ÷ total sales)
+- **P/CF** = price per share ÷ cash flow per share
+
+> **Worked example 4: one company, four multiples, one implied value**
+> A share trades at 48. Per share: EPS 3.00, book value 24.00, sales 60.00.
+> - P/E = 48 / 3 = **16**
+> - P/B = 48 / 24 = **2.0**
+> - P/S = 48 / 60 = **0.8**
+> Comparable companies trade at an average P/E of 18.
+> - Implied value = 18 × 3.00 = **54**, so on this measure the share looks **undervalued** at 48 (by about 11%).
+> Before concluding, check why the company trades at a lower P/E than its peers: lower expected growth, higher risk or weaker accounting quality would justify it. Relative valuation only says the share is cheap **relative to** the peers; if the whole peer group is overvalued, so is the "fair" value of 54.
+
 ## Checklist before you answer
 - Method of comparables: compare with peers (median), industry, market or history; assumes the benchmark is fairly valued.
 - Justified forward P/E = payout / (r − g); trailing = payout × (1 + g) / (r − g); P/B = (ROE − g) / (r − g).
@@ -22733,7 +22937,8 @@ In a DCF model, the terminal value can be estimated with an **exit multiple** (f
 - EV/EBITDA is neutral to leverage and depreciation but ignores capex.
 - Match equity value with equity measures, EV with pre-interest measures.
 - PEG = P/E / growth; lower PEG = cheaper per unit of growth.
-- Use the same basis (trailing or forward) for all peers.`,
+- Use the same basis (trailing or forward) for all peers.
+- Implied value = peer multiple × the company's own per-share figure; a gap may reflect growth, risk or accounting differences.`,
  ideas:`**Multiples value a share by comparing it with similar companies, or with the multiple its fundamentals justify.**
 
 ## Two methods
@@ -22861,6 +23066,18 @@ From the forecast:
 - Use **sensitivity tables** for the key assumptions (WACC, terminal growth, margins) to see which ones drive value most.
 - Check that long-term assumptions are plausible: terminal growth should not exceed the long-run growth of the economy; returns on capital should drift toward the cost of capital as competition works.
 
+## 6. From the forecast to a value per share: a full example
+> **Worked example 3: a five-year FCFF forecast**
+> The forecast model gives free cash flow to the firm of 190, 200, 210, 220 and 230 (millions) in years 1 to 5. After year 5, FCFF is expected to grow at 2.5% a year forever. WACC is 8%. Debt is 650 million and there are 100 million shares.
+> - PV of years 1–5 at 8%: 175.93 + 171.47 + 166.70 + 161.71 + 156.53 = **832.34**
+> - Terminal value at the end of year 5 = 230 × 1.025 / (0.08 − 0.025) = 235.75 / 0.055 = **4,286.36**
+> - PV of the terminal value = 4,286.36 / 1.08⁵ = **2,917.23**
+> - Firm value = 832.34 + 2,917.23 = **3,749.57**
+> - Equity value = 3,749.57 − 650 = 3,099.57; per share = **31.00**
+> The terminal value is 2,917.23 / 3,749.57 = **77.8%** of the firm's value.
+
+That last number is the main lesson: most of a DCF value usually comes from the years **after** the explicit forecast. Small changes in the long-term growth rate or the WACC move the result a lot. Here, a WACC of 8.5% instead of 8% would cut the terminal value to 235.75 / 0.06 = 3,929 and the value per share well below 31. Always show a **sensitivity table** (value per share for a range of WACC and g) rather than a single number, and check that the terminal growth rate is no higher than the long-run nominal growth of the economy.
+
 ## Checklist before you answer
 - Forecasts link drivers to all three statements and keep them consistent.
 - Revenue: top-down (market × share), bottom-up (units × price), or both.
@@ -22868,7 +23085,8 @@ From the forecast:
 - Cyclicals need normalized margins over a cycle; banks are balance-sheet driven; conglomerates use sum of the parts.
 - Watch for overconfidence, anchoring and confirmation bias; build real bull and bear cases.
 - FCFF = EBIT(1 − t) + D&A − capex − ΔNWC; discount at WACC; subtract debt; divide by diluted shares.
-- Terminal value: Gordon with modest long-run growth, or exit multiple; cross-check with multiples and run sensitivities.`,
+- Terminal value: Gordon with modest long-run growth, or exit multiple; cross-check with multiples and run sensitivities.
+- DCF: PV of explicit FCFF + PV of terminal value, minus debt, divided by shares; the terminal value is usually most of the value, so test its sensitivity.`,
  ideas:`**A forecast model projects a company's financial statements so the analyst can estimate the earnings or cash flows that drive its value.**
 
 ## Why build one, and how
@@ -22992,6 +23210,21 @@ Industries are shaped by forces outside them. **PESTLE** organizes them:
 > Political: subsidies for electric vehicles and tariffs on imports. Economic: car purchases depend on interest rates and consumer confidence. Social: urban young people buy fewer cars. Technological: batteries and software change what makes a car competitive. Legal: safety and emissions rules. Environmental: combustion-engine bans in several regions.
 > Each factor feeds directly into forecasts of volumes, prices, capital spending and margins.
 
+## 8. Growth and market share in numbers
+Industry growth is usually expressed as a **compound annual growth rate (CAGR)**, the constant yearly rate that takes the starting value to the ending value:
+- **CAGR = (ending value / starting value)^(1 / years) − 1**
+Comparing a company's growth with its industry's tells you whether it is **gaining or losing market share**.
+
+> **Worked example 4: is the company winning share?**
+> Industry sales grew from 80 billion to 100 billion over 3 years; the company's sales grew from 8 billion to 12 billion over the same 3 years.
+> - Industry CAGR = (100 / 80)^(1/3) − 1 = **7.72%**
+> - Company CAGR = (12 / 8)^(1/3) − 1 = **14.47%**
+> - Market share rose from 8 / 80 = **10%** to 12 / 100 = **12%**
+> On the calculator: \`1.25 yˣ 3 1/x = − 1 =\` gives 0.0772.
+> The company grew almost twice as fast as its industry, so part of its growth came from taking share from rivals rather than from the market itself. The analyst should ask whether that is sustainable (a better product, lower costs) or bought (price cuts that hurt margins).
+
+Note that the simple average growth would be misleading: industry sales rose 25% in total, which is **not** 25% / 3 = 8.33% a year, because growth compounds.
+
 ## Checklist before you answer
 - Define the industry carefully; then size, growth, structure, external forces, company position, forecasts.
 - GICS and ICB classify by principal business activity (mainly revenue source).
@@ -23000,7 +23233,8 @@ Industries are shaped by forces outside them. **PESTLE** organizes them:
 - HHI = sum of squared market shares; regulators' "highly concentrated" thresholds (2,500 in the 2010 US guidelines, 1,800 since 2023); it reacts to shifts among the largest firms that the N-firm ratio can miss.
 - Five forces: new entrants, substitutes, buyers, suppliers, rivalry; stronger forces → lower profitability.
 - High barriers to entry and switching costs protect returns.
-- PESTLE: Political, Economic, Social, Technological, Legal, Environmental.`,
+- PESTLE: Political, Economic, Social, Technological, Legal, Environmental.
+- CAGR = (end / start)^(1/n) − 1; company CAGR above industry CAGR means rising market share.`,
  ideas:`**Industry analysis explains the environment a company competes in: how big the market is, how fast it grows, how profitable it is, and which forces shape it.**
 
 ## The process
@@ -23410,6 +23644,22 @@ The best-known fundamental model is the **Fama-French three-factor model**: mark
 - **Multifactor models** fit returns better but need more inputs, and the factors and their premiums can change over time.
 - For an analyst valuing a company, the CAPM with a sensible ERP and an adjusted or peer-based beta is the usual starting point; multifactor models are more common in portfolio risk management.
 
+## 7. Beta from correlation and volatility
+Beta is the covariance of the share with the market divided by the market's variance. Writing the covariance as correlation × the two volatilities gives a handy form:
+- **β = Cov(Ri, Rm) / σm² = ρ(i, m) × σi / σm**
+
+> **Worked example 4: beta without a regression**
+> A share has volatility of 30% and a correlation of 0.6 with the market; the market's volatility is 20%. The risk-free rate is 3.5% and the equity risk premium 5.5%.
+> - β = 0.6 × 30% / 20% = **0.9**
+> - Required return (CAPM) = 3.5% + 0.9 × 5.5% = **8.45%**
+> Even though the share is 1.5 times as volatile as the market, its beta is below 1: most of its volatility is firm-specific and is diversified away in a portfolio.
+
+### R²: how much of the risk is systematic
+In the market-model regression, **R²** is the share of the stock's return variance explained by the market. With one factor, R² = ρ².
+- Here R² = 0.6² = **0.36**: 36% of the share's variance is **systematic** (market) risk, and 64% is **specific** risk.
+- Check: systematic variance = β² × σm² = 0.81 × 0.04 = 0.0324; total variance = 0.30² = 0.09; 0.0324 / 0.09 = 0.36.
+A low R² means beta is estimated imprecisely and that most of the stock's risk is the kind the CAPM does not reward.
+
 ## Checklist before you answer
 - Only systematic (non-diversifiable) risk earns a premium.
 - CAPM: E(R) = Rf + β × ERP; the market beta is 1.
@@ -23419,7 +23669,8 @@ The best-known fundamental model is the **Fama-French three-factor model**: mark
 - Adjusted beta = 2/3 × raw + 1/3 × 1.
 - Unlisted companies: use comparable companies' betas adjusted for leverage.
 - APT: E(R) = Rf + Σ β × λ; based on no arbitrage; does not name the factors.
-- Factor types: macroeconomic, fundamental (size, value, momentum, quality), statistical; Fama-French adds size and value.`,
+- Factor types: macroeconomic, fundamental (size, value, momentum, quality), statistical; Fama-French adds size and value.
+- β = ρ × σi / σm; R² = ρ² = systematic share of variance; high volatility does not mean high beta.`,
  ideas:`**The required return on equity is the return investors demand for the risk they cannot diversify away.**
 
 ## The CAPM
