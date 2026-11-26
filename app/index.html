@@ -27976,6 +27976,21 @@ The **waterfall** sets the order in which cash from investments is distributed b
 > - **European (whole fund):** total proceeds 600 on 500 invested → profit 100 → GP carry 20, paid only after LPs have received their 500.
 > Over the whole fund, the GP should receive 20. Under the American waterfall it received 40, so a **clawback** of 20 would return the excess to the LPs.
 
+## 6. The catch-up in numbers, and master-feeder funds
+> **Worked example 2: hurdle and catch-up**
+> LPs committed and invested 100. The fund earns a total profit of 40. Terms: 8% hurdle (simple, for one period), 100% catch-up, 20% carried interest.
+> - Step 1, hurdle: LPs receive their 100 back and the first **8** of profit.
+> - Step 2, catch-up: the GP receives 100% of the next profit until it has 20% of all profit so far. If the GP receives x, then x = 0.20 × (8 + x), so x = **2** (the GP now has 2 of 10, which is 20%).
+> - Step 3, split: the remaining 40 − 8 − 2 = 30 is split 80/20: LPs **24**, GP **6**.
+> - Totals: GP = 2 + 6 = **8** (20% of 40); LPs = 8 + 24 = **32** (plus their 100 of capital).
+> With a full catch-up, the hurdle only changes the **timing** of the GP's carry once profits are high enough. If the fund had earned only 9, the LPs would get 8 and the GP just 1: the catch-up would not be complete.
+
+### Master-feeder structures
+A hedge fund often uses a **master-feeder** structure: investors buy into one of several **feeder funds**, which put all their money into a single **master fund** that holds the investments.
+- Typically an **onshore feeder** (for example a US limited partnership for taxable domestic investors) and an **offshore feeder** (a company in a low-tax jurisdiction for foreign and tax-exempt investors).
+- Each feeder can suit its investors' **tax and regulatory** needs, while the manager runs **one portfolio**: lower trading and operating costs, and identical positions for all investors.
+- Drawbacks: more complex and costly to set up and administer, and the tax treatment depends on each jurisdiction.
+
 ## Checklist before you answer
 - Alternatives: private capital, real estate, infrastructure, natural resources, hedge funds, digital assets.
 - Features: specialized, illiquid, less transparent and regulated, high fees, leverage, appraisal-based prices, low reported correlations.
@@ -27984,7 +27999,9 @@ The **waterfall** sets the order in which cash from investments is distributed b
 - Fees: management fee (on committed capital or AUM) + incentive fee/carried interest (share of profits).
 - Hurdle: minimum LP return before carry; catch-up lets the GP reach its full share.
 - High-water mark: no incentive fee until previous peak is exceeded. Clawback: GP returns excess carry.
-- European waterfall (whole fund) favours LPs; American (deal by deal) favours the GP.`,
+- European waterfall (whole fund) favours LPs; American (deal by deal) favours the GP.
+- Catch-up: after the hurdle, the GP takes 100% (or a set share) until it has its full carry percentage of total profit.
+- Master-feeder: onshore and offshore feeders invest in one master fund; one portfolio, investor-specific tax treatment.`,
  ideas:`**Alternative investments are assets outside traditional long-only stocks, bonds and cash: private capital, real estate, infrastructure, natural resources, hedge funds and digital assets.**
 
 ## Common features
@@ -28095,6 +28112,35 @@ If the fund in example 3 (no hurdle) ended the next year below its new high-wate
 - Consider **liquidity**: compare with a public benchmark of similar risk, plus a premium for illiquidity.
 - Use **vintage-year** peer groups for private funds and **public market equivalents** (investing the same cash flows in a public index) to judge whether the illiquidity was rewarded.
 
+## 7. Private fund returns, leverage and drawdown measures in numbers
+### From gross to net multiple
+> **Worked example 4: what reaches the LPs**
+> LPs paid in 100; the investments returned 150 in total. Carry is 20% with a full catch-up, and the hurdle was met.
+> - Profit = 50; GP carry = 20% × 50 = **10**
+> - LPs receive 150 − 10 = **140**: a net multiple (DPI, all distributed) of **1.40×**, against a gross multiple of 1.50×
+> (Management fees, ignored here, would lower the LPs' result further.)
+
+### IRR from capital calls and distributions
+The LPs' **money-weighted** return is the IRR of their own cash flows: calls are outflows, distributions inflows.
+
+> **Worked example 5: an LP's IRR**
+> An LP pays 60 at the start and 40 after one year; it receives 30 after three years and 120 after five years.
+> - Solve 0 = −60 − 40/(1 + IRR) + 30/(1 + IRR)³ + 120/(1 + IRR)⁵: IRR ≈ **10.2%**
+> - Multiple = 150 / 100 = **1.50×**
+> On the BA II Plus: CF0 = −60, C01 = −40, C02 = 0, C03 = 30, C04 = 0, C05 = 120, then IRR CPT. The multiple says how much money came back; the IRR says how fast. A fund that returned 1.5× over 10 years would have a far lower IRR.
+
+### Leverage
+Many alternatives use borrowed money. Leverage raises returns when assets earn more than the cost of debt and magnifies losses otherwise:
+- Return on equity = [asset return − (debt share × cost of debt)] / equity share
+Example: assets earn 8%, half is financed with debt at 5%: (8% − 0.5 × 5%) / 0.5 = **11%**. If the assets earn 2%: (2% − 2.5%) / 0.5 = **−1%**.
+
+### Downside measures
+> **Worked example 6: Sharpe, Sortino and Calmar**
+> A fund's average annual return is 9%, the risk-free rate 3%, volatility 12%, downside deviation 6%, and its maximum drawdown 18%.
+> - Sharpe = (9 − 3) / 12 = **0.50**
+> - Sortino = (9 − 3) / 6 = **1.00**: only bad volatility counts, so a fund with mostly upside swings scores better than its Sharpe suggests
+> - Calmar = 9 / 18 = **0.50**: return per unit of the worst peak-to-trough loss
+
 ## Checklist before you answer
 - Private funds: IRR and multiples; hedge funds: time-weighted returns and risk ratios.
 - Sharpe can mislead (smoothing, fat tails); use Sortino (downside deviation), maximum drawdown, Calmar.
@@ -28102,7 +28148,10 @@ If the fund in example 3 (no hurdle) ended the next year below its new high-wate
 - DPI = distributions / paid-in; RVPI = NAV / paid-in; TVPI = DPI + RVPI; multiples ignore timing.
 - Biases: appraisal smoothing (understates risk and correlation), survivorship, backfill, selection.
 - Fee details matter: beginning vs ending assets, incentive fee before or after management fee, hard vs soft hurdle, high-water mark.
-- Hard hurdle: incentive fee only above the hurdle. Soft hurdle: once cleared, on the whole return.`,
+- Hard hurdle: incentive fee only above the hurdle. Soft hurdle: once cleared, on the whole return.
+- Net to LPs = proceeds − carry (and fees); LP IRR uses calls as outflows and distributions as inflows.
+- Leverage: equity return = (asset return − debt share × cost of debt) / equity share.
+- Sortino = excess return / downside deviation; Calmar = return / maximum drawdown.`,
  ideas:`**Judging alternative investments takes care: returns come net of complex fees, prices are often appraisals, and cash flows are irregular.**
 
 ## Performance appraisal
@@ -28220,6 +28269,14 @@ Historically, private equity, especially buyouts, has delivered higher average r
 ### Diversification
 Private capital gives access to companies and stages not available in public markets. Reported **correlations** with public equities look low, partly because appraisal-based values are **smoothed**. The **true economic exposure** to the business cycle is substantial, especially for leveraged buyouts: when the economy and public markets fall, private company values and exits suffer too, just with a delay in reported figures.
 
+## 5. Diversification: private equity versus private debt
+Both can diversify a portfolio of listed shares and bonds, but in different ways:
+- **Private equity** is still **equity**: its returns depend on company earnings and the economy, so its true correlation with listed shares is fairly **high**. Reported correlations look low mainly because values are **appraisal-based and smoothed**. Its diversification comes mostly from access to companies and strategies (buyouts, venture capital) not available in public markets, and from the **illiquidity premium**, not from behaving differently in a downturn.
+- **Private debt** has contractual interest, seniority and often **floating rates**, so its returns are more stable and less tied to equity markets in normal times; floating rates also give some protection against rising rates, which hurt fixed-rate bonds. It diversifies a **bond** portfolio by adding credit and illiquidity premiums. But in a severe recession, defaults rise and private debt suffers together with high-yield bonds and equities.
+- Within private capital, combining the two diversifies too: senior private debt is less volatile, and distressed debt tends to do well after downturns, when buyout values are low.
+
+The practical point: do not take the low reported correlations of private funds at face value. Unsmoothing the returns typically raises both their volatility and their correlation with public markets.
+
 ## Checklist before you answer
 - LBO: buy a mature company with heavy debt, improve it, pay down debt, sell in 3–7 years; leverage magnifies returns and losses.
 - MBO: led by existing management; MBI: outside management.
@@ -28228,7 +28285,8 @@ Private capital gives access to companies and stages not available in public mar
 - Exits: trade sale, IPO, secondary buyout, recapitalization, write-off.
 - Private debt: direct lending (senior secured, floating, covenants), mezzanine (subordinated, equity kickers), unitranche (blended), distressed, venture and specialty lending.
 - Higher returns for illiquidity, credit risk and complexity; manager dispersion is wide.
-- Reported correlations look low because of smoothing; true cyclical exposure is substantial.`,
+- Reported correlations look low because of smoothing; true cyclical exposure is substantial.
+- Private equity: true correlation with listed equity is high; low reported correlation comes from smoothing. Private debt: steadier, floating-rate income, diversifies bonds, but suffers in deep recessions.`,
  ideas:`**Private capital provides equity and debt to companies outside public markets, in exchange for illiquidity and higher expected returns.**
 
 ## Private equity
@@ -28353,6 +28411,33 @@ The four combinations: **private equity** (direct, funds), **public equity** (RE
 - **Illiquidity** and very **long horizons**.
 - **Environmental and social risks** (ESG factors are often central for these assets).
 
+## 6. Real estate indexes, debt ratios, REIT types and infrastructure debt
+### Real estate indexes
+- **Appraisal-based indexes:** built from periodic appraisals of properties held by institutions. Values are **smoothed** and **lag** market turns, so volatility and correlation with other assets are understated.
+- **Transaction-based indexes:** built from actual sales, using **repeat sales** (the same property sold twice) or **hedonic** methods (regressing prices on property characteristics). More current, but sales are infrequent and the properties sold may not be typical.
+- **REIT indexes:** based on listed REIT prices: up to date and liquid, but they include stock market sentiment and the REITs' leverage.
+
+### Loan-to-value and debt service coverage
+Lenders judge a property loan by two ratios:
+- **Loan-to-value (LTV)** = loan amount ÷ property value: the lower, the more cushion if values fall.
+- **Debt service coverage ratio (DSCR)** = net operating income (NOI) ÷ annual debt service (interest + principal): the higher, the safer the payments.
+
+> **Worked example 3: can this loan be made?**
+> A building is valued at 12.0 million and produces NOI of 1.05 million a year. The borrower asks for a loan of 7.2 million with annual payments of 0.75 million. The lender requires LTV ≤ 65% and DSCR ≥ 1.25.
+> - LTV = 7.2 / 12.0 = **60%**: within the limit
+> - DSCR = 1.05 / 0.75 = **1.40**: within the limit
+> If NOI fell by 15% to about 0.89 million, the DSCR would drop to 1.19, below the covenant.
+
+### Types of REITs
+- **Equity REITs** own and operate income-producing property, usually specialized by type: office, retail, residential, industrial and logistics, health care, hotels, data centres, cell towers, self-storage.
+- **Mortgage REITs** hold mortgages or mortgage-backed securities and earn the spread between their yield and the REIT's funding cost; they behave more like leveraged bond investments and are very sensitive to interest rates.
+- **Hybrid REITs** combine both.
+
+### Infrastructure: debt and sources of return
+- **Infrastructure debt:** loans and bonds financing toll roads, power, utilities and similar assets. Long maturities, often senior and secured on stable, contracted cash flows; default rates have historically been low, but liquidity is limited.
+- **Greenfield** returns come mostly from **capital appreciation** once the asset is built and the risk falls (the construction and demand risks are rewarded); income starts only when it operates.
+- **Brownfield** returns come mostly from **income**: stable, often inflation-linked cash flows from an operating asset, with smaller capital gains.
+
 ## Checklist before you answer
 - Real assets: steady, often inflation-linked income, long lives, lower correlation; but illiquid, large lots, appraisal-based values.
 - Real estate types: residential, commercial (office, retail, industrial/logistics, hotels), specialized.
@@ -28362,7 +28447,10 @@ The four combinations: **private equity** (direct, funds), **public equity** (RE
 - Other approaches: cost, sales comparison.
 - REITs behave like equities short term; appraisal indexes understate volatility.
 - Infrastructure: economic vs social; greenfield (construction and demand risk, higher return) vs brownfield (operating, lower risk).
-- Infrastructure returns: stable, regulated or contracted, inflation-linked, high barriers; risks: regulatory, political, construction, demand, leverage.`,
+- Infrastructure returns: stable, regulated or contracted, inflation-linked, high barriers; risks: regulatory, political, construction, demand, leverage.
+- Appraisal indexes smooth and lag; transaction indexes (repeat sales, hedonic) are current but sparse; REIT indexes include market sentiment.
+- LTV = loan / value (lower safer); DSCR = NOI / debt service (higher safer).
+- Equity vs mortgage vs hybrid REITs; greenfield = appreciation, brownfield = income.`,
  ideas:`**Real estate and infrastructure are real assets that produce steady income from long-lived physical assets, often with some protection against inflation.**
 
 ## Real estate: features
@@ -28482,6 +28570,23 @@ Commodity returns have shown **low correlation** with stocks and bonds over long
 
 Timberland and farmland have **lower reported volatility**, partly because of appraisal-based valuation, and provide income (raw land does not); commodities are more volatile but liquid through futures.
 
+## 7. How to invest in land, and where its return comes from
+### Vehicles
+- **Direct ownership** of land: full control, but large sums, management of the land and its operations, and little diversification.
+- **Private funds** and separate accounts run by specialist managers, such as **timberland investment management organizations (TIMOs)** for forests and farmland funds.
+- **Listed vehicles:** timber and farmland **REITs** and listed companies that own forests or farms (forest products companies, agricultural firms). Liquid, but their prices also move with the stock market.
+- For farmland, investors can own the land and **lease** it to farmers (fixed rent) or operate it, taking the crop price risk.
+
+### Return components
+- **Timberland:** (1) **biological growth** of the trees, (2) changes in **timber prices**, (3) changes in the value of the **land** itself.
+- **Farmland:** (1) **income** from harvests or rent, which depends on crop prices and yields, (2) changes in **land value**.
+- **Raw land:** only **price change**, driven by the value of future development options; no income, and holding costs (taxes, upkeep) reduce the return.
+
+> **Worked example 2: a year's return on a forest**
+> A forest bought for 10.0 million grows 4% in timber volume during the year; timber prices rise 2%; the land's value is unchanged and no trees are harvested. Ignoring costs:
+> - Timber value ≈ 1.04 × 1.02 − 1 = **6.1%** higher
+> If the forest's value is mostly standing timber, the return is roughly 6%, of which 4 points come from growth that does not depend on markets at all.
+
 ## Checklist before you answer
 - Raw land: no income, option value for future use. Timberland: biological growth and harvest flexibility. Farmland: crop income, less flexibility.
 - Land: long horizon, illiquid, inflation protection, low reported correlation.
@@ -28489,7 +28594,8 @@ Timberland and farmland have **lower reported volatility**, partly because of ap
 - Futures = spot + carry costs (financing, storage) − convenience yield.
 - Contango: futures > spot (negative roll return). Backwardation: futures < spot (positive roll return).
 - Fully collateralized futures return = spot return + roll return + collateral return.
-- Commodities: inflation hedge, diversification, high volatility, no income.`,
+- Commodities: inflation hedge, diversification, high volatility, no income.
+- Land vehicles: direct, private funds/TIMOs, listed REITs and companies. Timber return = growth + timber price + land value; farmland = harvest/rent income + land value; raw land = price change only.`,
  ideas:`**Natural resource investments include land that produces something (timber, crops) and commodities themselves, usually held through futures.**
 
 ## Raw land, timberland and farmland
@@ -28614,6 +28720,28 @@ Hedge funds can diversify a traditional portfolio, but **correlations with equit
 > - After the fund of funds' fees: 10.0% − 1% = 9.0%, minus 10% of that = **8.1%**
 > Investors pay away about 6 points of a 14% gross return. (Simplified: real fee terms and timing vary.)
 
+## 6. Where hedge fund returns come from, and how leverage and shorting work
+### Sources of return
+- **Alpha (manager skill):** security selection, timing and trading that earn returns not explained by market exposures. Genuine alpha is scarce and hard to identify.
+- **Market beta:** many hedge funds keep some net long exposure to equity or credit markets, so part of their return is simply the market's.
+- **Alternative risk premiums:** rewards for bearing specific risks, such as merger arbitrage (deal-failure risk), carry, value, momentum or volatility selling. They can be replicated more cheaply by rules-based strategies.
+- **Illiquidity premium:** holding hard-to-sell assets, possible because investors are locked up.
+- **Leverage**, which magnifies all of the above.
+
+### The prime broker
+Hedge funds use one or more **prime brokers** (large investment banks) that:
+- provide **financing** (margin loans) for leverage;
+- **lend securities** for short sales;
+- hold the fund's assets in **custody**, clear and settle trades, and provide reporting and risk tools;
+- may introduce the fund to investors ("capital introduction").
+In return the prime broker charges interest and fees and holds the fund's assets as collateral, which creates **counterparty risk** for the fund (as hedge funds discovered when Lehman Brothers failed in 2008).
+
+### Leverage
+Funds borrow from prime brokers or use derivatives to hold positions larger than their capital. Leverage magnifies both gains and losses and creates **margin calls**: if positions fall, the fund must post more collateral or sell, often at the worst time, which can spread losses through the market when many funds deleverage together.
+
+### Shorting
+To short a share, the fund borrows it through the prime broker, sells it, and later buys it back to return it. It posts collateral, pays a **borrowing fee** and any dividends, and risks **unlimited losses** and a **short squeeze** or recall of the shares. Shorting lets funds profit from overvalued securities and hedge market exposure (as in long/short equity).
+
 ## Checklist before you answer
 - Hedge funds: flexible mandates (short, leverage, derivatives), absolute-return goals, light regulation, limited transparency, "management + incentive" fees with high-water marks.
 - Liquidity terms: lockups (hard or soft), notice periods, redemption frequency and fees, gates, side pockets.
@@ -28621,7 +28749,9 @@ Hedge funds can diversify a traditional portfolio, but **correlations with equit
 - Merger arbitrage: buy target (short acquirer in stock deals); profit = spread if the deal closes.
 - Vehicles: direct, fund of funds (diversification but double fees), SMAs (transparency, control), liquid alternatives (daily liquidity, restrictions).
 - Many strategies have negative skew and fat left tails; indexes are flattered by survivorship and backfill bias.
-- Correlations with equities rise in stress.`,
+- Correlations with equities rise in stress.
+- Hedge fund return = alpha + beta + alternative risk premiums + illiquidity premium, magnified by leverage.
+- Prime broker: financing, securities lending, custody, clearing; creates counterparty risk.`,
  ideas:`**Hedge funds are lightly regulated, actively managed pools that can short, use leverage and trade derivatives, aiming at returns less tied to the market.**
 
 ## Features compared with other asset classes
@@ -28741,6 +28871,25 @@ This makes valuation highly uncertain and prices very sensitive to news.
 > - After year 2: 25,000 × 0.30 = **7,500**
 > The average of the two yearly returns is +40%, but the investor has lost 25%. High volatility makes the arithmetic average a poor guide to what investors actually earn.
 
+## 6. Staking, DeFi, wallets, forks and network attacks
+### Staking and DeFi yield
+- **Staking:** in proof-of-stake networks, holders lock up ("stake") coins to help validate transactions and receive **new coins and fees** as a reward. The yield is paid in the coin itself, so its value depends on the coin's price; staked coins may be locked for a period and can be partly lost (**slashed**) if the validator misbehaves.
+- **Decentralized finance (DeFi):** lending, borrowing and trading run by smart contracts without an intermediary. Investors earn yield by lending coins or providing liquidity to trading pools. Risks include **smart contract bugs and hacks**, collapse of the collateral's value, and impermanent loss for liquidity providers. A high advertised yield usually signals high risk.
+
+### Wallets
+A **wallet** stores the **private keys** that control the coins.
+- **Hot wallets** are connected to the internet (exchange accounts, mobile or web apps): convenient for trading but exposed to **hacking**.
+- **Cold wallets** are kept offline (hardware devices, paper): much safer from hacks, but less convenient, and if the keys are lost, the coins are lost forever.
+- Holding coins on an exchange adds the risk of the **exchange failing** or freezing withdrawals.
+
+### Forks
+A **fork** is a change to a blockchain's rules.
+- A **soft fork** is backward-compatible: old software still accepts the new blocks.
+- A **hard fork** is not: the chain splits in two, and holders of the original coin typically receive coins on **both** chains (Bitcoin Cash split from Bitcoin in 2017). Forks can follow disagreements in the community and create uncertainty about which chain will keep its value.
+
+### The 51% attack
+In a proof-of-work network, whoever controls **more than half** of the computing power (or, in proof of stake, of the staked coins) can rewrite recent transactions and **spend the same coins twice**. It is very costly on large networks but has happened on smaller ones; it is one reason small cryptocurrencies carry extra risk.
+
 ## Checklist before you answer
 - Distributed ledger: shared, synchronized database secured by cryptography and a consensus mechanism; a blockchain links blocks with hashes.
 - Proof of work (miners, energy-intensive) vs proof of stake (validators stake coins, less energy).
@@ -28749,7 +28898,10 @@ This makes valuation highly uncertain and prices very sensitive to news.
 - Types: cryptocurrencies, stablecoins, security/utility/governance tokens, NFTs (unique), CBDCs (central bank liabilities).
 - Most cryptocurrencies have no cash flows; value rests on adoption, scarcity and sentiment.
 - Risks: extreme volatility, fraud and hacking, custody (private keys), regulation, stablecoin pegs, technology.
-- Correlation with equities varies and tends to rise in stress.`,
+- Correlation with equities varies and tends to rise in stress.
+- Staking: lock coins to validate, rewards in coins, lock-up and slashing risk; DeFi: smart contract, collateral and hacking risks.
+- Hot wallets (online, hackable) vs cold wallets (offline, safer, lost keys = lost coins).
+- Hard fork splits the chain; 51% attack allows double spending.`,
  ideas:`**Digital assets are assets created, stored and transferred using distributed ledger technology.**
 
 ## Distributed ledger technology (DLT)
@@ -28881,6 +29033,34 @@ The optimal share in the risky portfolio is y* = (E(RP) − Rf) / (A × σP²).
 
 This separation of the decision into two steps (first find the best risky portfolio; then decide how much of it to hold) is called the **two-fund separation theorem**.
 
+## 7. From historical data to portfolio risk
+### Statistics from a sample of past returns
+With historical returns (rather than scenarios with probabilities), use the **sample** formulas, dividing by n − 1:
+- Mean = Σ R / n
+- Variance = Σ (R − mean)² / (n − 1)
+- Covariance = Σ (R_A − mean_A)(R_B − mean_B) / (n − 1)
+- Correlation = Cov(A, B) / (σ_A × σ_B)
+
+> **Worked example 4: three years of returns**
+> Asset A returned 10%, 4% and 6%; asset B returned 2%, 8% and 5%.
+> - Means: A = 20 / 3 = **6.67%**; B = 15 / 3 = **5.00%**
+> - Deviations: A = +3.33, −2.67, −0.67; B = −3, +3, 0
+> - Variance A = (11.11 + 7.11 + 0.44) / 2 = **9.33**, σ_A = 3.06%; variance B = (9 + 9 + 0) / 2 = **9.00**, σ_B = 3.00%
+> - Covariance = [(3.33)(−3) + (−2.67)(3) + (−0.67)(0)] / 2 = (−10 − 8 + 0) / 2 = **−9.00**
+> - Correlation = −9.00 / (3.06 × 3.00) = **−0.98**
+> The two assets moved almost exactly opposite each other. Three observations are far too few to rely on, but the arithmetic is the same with 60 months of data.
+
+### A three-asset portfolio
+The variance adds every pair, each pair counted twice (i with j and j with i):
+- σp² = Σ wi² σi² + 2 Σ (i < j) wi wj ρij σi σj
+
+> **Worked example 5: equities, bonds and cash**
+> Weights 50% equities (σ 20%), 30% bonds (σ 12%), 20% cash-like assets (σ 4%). Correlations: equities–bonds 0.4, equities–cash 0, bonds–cash 0.2. Working in % units:
+> - Own-variance terms: 0.5² × 20² = 100; 0.3² × 12² = 12.96; 0.2² × 4² = 0.64
+> - Pair terms: 2 × 0.5 × 0.3 × 0.4 × 20 × 12 = 28.80; equities–cash = 0; 2 × 0.3 × 0.2 × 0.2 × 12 × 4 = 1.152
+> - σp² = 100 + 12.96 + 0.64 + 28.80 + 1.152 = 143.55, so σp = **11.98%**
+> The weighted average of the three volatilities is 0.5 × 20 + 0.3 × 12 + 0.2 × 4 = 14.4%; correlations below 1 bring the portfolio down to 11.98%.
+
 ## Checklist before you answer
 - Long-run: small caps > large caps > long bonds > bills in both return and risk.
 - Risk-averse investors prefer certainty to a fair gamble.
@@ -28890,7 +29070,9 @@ This separation of the decision into two steps (first find the best risky portfo
 - Many assets: portfolio variance → average covariance; only shared risk remains.
 - Minimum-variance frontier; global minimum-variance portfolio; efficient frontier (upper part).
 - CAL: E(Rc) = Rf + Sharpe × σc; the best CAL is tangent to the efficient frontier.
-- Optimal risky share y* = (E(RP) − Rf) / (A σP²); more risk-averse → more in the risk-free asset.`,
+- Optimal risky share y* = (E(RP) − Rf) / (A σP²); more risk-averse → more in the risk-free asset.
+- Historical (sample) variance and covariance divide by n − 1; correlation = cov / (σ_A σ_B).
+- n-asset variance: all own-variance terms plus twice each pair term.`,
  ideas:`**Part I covers the raw material of portfolio choice: how asset classes have behaved, how investors trade risk for return, and how combining assets reduces risk.**
 
 ## Asset classes
@@ -29021,6 +29203,23 @@ A manager who earns a high return by taking more risk has not necessarily shown 
 - When the portfolio is the investor's **entire** wealth, **total** risk matters: use the **Sharpe ratio** or **M²**.
 - When the portfolio is **one part** of a well-diversified whole, only its **systematic** risk matters: use the **Treynor ratio** or **Jensen's alpha**.
 
+## 7. Splitting total risk in numbers, and what return-generating models are used for
+With the market model, a security's total variance splits into a systematic and a specific part:
+- **σi² = βi² × σm² + σε²**
+
+> **Worked example 5: how much of the risk is rewarded?**
+> A share has a volatility of 24% (variance 0.0576) and a beta of 0.8; the market's volatility is 18% (variance 0.0324).
+> - Systematic variance = 0.8² × 0.0324 = **0.0207**
+> - Specific variance = 0.0576 − 0.0207 = **0.0369**
+> - Systematic share = 0.0207 / 0.0576 = **36%**
+> Only 36% of the share's variance is market risk, the part the CAPM rewards. The other 64% would largely disappear in a diversified portfolio, so it earns no premium. Split variances, not standard deviations: 0.8 × 18% = 14.4% is the systematic **standard deviation**, and it does not add up with the specific part.
+
+### Uses of return-generating models
+- **Estimating expected returns** and the required return (cost of equity) from factor exposures.
+- **Measuring and decomposing risk:** how much of a portfolio's risk comes from the market, from size or value exposure, or from specific bets.
+- **Performance attribution:** separating returns due to factor exposures (beta) from those due to the manager's skill (alpha).
+- **Portfolio construction:** building portfolios with chosen exposures (for example market-neutral or with a target beta) and hedging unwanted ones.
+
 ## Checklist before you answer
 - Homogeneous expectations → everyone holds the market portfolio; the CAL through it is the CML.
 - CML: E(Rp) = Rf + [(E(Rm) − Rf)/σm] × σp; uses total risk; only for efficient portfolios.
@@ -29029,7 +29228,8 @@ A manager who earns a high return by taking more risk has not necessarily shown 
 - CAPM / SML: E(Ri) = Rf + βi(E(Rm) − Rf); applies to all assets.
 - Above the SML → undervalued; below → overvalued.
 - Sharpe (total risk), Treynor (beta), M² (percentage points at market risk), Jensen's alpha (excess over CAPM).
-- Whole wealth → Sharpe or M²; part of a diversified portfolio → Treynor or alpha.`,
+- Whole wealth → Sharpe or M²; part of a diversified portfolio → Treynor or alpha.
+- Total variance = β²σm² + specific variance; split variances, not standard deviations.`,
  ideas:`**Part II shows which risk is rewarded and how to measure performance once that is known.**
 
 ## The capital market line
@@ -29162,6 +29362,23 @@ Funds may charge **front-end loads** (sales charges on purchase), **back-end loa
 - **Separately managed accounts (SMAs):** a portfolio owned directly by one investor and managed to their requirements; more customization, transparency and tax control, but higher minimums.
 - **Hedge funds** and **private equity funds:** pooled vehicles for qualified investors, with less regulation, less liquidity and performance fees.
 
+## 6. Types of funds and the risks of ETFs
+### Types of mutual funds by what they hold
+- **Money market funds:** very short-term, high-quality debt; aim to preserve capital and provide liquidity, with a low return.
+- **Bond (fixed-income) funds:** government, corporate, high-yield, international or inflation-linked bonds; income plus interest rate and credit risk.
+- **Equity funds:** shares, by region, sector, size or style (growth, value); the highest expected return and risk of the main types.
+- **Hybrid (balanced) funds:** a mix of shares and bonds, sometimes rebalanced to fixed weights or shifted over time (target-date funds that become more conservative as the target year approaches).
+- **Index funds** track a benchmark at low cost; **actively managed** funds try to beat one and charge more.
+
+### Risks of ETFs
+ETFs are cheap and liquid, but not riskless:
+- **Tracking error:** the ETF's return differs from its index because of fees, sampling (holding only some of the index's securities), cash drag and rebalancing costs.
+- **Premiums and discounts:** the market price can drift from NAV, especially for ETFs holding illiquid assets (high-yield bonds, emerging markets) or in stressed markets, when authorized participants step back.
+- **Trading costs:** bid-ask spreads and brokerage on each trade; thinly traded ETFs can have wide spreads.
+- **Counterparty risk** in **synthetic** ETFs, which obtain the index return through swaps rather than holding the securities, and in ETFs that lend their securities.
+- **Leveraged and inverse ETFs** reset daily, so over longer periods their returns can be far from the multiple of the index investors expect.
+- **Closure risk:** small ETFs may be closed, forcing investors to sell at a possibly inconvenient time and to realize taxable gains.
+
 ## Checklist before you answer
 - Judge investments by their effect on the whole portfolio; diversification lowers risk without lowering expected return.
 - Diversification ratio = portfolio risk / weighted average risk of holdings; correlations rise in crises.
@@ -29170,7 +29387,9 @@ Funds may charge **front-end loads** (sales charges on purchase), **back-end loa
 - Endowments/foundations: perpetual, spending rule, can take illiquidity risk.
 - Banks: liquidity and regulation; life insurers long horizons, P&C insurers more liquidity.
 - Passive growth → fee pressure; active aims to beat, passive to track.
-- Open-end funds trade at NAV; closed-end funds at a premium or discount; ETFs trade intraday with creation/redemption keeping price near NAV.`,
+- Open-end funds trade at NAV; closed-end funds at a premium or discount; ETFs trade intraday with creation/redemption keeping price near NAV.
+- Fund types: money market, bond, equity, hybrid/balanced (target-date), index vs active.
+- ETF risks: tracking error, premium/discount to NAV, spreads, counterparty (synthetic, securities lending), daily-reset leveraged ETFs, closures.`,
  ideas:`**The portfolio approach judges each investment by its effect on the whole portfolio, not on its own.**
 
 ## Why a portfolio approach
@@ -29309,6 +29528,23 @@ Clients increasingly want their portfolios to reflect **environmental, social an
 
 The client's ESG preferences are recorded in the IPS, usually under unique circumstances or investment guidelines, and may affect the investable universe and the benchmark.
 
+## 7. Building the return requirement, and what taxes and horizon change
+> **Worked example 3: what return does the foundation need?**
+> A foundation spends 3% of its assets each year, wants to keep the real value of its capital, expects inflation of 2.5%, and pays fees of 0.5% a year.
+> - To spend 3% and keep pace with inflation: (1.03 × 1.025) − 1 = **5.58%**
+> - Adding fees: 1.0558 × 1.005 − 1 ≈ **6.1%** (simply adding 3 + 2.5 + 0.5 = 6.0% understates it slightly)
+> The adviser then checks whether a portfolio expected to earn about 6.1% fits the foundation's risk tolerance; if it does not, the spending rate must fall.
+
+### Taxes
+- Investors care about **after-tax** returns. A taxable investor who needs a given after-tax return must earn a higher pre-tax return: pre-tax ≈ after-tax / (1 − tax rate).
+- Different assets are taxed differently (interest, dividends and capital gains often at different rates; some bonds tax-exempt), so **asset location** matters: put tax-inefficient assets in tax-advantaged accounts where possible.
+- Tax-exempt investors (many pension funds, endowments) need not prefer tax-efficient assets.
+
+### Time horizon
+- A **longer** horizon raises the **ability** to take risk: there is more time to recover from losses and to keep earning income from work, and short-term volatility matters less.
+- A **short** horizon, or a large planned withdrawal soon, calls for more liquid, lower-volatility assets for the money needed then.
+- Many investors have **multi-stage** horizons (saving until retirement, then spending over a long retirement), each with its own requirements.
+
 ## Checklist before you answer
 - IPS: written plan of objectives, constraints and guidelines; reviewed at least annually and after major changes.
 - Return objectives absolute or relative; must be consistent with risk objectives.
@@ -29318,7 +29554,9 @@ The client's ESG preferences are recorded in the IPS, usually under unique circu
 - Constraints: liquidity, time horizon, taxes, legal/regulatory, unique circumstances.
 - Asset classes: homogeneous, mutually exclusive, diversifying, covering the universe.
 - SAA explains most return variation over time; tactical allocation deviates temporarily; rebalance within ranges.
-- ESG approaches: exclusion, positive screening, integration, thematic, impact, engagement.`,
+- ESG approaches: exclusion, positive screening, integration, thematic, impact, engagement.
+- Required return: compound spending, inflation and fees, (1 + s)(1 + i)(1 + f) − 1; gross up for taxes.
+- Longer horizon → more ability to take risk; short horizon or near-term withdrawals → liquidity and low volatility.`,
  ideas:`**Portfolio planning turns a client's goals and limits into a written policy, then into an asset allocation.**
 
 ## The investment policy statement (IPS)
@@ -29420,13 +29658,36 @@ For investors and advisers:
 3. For **emotional** biases: adapt the plan to what the client can live with, while protecting their goals.
 4. Use a **written IPS** and rebalancing rules to reduce the impact of emotions in turbulent markets.
 
+## 8. Prospect theory versus traditional finance
+### What traditional finance assumes
+Traditional finance assumes investors are **rational**: they use all available information correctly (Bayes' rule), are **risk-averse** in a consistent way, and choose to maximize **expected utility** of their total wealth. Markets built from such investors are efficient, and any mistakes cancel out.
+
+### Prospect theory
+**Prospect theory** (Kahneman and Tversky) describes how people actually choose between risky options:
+- **Reference point:** people judge outcomes as **gains or losses** relative to a reference point (often the purchase price), not by total wealth.
+- **Loss aversion:** losses hurt about **twice as much** as equal gains please. The value function is steeper for losses than for gains.
+- **Risk-averse for gains, risk-seeking for losses:** people prefer a sure gain over a gamble with the same expected value, but prefer a gamble over a sure loss, hoping to avoid losing.
+- **Probability weighting:** people overweight small probabilities (which is why lottery tickets and insurance against rare events sell) and underweight moderate and high ones.
+- **Framing:** the same choice described as a gain or as a loss leads to different decisions.
+
+> **Worked example 3: the same choice, framed two ways**
+> An investor bought a share at 50; it now trades at 40. Two choices:
+> - Sell now and lock in a loss of 10, or
+> - Hold, with a 50% chance of getting back to 50 and a 50% chance of falling to 30 (an expected loss of 10, the same).
+> Traditional finance: with equal expected outcomes, a risk-averse investor sells (less risk). Prospect theory: measured from the reference point of 50, selling means a **sure loss**, so the investor **gambles** and holds. This is the **disposition effect**: holding losers too long and selling winners too early.
+
+### Why it matters
+Behavioural finance does not say traditional finance is useless: it is the benchmark of how investors **should** decide. Prospect theory explains how they **do** decide, which helps advisers build portfolios clients can stick with and helps explain market anomalies such as momentum and the disposition effect.
+
 ## Checklist before you answer
 - Cognitive errors (reasoning, memory, processing) → can be corrected; emotional biases (feelings) → usually adapted to.
 - Belief perseverance: conservatism, confirmation, representativeness, illusion of control, hindsight.
 - Processing errors: anchoring and adjustment, mental accounting, framing, availability.
 - Emotional: loss aversion (disposition effect: hold losers, sell winners), overconfidence (excess trading, under-diversification), self-control, status quo, endowment, regret aversion (inaction, herding).
 - Market effects: momentum (underreaction then herding), bubbles and crashes, value effect (overreaction), home bias.
-- Adviser response: moderate cognitive errors, adapt to emotional biases; use an IPS and rules.`,
+- Adviser response: moderate cognitive errors, adapt to emotional biases; use an IPS and rules.
+- Prospect theory: reference point, loss aversion (losses ~2× gains), risk-averse in gains and risk-seeking in losses, overweighting small probabilities, framing.
+- Traditional finance: rational, expected-utility maximizing, risk-averse investors (normative); behavioural finance describes actual behaviour.`,
  ideas:`**Behavioral finance studies how real people decide, and how their biases can push prices away from what traditional finance predicts.**
 
 ## Cognitive errors versus emotional biases
@@ -29554,6 +29815,34 @@ The choice weighs **costs against benefits**: hedging and insurance have costs; 
 > - Small currency exposures on minor routes → **risk acceptance**: the cost of hedging exceeds the benefit.
 > - A planned route to a politically unstable region → **avoidance**: the route is dropped.
 
+## 7. Three ways to compute VaR, and its limits
+### The three methods
+- **Parametric (variance–covariance):** assume returns are normally distributed; VaR = z × σ × portfolio value (minus the expected return, if it is included), as in example 2. Fast and simple, but it understates risk when returns have **fat tails** and handles options poorly.
+- **Historical simulation:** apply the actual returns of a past period (for example the last 500 days) to today's portfolio, rank the results, and read off the loss at the chosen percentile. With 500 days and 5%, VaR is the **25th worst** loss. No distribution assumption, but it assumes the past period represents the future.
+- **Monte Carlo simulation:** generate thousands of random scenarios from a chosen model of the risk factors, revalue the portfolio in each, and read off the percentile. The most flexible (it handles options and non-normal distributions), but it is slow and only as good as the model.
+
+### Limits of VaR
+- It gives a **minimum** loss at a probability, not the **worst** loss: it says nothing about how bad the tail is (CVaR addresses this).
+- Results depend on the **method, period and confidence level** chosen; different choices give very different numbers.
+- It is often **underestimated** when it relies on calm-period data or normal distributions.
+- It can encourage **taking risks in the tail**, positions that rarely lose but lose a lot when they do.
+- VaRs of separate units **do not add up** to the firm's VaR because of diversification.
+
+### Choosing how to measure risk
+Which measures to use depends on:
+- **The type of position:** equities (beta, volatility), bonds (duration, spread duration), options (Greeks), credit (default probability and exposure).
+- **Linearity:** for portfolios with options, use simulation methods or Greeks, not a simple parametric VaR.
+- **The data available** and their quality, and whether past data represent the future.
+- **The purpose and the user:** regulators, the board or traders need different horizons and detail.
+- **Tail risk:** supplement VaR with CVaR, **scenario analysis** and **stress tests** (for example, rerunning the 2008 crisis on today's portfolio).
+
+### Greeks in numbers
+> **Worked example 4: an options book**
+> A trader holds 10,000 call options with a delta of 0.6 each (one share per option). The share rises by 2.
+> - Delta estimate of the gain = 10,000 × 0.6 × 2 = **12,000**
+> - With a gamma of 0.03, delta itself rises as the price rises; adding the gamma term ½ × 0.03 × 2² per option: 10,000 × (0.6 × 2 + 0.5 × 0.03 × 4) = **12,600**
+> Delta alone understates the gain for a long option position; for large moves, gamma matters.
+
 ## Checklist before you answer
 - Risk management = define risk to be taken, measure risk taken, adjust; not the same as minimizing risk.
 - Framework: governance, identification and measurement, infrastructure, policies, monitoring, communication, strategic integration.
@@ -29562,7 +29851,9 @@ The choice weighs **costs against benefits**: hedging and insurance have costs; 
 - Financial risks: market, credit, liquidity. Non-financial: operational (incl. cyber), settlement, legal, compliance, accounting, model, tail, solvency; individuals: mortality and longevity.
 - Risks interact, especially in crises.
 - Measures: standard deviation, beta, duration, Greeks, credit measures, VaR (minimum loss at a probability), CVaR (average beyond VaR), stress tests.
-- Modifying risk: prevention/avoidance, acceptance (self-insurance, diversification), transfer (insurance), shifting (derivatives); weigh costs and benefits.`,
+- Modifying risk: prevention/avoidance, acceptance (self-insurance, diversification), transfer (insurance), shifting (derivatives); weigh costs and benefits.
+- VaR methods: parametric (normal, fast, weak for fat tails and options), historical (past returns, no distribution), Monte Carlo (flexible, model-dependent).
+- VaR limits: says nothing about tail size, depends on choices, can be underestimated, not additive; add CVaR, scenarios and stress tests.`,
  ideas:`**Risk management is the process of deciding how much risk to take, measuring the risks actually taken, and adjusting them to match. It is not the same as minimizing risk.**
 
 ## A risk management framework
