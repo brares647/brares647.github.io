@@ -305,7 +305,16 @@ button.erow .chev{color:var(--text-3)}
 .trow.lm-off{color:var(--text-2)}
 .trow.lm-off .tn span{font-weight:400}
 .lm-read .learn-link .ltext b{white-space:normal}
-.lm-beyond{margin-top:36px}
+.lm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-bottom:24px}
+.lm-card{display:flex;flex-direction:column;gap:4px;min-height:96px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--shadow-1);color:var(--text);text-align:left;font-size:14px;cursor:pointer}
+.lm-card:hover{border-color:var(--text-2)}
+.lm-card b{font-weight:600;line-height:1.3}
+.lm-card small{color:var(--text-2);font-size:12px}
+.lm-card-bar{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:8px}
+.lm-card-bar .meter{flex:1}
+.lm-card-bar span{font-size:12px;color:var(--text-2);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
+.lm-sub{font-size:16px;margin:8px 0 12px}
+@media (max-width:600px){.lm-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.lm-card{min-height:76px;padding:10px 12px}.lm-sub span{display:block;margin-top:2px}}
 .lm-books td{vertical-align:top;white-space:normal}
 .lm-text h4{font-size:15px;font-weight:600;margin:16px 0 0;color:var(--text-2)}
 .lm-ex{margin:16px 0 4px;padding:4px 16px 14px;border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0}
@@ -31821,7 +31830,7 @@ function topicStats(level){
 }
 
 /* ---------- state ---------- */
-const S = { view:'home', practice:null, exam:null, review:{tab:'missed',open:null,topic:'',q:''}, fx:{topic:'',q:''}, learn:{open:null}, cards:null, pconf:null, econf:null, justRevealed:null, vigCollapsed:null };
+const S = { view:'home', practice:null, exam:null, review:{tab:'missed',open:null,topic:'',q:''}, fx:{topic:'',q:''}, learn:{open:null, topic:null}, cards:null, pconf:null, econf:null, justRevealed:null, vigCollapsed:null };
 let timerHandle = null;
 let MODAL_OPEN = false;
 
@@ -32015,7 +32024,7 @@ async function leaveExamOk(){
 }
 async function go(v){
   if(S.view==='exam' && examRunning() && v!=='exam' && !(await leaveExamOk())) return;
-  if(v==='learn' && S.view==='learn') S.learn.open = null; // the Learn tab inside a module goes back to the map
+  if(v==='learn' && S.view==='learn'){ S.learn.open = null; S.learn.topic = null; } // the Learn tab inside a module or topic goes back to the map
   S.view=v; render(true); window.scrollTo(0,0);
 }
 function render(anim){
@@ -32034,7 +32043,7 @@ function render(anim){
    A practice session stays in memory when you step back from it; a running mock still asks before it is left. */
 const VIEWS = ['home','learn','practice','exam','review','formulas','progress'];
 let ROUTED = false, POPPING = false;
-const routeOf = ()=> S.view==='home' ? '' : '#'+S.view+(S.view==='learn' && S.learn.open ? '/'+S.learn.open : '');
+const routeOf = ()=> S.view==='home' ? '' : '#'+S.view+(S.view!=='learn' ? '' : S.learn.open ? '/'+S.learn.open : S.learn.topic ? '/T'+S.learn.topic : '');
 function syncRoute(){
   const want = routeOf();
   if((location.hash||'') === want) return;
@@ -32043,16 +32052,17 @@ function syncRoute(){
 }
 function readRoute(){
   const m = /^#([a-z]+)(?:\/([A-Za-z0-9-]+))?$/.exec(location.hash||'');
-  if(!m || !VIEWS.includes(m[1])) return {view:'home', mod:null};
-  return {view:m[1], mod: m[1]==='learn' && m[2] && MODS[m[2]] ? m[2] : null};
+  if(!m || !VIEWS.includes(m[1])) return {view:'home', mod:null, grp:null};
+  const lm = m[1]==='learn' && m[2];
+  return {view:m[1], mod: lm && MODS[m[2]] ? m[2] : null, grp: lm && /^T\d+$/.test(m[2]) ? +m[2].slice(1) : null};
 }
 window.addEventListener('popstate', async ()=>{
   const r = readRoute();
-  if(r.view===S.view && r.mod===(S.view==='learn' ? S.learn.open : r.mod)) return;
+  if(r.view===S.view && (S.view!=='learn' || (r.mod===S.learn.open && r.grp===S.learn.topic))) return;
   if(MODAL_OPEN) return;
   if(S.view==='exam' && examRunning() && r.view!=='exam' && !(await leaveExamOk())){ syncRoute(); return; } // stayed: put the exam address back
   POPPING = true;
-  S.view = r.view; S.learn.open = r.mod;
+  S.view = r.view; S.learn.open = r.mod; S.learn.topic = r.grp;
   render(true);
   POPPING = false;
 });
@@ -33488,17 +33498,42 @@ function vLearn(app){
   const open = S.learn.open && MODS[S.learn.open];
   if(open && open.ideas) return learnModule(app, open);
   const all = (D.modules||[]).filter(m=>m.level===1), mods = all.filter(m=>!isBeyond(m));
-  const beyondTopics = [...new Set(all.filter(isBeyond).map(m=>m.topic))];
+  const groups = learnGroups(), g = S.learn.topic && groups[S.learn.topic-1];
+  if(g) return learnTopic(app, g, all);
+  const ts = topicStats(1);
+  const card = (gr,i)=>{
+    const tm = all.filter(m=>m.topic===gr.name), v = ts[gr.name];
+    const sub = gr.books ? plural(D.reading.length,'book') : `${plural(tm.length,'module')}${v&&v.attempted?` · ${v.attempted} answered`:''}`;
+    const has = !!(v&&v.attempted), p = has ? pct(v.score,v.attempted) : 0;
+    return `<button class="lm-card" data-grp="${i+1}" title="Open ${esc(gr.name)}"><b>${esc(gr.books?gr.name:short(gr.name))}</b><small>${sub}</small>${gr.beyond||gr.books?'':`<div class="lm-card-bar"><div class="meter ${has?barCls(p):'none'}"><i style="width:${has?Math.max(p,2):0}%"></i></div><span>${has?p+'%':'–'}</span></div>`}</button>`;
+  };
+  const core = groups.filter(x=>!x.beyond && !x.books), extra = groups.filter(x=>x.beyond || x.books);
   app.innerHTML = `<div class="content">
-    <div class="page-head"><div><div class="eyebrow">${LEVELS[1]} · ${CURRICULUM_YEAR} curriculum · ${mods.length} learning modules</div><h1>Learning map</h1><p>One page per learning module of the official topic outline: the key ideas, the traps the exam likes, the formulas, where to read the full lesson, and practice on that module alone. It sums up the curriculum; it does not replace it.</p></div></div>
-    ${TOPICS[1].map(t=>{ const tm = mods.filter(m=>m.topic===t); if(!tm.length) return ''; const done = tm.filter(m=>m.ideas).length;
-      return `<div class="panel"><div class="panel-head"><div><h2>${esc(t)}</h2><p>${plural(tm.length,'module')}${done?` · ${done} ready`:''}</p></div></div>${tm.map(modRow).join('')}</div>`; }).join('')}
+    <div class="page-head"><div><div class="eyebrow">${LEVELS[1]} · ${CURRICULUM_YEAR} curriculum · ${mods.length} learning modules</div><h1>Learning map</h1><p>One page per learning module of the official topic outline: key ideas, traps, formulas, a full lesson and practice on that module alone. Pick a topic.</p></div></div>
+    <div class="lm-grid">${core.map(x=>card(x, groups.indexOf(x))).join('')}</div>
+    ${extra.length?`<h2 class="lm-sub">Beyond the curriculum <span class="faint small">· not on the exam: interview and first-job preparation</span></h2><div class="lm-grid">${extra.map(x=>card(x, groups.indexOf(x))).join('')}</div>`:''}
     <p class="faint small">Module names follow the <a href="${OUTLINE_URL}" target="_blank" rel="noopener noreferrer">${CURRICULUM_YEAR} Level I topic outline</a> of CFA Institute. The notes are our own summary, written for this app.</p>
-    ${beyondTopics.length?`<div class="page-head lm-beyond"><div><div class="eyebrow">Not on the exam</div><h2>Beyond the curriculum</h2><p>What finance interviews and a first job in equity research, banking or valuation ask for on top of Level I. Lessons only: these modules have no practice questions and are not in mocks.</p></div></div>
-    ${beyondTopics.map(t=>{ const tm = all.filter(m=>m.topic===t);
-      return `<div class="panel"><div class="panel-head"><div><h2>${esc(t)}</h2><p>${plural(tm.length,'module')}</p></div></div>${tm.map(modRow).join('')}</div>`; }).join('')}`:''}
-    ${D.reading&&D.reading.length?`<div class="panel lm-books"><div class="panel-head"><div><h2>Books worth reading</h2><p>The titles most often recommended for a first finance job, in the order we would read them. Reading is optional; practice questions come first.</p></div></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Book</th><th>Why read it</th><th>Best for</th><th>Overlap with Level I</th></tr></thead><tbody>${D.reading.map(b=>`<tr><td><b>${esc(b.title)}</b><br><small class="faint">${esc(b.author)}</small></td><td>${inline(b.why)}</td><td>${esc(b.role)}</td><td>${esc(b.overlap)}</td></tr>`).join('')}</tbody></table></div></div>`:''}
   </div>`;
+  $$('[data-grp]',app).forEach(b=>b.onclick=()=>{ S.learn.topic=+b.dataset.grp; render(true); window.scrollTo(0,0); });
+}
+/* the map's cards, in order: the exam topics, then topics beyond the curriculum, then the book list; S.learn.topic = position + 1 */
+function learnGroups(){
+  const all = (D.modules||[]).filter(m=>m.level===1);
+  return [...TOPICS[1].filter(t=>all.some(m=>m.topic===t)).map(name=>({name})),
+    ...[...new Set(all.filter(isBeyond).map(m=>m.topic))].map(name=>({name, beyond:true})),
+    ...(D.reading&&D.reading.length ? [{name:'Books worth reading', books:true}] : [])];
+}
+function learnTopic(app, g, all){
+  const tm = all.filter(m=>m.topic===g.name), done = tm.filter(m=>m.ideas).length;
+  const body = g.books
+    ? `<div class="panel lm-books"><div class="panel-head"><div><p>The titles most often recommended for a first finance job, in the order we would read them. Reading is optional; practice questions come first.</p></div></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Book</th><th>Why read it</th><th>Best for</th><th>Overlap with Level I</th></tr></thead><tbody>${D.reading.map(b=>`<tr><td><b>${esc(b.title)}</b><br><small class="faint">${esc(b.author)}</small></td><td>${inline(b.why)}</td><td>${esc(b.role)}</td><td>${esc(b.overlap)}</td></tr>`).join('')}</tbody></table></div></div>`
+    : `<div class="panel">${tm.map(modRow).join('')}</div>`;
+  app.innerHTML = `<div class="content">
+    <div class="lm-nav"><button class="btn ghost sm" id="lmMap">${icon('arrowL')}Learning map</button></div>
+    <div class="page-head"><div><div class="eyebrow">${g.beyond||g.books?'Beyond the curriculum':LEVELS[1]+' · '+CURRICULUM_YEAR+' curriculum'}</div><h1>${esc(g.name)}</h1>${g.books?'':`<p>${plural(tm.length,'module')}${done?` · ${done} ready`:''}${g.beyond?' · lessons only, no practice questions':''}</p>`}</div></div>
+    ${body}
+  </div>`;
+  $('#lmMap').onclick = ()=>{ S.learn.topic=null; render(true); window.scrollTo(0,0); };
   $$('[data-mod]',app).forEach(b=>b.onclick=()=>{ S.learn.open=b.dataset.mod; render(true); window.scrollTo(0,0); });
 }
 function learnModule(app, m){
@@ -33506,7 +33541,7 @@ function learnModule(app, m){
   const prev = sib.slice(0,i).reverse().find(x=>x.ideas), next = sib.slice(i+1).find(x=>x.ideas);
   const fs = (m.formulas||[]).map(id=>FMAP[id]).filter(Boolean);
   app.innerHTML = `<div class="content">
-    <div class="lm-nav"><button class="btn ghost sm" id="lmBack">${icon('arrowL')}Learning map</button><span class="faint small num">Module ${m.n} of ${m.of}</span></div>
+    <div class="lm-nav"><button class="btn ghost sm" id="lmBack">${icon('arrowL')}${esc(short(m.topic))}</button><span class="faint small num">Module ${m.n} of ${m.of}</span></div>
     <div class="page-head"><div><div class="eyebrow">${isBeyond(m)?'Beyond the curriculum · ':''}${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${isBeyond(m)?'Interview and first-job preparation, not part of the CFA exam.':st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
       ${st.n?`<div class="row"><button class="btn primary lg" id="lmGo" title="10 questions, unseen first, easy to hard">${icon('zap')}Practice this module</button>${st.n>10?`<button class="btn ghost" id="lmAll" title="Every question of this module, easy to hard">All ${st.n}</button>`:''}</div>`:''}</div>
     ${m.lesson?`<details class="panel lm-lesson" open><summary class="panel-head"><div><h2>Lesson</h2><p>About ${readMins(m.lesson)} minutes of reading, with worked examples</p></div><span class="btn ghost sm lm-tog"></span></summary><div class="lm-text">${learnMd(m.lesson)}</div></details>`:''}
@@ -33516,7 +33551,7 @@ function learnModule(app, m){
     ${m.read&&m.read.length?`<div class="panel lm-read"><div class="panel-head"><div><h2>Further reading</h2><p>${isBeyond(m)?'Reference pages to go further.':'The official outline first, then a full lesson, then reference pages.'}</p></div></div>${m.read.map(readLink).join('')}</div>`:''}
     <div class="lm-pager">${prev?`<button class="btn ghost" data-mod="${prev.id}">${icon('arrowL')}${esc(prev.name)}</button>`:'<span></span>'}${next?`<button class="btn ghost" data-mod="${next.id}">${esc(next.name)}${icon('arrowR')}</button>`:''}</div>
   </div>`;
-  $('#lmBack').onclick = ()=>{ S.learn.open=null; render(true); window.scrollTo(0,0); };
+  $('#lmBack').onclick = ()=>{ S.learn.open=null; S.learn.topic = learnGroups().findIndex(x=>x.name===m.topic)+1 || null; render(true); window.scrollTo(0,0); };
   if(st.n){ $('#lmGo').onclick = ()=>startModule(m); if($('#lmAll')) $('#lmAll').onclick = ()=>startModule(m, true); }
   $$('[data-mod]',app).forEach(b=>b.onclick=()=>{ S.learn.open=b.dataset.mod; render(true); window.scrollTo(0,0); });
   $$('[data-goto]',app).forEach(b=>b.onclick=()=>go(b.dataset.goto));
@@ -33651,7 +33686,7 @@ window.addEventListener('beforeunload', e=>{ const ex = S.exam; if(ex && ['runni
 
 /* ---------- boot ---------- */
 $$('.logo').forEach(el=>el.innerHTML=icon('logo'));
-{ const r = readRoute(); S.view = r.view; S.learn.open = r.mod; } // open the screen named in the address (reload, bookmark)
+{ const r = readRoute(); S.view = r.view; S.learn.open = r.mod; S.learn.topic = r.grp; } // open the screen named in the address (reload, bookmark)
 applyTheme();
 render(true);
 ROUTED = true;
