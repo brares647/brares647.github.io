@@ -16167,14 +16167,28 @@ The **cash flow additivity principle** says that the present value of a stream o
 > Cost of the portfolio today: 0.5556 × 40 − 17.43 = 4.79. So the call is worth 4.79.
 > Nothing in this calculation needed the probability that the share goes up. That surprising fact is the basis of option pricing, which you will meet again in Derivatives.
 
-## 5. Checklist before you answer
+## 5. The general forward-rate formula
+Example 6 found a one-year rate one year from now. The same no-arbitrage idea works for any period. Write **f(A, B − A)** for the rate on a loan that starts in year A and lasts B − A years (the market notation is "AyBy" style, e.g. **2y1y** = a one-year rate starting in two years). Investing for B years at the B-year spot rate must give the same result as investing for A years and then locking in the forward rate:
+- **(1 + S_B)^B = (1 + S_A)^A × [1 + f(A, B − A)]^(B − A)**
+- so **f(A, B − A) = [(1 + S_B)^B / (1 + S_A)^A]^(1 / (B − A)) − 1**
+
+> **Worked example 8: forwards from a spot curve**
+> Spot rates: 1 year 2.0%, 2 years 3.0%, 3 years 3.5% (annual compounding).
+> - **1y1y** = 1.03² / 1.02 − 1 = **4.01%**
+> - **2y1y** = 1.035³ / 1.03² − 1 = 1.108718 / 1.060900 − 1 = **4.51%**
+> - **1y2y** (a two-year rate starting in one year) = (1.035³ / 1.02)^(1/2) − 1 = (1.086978)^0.5 − 1 = **4.26%**, an annual rate
+> On the calculator for 1y2y: \\\`1.035 yˣ 3 ÷ 1.02 = yˣ 0.5 − 1 =\\\` gives 0.0426.
+> Check: the 1y2y rate (4.26%) lies between 1y1y (4.01%) and 2y1y (4.51%), as it should, because it averages the two one-year forwards over the same two years: 1.0401 × 1.0451 ≈ 1.0426².
+
+## 6. Checklist before you answer
 - Draw the timeline and mark the dates and signs of every cash flow.
 - Match the rate to the period (annual, semi-annual, monthly).
 - For an annuity or perpetuity, remember the value lands one period before the first payment.
 - For Gordon, use D1, not D0, and check that r > g.
 - For a bond price, compare the coupon with the market rate to predict premium or discount before calculating.
 - For forward rates and forward exchange rates, compound; do not average.
-- On the calculator: clear the TVM registers (\`2ND FV\`), check END or BGN, and give cash paid and received opposite signs.`,
+- On the calculator: clear the TVM registers (\`2ND FV\`), check END or BGN, and give cash paid and received opposite signs.
+- Forward f(A, B − A): (1 + S_B)^B / (1 + S_A)^A, then take the (B − A)-th root.`,
  ideas:`**The idea behind the whole module:** a cash flow at time t is worth CF / (1 + r)^t today, where r is the return investors require for its risk and timing. An instrument is a bundle of cash flows, so its value is the sum of their present values. Read backwards, a known price gives the return or the growth that the market implies.
 
 ## Fixed-income instruments
@@ -16500,7 +16514,15 @@ These three are used to test hypotheses about samples (next module):
 - **Chi-square** with k df: the sum of k squared independent standard normal variables. Never negative, skewed to the right; mean k and variance 2k. Used to test a single variance.
 - **F**: the ratio of two independent chi-square variables, each divided by its df. Never negative, skewed to the right, defined by two df (numerator and denominator). Used to compare two variances and in regression.
 
-## 6. Checklist before you answer
+## 6. A conditional covariance in numbers
+> **Worked example 7: how two assets move together in a recession**
+> Given a recession, analysts see two equally likely outcomes. In the mild one, share A returns −4% and share B returns 4%; in the severe one, A returns −10% and B returns 2%.
+> - Conditional means: E(A | recession) = 0.5 × (−4) + 0.5 × (−10) = **−7%**; E(B | recession) = 0.5 × 4 + 0.5 × 2 = **3%**
+> - Deviations: mild (+3, +1), severe (−3, −1)
+> - Cov(A, B | recession) = 0.5 × (3)(1) + 0.5 × (−3)(−1) = **3.0** (in %², i.e. 0.0003 in decimals)
+> Within the recession, both shares do worse together in the severe outcome, so their conditional covariance is positive. Their unconditional covariance, averaged over booms and recessions, could be quite different: always state which scenario a covariance belongs to.
+
+## 7. Checklist before you answer
 - With probabilities, weight every outcome by its probability; never divide by n − 1.
 - For covariance, use the paired outcomes of the same scenario.
 - Total probability rule: E(X) = Σ E(X | Si) × P(Si), with scenarios that are mutually exclusive and exhaustive.
@@ -16509,7 +16531,8 @@ These three are used to test hypotheses about samples (next module):
 - Binomial: n independent trials, same p; mean np, variance np(1 − p).
 - Normal: symmetric, kurtosis 3, 1.645 / 1.96 / 2.58 for 90% / 95% / 99%.
 - Prices lognormal (never negative, mean above median); continuously compounded returns normal.
-- t has fatter tails than the normal; chi-square and F are never negative.`,
+- t has fatter tails than the normal; chi-square and F are never negative.
+- A conditional covariance uses only the outcomes and probabilities within one scenario, measured from the conditional means.`,
  ideas:`**From describing past data to modeling what could happen: probabilities, expected values, and the distributions used for prices and returns.**
 
 ## Expected value, variance and covariance
@@ -16675,14 +16698,55 @@ The best-known example is the **Spearman rank correlation**: rank both variables
 
 Non-parametric tests have a cost: when the parametric assumptions do hold, they are less powerful. Use them when the assumptions fail, not by default.
 
-## 9. Checklist before you answer
+## 9. More tests in numbers
+### Difference between two means: the pooled t-test
+When the two samples are **independent**, the populations are roughly normal and their variances can be assumed **equal**, the two sample variances are combined into one **pooled** estimate:
+- **s_p² = [(n1 − 1)s1² + (n2 − 1)s2²] / (n1 + n2 − 2)**
+- **t = (x̄1 − x̄2) / √(s_p²/n1 + s_p²/n2)**, with **n1 + n2 − 2** degrees of freedom
+
+> **Worked example 7: do two sectors earn different returns?**
+> Monthly returns: sector 1 averages 1.25% over 20 months with s1 = 0.62%; sector 2 averages 0.95% over 25 months with s2 = 0.75%. Test at 5% (two-tailed) whether the means differ.
+> - s_p² = (19 × 0.62² + 24 × 0.75²) / 43 = (7.3036 + 13.5000) / 43 = **0.4838**
+> - Standard error = √(0.4838/20 + 0.4838/25) = √(0.02419 + 0.01935) = 0.2087
+> - t = (1.25 − 0.95) / 0.2087 = **1.44**, with 43 df
+> - Critical value ±2.017. Since 1.44 < 2.017, **fail to reject** H0: the 0.30-point gap could easily be chance.
+> If the samples were the same months for both sectors, a **paired** test on the monthly differences would be the right one, and it is often more powerful because it removes the market movements both sectors share.
+
+### The sign test
+A non-parametric test of a **median** (or of paired data): count how many observations are above (+) and below (−) the hypothesized value, ignore ties, and compare the count with a binomial distribution with p = 0.5.
+
+> **Worked example 8: does a manager beat the benchmark?**
+> In 20 months, a manager beat the benchmark 15 times and lagged it 5 times. Under H0 (no skill), each month is a coin toss.
+> - P(15 or more wins out of 20) = 0.0207; two-tailed p-value = **0.041**
+> - Normal approximation: z = (15 − 10) / √(20 × 0.5 × 0.5) = 5 / 2.236 = **2.24** > 1.96
+> Reject H0 at 5%. The test ignores **how much** the manager won or lost by, which is both its strength (outliers do not matter) and its weakness (it throws away information).
+
+### The Mann-Whitney U test (Wilcoxon rank-sum test)
+The non-parametric counterpart of the two-sample t-test for **independent** samples: pool the two samples, rank all observations together, and test whether one sample's ranks are systematically higher. Use it when the data are not normal or contain outliers. (For **paired** data, the counterpart is the Wilcoxon signed-rank test, which improves on the sign test by using the size of the ranked differences.)
+
+### Chi-square test of independence
+Tests whether two **categorical** variables are related, using a **contingency table** of counts.
+- Expected count of each cell under independence: **E = (row total × column total) / grand total**
+- **χ² = Σ (O − E)² / E**, with **(rows − 1) × (columns − 1)** degrees of freedom
+- Always a one-tailed (upper tail) test: large χ² means the observed counts are far from independence.
+
+> **Worked example 9: are fund size and outperformance related?**
+> 100 funds: of 50 large funds, 30 beat their benchmark and 20 did not; of 50 small funds, 20 beat it and 30 did not.
+> - Totals: 50 beat, 50 did not; so each expected count = 50 × 50 / 100 = **25**
+> - χ² = (30 − 25)²/25 + (20 − 25)²/25 + (20 − 25)²/25 + (30 − 25)²/25 = 4 × 1 = **4.00**, with (2 − 1)(2 − 1) = 1 df
+> - Critical value χ²(1, 5%) = 3.841. Since 4.00 > 3.841, reject independence: outperformance appears related to size.
+
+## 10. Checklist before you answer
 - Standard error = s / √n; quadrupling n halves it.
 - Variance unknown: t with n − 1 df, wider intervals than z.
 - H0 always holds the equal sign; "greater than" or "less than" in Ha means a one-tailed test.
 - Reject H0 when the statistic is beyond the critical value, or when the p-value is below α. Never say "accept H0".
 - Type I = rejecting a true H0 (probability α); Type II = keeping a false H0; power = 1 − β. Only a larger sample cuts both errors.
 - Pick the test by what is tested: mean (t), variance (chi-square), two variances (F), correlation (t with n − 2 df), ranks or non-normal small samples (non-parametric).
-- Check for survivorship, look-ahead, data-snooping and time-period bias before trusting any significant result.`,
+- Check for survivorship, look-ahead, data-snooping and time-period bias before trusting any significant result.
+- Pooled t-test: independent samples, equal variances assumed, n1 + n2 − 2 df; paired data use the paired test.
+- Sign test: counts of + and −, binomial with p = 0.5; Mann-Whitney: ranks of two independent samples.
+- Chi-square independence: E = row total × column total / N; df = (r − 1)(c − 1); upper tail.`,
  ideas:`**Using a sample to say something about a population, and deciding whether the evidence is strong enough.**
 
 ## Sampling
@@ -16831,7 +16895,22 @@ If all investors have the same expectations (**homogeneous expectations**) about
 
 This is the theoretical case for **passive investing**: if the market portfolio is optimal, an investor simply buys a broad index fund and adjusts risk with cash or borrowing. The CML measures risk with **total** risk (standard deviation) and applies to efficient portfolios. The security market line of the CAPM, met in Portfolio Management, uses **beta** instead and applies to every asset.
 
-## 7. Checklist before you answer
+## 7. Covariance between two portfolios
+Two portfolios made of the same assets in different weights also co-move. Their covariance adds up every pair of assets, weighted by one portfolio's weight in the first asset and the other's in the second:
+- **Cov(P1, P2) = Σi Σj w1,i × w2,j × Cov(Ri, Rj)**, where Cov(Ri, Ri) is the variance of asset i
+- Their correlation is Cov(P1, P2) / (σP1 × σP2), as for any two assets.
+
+> **Worked example 7: an aggressive and a defensive mix**
+> Asset A: σ = 20% (variance 0.04). Asset B: σ = 12% (variance 0.0144). Correlation 0.3, so Cov(A, B) = 0.3 × 0.20 × 0.12 = 0.0072. Portfolio 1 holds 70% A / 30% B; portfolio 2 holds 30% A / 70% B.
+> - Cov(P1, P2) = 0.7 × 0.3 × 0.04 + 0.3 × 0.7 × 0.0144 + (0.7 × 0.7 + 0.3 × 0.3) × 0.0072 = 0.0084 + 0.003024 + 0.004176 = **0.0156**
+> - σP1² = 0.49 × 0.04 + 0.09 × 0.0144 + 2 × 0.21 × 0.0072 = 0.02392, σP1 = **15.47%**
+> - σP2² = 0.09 × 0.04 + 0.49 × 0.0144 + 2 × 0.21 × 0.0072 = 0.01368, σP2 = **11.70%**
+> - ρ(P1, P2) = 0.0156 / (0.1547 × 0.1170) = **0.86**
+> The two portfolios are far more correlated (0.86) than the two assets inside them (0.3), because both hold the same two assets: mixing different blends of the same holdings gives little diversification.
+
+The cross term (0.7 × 0.7 + 0.3 × 0.3) appears because A in portfolio 1 pairs with B in portfolio 2 (0.7 × 0.7) and B in portfolio 1 pairs with A in portfolio 2 (0.3 × 0.3).
+
+## 8. Checklist before you answer
 - Expected return of a portfolio is a weighted average; its standard deviation is not, unless ρ = +1.
 - Two-asset variance has three terms; do not forget 2 w1 w2 ρ σ1 σ2.
 - Lower correlation means more diversification benefit; correlation does not affect expected return.
@@ -16839,7 +16918,8 @@ This is the theoretical case for **passive investing**: if the market portfolio 
 - Efficient frontier = upper part of the minimum-variance frontier, starting at the global minimum-variance portfolio.
 - Utility: decimals, keep the ½, higher A penalizes variance more.
 - On a CAL, σ = weight in the risky portfolio × σ of that portfolio; weights above 100% mean borrowing.
-- Everyone holds the same optimal risky portfolio; risk aversion only sets the mix with the risk-free asset. Under homogeneous expectations it is the market portfolio, and the line is the CML.`,
+- Everyone holds the same optimal risky portfolio; risk aversion only sets the mix with the risk-free asset. Under homogeneous expectations it is the market portfolio, and the line is the CML.
+- Cov(P1, P2) = Σ Σ w1,i w2,j Cov(i, j); blends of the same assets are highly correlated.`,
  ideas:`**A portfolio's expected return is a weighted average of its assets' returns. Its risk is not, because imperfect correlation lets risks offset each other.**
 
 ## Portfolio return and risk
@@ -17452,6 +17532,60 @@ Limitations of concentration measures: they ignore **barriers to entry** (a conc
 - **Oligopoly:** watch rivals' behaviour, price wars and the risk of collapse of tacit cooperation.
 - **Monopoly:** watch for regulation and the durability of barriers to entry (patent expiry, new technology).
 
+## 6. Worked numbers: concentration, pricing power and rivals
+### Concentration ratio and HHI
+> **Worked example 3: measuring concentration**
+> An industry has five firms with market shares of 35%, 20%, 20%, 15% and 10%.
+> - 4-firm concentration ratio = 35 + 20 + 20 + 15 = **90%**
+> - HHI = 35² + 20² + 20² + 15² + 10² = 1,225 + 400 + 400 + 225 + 100 = **2,350**
+> Now one of the 20% firms merges with the 15% firm. The new firm has 35%.
+> - New HHI = 35² + 35² + 20² + 10² = 1,225 + 1,225 + 400 + 100 = **2,950**, a rise of **600**
+> - Shortcut: a merger of firms with shares a and b raises the HHI by **2 × a × b** = 2 × 20 × 15 = 600
+> - The 4-firm ratio is now 35 + 35 + 20 + 10 = **100%**, but it would not have changed at all if two firms inside the top four had merged. The HHI always reacts to a merger, which is one reason competition authorities prefer it.
+
+As a rough guide, an HHI below about 1,500 is read as unconcentrated and above about 2,500 as highly concentrated (thresholds differ between authorities). An HHI of 10,000 is a monopoly; **1 / HHI** (with shares as decimals) gives the "equivalent number" of equal-sized firms: 1 / 0.235 ≈ 4.3 firms in example 3.
+
+### Monopolistic competition in numbers
+> **Worked example 4: a firm with a differentiated product**
+> A coffee chain faces demand P = 50 − 2Q (Q in thousands of cups a day), so MR = 50 − 4Q. Its marginal cost is 10.
+> - MR = MC: 50 − 4Q = 10 → **Q = 10**
+> - P = 50 − 2 × 10 = **30**
+> The chain charges 30 against a marginal cost of 10. If this earns an economic profit, rivals open similar cafés, the chain's demand curve shifts left, and in the long run price falls until it equals average total cost (zero economic profit), still above marginal cost.
+
+### Oligopoly as a game: the payoff matrix
+Two firms each choose a strategy without knowing the other's choice. A **payoff matrix** lists each firm's profit for every combination.
+
+> **Worked example 5: the prisoner's dilemma**
+> Firms A and B each choose a High or a Low price. Profits (A, B), in millions:
+> - Both High: (10, 10)
+> - A Low, B High: (14, 4)
+> - A High, B Low: (4, 14)
+> - Both Low: (6, 6)
+> Look at A. If B charges High, A earns 14 with Low and 10 with High, so Low is better. If B charges Low, A earns 6 with Low and 4 with High, so Low is better again. Low is A's **dominant strategy**, and by symmetry B's too.
+> The **Nash equilibrium** is both Low (6, 6), although both would earn more at both High (10, 10). Each firm's own best move leaves both worse off: this is why cartels are unstable and why price wars start.
+
+If the game is **repeated** many times, firms can sustain the high price by punishing a cheater in later rounds (for example "tit for tat"), which is why tacit cooperation is easier in stable industries with few firms and visible prices.
+
+### The Cournot model in numbers
+> **Worked example 6: two firms choosing quantities**
+> Market demand is P = 130 − Q, where Q = q₁ + q₂. Both firms have a marginal cost of 10 and no fixed costs.
+> - Firm 1 treats q₂ as given. Its revenue is (130 − q₁ − q₂) × q₁, so its MR = 130 − 2q₁ − q₂. Setting MR = 10 gives its **reaction function**: q₁ = (120 − q₂) / 2.
+> - By symmetry q₁ = q₂ = q, so q = (120 − q) / 2 → **q = 40** each.
+> - Total output 80; price = 130 − 80 = **50**.
+> Compare: a monopolist would set MR = 130 − 2Q = 10 → Q = 60, P = 70. Perfect competition would push price to MC = 10, Q = 120. Cournot lies in between (price 50). With n identical firms, each produces (130 − 10) / (n + 1), so price moves toward marginal cost as n rises.
+
+### Shutdown rule in revenue terms
+For any firm, including one with pricing power, the breakeven and shutdown tests can be written in totals instead of per-unit amounts:
+- **TR ≥ TC:** the firm covers all its costs (breakeven or better) and stays in the market.
+- **TVC ≤ TR < TC:** it makes a loss but should **keep operating in the short run**, because revenue covers all variable costs and part of the fixed costs; in the long run it should exit unless conditions improve.
+- **TR < TVC:** it should **shut down** now; producing only adds losses on top of the fixed costs.
+
+> **Worked example 7: a firm with pricing power under pressure**
+> At its profit-maximizing output, a firm has total revenue of 900, total variable cost of 750 and fixed costs of 300.
+> - TC = 1,050 > TR, so the firm loses 150.
+> - TR (900) > TVC (750), so producing contributes 150 to fixed costs. Shutting down would lose all 300 of fixed costs.
+> Keep operating in the short run; reconsider in the long run.
+
 ## Checklist before you answer
 - Profit is maximized where MR = MC in every market structure.
 - For a price taker MR = price; with a downward-sloping demand curve MR < price.
@@ -17461,7 +17595,11 @@ Limitations of concentration measures: they ignore **barriers to entry** (a conc
 - Monopolistic competition: differentiated products, easy entry, zero long-run economic profit, excess capacity.
 - Oligopoly: few interdependent firms; kinked demand (sticky prices), Cournot, Stackelberg, dominant firm, Nash; cartels tend to break down.
 - Monopoly: barriers, can keep economic profit, price discrimination, often regulated.
-- Concentration ratios and HHI ignore entry barriers, potential competition and demand elasticity.`,
+- Concentration ratios and HHI ignore entry barriers, potential competition and demand elasticity.
+- HHI = sum of squared shares; a merger of shares a and b adds 2ab. Concentration ratios ignore mergers inside the top N.
+- Prisoner's dilemma: each firm's dominant strategy (cheat / low price) leads to a Nash equilibrium worse for both.
+- Cournot with demand P = a − Q and cost c: each of two firms produces (a − c)/3; price lies between monopoly and competition.
+- Short run: operate if TR ≥ TVC; shut down if TR < TVC; long run: exit if TR < TC.`,
  ideas:`**How many competitors a firm faces, how similar their products are and how hard it is to enter decide how the firm sets price and output.**
 
 ## Costs, breakeven and shutdown
@@ -17595,6 +17733,41 @@ Indicators give false signals, are revised after publication, and the lead time 
 - **Commodities** tend to be strong late in expansions.
 - **Real estate** follows credit conditions and interest rates.
 
+## 7. Indicators by area of the economy
+The leading, coincident and lagging lists above sort indicators by **timing**. Analysts also group them by the **part of the economy** they describe, because each sector turns at a different point in the cycle.
+
+### Consumers
+- **Retail sales** and **personal consumption spending**: the largest part of GDP in most developed economies.
+- **Consumer confidence / sentiment surveys**: households' view of their finances and of the economy; they tend to fall before spending does.
+- **Real disposable income**, the **saving rate** and household **debt service ratios**: whether spending can be sustained.
+- Spending on **durables** (cars, appliances) is the most cyclical: it is easy to postpone in a downturn and recovers first.
+
+### Business
+- **Purchasing managers' indexes (PMIs):** monthly surveys of purchasing managers about new orders, output, employment, delivery times and inventories. A reading **above 50** signals expansion and **below 50** contraction, compared with the previous month. PMIs are timely and widely watched because they appear well before GDP data.
+- **New orders** for capital goods, **industrial production** and **capacity utilization**: high utilization tends to lead to more business investment and, eventually, price pressure.
+- **Inventories** relative to sales: rising unwanted inventories signal weakening demand and lead to production cuts.
+- **Corporate profits** and **business confidence surveys**.
+
+### Housing
+- **Building permits** and **housing starts** (leading), **new and existing home sales**, **house prices**.
+- Housing is very sensitive to **interest rates** and credit conditions, so it often turns early: down when rates rise, up when they fall.
+
+### External trade
+- **Exports, imports** and the **trade balance**; **export orders** in PMIs.
+- Exports depend on **foreign** growth and the **exchange rate**; imports rise with domestic demand, so a widening trade deficit can be a sign of strong domestic spending rather than weakness.
+
+### Credit cycle indicators
+- **Credit growth** (bank lending to households and companies), ideally relative to GDP: a **credit-to-GDP gap** well above its trend has often preceded financial stress.
+- **Bank lending surveys:** whether banks are tightening or easing their **lending standards**.
+- **Credit spreads** (corporate bond yields minus government yields): they widen when lenders become cautious and narrow in booms.
+- **Default and delinquency rates**: they rise late in the credit cycle.
+- **Asset prices**, especially **property prices**, which feed back into collateral values and the willingness to lend.
+
+> **Worked example 2: where is the credit cycle?**
+> Over two years, bank lending grows twice as fast as nominal GDP, house prices rise 25%, high-yield spreads are near record lows and lending surveys show standards easing. Defaults are still low.
+> - Fast credit growth, rising collateral values, tight spreads and easy standards are signs of a **late credit expansion**.
+> - Low defaults do not mean low risk: defaults are a **lagging** indicator. The risk is that a shock leads banks to tighten standards sharply, which turns the credit cycle and deepens the next downturn.
+
 ## Checklist before you answer
 - Phases: recovery (output rising, below potential), expansion (above trend), slowdown (growth slowing from the peak), contraction (output falling).
 - Credit cycles last longer and deepen booms and busts, especially with property.
@@ -17602,7 +17775,10 @@ Indicators give false signals, are revised after publication, and the lead time 
 - Durable goods spending, housing and business investment are the most cyclical.
 - Leading: weekly hours, jobless claims, new orders, building permits, stock prices, yield curve slope, expectations.
 - Coincident: employment, personal income, industrial production, sales.
-- Lagging: unemployment duration, inventory-to-sales ratio, unit labour costs, bank lending rate, services inflation.`,
+- Lagging: unemployment duration, inventory-to-sales ratio, unit labour costs, bank lending rate, services inflation.
+- PMI above 50 = expansion, below 50 = contraction (versus the previous month).
+- Durables spending and housing are the most cyclical; housing reacts early to interest rates.
+- Credit expansion signs: fast lending growth, rising property prices, tight spreads, easing standards; defaults lag.`,
  ideas:`**Economies grow in waves: periods of expansion alternate with slowdowns and contractions, and credit tends to amplify the swings.**
 
 ## Phases of the business cycle
@@ -17744,13 +17920,43 @@ By the time a stimulus works, the economy may already be recovering, so it may a
 - Tax changes affect after-tax **corporate earnings** and the attractiveness of different asset classes.
 - The **interaction** with monetary policy determines the overall effect (next module).
 
+## 8. Tax cuts and debt dynamics in numbers
+### The tax multiplier
+A tax cut also raises spending, but by less than an equal rise in government spending: households first receive the extra disposable income and spend only the share MPC of it, so the first round is smaller.
+- **Tax multiplier = −MPC / [1 − MPC × (1 − t)]**
+The minus sign means a tax **increase** lowers GDP and a tax **cut** raises it.
+
+> **Worked example 3: a tax cut versus extra spending**
+> Use the same economy as example 1: MPC = 0.9, tax rate 30%. The government cuts taxes by 50 billion.
+> - Tax multiplier = −0.9 / [1 − 0.9 × 0.70] = −0.9 / 0.37 = **−2.43**
+> - Change in GDP = −2.43 × (−50) ≈ **+121.6 billion**
+> The same 50 billion as extra spending added 135 billion (multiplier 2.70). The tax cut adds less because 10% of the first-round income is saved before any of it is spent.
+
+Note that the spending multiplier minus the absolute tax multiplier is 2.70 − 2.43 = 0.27, not 1: with an income tax rate the balanced budget multiplier is below 1. It equals 1 only in the simplest model with lump-sum taxes (no tax rate), where the two multipliers are 1/(1 − MPC) and −MPC/(1 − MPC).
+
+### Debt dynamics: r versus g
+What matters for the **burden** of public debt is not its size in money but its ratio to GDP. Each year the ratio changes because interest is added to the debt while GDP grows. Ignoring the primary balance (the budget balance before interest):
+- If the **interest rate on the debt (r)** is above the **growth rate of nominal GDP (g)**, the debt ratio **rises** on its own; the government needs a **primary surplus** just to keep it stable.
+- If **g > r**, the ratio **falls** on its own, even with a small primary deficit.
+- Approximately: **change in debt/GDP ≈ (r − g) × debt/GDP − primary balance/GDP**
+
+> **Worked example 4: will the debt ratio rise?**
+> Public debt is 100% of GDP, the average interest rate on it is 5% and nominal GDP grows 3% a year. The primary budget is balanced.
+> - Debt next year = 100 × 1.05 = 105; GDP = 100 × 1.03 = 103; ratio = 105 / 103 = **101.9%**
+> - Approximation: (5% − 3%) × 100% = **+2 points**
+> To stabilize the ratio, the government needs a primary surplus of about 2% of GDP. If instead growth were 6% and interest 4%, the ratio would fall by about 2 points a year with a balanced primary budget.
+
+This is why higher interest rates worry highly indebted governments: as old debt is refinanced at higher rates, r rises toward or above g, and the primary surplus needed to stabilize the debt grows.
+
 ## Checklist before you answer
 - Fiscal policy = spending and taxes; roles: allocation, redistribution, stabilization.
 - Debt concerns: interest costs, future taxes, crowding out, confidence; offsets: domestic debt, productive investment, Ricardian equivalence, own-currency borrowing.
 - Tools: transfers, current and capital spending; direct and indirect taxes. Indirect taxes change fastest.
 - Multiplier = 1 / [1 − MPC(1 − t)]; smaller with higher taxes, imports, crowding out, near full capacity.
 - Automatic stabilizers act without decisions; discretionary policy faces recognition, action and impact lags.
-- Judge the stance by the structural (cyclically adjusted) deficit, not the actual deficit.`,
+- Judge the stance by the structural (cyclically adjusted) deficit, not the actual deficit.
+- Tax multiplier = −MPC / [1 − MPC(1 − t)], smaller in absolute value than the spending multiplier.
+- Debt/GDP rises on its own when r > g; stable ratio needs a primary surplus ≈ (r − g) × debt/GDP.`,
  ideas:`**Fiscal policy is the government's use of spending and taxes to influence the economy; monetary policy is the central bank's use of money and interest rates.**
 
 ## Roles and objectives
@@ -17876,6 +18082,34 @@ The two policies interact:
 - **Easy fiscal + tight monetary:** higher interest rates; the public sector grows as a share of GDP; private investment may be crowded out; often a stronger currency.
 - **Tight fiscal + easy monetary:** low interest rates; the private sector grows as a share of GDP; investment supported.
 
+## 9. Easing and tightening under each regime
+**Expansionary** (easy, accommodative) monetary policy lowers interest rates or adds money to stimulate demand; **contractionary** (tight, restrictive) policy does the reverse. What the central bank actually does depends on its framework:
+- **Inflation targeting:** inflation forecast **below** target or a large negative output gap → **cut** the policy rate (expansionary). Inflation forecast **above** target → **raise** it (contractionary). The central bank reacts to its **forecast**, not to today's inflation, because policy works with a lag of one to two years.
+- **Interest rate targeting:** to ease, it **lowers** the target rate and **buys** securities in the open market, adding reserves until the overnight rate falls to the new target; to tighten, it **raises** the target and **sells** securities.
+- **Exchange rate targeting:** monetary policy is tied to the **peg**, not to the domestic economy. If the currency comes under **downward** pressure, the central bank must **sell foreign reserves** and buy its own currency, which drains domestic money and pushes rates **up**: tightening, even in a recession. If the currency is under **upward** pressure, it buys foreign currency and sells its own, adding domestic money: easing, even if the economy is overheating.
+- **Quantitative easing** is expansionary policy at the zero lower bound: buying assets lowers long-term yields; QT is contractionary.
+
+### Direction of the effects
+Each line gives the effect of **expansionary** policy (rate cut, asset purchases) / **contractionary** policy (rate hike, asset sales):
+- Short-term rates and bond yields: **fall** / **rise**.
+- Bank lending and money growth: **rise** / **fall**.
+- Asset prices (shares, property): **rise** / **fall**.
+- Domestic currency: **weakens** / **strengthens**.
+- Consumption and investment: **rise** / **fall**.
+- Net exports: **rise** (weaker currency) / **fall**.
+- Output and, later, inflation: **rise** / **fall**.
+
+### The Fisher relation
+Lenders care about the **real** return: what their money will buy. The **Fisher relation** links the nominal interest rate to the real rate and expected inflation:
+- **(1 + nominal rate) = (1 + real rate) × (1 + expected inflation)**, approximately **nominal ≈ real + expected inflation**
+A central bank that raises nominal rates only as much as expected inflation rises leaves real rates unchanged: policy is **not** tighter. To tighten, the nominal rate must rise **by more** than expected inflation.
+
+> **Worked example 3: real and nominal rates**
+> Investors require a real return of 1.5% and expect inflation of 3%.
+> - Approximation: nominal ≈ 1.5% + 3% = **4.5%**
+> - Exact: 1.015 × 1.03 − 1 = **4.545%**
+> If expected inflation rises to 5% and the policy rate is raised from 4.5% to 6%, the real rate falls from about 1.5% to about 1%: despite the hike, policy has become slightly **looser**.
+
 ## Checklist before you answer
 - Central bank roles: currency issuer, government's and banks' banker, lender of last resort, supervisor, reserves manager, payment system, monetary policy.
 - Main objective: price stability (often 2% inflation target); some add employment and financial stability.
@@ -17885,7 +18119,10 @@ The two policies interact:
 - Effective central banks: independent, credible, transparent.
 - Exchange rate targeting imports the anchor's policy and needs reserves.
 - Limits: lags, little control of long rates, zero lower bound, liquidity trap, banks not lending, supply shocks.
-- Easy fiscal + tight monetary → high rates, larger public sector; tight fiscal + easy monetary → low rates, larger private sector.`,
+- Easy fiscal + tight monetary → high rates, larger public sector; tight fiscal + easy monetary → low rates, larger private sector.
+- Inflation targeting reacts to the inflation forecast; exchange rate targeting ties rates to defending the peg (a falling currency forces tightening).
+- Easing: lower rates, more lending, higher asset prices, weaker currency, more demand; tightening the reverse.
+- Fisher: (1 + nominal) = (1 + real)(1 + expected inflation); tightening means real rates rise.`,
  ideas:`**Central banks steer short-term interest rates and the supply of money to keep prices stable and, in many cases, to support growth and employment.**
 
 ## Roles and objectives
@@ -18015,6 +18252,41 @@ Risks with **high likelihood and high impact** deserve the most attention. Some 
 - **Monitoring** signposts that indicate a risk is becoming more likely.
 - Focus on risks that matter **for the specific portfolio**, rather than reacting to every headline.
 
+## 8. Globalization and fragmentation
+### What globalization is
+**Globalization** is the growing integration of national economies through cross-border flows of **goods and services, capital, people, information and technology**. It shows up as a rising share of trade in GDP, global supply chains in which one product is assembled from parts made in many countries, cross-border investment and multinational companies.
+
+### What drives it
+- **Lower transport and communication costs** (container shipping, the internet).
+- **Policy:** trade liberalization, lower tariffs, open capital accounts, membership of trade agreements and institutions such as the WTO.
+- **Technology** that lets firms split production into stages and coordinate them across countries.
+- **Cost differences:** firms locate each stage where it is cheapest or where skills are best.
+
+### Benefits and costs
+- Benefits: specialization by comparative advantage, economies of scale, lower prices for consumers, transfer of technology, access to larger markets and capital, faster growth in many emerging economies.
+- Costs: job losses in industries exposed to imports, rising inequality within countries, **dependence** on foreign suppliers for critical goods, faster spread of financial and supply shocks, and pressure on environmental and labour standards.
+
+### The link with geopolitics
+Globalization and geopolitics push on each other:
+- Deep economic ties raise the **cost of conflict**, which can encourage cooperation.
+- But dependence can also be used as a weapon: control of energy, critical minerals, semiconductors or payment systems gives a country **leverage** (sanctions, export controls).
+- When rivalry between major powers grows, governments start valuing **security and resilience** over pure cost efficiency.
+
+### Fragmentation
+**Fragmentation** (or "deglobalization") is the partial reversal of integration: trade and investment increasingly flow **within blocs of allied countries** rather than globally. Signs include more tariffs and export controls, screening of foreign investment, subsidies for domestic production of strategic goods, and companies moving supply chains home (**reshoring**), to nearby countries (**nearshoring**) or to allies (**friend-shoring**).
+
+Effects investors should expect:
+- **Higher costs** and possibly higher **inflation**, because production moves away from the cheapest location.
+- **Lower efficiency** and growth over the long run, but **more resilient** supply chains.
+- Winners and losers by country and sector: countries that gain relocated production, firms making strategic goods with government support; losers include firms built on global sourcing and exporters shut out of blocs.
+- Diversification across countries may give less protection if blocs are hit by the same policy shocks.
+
+> **Worked example 3: reading a fragmentation scenario**
+> Two large economies impose export controls on advanced chips and tariffs on each other's electric vehicles. A carmaker that sources batteries from one bloc and sells mainly in the other must choose between paying tariffs and building a second supply chain.
+> - Short term: margins fall (tariffs or duplicated investment).
+> - Long term: capital spending rises and unit costs stay higher, but the risk of a supply cut-off falls.
+> An analyst would lower margin forecasts, raise capex forecasts and reconsider the risk premium, rather than treat the tariffs as a one-off event.
+
 ## Checklist before you answer
 - Geopolitics: geography + power + politics → effects on economies and markets.
 - State actors pursue security, economic interests and influence; non-state actors include companies and international organizations.
@@ -18023,7 +18295,9 @@ Risks with **high likelihood and high impact** deserve the most attention. Some 
 - IMF: stability and balance-of-payments lending with conditions. World Bank: long-term development finance. WTO: trade rules and disputes.
 - Tools: national security, economic (tariffs, export controls), financial (sanctions, capital controls, reserve currency).
 - Risk types: event (known timing), exogenous (sudden), thematic (long-lasting). Assess likelihood, velocity, impact.
-- Effects: higher risk premiums and volatility, supply chain disruption, trapped assets; responses: scenarios, diversification, hedging.`,
+- Effects: higher risk premiums and volatility, supply chain disruption, trapped assets; responses: scenarios, diversification, hedging.
+- Globalization: integration through trade, capital, people, information and technology; driven by lower costs, policy and technology.
+- Fragmentation: trade within blocs, reshoring/nearshoring/friend-shoring; higher costs and inflation, more resilience.`,
  ideas:`**Geopolitics studies how geography, power and politics shape relations between countries, and how those relations affect economies and investments.**
 
 ## Cooperation versus competition
@@ -18154,6 +18428,23 @@ A bloc is beneficial overall when trade creation outweighs trade diversion.
 ### Challenges
 Loss of national control over policy (especially in a monetary union, which removes independent monetary policy and exchange rate adjustment), uneven gains across members and regions, and the political difficulty of deeper integration.
 
+## 6. Quotas and export subsidies in numbers
+> **Worked example 3: a quota with the same effect as the tariff**
+> Take the country of example 2 (world price 10; demand 100 and domestic supply 40 at that price). Instead of a tariff, the government allows only **40 units** of imports. The domestic price rises until demand minus domestic supply equals 40: at a price of 12, demand is 90 and supply 50.
+> - Producers gain 90 and consumers lose 190, exactly as with the tariff.
+> - There is no tariff revenue. Instead, whoever holds the import licences buys at 10 and sells at 12: **quota rent** = 40 × 2 = **80**.
+> - If **domestic** importers hold the licences (or the government auctions them), the 80 stays in the country and the national loss is the same **20** as with the tariff.
+> - If **foreign** exporters keep the rent (as with a voluntary export restraint), the country loses the deadweight 20 plus the 80 rent: a net loss of **100**.
+
+> **Worked example 4: an export subsidy**
+> A small country exports a good at the world price of 20. At that price, domestic demand is 50 and domestic supply 80, so exports are 30. The government pays exporters 4 per unit exported.
+> - Producers will not sell at home for less than they get abroad (20 + 4), so the **domestic price rises to 24**. At 24, demand falls to 44 and supply rises to 90: exports rise to **46**.
+> - Gain to producers = (80 + 90) / 2 × 4 = **340**
+> - Loss to consumers = (50 + 44) / 2 × 4 = **188**
+> - Cost to taxpayers = 46 × 4 = **184**
+> - Net loss = 188 + 184 − 340 = **32**
+> The net loss comes from the extra units produced at a cost above the world price and from the consumption forgone. For a **large** country, the extra exports also push down the world price, which worsens its terms of trade and adds to the loss.
+
 ## Checklist before you answer
 - Gains from trade come from comparative advantage (lower opportunity cost), not absolute advantage.
 - Comparative advantage arises from technology differences (Ricardian) and factor endowments (Heckscher–Ohlin).
@@ -18163,7 +18454,9 @@ Loss of national control over policy (especially in a monetary union, which remo
 - Quota: like a tariff but rents go to licence holders; VER: rents go to foreign exporters.
 - Export subsidy raises the domestic price; costs taxpayers and consumers.
 - Integration: free trade area → customs union → common market → economic union → monetary union.
-- Trade creation (gain) versus trade diversion (loss).`,
+- Trade creation (gain) versus trade diversion (loss).
+- Quota rent = (domestic price − world price) × quota; it is a national loss if foreign holders keep it.
+- Export subsidy: domestic price rises by the subsidy (small country); producers gain, consumers and taxpayers lose more.`,
  ideas:`**Trade lets countries specialize in what they do relatively best; restrictions protect some groups at a cost to the economy as a whole.**
 
 ## Benefits and costs of trade
@@ -18419,6 +18712,24 @@ For short periods and small rate differences, the forward premium or discount is
 4. Check the direction: the higher-rate currency should be at a forward discount.
 5. Convert between outright forward, points and percentage as needed.
 
+## 6. Cross rates from bid and offer quotes
+Dealers quote two prices: the **bid** (the price at which the dealer buys the base currency) and the **offer** or ask (the price at which it sells it). A cross rate built from two-way quotes must also be two-way, and the dealer always gets the better side.
+
+When the quotes **multiply** (A/B × B/C = A/C):
+- **Bid of A/C = bid of A/B × bid of B/C**
+- **Offer of A/C = offer of A/B × offer of B/C**
+
+When one quote has to be **inverted**, its bid and offer swap places: the bid of B/A = 1 / offer of A/B, and the offer of B/A = 1 / bid of A/B.
+
+> **Worked example 5: a two-way cross rate**
+> USD/GBP = 1.2690–1.2695 and CHF/USD = 0.8795–0.8800. Find CHF/GBP.
+> - The dollars cancel when we multiply: CHF/USD × USD/GBP = CHF/GBP.
+> - Bid = 0.8795 × 1.2690 = **1.1161**
+> - Offer = 0.8800 × 1.2695 = **1.1172**
+> CHF/GBP = 1.1161–1.1172. Check: to sell pounds for francs through the dollar, you sell pounds at the USD/GBP bid (1.2690) and sell dollars at the CHF/USD bid (0.8795), getting 1.1161 francs per pound: the cross bid.
+
+A cross spread is always wider than either of the two spreads it comes from, because you pay a spread on both legs. A quick check: the cross bid must be below the cross offer; if your result is the other way round, you combined a bid with an offer.
+
 ## Checklist before you answer
 - Quote P/B: price-currency units per one base-currency unit.
 - Cross rate: A/C = A/B × B/C; invert quotes so the common currency cancels.
@@ -18427,7 +18738,8 @@ For short periods and small rate differences, the forward premium or discount is
 - Higher-interest currency trades at a forward discount; lower-interest currency at a forward premium.
 - Forward points = (F − S) × 10,000 for four-decimal quotes; F = S + points / 10,000.
 - Forward premium ≈ interest differential × days/360.
-- The forward rate is not a forecast of the future spot rate.`,
+- The forward rate is not a forecast of the future spot rate.
+- Two-way cross rates: multiply bid by bid and offer by offer; inverting a quote swaps and inverts its bid and offer.`,
  ideas:`**Exchange rate calculations combine quotes to find cross rates, and use interest rates to find forward rates.**
 
 ## Cross rates
