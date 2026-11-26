@@ -15090,14 +15090,15 @@ Research is often produced by a team. A member who **disagrees** with a group's 
 Members and candidates must:
 1. **Disclose** to clients and prospective clients the basic format and general principles of the investment processes they use to analyse investments, select securities and construct portfolios, and **promptly disclose any changes** that might materially affect those processes.
 2. Disclose the **nature of the services** they provide and the **costs** of those services to the client (an explicit requirement since 2024).
-3. Use **reasonable judgment** in identifying which factors are important to their investment analyses, recommendations or actions, and include those factors in communications.
-4. **Distinguish between fact and opinion** in the presentation of investment analysis and recommendations.
+3. Disclose **significant limitations and risks** associated with the investment process.
+4. Use **reasonable judgment** in identifying which factors are important to their investment analyses, recommendations or actions, and include those factors in communications.
+5. **Distinguish between fact and opinion** in the presentation of investment analysis and recommendations.
 
 ### Disclosing the process and its changes
 Clients choose a manager partly for its process: value investing, quantitative models, a particular risk discipline. If the process changes materially (a new model, a new strategy, a change of key personnel), clients must be told **promptly**, so they can decide whether it still suits them.
 
 ### Risks and limitations
-Communications should cover the significant **risks and limitations** of the process and of the investments: liquidity limits, leverage, counterparty risk, model limitations, concentration. Not every detail is needed, but anything that would matter to a reasonable client is.
+Communications must disclose the significant **risks and limitations** of the process and of the investments: liquidity limits, leverage, counterparty risk, model limitations, concentration. Not every detail is needed, but anything that would matter to a reasonable client is.
 
 ### Costs
 Clients must know what they are paying: management fees, performance fees, trading costs passed through, fund expenses. Hidden or unclear costs violate V(B).
@@ -15672,7 +15673,7 @@ Over long horizons the difference between nominal and real growth becomes large:
 > - In today's purchasing power that is 1,790.85 / 1.03^10 = 1,332.56.
 > - The real growth rate is 1.06 / 1.03 − 1 = 2.91% a year, and 1,000 × (1.06 / 1.03)^10 gives the same 1,332.56.
 > On the calculator: \\\`N = 10, I/Y = 6, PV = −1,000, PMT = 0, CPT FV\\\` gives 1,790.85. Then change \\\`I/Y = 2.9126\\\` and \\\`CPT FV\\\` again for 1,332.56.
-> Nearly half of the nominal gain (790.85) was just keeping up with prices.
+> More than half of the nominal gain (458.29 of 790.85, about 58%) was just keeping up with prices.
 
 Two consequences are worth remembering:
 - Unexpected inflation hurts lenders and helps borrowers with fixed-rate debt, because the money repaid buys less than both sides expected.
@@ -15827,7 +15828,7 @@ Its great advantage is that it **adds up over time**: the continuously compounde
 > A share moves from 40 to 46 and then to 43.
 > - Period 1: ln(46 / 40) = 13.98%
 > - Period 2: ln(43 / 46) = −6.74%
-> - Sum: 13.98 − 6.74 = 7.23%, which equals ln(43 / 40) = 7.23% directly.
+> - Sum: 13.976 − 6.744 = 7.23%, which equals ln(43 / 40) = 7.23% directly.
 > On the calculator: \\\`43 ÷ 40 = LN\\\` gives 0.0723.
 > The ordinary holding period return over both periods is 43 / 40 − 1 = 7.50%. The continuously compounded figure is always smaller than the HPR for a gain, and ln(1.075) = 7.23% links the two.
 
@@ -16070,7 +16071,7 @@ The whole module rests on one equation and its reverse:
 
 where r is the rate **per period** and N the number of **periods**. If payments are monthly, r is the monthly rate and N the number of months. Mixing an annual rate with monthly periods is the most common mistake in this topic.
 
-A useful habit is to draw a **timeline**: a horizontal line with t = 0 (today), t = 1, t = 2… and each cash flow written under its date, with a sign. Money you pay out is negative; money you receive is positive. The BA II Plus calculator follows the same rule, so if you enter both PV and FV with the same sign it returns an error.
+A useful habit is to draw a **timeline**: a horizontal line with t = 0 (today), t = 1, t = 2… and each cash flow written under its date, with a sign. Money you pay out is negative; money you receive is positive. The BA II Plus follows the same rule: if PV and FV have the same sign, computing I/Y or N returns an error, and computing other variables gives a wrong answer without warning.
 
 ## 2. Valuing any instrument: add up the present values
 A financial instrument is nothing more than a set of future cash flows. Its fair value today is the sum of the present values of those cash flows, each discounted at the rate investors require for that risk and timing. This principle works for a bond, a loan, a share and even a derivative. What changes from one instrument to another is only the pattern of cash flows.
@@ -16241,7 +16242,7 @@ An **outlier** is an observation far from the rest, perhaps a genuine crisis yea
 - A **winsorized mean** replaces those extreme values with the nearest values that remain, then averages all of them, so the number of observations stays the same.
 
 > **Worked example 1: three versions of the center**
-> Take the 25% trimmed and winsorized means of the fund (12.5% from each end, so one observation from each side of eight).
+> Take the 25% trimmed mean and the 75% winsorized mean of the fund (in both cases 12.5% from each end, so one observation from each side of eight). Note the naming: an x% trimmed mean discards x% of the data in total, while a y% winsorized mean keeps y% unchanged and replaces the rest.
 > - Trimmed: drop −9 and 15, average the other six: (−4 + 2 + 3 + 6 + 8 + 11) / 6 = 4.33%
 > - Winsorized: replace −9 by −4 and 15 by 11, then average all eight: (−4 − 4 + 2 + 3 + 6 + 8 + 11 + 11) / 8 = 4.13%
 > - Plain mean 4.00%, median 4.50%.
@@ -16631,7 +16632,7 @@ With a fixed sample size, lowering α (making false alarms rarer) raises β (mor
 > **Worked example 3: choosing α**
 > A bank tests whether a new credit model predicts defaults better than the old one. H0: no improvement.
 > - Type I error: adopting a model that is no better, paying for a costly switch.
-> - Type II error: rejecting a genuinely better model and keeping higher losses.
+> - Type II error: failing to reject H0 when the new model really is better, so the bank keeps the old model and its higher losses.
 > If wrongly switching is very costly, choose a small α (1%) and accept lower power; if missing a better model is the bigger cost, a larger α (10%) or a bigger test sample is appropriate.
 
 **Statistical significance is not economic significance.** With a huge sample, a strategy earning 0.02% a year more than the market can be "significant" and still worthless after costs. Conversely, an important effect may be insignificant in a small sample.
@@ -17037,7 +17038,7 @@ Does a share tend to rise more than the market when the market rises? Do compani
 - b1 is the **slope**: how much Y changes, on average, when X rises by one unit.
 - ε is the **error term**: everything about Y that X does not explain.
 
-The most important application at Level I is the **market model**, which regresses a share's excess return on the market's excess return. Its slope is the share's **beta**, the input to the capital asset pricing model (CAPM), and its intercept is the share's **alpha**. Throughout the module we use one small data set of this kind.
+The most important application at Level I is the regression of a share's excess return on the market's excess return (the CAPM form of the **market model**, which in its basic form uses raw returns). Its slope is the share's **beta**, the input to the capital asset pricing model (CAPM), and its intercept is the share's **alpha**. Throughout the module we use one small data set of this kind.
 
 > **The data used in all examples**
 > Six months of excess returns (%), market X and share Y:
@@ -17703,7 +17704,7 @@ An increase in government spending raises income, part of which is spent again, 
 > - Increase in GDP ≈ 2.70 × 50 = **135 billion**
 > A higher tax rate or a lower MPC means a smaller multiplier, because more of each round of income leaks out of spending.
 
-The **balanced budget multiplier**: if the government raises spending and taxes by the same amount, GDP still rises (by about the amount of the spending increase), because part of the tax increase would have been saved anyway.
+The **balanced budget multiplier**: if the government raises spending and taxes by the same amount, GDP still rises (the balanced budget multiplier is positive; in the simplest model, with lump-sum taxes, it equals 1), because part of the tax increase would have been saved anyway.
 
 In practice, multipliers are smaller when the economy is near **full capacity** (more inflation, less output), when **crowding out** raises interest rates, when the economy is very **open** (spending leaks into imports), and when households expect higher future taxes.
 
@@ -17858,6 +17859,7 @@ The **neutral policy rate** is the rate that neither stimulates nor restrains th
 ### Policy frameworks
 - **Inflation targeting:** an explicit numerical target, usually with a tolerance range, and a public commitment to meet it over the medium term. Now the most common framework.
 - **Exchange rate targeting:** fixing (pegging) the currency to another, usually a major currency. The country effectively **imports** the anchor country's monetary policy; it must use interest rates and foreign reserves to defend the peg, and loses the ability to set rates for its own economy.
+- **Interest rate targeting:** the central bank sets a target for a short-term interest rate (often the overnight interbank rate) and uses open market operations to keep the market rate at it: to ease, it lowers the target and buys securities, adding reserves; to tighten, it raises the target and sells securities, draining reserves. In practice, most inflation-targeting central banks use a policy-rate target as their operating tool.
 
 ## 7. Limitations of monetary policy
 - **Long and variable lags:** the effects take time and are uncertain.
@@ -19057,7 +19059,7 @@ Each income statement line becomes a cash line after adjusting for the related b
 
 ### Cash received from customers
 = revenue − increase in accounts receivable + increase in unearned (deferred) revenue.
-Write-offs of bad debts reduce receivables without cash, so they are added back to the change in receivables when given separately.
+Write-offs of bad debts reduce gross receivables without any cash coming in, so when they are given separately: cash collected = revenue − increase in gross receivables − write-offs.
 
 > **Worked example 2: cash collected**
 > Revenue 1,500; accounts receivable rose by 40; unearned revenue rose by 10.
@@ -19423,7 +19425,7 @@ If a LIFO company sells more units than it buys, old, cheap layers flow into COG
 
 > **Worked example 4: spotting a liquidation**
 > A LIFO company's gross margin rose from 31% to 34% while input prices kept rising. Its LIFO reserve fell from 900 to 700 and unit inventory fell 20%.
-> - Old layers costed far below current prices were charged to COGS, adding about 200 to pretax profit.
+> - Old layers costed far below current prices were charged to COGS. Because prices kept rising, the reserve would normally have grown, so its fall of 200 means the liquidation added at least about 200 to pretax profit (the notes give the exact amount).
 > - Removing it, gross margin is roughly flat. Management may have cut purchases deliberately to lift profit, or demand may have outrun supply; either way, the improvement is not sustainable.
 
 ## 5. Lower of cost and net realisable value
@@ -20013,7 +20015,7 @@ Think of reporting quality as a ladder, from best to worst:
 5. **Departures from GAAP**: the numbers do not follow the standards. Not decision-useful.
 6. **Fictitious transactions**: fraud, recording sales that never happened or hiding liabilities.
 
-Below the third rung the analyst can still use the numbers with adjustments; below the fifth, they cannot be relied on at all.
+Rungs 1 to 4 are within GAAP: from rung 3 down, the analyst can still use the numbers but must adjust them. At rungs 5 and 6 (departures from GAAP and fictitious transactions) the numbers cannot be relied on at all.
 
 > **Worked example 1: placing companies on the spectrum**
 > - Company A reports a sharp profit fall honestly and explains it in detail: rung 2 (good reporting, poor results).
@@ -20961,6 +20963,8 @@ The normal, everyday sources that do not change the company's operations or fina
 
 ### Secondary sources
 Used when primary sources are not enough; they **change** the company's financial or operating position and often signal **distress**:
+- **Suspending or reducing dividends** and **delaying or cutting capital expenditures**.
+- **Issuing new equity**.
 - **Selling assets** (possibly at low prices).
 - **Renegotiating debt** terms with lenders.
 - **Filing for bankruptcy protection** to reorganize.
@@ -21930,7 +21934,7 @@ Four dates matter:
 3. **Holder-of-record date:** the company pays the dividend to shareholders registered on this date.
 4. **Payment date:** the cash is paid.
 
-The ex-dividend date is set relative to the record date by the market's **settlement cycle**. With settlement one business day after the trade (T+1), a buyer on the day before the record date would not be registered in time, so the ex-dividend date is the record date itself or a day before, depending on the market's rules.
+The ex-dividend date is set relative to the record date by the market's **settlement cycle**. Under **T+2** settlement, a buyer on the business day before the record date would settle after it and not be registered in time, so the ex-dividend date is **one business day before** the record date. Under **T+1** settlement (now used in the US and several other markets), a trade on the day before the record date settles on the record date, so the ex-dividend date **is** the record date.
 
 > **Worked example 2: who gets the dividend?**
 > A company declares a dividend of 0.80 with an ex-dividend date of Wednesday. An investor buys on Tuesday; another buys on Wednesday.
@@ -22330,7 +22334,7 @@ Derive the multiple that a **discounted cash flow model** justifies, given the c
 - **Justified P/B** = (ROE − g) / (r − g)
 
 > **Worked example 1: justified multiples**
-> A company pays out 55% of its earnings, its required return is 9%, its sustainable growth rate is 4%, and its ROE is 13%.
+> A company pays out 55% of its earnings, its required return is 9%, its expected long-term dividend growth rate is 4%, and its ROE is 13%.
 > - Justified forward P/E = 0.55 / (0.09 − 0.04) = **11.0**
 > - Justified trailing P/E = 0.55 × 1.04 / 0.05 = **11.4**
 > - Justified P/B = (0.13 − 0.04) / (0.09 − 0.04) = **1.8**
@@ -22644,7 +22648,7 @@ The stage shapes forecasts: assuming high growth for a mature industry, or stabl
 > Five firms have market shares of 40%, 30%, 15%, 10% and 5%.
 > - Four-firm concentration ratio = 40 + 30 + 15 + 10 = **95%**
 > - HHI = 40² + 30² + 15² + 10² + 5² = 1,600 + 900 + 225 + 100 + 25 = **2,850**
-> An HHI above about 2,500 is usually considered highly concentrated. The concentration ratio would not change if the leader's share rose to 55% at the expense of the fourth firm, but the HHI would rise sharply.
+> Regulators use HHI thresholds to judge concentration: US merger guidelines treated an HHI above 2,500 as highly concentrated (2010) and lowered the threshold to 1,800 in 2023. If the leader's share rose to 55% at the expense of the second firm (falling to 15%), the four-firm ratio would stay at 95%, but the HHI would rise from 2,850 to 3,600.
 
 Higher concentration often, but not always, means less price competition and higher margins. A concentrated industry can still be fiercely competitive if products are identical and capacity is high (airlines on some routes).
 
@@ -22681,7 +22685,7 @@ Industries are shaped by forces outside them. **PESTLE** organizes them:
 - GICS and ICB classify by principal business activity (mainly revenue source).
 - Cyclical vs defensive: sensitivity of earnings to the economy.
 - Life cycle: embryonic, growth, shakeout, mature, decline; match forecasts to the stage.
-- HHI = sum of squared market shares; above ~2,500 is highly concentrated; it reacts to the leader's share, unlike the N-firm ratio.
+- HHI = sum of squared market shares; regulators' "highly concentrated" thresholds (2,500 in the 2010 US guidelines, 1,800 since 2023); it reacts to shifts among the largest firms that the N-firm ratio can miss.
 - Five forces: new entrants, substitutes, buyers, suppliers, rivalry; stronger forces → lower profitability.
 - High barriers to entry and switching costs protect returns.
 - PESTLE: Political, Economic, Social, Technological, Legal, Environmental.`,
@@ -23040,7 +23044,7 @@ The **market model** relates a share's returns to the market's:
 - Ri = αi + βi × Rm + εi
 
 - **βi** (the slope) estimates beta.
-- **αi** (the intercept) is the share's return when the market's return is zero; in an efficient market, its expected value after adjusting for risk is close to zero.
+- **αi** (the intercept) is the share's return when the market's return is zero. If the CAPM holds, its expected value is Rf × (1 − βi); it is close to zero only when returns are measured in excess of the risk-free rate, and then a positive alpha means a return above what the share's risk requires.
 - **εi** (the residual) captures firm-specific returns: the diversifiable risk.
 
 ### Choices that affect the estimate
@@ -23073,7 +23077,7 @@ Features:
 > **Worked example 3: a three-factor APT**
 > Rf = 3%. Factor premiums: GDP growth surprise 4.5%, inflation surprise 1.0%, credit spread change 2.0%. A share's sensitivities: 1.2 to GDP, −0.4 to inflation, 0.8 to credit spreads.
 > - E(R) = 3% + 1.2 × 4.5% + (−0.4) × 1.0% + 0.8 × 2.0% = 3% + 5.4% − 0.4% + 1.6% = **9.6%**
-> A negative sensitivity lowers the required return: this share tends to do relatively well when inflation surprises upward, which makes it a partial hedge.
+> A negative sensitivity to a factor with a positive risk premium lowers the required return: the share's returns move against that factor, so it partly offsets (hedges) a risk for which investors demand compensation.
 
 ## 5. Multifactor models in practice
 Practitioners use three kinds:
@@ -24006,7 +24010,7 @@ How t and T are counted depends on the market:
 A higher yield means each future cash flow is discounted more heavily, so the price falls. This inverse relationship is the core of interest rate risk.
 
 ### Longer maturity, larger price changes
-For the same coupon, a longer bond's price moves more for a given change in yield, because more of its cash flows sit far in the future, where discounting bites hardest.
+For the same coupon, a longer bond's price moves more for a given change in yield, because more of its cash flows sit far in the future, where discounting bites hardest. (The rare exception is a long-dated, low-coupon bond trading at a deep discount, where a still longer maturity can slightly reduce sensitivity.)
 
 ### Lower coupon, larger percentage price changes
 For the same maturity, a lower-coupon bond's price moves more in percentage terms, because more of its value comes from the distant principal. A zero-coupon bond is the extreme case.
@@ -24153,7 +24157,7 @@ A corporate bond yields more than a government bond of the same maturity because
 - The **G-spread** is the yield over the government bond yield of the **same maturity**. When no government bond has exactly that maturity, the government yield is **interpolated** between the two nearest maturities.
 
 ### I-spread
-The **I-spread** (interpolated spread) is the yield over the **swap rate** of the same maturity, in the same currency. Swap rates are used as the benchmark by banks and by investors who fund themselves at floating rates; they include some bank credit risk, so the I-spread is usually smaller than the G-spread.
+The **I-spread** (interpolated spread) is the yield over the **swap rate** of the same maturity, in the same currency. Swap rates are used as the benchmark by banks and by investors who fund themselves at floating rates; they include some bank credit risk, so swap rates have historically been above government yields and the I-spread smaller than the G-spread. That is not guaranteed (long-dated US dollar swap spreads have been negative in recent years), so always compute each spread from its own benchmark.
 
 > **Worked example 4: G-spread and I-spread**
 > A 4-year corporate bond with a 4.8% semi-annual coupon trades at 97.10.
@@ -24249,7 +24253,7 @@ The skill tested is the same in both: understand what a quoted rate actually mea
 An FRN pays:
 - coupon rate = market reference rate (MRR) + **quoted margin**
 
-The **MRR** is a short-term benchmark rate for the currency, such as SOFR for US dollars, SONIA for sterling, or €STR and EURIBOR for euros. It is set at each **reset date** (usually every quarter or half-year), and the coupon paid at the end of the period uses the rate fixed at its start ("set in advance, paid in arrears"). The **quoted margin** (QM) is a fixed spread over the MRR, set when the note is issued to compensate investors for the issuer's credit risk at that time.
+The **MRR** is a short-term benchmark rate for the currency, such as SOFR for US dollars, SONIA for sterling, or €STR and EURIBOR for euros. It is set at each **reset date** (usually every quarter or half-year), and the coupon is paid at the end of the period. For term rates such as EURIBOR, the rate is fixed at the start of the period ("set in advance, paid in arrears"); for overnight rates such as SOFR or SONIA, the daily rates are usually compounded over the period. The simple pricing model below treats the MRR as known for each period. The **quoted margin** (QM) is a fixed spread over the MRR, set when the note is issued to compensate investors for the issuer's credit risk at that time.
 
 ### Why FRNs are stable in price
 Because the coupon follows market rates, an FRN's coupon always stays close to what investors currently require. If market rates rise, the next coupon rises too, so there is little reason for the price to fall. An FRN behaves like a short-term instrument that is rolled over at every reset: its interest rate risk is roughly that of a bond maturing at the **next reset date**.
@@ -25081,7 +25085,7 @@ Empirical duration has its own limits: it depends on the past period chosen, and
  lesson:`## 1. What credit risk is
 **Credit risk** is the risk of loss because a borrower does not pay interest or principal in full and on time. It has two faces:
 - **Default risk:** the borrower actually fails to pay, and the lender recovers only part of what is owed.
-- **Spread risk** (or credit migration risk): the market starts to see the borrower as riskier, its bonds' yield spreads widen, and their prices fall, even if the borrower never defaults.
+- **Spread risk**: the bond's yield spread widens and its price falls even though the borrower has not defaulted. It has two components: **credit migration (downgrade) risk**, when the market or the rating agencies see the borrower as riskier, and **market liquidity risk**, when the bond becomes harder or more costly to trade.
 
 For most investment-grade investors, spread risk causes far more day-to-day losses than defaults do. Defaults among highly rated companies are rare; changes in how the market prices their risk happen every day.
 
@@ -25665,7 +25669,7 @@ Built into the deal itself:
 > **Worked example 1: measuring the cushions**
 > A pool of equipment leases has a principal of 520 million and pays an average rate of 9.5%. The deal issues 500 million of securities with a weighted average coupon of 5.2%, and fees (servicing, trustee) cost 1.0% of the pool a year.
 > - Overcollateralization = 520 − 500 = **20 million**, about 3.8% of the pool
-> - Excess spread ≈ 9.5% − 5.2% − 1.0% = **3.3%** of the pool a year (roughly 17 million in the first year)
+> - Excess spread = pool interest − coupons on the securities − fees = 520 × 9.5% − 500 × 5.2% − 520 × 1.0% = 49.4 − 26.0 − 5.2 = **18.2 million** in the first year, about **3.5%** of the pool. (Subtracting the rates directly, 9.5% − 5.2% − 1.0% = 3.3%, is only an approximation: coupons are paid on 500 million while interest is earned on 520 million.)
 > Before the first tranche loses anything, annual losses must exceed the excess spread, and cumulative losses must exhaust the overcollateralization. Then subordination starts to work.
 
 ### External credit enhancement
@@ -25839,7 +25843,7 @@ Commercial loans are usually **non-recourse**: the lender can rely only on the p
 ### Call protection limits prepayment
 Unlike homeowners, commercial borrowers face strong limits on prepaying, so CMBS have much less prepayment risk:
 - At the **loan level**: **prepayment lockouts** (no prepayment for several years), **prepayment penalty points**, **yield maintenance charges** (a penalty that compensates the lender for the lost interest), and **defeasance** (the borrower replaces the loan's collateral with government bonds that produce the same cash flows).
-- At the **structure level**: the deal is tranched sequentially by credit, so senior tranches are protected.
+- At the **structure level**: CMBS tranches are sequential-pay by credit rating. A lower-rated tranche cannot receive principal until the tranches above it are fully retired, and losses from defaults are charged first to the lowest-rated tranche. Together these protect the senior tranches against both early repayment and losses.
 
 ### Balloon risk
 Many commercial loans are not fully amortizing: they end with a large **balloon payment** that the borrower must refinance. If credit markets are tight or the property has lost value when the loan matures, the borrower may be unable to refinance. The loan then goes into default or is extended, so the security's life is extended. This **balloon risk** is a form of extension risk specific to CMBS.
@@ -26754,7 +26758,7 @@ An option's price has two components:
   - Put: max(0, X − S)
 - **Time value**: everything above the exercise value. Option price = exercise value + time value.
 
-Time value exists because, before expiration, the underlying may still move in the holder's favour, while the holder's loss is limited. It is always positive before expiration (with rare exceptions for deep in-the-money European puts) and falls to **zero at expiration**. The decline of time value as expiration approaches is called **time decay**.
+Time value exists because, before expiration, the underlying may still move in the holder's favour, while the holder's loss is limited. It is normally positive before expiration (exceptions: deep in-the-money European puts, and deep in-the-money European calls on assets paying large income, can have negative time value) and falls to **zero at expiration**. The decline of time value as expiration approaches is called **time decay**.
 
 > **Worked example 1: splitting the premium**
 > A share trades at 64. A call with a strike of 60 and three months to expiration costs 7.30.
@@ -27368,7 +27372,7 @@ A **management buyout (MBO)** is led by the company's existing managers; a **man
 > A fund buys a company for 1,000, funded with 600 of debt and 400 of equity. Over five years the company's cash flow pays down 250 of debt (to 350), and the fund sells the company for 1,300.
 > - Equity value at exit = 1,300 − 350 = 950
 > - Multiple on equity = 950 / 400 = **2.38×**; IRR = 2.375^(1/5) − 1 = **18.9%** a year
-> - Without debt, the fund would have paid 1,000 and received 1,300 plus the 250 of cash: 1,550 / 1,000 = 1.55×, an IRR of **9.2%**.
+> - Without debt, the fund would have paid 1,000 and received 1,300 plus the 250 of cash: 1,550 / 1,000 = 1.55×, an IRR of **9.2%** (simplified: interest on the debt is ignored; with interest included, the unlevered owner would also keep the cash spent on interest, so the gap between the two returns would be smaller).
 > Leverage roughly doubled the annual return. It would also have magnified losses: if the company had sold for 700, the equity would have been worth only 350, below the 400 invested.
 
 ### Venture capital (VC)
@@ -27695,7 +27699,7 @@ Commodity returns have shown **low correlation** with stocks and bonds over long
 - **No income** for commodities themselves: returns depend on price changes, roll returns and collateral returns.
 - **Event risks:** weather, wars, policy changes.
 
-Land and timber have **lower reported volatility**, partly because of appraisal-based valuation, and provide income; commodities are more volatile but liquid through futures.
+Timberland and farmland have **lower reported volatility**, partly because of appraisal-based valuation, and provide income (raw land does not); commodities are more volatile but liquid through futures.
 
 ## Checklist before you answer
 - Raw land: no income, option value for future use. Timberland: biological growth and harvest flexibility. Farmland: crop income, less flexibility.
@@ -28221,7 +28225,7 @@ A manager who earns a high return by taking more risk has not necessarily shown 
 
 - **Sharpe ratio** = (Rp − Rf) / σp: excess return per unit of **total** risk.
 - **Treynor ratio** = (Rp − Rf) / βp: excess return per unit of **systematic** risk.
-- **M² (Modigliani-squared)** = (Rp − Rf) × (σm / σp) − (Rm − Rf): the portfolio's excess return if it were scaled to the **market's total risk**, minus the market's excess return. Expressed in percentage points, so easy to interpret; it ranks portfolios the same way as the Sharpe ratio.
+- **M² (Modigliani-squared)** = (Rp − Rf) × (σm / σp) − (Rm − Rf): the portfolio's excess return if it were scaled to the **market's total risk**, minus the market's excess return. Expressed in percentage points, so easy to interpret; it ranks portfolios the same way as the Sharpe ratio. Some sources state M² as a return level, Rf + (Rp − Rf) × σm / σp, and compare it with Rm; the difference between the two is the figure above.
 - **Jensen's alpha** = Rp − [Rf + βp × (Rm − Rf)]: the return above what the CAPM predicts for the portfolio's beta.
 
 > **Worked example 4: judging a manager**
@@ -28308,10 +28312,9 @@ Portfolio management is a continuous process in three steps.
 ### Planning
 - **Understand the client:** objectives, risk tolerance, constraints, circumstances.
 - Write an **investment policy statement (IPS)**: the written plan that records objectives and constraints and guides all later decisions (next module).
-- Form **capital market expectations**: forecasts of returns, risks and correlations for asset classes.
 
 ### Execution
-- **Asset allocation:** decide how to divide the portfolio among asset classes (the most important decision for long-run results).
+- **Asset allocation:** based on **capital market expectations** (forecasts of returns, risks and correlations for asset classes), decide how to divide the portfolio among asset classes (the most important decision for long-run results).
 - **Security analysis:** evaluate individual securities within each asset class.
 - **Portfolio construction:** select securities and weights, and **implement** through trading at low cost.
 
