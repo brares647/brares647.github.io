@@ -30049,7 +30049,7 @@ Once you handle the basic walk-throughs, interviewers move to items where accoun
 - In a DCF, you can model lower taxes in early years, or value the losses separately.
 
 ## 5. Goodwill and impairment
-- **Goodwill** arises in an acquisition: purchase price minus the fair value of the identifiable net assets acquired. It is not amortized under IFRS or US GAAP; it is tested for **impairment** at least yearly.
+- **Goodwill** arises in an acquisition: purchase price minus the fair value of the identifiable net assets acquired. It is not amortized under IFRS or US GAAP (US private companies may elect to amortize it); it is tested for **impairment** at least yearly.
 - **Impairment:** a non-cash expense that reduces net income and goodwill. On the cash flow statement it is added back. It is usually not tax-deductible, so (unlike depreciation) there is often no tax saving: interviewers like that twist.
 - **Valuation:** impairments signal that the company overpaid for a past deal. Analysts usually exclude them from "adjusted" earnings but should remember what they say about management.
 
@@ -30122,7 +30122,7 @@ EV/net income or P/EBITDA mix the two and are wrong. Classic follow-up: "Why can
 
 ## 6. Questions on how EV changes
 - **"The company raises $100 of debt and keeps the cash. What happens to EV?"** Nothing: debt +100, cash +100.
-- **"It then spends the cash on a machine?"** Still nothing in theory: cash falls, but the business now owns an operating asset worth (in principle) what it paid.
+- **"It then spends the cash on a machine?"** EV rises by 100: cash (a non-operating asset, subtracted in the bridge) falls by 100, equity value is unchanged in theory (the machine is worth what was paid), so net debt and EV both rise by 100. The operations now include the machine, which EV measures.
 - **"It issues $100 of shares?"** Equity value +100, cash +100, EV unchanged.
 - **"It pays a $50 dividend?"** Equity value −50 (in theory the price falls), cash −50, EV unchanged.
 
@@ -30275,7 +30275,7 @@ The time value of money in Quantitative Methods, free cash flow and the Gordon g
 - Poor fit for banks, insurers and companies with no visible cash flow.`,
  traps:[
   "Forgetting to discount the terminal value (it is a value at the end of the forecast, not today).",
-  "Using next year's FCF without growing it in the Gordon formula: the numerator is FCF × (1 + g).",
+  "Using the final forecast year's FCF without growing it in the Gordon formula: the numerator is FCF(n) × (1 + g), the cash flow of the first year after the forecast.",
   "Subtracting net debt to get EV: you subtract it from EV to get equity value.",
   "Presenting a single DCF value without a range."
  ],
@@ -30370,7 +30370,7 @@ From the DCF lesson: final-year FCF 130, WACC 9%, g 2.5%, TV = 2,050. Suppose ye
 Both checks are a few seconds of arithmetic and show you understand what each method assumes.
 
 ## 4. Choosing g
-- **Long-term growth should not exceed the long-run nominal growth of the economy** (roughly inflation plus real growth; 2–3% in developed markets). A company growing faster than the economy forever would eventually become the economy.
+- **Long-term growth should not exceed the long-run nominal growth of the economy** (roughly inflation plus real growth; a common convention is 2–3% in developed markets, not a rule). A company growing faster than the economy forever would eventually become the economy.
 - Use the growth rate in the currency of the cash flows: a leu model can justify higher nominal growth than a euro model because of higher inflation, but then the WACC is higher too.
 - **Growth must be paid for.** Higher growth needs reinvestment: in the final year, capex and working capital should be consistent with the growth you assume. A useful link: reinvestment rate = g / return on new invested capital.
 
@@ -30413,12 +30413,12 @@ If the business is still growing fast in year 5, extend the forecast, or add a s
 /* Books worth reading (Learn, under "Beyond the curriculum"): from a Nov 2026 review of reading lists for first
    finance jobs (career sites, Wall Street Oasis, university career services); order = usefulness for interviews. */
 CFA_DATA.reading = [
- {title:"Investment Banking: Valuation, LBOs, M&A and IPOs", author:"Joshua Rosenbaum and Joshua Pearl", why:"Comparables, precedent transactions, DCF and LBO step by step: the technical questions of banking and valuation interviews. The most often recommended title.", role:"Investment banking, equity research, private equity", overlap:"Partial: Level I covers multiples and DCF basics, not LBOs or M&A"},
+ {title:"Investment Banking: Valuation, LBOs, M&A, and IPOs", author:"Joshua Rosenbaum and Joshua Pearl", why:"Comparables, precedent transactions, DCF and LBO step by step: the technical questions of banking and valuation interviews. The most often recommended title.", role:"Investment banking, equity research, private equity", overlap:"Partial: Level I covers multiples and DCF basics, not LBOs or M&A"},
  {title:"The Little Book of Valuation (or Investment Valuation)", author:"Aswath Damodaran", why:"The reasoning behind DCF, cost of capital and multiples, so you can explain a valuation, not just compute it. The Little Book is the short version.", role:"Equity research, asset management, banking", overlap:"Partial: Equity Investments and Corporate Issuers; deeper at Level II"},
  {title:"Best Practices for Equity Research Analysts", author:"James Valentine", why:"What the equity research job actually involves: models, forecasts, writing notes, talking to management.", role:"Equity research", overlap:"Almost none: practice, not theory"},
- {title:"Financial Shenanigans", author:"Howard Schilit and Jeremy Perler", why:"How companies flatter their accounts and how to spot it: a strong topic for research and credit interviews.", role:"Equity research, credit, risk", overlap:"Partial: Financial Reporting Quality (FSA)"},
+ {title:"Financial Shenanigans", author:"Howard M. Schilit, Jeremy Perler and Yoni Engelhart", why:"How companies flatter their accounts and how to spot it: a strong topic for research and credit interviews.", role:"Equity research, credit, risk", overlap:"Partial: Financial Reporting Quality (FSA)"},
  {title:"Options, Futures, and Other Derivatives / Risk Management and Financial Institutions", author:"John Hull", why:"The standard reference for derivatives and financial risk, also used for the FRM.", role:"Risk", overlap:"Partial: Level I Derivatives is an introduction"},
- {title:"Valuation: Measuring and Managing the Value of Companies", author:"McKinsey & Company (Koller and others)", why:"The professional reference on value creation and ROIC. Use it as a reference, not cover to cover.", role:"Equity research, corporate finance", overlap:"Small at Level I"},
+ {title:"Valuation: Measuring and Managing the Value of Companies", author:"McKinsey & Company (Tim Koller, Marc Goedhart and David Wessels)", why:"The professional reference on value creation and ROIC. Use it as a reference, not cover to cover.", role:"Equity research, corporate finance", overlap:"Small at Level I"},
  {title:"Liar's Poker (or Barbarians at the Gate)", author:"Michael Lewis (Burrough and Helyar)", why:"Industry culture and history; useful small talk in interviews, nothing technical.", role:"All", overlap:"None"},
  {title:"The Intelligent Investor", author:"Benjamin Graham", why:"The value-investing mindset and margin of safety. Often recommended, but it will not help in a technical interview.", role:"Asset management, personal investing", overlap:"Small"}
 ];
@@ -30550,10 +30550,10 @@ Target: EBITDA 200, net debt 400, diluted shares 50m.
 
 > **Trading comps** 9.0x–11.5x → EV 1,800–2,300 → equity 1,400–1,900 → **$28–$38** per share.
 > **Precedent transactions** 12.0x–13.0x → EV 2,400–2,600 → equity 2,000–2,200 → **$40–$44**.
-> **DCF** (WACC 9–10%, growth 2–3%), suppose it gives **$26–$31**.
+> **DCF** (WACC 9–10%, growth 2–3%, from the sensitivity table in the DCF lesson) → **$21–$30**.
 > **52-week share price range:** $24–$33.
 
-Drawn as bars, the picture is clear: the market price and DCF overlap around $26–$31; trading comps reach higher, to $38; a takeover price would be in the low $40s.
+Drawn as bars, the picture is clear: the market price and DCF overlap around $24–$30; trading comps reach higher, to $38; a takeover price would be in the low $40s.
 
 ## 3. How to read it
 - **Where methods overlap** is the most defensible range.
@@ -30622,7 +30622,7 @@ Every LBO starts with a table showing where the money comes from and where it go
 
 ## 5. Returns: IRR and multiple of money
 - **Multiple of money (MoM or MOIC)** = equity received at exit / equity invested.
-- **IRR** = the annual return that makes the investment's cash flows worth zero; with one investment and one exit, IRR = MoM^(1/years) − 1.
+- **IRR** = the annual discount rate at which the net present value of the investment's cash flows (money in and money out) is zero; with one investment and one exit, IRR = MoM^(1/years) − 1.
 - Funds typically aim for IRRs of 20% or more and 2–3x money; actual targets vary by fund and market.
 
 Rules of thumb to know by heart (from MoM^(1/years) − 1):
@@ -30810,7 +30810,7 @@ A **private equity (PE) firm** raises money from investors into a **fund**, uses
 The "2 and 20" figures are conventions, not rules; large funds and big LPs negotiate them.
 
 ## 4. Measuring performance
-- **IRR:** the time-weighted return on the cash flows. Sensitive to timing: returning money early lifts IRR.
+- **IRR:** the money-weighted return on the fund's actual cash flows (calls and distributions), the discount rate that makes their NPV zero. Sensitive to timing: returning money early lifts IRR.
 - **TVPI** (total value to paid-in) = (distributions + remaining value) / capital paid in. The "multiple".
 - **DPI** (distributions to paid-in) = cash actually returned / paid in. LPs watch DPI closely because remaining value is an estimate.
 - **J-curve:** in the early years, fees and the cost of new deals make returns negative; they turn positive as companies are improved and sold. Plotted over time, that looks like a J.
@@ -30819,7 +30819,7 @@ The "2 and 20" figures are conventions, not rules; large funds and big LPs negot
 ## 5. Types of private capital
 - **Buyout:** control of mature companies, with leverage. The core of "PE" in interviews.
 - **Growth equity:** minority stakes in growing, profitable companies, little debt.
-- **Venture capital:** early-stage companies, no debt, many failures and a few big winners.
+- **Venture capital:** early-stage companies, little or no debt, many failures and a few big winners.
 - **Private credit:** lending to companies, often to PE-owned ones. A fast-growing part of the industry.
 - **Secondaries:** buying LP stakes or portfolios from other investors, often at a discount.
 - **Infrastructure and real estate:** long-lived assets, often with stable, contracted cash flows.
@@ -30905,7 +30905,7 @@ In an LBO the debt is often half or more of the price, so its cost, terms and re
 - **Term Loan A:** senior secured bank loan that amortizes (is repaid in instalments) over about five to seven years.
 - **Term Loan B:** senior secured, sold to institutional investors, little amortization (often 1% a year) and a bullet at maturity.
 - **Unitranche:** one blended loan from a private credit fund replacing senior and junior layers. Common in European mid-market deals: simpler and faster, at a higher rate.
-- **High-yield bonds / second-lien:** junior, higher coupon, usually non-amortizing.
+- **High-yield bonds / second-lien loans:** higher coupon, usually non-amortizing. Second-lien loans rank behind the first-lien loans; high-yield bonds can be secured or unsecured, and usually rank behind or alongside the senior loans.
 - **Mezzanine and PIK notes:** subordinated, highest rate. **PIK** (payment in kind) interest is not paid in cash but added to the principal, so it saves cash now and compounds.
 - **Sponsor equity** sits at the bottom.
 
@@ -30913,7 +30913,7 @@ Floating-rate loans pay a base rate (such as EURIBOR or SOFR) plus a **margin**;
 
 ## 3. Metrics lenders use
 - **Leverage:** total debt / EBITDA (and senior debt / EBITDA). Typical buyouts sit in a range of about 4–6x, depending on the market and the business.
-- **Interest coverage:** EBITDA / interest (or EBITDA − capex / interest). Below about 2x is tight.
+- **Interest coverage:** EBITDA / interest (or (EBITDA − capex) / interest). Below about 2x is tight.
 - **Fixed charge coverage** and **FCF / debt** (how fast the company can repay).
 
 These ranges are market practice, not rules, and they move with credit conditions.
@@ -31032,7 +31032,7 @@ Fact pattern widely reported since 2022: higher interest rates raised debt costs
 - **"Which lever would you pull first in this company?"** Usually pricing or working capital: fast, cheap, measurable.
 - **"Is multiple expansion value creation?"** Partly, if the company really became better (bigger, more diversified, higher quality earnings); otherwise it is market timing.
 - **"Why do funds like buy-and-build?"** Multiple arbitrage and scale, but the integration has to be done well.`,
- ideas:`**Equity gain = EBITDA growth × multiple + multiple change × exit EBITDA + debt paydown − fees.**
+ ideas:`**Equity gain = EBITDA growth × entry multiple + multiple change × exit EBITDA + debt paydown − fees.**
 
 - Operational levers: pricing, volume, costs, working capital, capex, management and reporting.
 - Buy-and-build: platform at a higher multiple, bolt-ons cheaper, group sold at the platform multiple (multiple arbitrage).
@@ -31209,7 +31209,7 @@ Solve it yourself first, on paper or in Excel, in about 45 minutes. Write your a
 > **Year 4:** revenue 108.8; EBITDA 16.3; FCF **6.6**; debt 39.9.
 > **Year 5:** revenue 117.5; EBITDA 17.6; FCF **8.0**; debt **31.9**.
 
-Notice how little cash is left for debt in year 1 (3.5 on EBITDA of 13.0): interest at 9% on 5.0x leverage takes 40% of EBITDA. Leverage falls only from 5.0x to 1.8x over five years (31.9 / 17.6) because growth drives most of the deleveraging.
+Notice how little cash is left for debt in year 1 (3.5 on EBITDA of 13.0): interest at 9% on 5.0x leverage takes over 40% of EBITDA (5.4 / 13.0). Leverage still falls from 5.0x to 1.8x over five years (31.9 / 17.6), about half from EBITDA growth (60 / 17.6 would already be 3.4x) and half from repaying debt.
 
 ## 4. Returns
 
@@ -31232,7 +31232,7 @@ Two thirds of the gain comes from growth: the case depends on the 8% growth hold
 
 ## 8. Recommendation
 
-> "Bid around 9.5x, not 10.0x: at the asking price the base case gives 18.3%, below our 20% target, and it relies heavily on 8% growth. The business fits an LBO (non-cyclical, low capex), but interest takes 40% of EBITDA in year 1, so I would also test less leverage or a cheaper unitranche. Diligence priorities: customer concentration with the top retailers, the brand vs private label mix of margins, and input-cost pass-through in contracts."`,
+> "Bid around 9.5x, not 10.0x: at the asking price the base case gives 18.3%, below our 20% target, and it relies heavily on 8% growth. The business fits an LBO (non-cyclical, low capex), but interest takes over 40% of EBITDA in year 1, so I would also test less leverage or a cheaper debt structure. Diligence priorities: customer concentration with the top retailers, the brand vs private label mix of margins, and input-cost pass-through in contracts."`,
 
  ideas:`**Solve before you open the solution: qualitative view, sources and uses, five-year debt paydown, returns, attribution, maximum price, sensitivity, recommendation.**
 
@@ -31284,7 +31284,7 @@ These thresholds are industry conventions used in wealth reports, not legal defi
 The key business metrics are **assets under management (AuM)**, **net new money (NNM)** and **return on assets (RoA)**: revenue / average AuM, usually expressed in basis points.
 
 ## 5. Three ways of working with a client
-- **Execution-only:** the client decides; the bank executes. No advice.
+- **Execution-only:** the client decides; the bank executes. No advice (for complex products the bank must still run an appropriateness test, lesson 2).
 - **Advisory:** the bank recommends; the client decides each trade. The bank must check suitability each time.
 - **Discretionary:** the client signs a mandate (for example "balanced, max 50% equities") and the portfolio manager decides within it.
 
@@ -31312,7 +31312,7 @@ Interviewers look for: understanding of markets and products, **communication** 
 Everything in private wealth starts with understanding the client. CFA Level I introduces the **investment policy statement (IPS)** and risk tolerance in Portfolio Management; here is how it looks in a real client file.
 
 ## 2. KYC and AML first
-Before any advice, the bank must identify the client and understand the **source of wealth** (how the fortune was built: a business sale, inheritance, salary) and **source of funds** (where the money being deposited comes from). This is **KYC** (know your customer) and **AML** (anti-money laundering). Red flags: unclear origin of money, complex structures without a reason, **politically exposed persons (PEPs)**, high-risk jurisdictions. A good RM treats KYC as part of the relationship, not paperwork.
+Before any advice, the bank must identify the client and understand the **source of wealth** (how the fortune was built: a business sale, inheritance, salary) and **source of funds** (where the money being deposited comes from). This is **KYC** (know your customer) and **AML** (anti-money laundering). Some clients are higher risk by definition and need **enhanced due diligence (EDD)**: **politically exposed persons (PEPs)** and clients linked to high-risk jurisdictions. Being a PEP is not wrongdoing; it means more checks and senior approval. Red flags are different: unclear origin of money, complex structures without a reason, transactions that do not fit the client's profile. A good RM treats KYC as part of the relationship, not paperwork.
 
 ## 3. Suitability under MiFID II (EU)
 For advice and discretionary management, EU rules (MiFID II) require the firm to assess:
@@ -31320,7 +31320,7 @@ For advice and discretionary management, EU rules (MiFID II) require the firm to
 - **Financial situation**, including the ability to bear losses.
 - **Investment objectives**, including risk tolerance and time horizon (and, since 2022, **sustainability preferences**).
 
-The recommendation must be **suitable** given all three, documented in a **suitability report**. Separately, **product governance** rules define a **target market** for each product. For execution-only services on complex products, an **appropriateness** test (knowledge and experience only) applies.
+The recommendation must be **suitable** given all three; for advice to retail clients it is documented in a **suitability report** given before the trade. Separately, **product governance** rules require the maker and the distributor of each product to define its **target market**. For non-advised services (for example an online trading account), an **appropriateness** test applies: knowledge and experience only. If the product looks inappropriate, the firm warns the client but may still execute. Only non-complex products (such as shares or UCITS funds) bought on the client's own initiative can skip it.
 
 ## 4. Risk profile: ability vs willingness
 - **Ability to take risk:** objective. Wealth relative to needs, time horizon, income stability, liquidity needs.
@@ -31340,7 +31340,8 @@ Many private banks split wealth into **buckets**: liquidity (one to three years 
 "How would you assess a new client?" KYC and source of wealth; goals; ability and willingness to take risk; constraints (TTLLU); knowledge and experience; then a documented recommendation. Mention suitability and the client's best interest: it shows you know this is a regulated, fiduciary-like role.`,
  ideas:`**Start with KYC and AML (source of wealth and funds), then suitability: knowledge and experience, financial situation, objectives.**
 
-- MiFID II suitability for advice and discretionary; appropriateness for execution-only complex products; product governance defines target markets.
+- MiFID II suitability for advice and discretionary; appropriateness (knowledge and experience) for non-advised services, waived only for non-complex products at the client's initiative; product governance defines target markets.
+- PEPs and high-risk jurisdictions mean enhanced due diligence, not automatic refusal.
 - Risk profile = ability (objective) and willingness (subjective); the lower one usually governs.
 - IPS constraints: time horizon, taxes, liquidity, legal, unique circumstances.
 - Example: €8m, €200k spending → 2.5% withdrawal; high ability, moderate willingness → balanced.
@@ -31377,8 +31378,9 @@ These are typical shapes, not standards. The **strategic asset allocation (SAA)*
 
 ## 4. A withdrawal check
 
-> Portfolio €8m, spending €200k a year, so 2.5% a year. If the portfolio is expected to earn 5% a year before inflation of 2.5%, the real expected return is about 2.5%, roughly equal to the spending rate.
-> Conclusion: the capital is expected to keep its real value on average, but a bad decade could reduce it. A higher equity share raises expected return and the range of outcomes; the liquidity bucket protects spending during falls.
+> Portfolio €8m, spending €200k a year, so 2.5% a year. If the portfolio is expected to earn 5% a year before inflation of 2.5%, the real expected return is about 2.4% (1.05 / 1.025 − 1), roughly equal to the spending rate.
+> But that is before fees and taxes: with total costs of about 1% a year, the real net return falls to about 1.5% (1.04 / 1.025 − 1), below the 2.5% spending.
+> Conclusion: before costs the capital roughly keeps its real value; after costs it slowly shrinks in real terms, and a bad decade could reduce it more. A higher equity share raises expected return and the range of outcomes; the liquidity bucket protects spending during falls.
 
 Withdrawal rates of about 3–4% a year are widely used as a starting point for long horizons; they are rules of thumb from historical studies, not guarantees.
 
@@ -31394,13 +31396,13 @@ Wealthy clients are not more rational than others. Common biases (CFA Level I Be
 
 - Typical profiles: conservative (~20–30% equities), balanced (~50%), growth (~70–80%).
 - Wealthy-client specifics: after-tax returns, concentration, private markets (often 10–30%+ for UHNW), currencies, Lombard lending, ESG.
-- Withdrawal check: €200k on €8m = 2.5%; compare with expected real return.
+- Withdrawal check: €200k on €8m = 2.5%; compare with expected real return after fees and taxes.
 - Rebalance within bands; explain it before markets fall.
 - Behaviour coaching is a core part of the value.`,
  traps:[
   "Answering 'how would you invest X' with products before asking about the client.",
   "Ignoring illiquidity and capital calls of private markets.",
-  "Comparing withdrawal rates with nominal instead of real returns.",
+  "Comparing withdrawal rates with nominal or gross-of-fee returns instead of real returns after costs.",
   "Treating tactical calls as the main source of value."
  ],
  read:[
@@ -31409,36 +31411,39 @@ Wealthy clients are not more rational than others. Common biases (CFA Level I Be
 
 {name:"Products: funds, bonds, structured products and Lombard loans",
  lesson:`## 1. The toolkit
-A private banker should explain each product in two sentences: **what it does, what can go wrong, and what it costs**. Interviewers often hand you a product and ask exactly that.
+A private banker should explain each product in a few plain sentences: **what it does, what can go wrong, and what it costs**. Interviewers often hand you a product and ask exactly that.
 
 ## 2. Funds
-- **Mutual funds / UCITS funds:** diversified, regulated, daily liquidity. Active funds charge more; check performance net of fees against a benchmark.
+- **Mutual funds / UCITS funds:** diversified, regulated, usually daily liquidity. Active funds charge more; check performance net of fees against a benchmark.
 - **ETFs:** low-cost index exposure, traded on exchange. Useful as the core of a portfolio (core-satellite).
 - **Alternative funds:** hedge funds, private equity and private credit funds: higher minimums, lower liquidity, often only for professional or eligible investors.
 
 ## 3. Bonds
 - Government and investment-grade corporate bonds for stability and income; high yield for extra return with credit risk.
-- Key risks: **interest rate risk** (duration), **credit risk**, **liquidity**, and **currency** for bonds in a foreign currency. CFA Level I Fixed Income gives you all the tools; in client language, duration is "how much the price falls if rates rise by one point".
+- Key risks: **interest rate risk** (duration), **credit risk**, **liquidity**, and **currency** for bonds in a foreign currency. CFA Level I Fixed Income gives you all the tools; in client language, duration is "roughly how many percent the price falls if yields rise by one percentage point" (duration 6 → about −6%).
 
 ## 4. Structured products
 A note issued by a bank combining a bond-like part with an option, to give a tailored payoff.
-- **Capital-protected note:** at maturity you get back at least 100% (or 90%), plus part of an index's rise. Paid for by giving up interest and part of the upside.
-- **Reverse convertible:** pays a high coupon, but if a stock falls below a barrier you receive the shares (worth less) instead of your money back. You are effectively **selling a put**.
-- **Autocallable:** redeems early with a coupon if the underlying is above a level on observation dates; risky if it falls below a barrier.
+- **Capital-protected note:** at maturity you get back at least 100% (or 90%), plus part of an index's rise. Paid for by giving up interest and part of the upside. The protection holds only at maturity and only if the issuer does not fail; sold early, the price can be lower.
+- **Reverse convertible:** pays a high coupon, but if a stock falls below a barrier you receive the shares (worth less) instead of your money back. You are effectively **selling a put** (with a barrier, a put that only "switches on" below the barrier).
+- **Autocallable:** redeems early with a coupon if the underlying is at or above a set level on an observation date; if it never is and ends below the barrier at maturity, you take the loss as in a reverse convertible.
 
-> **Example (reverse convertible):** €100,000, one year, coupon 8%, on a stock at €50 with a barrier at 70% (€35).
-> If the stock ends at €45 (above the barrier): you get €100,000 + €8,000 = **€108,000**.
+> **Example (barrier reverse convertible):** €100,000, one year, coupon 8%, on a stock at €50 (the strike) with a barrier at 70% (€35), checked only at maturity.
+> If the stock ends at €45 (below the strike but above the barrier): you get €100,000 + €8,000 = **€108,000**.
 > If it ends at €30 (barrier breached): you get 100,000 / 50 = **2,000 shares** worth €60,000, plus the €8,000 coupon = **€68,000**: a 32% loss.
 
-Risks to explain: **issuer credit risk** (the bank that issued it can fail), complexity, embedded fees, limited liquidity before maturity. Suitability checks are strict for these products.
+Some notes check the barrier every day instead: then one touch of €35 during the year is enough to receive shares at maturity if the stock ends below €50.
+
+Risks to explain: **issuer credit risk** (the bank that issued it can fail), complexity, embedded fees, limited liquidity before maturity. These are complex products: suitability or appropriateness checks apply, and EU retail clients must receive a **key information document (KID)** under the PRIIPs rules.
 
 ## 5. Lombard loans
-A loan secured by the client's portfolio. The bank lends a percentage of each asset's value (the **loan-to-value**, for example around 70% on investment-grade bonds, 50–60% on large-cap equities, less on concentrated or illiquid positions).
+A loan secured by the client's portfolio. The bank lends a percentage of each asset's value (the **loan-to-value** or lending value; typical levels, which vary by bank: around 70–80% on investment-grade bonds, 50–60% on large-cap equities, less or nothing on concentrated, volatile or illiquid positions).
 
 > **Example:** portfolio €2m, average lending value 60% → credit line up to €1.2m. Client draws €600k to buy a property, avoiding selling investments.
-> If the portfolio falls 25% to €1.5m, lending value becomes €900k: still above €600k. A fall large enough to push lending value below the loan triggers a **margin call**: add collateral, repay, or the bank sells assets.
+> If the portfolio falls 25% to €1.5m, lending value becomes €900k: still above €600k.
+> The lending value equals the loan when the portfolio is 600,000 / 0.6 = €1m, a **50%** fall. Below that comes a **margin call**: add collateral, repay, or the bank sells assets (in practice banks often warn earlier, with a buffer).
 
-Uses: bridge financing, tax-efficient liquidity, avoiding forced sales. Risk: leverage on a falling portfolio.
+Uses: bridge financing, liquidity without selling investments (and without realising gains), avoiding forced sales. Risk: leverage on a falling portfolio.
 
 ## 6. Costs
 Total cost = mandate or advisory fee + product costs (fund fees, structuring margins) + transaction costs. EU rules require **ex-ante and ex-post cost disclosure** in money and percentage. A client should always know what they pay in total.
@@ -31451,7 +31456,7 @@ Total cost = mandate or advisory fee + product costs (fund fees, structuring mar
 - Bonds: rate risk (duration), credit, liquidity, currency.
 - Structured products: bond plus option; reverse convertible = selling a put; autocallables; issuer credit risk.
 - Reverse convertible example: barrier breached at €30 → 2,000 shares worth €60k + €8k coupon = €68k.
-- Lombard loan: credit line against a portfolio at a loan-to-value; margin call if lending value falls below the loan.
+- Lombard loan: credit line against a portfolio at a loan-to-value; margin call if lending value falls below the loan (€600k drawn at 60% → portfolio can fall 50%, to €1m).
 - Cost disclosure in money and %, ex-ante and ex-post.`,
  traps:[
   "Forgetting the issuer's credit risk in a structured product.",
@@ -31460,8 +31465,7 @@ Total cost = mandate or advisory fee + product costs (fund fees, structuring mar
   "Quoting only the mandate fee instead of the total cost."
  ],
  read:[
-  ["i:terms/b/bond-valuation.asp","Bond valuation",""],
-  ["i:terms/c/capm.asp","Capital asset pricing model",""]
+  ["i:terms/b/bond-valuation.asp","Bond valuation",""]
  ]},
 
 {name:"Concentrated wealth and succession",
@@ -31474,7 +31478,7 @@ Examples: a founder with most of her wealth in her listed company's shares; an e
 Risks: a single company can lose most of its value; the owner's income, job and wealth all depend on it.
 
 Ways to reduce concentration:
-- **Staged selling:** a plan to sell a fixed amount each quarter, sometimes through a pre-set trading plan (helpful for insiders subject to market-abuse rules).
+- **Staged selling:** a plan to sell a fixed amount each quarter, sometimes through a pre-set trading plan agreed with the company and a broker (it helps insiders show trades were planned in advance; they must still respect market-abuse rules such as closed periods before results).
 - **Hedging:** buying puts, or a **collar** (buy a put, sell a call to pay for it), which limits losses for a period while keeping ownership.
 - **Exchange funds** (in some markets): pooling concentrated stocks with other holders to get a diversified share.
 - **Borrowing against the position** (Lombard or margin loan) to diversify without selling, at the cost of leverage.
@@ -31564,7 +31568,7 @@ Say these answers aloud. A two-minute "first meeting" and a two-minute "explaini
   "Hesitating on an ethics question instead of refusing and escalating."
  ],
  read:[
-  ["i:terms/s/softdollars.asp","Soft dollars (a classic ethics topic)",""]
+
  ]}
 ]);
 /* Interview drill (Learn, "Beyond the curriculum"): interview questions with model answers, practised as cards
@@ -31578,7 +31582,7 @@ CFA_DATA.drill = [
  ["AV04","Accounting & valuation","How can a profitable company run out of cash?","Growth ties up cash in receivables and inventory before customers pay, and heavy capex uses cash that does not appear as an expense. Profit is an accrual figure; cash depends on timing."],
  ["AV05","Accounting & valuation","A company buys $100 of inventory with cash. What happens?","No income statement effect until it is sold. Operating cash flow −100 (increase in inventory). Balance sheet: cash −100, inventory +100; totals unchanged."],
  ["AV06","Accounting & valuation","A $50 goodwill impairment: effect on the statements?","Net income falls by 50 (usually no tax saving, since goodwill impairment is generally not deductible). It is added back on the cash flow statement, so cash is unchanged. Goodwill −50, retained earnings −50."],
- ["AV07","Accounting & valuation","How is stock-based compensation treated, and is it a real cost?","It is an expense on the income statement, added back as non-cash on the cash flow statement, and raises equity. It is a real cost to shareholders through dilution: either treat it as a cash-like expense in free cash flow or count the extra shares, not neither."],
+ ["AV07","Accounting & valuation","How is stock-based compensation treated, and is it a real cost?","It is an expense on the income statement, added back as non-cash on the cash flow statement, and the same amount is credited to equity (paid-in capital), offsetting the lower retained earnings. It is a real cost to shareholders through dilution: either treat it as a cash-like expense in free cash flow or count the extra shares, not neither."],
  ["AV08","Accounting & valuation","What is the difference between enterprise value and equity value?","Equity value is the shareholders' claim: share price × diluted shares. Enterprise value is the value of the operations to all capital providers: equity value + debt + preferred + non-controlling interest − cash."],
  ["AV09","Accounting & valuation","Why do we subtract cash to get enterprise value?","Cash is not needed to run the operations and a buyer effectively gets it back, so EV measures only the operating business."],
  ["AV10","Accounting & valuation","A company raises $100 of debt and holds the cash. What happens to EV and equity value?","Nothing to either: debt +100 and cash +100 offset in EV, and equity value is unchanged because no value was created."],
@@ -31590,15 +31594,15 @@ CFA_DATA.drill = [
  ["AV16","Accounting & valuation","How do you calculate WACC?","E/(D+E) × cost of equity + D/(D+E) × pre-tax cost of debt × (1 − tax rate), using market-value (target) weights. Cost of equity usually from CAPM: risk-free + beta × equity risk premium."],
  ["AV17","Accounting & valuation","Why unlever and relever beta?","Peer betas include each peer's leverage. Unlever them to remove financing risk, average the asset betas, then relever at the target's capital structure."],
  ["AV18","Accounting & valuation","Gordon growth vs exit multiple for terminal value?","Gordon: final FCF × (1 + g) / (WACC − g), assumes growth forever. Exit multiple: final EBITDA × a peer multiple, assumes a sale. Compute one and check the multiple or growth rate it implies."],
- ["AV19","Accounting & valuation","How do you choose the terminal growth rate?","At or below long-run nominal economic growth (about 2–3% in developed markets), consistent with final-year reinvestment, and check the implied exit multiple against peers."],
- ["AV20","Accounting & valuation","Which moves a DCF more: 1% lower WACC or 10% higher revenue?","Usually the discount rate, because it acts on the terminal value, which is most of EV; one point of WACC can move value by around 20%. Confirm with a sensitivity table."],
- ["AV21","Accounting & valuation","When is a DCF a poor tool?","Banks and insurers (debt is operating), early-stage companies with no visible cash flow, and businesses driven by commodity prices. Use dividend or excess-return models, or multiples."],
+ ["AV19","Accounting & valuation","How do you choose the terminal growth rate?","At or below long-run nominal economic growth (typically about 2–3% in developed markets, a convention rather than a rule), consistent with final-year reinvestment, and check the implied exit multiple against peers."],
+ ["AV20","Accounting & valuation","Which moves a DCF more: 1% lower WACC or 10% higher revenue?","Usually the discount rate, because it acts on the terminal value, which is most of EV; with typical inputs (WACC 8–9%, growth 2%) one point of WACC moves the terminal value by roughly 15–20%, while 10% more revenue at constant margins raises value by about 10%. Confirm with a sensitivity table."],
+ ["AV21","Accounting & valuation","When is a DCF a poor tool?","Banks and insurers (debt is operating), early-stage companies with no visible cash flow, and businesses whose cash flows swing with commodity prices. Use dividend or excess-return models for financials, and multiples or (for commodity producers) a NAV model on a stated price deck."],
  ["AV22","Accounting & valuation","What did IFRS 16 change for valuation multiples?","Leases moved onto the balance sheet; rent became depreciation plus interest, so EBITDA rose. Include lease liabilities in EV when EBITDA excludes lease costs, and be consistent across peers."],
  /* IB and M&A */
  ["IB01","IB & M&A","How would you value a company?","Trading comps and a DCF, plus precedent transactions for a sale and an LBO analysis as a floor if a financial buyer is likely. Show the ranges on a football field and explain where they overlap and why they differ."],
  ["IB02","IB & M&A","How do you choose comparable companies?","Same industry and business model, then similar size, growth, margins and geography. Five to ten close peers beat many loose ones; use the median."],
  ["IB03","IB & M&A","Why are precedent transaction multiples usually higher than trading multiples?","They include a control premium and part of the expected synergies; auctions also push prices up."],
- ["IB04","IB & M&A","What makes a merger accretive or dilutive?","Compare pro forma EPS with the acquirer's standalone EPS. Shortcut: accretive if the target's earnings yield (net income / price paid) exceeds the weighted after-tax cost of the currency used (1 / acquirer P/E for stock, after-tax rate for debt, forgone interest for cash), before synergies."],
+ ["IB04","IB & M&A","What makes a merger accretive or dilutive?","Compare pro forma EPS with the acquirer's standalone EPS. Shortcut: accretive if the target's earnings yield (net income / price paid) exceeds the weighted after-tax cost of the currency used (1 / acquirer P/E for stock, after-tax rate for debt, after-tax forgone interest for cash), before synergies."],
  ["IB05","IB & M&A","Is an accretive deal always a good deal?","No. EPS accretion says nothing about whether the price is below the value created; a high-P/E acquirer can show accretion while overpaying."],
  ["IB06","IB & M&A","Why would a company pay with stock rather than cash?","Its shares are highly valued, it lacks cash or debt capacity, or it wants the seller to share the risk. Downsides: dilution and a signal that management thinks its shares are expensive."],
  ["IB07","IB & M&A","What are synergies, and which are more reliable?","Value from combining two companies: cost synergies (procurement, overhead, footprint) and revenue synergies (cross-selling). Cost synergies are more reliable and are valued more by investors."],
@@ -31609,15 +31613,15 @@ CFA_DATA.drill = [
  ["PE01","Private equity","Walk me through an LBO.","A sponsor buys a company with mostly debt and some equity, uses the company's cash flow to pay down debt over three to seven years, then sells it. Returns come from EBITDA growth, debt paydown and any multiple expansion; measured by IRR and multiple of money."],
  ["PE02","Private equity","What makes a good LBO candidate?","Stable, recurring cash flow; low capex and working capital needs; pricing power; non-cyclical demand; clear improvement levers; capable management; a credible exit."],
  ["PE03","Private equity","Why use leverage in a buyout?","Debt is cheaper than equity and interest is tax-deductible; a smaller equity cheque magnifies the percentage return. It also magnifies losses and adds default risk."],
- ["PE04","Private equity","What IRR is 2x in 5 years? 3x in 5 years? 2x in 3 years?","About 15%, 25% and 26%. IRR = MoM^(1/years) − 1."],
+ ["PE04","Private equity","What IRR is 2x in 5 years? 3x in 5 years? 2x in 3 years?","About 15%, 25% and 26% (exactly 14.9%, 24.6% and 26.0%). IRR = MoM^(1/years) − 1 when there is one entry and one exit."],
  ["PE05","Private equity","Where do LBO returns come from?","EBITDA growth (revenue and margins), debt paydown (deleveraging) and multiple expansion. A solid case relies on the first two."],
  ["PE06","Private equity","How would you increase the IRR of a deal?","Lower entry price, more (or cheaper) debt, faster EBITDA growth or margin gains, an earlier exit, a dividend recapitalization, or a higher exit multiple; each with its own risk."],
- ["PE07","Private equity","Paper LBO: 8.0x on EBITDA 100, 5.0x debt, fees 20. Sources and uses?","Uses: EV 800 + fees 20 = 820. Sources: debt 500 + sponsor equity 320 = 820."],
+ ["PE07","Private equity","Paper LBO: 8.0x on EBITDA 100, 5.0x debt, fees 20. Sources and uses?","Uses: purchase EV 8.0 × 100 = 800 + fees 20 = 820 (assuming cash-free, debt-free). Sources: debt 5.0 × 100 = 500 + sponsor equity as the plug, 820 − 500 = 320."],
  ["PE08","Private equity","What is a cash sweep?","A loan term requiring a share of excess free cash flow to repay debt early, in order of seniority."],
  ["PE09","Private equity","What is PIK interest?","Payment-in-kind: interest is added to the principal instead of paid in cash. It preserves cash but compounds, so debt at exit is higher."],
  ["PE10","Private equity","Term Loan A vs Term Loan B?","Both senior secured. TLA amortizes significantly and is held by banks; TLB has minimal amortization (often 1% a year), a bullet at maturity and is sold to institutional investors."],
  ["PE11","Private equity","Maintenance vs incurrence covenants?","Maintenance covenants are tested regularly (for example quarterly leverage); incurrence covenants only when the company takes an action such as borrowing more or paying a dividend."],
- ["PE12","Private equity","How is a PE general partner paid?","A management fee (around 1.5–2% a year) and carried interest (around 20% of profits after LPs receive capital plus a hurdle, often 8%)."],
+ ["PE12","Private equity","How is a PE general partner paid?","Typical terms (they vary by fund): a management fee of around 1.5–2% a year on committed capital and carried interest of around 20% of profits once LPs have received their capital plus a hurdle return, often 8%."],
  ["PE13","Private equity","TVPI vs DPI?","TVPI = (distributions + remaining value) / paid-in capital: the total multiple. DPI = distributions / paid-in: the cash actually returned."],
  ["PE14","Private equity","What is the J-curve?","Fund returns are negative in early years (fees and new deals) and turn positive as companies are improved and sold."],
  ["PE15","Private equity","What is buy-and-build?","Buy a platform company, add smaller bolt-ons at lower multiples, and sell the larger group at the platform's multiple or higher (multiple arbitrage). Integration is the main risk."],
@@ -31633,7 +31637,7 @@ CFA_DATA.drill = [
  ["ER04","Equity research & AM","What does a sell-side equity research analyst do?","Covers a group of stocks: builds and updates models, writes notes and initiation reports, sets ratings and target prices, talks to management and to buy-side clients."],
  ["ER05","Equity research & AM","Buy-side vs sell-side?","Sell-side (brokers, banks) produces research and services for investors; buy-side (asset managers, hedge funds) invests money and uses research to make decisions."],
  ["ER06","Equity research & AM","How would you build a portfolio for a balanced investor?","Start from objectives and constraints, set a strategic allocation (for example around 50% equities, 40% bonds, 10% alternatives or cash), diversify within each class, choose implementation (ETFs, funds, securities) and rebalance within bands."],
- ["ER07","Equity research & AM","Active vs passive management?","Passive tracks an index at low cost; active tries to beat it after fees. Most active funds underperform their benchmark after fees over long periods, so active needs a clear edge."],
+ ["ER07","Equity research & AM","Active vs passive management?","Passive tracks an index at low cost; active tries to beat it after fees. Studies such as S&P's SPIVA reports find most active funds underperform their benchmark after fees over long periods, so active needs a clear edge."],
  ["ER08","Equity research & AM","What is your view on markets now?","Prepare two or three views you can defend with data (rates, valuations, earnings, a sector), each with what would change your mind. Show you read the news daily; avoid predictions without reasoning."],
  ["ER09","Equity research & AM","What is the Sharpe ratio, and its limit?","(Portfolio return − risk-free rate) / standard deviation: return per unit of total risk. It assumes volatility is the right risk measure and can mislead for skewed or illiquid returns."],
  ["ER10","Equity research & AM","How would you tell if a company's earnings are low quality?","Earnings growing much faster than operating cash flow, rising receivables or inventory days, large or recurring adjustments, capitalized costs, aggressive revenue recognition, frequent auditor or CFO changes."],
@@ -31644,7 +31648,7 @@ CFA_DATA.drill = [
  ["PW04","Private wealth","Source of wealth vs source of funds?","Source of wealth: how the overall fortune was built (business sale, inheritance). Source of funds: where the specific money being deposited comes from."],
  ["PW05","Private wealth","What does MiFID II suitability require?","Assess the client's knowledge and experience, financial situation (including ability to bear losses) and objectives (risk tolerance, horizon, sustainability preferences), and document why the recommendation fits."],
  ["PW06","Private wealth","Ability vs willingness to take risk: which wins?","Usually the lower one. A client willing but unable to take risk should not get an aggressive portfolio; one able but unwilling may need education, not pressure."],
- ["PW07","Private wealth","A client needs €200k a year from €8m. Is that sustainable?","It is a 2.5% withdrawal rate. If the expected real return is around 2.5% or more, capital should hold its real value on average; keep one to two years of spending in a liquidity bucket for bad markets."],
+ ["PW07","Private wealth","A client needs €200k a year from €8m. Is that sustainable?","It is a 2.5% withdrawal rate. If the expected real return after fees and taxes is around 2.5% or more, capital should hold its real value on average, though a bad early sequence of returns can still erode it; keep one to two years of spending in a liquidity bucket for bad markets."],
  ["PW08","Private wealth","Explain a reverse convertible to a client.","You get a high coupon in exchange for the risk of a large fall in one stock: if it ends below the barrier, you receive the shares, worth less than you invested. You also depend on the issuing bank's credit. Suitable only if you would be happy to own that stock at that price."],
  ["PW09","Private wealth","What is a Lombard loan, and its main risk?","A loan secured by the client's portfolio, up to a loan-to-value on each asset. It gives liquidity without selling; the risk is a margin call if the portfolio falls and the lending value drops below the loan."],
  ["PW10","Private wealth","A founder has 80% of her wealth in her company's shares. What do you suggest?","Understand goals and constraints (lock-ups, insider rules, taxes, attachment); a staged diversification plan, possibly a collar or a Lombard line for near-term needs; coordinate tax and legal advice; revisit the estate plan."],
