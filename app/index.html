@@ -314,6 +314,10 @@ button.erow .chev{color:var(--text-3)}
 .lm-card-bar .meter{flex:1}
 .lm-card-bar span{font-size:12px;color:var(--text-2);font-variant-numeric:tabular-nums;min-width:32px;text-align:right}
 .lm-sub{font-size:16px;margin:8px 0 12px}
+.lm-tracks{margin-bottom:16px}
+.lm-drill .panel-head h2{font-size:18px;line-height:1.4;margin-top:4px}
+.lm-drill .lm-ans{border-top:1px solid var(--border)}
+.lm-drill-act{padding:16px 20px;gap:8px;flex-wrap:wrap}
 @media (max-width:600px){.lm-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.lm-card{min-height:76px;padding:10px 12px}.lm-sub span{display:block;margin-top:2px}}
 .lm-books td{vertical-align:top;white-space:normal}
 .lm-text h4{font-size:15px;font-weight:600;margin:16px 0 0;color:var(--text-2)}
@@ -30785,6 +30789,872 @@ The consequences interviewers want you to state:
   ["i:terms/d/dilutedeps.asp","Diluted EPS",""]
  ]}
 ]);
+/* Beyond the curriculum, Private equity: how the industry works, the deal process, LBO debt and models, value creation,
+   the investment memo and two case studies (one worked, one to solve with a hidden model solution in `solution`).
+   Not CFA exam content: lessons only. Every number was recomputed with a script (Nov 2026). Ids by position: only append. */
+CFA_DATA.learn(1,"Private equity","LM-PE",[
+{name:"How private equity works",
+ lesson:`## 1. The business in one paragraph
+A **private equity (PE) firm** raises money from investors into a **fund**, uses it (plus debt) to buy companies, owns them for three to seven years, improves them, and sells them. The fund's life is usually about ten years: roughly five to invest, the rest to grow and sell. CFA Level I covers this in Alternative Investments; interviews expect you to talk about it like an insider.
+
+## 2. Who is who
+- **General partner (GP):** the PE firm. It runs the fund, picks the deals and sits on the boards of the companies it buys (the "portfolio companies").
+- **Limited partners (LPs):** the investors: pension funds, insurers, sovereign wealth funds, endowments, family offices, wealthy individuals through feeder funds. Their liability is limited to what they commit.
+- **Committed capital:** what LPs promise. The GP **calls** it when it finds deals (capital calls), so money is not all invested on day one.
+
+## 3. How the GP is paid
+- **Management fee:** typically around 1.5–2% a year on committed capital during the investment period, then often on invested capital. It pays salaries and costs.
+- **Carried interest ("carry"):** typically 20% of the fund's profits, paid only after LPs get their money back plus a **hurdle rate** (often 8% a year). A **catch-up** clause then lets the GP reach its full 20% share.
+- **Waterfall:** the order of distributions. **European (whole-fund)**: carry only after the whole fund has returned capital plus hurdle (LP-friendly). **American (deal-by-deal)**: carry deal by deal, usually with a **clawback** if later deals lose money.
+
+The "2 and 20" figures are conventions, not rules; large funds and big LPs negotiate them.
+
+## 4. Measuring performance
+- **IRR:** the time-weighted return on the cash flows. Sensitive to timing: returning money early lifts IRR.
+- **TVPI** (total value to paid-in) = (distributions + remaining value) / capital paid in. The "multiple".
+- **DPI** (distributions to paid-in) = cash actually returned / paid in. LPs watch DPI closely because remaining value is an estimate.
+- **J-curve:** in the early years, fees and the cost of new deals make returns negative; they turn positive as companies are improved and sold. Plotted over time, that looks like a J.
+- **Public market equivalent (PME):** compares the fund with what the same cash flows would have earned in a stock index.
+
+## 5. Types of private capital
+- **Buyout:** control of mature companies, with leverage. The core of "PE" in interviews.
+- **Growth equity:** minority stakes in growing, profitable companies, little debt.
+- **Venture capital:** early-stage companies, no debt, many failures and a few big winners.
+- **Private credit:** lending to companies, often to PE-owned ones. A fast-growing part of the industry.
+- **Secondaries:** buying LP stakes or portfolios from other investors, often at a discount.
+- **Infrastructure and real estate:** long-lived assets, often with stable, contracted cash flows.
+
+## 6. What a junior does
+In a buyout fund, an analyst or associate screens companies, builds LBO models, runs due diligence with advisors, writes investment memos and monitors portfolio companies. Most PE juniors come from two years of investment banking or transaction services (for example Big Four deal advisory). That route matters for planning a career: PE is usually the **second** job, not the first.`,
+ ideas:`**A PE firm (GP) raises a fund from investors (LPs), buys companies with equity plus debt, improves them and sells them within a fund life of about ten years.**
+
+- GP pay: management fee (around 1.5–2% a year) plus carried interest (around 20% of profits above a hurdle, often 8%).
+- European waterfall: carry after the whole fund returns capital plus hurdle; American: deal by deal with clawback.
+- Metrics: IRR (timing-sensitive), TVPI (total multiple), DPI (cash actually returned), PME (vs an index).
+- J-curve: negative early returns from fees and new deals, positive later.
+- Types: buyout, growth, venture, private credit, secondaries, infrastructure, real estate.
+- Most PE juniors come from banking or deal advisory.`,
+ traps:[
+  "Saying carry is paid on all profits: it is paid only after the hurdle (and catch-up mechanics).",
+  "Treating TVPI as cash returned: only DPI is realized.",
+  "Ignoring that a high IRR can come from a quick, small win with a low multiple.",
+  "Confusing committed with invested (called) capital."
+ ],
+ read:[
+  ["i:terms/p/privateequity.asp","Private equity",""],
+  ["i:terms/i/irr.asp","Internal rate of return",""]
+ ]},
+
+{name:"The deal process",
+ lesson:`## 1. Why the process matters in interviews
+PE interviewers often ask "walk me through a deal process" or "where did you add value on a deal?". Even without deal experience, knowing the steps and documents shows you can work from day one.
+
+## 2. Sourcing
+Deals come from **auctions** run by investment banks (most mid and large deals), **proprietary** contacts (founders, management teams, industry advisors), **carve-outs** (a group selling a division), **public-to-private** deals and **secondary buyouts** (buying from another PE fund).
+
+## 3. The auction, step by step
+1. **Teaser:** a two-page anonymous summary sent by the seller's bank to potential buyers.
+2. **NDA:** the buyer signs a confidentiality agreement to receive more.
+3. **CIM** (confidential information memorandum): 50–150 pages on the business, market, financials and management's projections.
+4. **First-round bid (IOI, indication of interest):** a non-binding price range, often an EV range on LTM EBITDA, with the main assumptions and financing.
+5. **Second round:** the shortlisted buyers get access to the **data room**, **management presentations** and site visits, and commission **due diligence** reports.
+6. **Final binding bid:** a marked-up **SPA** (sale and purchase agreement), committed financing letters from lenders, and the final price.
+7. **Signing and closing:** the gap between them covers regulatory approvals (competition, foreign investment screening). Price mechanics: **locked box** (price fixed on a past balance sheet, common in Europe) or **completion accounts** (price adjusted after closing for actual net debt and working capital).
+
+## 4. Due diligence workstreams
+- **Commercial:** market size and growth, competitive position, customer interviews.
+- **Financial (quality of earnings):** is EBITDA real and repeatable? Adjustments for one-offs, owner costs, normalized working capital, **net debt** items (leases, pensions, deferred payments).
+- **Legal:** contracts, litigation, change-of-control clauses that let customers or lenders exit when ownership changes.
+- **Tax, IT, ESG, insurance, management** (references, incentives).
+
+## 5. Investment committee
+The deal team presents to the fund's **investment committee (IC)** at least twice: before spending real money on diligence, and before the binding bid. The IC memo (lesson 6) is the core document.
+
+## 6. Management incentives
+PE aligns management with the fund through a **management incentive plan**: managers invest some of their own money ("skin in the game") and get **sweet equity**, a cheap share of the upside that is worth a lot if the fund hits its return target. In interviews, mention it when asked how PE improves companies.
+
+## 7. Questions you may get
+- **"What is a locked box?"** The price is set on a past balance sheet date; the seller promises no value leaves the company ("leakage") until closing.
+- **"Why would a company prefer a PE buyer over a strategic one?"** Speed, certainty, management keeps running the business and gets equity; but strategics can often pay more because of synergies.
+- **"What is the biggest risk in an auction?"** Winner's curse: the winner is often the buyer with the most optimistic assumptions.`,
+ ideas:`**Typical auction: teaser, NDA, CIM, non-binding first bid, data room and diligence, binding bid with SPA and financing, signing, closing.**
+
+- Sourcing: bank-run auctions, proprietary contacts, carve-outs, public-to-private, secondary buyouts.
+- Diligence: commercial, financial (quality of earnings, net debt, normalized working capital), legal, tax, IT, ESG.
+- Price mechanics: locked box (fixed on a past balance sheet, no leakage) or completion accounts.
+- Investment committee approves before heavy diligence and before the binding bid.
+- Management incentive plans: managers co-invest and receive sweet equity.
+- Auction risk: winner's curse.`,
+ traps:[
+  "Treating the first-round bid as binding.",
+  "Forgetting debt-like items (leases, pensions, deferred consideration) in net debt.",
+  "Ignoring change-of-control clauses in key contracts.",
+  "Assuming the highest bidder always wins: certainty of financing and speed matter too."
+ ],
+ read:[
+  ["i:terms/m/mergersandacquisitions.asp","Mergers and acquisitions",""],
+  ["i:terms/p/privateequity.asp","Private equity",""]
+ ]},
+
+{name:"Debt in a leveraged buyout",
+ lesson:`## 1. Why the debt package matters
+In an LBO the debt is often half or more of the price, so its cost, terms and repayment profile drive the returns and the risk. Interviewers check whether you know the instruments and the metrics lenders use.
+
+## 2. The capital structure, from safest to riskiest
+- **Revolving credit facility (RCF):** a credit line for working capital, usually undrawn at closing. Senior and secured.
+- **Term Loan A:** senior secured bank loan that amortizes (is repaid in instalments) over about five to seven years.
+- **Term Loan B:** senior secured, sold to institutional investors, little amortization (often 1% a year) and a bullet at maturity.
+- **Unitranche:** one blended loan from a private credit fund replacing senior and junior layers. Common in European mid-market deals: simpler and faster, at a higher rate.
+- **High-yield bonds / second-lien:** junior, higher coupon, usually non-amortizing.
+- **Mezzanine and PIK notes:** subordinated, highest rate. **PIK** (payment in kind) interest is not paid in cash but added to the principal, so it saves cash now and compounds.
+- **Sponsor equity** sits at the bottom.
+
+Floating-rate loans pay a base rate (such as EURIBOR or SOFR) plus a **margin**; bonds usually pay a fixed coupon. Rising base rates have made LBO debt much more expensive since 2022.
+
+## 3. Metrics lenders use
+- **Leverage:** total debt / EBITDA (and senior debt / EBITDA). Typical buyouts sit in a range of about 4–6x, depending on the market and the business.
+- **Interest coverage:** EBITDA / interest (or EBITDA − capex / interest). Below about 2x is tight.
+- **Fixed charge coverage** and **FCF / debt** (how fast the company can repay).
+
+These ranges are market practice, not rules, and they move with credit conditions.
+
+## 4. Covenants
+Promises in the loan agreement:
+- **Maintenance covenants:** tested regularly (for example quarterly leverage must stay below 5.5x). Typical of bank loans.
+- **Incurrence covenants:** tested only when the company does something (borrows more, pays a dividend). Typical of bonds and "covenant-lite" term loans.
+- A breach can let lenders demand repayment, so the model should show **headroom** (how far EBITDA can fall before a breach).
+
+## 5. Cash sweep
+Many loans require excess free cash flow to repay debt early (a **cash sweep**, for example 50–75% of excess cash flow). In a paper LBO we usually assume 100% of free cash flow repays debt; in a full model you apply the sweep and the amortization schedule to each tranche in order of seniority.
+
+## 6. Questions you may get
+- **"Why use a PIK note?"** It preserves cash for operations and senior debt service; the cost is a higher rate that compounds.
+- **"What happens if leverage is too high?"** Little room for error: an EBITDA dip can breach covenants, force a costly refinancing or hand the company to lenders.
+- **"How do you pick the amount of debt?"** What lenders will provide at an acceptable rate, what the cash flow can service in a downside case, and covenant headroom.`,
+ ideas:`**LBO debt runs from senior secured (RCF, Term Loan A/B, unitranche) to junior (high yield, second lien, mezzanine, PIK), then sponsor equity.**
+
+- Term Loan A amortizes; Term Loan B is mostly bullet; unitranche blends layers in one loan.
+- PIK interest is added to principal instead of paid in cash.
+- Lender metrics: total debt / EBITDA (often about 4–6x), EBITDA / interest, FCF / debt.
+- Maintenance covenants are tested regularly; incurrence covenants only when the company acts.
+- Cash sweep: a share of excess cash flow repays debt early.
+- Debt size = what lenders give, what downside cash flow can service, covenant headroom.`,
+ traps:[
+  "Forgetting that PIK interest compounds and raises debt at exit.",
+  "Assuming all debt amortizes: Term Loan B and bonds mostly do not.",
+  "Ignoring covenant headroom in a downside case.",
+  "Using a fixed rate for floating-rate loans when base rates move."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/l/leverage.asp","Leverage",""]
+ ]},
+
+{name:"Building a full LBO model",
+ lesson:`## 1. From paper LBO to model
+The paper LBO (Valuation practice, lesson 5) gives the logic. A **modeling test** in PE recruiting asks you to build a full model in Excel in one to three hours, from a short case. The structure is always the same, so practise building it from a blank sheet until it takes under an hour.
+
+## 2. The tabs, in order
+1. **Assumptions:** entry multiple and LTM EBITDA, fees, debt tranches (amount as x EBITDA, rate, amortization, sweep), operating assumptions (revenue growth, margins, capex and working capital as % of revenue), tax rate, exit year and multiple.
+2. **Sources and uses:** uses = purchase EV (or equity price + refinanced debt) + fees; sources = each debt tranche + sponsor equity (the plug).
+3. **Operating model:** revenue, EBITDA, D&A, EBIT, interest (from the debt schedule), tax, net income; then free cash flow = net income + D&A − capex − increase in working capital (or the shortcut used in the paper LBO).
+4. **Debt schedule:** for each tranche, opening balance, mandatory amortization, optional repayment (sweep), closing balance, interest. Cash available for repayment flows from the top tranche down.
+5. **Returns:** exit EV = exit multiple × exit-year EBITDA; minus net debt at exit = exit equity; MoM and IRR (with Excel's IRR or XIRR on the dated cash flows).
+6. **Sensitivities:** IRR for entry multiple × exit multiple, and for leverage × EBITDA growth. Plus a **downside case**.
+
+## 3. Circularity: interest and cash
+Interest depends on debt, debt depends on cash flow, cash flow depends on interest. Two standard fixes: compute interest on the **opening** balance (no circularity, what we did in the paper LBO) or on the **average** balance with Excel's iterative calculation switched on plus a circuit-breaker cell. In a test, say which you chose.
+
+## 4. Checks every good model has
+- Sources = uses.
+- Balance sheet balances, if you build one (many tests do not require it).
+- Debt never goes negative; cash sweep stops when a tranche is repaid.
+- Returns bridge: EBITDA growth + multiple change + debt paydown − fees = equity gain (as in the paper LBO).
+- Colour code: blue inputs, black formulas. No hard-coded numbers inside formulas.
+
+## 5. Typical modeling-test pitfalls
+- Running out of time on formatting. Get to IRR first, then polish.
+- Forgetting fees in uses, or the minimum cash balance the company needs.
+- Using exit EV as equity proceeds without subtracting remaining net debt.
+- Mixing calendar years with the deal's fiscal years.
+
+## 6. What to say when you present it
+State the returns (base, upside, downside), the two or three assumptions that matter most (usually exit multiple and EBITDA growth), the leverage and covenant headroom, and a recommendation: invest, invest at a lower price, or pass. The model is a tool for that sentence.
+
+## 7. How to practise without Excel courses
+Take the case in lesson 7, rebuild it in Excel without looking, and check you get the same IRR (19.7%). Then change one assumption at a time and predict the direction before you look.`,
+ ideas:`**Full LBO model: assumptions, sources and uses, operating model, debt schedule, returns, sensitivities.**
+
+- Sponsor equity is the plug in sources and uses.
+- Debt schedule per tranche: opening, mandatory amortization, sweep, closing, interest; cash flows top-down by seniority.
+- Interest on opening balance avoids circularity; average balance needs iterative calculation and a circuit breaker.
+- Checks: sources = uses, debt never negative, returns bridge reconciles, inputs blue, formulas black.
+- In a modeling test: reach IRR first, then sensitivities, then formatting.`,
+ traps:[
+  "Exit equity = exit EV without subtracting remaining net debt.",
+  "Letting the cash sweep push a tranche below zero.",
+  "Hard-coding numbers inside formulas.",
+  "Spending the test's time on formatting before the returns work."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/i/irr.asp","Internal rate of return",""]
+ ]},
+
+{name:"Value creation and returns attribution",
+ lesson:`## 1. The question behind every deal
+"How will we make money on this?" has three possible answers: the business earns more (**EBITDA growth**), it is sold at a higher multiple (**multiple expansion**), or debt is repaid (**deleveraging**). A good investment case relies on the first and treats the other two as a bonus.
+
+## 2. Operational levers
+- **Revenue:** pricing (often the fastest lever), new products, new regions, better sales force, cross-selling.
+- **Costs:** procurement, footprint (closing or merging sites), automation, overhead.
+- **Cash:** working capital (collect faster, hold less inventory), capex discipline.
+- **People:** a new CFO or CEO, management incentives, better reporting (monthly KPIs, budgets).
+
+## 3. Buy-and-build
+Buy a **platform** company at a higher multiple, then add smaller **bolt-on** acquisitions at lower multiples (small companies usually trade cheaper). The combined, larger group is sold at the platform's multiple or higher: **multiple arbitrage**. Example: platform bought at 10x, bolt-ons at 6x, group sold at 10x. Risks: integration, overpaying as competition for bolt-ons rises, and too much debt.
+
+## 4. Returns attribution, worked
+From the worked case (lesson 7): equity grows from 113.4 to 278.2, a gain of 164.8.
+
+> **EBITDA growth** at a constant 9.0x: (35.3 − 24.0) × 9.0 = **102.0**.
+> **Multiple change:** exit at the entry multiple, so **0**.
+> **Debt paydown:** 108.0 − 39.7 = **68.3**.
+> **Fees:** **−5.4**.
+> Total = 164.9, matching the gain up to rounding.
+
+Here 62% of the gain comes from operations: a healthy case. A deal whose gain comes mostly from assumed multiple expansion is a bet on the market, and an IC will push back.
+
+## 5. Why returns have become harder
+Fact pattern widely reported since 2022: higher interest rates raised debt costs and lowered exit multiples, so funds rely more on operational improvement and hold companies longer. You do not need numbers for this in an interview; you need the logic: cheaper debt and rising multiples did a lot of the work in the 2010s.
+
+## 6. Questions you may get
+- **"Which lever would you pull first in this company?"** Usually pricing or working capital: fast, cheap, measurable.
+- **"Is multiple expansion value creation?"** Partly, if the company really became better (bigger, more diversified, higher quality earnings); otherwise it is market timing.
+- **"Why do funds like buy-and-build?"** Multiple arbitrage and scale, but the integration has to be done well.`,
+ ideas:`**Equity gain = EBITDA growth × multiple + multiple change × exit EBITDA + debt paydown − fees.**
+
+- Operational levers: pricing, volume, costs, working capital, capex, management and reporting.
+- Buy-and-build: platform at a higher multiple, bolt-ons cheaper, group sold at the platform multiple (multiple arbitrage).
+- Worked case: 102.0 from EBITDA growth, 0 multiple, 68.3 deleveraging, −5.4 fees = 164.9.
+- A case resting on multiple expansion is a bet on the market.
+- Higher rates since 2022 shifted the burden to operational improvement.`,
+ traps:[
+  "Building the case on exit multiple expansion.",
+  "Counting the same improvement twice (in margin and in multiple).",
+  "Ignoring integration risk in buy-and-build.",
+  "Forgetting fees in the attribution, so it does not reconcile."
+ ],
+ read:[
+  ["i:terms/p/privateequity.asp","Private equity",""],
+  ["i:terms/e/ev-ebitda.asp","EV/EBITDA",""]
+ ]},
+
+{name:"Judging a business: the investment memo",
+ lesson:`## 1. What PE interviewers really test
+Beyond models, the PE interview asks: **"Would you invest in this business, and why?"** They want structured judgment. The investment memo is that structure, and the same frame works for a case study, a "pitch me a company" question or a real IC memo.
+
+## 2. The memo structure
+1. **Recommendation** first: invest, invest at a lower price, or pass. One sentence with the price and expected returns.
+2. **Business overview:** what it sells, to whom, how it makes money.
+3. **Investment thesis:** three or four reasons it will be worth much more in five years.
+4. **Market:** size, growth, drivers, cyclicality.
+5. **Competitive position (moat):** why customers choose it and why rivals cannot easily copy it.
+6. **Financials:** revenue growth, margins, cash conversion (FCF / EBITDA), capex needs, working capital.
+7. **Value creation plan:** the levers (previous lesson) with numbers.
+8. **Returns:** base, upside, downside IRR and MoM; returns attribution.
+9. **Key risks and mitigants.**
+10. **Exit:** who buys it in five years (strategic, another fund, IPO).
+
+## 3. What makes a good LBO business
+- **Recurring or contracted revenue**, many customers (low concentration).
+- **High cash conversion:** low capex, modest working capital.
+- **Pricing power** and a defensible niche.
+- **Non-cyclical demand**, or cyclicality you can model.
+- **Fragmented market** for buy-and-build.
+- **Clear improvement levers** and a capable management team.
+
+## 4. Unit economics and quality of earnings
+- **Unit economics:** profit per customer, store, contract or machine. If the unit works, growth creates value; if not, growth destroys it.
+- **Quality of earnings:** is EBITDA recurring, cash-backed and fairly adjusted? Large add-backs ("adjusted EBITDA" far above reported) are a warning.
+- **Cash conversion** = (EBITDA − capex − change in working capital) / EBITDA. Above about 70–80% is typical of good LBO candidates (a rule of thumb, not a standard).
+
+## 5. Risks to always consider
+Customer concentration; key-person risk; regulation; technology disruption; cyclicality; input cost inflation; refinancing risk; integration risk in buy-and-build; ESG issues that could hit the exit.
+
+For each risk, give a **mitigant** (contract terms, diversification, price escalators, lower leverage) and say whether it is a deal-breaker.
+
+## 6. Answering "pitch me a company for an LBO"
+Pick a real, mid-sized, boring, cash-generative business you understand (testing labs, B2B services, software for a niche, waste management, veterinary clinics). Say: what it does, why it fits the LBO criteria above, two value creation levers, one big risk, a rough entry multiple and why returns could reach 20%. Two minutes, structured. Prepare one in advance; it is asked often.`,
+ ideas:`**Memo order: recommendation, business, thesis, market, moat, financials, value creation, returns (base/upside/downside), risks with mitigants, exit.**
+
+- Good LBO businesses: recurring revenue, low customer concentration, high cash conversion, pricing power, non-cyclical demand, fragmented market, clear levers.
+- Unit economics: if each unit is profitable, growth creates value.
+- Quality of earnings: big gaps between adjusted and reported EBITDA are a warning.
+- Cash conversion = (EBITDA − capex − ΔNWC) / EBITDA; high is good.
+- Prepare a two-minute "company I would buy" pitch.`,
+ traps:[
+  "Putting the recommendation at the end instead of the start.",
+  "Listing risks without mitigants or a view on whether they kill the deal.",
+  "Choosing a famous high-growth tech company as an LBO pitch.",
+  "Accepting management's adjusted EBITDA without questioning add-backs."
+ ],
+ read:[
+  ["i:terms/f/freecashflow.asp","Free cash flow",""],
+  ["i:terms/c/cashconversioncycle.asp","Cash conversion cycle",""]
+ ]},
+
+{name:"Case study, worked: a B2B laundry services company",
+ lesson:`## 1. The case
+A fictional company, **Northfield Linen**, rents and washes linen for hotels, hospitals and restaurants under three-year contracts.
+
+> Revenue 120; EBITDA 24 (20% margin). Growth 6% a year (contracts plus price escalators).
+> The seller asks **9.0x LTM EBITDA**: EV 216. Fees 2.5% of EV = 5.4.
+> Lenders offer **4.5x EBITDA** = 108 at 8%. Tax 25%. Capex 4% of revenue (D&A assumed equal). Working capital negligible (customers pay monthly in advance).
+> Plan: route optimization and procurement lift the margin from 20% to 22% by year 4. Exit after 5 years at 9.0x.
+
+## 2. Step 1: first reaction (two minutes)
+Before any numbers, say what you see: recurring contracted revenue, essential service, low working capital, capital needs moderate (linen and machines), fragmented market (many local laundries: **buy-and-build** potential), risks in energy and labour costs and in hospital tenders. It looks like a good LBO candidate if the price is right.
+
+## 3. Step 2: sources and uses
+
+> Uses: EV 216 + fees 5.4 = **221.4**. Sources: debt 108 + sponsor equity **113.4** = 221.4.
+
+## 4. Step 3: projections and debt paydown
+FCF = EBITDA − capex − interest (on opening debt) − tax, tax = 25% × (EBITDA − D&A − interest). All FCF repays debt.
+
+> **Year 1:** revenue 127.2; EBITDA 26.1 (20.5%); capex 5.1; interest 8.6; tax 3.1; FCF **9.3**; debt 98.7.
+> **Year 2:** revenue 134.8; EBITDA 28.3 (21%); FCF **11.3**; debt 87.5.
+> **Year 3:** revenue 142.9; EBITDA 30.7 (21.5%); FCF **13.5**; debt 74.0.
+> **Year 4:** revenue 151.5; EBITDA 33.3 (22%); FCF **16.0**; debt 57.9.
+> **Year 5:** revenue 160.6; EBITDA 35.3 (22%); FCF **18.2**; debt **39.7**.
+
+## 5. Step 4: returns
+
+> Exit EV = 9.0 × 35.3 = **318.0**. Exit equity = 318.0 − 39.7 = **278.2**.
+> MoM = 278.2 / 113.4 = **2.45x**. IRR = **19.7%**.
+
+## 6. Step 5: what drives it
+
+> Attribution: EBITDA growth 102.0, multiple 0, debt paydown 68.3, fees −5.4.
+> **Without the margin plan** (margin stays at 20%): exit EBITDA 32.1, IRR **16.3%**, MoM 2.12x. So the operating plan adds about 3.4 points of IRR: diligence must test it hard.
+> **Downside** (growth 2%, margin flat at 20%, exit at 8.0x): exit equity 153.4, MoM 1.35x, IRR **6.2%**. The fund keeps its money but misses its target. Leverage falls from 4.5x to about 2.2x by year 5 even here (58.6 / 26.5), so default risk looks limited.
+
+## 7. Step 6: the recommendation
+
+> "Invest at up to 9.0x. Base case 19.7% IRR and 2.45x, close to a 20% target, with a downside that still returns capital. The thesis: contracted, essential revenue; a margin plan from routing and procurement worth about 3 points of IRR; bolt-on acquisitions of local laundries as upside not in the base case. Key risks: energy and wage inflation (mitigant: price escalators in contracts, check how many contracts have them), hospital tender losses (check customer concentration), and execution of the margin plan (check the routing pilot). If diligence shows escalators are weak, bid lower: around 8.5x."
+
+## 8. What the interviewer checks
+Structure (reaction, numbers, drivers, risks, recommendation), arithmetic you can explain, a downside case, and a clear decision. Not perfection in decimals.`,
+ ideas:`**Case flow: first reaction, sources and uses, projections and debt paydown, returns, drivers and downside, recommendation.**
+
+- Northfield Linen: 9.0x on EBITDA 24, 4.5x debt at 8%, 6% growth, margin 20% → 22%.
+- Base: exit equity 278.2 on 113.4, MoM 2.45x, IRR 19.7%.
+- Without the margin plan: IRR 16.3%; downside (2% growth, flat margin, 8.0x exit): IRR 6.2%, capital returned.
+- Attribution: 102.0 EBITDA growth, 68.3 deleveraging, −5.4 fees.
+- End with a decision, a price and the diligence questions that would change it.`,
+ traps:[
+  "Diving into numbers without a first qualitative view of the business.",
+  "Giving only a base case.",
+  "Not saying how much of the IRR depends on management's plan.",
+  "Ending without a clear invest / lower price / pass decision."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/i/irr.asp","Internal rate of return",""]
+ ]},
+
+{name:"Case study to solve: a pet food producer",
+ lesson:`## 1. How to use this case
+Solve it yourself first, on paper or in Excel, in about 45 minutes. Write your answers, then open the model solution below. Interviewers give cases like this one with less data than you would like: make assumptions, state them, move on.
+
+## 2. The company
+**Carpathia Pet Foods** (fictional) makes dry and wet pet food sold to supermarket chains and pet shops in Central and Eastern Europe, partly under its own brand, partly as private label for retailers.
+
+> Revenue 80; EBITDA 12 (15% margin), stable margin.
+> Revenue growth 8% a year (pet ownership and premium products).
+> The seller asks **10.0x LTM EBITDA**. Fees 2% of EV.
+> Lenders offer **5.0x EBITDA** at 9%. Corporate tax 16%.
+> Capex 3% of revenue (D&A assumed equal). Net working capital 10% of **incremental** revenue each year.
+> Exit after 5 years at 10.0x. The fund's target IRR is 20%.
+
+## 3. Questions
+1. Give your first qualitative view: three attractions and three risks.
+2. Build sources and uses.
+3. Project EBITDA and debt for five years (all free cash flow repays debt; interest on opening debt).
+4. Compute exit equity, MoM and IRR.
+5. Attribute the equity gain.
+6. What is the highest entry multiple that still gives a 20% IRR (same debt, same exit multiple)?
+7. What happens to IRR if the exit multiple is 9.0x?
+8. Give a recommendation in three sentences.
+
+## 4. Hints, if you are stuck
+- FCF = EBITDA − capex − interest − tax − increase in NWC; tax = 16% × (EBITDA − D&A − interest).
+- For question 6, work backwards: exit equity / 1.2^5 = the maximum equity cheque.`,
+ solution:`## Model solution
+
+## 1. First view
+- **Attractions:** non-cyclical demand (pets eat in recessions), premiumization trend, a regional brand with retailer relationships, low capex.
+- **Risks:** retailer concentration and their bargaining power (private label margins are thin), input costs (grain, meat by-products, packaging, energy), FX if inputs are priced in euros and sales in local currencies, competition from global brands.
+
+## 2. Sources and uses
+
+> Uses: EV 10.0 × 12 = 120 + fees 2.4 = **122.4**. Sources: debt 5.0 × 12 = 60 + equity **62.4**.
+
+## 3. Projections
+
+> **Year 1:** revenue 86.4; EBITDA 13.0; capex 2.6; interest 5.4; tax 0.8; NWC 0.6; FCF **3.5**; debt 56.5.
+> **Year 2:** revenue 93.3; EBITDA 14.0; FCF **4.4**; debt 52.0.
+> **Year 3:** revenue 100.8; EBITDA 15.1; FCF **5.5**; debt 46.5.
+> **Year 4:** revenue 108.8; EBITDA 16.3; FCF **6.6**; debt 39.9.
+> **Year 5:** revenue 117.5; EBITDA 17.6; FCF **8.0**; debt **31.9**.
+
+Notice how little cash is left for debt in year 1 (3.5 on EBITDA of 13.0): interest at 9% on 5.0x leverage takes 40% of EBITDA. Leverage falls only from 5.0x to 1.8x over five years (31.9 / 17.6) because growth drives most of the deleveraging.
+
+## 4. Returns
+
+> Exit EV = 10.0 × 17.6 = **176.3**. Exit equity = 176.3 − 31.9 = **144.4**.
+> MoM = 144.4 / 62.4 = **2.31x**. IRR = **18.3%**: below the 20% target.
+
+## 5. Attribution
+
+> EBITDA growth (17.6 − 12.0) × 10.0 = **56.3**; multiple **0**; debt paydown 60 − 31.9 = **28.1**; fees **−2.4**. Total 82.0 = 144.4 − 62.4.
+
+Two thirds of the gain comes from growth: the case depends on the 8% growth holding for five years.
+
+## 6. Maximum price for 20%
+
+> Maximum equity = 144.4 / 1.2^5 = **58.0**. With debt fixed at 60 and fees at 2% of EV: EV = (58.0 + 60) / 1.02 = **115.7**, i.e. **9.6x** EBITDA (against 10.0x asked).
+
+## 7. Exit at 9.0x
+
+> Exit EV 158.7; exit equity 126.8; MoM 2.03x; IRR **15.2%**. One turn of exit multiple costs about 3 points of IRR.
+
+## 8. Recommendation
+
+> "Bid around 9.5x, not 10.0x: at the asking price the base case gives 18.3%, below our 20% target, and it relies heavily on 8% growth. The business fits an LBO (non-cyclical, low capex), but interest takes 40% of EBITDA in year 1, so I would also test less leverage or a cheaper unitranche. Diligence priorities: customer concentration with the top retailers, the brand vs private label mix of margins, and input-cost pass-through in contracts."`,
+
+ ideas:`**Solve before you open the solution: qualitative view, sources and uses, five-year debt paydown, returns, attribution, maximum price, sensitivity, recommendation.**
+
+- Carpathia: 10.0x on EBITDA 12, 5.0x debt at 9%, 8% growth, 16% tax, NWC 10% of incremental revenue.
+- Answer key: IRR 18.3%, MoM 2.31x; maximum entry for 20% is about 9.6x; exit at 9.0x gives 15.2%.
+- Lesson: high interest on high leverage starves early debt paydown; growth carries the case.`,
+ traps:[
+  "Forgetting the working capital investment that growth requires.",
+  "Accepting the asking price when the base case misses the target return.",
+  "Ignoring retailer concentration in a consumer goods company.",
+  "Solving for maximum price without keeping fees and debt consistent."
+ ],
+ read:[
+  ["i:terms/l/leveragedbuyout.asp","Leveraged buyout",""],
+  ["i:terms/w/workingcapital.asp","Working capital",""]
+ ]}
+]);
+/* Beyond the curriculum, Private wealth and private banking: serving HNWI and UHNWI clients (profiling, suitability,
+   allocation, products, concentrated wealth and succession, the client conversation). Not CFA exam content at Level I
+   (CFA Level III has a Private Wealth pathway). Lessons only. Every number was recomputed with a script (Nov 2026).
+   Ids by position: only append. Country-specific tax rules are deliberately left out (they change often). */
+CFA_DATA.learn(1,"Private wealth and private banking","LM-PW",[
+{name:"The private client: HNWI, UHNWI and how the business works",
+ lesson:`## 1. Who the clients are
+- **Mass affluent:** usually described as roughly $100k–$1m of investable assets. Served by premium retail banking.
+- **HNWI (high-net-worth individual):** commonly defined as at least **$1 million** of investable assets (excluding the main home).
+- **UHNWI (ultra-high-net-worth):** commonly **$30 million** or more.
+
+These thresholds are industry conventions used in wealth reports, not legal definitions; each bank sets its own entry level for private banking, often lower in smaller markets.
+
+## 2. Who serves them
+- **Private banks** (standalone, such as Swiss private banks, or divisions of universal banks): relationship managers, investment advisors, credit (Lombard loans, mortgages), wealth planning.
+- **Wealth managers and independent asset managers:** portfolio management, often discretionary.
+- **Family offices:** a **single-family office** serves one very wealthy family (investments, tax, legal, administration, philanthropy); a **multi-family office** shares the structure among several families.
+
+## 3. The roles you could apply for
+- **Relationship manager (RM) / private banker:** owns the client relationship, brings in new money, coordinates specialists. Sales plus trust.
+- **Investment advisor / portfolio manager:** builds and monitors portfolios, explains markets to clients.
+- **Credit analyst (private banking):** assesses Lombard and other loans to wealthy clients.
+- **Wealth planner:** succession, structuring, tax coordination with external lawyers.
+- **Assistant RM / junior:** the usual entry point: preparing meetings, KYC files, reports, portfolio reviews.
+
+## 4. How the bank earns money
+- **Advisory or discretionary mandate fees:** a percentage of assets per year (often around 0.5–1.5%, lower for larger accounts; varies a lot by bank and country).
+- **Product margins and commissions:** funds, structured products, FX.
+- **Lending:** interest margin on Lombard loans and mortgages.
+- **Net interest income on deposits.**
+
+The key business metrics are **assets under management (AuM)**, **net new money (NNM)** and **return on assets (RoA)**: revenue / average AuM, usually expressed in basis points.
+
+## 5. Three ways of working with a client
+- **Execution-only:** the client decides; the bank executes. No advice.
+- **Advisory:** the bank recommends; the client decides each trade. The bank must check suitability each time.
+- **Discretionary:** the client signs a mandate (for example "balanced, max 50% equities") and the portfolio manager decides within it.
+
+## 6. What matters in interviews for these roles
+Interviewers look for: understanding of markets and products, **communication** (can you explain a bond fund to a 60-year-old business owner?), ethics and compliance awareness, and some commercial drive. CFA candidacy helps a lot here: the CFA Code and Standards (Level I Ethics) are exactly the rules of client work, and Level III covers private wealth in depth.`,
+ ideas:`**HNWI: about $1m+ investable assets; UHNWI: about $30m+ (industry conventions, not legal definitions).**
+
+- Providers: private banks, wealth managers, independent asset managers, single- and multi-family offices.
+- Roles: relationship manager, investment advisor, credit analyst, wealth planner; entry as assistant RM.
+- Revenue: mandate fees (a % of assets), product margins, lending (Lombard), deposits.
+- Metrics: AuM, net new money, return on assets in basis points.
+- Service models: execution-only, advisory (suitability per recommendation), discretionary (mandate).`,
+ traps:[
+  "Including the main residence in investable assets.",
+  "Confusing advisory (client decides) with discretionary (manager decides within a mandate).",
+  "Presenting private banking as pure investing: it is equally relationship, credit and planning.",
+  "Ignoring that the CFA Ethics standards are directly the rules of client work."
+ ],
+ read:[
+
+ ]},
+
+{name:"Profiling the client and suitability",
+ lesson:`## 1. Know your client
+Everything in private wealth starts with understanding the client. CFA Level I introduces the **investment policy statement (IPS)** and risk tolerance in Portfolio Management; here is how it looks in a real client file.
+
+## 2. KYC and AML first
+Before any advice, the bank must identify the client and understand the **source of wealth** (how the fortune was built: a business sale, inheritance, salary) and **source of funds** (where the money being deposited comes from). This is **KYC** (know your customer) and **AML** (anti-money laundering). Red flags: unclear origin of money, complex structures without a reason, **politically exposed persons (PEPs)**, high-risk jurisdictions. A good RM treats KYC as part of the relationship, not paperwork.
+
+## 3. Suitability under MiFID II (EU)
+For advice and discretionary management, EU rules (MiFID II) require the firm to assess:
+- **Knowledge and experience** with each type of product.
+- **Financial situation**, including the ability to bear losses.
+- **Investment objectives**, including risk tolerance and time horizon (and, since 2022, **sustainability preferences**).
+
+The recommendation must be **suitable** given all three, documented in a **suitability report**. Separately, **product governance** rules define a **target market** for each product. For execution-only services on complex products, an **appropriateness** test (knowledge and experience only) applies.
+
+## 4. Risk profile: ability vs willingness
+- **Ability to take risk:** objective. Wealth relative to needs, time horizon, income stability, liquidity needs.
+- **Willingness to take risk:** subjective. Attitude, past behaviour in market falls, questionnaire answers.
+- When they differ, the **lower** usually wins, and the advisor explains why. A client who is very willing but has little ability should not get an aggressive portfolio; a client with high ability but low willingness may need education, but not pressure.
+
+## 5. The IPS for a private client
+Objectives (return, risk) and constraints, often remembered as **TTLLU**: **T**ime horizon, **T**axes, **L**iquidity, **L**egal and regulatory, **U**nique circumstances (concentrated stock, ethical exclusions, a planned business sale).
+
+> **Example:** entrepreneur, 52, sold her company for €8m after tax. Needs €200k a year to live; plans to retire at 60; owns her home outright; wants to leave money to two children; dislikes tobacco and weapons.
+> Spending need: 200 / 8,000 = **2.5%** a year. With a long horizon and large surplus, **ability is high**. She has never invested in markets and was nervous about the sale: **willingness is moderate**. Result: a **balanced** profile, exclusion list for tobacco and weapons, a liquidity reserve of one to two years of spending, and a succession conversation.
+
+## 6. Goals-based approach
+Many private banks split wealth into **buckets**: liquidity (one to three years of spending, cash and short bonds), lifestyle (a balanced portfolio for long-term spending), legacy or aspirational (growth assets, private markets, philanthropy). Clients understand buckets better than a single risk number, and are less likely to sell everything in a downturn.
+
+## 7. In an interview
+"How would you assess a new client?" KYC and source of wealth; goals; ability and willingness to take risk; constraints (TTLLU); knowledge and experience; then a documented recommendation. Mention suitability and the client's best interest: it shows you know this is a regulated, fiduciary-like role.`,
+ ideas:`**Start with KYC and AML (source of wealth and funds), then suitability: knowledge and experience, financial situation, objectives.**
+
+- MiFID II suitability for advice and discretionary; appropriateness for execution-only complex products; product governance defines target markets.
+- Risk profile = ability (objective) and willingness (subjective); the lower one usually governs.
+- IPS constraints: time horizon, taxes, liquidity, legal, unique circumstances.
+- Example: €8m, €200k spending → 2.5% withdrawal; high ability, moderate willingness → balanced.
+- Goals-based buckets: liquidity, lifestyle, legacy.`,
+ traps:[
+  "Letting a high willingness override a low ability to take risk.",
+  "Skipping source of wealth because the client is well known.",
+  "Confusing suitability (full assessment) with appropriateness (knowledge and experience only).",
+  "Forgetting sustainability preferences in the EU suitability assessment."
+ ],
+ read:[
+
+ ]},
+
+{name:"Asset allocation for private clients",
+ lesson:`## 1. Allocation decides most of the outcome
+For a diversified portfolio, the choice of how much goes to equities, bonds, cash and alternatives explains most of the variation in returns over time. Security selection matters less. CFA Level I covers the theory (Portfolio Management); here is the private-client version.
+
+## 2. Model portfolios
+Most banks offer a few **risk profiles**, each with a strategic allocation, for example:
+- **Conservative:** around 20–30% equities, the rest mostly high-quality bonds and cash.
+- **Balanced:** around 50% equities, 40% bonds, 10% alternatives or cash.
+- **Growth:** around 70–80% equities.
+
+These are typical shapes, not standards. The **strategic asset allocation (SAA)** is the long-term mix; **tactical asset allocation (TAA)** tilts it for a few months based on a market view.
+
+## 3. What is different with wealthy clients
+- **Taxes:** after-tax returns matter; location of assets (which account, which structure) and turnover affect them. Rules differ by country, so always work with tax advisors.
+- **Concentration:** a business, company shares or real estate often dominate the wealth (lesson 5).
+- **Private markets:** UHNW clients often hold 10–30% or more in private equity, private credit, real estate and hedge funds; illiquid, with capital calls.
+- **Currency:** wealth in several currencies; base currency of spending matters.
+- **Lending:** a Lombard loan can fund liquidity needs without selling the portfolio.
+- **Values:** ESG preferences and exclusions.
+
+## 4. A withdrawal check
+
+> Portfolio €8m, spending €200k a year, so 2.5% a year. If the portfolio is expected to earn 5% a year before inflation of 2.5%, the real expected return is about 2.5%, roughly equal to the spending rate.
+> Conclusion: the capital is expected to keep its real value on average, but a bad decade could reduce it. A higher equity share raises expected return and the range of outcomes; the liquidity bucket protects spending during falls.
+
+Withdrawal rates of about 3–4% a year are widely used as a starting point for long horizons; they are rules of thumb from historical studies, not guarantees.
+
+## 5. Rebalancing
+When markets move, the allocation drifts. Rebalancing (back to the SAA when weights leave a band, such as ±5 points) sells what rose and buys what fell: a disciplined way to control risk. Explain it to clients before a crisis, not during.
+
+## 6. Behaviour is part of the job
+Wealthy clients are not more rational than others. Common biases (CFA Level I Behavioral Finance, deeper at Level III): loss aversion, overconfidence from business success, home bias, familiarity with their own industry, recency. A good advisor's biggest value is often **stopping the client from selling at the bottom**.
+
+## 7. In an interview
+"How would you invest €5 million for a 60-year-old client?" Do not jump to products. Ask about goals, spending, horizon, other assets, taxes, attitudes; then propose a profile, a strategic allocation, a liquidity reserve, and how you would monitor and rebalance.`,
+ ideas:`**Strategic allocation drives most of the result; tactical tilts are small and temporary.**
+
+- Typical profiles: conservative (~20–30% equities), balanced (~50%), growth (~70–80%).
+- Wealthy-client specifics: after-tax returns, concentration, private markets (often 10–30%+ for UHNW), currencies, Lombard lending, ESG.
+- Withdrawal check: €200k on €8m = 2.5%; compare with expected real return.
+- Rebalance within bands; explain it before markets fall.
+- Behaviour coaching is a core part of the value.`,
+ traps:[
+  "Answering 'how would you invest X' with products before asking about the client.",
+  "Ignoring illiquidity and capital calls of private markets.",
+  "Comparing withdrawal rates with nominal instead of real returns.",
+  "Treating tactical calls as the main source of value."
+ ],
+ read:[
+  ["i:articles/financial-theory/08/core-satellite-investing.asp","Core-satellite investing",""]
+ ]},
+
+{name:"Products: funds, bonds, structured products and Lombard loans",
+ lesson:`## 1. The toolkit
+A private banker should explain each product in two sentences: **what it does, what can go wrong, and what it costs**. Interviewers often hand you a product and ask exactly that.
+
+## 2. Funds
+- **Mutual funds / UCITS funds:** diversified, regulated, daily liquidity. Active funds charge more; check performance net of fees against a benchmark.
+- **ETFs:** low-cost index exposure, traded on exchange. Useful as the core of a portfolio (core-satellite).
+- **Alternative funds:** hedge funds, private equity and private credit funds: higher minimums, lower liquidity, often only for professional or eligible investors.
+
+## 3. Bonds
+- Government and investment-grade corporate bonds for stability and income; high yield for extra return with credit risk.
+- Key risks: **interest rate risk** (duration), **credit risk**, **liquidity**, and **currency** for bonds in a foreign currency. CFA Level I Fixed Income gives you all the tools; in client language, duration is "how much the price falls if rates rise by one point".
+
+## 4. Structured products
+A note issued by a bank combining a bond-like part with an option, to give a tailored payoff.
+- **Capital-protected note:** at maturity you get back at least 100% (or 90%), plus part of an index's rise. Paid for by giving up interest and part of the upside.
+- **Reverse convertible:** pays a high coupon, but if a stock falls below a barrier you receive the shares (worth less) instead of your money back. You are effectively **selling a put**.
+- **Autocallable:** redeems early with a coupon if the underlying is above a level on observation dates; risky if it falls below a barrier.
+
+> **Example (reverse convertible):** €100,000, one year, coupon 8%, on a stock at €50 with a barrier at 70% (€35).
+> If the stock ends at €45 (above the barrier): you get €100,000 + €8,000 = **€108,000**.
+> If it ends at €30 (barrier breached): you get 100,000 / 50 = **2,000 shares** worth €60,000, plus the €8,000 coupon = **€68,000**: a 32% loss.
+
+Risks to explain: **issuer credit risk** (the bank that issued it can fail), complexity, embedded fees, limited liquidity before maturity. Suitability checks are strict for these products.
+
+## 5. Lombard loans
+A loan secured by the client's portfolio. The bank lends a percentage of each asset's value (the **loan-to-value**, for example around 70% on investment-grade bonds, 50–60% on large-cap equities, less on concentrated or illiquid positions).
+
+> **Example:** portfolio €2m, average lending value 60% → credit line up to €1.2m. Client draws €600k to buy a property, avoiding selling investments.
+> If the portfolio falls 25% to €1.5m, lending value becomes €900k: still above €600k. A fall large enough to push lending value below the loan triggers a **margin call**: add collateral, repay, or the bank sells assets.
+
+Uses: bridge financing, tax-efficient liquidity, avoiding forced sales. Risk: leverage on a falling portfolio.
+
+## 6. Costs
+Total cost = mandate or advisory fee + product costs (fund fees, structuring margins) + transaction costs. EU rules require **ex-ante and ex-post cost disclosure** in money and percentage. A client should always know what they pay in total.
+
+## 7. In an interview
+"Explain a reverse convertible to a client." Good answer: high coupon in exchange for taking the risk of a large fall in one stock; if the stock falls below the barrier you end up owning it at a loss; you also depend on the issuing bank. Suitable only if you are comfortable owning that stock at that price.`,
+ ideas:`**For every product: what it does, what can go wrong, what it costs.**
+
+- Funds: UCITS and ETFs for the core; alternatives for eligible clients, illiquid.
+- Bonds: rate risk (duration), credit, liquidity, currency.
+- Structured products: bond plus option; reverse convertible = selling a put; autocallables; issuer credit risk.
+- Reverse convertible example: barrier breached at €30 → 2,000 shares worth €60k + €8k coupon = €68k.
+- Lombard loan: credit line against a portfolio at a loan-to-value; margin call if lending value falls below the loan.
+- Cost disclosure in money and %, ex-ante and ex-post.`,
+ traps:[
+  "Forgetting the issuer's credit risk in a structured product.",
+  "Describing capital protection as free: it costs interest and upside.",
+  "Ignoring the margin call risk of a Lombard loan.",
+  "Quoting only the mandate fee instead of the total cost."
+ ],
+ read:[
+  ["i:terms/b/bond-valuation.asp","Bond valuation",""],
+  ["i:terms/c/capm.asp","Capital asset pricing model",""]
+ ]},
+
+{name:"Concentrated wealth and succession",
+ lesson:`## 1. Why this is the UHNW topic
+Most large fortunes were built by **concentration**: one business, one stock, one property portfolio. Keeping wealth usually needs **diversification**, and passing it on needs **planning**. These two subjects separate UHNW advice from ordinary portfolio management. CFA Level III covers them in depth; interviews ask for the logic.
+
+## 2. Concentrated positions
+Examples: a founder with most of her wealth in her listed company's shares; an executive with large stock awards; a family owning a private business.
+
+Risks: a single company can lose most of its value; the owner's income, job and wealth all depend on it.
+
+Ways to reduce concentration:
+- **Staged selling:** a plan to sell a fixed amount each quarter, sometimes through a pre-set trading plan (helpful for insiders subject to market-abuse rules).
+- **Hedging:** buying puts, or a **collar** (buy a put, sell a call to pay for it), which limits losses for a period while keeping ownership.
+- **Exchange funds** (in some markets): pooling concentrated stocks with other holders to get a diversified share.
+- **Borrowing against the position** (Lombard or margin loan) to diversify without selling, at the cost of leverage.
+- **Gifting or charitable structures**, depending on tax rules.
+
+Taxes and lock-ups shape the choice; the advisor coordinates with tax and legal specialists rather than giving tax advice alone.
+
+## 3. The business owner
+For an entrepreneur, the company is the biggest asset. Key questions: when and how to exit (sale to a strategic buyer, to PE, to management, to the next generation), how to prepare the company (clean accounts, management team), and what to do with the proceeds (the "liquidity event", often the moment a private bank wins the client).
+
+## 4. Succession planning
+- **Wills** and the rules of inheritance, which vary a lot by country (some impose fixed shares for children).
+- **Holding structures:** a family holding company, foundations, trusts in common-law countries; used to keep assets together, set rules and plan taxes. Their legal and tax effect differs by jurisdiction: always specialist advice.
+- **Family governance:** a **family charter** (values, rules for who can work in the business), a family council, education of the next generation.
+- **Insurance** to fund inheritance taxes or equalize between heirs who take the business and heirs who do not.
+
+Research and practitioner experience suggest that many family fortunes shrink over two or three generations, mostly through division among heirs, spending and conflict rather than bad investments. The advisor's role is as much about communication within the family as about portfolios.
+
+## 5. Philanthropy
+Donor-advised funds, foundations, impact investing. Often a way to involve the next generation and express values.
+
+## 6. In an interview
+"A founder has 80% of her wealth in her company's shares. What do you suggest?" Understand goals and constraints (lock-ups, insider rules, taxes, emotional attachment); propose a staged diversification plan, possibly with a collar for the near term or a Lombard line for liquidity; coordinate tax and legal advice; revisit the estate plan.`,
+ ideas:`**UHNW advice is about diversifying concentrated wealth and planning its transfer.**
+
+- Concentration tools: staged selling (pre-set plans for insiders), collars and puts, exchange funds, borrowing against the position, gifting.
+- Business owners: exit route and preparation; the liquidity event is when private banks win clients.
+- Succession: wills and inheritance rules, holding companies, foundations, trusts (jurisdiction-specific), family charter and governance, insurance.
+- Family wealth tends to shrink across generations mainly through division, spending and conflict.
+- Always coordinate with tax and legal specialists.`,
+ traps:[
+  "Recommending to sell everything at once without considering tax, lock-ups or the client's attachment.",
+  "Giving tax or legal advice beyond your role.",
+  "Treating succession as only a legal document, ignoring family governance.",
+  "Forgetting that a collar caps the upside."
+ ],
+ read:[
+  ["i:terms/p/privateequity.asp","Private equity (for business-owner exits)",""]
+ ]},
+
+{name:"The client conversation and the interview",
+ lesson:`## 1. The job is a conversation
+Private banking interviews often include a **role play**: the interviewer is a client, and you must run a first meeting, explain a loss, or present a proposal. They test listening, structure, honesty and composure as much as technical knowledge.
+
+## 2. A first meeting, in five steps
+1. **Build rapport and set the agenda:** who you are, how long the meeting is, what you will cover.
+2. **Ask open questions** and listen more than you talk: "What would you like this money to do for you and your family?" "How did you feel in 2020 or 2022 when markets fell?"
+3. **Summarize** what you heard: goals, horizon, concerns.
+4. **Explain how you work:** service model, process, costs, reporting.
+5. **Agree next steps:** documents needed (KYC), a proposal date.
+
+## 3. Explaining a loss
+Clients remember how you behaved in bad markets. Structure:
+- **Facts first:** "Your portfolio is down 8% this year; the global equity market is down 15%."
+- **Why:** what drove it, in plain words.
+- **What it means for their goals:** spending is covered by the liquidity bucket; the long-term plan still holds (or what changes).
+- **What we will do:** rebalance, review, stay the course, or adjust if circumstances changed.
+- Never promise a recovery date; never blame the client.
+
+## 4. Questions you are likely to get
+- **"Why private banking and not investment banking?"** Long-term relationships, combining markets with people, seeing the impact on families.
+- **"How would you find new clients?"** Referrals from existing clients and professionals (lawyers, accountants), the bank's corporate clients (their owners), events, liquidity events (business sales).
+- **"What would you recommend now?"** Show a market view (rates, equities, risks) but tie it to the client's profile; never a one-size-fits-all tip.
+- **"A client asks you to do something against the rules."** Refuse politely, explain why, escalate to compliance if needed. Use the CFA Code and Standards language: loyalty, prudence and care, suitability, fair dealing.
+- **"Explain [product] to a client who is not technical."** Two sentences, one example, the main risk.
+
+## 5. What makes a strong junior candidate
+- Clear, simple explanations; no jargon unless the client uses it.
+- Ethics and compliance instinct.
+- Market literacy: read the financial news daily and have two or three views you can defend.
+- Languages (English plus others) for international banks.
+- CFA progress: a clear signal for investment-advisor roles.
+
+## 6. Practise it
+Say these answers aloud. A two-minute "first meeting" and a two-minute "explaining a loss" are worth preparing word for word, then delivering naturally.`,
+ ideas:`**Client meetings: rapport and agenda, open questions, summarize, explain how you work and costs, agree next steps.**
+
+- Explaining a loss: facts vs market, why, impact on goals, what we do; no promises, no blame.
+- New clients come from referrals, professionals, the bank's corporate clients, liquidity events.
+- Requests against the rules: refuse, explain, escalate; use CFA Standards language.
+- Strong juniors: clear explanations, ethics, daily market reading, languages, CFA progress.
+- Prepare and rehearse aloud a first-meeting and a bad-news script.`,
+ traps:[
+  "Talking more than the client in a first meeting.",
+  "Promising when markets will recover.",
+  "Giving the same recommendation regardless of the client's profile.",
+  "Hesitating on an ethics question instead of refusing and escalating."
+ ],
+ read:[
+  ["i:terms/s/softdollars.asp","Soft dollars (a classic ethics topic)",""]
+ ]}
+]);
+/* Interview drill (Learn, "Beyond the curriculum"): interview questions with model answers, practised as cards
+   (answer aloud, reveal, mark "knew it" / "not yet"; progress in DB.drill by id). Row = [id, track, question, answer].
+   Ids are permanent (saved progress uses them): never renumber, only append. Numbers match the lessons. */
+CFA_DATA.drill = [
+ /* Accounting and valuation */
+ ["AV01","Accounting & valuation","Walk me through the three financial statements.","The income statement shows revenue, expenses and net income over a period. Net income starts the cash flow statement, which adds back non-cash items, adjusts for working capital and adds investing and financing flows to get the change in cash. Net income less dividends goes to retained earnings on the balance sheet, and ending cash becomes the balance sheet cash line, so assets equal liabilities plus equity."],
+ ["AV02","Accounting & valuation","Depreciation rises by $10 with a 25% tax rate. Walk it through the statements.","Income statement: operating income −10, tax −2.5, net income −7.5. Cash flow: net income −7.5, add back depreciation +10, cash +2.5. Balance sheet: cash +2.5, PP&E −10, assets −7.5; retained earnings −7.5. It balances."],
+ ["AV03","Accounting & valuation","If you could use only one financial statement, which would you pick and why?","The cash flow statement: it shows whether the business really generates cash, which is the hardest thing to manipulate. (The balance sheet is also defensible: with two balance sheets you can rebuild a lot.) Give the reason either way."],
+ ["AV04","Accounting & valuation","How can a profitable company run out of cash?","Growth ties up cash in receivables and inventory before customers pay, and heavy capex uses cash that does not appear as an expense. Profit is an accrual figure; cash depends on timing."],
+ ["AV05","Accounting & valuation","A company buys $100 of inventory with cash. What happens?","No income statement effect until it is sold. Operating cash flow −100 (increase in inventory). Balance sheet: cash −100, inventory +100; totals unchanged."],
+ ["AV06","Accounting & valuation","A $50 goodwill impairment: effect on the statements?","Net income falls by 50 (usually no tax saving, since goodwill impairment is generally not deductible). It is added back on the cash flow statement, so cash is unchanged. Goodwill −50, retained earnings −50."],
+ ["AV07","Accounting & valuation","How is stock-based compensation treated, and is it a real cost?","It is an expense on the income statement, added back as non-cash on the cash flow statement, and raises equity. It is a real cost to shareholders through dilution: either treat it as a cash-like expense in free cash flow or count the extra shares, not neither."],
+ ["AV08","Accounting & valuation","What is the difference between enterprise value and equity value?","Equity value is the shareholders' claim: share price × diluted shares. Enterprise value is the value of the operations to all capital providers: equity value + debt + preferred + non-controlling interest − cash."],
+ ["AV09","Accounting & valuation","Why do we subtract cash to get enterprise value?","Cash is not needed to run the operations and a buyer effectively gets it back, so EV measures only the operating business."],
+ ["AV10","Accounting & valuation","A company raises $100 of debt and holds the cash. What happens to EV and equity value?","Nothing to either: debt +100 and cash +100 offset in EV, and equity value is unchanged because no value was created."],
+ ["AV11","Accounting & valuation","Why can't you use EV / net income?","Net income is after interest, so it belongs only to shareholders; EV belongs to all capital providers. Pair EV with pre-interest figures (revenue, EBITDA, EBIT) and equity value with post-interest figures (net income, book value)."],
+ ["AV12","Accounting & valuation","How do you calculate diluted shares?","Treasury stock method: assume in-the-money options are exercised and the proceeds buy back shares at the current price; add the net new shares, RSUs and in-the-money convertibles to basic shares."],
+ ["AV13","Accounting & valuation","Walk me through a DCF.","Project unlevered free cash flow for five to ten years; estimate a terminal value with perpetual growth or an exit multiple; discount both at WACC to get enterprise value; subtract net debt and other claims for equity value; divide by diluted shares."],
+ ["AV14","Accounting & valuation","How do you calculate unlevered free cash flow?","EBIT × (1 − tax rate) + D&A − capex − increase in net working capital."],
+ ["AV15","Accounting & valuation","Unlevered vs levered free cash flow: which discount rate for each?","Unlevered FCF belongs to all capital providers: discount at WACC to get enterprise value. Levered FCF (after interest and debt flows) belongs to shareholders: discount at the cost of equity to get equity value."],
+ ["AV16","Accounting & valuation","How do you calculate WACC?","E/(D+E) × cost of equity + D/(D+E) × pre-tax cost of debt × (1 − tax rate), using market-value (target) weights. Cost of equity usually from CAPM: risk-free + beta × equity risk premium."],
+ ["AV17","Accounting & valuation","Why unlever and relever beta?","Peer betas include each peer's leverage. Unlever them to remove financing risk, average the asset betas, then relever at the target's capital structure."],
+ ["AV18","Accounting & valuation","Gordon growth vs exit multiple for terminal value?","Gordon: final FCF × (1 + g) / (WACC − g), assumes growth forever. Exit multiple: final EBITDA × a peer multiple, assumes a sale. Compute one and check the multiple or growth rate it implies."],
+ ["AV19","Accounting & valuation","How do you choose the terminal growth rate?","At or below long-run nominal economic growth (about 2–3% in developed markets), consistent with final-year reinvestment, and check the implied exit multiple against peers."],
+ ["AV20","Accounting & valuation","Which moves a DCF more: 1% lower WACC or 10% higher revenue?","Usually the discount rate, because it acts on the terminal value, which is most of EV; one point of WACC can move value by around 20%. Confirm with a sensitivity table."],
+ ["AV21","Accounting & valuation","When is a DCF a poor tool?","Banks and insurers (debt is operating), early-stage companies with no visible cash flow, and businesses driven by commodity prices. Use dividend or excess-return models, or multiples."],
+ ["AV22","Accounting & valuation","What did IFRS 16 change for valuation multiples?","Leases moved onto the balance sheet; rent became depreciation plus interest, so EBITDA rose. Include lease liabilities in EV when EBITDA excludes lease costs, and be consistent across peers."],
+ /* IB and M&A */
+ ["IB01","IB & M&A","How would you value a company?","Trading comps and a DCF, plus precedent transactions for a sale and an LBO analysis as a floor if a financial buyer is likely. Show the ranges on a football field and explain where they overlap and why they differ."],
+ ["IB02","IB & M&A","How do you choose comparable companies?","Same industry and business model, then similar size, growth, margins and geography. Five to ten close peers beat many loose ones; use the median."],
+ ["IB03","IB & M&A","Why are precedent transaction multiples usually higher than trading multiples?","They include a control premium and part of the expected synergies; auctions also push prices up."],
+ ["IB04","IB & M&A","What makes a merger accretive or dilutive?","Compare pro forma EPS with the acquirer's standalone EPS. Shortcut: accretive if the target's earnings yield (net income / price paid) exceeds the weighted after-tax cost of the currency used (1 / acquirer P/E for stock, after-tax rate for debt, forgone interest for cash), before synergies."],
+ ["IB05","IB & M&A","Is an accretive deal always a good deal?","No. EPS accretion says nothing about whether the price is below the value created; a high-P/E acquirer can show accretion while overpaying."],
+ ["IB06","IB & M&A","Why would a company pay with stock rather than cash?","Its shares are highly valued, it lacks cash or debt capacity, or it wants the seller to share the risk. Downsides: dilution and a signal that management thinks its shares are expensive."],
+ ["IB07","IB & M&A","What are synergies, and which are more reliable?","Value from combining two companies: cost synergies (procurement, overhead, footprint) and revenue synergies (cross-selling). Cost synergies are more reliable and are valued more by investors."],
+ ["IB08","IB & M&A","What is goodwill in an acquisition?","Purchase price minus the fair value of identifiable net assets acquired. It is not amortized under IFRS or US GAAP but tested for impairment at least yearly."],
+ ["IB09","IB & M&A","Why do you want to work in investment banking?","Personal, specific and honest: the learning curve in valuation and deals, exposure to senior decision-makers, the link to your corporate finance master's and CFA studies, and a concrete example of a deal you followed and why it interested you."],
+ ["IB10","IB & M&A","Tell me about a recent deal you followed.","Name the buyer, target, price and multiple; the strategic rationale; how it was financed; one risk; and your view on whether the price made sense. Prepare two deals, ideally one in your target region."],
+ /* Private equity */
+ ["PE01","Private equity","Walk me through an LBO.","A sponsor buys a company with mostly debt and some equity, uses the company's cash flow to pay down debt over three to seven years, then sells it. Returns come from EBITDA growth, debt paydown and any multiple expansion; measured by IRR and multiple of money."],
+ ["PE02","Private equity","What makes a good LBO candidate?","Stable, recurring cash flow; low capex and working capital needs; pricing power; non-cyclical demand; clear improvement levers; capable management; a credible exit."],
+ ["PE03","Private equity","Why use leverage in a buyout?","Debt is cheaper than equity and interest is tax-deductible; a smaller equity cheque magnifies the percentage return. It also magnifies losses and adds default risk."],
+ ["PE04","Private equity","What IRR is 2x in 5 years? 3x in 5 years? 2x in 3 years?","About 15%, 25% and 26%. IRR = MoM^(1/years) − 1."],
+ ["PE05","Private equity","Where do LBO returns come from?","EBITDA growth (revenue and margins), debt paydown (deleveraging) and multiple expansion. A solid case relies on the first two."],
+ ["PE06","Private equity","How would you increase the IRR of a deal?","Lower entry price, more (or cheaper) debt, faster EBITDA growth or margin gains, an earlier exit, a dividend recapitalization, or a higher exit multiple; each with its own risk."],
+ ["PE07","Private equity","Paper LBO: 8.0x on EBITDA 100, 5.0x debt, fees 20. Sources and uses?","Uses: EV 800 + fees 20 = 820. Sources: debt 500 + sponsor equity 320 = 820."],
+ ["PE08","Private equity","What is a cash sweep?","A loan term requiring a share of excess free cash flow to repay debt early, in order of seniority."],
+ ["PE09","Private equity","What is PIK interest?","Payment-in-kind: interest is added to the principal instead of paid in cash. It preserves cash but compounds, so debt at exit is higher."],
+ ["PE10","Private equity","Term Loan A vs Term Loan B?","Both senior secured. TLA amortizes significantly and is held by banks; TLB has minimal amortization (often 1% a year), a bullet at maturity and is sold to institutional investors."],
+ ["PE11","Private equity","Maintenance vs incurrence covenants?","Maintenance covenants are tested regularly (for example quarterly leverage); incurrence covenants only when the company takes an action such as borrowing more or paying a dividend."],
+ ["PE12","Private equity","How is a PE general partner paid?","A management fee (around 1.5–2% a year) and carried interest (around 20% of profits after LPs receive capital plus a hurdle, often 8%)."],
+ ["PE13","Private equity","TVPI vs DPI?","TVPI = (distributions + remaining value) / paid-in capital: the total multiple. DPI = distributions / paid-in: the cash actually returned."],
+ ["PE14","Private equity","What is the J-curve?","Fund returns are negative in early years (fees and new deals) and turn positive as companies are improved and sold."],
+ ["PE15","Private equity","What is buy-and-build?","Buy a platform company, add smaller bolt-ons at lower multiples, and sell the larger group at the platform's multiple or higher (multiple arbitrage). Integration is the main risk."],
+ ["PE16","Private equity","What is a locked box?","The price is fixed on a past balance sheet date; the seller promises no value leaks out of the company until closing. The alternative is completion accounts, with adjustments after closing."],
+ ["PE17","Private equity","Pitch me a company for an LBO.","Pick a mid-sized, boring, cash-generative business: what it does, why it fits LBO criteria, two value-creation levers, one key risk with a mitigant, a rough entry multiple and why returns could reach 20%. Two minutes."],
+ ["PE18","Private equity","How should an investment memo be structured?","Recommendation first; business; thesis; market; moat; financials; value creation plan; returns (base, upside, downside) and attribution; risks with mitigants; exit."],
+ ["PE19","Private equity","Northfield case: what IRR in the base case, and without the margin plan?","Base 19.7% (MoM 2.45x); without the margin plan 16.3%, so the plan adds about 3.4 points and must be tested in diligence."],
+ ["PE20","Private equity","Why do most PE juniors come from banking or deal advisory?","They already know modeling, valuation and the deal process; PE hires people who can work on deals from day one."],
+ /* Equity research and asset management */
+ ["ER01","Equity research & AM","Pitch me a stock.","Recommendation and target price; what the company does; two or three thesis points where you differ from the market; valuation (method and upside); catalysts; key risks and what would make you wrong. Two minutes, one stock you know well."],
+ ["ER02","Equity research & AM","What makes a good stock pitch thesis?","A specific, testable view that differs from consensus (for example margins will beat expectations because of X), with evidence and a catalyst, not a description of a good company."],
+ ["ER03","Equity research & AM","P/E vs EV/EBITDA: when do you use each?","EV/EBITDA compares businesses regardless of capital structure and depreciation; P/E is natural for banks and insurers and for shareholders' view of earnings, but is distorted by leverage and tax."],
+ ["ER04","Equity research & AM","What does a sell-side equity research analyst do?","Covers a group of stocks: builds and updates models, writes notes and initiation reports, sets ratings and target prices, talks to management and to buy-side clients."],
+ ["ER05","Equity research & AM","Buy-side vs sell-side?","Sell-side (brokers, banks) produces research and services for investors; buy-side (asset managers, hedge funds) invests money and uses research to make decisions."],
+ ["ER06","Equity research & AM","How would you build a portfolio for a balanced investor?","Start from objectives and constraints, set a strategic allocation (for example around 50% equities, 40% bonds, 10% alternatives or cash), diversify within each class, choose implementation (ETFs, funds, securities) and rebalance within bands."],
+ ["ER07","Equity research & AM","Active vs passive management?","Passive tracks an index at low cost; active tries to beat it after fees. Most active funds underperform their benchmark after fees over long periods, so active needs a clear edge."],
+ ["ER08","Equity research & AM","What is your view on markets now?","Prepare two or three views you can defend with data (rates, valuations, earnings, a sector), each with what would change your mind. Show you read the news daily; avoid predictions without reasoning."],
+ ["ER09","Equity research & AM","What is the Sharpe ratio, and its limit?","(Portfolio return − risk-free rate) / standard deviation: return per unit of total risk. It assumes volatility is the right risk measure and can mislead for skewed or illiquid returns."],
+ ["ER10","Equity research & AM","How would you tell if a company's earnings are low quality?","Earnings growing much faster than operating cash flow, rising receivables or inventory days, large or recurring adjustments, capitalized costs, aggressive revenue recognition, frequent auditor or CFO changes."],
+ /* Private wealth */
+ ["PW01","Private wealth","What are HNWI and UHNWI?","Industry conventions: HNWI usually at least $1 million of investable assets (excluding the main home); UHNWI usually $30 million or more. Each bank sets its own thresholds."],
+ ["PW02","Private wealth","Advisory vs discretionary vs execution-only?","Execution-only: the client decides, no advice. Advisory: the bank recommends, the client decides each trade. Discretionary: the manager decides within a signed mandate."],
+ ["PW03","Private wealth","How do you assess a new private client?","KYC and source of wealth; goals; ability and willingness to take risk; constraints (time horizon, taxes, liquidity, legal, unique); knowledge and experience; then a documented, suitable recommendation."],
+ ["PW04","Private wealth","Source of wealth vs source of funds?","Source of wealth: how the overall fortune was built (business sale, inheritance). Source of funds: where the specific money being deposited comes from."],
+ ["PW05","Private wealth","What does MiFID II suitability require?","Assess the client's knowledge and experience, financial situation (including ability to bear losses) and objectives (risk tolerance, horizon, sustainability preferences), and document why the recommendation fits."],
+ ["PW06","Private wealth","Ability vs willingness to take risk: which wins?","Usually the lower one. A client willing but unable to take risk should not get an aggressive portfolio; one able but unwilling may need education, not pressure."],
+ ["PW07","Private wealth","A client needs €200k a year from €8m. Is that sustainable?","It is a 2.5% withdrawal rate. If the expected real return is around 2.5% or more, capital should hold its real value on average; keep one to two years of spending in a liquidity bucket for bad markets."],
+ ["PW08","Private wealth","Explain a reverse convertible to a client.","You get a high coupon in exchange for the risk of a large fall in one stock: if it ends below the barrier, you receive the shares, worth less than you invested. You also depend on the issuing bank's credit. Suitable only if you would be happy to own that stock at that price."],
+ ["PW09","Private wealth","What is a Lombard loan, and its main risk?","A loan secured by the client's portfolio, up to a loan-to-value on each asset. It gives liquidity without selling; the risk is a margin call if the portfolio falls and the lending value drops below the loan."],
+ ["PW10","Private wealth","A founder has 80% of her wealth in her company's shares. What do you suggest?","Understand goals and constraints (lock-ups, insider rules, taxes, attachment); a staged diversification plan, possibly a collar or a Lombard line for near-term needs; coordinate tax and legal advice; revisit the estate plan."],
+ ["PW11","Private wealth","What is a collar?","Buying a put and selling a call on a holding: it limits the loss below the put strike and caps the gain above the call strike, often at little or no upfront cost."],
+ ["PW12","Private wealth","How would you explain a 10% portfolio loss to a client?","Facts versus the market, what drove it, what it means for their goals (spending covered, plan intact or what changes), what you will do (rebalance, review). No promises of recovery dates, no blame."],
+ ["PW13","Private wealth","How would you find new clients?","Referrals from clients and professionals (lawyers, accountants), owners of the bank's corporate clients, events, and liquidity events such as business sales."],
+ ["PW14","Private wealth","A client asks you to bend a rule for him. What do you do?","Refuse politely, explain why, and escalate to compliance if needed. Duties of loyalty, prudence and care, and fair dealing come before the relationship."],
+ ["PW15","Private wealth","Why do family fortunes often shrink across generations?","Mostly division among heirs, spending and family conflict rather than poor investments; hence family governance, education of the next generation and succession planning."],
+ ["PW16","Private wealth","Why private banking rather than investment banking?","Long-term client relationships, combining markets with people, and seeing the impact on families' goals. Make it personal and specific."]
+];
 /* Study links shown under a question you got wrong.
    Each concept: L(label, areas, regex, ...links)
      areas  – space-separated concept areas (see AREAS) the concept belongs to
@@ -31733,7 +32603,7 @@ const setText = s=>s._txt || (s._txt = (s.id+' '+s.topic+' '+(s.vignette||'')+' 
 
 /* ---------- persistence ---------- */
 let DB = load();
-function blank(settings){ return {history:{},bookmarks:{},exams:[],srs:{},plans:{},cards:{},settings:Object.assign({theme:'auto',level:1},settings||{})}; }
+function blank(settings){ return {history:{},bookmarks:{},exams:[],srs:{},plans:{},cards:{},drill:{},settings:Object.assign({theme:'auto',level:1},settings||{})}; }
 /* Progress read from this browser or from an imported file keeps only well-formed parts, so a damaged or edited file
    can neither stop the app from starting nor put markup on the page: every number shown is forced to a number.
    Returns null when the data has no answer history at all. (Helpers are inside: this runs before the consts below.) */
@@ -31749,6 +32619,7 @@ function cleanDB(d){
   out.history = map(d.history, h=>isObj(h) ? {a:num(h.a,0), s:num(h.s,0), last:h.last==null?null:num(h.last,0), t:num(h.t,0)} : undefined);
   out.bookmarks = map(d.bookmarks, v=>v ? true : undefined);
   out.srs = map(d.srs, r=>isObj(r) ? {step:num(r.step,0), due:num(r.due,0)} : undefined);
+  out.drill = map(d.drill, v=>isObj(v) ? {k:num(v.k,0)?1:0, t:num(v.t,0)} : undefined);
   out.cards = map(d.cards, c=>isObj(c) ? {step:num(c.step,0), due:c.due==null?null:num(c.due,0)} : undefined);
   out.plans = map(d.plans, p=>isObj(p) && /^\d{4}-\d{2}-\d{2}$/.test(p.exam) ? {exam:p.exam, hours:num(p.hours,10), start:num(p.start,0), skip:Array.isArray(p.skip)?p.skip.filter(x=>typeof x==='string'):[]} : undefined);
   out.exams = (Array.isArray(d.exams) ? d.exams : []).filter(isObj).map(e=>{
@@ -33499,15 +34370,15 @@ function vLearn(app){
   if(open && open.ideas) return learnModule(app, open);
   const all = (D.modules||[]).filter(m=>m.level===1), mods = all.filter(m=>!isBeyond(m));
   const groups = learnGroups(), g = S.learn.topic && groups[S.learn.topic-1];
-  if(g) return learnTopic(app, g, all);
+  if(g) return g.drill ? learnDrill(app) : learnTopic(app, g, all);
   const ts = topicStats(1);
   const card = (gr,i)=>{
     const tm = all.filter(m=>m.topic===gr.name), v = ts[gr.name];
-    const sub = gr.books ? plural(D.reading.length,'book') : `${plural(tm.length,'module')}${v&&v.attempted?` · ${v.attempted} answered`:''}`;
+    const sub = gr.books ? plural(D.reading.length,'book') : gr.drill ? `${plural(D.drill.length,'card')} · ${D.drill.filter(d=>DB.drill[d[0]]&&DB.drill[d[0]].k).length} known` : `${plural(tm.length,'module')}${v&&v.attempted?` · ${v.attempted} answered`:''}`;
     const has = !!(v&&v.attempted), p = has ? pct(v.score,v.attempted) : 0;
-    return `<button class="lm-card" data-grp="${i+1}" title="Open ${esc(gr.name)}"><b>${esc(gr.books?gr.name:short(gr.name))}</b><small>${sub}</small>${gr.beyond||gr.books?'':`<div class="lm-card-bar"><div class="meter ${has?barCls(p):'none'}"><i style="width:${has?Math.max(p,2):0}%"></i></div><span>${has?p+'%':'–'}</span></div>`}</button>`;
+    return `<button class="lm-card" data-grp="${i+1}" title="Open ${esc(gr.name)}"><b>${esc(gr.books?gr.name:short(gr.name))}</b><small>${sub}</small>${gr.beyond||gr.books||gr.drill?'':`<div class="lm-card-bar"><div class="meter ${has?barCls(p):'none'}"><i style="width:${has?Math.max(p,2):0}%"></i></div><span>${has?p+'%':'–'}</span></div>`}</button>`;
   };
-  const core = groups.filter(x=>!x.beyond && !x.books), extra = groups.filter(x=>x.beyond || x.books);
+  const isX = x=>x.beyond || x.books || x.drill, core = groups.filter(x=>!isX(x)), extra = groups.filter(isX);
   app.innerHTML = `<div class="content">
     <div class="page-head"><div><div class="eyebrow">${LEVELS[1]} · ${CURRICULUM_YEAR} curriculum · ${mods.length} learning modules</div><h1>Learning map</h1><p>One page per learning module of the official topic outline: key ideas, traps, formulas, a full lesson and practice on that module alone. Pick a topic.</p></div></div>
     <div class="lm-grid">${core.map(x=>card(x, groups.indexOf(x))).join('')}</div>
@@ -33520,8 +34391,36 @@ function vLearn(app){
 function learnGroups(){
   const all = (D.modules||[]).filter(m=>m.level===1);
   return [...TOPICS[1].filter(t=>all.some(m=>m.topic===t)).map(name=>({name})),
+    ...(D.drill&&D.drill.length ? [{name:'Interview drill', drill:true}] : []),
     ...[...new Set(all.filter(isBeyond).map(m=>m.topic))].map(name=>({name, beyond:true})),
     ...(D.reading&&D.reading.length ? [{name:'Books worth reading', books:true}] : [])];
+}
+/* Interview drill: one card at a time (answer aloud, reveal, mark). Order: never seen, then "not yet" (oldest first),
+   then known (oldest first). DB.drill[id] = {k: 1 known / 0 not yet, t: last time}. */
+function learnDrill(app){
+  const st = S.learn.drill || (S.learn.drill = {track:'', cur:null, shown:false});
+  const tracks = [...new Set(D.drill.map(d=>d[1]))];
+  const pool = D.drill.filter(d=>!st.track || d[1]===st.track);
+  const rank = d=>{ const r = DB.drill[d[0]]; return !r ? [0,0] : [r.k?2:1, r.t]; };
+  const order = pool.map((d,i)=>[d,i]).sort((a,b)=>{ const x=rank(a[0]), y=rank(b[0]); return x[0]-y[0] || x[1]-y[1] || a[1]-b[1]; }).map(x=>x[0]);
+  const card = order.find(d=>d[0]===st.cur) || order[0];
+  st.cur = card ? card[0] : null;
+  const known = l=>l.filter(d=>DB.drill[d[0]]&&DB.drill[d[0]].k).length;
+  const r = card && DB.drill[card[0]];
+  app.innerHTML = `<div class="content">
+    <div class="lm-nav"><button class="btn ghost sm" id="lmMap">${icon('arrowL')}Learning map</button><span class="faint small num">${known(D.drill)} of ${D.drill.length} known</span></div>
+    <div class="page-head"><div><div class="eyebrow">Beyond the curriculum</div><h1>Interview drill</h1><p>Say your answer aloud first, then reveal the model answer and be honest. Cards you did not know come back first.</p></div></div>
+    <div class="seg lm-tracks"><button data-track="" class="${st.track?'':'on'}">All</button>${tracks.map(t=>{ const l=D.drill.filter(d=>d[1]===t); return `<button data-track="${esc(t)}" class="${st.track===t?'on':''}">${esc(t)} <span class="faint">${known(l)}/${l.length}</span></button>`; }).join('')}</div>
+    ${card?`<div class="panel lm-drill"><div class="panel-head"><div><p>${esc(card[1])}${r?` · ${r.k?'known':'not yet'} last time`:' · new'}</p><h2>${esc(card[2])}</h2></div></div>
+      ${st.shown?`<div class="lm-text lm-ans">${learnMd(card[3])}</div><div class="row lm-drill-act"><button class="btn ghost" data-mark="0">Not yet</button><button class="btn primary" data-mark="1">${icon('check')}Knew it</button></div>`
+        :`<div class="row lm-drill-act"><button class="btn primary lg" id="drReveal">Reveal the answer</button><button class="btn ghost" id="drSkip">Skip</button></div>`}</div>`:''}
+  </div>`;
+  const redraw = ()=>{ learnDrill(app); };
+  $('#lmMap').onclick = ()=>{ S.learn.topic=null; render(true); window.scrollTo(0,0); };
+  $$('[data-track]',app).forEach(b=>b.onclick=()=>{ st.track=b.dataset.track; st.cur=null; st.shown=false; redraw(); });
+  if($('#drReveal')) $('#drReveal').onclick = ()=>{ st.shown=true; redraw(); };
+  if($('#drSkip')) $('#drSkip').onclick = ()=>{ const i=order.indexOf(card); st.cur=(order[i+1]||order[0])[0]; st.shown=false; redraw(); };
+  $$('[data-mark]',app).forEach(b=>b.onclick=()=>{ DB.drill[card[0]] = {k:+b.dataset.mark, t:Date.now()}; save(); st.cur=null; st.shown=false; redraw(); });
 }
 function learnTopic(app, g, all){
   const tm = all.filter(m=>m.topic===g.name), done = tm.filter(m=>m.ideas).length;
@@ -33545,6 +34444,7 @@ function learnModule(app, m){
     <div class="page-head"><div><div class="eyebrow">${isBeyond(m)?'Beyond the curriculum · ':''}${esc(m.topic)}</div><h1>${esc(m.name)}</h1><p>${isBeyond(m)?'Interview and first-job preparation, not part of the CFA exam.':st.n?`${plural(st.n,'practice question')} in the bank${st.seen?`, ${st.seen} answered, ${st.acc}% right`:', none answered yet'}.`:'No practice questions match this module yet.'}</p></div>
       ${st.n?`<div class="row"><button class="btn primary lg" id="lmGo" title="10 questions, unseen first, easy to hard">${icon('zap')}Practice this module</button>${st.n>10?`<button class="btn ghost" id="lmAll" title="Every question of this module, easy to hard">All ${st.n}</button>`:''}</div>`:''}</div>
     ${m.lesson?`<details class="panel lm-lesson" open><summary class="panel-head"><div><h2>Lesson</h2><p>About ${readMins(m.lesson)} minutes of reading, with worked examples</p></div><span class="btn ghost sm lm-tog"></span></summary><div class="lm-text">${learnMd(m.lesson)}</div></details>`:''}
+    ${m.solution?`<details class="panel lm-lesson lm-sol"><summary class="panel-head"><div><h2>Model solution</h2><p>Open it only after you have tried the case yourself</p></div><span class="btn ghost sm lm-tog"></span></summary><div class="lm-text">${learnMd(m.solution)}</div></details>`:''}
     <div class="panel"><div class="panel-head"><div><h2>Key ideas</h2>${m.lesson?'<p>The short version, for review</p>':''}</div></div><div class="lm-text">${learnMd(m.ideas)}</div></div>
     ${m.traps&&m.traps.length?`<div class="panel"><div class="panel-head"><h2>${isBeyond(m)?'Mistakes interviewers catch':'Traps the exam likes'}</h2></div><ol class="lm-traps">${m.traps.map(t=>`<li>${inline(t)}</li>`).join('')}</ol></div>`:''}
     ${fs.length?`<div class="panel"><div class="panel-head"><div><h2>Formulas</h2><p>From the formula sheet, where the flashcards are.</p></div><button class="btn ghost sm" data-goto="formulas">Formulas ${icon('chevR')}</button></div>${fs.map(f=>`<div class="frow"><div class="fhead"><b>${esc(f.name)}</b>${f.topic!==m.topic?`<span class="tag">${esc(short(f.topic))}</span>`:''}${cardStatus(f)}</div>${fBlock(f)}</div>`).join('')}</div>`:''}
