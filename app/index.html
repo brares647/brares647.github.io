@@ -24398,6 +24398,91 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Derivative Instrument and Derivative Market Features",
  core:/derivatives? (is|are|contract|instrument|market)|underlying|exchange-traded|over-the-counter|\bOTC\b|clearinghouse|clearing house|central counterparty|\bCCP\b|counterparty (credit )?risk|standardiz|customiz/,
  match:/derivative|underlying|exchange|over-the-counter|OTC|clearing|counterparty|standard|customiz|margin|collateral|liquid|transparen|notional|contract size|expiration/,
+ lesson:`## 1. What a derivative is
+A **derivative** is a contract between two parties whose value **derives** from the price of something else, the **underlying**. The underlying can be:
+- a **share** or a **stock index**,
+- a **bond** or an **interest rate**,
+- a **currency**,
+- a **commodity** (oil, wheat, gold),
+- a **credit event** (a borrower's default),
+- or even another derivative, the weather, or inflation.
+
+The contract specifies today what will happen in the future: who pays or delivers what, how much, at what price, on which date. Its value then rises or falls as the underlying moves.
+
+### The key terms of any derivative
+- **Underlying:** what the contract refers to.
+- **Notional (contract) size:** the amount of the underlying the contract covers, for example 100 barrels of oil or 1 million euros.
+- **Price or rate** agreed today: a forward price, a strike price, a fixed swap rate.
+- **Maturity (expiration):** when the contract ends.
+- **Settlement:** **physical delivery** of the underlying, or **cash settlement** of the difference in value.
+
+## 2. Leverage
+Derivatives give exposure to a large amount of the underlying for little or no money up front. That creates **leverage**: a small move in the underlying produces a large gain or loss relative to the money committed.
+
+> **Worked example 1: leverage in a futures contract**
+> A stock index futures contract has a multiplier of 50 per index point, and the index stands at 4,820. An investor buys one contract, posting initial margin of 12,000.
+> - Exposure (notional) = 50 × 4,820 = **241,000**
+> - If the index rises 2%, the contract gains 241,000 × 2% = 4,820: a return of **40.2%** on the 12,000 of margin.
+> - A 2% fall would lose the same 40.2%.
+> The underlying moved 2%; the investor's capital moved 40%. Leverage cuts both ways.
+
+## 3. Exchange-traded and over-the-counter derivatives
+Derivatives trade in two very different kinds of market.
+
+### Exchange-traded derivatives
+**Futures** and **listed options** trade on organized exchanges.
+- **Standardized** terms: fixed contract sizes, expiration dates, strike prices, delivery rules. Standardization makes the contracts interchangeable and **liquid**.
+- A **clearinghouse** (central counterparty) becomes the buyer to every seller and the seller to every buyer. Each trader faces the clearinghouse, not the original counterparty.
+- The clearinghouse requires **margin** and settles gains and losses **daily** (marking to market), which almost eliminates **counterparty (credit) risk**.
+- Prices and volumes are **transparent**: publicly reported.
+- Drawback: contracts cannot be tailored, so a hedger may not find one that matches its exposure exactly.
+
+### Over-the-counter (OTC) derivatives
+**Forwards**, **swaps** and most **exotic options** are negotiated privately, usually between a client and a dealer bank.
+- **Customized** to the user's exact needs: any amount, any date, any underlying.
+- **Less transparent**: prices are not publicly displayed.
+- **Less liquid**: closing a position usually means negotiating with the original dealer or entering an offsetting contract.
+- **Counterparty risk**: each party is exposed to the other's possible default. Collateral agreements reduce, but do not remove, this risk.
+
+### Reforms after 2008
+The 2007–2009 crisis showed how opaque OTC exposures could spread losses through the financial system. In response, regulators in major markets:
+- Required many standardized OTC derivatives, especially interest rate swaps and some credit default swaps, to be **centrally cleared** through central counterparties.
+- Required trades to be **reported** to trade repositories, so that regulators can see exposures.
+- Required **collateral (margin)** to be exchanged on uncleared OTC trades.
+- Pushed some standardized trading onto electronic platforms.
+As a result, the line between exchange-traded and OTC markets has blurred: many OTC derivatives are now cleared like futures, though they remain negotiated bilaterally.
+
+> **Worked example 2: choosing a market**
+> A European company will receive 7.35 million US dollars from a customer in 143 days and wants to lock in the exchange rate.
+> - **OTC forward with its bank:** exactly 7.35 million, exactly 143 days. Perfect match; the company takes on the bank's credit risk (and the bank takes on the company's).
+> - **Exchange-traded currency futures:** standard sizes (say 125,000 euros each) and fixed quarterly dates. The company could not match the amount or date exactly, leaving some risk unhedged, but would have almost no counterparty risk and could close the position easily.
+> Most companies choose the forward for this kind of hedge; traders taking short-term views tend to prefer futures.
+
+## 4. Who uses derivative markets
+- **Hedgers** use derivatives to **reduce** a risk they already have: an airline locking in fuel costs, an exporter fixing an exchange rate, a pension fund protecting against falling rates, a farmer selling a crop forward.
+- **Speculators** use derivatives to **take** a risk, betting on price movements, attracted by leverage and low costs. They provide liquidity and take the other side of hedgers' trades.
+- **Arbitrageurs** look for price differences between derivatives and their underlyings (or between related derivatives) and trade to lock in a riskless profit. Their activity keeps prices consistent.
+- **Dealers** (large banks) make markets in OTC derivatives, standing ready to buy or sell, and manage the resulting risks.
+
+## 5. The size and role of derivative markets
+Measured by notional amount, derivative markets are enormous, dominated by **interest rate** contracts (swaps above all), followed by **currency** contracts. Notional amounts overstate the money at risk: a swap on 100 million of notional exchanges only the net interest payments, a small fraction of that amount. The **market value** of outstanding contracts, and the net exposures after collateral, are far smaller.
+
+Derivatives play several roles in the financial system:
+- They let risks be **transferred** to those best able or most willing to bear them.
+- Their prices reveal **information**: futures prices reflect expected future prices adjusted for carrying costs, and option prices reveal expected volatility.
+- They **lower the cost** of adjusting exposures: changing a portfolio's equity exposure with futures costs far less than trading hundreds of shares.
+
+The next modules explain each type of contract, how they are priced and how they are used.
+
+## Checklist before you answer
+- A derivative's value comes from an underlying: shares, indexes, bonds, rates, currencies, commodities, credit events.
+- Key terms: underlying, notional, agreed price or rate, maturity, physical or cash settlement.
+- Little or no money up front → leverage: small underlying moves → large gains or losses.
+- Exchange-traded: standardized, liquid, transparent, clearinghouse and daily margin → minimal counterparty risk; cannot be tailored.
+- OTC: customized, less transparent and liquid, counterparty risk (reduced by collateral).
+- Post-2008: central clearing of standardized OTC derivatives, trade reporting, margin on uncleared trades.
+- Users: hedgers (reduce risk), speculators (take risk), arbitrageurs (exploit mispricing), dealers (make markets).
+- Notional amounts overstate the money at risk.`,
  ideas:`**A derivative is a contract whose value comes from the price of something else, the underlying: a share, an index, a bond, an interest rate, a currency, a commodity, a credit event.**
 
 ## Basic features
@@ -24428,6 +24513,121 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Forward Commitment and Contingent Claim Features and Instruments",
  core:/forward contract|futures contract|call option|put option|credit derivative|credit default swap|\bCDS\b|payoff|profit (on|from|at|for)|breakeven|break-even|long (a |the )?(call|put|forward)|short (a |the )?(call|put|forward)|contingent claim|forward commitment|option (buyer|writer|seller|holder)|writes? (a )?(call|put)/,
  match:/forward|futures|swap|call|put|option|credit derivative|CDS|payoff|profit|breakeven|long|short|contingent|commitment|premium|strike|exercise|writer|holder|expiration/,
+ lesson:`## 1. Two families of derivatives
+All derivatives belong to one of two families:
+- **Forward commitments:** both parties are **obliged** to transact on the agreed terms. Forwards, futures and swaps.
+- **Contingent claims:** one party has the **right, but not the obligation**, to transact; the payoff depends on whether an event happens. Options and credit derivatives.
+
+The difference shapes their payoffs, their cost and how they are used.
+
+## 2. Forward contracts
+A **forward contract** is a private (OTC) agreement to buy or sell an underlying at a **fixed price** (the **forward price**) on a **future date**.
+- The **long** side agrees to buy; the **short** side agrees to sell.
+- **Nothing is paid** at the start: the forward price is set so that the contract is fair to both sides.
+- At maturity, the long gains if the spot price is above the forward price, and the short gains if it is below. Payoffs are **symmetric** and **linear**: each unit of price change moves the payoff by one unit.
+
+Payoff at maturity:
+- Long: S_T − F0
+- Short: F0 − S_T
+
+> **Worked example 1: a forward on a commodity**
+> A jewellery maker agrees with a bank to buy 100 ounces of gold in six months at a forward price of 1,250 per ounce.
+> - If gold is 1,310 at maturity, the maker's long forward is worth (1,310 − 1,250) × 100 = **+6,000**; the bank's short loses 6,000.
+> - If gold is 1,190, the long loses (1,190 − 1,250) × 100 = **−6,000**.
+> Either way, the maker's effective cost is 1,250 per ounce: the forward gain or loss offsets the change in the gold price it pays in the market. That is a hedge.
+
+Settlement can be by **physical delivery** (the gold changes hands at 1,250) or by **cash** (only the difference, 6,000, is paid).
+
+## 3. Futures contracts
+A **futures contract** is economically similar to a forward, but:
+- **Standardized** and traded on an **exchange**.
+- **Cleared** through a clearinghouse, which guarantees performance.
+- **Marked to market daily**: gains and losses are settled each day through **margin accounts**, rather than all at maturity.
+- Most futures are **closed out** before maturity by an offsetting trade, rather than held to delivery.
+
+Futures exist on stock indexes, government bonds, short-term interest rates, currencies, energy, metals and agricultural products.
+
+## 4. Swaps
+A **swap** is an agreement to **exchange a series of cash flows** on set dates over a period.
+- The most common is the **interest rate swap**: one party pays a **fixed** rate and receives a **floating** rate (such as SOFR) on the same **notional** amount. The notional is not exchanged; only the **net** interest payment changes hands on each date.
+- Other swaps: **currency swaps** (interest and principal in two currencies), **equity swaps** (an equity return for a fixed or floating rate), **commodity swaps**.
+- A swap is like a **series of forward contracts**, each settling on one payment date.
+
+> **Worked example 2: one period of an interest rate swap**
+> A company pays fixed 4.2% and receives floating on a notional of 50 million, with annual payments. The floating rate set for this period is 3.6%.
+> - Fixed payment = 4.2% × 50 million = 2.10 million
+> - Floating receipt = 3.6% × 50 million = 1.80 million
+> - Net: the company **pays 0.30 million** to its counterparty.
+> If the floating rate had been 4.8%, the company would have **received** 0.30 million. A company with floating-rate debt uses this swap to convert its debt to an effective fixed rate.
+
+## 5. Options
+### Calls and puts
+An **option** gives its buyer the **right**, but not the obligation, to buy or sell the underlying at a set **strike (exercise) price**:
+- A **call** option: the right to **buy** at the strike.
+- A **put** option: the right to **sell** at the strike.
+
+The buyer (the **long**, or holder) pays a **premium** to the seller (the **short**, or **writer**). The writer receives the premium and accepts the **obligation** to sell (for a call) or buy (for a put) if the buyer exercises.
+
+- **European** options can be exercised only at expiration; **American** options at any time up to expiration.
+
+### Payoffs and profits at expiration
+- Call payoff = max(0, S_T − X)
+- Put payoff = max(0, X − S_T)
+- Profit for the buyer = payoff − premium; for the writer = premium − payoff.
+
+> **Worked example 3: a call and a put**
+> A call with a strike of 80 costs 5.20; a put with a strike of 80 costs 3.60.
+> - If the share ends at 92: call payoff = 12, call profit = 12 − 5.20 = **6.80**; put payoff = 0, put buyer loses the 3.60 premium.
+> - If the share ends at 71: put payoff = 9, put profit = 9 − 3.60 = **5.40**; call payoff = 0, call buyer loses 5.20.
+> - Breakeven prices: call = 80 + 5.20 = **85.20**; put = 80 − 3.60 = **76.40**.
+
+### Maximum gains and losses
+- **Call buyer:** maximum loss = premium; maximum gain = unlimited.
+- **Call writer:** maximum gain = premium; maximum loss = **unlimited**.
+- **Put buyer:** maximum loss = premium; maximum gain = strike − premium (if the price falls to zero).
+- **Put writer:** maximum gain = premium; maximum loss = strike − premium.
+
+### Moneyness
+- A call is **in the money** when S > X, **at the money** when S = X, **out of the money** when S < X.
+- A put is in the money when S < X, out of the money when S > X.
+
+## 6. Credit derivatives
+A **credit derivative** pays off according to the credit performance of a **reference entity** (a company or government).
+
+The main one is the **credit default swap (CDS)**:
+- The **protection buyer** pays periodic premiums (the CDS **spread**) to the **protection seller**.
+- If a **credit event** occurs (default, bankruptcy, failure to pay, in some contracts a restructuring), the seller compensates the buyer for the loss: typically par minus the recovery value of the reference bonds.
+- It is like insurance against default, though the buyer does not need to own the bonds.
+
+> **Worked example 4: a CDS payout**
+> A fund buys 10 million of protection on a company at a spread of 1.5% a year. Two years later the company defaults and its bonds are worth 35% of par.
+> - Premiums paid over two years ≈ 2 × 1.5% × 10 million = 0.30 million
+> - Payout = (100% − 35%) × 10 million = **6.5 million**
+> CDS spreads move with the market's view of the company's credit, so they are also traded to express credit views.
+
+A CDS is a contingent claim: the payment happens only if the credit event occurs.
+
+## 7. Comparing the two families
+- **Payoff shape:** forward commitments have **linear, symmetric** payoffs; contingent claims have **asymmetric** payoffs: the buyer's loss is limited to the premium while the gain can be large.
+- **Cost:** forward commitments cost **nothing** at initiation; contingent claims require the buyer to pay a **premium** for the asymmetry.
+- **Use in hedging:** a forward locks in a price, removing both downside and upside; an option protects against the downside while keeping the upside, at the cost of the premium.
+
+> **Worked example 5: two ways to hedge**
+> The jewellery maker of example 1 could instead buy a call on 100 ounces with a strike of 1,250 for a premium of 40 an ounce.
+> - Gold at 1,310: the call pays 60; effective cost = 1,310 − 60 + 40 = **1,290**
+> - Gold at 1,190: the call expires unused; effective cost = 1,190 + 40 = **1,230**
+> The forward fixes the cost at 1,250 in both cases. The call caps the cost at 1,290 but lets the maker benefit if gold falls. Insurance has a price.
+
+## Checklist before you answer
+- Forward commitments (forwards, futures, swaps): both sides obliged; no upfront cost; linear payoffs.
+- Long forward payoff = S_T − F0; short = F0 − S_T.
+- Futures: standardized, exchange-traded, cleared, marked to market daily.
+- Interest rate swap: fixed vs floating on a notional; only net payments exchanged; like a series of forwards.
+- Call payoff = max(0, S_T − X); put payoff = max(0, X − S_T); profit = payoff − premium.
+- Breakeven: call X + premium; put X − premium.
+- Max loss: buyers the premium; call writer unlimited; put writer X − premium.
+- CDS: protection buyer pays a spread; seller pays par − recovery on a credit event.
+- Contingent claims cost a premium because of their asymmetric payoff.`,
  ideas:`**Derivatives come in two families: forward commitments, which oblige both sides to transact, and contingent claims, which give one side a right but not an obligation.**
 
 ## Forward commitments
@@ -24463,6 +24663,96 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Derivative Benefits, Risks, and Issuer and Investor Uses",
  core:/benefits? of derivatives|risks? of (using )?derivatives|hedg|speculat|issuers? (use|uses)|investors? (use|uses)|uses of derivatives|basis risk|systemic risk|operational advantage|cash flow hedge|fair value hedge|net investment hedge|hedge accounting/,
  match:/benefit|risk|hedg|speculat|issuer|investor|use|basis|systemic|leverage|liquidity|transaction cost|short|exposure|accounting|cash flow hedge|fair value hedge/,
+ lesson:`## 1. Why derivatives exist
+Derivatives are sometimes portrayed as casino chips for speculators. In fact, most of the volume comes from companies, banks and investors managing risks they already have. This module covers what derivatives offer, what can go wrong, and how issuers (companies that raise capital) and investors use them.
+
+## 2. Benefits of derivatives
+### Risk allocation, transfer and management
+The main benefit: derivatives let a party **shed a risk** it does not want and pass it to someone who is willing or better able to bear it. A farmer worried about falling wheat prices can sell wheat forward to a food company worried about rising prices; both reduce their risk. Where no natural counterparty exists, a speculator may take the risk for an expected reward.
+
+Derivatives also allow risks to be **separated**: an investor in a corporate bond can keep the interest income but hedge the credit risk with a CDS, or keep the credit risk but hedge the interest rate risk with a swap.
+
+### Information discovery
+Derivative prices reveal what markets expect:
+- **Futures and forward prices** reflect expected future prices adjusted for carrying costs (with the cost of carry, the next modules show how).
+- **Option prices** reveal the market's expectation of **volatility** (implied volatility), a gauge of uncertainty.
+- **Interest rate futures and swaps** show the path of short-term rates that markets price in.
+- **CDS spreads** show how the market views a borrower's credit, often before ratings change.
+
+### Operational advantages
+- **Lower transaction costs** than trading the underlying: changing a large portfolio's equity exposure with a few futures contracts costs far less than trading hundreds of shares.
+- **Liquidity:** major futures and swap markets are deeper than many underlying markets.
+- **Easy short positions:** selling a future or buying a put is simpler than borrowing and selling shares.
+- **Exposure without owning** the asset: no need to store oil or hold foreign securities.
+- **Leverage:** exposure for little capital (also a risk, below).
+
+### Market efficiency
+Arbitrage between derivatives and underlying markets keeps prices consistent. Low trading costs in derivatives make it cheaper to act on information, so prices adjust faster.
+
+## 3. Risks of derivatives
+### Leverage
+Small price moves can cause large losses relative to the capital committed. Users who do not understand their effective exposure can lose far more than they expected.
+
+### Basis risk
+A hedge works only if the derivative and the exposure move together. **Basis risk** is the risk that they do not.
+
+> **Worked example 1: a hedge that does not quite fit**
+> An airline hedges its jet fuel costs with crude oil futures, because jet fuel futures are thin. Over a quarter, crude oil rises 8% while jet fuel rises 14%, because refining margins for jet fuel widen.
+> The futures gain covers only part of the higher fuel bill. The difference between the hedge instrument and the hedged item is basis risk. Mismatches in timing, location or quality of the underlying cause the same problem.
+
+### Liquidity risk
+Derivative positions can require **cash** at bad moments: futures need **variation margin** every day, and OTC contracts require collateral when they lose value. A hedger whose derivative loses money while the hedged item gains (on paper, or later) may face a cash crunch now. Several notable corporate failures came from margin calls on hedges whose offsetting gains had not yet been realized.
+
+### Counterparty credit risk
+In uncleared OTC contracts, the counterparty may **default** when it owes money. Collateral and central clearing reduce this risk.
+
+### Complexity and model risk
+Some derivatives are hard to value and understand. Users may misjudge their risks, rely on flawed models, or be sold products they do not understand.
+
+### Systemic risk
+Heavy, interconnected use of derivatives by large institutions can **spread** losses through the financial system. In 2008 the near-failure of a large insurer that had sold vast amounts of credit protection threatened its many counterparties. Speculative use can also amplify price moves in underlying markets.
+
+## 4. How issuers use derivatives
+Companies use derivatives mainly to **hedge** risks that arise from their business or their financing:
+- **Interest rate risk:** a company with floating-rate debt can enter a **pay-fixed swap** to fix its interest costs; one with fixed-rate debt can swap to floating if it expects rates to fall or wants to match floating-rate assets.
+- **Currency risk:** an exporter expecting foreign-currency revenue can sell the currency **forward** to lock in the exchange rate; a company with a foreign subsidiary can hedge the value of its investment.
+- **Commodity risk:** airlines hedge fuel, food producers hedge grain, miners hedge metal prices.
+
+### Hedge accounting
+Without special rules, a company's derivative gains and losses would hit profit each period while the hedged item might affect profit later or not at all, making earnings look volatile even when the economic position is hedged. **Hedge accounting** (under IFRS and US GAAP), if the documentation and effectiveness conditions are met, lets the company match the timing:
+- **Fair value hedge:** hedges the change in the fair value of an asset or liability (such as fixed-rate debt). Gains and losses on both the derivative and the hedged item go through **profit and loss**, offsetting each other.
+- **Cash flow hedge:** hedges the variability of future **cash flows** (such as floating interest payments or forecast foreign-currency sales). The effective part of the derivative's gain or loss is recorded first in **other comprehensive income (OCI)** and moved to profit when the hedged cash flow affects profit.
+- **Net investment hedge:** hedges the currency risk of an investment in a **foreign subsidiary**; gains and losses go to OCI, alongside the translation differences of the subsidiary.
+
+> **Worked example 2: an issuer's cash flow hedge**
+> A company has 200 million of floating-rate loans at SOFR + 1.5%. It enters a 5-year swap paying fixed 3.9% and receiving SOFR on 200 million.
+> - Net cost: SOFR + 1.5% on the loan, −SOFR + 3.9% on the swap = **5.4% fixed**
+> - Under hedge accounting as a cash flow hedge, changes in the swap's fair value go to OCI, so reported profit shows a steady 5.4% interest cost instead of swinging with the swap's value.
+
+## 5. How investors use derivatives
+Investors (asset managers, pension funds, insurers, hedge funds) use derivatives to:
+- **Change exposures quickly and cheaply:** add or reduce equity exposure with index futures, change portfolio duration with bond futures or swaps, add or hedge currency exposure with forwards.
+- **Hedge:** protect a portfolio against a fall with put options, or lock in rates for future investment.
+- **Replicate an index** or asset class (synthetic exposure), for example to invest cash inflows immediately while securities are selected.
+- **Implement views with leverage:** take a position on rates, volatility or credit spreads without buying the underlying.
+- **Generate income:** for example, writing covered calls on shares already held.
+- **Implement strategies** that are difficult in the cash market: shorting, relative-value trades, volatility trading.
+
+> **Worked example 3: cutting equity exposure in minutes**
+> A pension fund holds a 20 million equity portfolio that tracks the index closely (beta 1.0). Its board decides to reduce equity exposure by a quarter for three months while it reviews strategy. The index stands at 4,820 and each futures contract has a multiplier of 50.
+> - Exposure to remove = 25% × 20 million = 5 million
+> - Value of one contract = 4,820 × 50 = 241,000
+> - Contracts to sell ≈ 5,000,000 / 241,000 = 20.7, so about **21 contracts**
+> Selling 21 futures does the job in one trade, at a tiny fraction of the cost of selling 5 million of shares and later buying them back.
+
+## Checklist before you answer
+- Benefits: risk transfer and separation, price and volatility discovery, low costs, liquidity, easy shorting, exposure without ownership, market efficiency.
+- Risks: leverage, basis risk (hedge and exposure diverge), liquidity risk from margin and collateral calls, counterparty risk, complexity and model risk, systemic risk.
+- Issuers hedge interest rate, currency and commodity risks from operations and financing.
+- Hedge accounting: fair value hedge (P&L, offsets), cash flow hedge (OCI then P&L), net investment hedge (OCI).
+- A pay-fixed swap turns floating-rate debt into fixed.
+- Investors use derivatives to change exposures, hedge, replicate indexes, take leveraged views, earn income.
+- Number of index futures ≈ exposure to change / (index level × multiplier) for a beta-1 portfolio.`,
  ideas:`**Derivatives let companies and investors transfer risk, but their leverage and complexity create risks of their own.**
 
 ## Benefits
@@ -24502,6 +24792,92 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Arbitrage, Replication, and the Cost of Carry in Pricing Derivatives",
  core:/arbitrage|replicat|cost of carry|\bcarry\b|convenience yield|law of one price|storage costs?|expected (future )?(spot )?price|risk-free (asset|bond) (and|plus)|no-arbitrage/,
  match:/arbitrage|replicat|carry|convenience|one price|storage|expected|risk-free|borrow|lend|financing|dividend|income|cost|benefit|spot|forward price|riskless/,
+ lesson:`## 1. Pricing without predicting
+How should a one-year forward on a share be priced? The intuitive answer is: at the price the share is expected to have in a year. That turns out to be wrong. Derivatives are priced not by forecasting but by **arbitrage**: if a derivative can be copied with other instruments, it must cost the same as the copy. This module explains the logic; the following modules apply it to each type of contract.
+
+## 2. Arbitrage and the law of one price
+**Arbitrage** is a trade that earns a **riskless profit** with **no net investment**: buy something cheap, sell the same thing (or something with identical future cash flows) dear, and lock in the difference.
+
+The **law of one price**: two assets or portfolios that produce **identical cash flows** in the future must have the **same price** today. If they do not, arbitrageurs buy the cheaper one and sell the dearer one, and their trades push the prices together until the gap disappears.
+
+Arbitrage opportunities in liquid markets are rare and small, because traders compete to exploit them. That is exactly why arbitrage is such a powerful **pricing tool**: we can assume prices leave no arbitrage, and work out what they must be.
+
+Real-world limits: trading costs, borrowing limits, taxes, restrictions on short selling and the risk that prices diverge further before they converge can let small gaps persist.
+
+## 3. Replication
+**Replication** means building a portfolio of other instruments that produces the **same payoff** as the derivative. For a forward:
+- A **long forward** on an asset pays S_T − F0 at maturity.
+- The same payoff comes from: **buying the asset today** (worth S_T at maturity) **with borrowed money**, borrowing enough that you owe exactly F0 at maturity.
+
+So a long forward = long asset + borrowing. The cost of that replicating portfolio today is zero if you borrow the present value of F0 and the asset costs that much: S0 = F0 / (1 + r)^T. Hence:
+- **F0 = S0 × (1 + r)^T** (for an asset with no income or costs)
+
+Equally, a **long asset = long forward + a risk-free bond** paying F0 at maturity; and a **risk-free bond = long asset + short forward**. Holding the asset and selling it forward removes all price risk, so the position must earn the **risk-free rate**.
+
+### Why the expected price does not matter
+The expected future price of a share includes a **risk premium** that investors demand for bearing its risk. A forward priced at the expected future price would let an arbitrageur profit risklessly by buying the share and selling it forward. Because the replication is riskless, the forward price depends only on the **spot price**, the **risk-free rate** and the **costs and benefits of carrying** the asset, not on investors' expectations or risk preferences. This is a central idea of derivative pricing.
+
+## 4. The cost of carry
+Holding the underlying asset until the contract matures has **costs** and **benefits**, which change the forward price.
+
+### Costs of carry
+- **Financing:** the money tied up in the asset could earn the risk-free rate. This is always present.
+- **Storage and insurance** for physical commodities: warehousing grain, storing oil, insuring gold.
+
+### Benefits of carry
+- **Income** from the asset: dividends on shares, coupons on bonds, rent.
+- **Convenience yield:** the non-monetary benefit of physically holding a commodity, such as keeping a factory running during a shortage. It is high when the commodity is scarce.
+
+### The general formula
+- **F0 = (S0 + PV of costs − PV of benefits) × (1 + r)^T**
+
+Costs raise the forward price (the buyer of a forward avoids them); benefits lower it (the buyer of a forward misses them).
+
+> **Worked example 1: forward prices with and without income**
+> A share trades at 80. The risk-free rate is 3% a year. Find the six-month forward price.
+> - No dividends: F0 = 80 × 1.03^0.5 = **81.19**
+> - With a dividend during the six months whose present value is 1.50: F0 = (80 − 1.50) × 1.03^0.5 = **79.67**
+> The dividend lowers the forward price because the forward buyer does not receive it.
+
+> **Worked example 2: a commodity with storage and convenience yield**
+> A commodity's spot price is 60. Over one year, storage costs have a present value of 2.00 and the convenience yield has a present value of 0.80. The risk-free rate is 3%.
+> - F0 = (60 + 2.00 − 0.80) × 1.03 = **63.04**
+
+### Contango and backwardation
+- **Contango:** forward or futures prices **above** the spot price, typical when financing and storage costs exceed benefits.
+- **Backwardation:** forward prices **below** spot, which happens when benefits (high dividends, a large convenience yield in a shortage) exceed costs.
+
+## 5. Arbitrage when the forward price is wrong
+If a quoted forward price differs from the no-arbitrage price, there is a riskless trade.
+
+### Forward too high: cash-and-carry
+Sell the forward, borrow money, buy the asset, hold it, deliver it at maturity, repay the loan.
+
+> **Worked example 3: exploiting an overpriced forward**
+> The share of example 1 (no dividends) trades at 80, r = 3%, and a dealer quotes a six-month forward at 82.50. The fair price is 81.19.
+> - Today: borrow 80, buy the share, sell the forward at 82.50. Net investment: zero.
+> - In six months: deliver the share, receive 82.50, repay the loan of 80 × 1.03^0.5 = 81.19.
+> - Riskless profit = 82.50 − 81.19 = **1.31** per share, whatever the share price does.
+
+### Forward too low: reverse cash-and-carry
+Buy the forward, short-sell the asset, invest the proceeds at the risk-free rate; at maturity, buy the asset through the forward, return it to the lender, and keep the difference.
+
+## 6. What this means for every derivative
+The same reasoning prices all derivatives:
+- **Forwards and futures:** replication with the underlying and borrowing (next two modules).
+- **Swaps:** a series of forwards; priced from the term structure of rates.
+- **Options:** cannot be replicated with a fixed position, because their payoffs are not linear, but they can be replicated by a position in the underlying and borrowing that is **adjusted** as the price moves (the binomial model). Put–call parity links options to forwards and the underlying.
+
+In every case, the price comes from no-arbitrage, using the risk-free rate, and does not require a forecast of the underlying's price.
+
+## Checklist before you answer
+- Arbitrage: riskless profit, no net investment; the law of one price says identical cash flows must have the same price.
+- Replication: long forward = long asset + borrowing; asset + short forward = risk-free bond.
+- Derivative prices do not depend on the expected future price or investors' risk preferences.
+- F0 = S0 × (1 + r)^T without carry; F0 = (S0 + PV costs − PV benefits) × (1 + r)^T with carry.
+- Costs (financing, storage, insurance) raise forward prices; benefits (dividends, coupons, convenience yield) lower them.
+- Contango: forward > spot; backwardation: forward < spot.
+- Forward overpriced → cash-and-carry (sell forward, borrow, buy asset); underpriced → reverse cash-and-carry.`,
  ideas:`**Derivatives are priced by arbitrage: a derivative and a portfolio that copies its payoffs must cost the same, otherwise a riskless profit is possible.**
 
 ## Arbitrage and replication
@@ -24533,6 +24909,82 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Pricing and Valuation of Forward Contracts and for an Underlying with Varying Maturities",
  core:/value of (a|the) (long )?forward|forward (price|contract) (at initiation|during|is set)|forward rate agreement|\bFRAs?\b|at initiation|during the life|at expiration|implied forward rate|forward rates? (for|on) interest/,
  match:/forward|value|price|initiation|during|expiration|FRA|forward rate|interest rate|spot rate|discount|settle|notional|MRR|lock in/,
+ lesson:`## 1. Price and value are different
+For forwards, two words that sound alike mean different things:
+- The **forward price** F0 is the price **agreed** in the contract at which the asset will be bought at maturity. It is fixed when the contract is signed and does not change.
+- The **value** of the forward contract is what the contract itself is **worth** at a given moment: what someone would pay to take it over. It starts at **zero** and changes as the spot price and interest rates move.
+
+Keeping these two apart is the key to this module.
+
+## 2. At initiation
+The forward price is set so that the contract has **zero value** to both sides: neither pays the other anything to enter it. From the previous module:
+- F0 = S0 × (1 + r)^T, or with carry: F0 = (S0 + PV of costs − PV of benefits) × (1 + r)^T.
+
+## 3. During the contract's life
+After initiation, the spot price moves. The long side has the right and obligation to buy at F0; if the spot price has risen, that obligation has become valuable.
+
+The value to the **long** at time t (no income or costs on the asset):
+- **Vt = St − F0 / (1 + r)^(T − t)**
+
+The intuition: the long will receive the asset (worth St today) and pay F0 at maturity (worth F0 / (1 + r)^(T − t) today). The value to the **short** is the negative of the long's value.
+
+If the asset pays income during the remaining life, subtract its present value from St.
+
+> **Worked example 1: valuing a forward three months in**
+> A six-month forward on a share was agreed at F0 = 81.19 (spot 80, r = 3%). Three months later the share trades at 84.
+> - PV of the forward price = 81.19 / 1.03^0.25 = 80.59
+> - Value to the long = 84 − 80.59 = **3.41**
+> - Value to the short = **−3.41**
+> If the long wanted to exit now, it could sell the contract for about 3.41, or enter an offsetting short forward for the remaining three months.
+
+## 4. At maturity
+- **VT = ST − F0** for the long.
+If the share ends at 86, the long's contract is worth 86 − 81.19 = 4.81 at maturity: it buys at 81.19 an asset worth 86.
+
+## 5. Interest rate forwards
+### Forward rates from spot rates
+Interest rates for different maturities imply rates for **future periods**. The no-arbitrage link (also in the Fixed Income topic):
+- (1 + S_B)^B = (1 + S_A)^A × (1 + f_A,B)^(B − A)
+
+where f is the forward rate for the period from A to B. Investing for B years at the spot rate must give the same result as investing for A years and then rolling over at the forward rate.
+
+> **Worked example 2: an implied forward rate**
+> The one-year spot rate is 3.2% and the two-year spot rate is 3.8%.
+> - 1y1y forward = 1.038² / 1.032 − 1 = **4.40%**
+> A borrower could lock in 4.40% today for a one-year loan starting in one year.
+
+### Forward rate agreements (FRAs)
+An **FRA** is an OTC forward contract on an interest rate. Two parties agree today on a fixed rate (the **FRA rate**) for a future period on a **notional** amount. No principal changes hands; at the start of the future period, they settle the difference between the market reference rate (MRR) observed then and the FRA rate.
+- The **long** (often called the pay-fixed side, or the "borrower" in the hedge) **gains** if MRR ends **above** the FRA rate.
+- The **short** gains if MRR ends below it.
+
+Because the payment is made at the **start** of the interest period (when MRR is set), while the interest itself would be paid at the end, the difference is **discounted** at MRR:
+- Settlement to the long = notional × (MRR − FRA rate) × (days / 360) / [1 + MRR × (days / 360)]
+
+> **Worked example 3: settling an FRA**
+> A company expects to borrow 10 million for 180 days, starting in three months, and buys an FRA at 4.0%. At settlement, the 180-day MRR is 4.6%.
+> - Interest difference = 10,000,000 × (0.046 − 0.040) × 180 / 360 = 30,000
+> - Discounted to settlement: 30,000 / (1 + 0.046 × 180 / 360) = **29,325.51**, paid to the company
+> The company now borrows at the market rate of 4.6%, but the FRA payment (worth 30,000 at the end of the period) brings its effective cost back to 4.0%.
+
+FRAs are a building block of interest rate markets: swaps can be seen as a series of them, and banks use them to manage the rate risk of their lending and borrowing.
+
+## 6. Uses of forward rates and forward contracts
+- **Locking in costs and returns:** borrowers lock in future borrowing rates with FRAs; investors lock in reinvestment rates; companies lock in commodity and currency prices.
+- **Pricing other instruments:** the chain of forward rates prices bonds and swaps.
+- **Reading the market:** forward rates show the path of future short-term rates that markets price in. They are not pure forecasts: they also include **term premiums** (the extra return investors want for lending longer), so a rising forward curve does not necessarily mean rates are expected to rise by that much.
+
+## 7. Credit risk in forwards
+Because forwards are OTC contracts settled at maturity, the party with a **positive value** is exposed to the risk that the other side defaults. In example 1, the long has a contract worth 3.41: if the short defaulted, the long would lose that value. That is why dealers require **collateral** on OTC forwards and why exchanges use daily settlement for futures (next module).
+
+## Checklist before you answer
+- Forward price: fixed at initiation so that value = 0. Value: changes with spot and rates.
+- Value to the long during the life: Vt = St − F0 / (1 + r)^(T − t) (minus PV of remaining income).
+- At maturity: VT = ST − F0. Short's value = − long's value.
+- Implied forward rate: (1 + S_B)^B = (1 + S_A)^A × (1 + f)^(B − A).
+- FRA long gains when MRR > FRA rate; settlement is discounted at MRR because it is paid at the start of the period.
+- Forward rates include term premiums, so they are not pure forecasts.
+- The party with positive value bears the counterparty's credit risk.`,
  ideas:`**A forward's price is fixed when it is agreed; its value starts at zero and then changes as the spot price moves.**
 
 ## Price versus value
@@ -24564,6 +25016,98 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Pricing and Valuation of Futures Contracts",
  core:/futures (prices?|contracts?)s? (and|versus|vs\.?|compared) forward|mark(ed|ing)?[- ]to[- ]market|daily settlement|initial margin|maintenance margin|variation margin|margin call|futures price|settlement price|futures contracts?/,
  match:/futures|mark|daily|settle|margin|clearing|correlat|interest rates?|forward|price|value|reset|convergence/,
+ lesson:`## 1. Futures: forwards with daily settlement
+A **futures contract** has the same basic economics as a forward: an agreement to buy or sell an asset at a set price on a future date. Three features change how it works:
+- It is **standardized** (contract size, delivery dates, quality of the underlying) and traded on an **exchange**.
+- A **clearinghouse** is the counterparty to every trade, guaranteeing performance.
+- Gains and losses are settled **every day** (**marking to market**), through **margin accounts**.
+
+The daily settlement is the feature that matters most for pricing and valuation.
+
+## 2. Margin and marking to market
+### Margin accounts
+- **Initial margin:** the deposit each side must post to open a position. It is a performance bond, not a down payment: it is set by the exchange to cover a likely one-day loss.
+- **Maintenance margin:** the minimum balance the account must keep.
+- **Variation margin:** if the balance falls **below the maintenance margin**, the trader receives a **margin call** and must deposit enough to bring the account back to the **initial margin** level (not just to the maintenance level). If they do not, the position is closed.
+
+### Marking to market
+At the end of each day, the exchange sets a **settlement price** (usually close to the closing price). Each account is credited with gains or debited with losses:
+- Long position: gain = (today's settlement price − yesterday's) × contract size × number of contracts.
+- Short position: the opposite.
+
+> **Worked example 1: a margin account over three days**
+> A trader buys 10 futures contracts at 250, each on 100 units. Initial margin is 5,000 per contract (50,000 in total) and maintenance margin is 4,000 per contract (40,000).
+> - Day 1, settlement 247: loss = (247 − 250) × 100 × 10 = −3,000. Balance **47,000**.
+> - Day 2, settlement 238: loss = (238 − 247) × 1,000 = −9,000. Balance 38,000, below 40,000: **margin call** for 50,000 − 38,000 = **12,000**. Balance back to **50,000**.
+> - Day 3, settlement 241: gain = +3,000. Balance **53,000**; the trader may withdraw anything above the initial margin.
+> Total change in the futures price: from 250 to 241, a loss of 9 × 1,000 = 9,000, which equals the deposits (50,000 + 12,000 = 62,000) minus the balance (53,000).
+
+Daily settlement means losses are paid as they occur, so no large unpaid loss can build up. Combined with the clearinghouse guarantee, this almost eliminates counterparty risk.
+
+## 3. Futures prices and values
+### Price
+As with forwards, the **futures price** is set when the position is opened so that the contract has **zero value**. Under the same carry arguments:
+- F0 ≈ (S0 + PV costs − PV benefits) × (1 + r)^T
+
+### Value
+Here futures differ from forwards:
+- A forward's value builds up over its whole life and is paid only at maturity.
+- A futures contract's gains and losses are **paid daily**. After each settlement, the contract's value is **reset to zero**, and it is re-struck at the new settlement price.
+- Between settlements (during a trading day), the value is the change in the futures price since the last settlement, times the contract size.
+
+> **Worked example 2: value during the day**
+> On Day 3 of example 1, at midday, the futures price is 243.5. The last settlement price was 238.
+> - Value of the long position = (243.5 − 238) × 100 × 10 = **5,500**
+> At the close, this gain (or whatever it is at the settlement price) is paid into the margin account and the value returns to zero.
+
+### Convergence at expiration
+As expiration approaches, the futures price **converges to the spot price**: on the last day, a futures contract is simply a contract for immediate delivery, so it must trade at the spot price. Otherwise, traders could buy in one market and sell in the other for a riskless profit.
+
+## 4. Do futures and forward prices differ?
+For the same underlying and maturity, are futures prices and forward prices equal? Only under certain conditions.
+
+### With constant or predictable interest rates
+If interest rates are **constant** or perfectly predictable, the timing of the daily cash flows does not matter for value, and **futures and forward prices are equal**.
+
+### When futures prices are correlated with interest rates
+With uncertain rates, the daily settlement matters:
+- If futures prices are **positively correlated** with interest rates, the long receives gains **when rates are high** (and can reinvest them at those high rates) and pays losses **when rates are low** (and can borrow cheaply to pay them). This is an advantage for the long, so investors pay more: **futures prices exceed forward prices**.
+- If they are **negatively correlated** (as for bond futures, whose prices fall when rates rise), the long receives gains when rates are low and pays losses when rates are high: a disadvantage, so **futures prices are below forward prices**.
+- With **no correlation**, they are equal.
+
+The differences are usually small for short maturities but can matter for long-dated interest rate contracts.
+
+### Other differences
+- **Credit risk:** forwards carry counterparty risk; futures almost none.
+- **Liquidity:** futures can be closed out easily; forwards usually require dealing with the original dealer.
+- **Standardization:** forwards can be tailored; futures cannot.
+- **Cash flow timing:** futures require daily cash flows for margin, which creates **liquidity risk** for the holder even if the position is sound overall.
+
+## 5. Using futures
+### Hedging with futures
+A hedger takes a futures position that gains when its underlying exposure loses:
+- An investor who will buy bonds in three months and fears falling yields (rising prices) **buys** bond futures.
+- A portfolio manager who wants to protect an equity portfolio for a few months **sells** stock index futures.
+- A producer who will sell a commodity **sells** futures on it.
+
+Because futures are standardized, hedges are often imperfect (**basis risk**): the contract may not match the exact asset, amount or date.
+
+### Interest rate futures
+Short-term interest rate futures (on rates such as SOFR) are quoted as **100 − the rate**: a price of 95.80 implies a rate of 4.20%. If rates rise, the price falls, so a borrower who fears higher rates **sells** these futures. Each basis point change in the rate is worth a fixed amount per contract (for a three-month contract on 1 million, about 25 per basis point).
+
+> **Worked example 3: locking in a borrowing rate**
+> A company will borrow for three months starting in March and fears rates will rise. March three-month rate futures trade at 95.80 (implying 4.20%). It sells futures.
+> If by March the rate is 4.70%, the futures price falls to 95.30: a gain of 50 basis points on the futures, which offsets the extra 50 basis points the company pays on its loan. Its effective rate stays close to 4.20%.
+
+## Checklist before you answer
+- Futures: standardized, exchange-traded, clearinghouse, daily marking to market.
+- Initial margin to open; margin call when balance < maintenance margin; top up to the initial margin.
+- Long daily gain = Δ settlement price × contract size × number of contracts.
+- Futures value resets to zero at each daily settlement; forwards accumulate value until maturity.
+- Futures price converges to spot at expiration.
+- Futures = forward prices if rates are constant or uncorrelated with futures prices; positive correlation → futures price higher; negative → lower.
+- Futures: little credit risk, high liquidity, no tailoring, daily cash flows (liquidity risk).
+- Rate futures priced as 100 − rate; to hedge against rising rates, sell them.`,
  ideas:`**Futures are standardized forwards with daily settlement, which changes how their value behaves and can make their prices differ slightly from forward prices.**
 
 ## Daily settlement and margin
@@ -24596,6 +25140,88 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Pricing and Valuation of Interest Rate and Other Swaps",
  core:/\bswaps?\b|swap rate|fixed-for-floating|notional (principal|amount)|series of forwards?|fixed (rate )?(payer|receiver)|floating (rate )?(payer|receiver)|fixed leg|floating leg/,
  match:/swap|fixed|floating|notional|series|forward|payer|receiver|leg|discount factor|par|value|currency swap|equity swap|net payment|settle/,
+ lesson:`## 1. What a swap does
+A **swap** is an agreement between two parties to **exchange a series of cash flows** on set dates over a period. The most common is the **plain vanilla interest rate swap**:
+- One party (the **fixed-rate payer**) pays a fixed rate on a notional amount.
+- The other (the **fixed-rate receiver**, or floating-rate payer) pays a floating rate, such as SOFR, on the same notional.
+- The **notional** is never exchanged; it only sizes the payments.
+- On each date only the **net** amount is paid.
+
+Interest rate swaps are the largest derivative market in the world. Companies use them to change the interest profile of their debt; banks use them to manage the mismatch between their assets and liabilities; investors use them to change portfolio duration.
+
+## 2. A swap as a series of forwards
+Each payment date of a swap is like a **forward contract** on the floating rate: the payer agrees to pay a fixed rate in exchange for whatever the floating rate turns out to be for that period. So a swap is a **bundle of forward contracts** (or FRAs), one per payment date.
+
+There is one important difference. If you entered separate forward contracts, each would be at its own **forward rate**, and each would start with zero value. In a swap, **one fixed rate** (the swap rate) applies to **all** dates. When the forward curve slopes upward:
+- The early "forwards" in the swap are at a fixed rate **above** their forward rates: they have negative value to the fixed payer.
+- The later ones are at a fixed rate **below** their forward rates: positive value to the fixed payer.
+- These offset so that the swap as a whole has **zero value** at initiation.
+
+### Differences from forwards
+- A swap is **one contract** with many settlements, instead of many separate contracts.
+- It settles **periodically** (net payments on each date).
+- Maturities are long: often 2 to 30 years.
+- Swaps are OTC contracts, though standardized interest rate swaps are now usually **centrally cleared**.
+
+## 3. Pricing a swap: the swap rate
+The **swap rate** (the swap's "price") is the fixed rate that gives the swap **zero value** at initiation: the present value of the fixed payments equals the present value of the expected floating payments.
+
+A neat result: the floating leg of a swap, with a notional repaid at the end, would be worth par (like a floating-rate note at a reset date). So the fixed leg must also be worth par, which means the **swap rate equals the par rate** for that maturity:
+- **swap rate = (1 − DF_N) / (DF_1 + DF_2 + … + DF_N)**
+
+where DF_t = 1 / (1 + S_t)^t is the discount factor for each payment date, from the spot rates.
+
+> **Worked example 1: a three-year swap rate**
+> Spot rates are 3.4% (one year), 3.9% (two years) and 4.3% (three years). Annual payments.
+> - DF1 = 1 / 1.034 = 0.96712; DF2 = 1 / 1.039² = 0.92634; DF3 = 1 / 1.043³ = 0.88135
+> - Swap rate = (1 − 0.88135) / (0.96712 + 0.92634 + 0.88135) = 0.11865 / 2.77481 = **4.28%**
+> A company entering this swap as fixed payer would pay 4.28% a year for three years and receive the one-year floating rate each year.
+
+On the BA II Plus, the same result comes from finding the coupon rate of a 3-year bond priced at par with these spot rates; with a spreadsheet, the formula above is simpler.
+
+## 4. Valuing a swap after initiation
+Once the swap is agreed, its fixed rate is locked, but market rates keep moving. The swap's **value** changes:
+- If market swap rates **rise** above the contract's fixed rate, the **fixed-rate payer gains**: it is paying less than the current market rate for the same floating receipts.
+- If market swap rates **fall**, the **fixed-rate receiver gains**.
+
+The value to the fixed payer is the present value of the difference between the **current** swap rate for the remaining maturity and the **original** fixed rate, on the notional, over the remaining payment dates:
+- Value to fixed payer = (current swap rate − original fixed rate) × notional × Σ remaining discount factors
+
+> **Worked example 2: a swap one year later**
+> The company entered the three-year swap at 4.28% on 100 million. One year later, two payments remain. Spot rates are now 4.2% (one year) and 4.7% (two years).
+> - New discount factors: 1 / 1.042 = 0.95969; 1 / 1.047² = 0.91223; sum = 1.87192
+> - Current two-year swap rate = (1 − 0.91223) / 1.87192 = **4.69%**
+> - Value to the fixed payer = (4.6885% − 4.2761%) × 100,000,000 × 1.87192 = about **772,000**
+> Rates rose, so the company, which locked in 4.28%, holds a swap worth about 0.77 million. The counterparty, who receives 4.28% when the market now offers 4.69%, has an equal loss.
+
+Swap values matter because they are reported at **fair value** on balance sheets, they determine **collateral** that must be posted, and they show the **credit exposure** each side has to the other.
+
+## 5. Using interest rate swaps
+- **Converting debt:** a company with floating-rate loans pays fixed in a swap to lock in its interest cost (and the reverse for fixed-rate debt it wants to float).
+- **Managing duration:** receiving fixed adds duration to a portfolio (it behaves like owning a fixed-rate bond financed at a floating rate); paying fixed reduces duration.
+- **Asset-liability management:** a bank with fixed-rate mortgages funded by floating-rate deposits can pay fixed to reduce its rate mismatch.
+
+### The swap as bonds
+A pay-fixed swap is equivalent to **issuing a fixed-rate bond** and **buying a floating-rate note** with the same notional. A receive-fixed swap is the opposite. This view helps with valuation and with understanding a swap's interest rate risk: the fixed leg has duration like a bond, the floating leg very little.
+
+## 6. Other swaps
+### Currency swaps
+Two parties exchange interest payments in **two different currencies**, and usually also exchange the **principal** at the start and at the end, at the exchange rate set at inception. Companies use them to turn borrowing in one currency into debt in another (for example, a European company borrows in dollars, where it can borrow cheaply, and swaps into euros to match its revenues). Because principal is exchanged, currency swaps carry more credit exposure than interest rate swaps.
+
+### Equity swaps
+One party pays the **return on an equity** or an index (including dividends, and paying out losses if the return is negative), and the other pays a **fixed or floating rate**. They give exposure to equities without owning them, and are used for hedging, gaining exposure to markets that are hard to access, or for tax and regulatory reasons.
+
+### Other variations
+**Commodity swaps** (fixing the price of a commodity over time), **basis swaps** (two different floating rates), and **credit default swaps** (covered in the contingent claims module) also use the swap structure.
+
+## Checklist before you answer
+- Plain vanilla swap: fixed vs floating on a notional that is not exchanged; only net payments change hands.
+- A swap is a series of forwards at one fixed rate; individual "forwards" have non-zero values that offset at initiation.
+- Swap rate = (1 − DF_N) / Σ DF_t: the par rate for that maturity.
+- After initiation: rates up → fixed payer gains; rates down → fixed receiver gains.
+- Value to fixed payer = (current swap rate − original rate) × notional × Σ remaining DFs.
+- Pay-fixed swap = short fixed-rate bond + long floating-rate note; it reduces duration.
+- Currency swaps exchange principal and interest in two currencies; equity swaps exchange an equity return for a rate.`,
  ideas:`**A swap exchanges a series of cash flows; it can be viewed as a package of forward contracts, all at the same fixed rate.**
 
 ## Swaps and forwards
@@ -24625,6 +25251,93 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Pricing and Valuation of Options",
  core:/exercise value|intrinsic value|moneyness|in-the-money|out-of-the-money|at-the-money|time value|volatility|factors? (that )?(affect|determine|influence)|lower bound|option('s)? value (increase|decrease|rise|fall)|value of (a|an|the) (call|put|option)/,
  match:/exercise value|intrinsic|moneyness|in-the-money|out-of-the-money|at-the-money|time value|volatil|factor|bound|American|European|value|strike|underlying|time to expir|interest rate|dividend|carry|premium/,
+ lesson:`## 1. Two parts of an option's value
+An option's price has two components:
+- **Exercise value** (also called intrinsic value): what the option would be worth if exercised right now.
+  - Call: max(0, S − X)
+  - Put: max(0, X − S)
+- **Time value**: everything above the exercise value. Option price = exercise value + time value.
+
+Time value exists because, before expiration, the underlying may still move in the holder's favour, while the holder's loss is limited. It is always positive before expiration (with rare exceptions for deep in-the-money European puts) and falls to **zero at expiration**. The decline of time value as expiration approaches is called **time decay**.
+
+> **Worked example 1: splitting the premium**
+> A share trades at 64. A call with a strike of 60 and three months to expiration costs 7.30.
+> - Exercise value = 64 − 60 = **4.00**
+> - Time value = 7.30 − 4.00 = **3.30**
+> A put with a strike of 60 on the same share has an exercise value of zero (it is out of the money), so its whole price is time value.
+
+### Moneyness
+- **In the money (ITM):** exercising would pay something. Call: S > X; put: S < X.
+- **At the money (ATM):** S = X.
+- **Out of the money (OTM):** exercising would pay nothing. Call: S < X; put: S > X.
+
+At-the-money options have the largest time value; deep in-the-money and deep out-of-the-money options have less, because in both cases the outcome is more certain.
+
+## 2. Why options are harder to replicate
+A forward can be replicated with a **fixed** position: buy one unit of the asset and borrow. That works because the forward's payoff is **linear** in the asset price.
+
+An option's payoff is **not linear**: a call pays nothing below the strike and one-for-one above it. No fixed position in the asset and a bond can copy that kink. Instead, the replicating position must be **adjusted** as the price moves: hold more of the asset as the call goes further into the money, less as it moves out. The binomial model (the last module of this topic) shows this in its simplest form.
+
+## 3. No-arbitrage bounds
+Even without a full model, arbitrage sets limits on option prices. For European options on an asset with no income:
+- **Call:** lower bound = max(0, S0 − X / (1 + r)^T); upper bound = S0. A call can never be worth more than the asset it gives the right to buy.
+- **Put:** lower bound = max(0, X / (1 + r)^T − S0); upper bound = X / (1 + r)^T. A European put can never be worth more than the present value of the strike, its maximum possible payoff.
+
+The call's lower bound is above its exercise value (S − X), because paying the strike later, not now, is worth something: S0 − X / (1 + r)^T > S0 − X when r > 0.
+
+> **Worked example 2: a lower bound**
+> The call of example 1 (S = 64, X = 60) has one year to expiration and the risk-free rate is 4%.
+> - Lower bound = 64 − 60 / 1.04 = **6.31**
+> If the call traded at 5.80, an arbitrageur could buy the call, short the share and invest the proceeds: a riskless profit, because the call plus a bond worth 60 at expiration always covers the short share.
+
+### American versus European options
+An **American** option can be exercised at any time; a **European** option only at expiration. Since the American option has every right of the European one plus more, it is worth **at least as much**. For calls on assets that pay no income, early exercise is never optimal (it gives up time value and the interest on the strike), so American and European calls are worth the same. American puts, and calls on dividend-paying assets, can be worth more than their European versions.
+
+## 4. What drives option values
+Each factor is considered with all others held constant.
+
+### Price of the underlying
+- Higher S → **call ↑**, **put ↓**. A call is a right to buy, so it gains as the asset becomes more valuable; a put loses.
+
+### Strike price
+- Higher X → **call ↓**, **put ↑**. A higher price to buy makes the call less valuable; a higher price to sell makes the put more valuable.
+
+### Volatility
+- Higher volatility → **call ↑ and put ↑**. This is the factor that most distinguishes options from other assets. Greater volatility raises the chance of a large move in either direction. The option holder benefits from large favourable moves but is protected from large unfavourable ones (the loss is capped at the premium). More volatility therefore means more upside without more downside.
+
+### Time to expiration
+- Longer time → usually **call ↑ and put ↑**: more time for a favourable move. Exception: a deep in-the-money **European put** can be worth less with more time, because its holder would rather receive the strike sooner.
+
+### Risk-free interest rate
+- Higher r → **call ↑**, **put ↓**. A call lets the holder pay the strike later, and the present value of that later payment falls as rates rise; a put lets the holder receive the strike later, which is worth less when rates are high.
+
+### Income and carrying costs of the underlying
+- Higher **income** (dividends, coupons) → **call ↓**, **put ↑**: income lowers the expected price of the asset (the price drops on the ex-dividend date) and the option holder does not receive it.
+- Higher **carrying costs** (storage) → **call ↑**, **put ↓**: holding the option instead of the asset avoids those costs.
+
+> **Worked example 3: reading the factors**
+> An analyst prices a one-year call on a share. Which changes raise the call's value?
+> - The company announces it will cut its dividend → call ↑ (less income on the underlying).
+> - Market volatility jumps after a shock → call ↑.
+> - Central bank cuts rates → call ↓.
+> - The share price falls 5% → call ↓.
+> For a put on the same share, every one of these effects would be reversed, except volatility, which raises both.
+
+## 5. Putting it together
+Option pricing models such as the binomial model and the Black–Scholes–Merton model (Level II) combine these factors into a single price. At Level I, you need to:
+1. Compute **exercise value** and **time value**.
+2. Know the **bounds** that arbitrage imposes.
+3. Know the **direction** in which each factor moves call and put values.
+4. Understand why options require **dynamic** replication.
+
+## Checklist before you answer
+- Option price = exercise value + time value; time value → 0 at expiration.
+- Exercise value: call max(0, S − X); put max(0, X − S).
+- ITM call: S > X; ITM put: S < X. ATM options have the most time value.
+- European call bounds: max(0, S0 − X/(1 + r)^T) ≤ c ≤ S0. European put: max(0, X/(1 + r)^T − S0) ≤ p ≤ X/(1 + r)^T.
+- American ≥ European; no early exercise for calls on non-dividend assets.
+- S ↑: call ↑, put ↓. X ↑: call ↓, put ↑. Volatility ↑: both ↑. Time ↑: usually both ↑. r ↑: call ↑, put ↓. Income ↑: call ↓, put ↑. Carry costs ↑: call ↑, put ↓.
+- Options need dynamic replication because their payoffs are non-linear.`,
  ideas:`**An option's value has two parts: what it would be worth if exercised now, and the extra value of the chance that it becomes more valuable before expiration.**
 
 ## Exercise value, moneyness and time value
@@ -24662,6 +25375,89 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Option Replication Using Put–Call Parity",
  core:/put[- ]call parity|put[- ]call[- ]forward parity|synthetic (call|put|stock|bond|forward|long|short)|protective put|fiduciary call|covered call/,
  match:/put|call|parity|synthetic|protective|fiduciary|covered|replicat|risk-free bond|zero-coupon|strike|arbitrage|forward/,
+ lesson:`## 1. Two portfolios with the same payoff
+Put–call parity is one of the most useful relationships in finance. It links four prices: a **European call**, a **European put** (both with the same strike X and expiration T), the **underlying asset**, and a **risk-free zero-coupon bond** that pays X at T. It follows directly from the law of one price.
+
+Compare two portfolios:
+- **Fiduciary call:** buy a call with strike X, and buy a risk-free bond that pays X at expiration.
+- **Protective put:** buy the underlying asset, and buy a put with strike X.
+
+Their payoffs at expiration:
+- If S_T > X: the fiduciary call is worth (S_T − X) + X = S_T; the protective put is worth S_T + 0 = S_T.
+- If S_T ≤ X: the fiduciary call is worth 0 + X = X; the protective put is worth S_T + (X − S_T) = X.
+
+In every case both portfolios pay **max(S_T, X)**. Identical payoffs mean identical prices today:
+- **S0 + p0 = c0 + X / (1 + r)^T**
+
+This is **put–call parity** (for an asset with no income; with income, subtract its present value from S0).
+
+## 2. Synthetic positions
+Rearranging the equation creates **synthetic** versions of each instrument from the other three:
+- **Synthetic call:** c0 = S0 + p0 − X / (1 + r)^T → buy the asset, buy a put, borrow the present value of X.
+- **Synthetic put:** p0 = c0 + X / (1 + r)^T − S0 → buy a call, lend the present value of X, short the asset.
+- **Synthetic underlying:** S0 = c0 − p0 + X / (1 + r)^T → buy a call, sell a put, lend.
+- **Synthetic bond:** X / (1 + r)^T = S0 + p0 − c0 → buy the asset, buy a put, sell a call.
+
+A plus sign means **buy (long)**; a minus sign means **sell (short)** or, for the bond, **borrow**.
+
+> **Worked example 1: the no-arbitrage put price**
+> A share trades at 75. A six-month European call with a strike of 70 costs 9.20. The risk-free rate is 4% a year.
+> - PV of the strike = 70 / 1.04^0.5 = 68.64
+> - Put value = 9.20 + 68.64 − 75 = **2.84**
+> Check: S0 + p0 = 75 + 2.84 = 77.84; c0 + PV(X) = 9.20 + 68.64 = 77.84. Parity holds.
+
+## 3. Arbitrage when parity fails
+If the market prices break parity, there is a riskless profit: buy the cheap side and sell the expensive side.
+
+> **Worked example 2: an overpriced put**
+> In the market of example 1, the put trades at 3.40 instead of 2.84.
+> - The actual put is expensive: **sell the put** at 3.40.
+> - **Buy a synthetic put** for 2.84: buy the call (9.20), lend 68.64 at the risk-free rate, short the share (receive 75).
+> - Net cash today = 3.40 − 9.20 − 68.64 + 75 = **+0.56**.
+> At expiration, the synthetic put pays exactly what the sold put costs, in every state. The 0.56 is a riskless profit. Arbitrageurs doing this would push the put price down (and the call price up) until parity was restored.
+
+## 4. Why parity is useful
+- **Checking prices:** traders and risk systems check that option prices are consistent.
+- **Creating positions:** sometimes a synthetic position is cheaper, more liquid, or easier to trade than the real one. For example, an investor who cannot short a share directly can create a short exposure by selling a call and buying a put.
+- **Understanding strategies:** a **covered call** (own the asset, sell a call) equals, by parity, a short put plus a risk-free bond; a **protective put** equals a call plus a bond. This explains why their risk profiles look the way they do.
+- **Understanding option values:** parity shows how calls and puts must move together. For example, raising interest rates raises call values and lowers put values in a consistent way.
+
+> **Worked example 3: a covered call seen through parity**
+> An investor owns a share at 75 and sells the six-month 70 call for 9.20. By parity, S0 − c0 = PV(X) − p0: 75 − 9.20 = 68.64 − 2.84 = 65.80.
+> - The covered call costs 65.80 and pays min(S_T, 70) at expiration.
+> - That is the same as lending 68.64 (receiving 70) and selling a put worth 2.84 (paying 70 − S_T if the share falls below 70).
+> So writing a covered call carries the same risk as writing a put: the investor gives up the upside above 70 and keeps all the downside, cushioned by the premium.
+
+## 5. Put–call forward parity
+The same reasoning works with a **forward contract** instead of the asset itself. Buying a forward at price F0 and holding a risk-free bond that pays F0 at T gives the asset at T, just like holding the asset. So replace S0 with F0 / (1 + r)^T:
+- **F0 / (1 + r)^T + p0 = c0 + X / (1 + r)^T**
+
+Rearranged:
+- **c0 − p0 = (F0 − X) / (1 + r)^T**
+
+A long call and a short put with the same strike X together equal a long forward position struck at X, in present value terms. When X = F0, the call and the put have the same price.
+
+> **Worked example 4: forward parity**
+> In the market of example 1, the six-month forward price is F0 = 75 × 1.04^0.5 = 76.49.
+> - c0 − p0 = (76.49 − 70) / 1.04^0.5 = 6.49 / 1.0198 = **6.36**
+> - Check with the prices found earlier: 9.20 − 2.84 = 6.36.
+> Both forms of parity give the same answer, as they must.
+
+Put–call forward parity is especially useful for options on **futures and forwards**, and for assets that are expensive or impossible to hold directly, such as some commodities and indexes.
+
+## 6. Limits
+- Parity holds exactly for **European** options. American options can be exercised early, which turns the equality into inequalities.
+- Dividends or other income on the asset must be included (S0 − PV of income).
+- Trading costs, borrowing limits and restrictions on short selling allow small deviations in practice.
+
+## Checklist before you answer
+- Fiduciary call (call + bond paying X) = protective put (asset + put): both pay max(S_T, X).
+- Put–call parity: S0 + p0 = c0 + X / (1 + r)^T (European options, same X and T).
+- Synthetic call = asset + put − bond; synthetic put = call + bond − asset; synthetic asset = call − put + bond.
+- Plus = long, minus = short (or borrow).
+- If parity fails: sell the expensive side, buy the cheap (synthetic) side, lock in the difference.
+- Covered call ≈ short put + bond; protective put ≈ long call + bond.
+- Put–call forward parity: c0 − p0 = (F0 − X) / (1 + r)^T; when X = F0, call price = put price.`,
  ideas:`**Put–call parity links the prices of a European call, a European put, the underlying and a risk-free bond with the same strike and expiration.**
 
 ## Put–call parity
@@ -24695,6 +25491,90 @@ CFA_DATA.learn(1,"Derivatives and Risk Management","LM-DER",[
 {name:"Valuing a Derivative Using a One-Period Binomial Model",
  core:/binomial|risk[- ]neutral|hedge ratio|up (move|factor|state)|down (move|factor|state)|replicating portfolio|one-period/,
  match:/binomial|risk-neutral|risk neutral|hedge ratio|up|down|replicat|probability|payoff|discount|tree|one-period/,
+ lesson:`## 1. A world with only two outcomes
+Real share prices can end up anywhere, which makes options hard to price. The **binomial model** simplifies: over one period, the price of the underlying can move to only **two** values, up or down. That is unrealistic for a single period, but with many short periods it becomes an accurate model (Level II). Even with one period, it reveals how options are priced: by **replication** and by **risk-neutral valuation**.
+
+## 2. Setting up the model
+- Today's price is S0.
+- At the end of the period it is either **S1u = S0 × u** (up move) or **S1d = S0 × d** (down move), with u > 1 + r > d.
+- The risk-free rate for the period is r.
+- The option's payoff in each state is known from its strike: for a call, c1u = max(0, S1u − X) and c1d = max(0, S1d − X).
+
+> **Worked example 1: the setting**
+> A share trades at 40. Over the next period it can rise by 25% (u = 1.25) to 50 or fall by 15% (d = 0.85) to 34. The risk-free rate for the period is 3%. Value a call with a strike of 42.
+> - Call payoff up = max(0, 50 − 42) = 8
+> - Call payoff down = max(0, 34 − 42) = 0
+
+## 3. Valuing by replication
+Build a portfolio that is **riskless**: own h shares and **sell one call**. Choose h so that the portfolio is worth the same in both states.
+
+### The hedge ratio
+- **h = (c1u − c1d) / (S1u − S1d)**
+
+h is the number of shares per option needed to offset the option's price changes. It is the first appearance of an option's **delta**.
+
+> **Worked example 2: building the riskless portfolio**
+> - h = (8 − 0) / (50 − 34) = 8 / 16 = **0.5** share per call.
+> - Portfolio: own 0.5 share, short 1 call.
+> - Up state: 0.5 × 50 − 8 = **17**
+> - Down state: 0.5 × 34 − 0 = **17**
+> The portfolio is worth 17 whatever happens: it is riskless.
+
+### The price
+A riskless portfolio must earn the risk-free rate. So its value today equals 17 discounted at 3%:
+- 0.5 × 40 − c0 = 17 / 1.03 = 16.505
+- c0 = 20 − 16.505 = **3.495**, about **3.50**
+
+If the call traded above 3.50, an arbitrageur would sell it, buy 0.5 share per call, and earn more than the risk-free rate with no risk; if below, the reverse.
+
+Equivalently, the call can be **replicated** by buying 0.5 share and borrowing 16.505: in the up state this pays 25 − 17 = 8; in the down state 17 − 17 = 0, exactly the call's payoffs. The cost of the replicating portfolio, 20 − 16.505 = 3.495, is the call's value.
+
+## 4. Valuing by risk-neutral probabilities
+The same answer can be reached more directly. Define the **risk-neutral probability** of an up move:
+- **π = (1 + r − d) / (u − d)**
+
+Then the option's value is its expected payoff under these probabilities, discounted at the **risk-free rate**:
+- **c0 = [π × c1u + (1 − π) × c1d] / (1 + r)**
+
+> **Worked example 3: the risk-neutral route**
+> - π = (1.03 − 0.85) / (1.25 − 0.85) = 0.18 / 0.40 = **0.45**
+> - c0 = (0.45 × 8 + 0.55 × 0) / 1.03 = 3.60 / 1.03 = **3.495**
+> The same 3.50, with less work.
+
+### What "risk-neutral" means
+- π is **not** the real-world probability that the share rises. It is the probability that would make the share's expected return equal to the risk-free rate: check that 0.45 × 50 + 0.55 × 34 = 41.20 = 40 × 1.03.
+- Using π and discounting at the risk-free rate gives the right price **because** the option can be replicated: its risk has already been priced through the share's price.
+- It does **not** mean investors are risk-neutral. It is a computational device that works whatever their actual risk preferences.
+- The real-world probability of an up move and the share's expected return **do not appear** anywhere in the formula. Two investors who disagree completely about the share's prospects must still agree on the option's price, given the share's price, u, d and r.
+
+## 5. Valuing a put
+The same method values a put. With the same share and a strike of 42:
+- Put payoff up = max(0, 42 − 50) = 0; put payoff down = max(0, 42 − 34) = 8.
+- p0 = (0.45 × 0 + 0.55 × 8) / 1.03 = 4.40 / 1.03 = **4.272**
+
+> **Worked example 4: checking with put–call parity**
+> Parity requires c0 − p0 = S0 − X / (1 + r):
+> - c0 − p0 = 3.495 − 4.272 = −0.777
+> - S0 − X / 1.03 = 40 − 40.777 = −0.777
+> The binomial values satisfy parity, as they must: both rely on the same no-arbitrage reasoning.
+
+For a put, the hedge ratio is negative: h = (0 − 8) / (50 − 34) = −0.5. A riskless portfolio holds 0.5 share **and buys** one put (or shorts 0.5 share against a short put).
+
+## 6. Valuing other derivatives
+The method values **any** derivative whose payoff in each state is known: write down the payoffs, compute the risk-neutral probability from u, d and r, take the expected payoff and discount at the risk-free rate. For a forward on the share with forward price F0 = 40 × 1.03 = 41.20, the payoffs are 50 − 41.20 = 8.80 and 34 − 41.20 = −7.20, and the value is (0.45 × 8.80 + 0.55 × (−7.20)) / 1.03 = 0: exactly as a forward at the no-arbitrage price should be.
+
+## 7. From one period to many
+A one-period model is a teaching tool: the share can move to only two prices. Splitting the time to expiration into many short periods, each with an up or down move, gives a **binomial tree** with many possible final prices. As the number of periods grows, the binomial price converges to the price from the continuous-time **Black–Scholes–Merton** model. Multi-period trees can also handle American options, by checking at each node whether early exercise is worth more than holding on.
+
+## Checklist before you answer
+- Up price = S0 × u; down price = S0 × d; call payoffs max(0, S − X) in each state.
+- Hedge ratio h = (c1u − c1d) / (S1u − S1d): shares per option for a riskless portfolio.
+- The riskless portfolio earns the risk-free rate; solving gives the option value.
+- Risk-neutral probability π = (1 + r − d) / (u − d).
+- Option value = [π × payoff up + (1 − π) × payoff down] / (1 + r).
+- π is not the real probability; the real probability and expected return do not affect the option's price.
+- Binomial call and put values satisfy put–call parity.
+- Many periods → binomial tree → converges to Black–Scholes–Merton.`,
  ideas:`**In a one-period binomial model the underlying can move to only two prices. That is enough to show how options are priced by replication and risk neutrality.**
 
 ## Setting up the model
