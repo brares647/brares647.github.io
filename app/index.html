@@ -19333,6 +19333,154 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Instrument Features",
  core:/indenture|trust deed|covenants?\b|affirmative|negative pledge|\btrustee\b|par value|face value|\btenor\b|bond('s)? (features|terms)|features of (a|the) bond/,
  match:/indenture|covenant|affirmative|negative|trustee|par|face value|tenor|maturity|coupon|currency|collateral|secured|seniority|issuer|bondholder|restrict/,
+ lesson:`## 1. What a bond is
+A **bond** is a loan cut into tradable pieces. Instead of borrowing from one bank, the issuer borrows from many investors at once, and each investor holds a piece that can be sold to someone else before the loan is repaid. The bond is a **promise**: the issuer commits to pay specified amounts on specified dates. Everything in this module describes the details of that promise: who makes it, how much is paid, when, in what currency, and what protects the lender if things go wrong.
+
+Fixed income gets its name from the fact that those payments are set out in advance. For a shareholder, dividends depend on the board; for a bondholder, payments are a legal obligation. Missing one is a **default**, which can push the issuer into restructuring or bankruptcy.
+
+## 2. The basic features
+Every bond can be described by the same short list of features. Exam questions often give you a term sheet and ask you to name or interpret them.
+
+### Issuer
+The entity that borrows and owes the payments. The main groups are:
+- **Sovereign governments** (national treasuries), and **non-sovereign governments** such as regions, states and cities.
+- **Quasi-government entities and agencies**, owned or sponsored by a government.
+- **Supranational organizations**, such as development banks owned by several countries.
+- **Companies**, both non-financial (manufacturers, utilities) and financial (banks, insurers).
+- **Special purpose entities**, legal shells created to hold assets and issue bonds backed by them (the subject of the securitization modules).
+
+The issuer matters because its ability and willingness to pay is the main credit risk of the bond.
+
+### Maturity and tenor
+The **maturity date** is when the issuer repays the principal and the bond ends. The **tenor** is the time remaining until then, so a bond issued with ten years to maturity has a tenor of seven years three years later.
+- Instruments with an original maturity of one year or less trade in the **money market** (bills, commercial paper).
+- Longer ones trade in the **capital market**.
+- **Perpetual bonds** have no maturity date: they pay coupons for as long as the issuer exists, unless it chooses to redeem them.
+
+A longer tenor means more time for things to go wrong, and, as later modules show, greater sensitivity of the price to interest rates.
+
+### Par value
+The **par value** (also face value, principal or nominal value) is the amount the issuer promises to repay at maturity. Bond prices are quoted **as a percentage of par**, so the same quote works for any size of holding.
+
+> **Worked example 1: reading a price quote**
+> A bond with a par value of 1,000 per bond is quoted at 97.25, and an investor buys 400 bonds.
+> - Price per bond = 97.25% × 1,000 = 972.50
+> - Total paid (ignoring accrued interest) = 400 × 972.50 = 389,000
+> - Par value held = 400 × 1,000 = 400,000
+> The bond trades at a **discount** (below 100). A quote of 103.10 would be a **premium**; exactly 100 is **at par**. A quote of 97.25 never means 97.25 currency units.
+
+### Coupon rate and frequency
+The **coupon rate** is the annual interest rate paid on par value. The coupon payment per period equals coupon rate × par / number of payments per year.
+
+> **Worked example 2: coupon payments**
+> A bond with par value 5,000 pays a 4.6% coupon semi-annually.
+> - Annual coupon = 4.6% × 5,000 = 230
+> - Each semi-annual payment = 230 / 2 = 115
+> Note that the coupon rate is fixed on par, not on the price paid. An investor who bought at 97.25 still receives 115 every six months.
+
+Coupons can be paid annually, semi-annually (common for government and corporate bonds in the US and UK) or quarterly. Some bonds pay **no coupon** at all (zero-coupon bonds) and others pay a **floating** coupon that resets with a reference rate; the next module covers these structures.
+
+### Currency
+Most bonds pay in the currency of the issuer's home market, but issuers often borrow in other currencies, usually US dollars or euros, to reach more investors. Variations include:
+- **Dual-currency bonds:** coupons in one currency, principal in another.
+- **Currency option bonds:** the investor chooses the currency of each payment, from a set list at fixed rates.
+
+For an investor, a bond paying in a foreign currency adds exchange-rate risk on top of interest rate and credit risk. For an issuer, borrowing in a currency it does not earn adds the risk that its debt grows when its own currency weakens.
+
+### Yield
+The bond's **yield** is the single return implied by its price and promised payments. It moves inversely with the price and is covered in detail in the valuation modules; for now, notice that the coupon rate is a fixed contract term, while the yield is a market quantity that changes every day.
+
+## 3. Seniority and security
+When an issuer defaults, its creditors are not all treated alike. Two features decide who is paid first and from what.
+
+### Secured versus unsecured
+- A **secured** bond is backed by **collateral**: specific assets pledged to the bondholders, such as property, equipment or a pool of loans. If the issuer defaults, those assets can be sold to repay the secured bondholders.
+- An **unsecured** bond (often called a debenture in the US) relies only on the issuer's general ability to pay. Its holders have a claim on whatever is left after secured creditors have been paid from their collateral.
+
+### Seniority ranking
+Within the unsecured debt, bonds can rank **senior** or **subordinated** (junior). Subordinated holders are paid only after senior holders are paid in full. The lower the ranking, the higher the expected loss in default, and the higher the yield investors demand.
+
+> **Worked example 3: who recovers what**
+> A company defaults owing 60 million of senior secured bonds (backed by a factory that sells for 45 million), 50 million of senior unsecured bonds and 30 million of subordinated bonds. After the factory, other assets worth 35 million remain for everyone else.
+> - Secured holders take the 45 million from the factory. They are still owed 15 million, which joins the senior unsecured claims.
+> - Senior unsecured claims are now 15 + 50 = 65 million, against 35 million of other assets: recovery = 35 / 65 = 53.8%.
+> - Subordinated holders recover nothing.
+> - Secured holders recover 45 + 15 × 0.538 = 53.08 million of 60, or 88.5%.
+> This simplified "waterfall" is why ranking and collateral show up as yield differences between bonds of the same issuer.
+
+### Credit enhancements
+Issuers can make a bond safer than their own credit by adding protection:
+- **Internal enhancements** are built into the structure: **overcollateralization** (pledging more collateral than the bond's value), **subordination** (issuing junior tranches that absorb losses first) and **reserve accounts** (cash set aside to cover shortfalls).
+- **External enhancements** come from a third party: a **guarantee** from a parent company or government, a bank **letter of credit**, or bond insurance. They are only as good as the guarantor, which adds a new risk: the guarantor's own credit.
+
+## 4. The indenture and the trustee
+All the features above are written into the **indenture** (called a **trust deed** in some markets), the legal contract between the issuer and the bondholders. It sets out the payment terms, the collateral and any credit enhancements, the covenants, and what happens in default.
+
+Because thousands of investors may hold a bond, none of them is in a position to watch the issuer alone. A **trustee**, typically a bank's trust department, acts on behalf of all the bondholders: it monitors compliance with the indenture, receives reports from the issuer and can take legal action if the terms are broken. The trustee works for the bondholders, even though the issuer pays its fees.
+
+## 5. Covenants
+**Covenants** are the promises in the indenture beyond paying interest and principal. They exist because, once the money is lent, the shareholders and managers who control the company may be tempted to take actions that help them at the bondholders' expense: borrowing more, paying out cash, or selling the best assets.
+
+### Affirmative covenants
+These say what the issuer **must do**. They are mostly administrative and cost the issuer little:
+- Pay interest, principal and any premiums on time.
+- Keep proper accounting records and provide financial statements to the trustee.
+- Maintain the collateral, keep it insured and in good condition.
+- Comply with laws and keep the business licences it needs.
+- Use the money for the purpose stated (for example, building a plant).
+- **Cross-default** clauses: a default on any other debt of the issuer counts as a default on this bond, so bondholders are not left behind while other lenders act.
+- **Pari passu** clauses: this bond ranks at least equally with the issuer's other senior unsecured debt.
+
+### Negative covenants
+These say what the issuer **must not do**. They protect bondholders more, and they restrict management more:
+- **Limits on additional debt**, often set through financial ratios (for example, no new debt if interest coverage would fall below a set level).
+- **Negative pledge:** the issuer may not pledge assets to new lenders in a way that would rank them ahead of existing bondholders.
+- **Restrictions on payments to shareholders**, such as dividends and share buybacks above a limit.
+- **Restrictions on asset sales**, so that the assets backing the bondholders' claim are not sold off.
+- **Restrictions on mergers and acquisitions**, unless the combined company takes on the bonds and meets set conditions.
+- **Restrictions on investments** in risky or unrelated businesses.
+
+> **Worked example 4: classifying covenants**
+> A term sheet contains these clauses:
+> 1. "The issuer shall deliver audited annual statements within 120 days of year-end."
+> 2. "The issuer shall not pay dividends exceeding 40% of net income in any year."
+> 3. "The issuer shall not grant any lien on its assets to secure other debt unless these notes are secured equally."
+> 4. "A default on any other borrowing above 10 million constitutes an event of default."
+> Clauses 1 and 4 are **affirmative** (things the issuer must do, or a definition of default); clause 2 is a **negative** covenant on payouts; clause 3 is a **negative pledge**. Do not classify by whether the sentence contains "not": classify by whether it requires an action or restricts one.
+
+### The trade-off in covenants
+Tighter covenants make a bond safer and let the issuer borrow at a lower yield, but they also limit what management can do. If a covenant is too tight, a healthy company may be prevented from a sensible investment or acquisition. That is why:
+- **Investment-grade** issuers typically have few, loose covenants: investors trust their credit and accept the risk.
+- **High-yield** issuers typically have many, tight covenants: investors need the protection to lend at all.
+
+## 6. Putting the features together
+When you read a bond's description, run through it in order:
+1. Who is the issuer, and how strong is its credit?
+2. When does it mature, and how is the principal repaid?
+3. What is the coupon, how often is it paid, and is it fixed or floating?
+4. In which currency are payments made?
+5. Is it secured or unsecured, senior or subordinated, and is there any credit enhancement?
+6. What do the covenants require and forbid?
+
+> **Worked example 5: a full description**
+> "A 7-year, 500 million senior unsecured bond issued by a European utility, paying a 3.25% annual coupon in euros, par 100,000 per bond, with a negative pledge and a limit on net debt to EBITDA of 4.0×."
+> - Issuer: a non-financial company, probably investment grade (utilities usually are).
+> - Tenor: 7 years, bullet repayment unless stated otherwise.
+> - Coupon: 3.25% × 100,000 = 3,250 per bond each year.
+> - Currency: euros, so a US investor would carry exchange-rate risk.
+> - Ranking: senior, but unsecured: it relies on the company's general credit.
+> - Covenants: two negative covenants that stop the company from giving other lenders a prior claim and from borrowing beyond 4× EBITDA.
+
+## Checklist before you answer
+- Prices are quoted as a percentage of par: 97.25 means 97.25% of par value.
+- The coupon payment is coupon rate × par / payments per year, regardless of the price paid.
+- Tenor is the time remaining; maturity is the date.
+- Secured debt is repaid first from its own collateral; any shortfall becomes an unsecured claim.
+- Subordinated debt is paid only after senior debt is paid in full, so it yields more.
+- Internal enhancements are in the structure (overcollateralization, subordination, reserves); external ones depend on a third party's credit.
+- The trustee acts for the bondholders.
+- Affirmative covenants require actions; negative covenants restrict them; the negative pledge stops other lenders from jumping ahead.
+- Riskier issuers have tighter covenants; stronger issuers have looser ones.`,
  ideas:`**A bond is a promise by an issuer to make specified payments. Its features say who pays, how much, when, in which currency, and with what protection.**
 
 ## Basic features
@@ -19365,6 +19513,138 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Cash Flows and Types",
  core:/\bbullet\b|amortiz|sinking fund|zero-coupon|floating-rate note|\bFRN\b|step-up|payment-in-kind|\bPIK\b|deferred coupon|inflation-linked|index-linked|\bTIPS\b|callable|call (option|provision|protection|price|feature|schedule)|make-whole|putable|put (option|provision|feature)|convertible|conversion (ratio|price|value|premium)|contingent convertible|\bCoCos?\b|eurobond|foreign bond|domestic bond|global bond|bearer|tax-exempt|original issue discount|balloon/,
  match:/bullet|amortiz|sinking|zero|floating|step-up|PIK|deferred|inflation|index-linked|call|make-whole|put|convertib|conversion|contingent|eurobond|foreign bond|global bond|bearer|registered|tax|withholding|balloon/,
+ lesson:`## 1. Why cash flow patterns matter
+Two bonds with the same issuer, maturity and coupon rate can still be very different investments if they pay back the principal in a different way, or if one of the parties has an option to change the payments. This module catalogues the main patterns. For each one, ask two questions: **when does the money come back**, and **who benefits from any option** in the contract? The party who holds an option gets something of value, and the other party demands to be paid for giving it up, through the yield.
+
+## 2. How the principal is repaid
+### Bullet bonds
+A **bullet** bond pays only coupons until maturity and then repays the whole principal in one go. Most government and corporate bonds are bullets. The investor's money is out for the full term, and the large final payment is a concentrated credit exposure on one date.
+
+### Amortizing bonds
+An **amortizing** bond repays part of the principal with each payment, like a mortgage. In a **fully amortizing** bond every payment is the same size and the principal reaches zero at maturity. In a **partially amortizing** bond some principal is repaid over time and a final **balloon payment** repays the rest.
+
+> **Worked example 1: a fully amortizing loan**
+> A 4-year fully amortizing bond with par 200,000 carries a 6% annual rate.
+> - Level annual payment: \`N = 4\`, \`I/Y = 6\`, \`PV = −200000\`, \`FV = 0\`, \`CPT PMT\` → **57,718.30**
+> - Year 1: interest = 6% × 200,000 = 12,000; principal repaid = 57,718.30 − 12,000 = 45,718.30; balance left = 154,281.70
+> - Year 2: interest = 6% × 154,281.70 = 9,256.90; principal = 48,461.40; balance = 105,820.31
+> The interest part shrinks and the principal part grows every year. A bullet bond of the same size would pay 12,000 a year and 212,000 at the end.
+
+Because principal comes back earlier, an amortizing bond has lower credit risk than a bullet of the same maturity, but the investor must reinvest each repayment, often at lower rates if rates have fallen (**reinvestment risk**).
+
+### Sinking funds
+A **sinking fund** requires the issuer to retire a set part of the issue each year, so that only part of the original amount is left at maturity. The issuer can usually do this in two ways:
+- **Call bonds at par** (the specific bonds are chosen at random), or
+- **Buy them in the market** at the current price.
+
+The issuer chooses the cheaper route: if rates have risen and the bonds trade below par, it buys them in the market; if rates have fallen and they trade above par, it calls them at par.
+
+> **Worked example 2: a sinking fund schedule**
+> An issue of 300 million with a 10-year maturity must retire 8% of the original amount each year from the end of year 3.
+> - Retired per year = 8% × 300 = 24 million, in years 3 to 10: 8 × 24 = 192 million
+> - Left for the balloon at maturity = 300 − 192 = 108 million
+> For investors this lowers credit risk (the debt shrinks steadily), but a holder whose bond is called at par when it trades at, say, 104 loses that premium.
+
+## 3. Coupon structures
+### Fixed and zero-coupon
+Most bonds pay a **fixed** coupon. A **zero-coupon** bond pays nothing until maturity and is sold at a **discount** to par; the whole return is the difference between the price and par. Zeros have no reinvestment risk, because there are no coupons to reinvest, but their prices are very sensitive to interest rates.
+
+### Floating-rate notes
+A **floating-rate note (FRN)** pays a coupon that resets periodically:
+- coupon = market reference rate (MRR) + quoted margin.
+
+The MRR is a short-term rate such as SOFR in US dollars or €STR or EURIBOR in euros, observed at each reset date; the **quoted margin** is fixed at issue and reflects the issuer's credit risk at that time. Some FRNs have a **cap** (a maximum coupon, which protects the issuer) or a **floor** (a minimum coupon, which protects the investor). An **inverse floater** pays a coupon that falls when the reference rate rises.
+
+> **Worked example 3: an FRN coupon with a cap and a floor**
+> An FRN pays quarterly MRR + 1.40%, with a floor of 2.00% and a cap of 6.50%, par 1,000,000.
+> - MRR = 3.10%: coupon rate = 4.50%; quarterly payment = 1,000,000 × 4.50% / 4 = 11,250
+> - MRR = 0.30%: formula gives 1.70%, below the floor, so 2.00% applies: payment = 5,000
+> - MRR = 5.60%: formula gives 7.00%, above the cap, so 6.50% applies: payment = 16,250
+
+### Step-up, credit-linked, PIK and deferred coupons
+- **Step-up** coupons rise on a set schedule. They are often attached to callable bonds: if the issuer does not call, it pays more.
+- **Credit-linked** coupons rise if the issuer's credit rating falls (and may fall back if it improves). They compensate investors for deteriorating credit, but the higher payment arrives exactly when the issuer can least afford it.
+- **Payment-in-kind (PIK)** bonds let the issuer pay interest with more bonds instead of cash. They are used by highly leveraged issuers who want to preserve cash, and investors demand a higher yield for them.
+- **Deferred coupon** bonds pay nothing for the first few years and full coupons afterwards. They suit projects that need time to generate cash.
+
+### Inflation-linked bonds
+**Index-linked** bonds tie payments to a price index, usually consumer prices, to protect investors from inflation. The most common design (used by US TIPS and UK index-linked gilts) adjusts the **principal** with the index, and the fixed coupon rate is paid on the adjusted principal.
+
+> **Worked example 4: an inflation-adjusted principal**
+> A bond with par 1,000 pays a 1.25% real coupon semi-annually. Over the first six months the price index rises 1.6%.
+> - Adjusted principal = 1,000 × 1.016 = 1,016.00
+> - Coupon for the period = 1,016.00 × 1.25% / 2 = 6.35
+> Both the coupon and the principal repaid at maturity grow with prices, so the investor's real return is locked in at 1.25% (before taxes, and as long as the index measures the investor's own costs).
+
+Other designs index only the coupons, or pay the indexed amount at maturity only (zero-coupon indexed bonds).
+
+## 4. Contingency provisions: embedded options
+A **contingency provision** is a clause that lets one party change the cash flows if something happens. The most important are embedded options.
+
+### Callable bonds
+A **call** option lets the **issuer** redeem the bond before maturity at a set **call price**. The issuer calls when rates have fallen enough that it can refinance more cheaply, which is exactly when the investor would like to keep a high-coupon bond. So:
+- The investor faces **reinvestment risk**: the money comes back when rates are low.
+- The price of a callable bond is held down near the call price when rates fall (**price compression**).
+- Investors demand a **higher yield** than on an otherwise identical option-free bond. Value of a callable bond = value of a straight bond − value of the call option.
+
+Common terms:
+- A **call protection period** (lockout) during which the bond cannot be called. A bond callable after five years is said to be "non-call five".
+- A **call schedule** with call prices that decline toward par over time, for example 103 in year 5, 102 in year 6, 101 in year 7, then 100.
+- **Exercise styles:** American (any time after protection), European (only on one date) and Bermudan (on set dates, often coupon dates).
+- A **make-whole call** price is the present value of the remaining payments discounted at a benchmark yield plus a small spread. It is so expensive that issuers rarely use it to refinance; it is there for flexibility, for example in a takeover. Investors lose little, so make-whole callables yield only slightly more than straight bonds.
+
+### Putable bonds
+A **put** option lets the **investor** sell the bond back to the issuer at a set price (usually par) on set dates. The investor puts the bond when rates have risen or the issuer's credit has worsened, and reinvests the money at higher yields. Because the option benefits the investor, a putable bond has a **lower yield** than an otherwise identical straight bond. Value of a putable bond = value of a straight bond + value of the put option.
+
+> **Worked example 5: which way the option works**
+> Two bonds from the same issuer have the same 8-year maturity and 5% coupon. One is callable at par after 3 years; the other is putable at par after 3 years. The straight bond would yield 5.0%.
+> - The callable bond should yield more than 5.0% (the investor sold an option to the issuer).
+> - The putable bond should yield less than 5.0% (the investor bought an option from the issuer).
+> If rates fall to 3% after three years, the callable bond is likely to be called; if rates rise to 7%, the putable bond is likely to be put.
+
+### Convertible bonds
+A **convertible bond** lets the investor exchange the bond for a set number of the issuer's shares. It is a straight bond plus a call option on the shares held by the investor, so it pays a **lower coupon** than a straight bond. Key terms:
+- **Conversion ratio:** the number of shares received per bond.
+- **Conversion price** = par value / conversion ratio.
+- **Conversion value** = conversion ratio × current share price.
+- **Conversion premium** = price of the convertible − conversion value (often quoted as a percentage of the conversion value).
+
+> **Worked example 6: convertible arithmetic**
+> A convertible with par 1,000 converts into 32 shares. The share trades at 27.50 and the convertible at 1,040.
+> - Conversion price = 1,000 / 32 = 31.25 per share
+> - Conversion value = 32 × 27.50 = 880
+> - Conversion premium = 1,040 − 880 = 160, that is 160 / 880 = 18.2% of the conversion value
+> The investor pays 18.2% above the shares' worth for the bond's floor of coupons and principal. If the share rose to 40, conversion value would be 1,280 and converting would become attractive.
+
+A **warrant** is a similar option to buy shares, but attached to the bond and separable from it. **Contingent convertible bonds (CoCos)**, issued mainly by banks, convert into shares or are written down **automatically** when a trigger is hit, usually the bank's capital ratio falling below a level. The conversion helps the issuer exactly when it is weak, so CoCos are risky for investors and yield accordingly.
+
+## 5. Legal, regulatory and tax considerations
+### Where and how a bond is issued
+- **Domestic bonds** are issued by a local issuer in its home market and currency.
+- **Foreign bonds** are issued by a foreign issuer in another country's domestic market and currency, under that country's rules (for example, a Japanese company selling dollar bonds in the US market).
+- **Eurobonds** are issued outside the jurisdiction of any single country, in the **international** market. The name has nothing to do with the euro: a "Eurodollar bond" is a dollar bond issued outside the US. Eurobonds are less regulated, usually issued in **bearer** form (whoever holds the certificate owns it) rather than registered form, and often pay annual coupons.
+- **Global bonds** are issued at the same time in the Eurobond market and at least one domestic market.
+
+### Tax treatment
+- Coupons are usually taxed as **ordinary income**; price gains on sale are taxed as **capital gains**, often at a different rate or after a holding period.
+- Some government bonds are **tax-exempt** for local investors, so they can offer lower yields and still compete. A tax-exempt yield of 3.0% is worth as much as a taxable yield of 3.0% / (1 − tax rate).
+- For bonds issued at a discount, such as zeros, some jurisdictions tax the discount as it **accretes** each year (original issue discount), even though no cash is received until maturity.
+
+> **Worked example 7: a tax-equivalent yield**
+> A tax-exempt municipal bond yields 3.0%. An investor pays 35% tax on interest.
+> - Taxable-equivalent yield = 3.0% / (1 − 0.35) = 4.62%
+> A taxable bond of similar risk must yield more than 4.62% to be better for this investor; for a tax-exempt pension fund, the taxable bond at anything above 3.0% wins.
+
+## Checklist before you answer
+- Bullet: all principal at the end. Amortizing: principal throughout. Balloon: the remainder at the end.
+- A sinking fund lowers credit risk; the issuer retires bonds the cheaper way (call at par or buy in the market).
+- FRN coupon = reference rate + quoted margin, then apply any floor or cap.
+- Inflation-linked bonds usually adjust the principal; the coupon rate applies to the adjusted principal.
+- Call = issuer's option: higher yield, reinvestment risk, price compression. Put = investor's option: lower yield.
+- Callable = straight − call; putable = straight + put.
+- Conversion price = par / ratio; conversion value = ratio × share price.
+- CoCos convert automatically at a trigger and protect the issuer, not the investor.
+- A Eurobond is defined by being issued outside any single national market, not by its currency.`,
  ideas:`**Bonds differ in how and when they pay, in options that change those payments, and in the legal and tax regime they are issued under.**
 
 ## Principal repayment
@@ -19402,6 +19682,111 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Issuance and Trading",
  core:/market segments?|bond (index|indexes|indices)|fixed-income index|aggregate (bond )?index|primary (bond |fixed-income )?market|secondary (bond |fixed-income )?market|underwrit|best[- ]efforts|shelf registration|over-the-counter|dealer market|institutional investors|retail investors|bond market (is|are|differs)/,
  match:/segment|investment grade|high-yield|emerging|index|primary|secondary|underwrit|best efforts|auction|shelf|private placement|over-the-counter|OTC|dealer|liquid|bid-ask|transparen|settle|participant|investor|issuer/,
+ lesson:`## 1. A market bigger than the stock market
+The global bond market is larger than the global equity market by value outstanding, yet most people hear far less about it. The reason is how it works: most bonds are bought by institutions, in large amounts, and traded between dealers over the telephone or electronic platforms rather than on a public exchange with a ticker. This module explains how the market is divided up, who takes part, how bonds are first sold, and how they trade afterwards.
+
+## 2. Ways to classify the market
+Bond markets are sliced along several lines at once. Each slice has its own investors, conventions and indexes.
+
+### By issuer type
+- **Governments and government-related issuers:** national governments, regions and cities, agencies and supranational bodies.
+- **Non-financial companies:** manufacturers, utilities, retailers.
+- **Financial companies:** banks, insurers and other lenders, which are among the largest issuers of all.
+- **Securitized debt:** bonds issued by special purpose entities and backed by pools of loans (mortgages, car loans, credit card receivables).
+
+### By credit quality
+Credit rating agencies split bonds into **investment grade** (rated BBB− / Baa3 or higher) and **high yield** (below that, also called non-investment grade or "junk"). The line matters in practice: many pension funds, insurers and central banks may hold only investment-grade bonds, so a downgrade across the line can force them to sell, and the bond's price can fall sharply.
+
+### By maturity
+- **Money market:** original maturity of one year or less (bills, commercial paper, certificates of deposit, repos).
+- **Capital market:** longer maturities, usually split into short (1–5 years), intermediate (5–12 years) and long term.
+
+### By currency and geography
+Bonds are also grouped by currency of denomination and by region: **developed** versus **emerging** markets. Emerging market bonds may be issued in the local currency (local-currency debt) or in a major foreign currency, usually US dollars (hard-currency debt).
+
+### Other labels
+- **Sustainable (ESG) bonds:** **green bonds** fund environmental projects, **social bonds** social projects, and **sustainability-linked bonds** have a coupon that rises if the issuer misses stated targets, such as an emissions goal. The first two are about the use of the money; the third is about the issuer's behaviour.
+
+## 3. Fixed-income indexes
+A **bond index** is a rule-based list of bonds that represents a market or a segment of it. Investors use indexes as **benchmarks** to judge managers and as the target for index funds and ETFs.
+
+Indexes exist for almost every slice: a broad **aggregate** index of investment-grade bonds in a currency, and narrower ones for government, corporate, high-yield, emerging market, inflation-linked or green bonds.
+
+Bond indexes differ from equity indexes in ways that matter:
+- They are usually **weighted by the market value of debt outstanding**. The more an issuer borrows, the bigger its weight. For an equity index, a large weight means a large, valuable company; for a bond index it can simply mean a heavily indebted one.
+- They contain far more securities, often thousands, because each issuer has many bonds.
+- Bonds **mature**, are called, or fall out of the eligibility rules (for example, when their remaining maturity drops below one year), so indexes are **rebalanced** frequently, usually monthly.
+- Many index bonds trade rarely, so their prices are estimated rather than observed.
+
+For these reasons a bond fund rarely holds every bond in its index. Instead it uses **stratified sampling**: it holds a smaller set of bonds chosen so that the fund matches the index on the features that drive returns, such as duration, credit quality and sector.
+
+> **Worked example 1: an index weight**
+> A small government index has three issuers with bonds outstanding at market value of 820 billion (Country A), 410 billion (Country B) and 170 billion (Country C).
+> - Total = 1,400 billion
+> - Weights: A = 820 / 1,400 = 58.6%; B = 29.3%; C = 12.1%
+> If Country B doubles its borrowing while its credit quality worsens, its index weight rises. An investor tracking the index lends more to a borrower that is getting riskier, which is a known criticism of debt-weighted indexes.
+
+## 4. Who takes part
+- **Issuers** borrow: governments, companies, banks and special purpose entities.
+- **Investors** lend: central banks (holding reserves and running monetary policy), pension funds and insurers (matching long-term liabilities), banks (investing deposits and holding liquid assets), mutual funds and ETFs, hedge funds, sovereign wealth funds, and individuals, mostly through funds.
+- **Intermediaries** connect them: investment banks underwrite new issues and act as **dealers** in the secondary market, buying and selling from their own inventory. Others include credit rating agencies, custodians, clearing houses and trading platforms.
+
+## 5. Primary markets: selling new bonds
+The **primary market** is where bonds are first sold and the issuer receives the money.
+
+### Public offerings
+In a public offering the bond is offered to the investing public and registered with the regulator. Several methods exist:
+- **Underwritten offering** (firm commitment): an investment bank, or a group of banks (a **syndicate**), buys the whole issue from the issuer at an agreed price and resells it to investors. The bank bears the risk that it cannot resell at that price.
+- **Best-efforts offering:** the bank acts only as agent, selling what it can for a commission. The issuer bears the risk that part of the issue goes unsold. This is used for smaller or riskier issuers.
+- **Auction:** investors bid and the price is set by their bids. This is how most governments sell their debt, on a regular published calendar.
+- **Shelf registration:** a frequent issuer files one set of documents with the regulator and then sells bonds in pieces over a period (often up to three years) whenever it needs money, without a full new filing each time. It is usually available only to well-known, financially strong issuers.
+
+> **Worked example 2: who carries the risk**
+> A company wants to raise 750 million. A syndicate agrees to buy the bonds at 99.20 and expects to resell them at 99.80.
+> - Proceeds to the company = 99.20% × 750 million = 744.0 million
+> - Expected underwriting spread = (99.80 − 99.20)% × 750 million = 4.5 million
+> If market rates rise during the sale and the bonds can only be sold at 98.90, the syndicate loses (99.20 − 98.90)% × 750 million = 2.25 million; the company still receives 744.0 million. Under a best-efforts deal the company would have carried that risk instead.
+
+The underwriting process typically runs through these steps: choose the type of bond and the banks; the banks gauge demand by sounding out investors (**book building**); the bond is priced and the coupon set; the issue is allocated to investors; and the trade settles, with the money passing to the issuer. Between pricing and settlement, bonds often trade on a **grey market** ("when issued"), which helps the banks judge demand.
+
+### Private placements
+A **private placement** is sold directly to a small group of qualified investors, usually insurers or pension funds, without public registration. It is cheaper and faster for the issuer and can be tailored (custom covenants, unusual maturities), but the bonds are not traded publicly afterwards, so investors demand a higher yield for the poor liquidity. Holders often keep them to maturity.
+
+## 6. Secondary markets: trading after issue
+In the **secondary market** investors trade bonds among themselves; the issuer receives nothing. It provides **liquidity** (investors can sell before maturity) and **price discovery** (market prices show what investors think the issuer's debt is worth).
+
+### Over-the-counter trading
+Most bonds, including government and corporate bonds, trade **over the counter (OTC)**: investors trade with dealers, who quote a **bid** (the price at which they buy) and an **ask** or offer (the price at which they sell), rather than on a central exchange. Electronic platforms now handle much of this flow, especially for government bonds and smaller trades, but large or unusual trades are still negotiated with dealers.
+
+### Liquidity and the bid-ask spread
+The **bid-ask spread** is the dealer's compensation for holding inventory and the investor's main trading cost. It depends on how easily the dealer can lay off the risk:
+- **Narrow** for recently issued (on-the-run) government bonds, which trade in huge volumes.
+- **Wider** for corporate bonds, especially small, old or lower-rated issues that may not trade for days or weeks.
+- Wider in market stress, when dealers become reluctant to hold inventory.
+
+> **Worked example 3: the cost of a round trip**
+> A dealer quotes a government bond at 99.48 bid / 99.52 ask, and a small high-yield bond at 93.75 bid / 95.25 ask.
+> - Government bond spread = 0.04 points, which is 0.04 / 99.50 = 0.04% of the mid price
+> - High-yield bond spread = 1.50 points, which is 1.50 / 94.50 = 1.59% of the mid price
+> Buying and selling the high-yield bond straight away costs about 1.6% of the investment, more than a third of a year's coupon on many bonds. Such bonds suit investors who expect to hold them.
+
+### Why bonds are less liquid than shares
+- One company has one or two share classes but may have **dozens of bonds** with different coupons and maturities, so trading in any single bond is thin.
+- Many investors **buy and hold** bonds to maturity, especially insurers and pension funds matching liabilities.
+- Trade sizes are large and many trades are negotiated privately, so prices are less **transparent**. Some markets now require trades to be reported after the fact (for example, the TRACE system in the US).
+
+### Settlement
+After a trade the bond is delivered and the cash paid on the **settlement date**. Government bonds often settle on the next business day (T+1); corporate bonds often settle T+1 or T+2, depending on the market. Money market instruments may settle the same day.
+
+## Checklist before you answer
+- Investment grade = BBB− / Baa3 and above; the boundary matters because many institutions may hold only investment grade.
+- Bond indexes are weighted by debt outstanding, so heavier borrowers get bigger weights.
+- Bond indexes are hard to replicate (many bonds, thin trading, frequent rebalancing); funds use sampling.
+- Underwritten: the bank bears the price risk. Best efforts: the issuer does.
+- Governments mostly sell by auction; frequent strong corporate issuers can use shelf registration.
+- Private placements are cheaper to issue but illiquid, so they yield more.
+- Secondary trading is mostly OTC through dealers, with bid-ask spreads that widen for small, old, low-rated issues and in stress.
+- The issuer receives money only in the primary market.`,
  ideas:`**The bond market is larger than the equity market and works differently: most bonds are issued to institutions and traded between dealers, not on exchanges.**
 
 ## Market segments and participants
@@ -19436,6 +19821,127 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Markets for Corporate Issuers",
  core:/commercial paper|line of credit|credit lines?|revolving|revolver|factoring|asset-based (loan|lending)|repurchase agreement|\brepos?\b|haircut|certificates? of deposit|interbank|wholesale funding|short-term funding|rollover risk|backup line|reverse repo/,
  match:/commercial paper|line of credit|credit line|revolving|factoring|asset-based|repurchase|repo|haircut|certificate|interbank|wholesale|deposit|short-term|rollover|backup|collateral|investment-grade|high-yield|secured|covenant|maturit|central bank/,
+ lesson:`## 1. Why companies borrow, short and long
+A company needs money for two different jobs. **Working capital** (inventory, receivables, the gap between paying suppliers and being paid by customers) comes and goes within months, so it is best funded short term. **Long-term investment** (plants, equipment, acquisitions) pays off over years, so it is best funded with long-term debt or equity. Funding a long-lived asset with debt that must be refinanced every few months exposes the company to **rollover risk**: the risk that, when the debt comes due, lenders will not refinance it, or only at a much higher rate.
+
+This module covers the short-term tools of non-financial companies, the special funding of banks, repurchase agreements (which both use), and the long-term debt markets for strong and weak companies.
+
+## 2. Short-term funding of non-financial companies
+### Bank lines of credit
+A bank agrees to lend up to a limit whenever the company asks. The forms differ in how firmly the bank is committed:
+- **Uncommitted line:** the bank may refuse to lend when asked. It is cheap, often free, but unreliable exactly when it is needed.
+- **Committed line:** the bank must lend up to the limit for a set period, usually a year. The company pays a **commitment fee** on the unused amount, plus interest on what it draws.
+- **Revolving credit agreement (revolver):** a committed line for several years that the company can draw, repay and draw again. It is the most reliable form, often used as a backup for commercial paper.
+
+> **Worked example 1: the cost of a committed line**
+> A company has a 50 million committed line with a 0.30% annual commitment fee on the unused part and interest at reference rate + 1.20% on drawings. It draws 18 million for the whole year and the reference rate averages 3.40%.
+> - Interest = 18 × (3.40% + 1.20%) = 0.828 million
+> - Commitment fee = (50 − 18) × 0.30% = 0.096 million
+> - Total cost = 0.924 million, that is 5.13% of the 18 million actually used
+> The fee is the price of certainty: the company knows the remaining 32 million is available.
+
+### Secured short-term funding
+Companies with weaker credit, or that want lower rates, can borrow against assets:
+- **Asset-based loans** are secured by receivables, inventory or both. The lender advances a percentage of the asset value (for example 80% of eligible receivables).
+- **Factoring** means selling receivables to a lender (the factor) at a discount. The company gets cash at once, and the factor collects from customers. With **recourse**, the company still bears the loss if customers do not pay; without recourse, the factor does, and charges more.
+
+### Commercial paper
+**Commercial paper (CP)** is short-term, unsecured debt sold to investors, usually with maturities from overnight to 270 days in the US (longer in some markets), typically issued at a discount. It is cheaper than bank borrowing for strong companies, but:
+- Only issuers with high short-term credit ratings can sell it in size.
+- Most issuers pay maturing CP with the proceeds of new CP, so they are exposed to rollover risk. If investors refuse to buy, as happened in the 2008 crisis, the issuer must find cash quickly. For that reason CP is normally backed by **backup lines of credit** from banks, and rating agencies look for them.
+- **Eurocommercial paper** is issued in the international market, often on an interest-bearing (add-on) basis rather than at a discount.
+
+> **Worked example 2: pricing commercial paper**
+> A company sells 90-day CP with face value 20 million at a discount rate of 4.20% (360-day year).
+> - Discount = 20 × 4.20% × 90 / 360 = 0.21 million
+> - Proceeds = 20 − 0.21 = 19.79 million
+> - Return to the investor on the money actually invested = (20 / 19.79 − 1) × 360 / 90 = 4.24% (add-on basis)
+> The discount rate understates the return because it is applied to face value, not to the smaller amount invested.
+
+## 3. Short-term funding of banks
+Banks borrow short and lend long by design, so their funding structure is central to their risk.
+- **Retail deposits:** current accounts, savings and term deposits from households and small businesses. They are cheap and, because they are usually insured up to a limit, relatively **stable**: depositors rarely move all at once.
+- **Wholesale funding:** money from other institutions, which is larger but more likely to leave in stress:
+  - **Interbank loans**, often overnight, at rates such as the interbank or overnight reference rates.
+  - **Certificates of deposit (CDs):** deposits with a fixed term and rate. Negotiable CDs can be sold before maturity; non-negotiable ones carry a penalty for early withdrawal.
+  - **Central bank facilities:** banks can borrow from the central bank against collateral, for example to meet reserve requirements.
+  - **Repurchase agreements** (next section).
+
+Regulators require banks to hold liquid assets against short-term funding that could run, precisely because a bank that relies heavily on wholesale funding can fail within days if lenders lose confidence.
+
+## 4. Repurchase agreements
+### How a repo works
+A **repurchase agreement (repo)** is a sale of securities with a simultaneous agreement to buy them back at a set price on a later date. Economically it is a **collateralized loan**:
+- The **borrower** (the seller of the securities) receives cash today and repays more later.
+- The **lender** (the buyer of the securities) holds them as collateral until it is repaid.
+- The difference between the repurchase price and the sale price is the interest, expressed as the **repo rate**, usually on an add-on basis with a 360-day year.
+- From the lender's side the same transaction is a **reverse repo**.
+
+Repos run from overnight to several months (**term repo**); most are overnight.
+
+### The haircut
+The lender gives less cash than the collateral is worth. The difference, as a percentage of the collateral's value, is the **haircut** (also called repo margin). It protects the lender if the borrower fails and the collateral must be sold at a lower price.
+- cash lent = collateral value × (1 − haircut)
+- repurchase price = cash lent × (1 + repo rate × days / 360)
+
+> **Worked example 3: a term repo**
+> A dealer finances government bonds worth 25 million in a 60-day repo with a 1.5% haircut at a repo rate of 3.80% (360-day year).
+> - Cash lent = 25 × (1 − 0.015) = 24.625 million
+> - Interest = 24.625 × 3.80% × 60 / 360 = 0.15596 million (155,958)
+> - Repurchase price = 24.625 + 0.15596 = 24.78096 million
+> The dealer has financed 25 million of bonds with only 0.375 million of its own money. That leverage is why repos are the main funding tool for bond dealers.
+
+### What drives the repo rate and the haircut
+Both are **higher** when:
+- the collateral is riskier or less liquid (corporate bonds rather than government bills),
+- the term is longer,
+- the borrower's credit is weaker,
+- the collateral is easy to find elsewhere (if a bond is scarce and in demand, the lender may accept a very low repo rate to get it: the bond is "special"),
+- market conditions are stressed.
+
+### Uses and risks
+Repos are used to finance holdings of bonds cheaply, to borrow specific securities to cover short sales, by money market funds as a safe short-term investment, and by central banks to add or drain liquidity. Their risks:
+- **Counterparty risk:** the borrower may fail to repurchase; the lender is left with the collateral.
+- **Collateral risk:** the collateral's value may fall below the cash lent before it can be sold.
+- **Liquidity and funding risk:** in a crisis lenders raise haircuts or refuse to roll repos, which can force borrowers to sell assets in a falling market.
+- **Settlement and legal risks** in delivering and holding the collateral.
+
+A **tri-party repo** uses a third party (a clearing bank or custodian) to hold the collateral, value it daily and handle settlement, which reduces operational risk for both sides.
+
+## 5. Long-term funding: investment grade versus high yield
+Companies raise long-term debt through bank term loans and bonds. What they can issue depends heavily on their credit quality.
+
+### Investment-grade issuers
+- Issue mostly **unsecured, senior, fixed-rate** bonds, often with long maturities (10, 20, even 30 years or more).
+- Have **few covenants**, because investors trust their credit.
+- Can issue frequently and in large size, often through shelf registration, in several currencies.
+- Investors worry mainly about **interest rate risk** and changes in the **credit spread**, not about losing principal.
+
+### High-yield issuers
+- Rely more on **bank loans**, which are usually **secured**, **floating rate** and senior to the bonds.
+- Issue bonds with **shorter maturities** (often 5–10 years), frequently **callable** after a few years so that the company can refinance once its credit improves.
+- Accept **many, tighter covenants**: limits on debt, dividends and asset sales.
+- Investors focus on **default risk and recovery**: how likely the company is to fail, and how much they would get back. Their capital structure is often layered: secured loans, then senior unsecured bonds, then subordinated bonds.
+
+> **Worked example 4: two capital structures**
+> Company A (rated A) has 2 billion of debt: four senior unsecured bond issues maturing in 5, 10, 20 and 30 years with fixed coupons and a negative pledge.
+> Company B (rated B) has 900 million of debt: a 500 million secured term loan at reference rate + 3.75%, then 400 million of 7-year senior unsecured bonds callable after 3 years, with limits on debt, dividends and asset sales.
+> - For A's bondholders, the key risk is a rise in rates or spreads cutting the value of the 30-year bond.
+> - For B's bondholders, the key risk is default: the secured loan ranks ahead of them on the company's assets, so their recovery could be low.
+
+### Other long-term instruments
+- **Medium-term notes (MTNs):** a programme under which a company issues notes continuously, in many sizes and maturities, to suit investors' requests.
+- **Convertible bonds** let companies, often growth or high-yield issuers, pay a lower coupon in exchange for giving investors an option on the shares.
+- **Leveraged loans** are bank loans to highly indebted companies, often packaged into collateralized loan obligations.
+
+## Checklist before you answer
+- Fund short-term needs short and long-term assets long; mismatches create rollover risk.
+- Uncommitted lines can be refused; committed lines cost a fee on the unused amount; revolvers are the most reliable.
+- Commercial paper is unsecured, short term and needs backup lines because of rollover risk.
+- Retail deposits are a bank's most stable funding; wholesale funding can disappear in stress.
+- In a repo: cash lent = collateral × (1 − haircut); repurchase price = cash × (1 + repo rate × days / 360).
+- Riskier collateral, longer terms and weaker borrowers mean higher repo rates and haircuts.
+- Investment-grade: long, unsecured, fixed rate, few covenants. High-yield: secured loans, shorter callable bonds, many covenants, focus on recovery.`,
  ideas:`**Companies and banks borrow short term to fund working capital and long term to fund investment; the instruments differ for strong and weak credits.**
 
 ## Short-term funding of non-financial companies
@@ -19473,6 +19979,106 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Markets for Government Issuers",
  core:/sovereign (bond|debt|issuer|issue)|government (bonds?|debt|issuers?|securities)|Treasur(y|ies)|non-sovereign|municipal|local government|regional government|agency (bond|debt|issue)|quasi-government|supranational|World Bank|on-the-run|off-the-run|single-price auction|multiple-price auction|Dutch auction/,
  match:/sovereign|government|Treasur|non-sovereign|municipal|local|regional|agency|quasi|supranational|World Bank|on-the-run|off-the-run|auction|benchmark|central bank|inflation-linked|bills?|notes/,
+ lesson:`## 1. Why governments borrow
+A government spends on pensions, health, defence and infrastructure and collects taxes. When spending exceeds revenue in a year, it runs a **fiscal deficit** and must borrow the difference. It also borrows to **refinance** old debt as it matures, and to smooth out the timing of tax receipts during the year. Because governments rarely repay all their debt, the stock of government bonds tends to grow over time and is refinanced again and again.
+
+Government bonds matter far beyond the government itself:
+- They are usually the **safest** assets in their currency, so their yields act as the **risk-free benchmark** from which all other bonds are priced: a corporate bond's yield is quoted as a spread over the government yield of similar maturity.
+- They are the **collateral** of choice in repos and derivatives markets.
+- They are the main tool central banks buy and sell to run **monetary policy**.
+
+## 2. Sovereign bonds
+### What national governments issue
+**Sovereign** debt is issued by the national government, usually through its treasury or a debt management office. Most countries issue a similar range:
+- **Bills:** maturities of one year or less, sold at a discount with no coupon. They fund short-term cash needs and are the most liquid part of the market.
+- **Notes and bonds:** coupon-paying debt with longer maturities (in the US, notes run from 2 to 10 years and bonds beyond that, out to 30 years). Coupons are fixed, usually paid semi-annually or annually.
+- **Inflation-linked bonds:** principal (and so coupons) adjusted with a consumer price index.
+- **Floating-rate notes:** some governments also issue notes whose coupon resets with a short-term rate.
+
+### Local versus foreign currency
+A government borrowing in **its own currency** can, in the last resort, have its central bank create the money to repay. Its risk of outright default is therefore low, though investors still face inflation and currency risk. A government borrowing in a **foreign currency**, typically US dollars or euros, cannot print that money: it must earn it through exports or borrow it. Many sovereign defaults in history have been on foreign-currency debt. So the **same government** usually has a higher credit rating on its local-currency debt than on its foreign-currency debt.
+
+Developed-market governments borrow almost entirely in their own currency. Emerging-market governments often issue both, because foreign investors may be unwilling to take local currency risk.
+
+### Auctions
+Sovereigns sell their debt through regular, pre-announced **auctions**. A predictable calendar helps investors plan, keeps demand steady and lowers the government's borrowing cost. Bidders are usually a group of **primary dealers**, banks that are obliged to bid at every auction and in return get privileges such as access to central bank operations. Investors can often also submit **non-competitive bids**: they accept whatever price the auction sets and are guaranteed an allocation.
+
+There are two main formats:
+- **Single-price (uniform-price) auction:** competitive bids are filled from the highest price (lowest yield) down until the issue is sold, and **all** winning bidders pay the same price, the lowest accepted price (the highest accepted yield, the "stop-out" yield). The US Treasury uses this format; it is also called a Dutch auction.
+- **Multiple-price (discriminatory) auction:** winning bidders each pay **the price they bid**. Bidders tend to shade their bids, because bidding high costs them directly.
+
+> **Worked example 1: a single-price auction**
+> A government offers 10 billion of 2-year notes. After 1.5 billion of non-competitive bids, 8.5 billion is left for competitive bids, which arrive as:
+> - 3.0 billion at 3.10%, 2.5 billion at 3.12%, 4.0 billion at 3.14%, 2.0 billion at 3.16%
+> Filling from the lowest yield: 3.0 + 2.5 = 5.5 billion through 3.12%, and 3.0 billion more is needed from the 4.0 billion bid at 3.14%.
+> - Stop-out yield = 3.14%: every winning bidder, and every non-competitive bidder, receives the notes at 3.14%.
+> - Bids at 3.14% are filled pro rata: 3.0 / 4.0 = 75% of each bid.
+> - Bids at 3.16% receive nothing.
+> In a multiple-price auction, the bidders at 3.10% would instead pay the higher price that matches their own 3.10% bid.
+
+### On-the-run and off-the-run
+The most recently auctioned bond of each standard maturity is **on-the-run**. It is the most traded, has the narrowest bid-ask spread and serves as the **benchmark** for that maturity. When a new bond of the same maturity is auctioned, the old one becomes **off-the-run** and trades less. Because investors value liquidity, on-the-run bonds usually trade at a slightly **higher price** (lower yield) than off-the-run bonds with similar remaining maturity.
+
+> **Worked example 2: the liquidity premium between two bonds**
+> The on-the-run 10-year government bond yields 4.215%. An off-the-run bond maturing two months earlier, with a similar coupon, yields 4.245%.
+> - Difference = 3.0 basis points
+> The two have the same issuer, so the gap is not about credit. A small part comes from the slightly different maturity; most is the price investors pay for the on-the-run bond's liquidity.
+
+## 3. Non-sovereign government bonds
+States, provinces, regions and cities borrow to build schools, roads, water systems and hospitals. In the US these are called **municipal bonds**. Two types dominate:
+- **General obligation (GO) bonds** are backed by the issuer's **taxing power**: it promises to use all its tax revenue to pay. They are usually the safer of the two.
+- **Revenue bonds** are repaid only from the income of a specific project, such as tolls from a bridge, fees from an airport or charges from a water utility. If the project earns too little, bondholders are not covered by general taxes. They usually yield more than GO bonds of the same issuer.
+
+Non-sovereign governments cannot print money, and their tax base may be narrow, so their credit depends on local economic strength, the stability of their revenues, their debt burden, and how much support the national government is likely to give. In some countries their interest is tax-exempt for local investors, which lets them borrow at lower yields.
+
+> **Worked example 3: comparing a tax-exempt and a taxable bond**
+> A city's 10-year GO bond yields 2.90%, tax-exempt. A similar-risk taxable corporate bond yields 4.20%. An investor pays 32% tax on interest.
+> - After-tax yield on the corporate bond = 4.20% × (1 − 0.32) = 2.856%
+> - The municipal bond's 2.90% is slightly higher, so the municipal bond wins for this investor.
+> For an investor taxed at 25%, the corporate bond's after-tax yield is 3.15%, and it would win.
+
+## 4. Quasi-government, agency and supranational issuers
+### Agencies and quasi-government entities
+Governments set up or sponsor entities for specific purposes: housing finance, student loans, export credit, infrastructure, development. Their bonds may carry:
+- an **explicit guarantee** (the government is legally bound to pay if the agency cannot), so the bonds trade at yields very close to the sovereign's, or
+- only an **implicit guarantee** (investors expect support but it is not guaranteed), so yields are somewhat higher and depend on how essential the agency is to the government.
+
+### Supranational issuers
+**Supranational** organizations are owned by several member governments: the World Bank, the European Investment Bank, the Asian Development Bank and similar regional development banks. They lend for development projects and fund themselves by issuing bonds in many currencies. Strong shareholders, capital that members can be called on to provide, and conservative lending usually give them the highest credit ratings, sometimes above those of many of their members.
+
+## 5. Government versus corporate debt markets
+The two markets differ in ways that show up in exam questions:
+- **Issuance pattern:** governments borrow on a regular **calendar** of auctions in standard maturities; companies issue **when they need money**, in sizes and structures that suit them, mostly through underwriters.
+- **Size and liquidity:** individual government issues are very large and heavily traded. Corporate issues are smaller and more numerous, and many trade rarely.
+- **Standardization:** government bonds are plain (bullet, fixed coupon or inflation-linked); corporate bonds carry many more features: calls, puts, covenants, conversion rights.
+- **Credit risk:** governments in their own currency are close to default-free; companies carry credit spreads over government yields.
+- **Role in markets:** government bonds set the benchmark yield curve, act as collateral and are traded by central banks.
+
+### Central banks and government debt
+Central banks buy and sell government bonds in **open market operations** to steer short-term rates. In large asset purchase programmes (**quantitative easing**), they buy longer-term bonds to push their yields down. Today central banks hold a large share of government debt in several developed markets; when they stop buying or begin selling (**quantitative tightening**), other investors must absorb more supply, which tends to push yields up.
+
+## 6. Reading a sovereign's position
+When judging government debt, analysts look at the borrower's ability and willingness to pay. The credit analysis module covers this in detail, but the key questions are already visible:
+1. Does it borrow in its own currency or a foreign one?
+2. How large is its debt relative to the size of its economy, and is the deficit shrinking or growing?
+3. How much of its debt matures soon, and who holds it (domestic or foreign investors)?
+4. How strong and diverse is the economy, and how stable are its institutions?
+
+> **Worked example 4: one government, two ratings**
+> An emerging-market government has local-currency bonds rated BBB and US dollar bonds rated BB+. Its 10-year local bonds yield 7.4%, while its 10-year dollar bonds yield 6.1%.
+> - The dollar bonds have the lower rating: the government cannot print dollars.
+> - Yet they yield less, because the local-currency yield also includes expected local inflation and currency risk, which is not about default at all.
+> Never compare yields across currencies as if they measured credit risk alone.
+
+## Checklist before you answer
+- Government yields are the benchmark; other bonds are quoted as spreads over them.
+- Bills are short and discounted; notes and bonds pay coupons; many sovereigns also issue inflation-linked bonds.
+- Local-currency sovereign debt is safer than the same government's foreign-currency debt.
+- Single-price auction: everyone pays the stop-out (highest accepted yield) price. Multiple-price: each pays its own bid.
+- On-the-run bonds are the most liquid and trade at slightly lower yields than off-the-run bonds.
+- General obligation bonds rely on taxing power; revenue bonds on one project's income.
+- Agencies with an explicit guarantee trade close to the sovereign; supranationals are usually rated very highly.
+- Governments issue on a calendar in standard forms; companies issue when they need funds, with more features.`,
  ideas:`**Governments borrow to cover deficits and refinance debt. Their bonds set the benchmark yields against which other bonds are priced.**
 
 ## Sovereign governments
@@ -19507,6 +20113,138 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Fixed-Income Bond Valuation: Prices and Yields",
  core:/bond('s)? (price|value)|price of (a|the|this) bond|full price|flat price|clean price|dirty price|accrued interest|matrix pricing|between coupon|price (will|would) (rise|fall|increase|decrease)|trades? at a (premium|discount)|priced at (a )?(premium|discount|par)/,
  match:/price|value|full|flat|clean|dirty|accrued|matrix|premium|discount|par|coupon|yield-to-maturity|YTM|maturity|discount rate|present value/,
+ lesson:`## 1. The price is a present value
+A bond promises a stream of cash flows: coupons each period and the principal at the end. Its value today is simply what those promised payments are worth **now**, once each one is discounted for the time you must wait for it. That is the time value of money from Quant applied to a specific contract.
+
+If the market discounts all of a bond's cash flows at a single rate r per period, the price is:
+- P = C / (1 + r) + C / (1 + r)² + … + (C + FV) / (1 + r)^N
+
+where C is the coupon per period, FV the par value repaid at maturity and N the number of periods. The single rate that makes this equation hold at the market price is the bond's **yield-to-maturity (YTM)**. Read the same equation two ways:
+- Given the YTM, compute the **price**.
+- Given the price, solve for the **YTM** (by calculator, since no simple formula exists).
+
+> **Worked example 1: price from yield**
+> A 6-year bond pays a 3.5% annual coupon, par 100, and the market yield is 4.25%.
+> - P = 3.5 / 1.0425 + 3.5 / 1.0425² + … + 103.5 / 1.0425⁶ = **96.10**
+> - Calculator: \`N = 6\`, \`I/Y = 4.25\`, \`PMT = 3.5\`, \`FV = 100\`, \`CPT PV\` → −96.10
+> The price is below par because the coupon (3.5%) is below the yield investors require (4.25%): the bond must be cheaper to give them their return.
+
+## 2. Coupon, yield and price: premium, par, discount
+The example shows the most important relationship in this module:
+- **Coupon rate = yield:** the bond trades **at par**.
+- **Coupon rate < yield:** the bond trades at a **discount** (below par).
+- **Coupon rate > yield:** the bond trades at a **premium** (above par).
+
+The intuition: the coupon is fixed by contract, but the return investors require moves with the market. If the market wants more than the coupon pays, the only way to give it to them is a lower price, and the gain as the price rises back to par at maturity makes up the difference.
+
+> **Worked example 2: the same bond at a lower yield**
+> If the market yield on the bond in example 1 falls to 3.25%:
+> - \`N = 6\`, \`I/Y = 3.25\`, \`PMT = 3.5\`, \`FV = 100\`, \`CPT PV\` → **101.34**
+> Now the 3.5% coupon is more generous than the market requires, so buyers pay a premium for it. Notice the trap: a bond trades at a premium when its coupon is **above** its yield, not simply when "yields are high".
+
+## 3. Semi-annual coupons
+Many bonds pay coupons twice a year. Then everything is done **per half-year**:
+- coupon per period = annual coupon / 2
+- yield per period = stated annual yield / 2
+- number of periods = years × 2
+
+Bond yields on semi-annual bonds are quoted as an annual rate equal to twice the semi-annual rate (the next module discusses this convention).
+
+> **Worked example 3: a semi-annual bond**
+> An 8-year bond pays a 5.2% coupon semi-annually; its yield is 4.6% (stated annually, compounded semi-annually).
+> - Coupon per half-year = 2.6; yield per half-year = 2.3%; periods = 16
+> - \`N = 16\`, \`I/Y = 2.3\`, \`PMT = 2.6\`, \`FV = 100\`, \`CPT PV\` → **103.98**
+> The most common error is to use annual figures (N = 8, I/Y = 4.6, PMT = 5.2), which gives a slightly different and wrong price.
+
+## 4. Yield from price
+When you know the price and want the yield, enter the price as a negative PV (the money you pay) and compute I/Y.
+
+> **Worked example 4: solving for the yield**
+> A 4-year bond with a 6% annual coupon trades at 103.40.
+> - \`N = 4\`, \`PV = −103.40\`, \`PMT = 6\`, \`FV = 100\`, \`CPT I/Y\` → **5.04%**
+> Check the direction: the price is above par, so the yield must be below the coupon, and 5.04% < 6% confirms it. For a semi-annual bond, the I/Y the calculator returns is per half-year: double it for the quoted yield.
+
+YTM is the return an investor earns **only if** three things hold: the bond is held to maturity, every payment is made in full and on time, and every coupon is reinvested at the same YTM. The interest rate risk module shows what happens when the last assumption fails.
+
+## 5. Prices between coupon dates
+Bonds trade every day, not just on coupon dates. On a day between coupons, the seller has "earned" part of the next coupon, but the buyer will receive all of it. So the buyer pays the seller for the part already earned.
+
+### Full price, accrued interest and flat price
+- **Full price** (also dirty price or invoice price): what the buyer actually pays. It is the present value of the remaining cash flows on the settlement date.
+- **Accrued interest (AI):** the share of the next coupon that belongs to the seller: AI = coupon per period × t / T, where t is the number of days from the last coupon to settlement and T the number of days in the coupon period.
+- **Flat price** (also clean price or quoted price): full price − accrued interest. Dealers quote flat prices because they do not jump on coupon dates; the full price rises steadily and then drops by the coupon on each payment date.
+
+To get the full price, first value the bond on the last coupon date, then move that value forward to the settlement date:
+- full price = PV at last coupon date × (1 + r)^(t / T)
+
+### Day counts
+How t and T are counted depends on the market:
+- **Actual/actual:** actual days in each, usually used for government bonds.
+- **30/360:** every month counts as 30 days and the year as 360, common for corporate bonds.
+
+> **Worked example 5: settlement between coupons**
+> A government bond pays a 4.0% coupon semi-annually on 15 January and 15 July, matures on 15 July 2031 and yields 4.8%. It is bought for settlement on 22 April 2027, using actual/actual.
+> - Days since the last coupon (15 Jan to 22 Apr 2027) = 97; days in the period (15 Jan to 15 Jul) = 181
+> - On 15 January 2027 nine coupons remain: \`N = 9\`, \`I/Y = 2.4\`, \`PMT = 2\`, \`FV = 100\`, \`CPT PV\` → 96.80
+> - Full price = 96.80 × 1.024^(97/181) = **98.03**
+> - Accrued interest = 2 × 97 / 181 = **1.07**
+> - Flat price = 98.03 − 1.07 = **96.96**
+> The screen shows 96.96, but the buyer's account is debited 98.03 per 100 of par.
+
+## 6. How prices move with yields, coupons and time
+### Price and yield move in opposite directions
+A higher yield means each future cash flow is discounted more heavily, so the price falls. This inverse relationship is the core of interest rate risk.
+
+### Longer maturity, larger price changes
+For the same coupon, a longer bond's price moves more for a given change in yield, because more of its cash flows sit far in the future, where discounting bites hardest.
+
+### Lower coupon, larger percentage price changes
+For the same maturity, a lower-coupon bond's price moves more in percentage terms, because more of its value comes from the distant principal. A zero-coupon bond is the extreme case.
+
+### Convexity
+A fall in yield raises the price **more** than an equal rise in yield lowers it. The price–yield curve is bent (convex), not straight.
+
+> **Worked example 6: the patterns in numbers**
+> Bonds priced at a 5% yield, annual coupons, then yields move 1 percentage point either way:
+> - 5% coupon, 2 years: −1.83% if yield rises to 6%; +1.89% if it falls to 4%
+> - 5% coupon, 10 years: −7.36% / +8.11%
+> - 5% coupon, 30 years: −13.76% / +17.29%
+> - 0% coupon, 10 years: −9.04% / +10.04%
+> - 8% coupon, 10 years: −6.86% / +7.53%
+> Longer maturity and lower coupon both mean bigger moves; in every row the gain from a fall in yield beats the loss from an equal rise, which is convexity.
+
+### Pull to par
+If the yield stays the same, a bond's price drifts toward par as maturity approaches: a discount bond rises, a premium bond falls. At maturity it is worth exactly par.
+
+> **Worked example 7: the discount bond over time**
+> The bond from example 1 (3.5% coupon, yield fixed at 4.25%) is worth:
+> - 96.10 with 6 years left, 96.68 with 5, 97.29 with 4, 97.93 with 3, 98.59 with 2, 99.28 with 1, and 100 at maturity.
+> Each year the investor earns the 3.5 coupon plus the price rise; together they give exactly 4.25% on the value at the start of the year.
+
+## 7. Matrix pricing
+Many bonds, especially smaller corporate issues, do not trade for days or weeks, so there is no market price to read. **Matrix pricing** estimates one from bonds that do trade:
+1. Find actively traded bonds with similar **credit quality** (and, ideally, similar coupons and sector).
+2. Take their yields and **interpolate** to the maturity of the bond you want to price.
+3. Price your bond at that estimated yield.
+
+The same method helps underwriters set the **coupon of a new issue**: the coupon is set close to the estimated yield so that the bond sells near par.
+
+> **Worked example 8: pricing a bond that does not trade**
+> You need a price for a 4-year, 5% annual coupon bond from an A-rated issuer. Comparable A-rated bonds yield 4.10% at 3 years and 4.70% at 5 years.
+> - Interpolated 4-year yield = 4.10% + (4 − 3) / (5 − 3) × (4.70% − 4.10%) = 4.40%
+> - \`N = 4\`, \`I/Y = 4.4\`, \`PMT = 5\`, \`FV = 100\`, \`CPT PV\` → **102.16**
+> The result is only an estimate: if the issuer differs in liquidity or features from the comparables, its true yield could be a few basis points away.
+
+## Checklist before you answer
+- Price = PV of cash flows at the YTM; solve the other way for YTM.
+- Coupon above yield: premium. Coupon below yield: discount. Equal: par.
+- Semi-annual: halve the coupon and the yield, double the periods; double the I/Y result to quote a yield.
+- YTM assumes holding to maturity, no default, and reinvestment at the YTM.
+- Full price = PV at last coupon × (1 + r)^(t/T); accrued interest = coupon × t/T; flat = full − accrued.
+- The buyer pays the full price; dealers quote the flat price.
+- Longer maturity and lower coupon mean larger price changes; price gains from falling yields exceed losses from rising ones.
+- At a constant yield, prices pull to par.
+- Matrix pricing: interpolate yields of comparable traded bonds, then price.`,
  ideas:`**A bond's price is the present value of its promised cash flows, discounted at its yield-to-maturity (YTM).**
 
 ## Price on a coupon date
@@ -19544,6 +20282,115 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Yield and Yield Spread Measures for Fixed-Rate Bonds",
  core:/current yield|yield to call|yield to worst|yield to first call|option-adjusted yield|street convention|true yield|semi-?annual(ly)? (bond )?(basis|yield|compounding|periodicity)|bond[- ]equivalent yield|effective annual yield|periodicity|G-spread|I-spread|Z-spread|zero-volatility|option-adjusted spread|\bOAS\b|benchmark spread|yield spread/,
  match:/yield|current|call|worst|street|true|semi|annual|periodicity|compounding|spread|benchmark|interpolat|swap|government|OAS|option/,
+ lesson:`## 1. Many yields for one bond
+The previous module defined one yield, the yield-to-maturity. In practice a bond is described by several yields, each answering a slightly different question, and its extra return over safer bonds is measured by several spreads. Exam questions often hinge on choosing the right measure, or converting between conventions before comparing two numbers. This module covers fixed-rate bonds; the next covers floating-rate notes and money market instruments.
+
+## 2. Compounding frequency and periodicity
+### Why periodicity matters
+A yield is always quoted per year, but bonds pay at different frequencies. The **periodicity** of a yield is the number of compounding periods per year assumed in it: 1 for annual, 2 for semi-annual, 4 for quarterly, 12 for monthly. Two yields can be compared only if they have the same periodicity.
+
+A stated annual rate with periodicity m is really a rate of (stated rate / m) per period. The effective annual rate it corresponds to is:
+- effective annual rate = (1 + stated rate / m)^m − 1
+
+and to convert a rate from periodicity m to periodicity n, equate the effective rates:
+- (1 + r_m / m)^m = (1 + r_n / n)^n
+
+> **Worked example 1: converting between periodicities**
+> - A semi-annual bond yields 5.6% (periodicity 2). Its annual-equivalent yield is (1 + 0.056 / 2)² − 1 = **5.68%**.
+> - An annual-pay bond yields 5.0%. On a semi-annual basis that is 2 × (1.05^0.5 − 1) = **4.94%**.
+> - A quarterly-pay bond yields 4.8% (periodicity 4). On a semi-annual basis: 2 × [(1 + 0.048 / 4)² − 1] = **4.83%**.
+> Rule of thumb: for the same effective return, **more frequent compounding means a lower stated rate**. So 5.6% semi-annual is better than 5.6% annual.
+
+The yield on a semi-annual bond quoted as twice the semi-annual rate is called its **semi-annual bond basis yield** (or bond-equivalent yield). It is the standard convention in the US and UK markets, which is why annual-pay bonds such as most Eurobonds must be converted before being compared with them.
+
+### Street convention and true yield
+YTM as usually quoted follows the **street convention**: payments are assumed to arrive on their scheduled dates, even when a date falls on a weekend or holiday and the money actually arrives a day or two later. The **true yield** uses the actual payment dates. Because payments arrive slightly later, the true yield is never higher than the street yield, usually by a hair.
+
+### Government equivalent yield
+Corporate bonds often use a 30/360 day count, government bonds actual/actual. A corporate yield can be restated on an actual/actual basis (its **government equivalent yield**) to compare it with a government yield on the same footing before computing a spread.
+
+## 3. Current yield and simple yield
+- **Current yield** = annual coupon / flat price. It measures only the income return, like a dividend yield on a share. It ignores the gain or loss as the price pulls to par, and any interest on reinvested coupons.
+- **Simple yield** = (annual coupon + straight-line amortization of the discount or premium) / flat price. It adds the price drift to par, spread evenly over the years, but still ignores compounding. It is quoted in some markets, such as Japan.
+
+> **Worked example 2: current yield versus YTM**
+> A 7-year bond with a 6% annual coupon trades at 104.50.
+> - Current yield = 6 / 104.50 = **5.74%**
+> - YTM: \`N = 7\`, \`PV = −104.5\`, \`PMT = 6\`, \`FV = 100\`, \`CPT I/Y\` → **5.22%**
+> The current yield overstates the return of a premium bond, because it ignores the 4.50 that the investor will lose as the price falls to par. For a discount bond the opposite holds.
+
+## 4. Yields for callable bonds
+A callable bond may not live to maturity, so its YTM may be the wrong yield to look at.
+
+- **Yield to call** is the yield calculated as if the bond is called on a particular call date at that date's call price. There is one yield to call for each possible call date: yield to first call, yield to second call, and so on.
+- **Yield to worst** is the **lowest** of the YTM and all the yields to call. It tells the investor the worst yield they can receive if the issuer acts in its own interest and nothing defaults. Investors in premium callable bonds watch it closely, because those are the bonds most likely to be called.
+
+> **Worked example 3: finding the yield to worst**
+> The bond in example 2 (7 years, 6% annual coupon, price 104.50) is callable at 102 in 3 years and at 101 in 5 years.
+> - Yield to first call: \`N = 3\`, \`PV = −104.5\`, \`PMT = 6\`, \`FV = 102\`, \`CPT I/Y\` → **4.98%**
+> - Yield to second call: \`N = 5\`, \`PV = −104.5\`, \`PMT = 6\`, \`FV = 101\`, \`CPT I/Y\` → **5.14%**
+> - YTM (no call) = 5.22%
+> - Yield to worst = **4.98%**, the yield if called in 3 years.
+> The premium is lost faster if the bond is called early, which is why the earliest call gives the lowest yield here.
+
+Yield to worst is a simple tool: it picks one scenario and ignores how likely each is. The **option-adjusted yield** is a better measure: it is the yield on the bond once the value of the embedded call option is added back to the price, that is, the yield of an otherwise identical option-free bond. Computing it requires an option-pricing model (covered at Level II), so at Level I you need to know only what it means.
+
+## 5. Yield spreads over a benchmark
+A corporate bond yields more than a government bond of the same maturity because of its credit risk, its lower liquidity and sometimes tax differences. The difference is the **yield spread**, usually quoted in **basis points** (1 basis point = 0.01%). Breaking a yield into a benchmark plus a spread lets analysts separate the two forces that move it: changes in the general level of rates (the benchmark) and changes in the market's view of this issuer (the spread).
+
+### Benchmark and G-spread
+- The **benchmark spread** is the yield over a chosen benchmark bond, often the on-the-run government bond closest in maturity.
+- The **G-spread** is the yield over the government bond yield of the **same maturity**. When no government bond has exactly that maturity, the government yield is **interpolated** between the two nearest maturities.
+
+### I-spread
+The **I-spread** (interpolated spread) is the yield over the **swap rate** of the same maturity, in the same currency. Swap rates are used as the benchmark by banks and by investors who fund themselves at floating rates; they include some bank credit risk, so the I-spread is usually smaller than the G-spread.
+
+> **Worked example 4: G-spread and I-spread**
+> A 4-year corporate bond with a 4.8% semi-annual coupon trades at 97.10.
+> - YTM: \`N = 8\`, \`PV = −97.10\`, \`PMT = 2.4\`, \`FV = 100\`, \`CPT I/Y\` → 2.81% per half-year, so **5.62%** quoted
+> - Government yields: 3 years 3.90%, 5 years 4.30%. Interpolated 4-year = 4.10%
+> - G-spread = 5.62% − 4.10% = **152 bp**
+> - The 4-year swap rate is 4.35%: I-spread = 5.62% − 4.35% = **127 bp**
+> Make sure both yields use the same periodicity before subtracting; here all are semi-annual.
+
+### Z-spread
+A yield spread compares two single yields, each of which averages over all the bond's cash flow dates. When the government curve is not flat, that average hides a lot. The **Z-spread** (zero-volatility spread) is more precise: it is the constant spread that, added to **each government spot rate**, makes the present value of the bond's cash flows equal its price.
+- P = C / (1 + S1 + Z) + C / (1 + S2 + Z)² + … + (C + FV) / (1 + SN + Z)^N
+
+> **Worked example 5: a Z-spread**
+> A 3-year corporate bond with a 5% annual coupon trades at 97.80. Government spot rates are 3.0% (1 year), 3.4% (2 years) and 3.8% (3 years).
+> - Solve 5 / (1.030 + Z) + 5 / (1.034 + Z)² + 105 / (1.038 + Z)³ = 97.80 by trial and error (or a spreadsheet's goal seek): **Z ≈ 2.05%, or 205 bp**
+> - For comparison: the bond's YTM is 5.82%, and the 3-year government par yield implied by those spot rates is 3.78%, so the G-spread is about 204 bp.
+> On an upward-sloping curve the two spreads are close but not equal; the Z-spread is the more accurate measure of compensation for credit and liquidity risk.
+
+### Option-adjusted spread
+For a bond with an embedded option, the Z-spread mixes two things: compensation for credit and liquidity risk, and compensation for the option. The **option-adjusted spread (OAS)** removes the option:
+- OAS = Z-spread − option value (in basis points per year)
+
+For a **callable** bond the investor has sold an option to the issuer, so part of the Z-spread is payment for it: **OAS < Z-spread**. For a **putable** bond the investor owns an option, so OAS > Z-spread.
+
+> **Worked example 6: separating credit from the call**
+> A callable bond has a Z-spread of 205 bp, and a model values the call option at 40 bp per year.
+> - OAS = 205 − 40 = **165 bp**
+> A non-callable bond from a similar issuer with a Z-spread of 180 bp actually offers more compensation for credit risk (180 bp) than the callable bond (165 bp), even though the callable bond's Z-spread looks bigger.
+
+## 6. Which measure to use
+1. Comparing bonds with different coupon frequencies: convert all yields to the **same periodicity** first.
+2. Judging income only: **current yield**, but remember it ignores the price drift to par.
+3. A callable bond trading above its call price: look at the **yield to worst** (or better, the option-adjusted yield).
+4. Measuring credit and liquidity compensation with a single number: **G-spread** against governments, **I-spread** against swaps.
+5. Doing it precisely on a sloping curve: **Z-spread**.
+6. Comparing bonds with and without embedded options: **OAS**.
+
+## Checklist before you answer
+- Convert yields to the same periodicity before comparing: (1 + r_m/m)^m = (1 + r_n/n)^n.
+- For the same effective return, more frequent compounding means a lower stated rate.
+- True yield ≤ street-convention yield.
+- Current yield = coupon / price, ignoring the pull to par: too high for premium bonds, too low for discount bonds.
+- Yield to worst = the lowest of the YTM and every yield to call.
+- G-spread is over interpolated government yields; I-spread over swap rates; both in basis points.
+- Z-spread is added to each spot rate; it beats a single-yield spread when the curve is sloped.
+- OAS = Z-spread − option value: below the Z-spread for callables, above it for putables.`,
  ideas:`**The same bond can be described by several yields, and its extra return over a benchmark by several spreads.**
 
 ## Yields and compounding
@@ -19580,6 +20427,124 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Yield and Yield Spread Measures for Floating-Rate Instruments",
  core:/floating-rate|floater|quoted margin|required margin|discount margin|reference rate|\bSOFR\b|\bLIBOR\b|\bMRR\b|money market (yield|instrument|security|securities)|T-bills?|Treasury bills?|discount (rate )?basis|add-on (rate|basis|yield)|bank discount|360-day year|365-day year/,
  match:/floating|floater|margin|reference rate|SOFR|LIBOR|MRR|money market|bill|discount|add-on|360|365|days|certificate|reset|bond equivalent/,
+ lesson:`## 1. Two kinds of instrument with their own conventions
+This module covers two groups that do not fit the fixed-rate yield measures of the previous module:
+- **Floating-rate notes (FRNs)**, whose coupons reset with a market rate, so a fixed YTM makes little sense.
+- **Money market instruments**, which mature within a year and are quoted with their own rate conventions (discount rates, add-on rates, 360-day years).
+
+The skill tested is the same in both: understand what a quoted rate actually measures, and convert rates to a common basis before comparing them.
+
+## 2. Floating-rate notes
+### How the coupon works
+An FRN pays:
+- coupon rate = market reference rate (MRR) + **quoted margin**
+
+The **MRR** is a short-term benchmark rate for the currency, such as SOFR for US dollars, SONIA for sterling, or €STR and EURIBOR for euros. It is set at each **reset date** (usually every quarter or half-year), and the coupon paid at the end of the period uses the rate fixed at its start ("set in advance, paid in arrears"). The **quoted margin** (QM) is a fixed spread over the MRR, set when the note is issued to compensate investors for the issuer's credit risk at that time.
+
+### Why FRNs are stable in price
+Because the coupon follows market rates, an FRN's coupon always stays close to what investors currently require. If market rates rise, the next coupon rises too, so there is little reason for the price to fall. An FRN behaves like a short-term instrument that is rolled over at every reset: its interest rate risk is roughly that of a bond maturing at the **next reset date**.
+
+What an FRN does **not** protect against is a change in the issuer's **credit risk**. The quoted margin is fixed for life. If the issuer's credit worsens, investors want a bigger spread than the note pays, and the price falls.
+
+### Quoted margin versus discount margin
+The spread investors require today over the MRR is the **required margin**, also called the **discount margin** (DM). Comparing it with the fixed quoted margin tells you where the price sits:
+- **DM = QM:** the note trades **at par** on reset dates.
+- **DM > QM** (credit has worsened, or spreads have widened generally): the note pays less spread than investors require, so it trades **below par**.
+- **DM < QM** (credit has improved): it trades **above par**.
+
+This mirrors the coupon-versus-yield rule for fixed-rate bonds: the quoted margin plays the role of the coupon, the discount margin the role of the yield.
+
+### Pricing an FRN
+A simple model values an FRN like a fixed-rate bond, with every future MRR assumed equal to the current MRR:
+- each period's cash flow = (MRR + QM) / m × par
+- each period's discount rate = (MRR + DM) / m
+
+where m is the number of periods per year.
+
+> **Worked example 1: an FRN after its spread widens**
+> A 3-year FRN pays quarterly MRR + 0.80%, par 100. Current MRR is 3.60%. Since issue, the issuer has been downgraded and investors now require a discount margin of 1.20%.
+> - Cash flow per quarter = (3.60% + 0.80%) / 4 × 100 = 1.10
+> - Discount rate per quarter = (3.60% + 1.20%) / 4 = 1.20%
+> - \`N = 12\`, \`I/Y = 1.2\`, \`PMT = 1.10\`, \`FV = 100\`, \`CPT PV\` → **98.89**
+> The note is below par because it pays 40 basis points less spread than the market now requires. A fixed-rate bond with the same credit change would lose about the same, plus whatever it lost from changes in the general level of rates.
+
+You can also run the model backwards: given the FRN's price, solve for the discount margin, the floater's equivalent of a yield spread.
+
+> **Worked example 2: solving for the discount margin**
+> A 2-year FRN pays semi-annual MRR + 0.50% and trades at 98.90. MRR is 4.00%.
+> - Cash flow per half-year = (4.00% + 0.50%) / 2 × 100 = 2.25
+> - \`N = 4\`, \`PV = −98.90\`, \`PMT = 2.25\`, \`FV = 100\`, \`CPT I/Y\` → 2.54% per half-year, that is 5.09% a year
+> - Discount margin = 5.09% − 4.00% = about **1.09%, or 109 bp**
+> The market requires roughly 59 basis points more than the note pays, which is why it trades below par.
+
+The model is simplified: the future MRR will not actually stay at today's level, and the model ignores the exact day counts. More advanced models use the forward curve for future reference rates. For the exam, the direction (QM vs DM) and the simple calculation are what matter.
+
+## 3. Money market instruments
+**Money market** instruments are debt with an original maturity of one year or less: government bills, commercial paper, bank certificates of deposit, repos, and short-term deposits. Three things make their quotes different from bond yields:
+1. Their rates are usually **simple interest** rates, not compounded.
+2. Some are quoted on a **discount basis**, others on an **add-on basis**.
+3. Some markets use a **360-day** year, others **365 days**.
+
+### Discount basis
+Instruments such as US Treasury bills and US commercial paper are sold below face value and repay face value at maturity. Their quoted rate is a **discount rate** (DR) applied to **face value**:
+- price = FV × (1 − days / year × DR)
+- DR = (year / days) × (FV − price) / FV
+
+> **Worked example 3: a bill quoted on a discount basis**
+> A 180-day government bill with face value 100 is quoted at a discount rate of 3.80% (360-day year).
+> - Price = 100 × (1 − 180 / 360 × 0.038) = **98.10**
+> The investor pays 98.10 and receives 100: a gain of 1.90. But the 3.80% is computed on the 100 of face value, while the investor only invested 98.10. The actual return on money invested is higher.
+
+That is the key weakness of a discount rate: it **understates** the investor's return, because it divides the interest by the face value instead of by the price paid.
+
+### Add-on basis
+Instruments such as bank CDs, repos and many Eurocommercial paper issues are priced the other way: the investor deposits an amount (the price), and interest is **added on** at maturity. Their quoted rate is an **add-on rate** (AOR):
+- redemption amount = PV × (1 + days / year × AOR)
+- AOR = (year / days) × (FV − PV) / PV
+
+This is a true simple rate of return on the money invested.
+
+> **Worked example 4: an add-on CD**
+> An investor deposits 1,000,000 in a 120-day CD at an add-on rate of 4.10% (360-day year).
+> - Amount at maturity = 1,000,000 × (1 + 120 / 360 × 0.041) = **1,013,666.67**
+> Interest of 13,666.67 is earned on the 1,000,000 actually invested.
+
+### Converting to a common basis
+To compare money market instruments, put them on the **same basis and the same day count**. A useful common measure is the **bond equivalent yield**: an add-on rate on a 365-day year.
+
+> **Worked example 5: the bill on a comparable basis**
+> The bill from example 3 (price 98.10, 180 days):
+> - Add-on rate, 360-day year = (360 / 180) × (100 − 98.10) / 98.10 = 3.87%
+> - Bond equivalent yield (add-on, 365-day) = (365 / 180) × 1.90 / 98.10 = **3.93%**
+> The same instrument can be quoted as 3.80%, 3.87% or 3.93%, depending only on the convention. None of them is wrong; mixing them is.
+
+> **Worked example 6: choosing between two instruments**
+> An investor with cash for 150 days can buy:
+> - Commercial paper quoted at a 4.30% discount rate (360-day year), or
+> - A CD quoted at 4.40% add-on (365-day year).
+> Convert the CP: price = 100 × (1 − 150 / 360 × 0.043) = 98.208; bond equivalent yield = (365 / 150) × (100 − 98.208) / 98.208 = **4.44%**.
+> The CP's 4.44% beats the CD's 4.40%, though its quoted rate (4.30%) looked lower. Before deciding, the investor would also compare the credit risk and liquidity of the two issuers.
+
+### Money market versus bond yield conventions
+The money market and the bond market describe returns differently:
+- Money market rates are **simple** (no compounding within the year) and often use a **360-day** year.
+- Bond yields compound by **periodicity** (usually semi-annual or annual) and use actual or 30/360 day counts.
+
+When an investor compares a 6-month bill with a 2-year note, both must first be put on the same footing, for example by converting the bill's rate to a semi-annual bond basis. For instruments maturing within six months, a simple 365-day add-on rate is already very close to the semi-annual bond basis.
+
+## 4. What the yields do and do not capture
+- An FRN's discount margin captures **credit and liquidity** risk relative to the reference rate, but the simple model ignores the shape of the forward curve.
+- A money market yield captures the return over a short period, but rolling the instrument over later will earn whatever rates prevail then: short-term investors face **reinvestment risk** on every rollover.
+- Differences between money market rates for instruments of the same maturity reflect **credit risk** (a bank CD or commercial paper vs a government bill), **liquidity**, and, in some markets, tax treatment.
+
+## Checklist before you answer
+- FRN coupon = MRR + quoted margin; the QM is fixed at issue.
+- DM > QM: below par. DM < QM: above par. DM = QM: par on reset dates.
+- FRNs have low interest rate risk (about the time to the next reset) but full credit spread risk.
+- Simple FRN pricing: cash flow (MRR + QM)/m, discount rate (MRR + DM)/m.
+- Discount basis: price = FV × (1 − days/year × DR); the rate is on face value and understates the return.
+- Add-on basis: interest = PV × days/year × AOR, on the money invested.
+- Convert to one basis and one day count (for example the bond equivalent yield: add-on, 365 days) before comparing.`,
  ideas:`**Floating-rate notes pay a coupon that resets with a reference rate; money market instruments use their own yield conventions.**
 
 ## Floating-rate notes
@@ -19611,6 +20576,120 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"The Term Structure of Interest Rates: Spot, Par, and Forward Curves",
  core:/spot rates?|spot curve|zero (coupon )?curve|par (rate|curve|yield)|forward (rate|curve)|\d+y\d+y|implied forward|term structure|yield curve|bootstrap/,
  match:/spot|zero|par|forward|term structure|yield curve|bootstrap|upward|downward|inverted|flat|curve/,
+ lesson:`## 1. Why one yield is not enough
+So far each bond has had a single yield-to-maturity, applied to all its cash flows. But money lent for one year and money lent for ten years are different products, and the market charges a different rate for each. The **term structure of interest rates** is the relationship between interest rates and maturity for bonds that are otherwise alike, usually government bonds in one currency. Plotted, it is the **yield curve**.
+
+There are three ways to describe the term structure, each useful for a different job:
+- **Spot rates:** the rate for a single payment on a given future date. Used to value cash flows precisely.
+- **Par rates:** the coupon rate a bond of each maturity would need to trade at par. Used to set coupons on new bonds.
+- **Forward rates:** the rate agreed today for a loan that starts in the future. Used to read market expectations and to price forward contracts.
+
+All three carry the same information. Given one curve you can derive the other two, and all three give the same price for any bond.
+
+## 2. Spot rates
+### Definition
+A **spot rate** is the yield on a **zero-coupon** bond of a given maturity: a single payment, no coupons, so no ambiguity about reinvestment. The 2-year spot rate S2 tells you how much money today is worth 1 in two years: 1 / (1 + S2)². The list of spot rates for each maturity is the **spot curve** (or zero curve).
+
+### Pricing with spot rates
+A coupon bond is just a bundle of zero-coupon payments. Discount each cash flow at the spot rate for its own date:
+- P = C / (1 + S1) + C / (1 + S2)² + … + (C + FV) / (1 + SN)^N
+
+Valuing this way is more precise than using one YTM, and it guarantees **no arbitrage**: if the bond were priced differently, a dealer could buy it and sell its separate cash flows (or the reverse) for a riskless profit.
+
+> **Worked example 1: pricing with the spot curve**
+> Government spot rates are S1 = 3.1%, S2 = 3.6%, S3 = 4.0%. Price a 3-year government bond with a 5% annual coupon.
+> - P = 5 / 1.031 + 5 / 1.036² + 105 / 1.040³ = 4.850 + 4.659 + 93.345 = **102.85**
+> - The YTM that gives the same price: \`N = 3\`, \`PV = −102.85\`, \`PMT = 5\`, \`FV = 100\`, \`CPT I/Y\` → **3.97%**
+> The YTM (3.97%) is a weighted average of the three spot rates, pulled toward the 3-year rate because most of the value comes from the final payment. It is slightly below S3 because the coupons are discounted at the lower short-term rates.
+
+The example shows why the YTM is not "the" 3-year rate: a 3-year zero-coupon bond would yield 4.0%, while a 3-year coupon bond yields 3.97%. On an upward-sloping curve, higher-coupon bonds have slightly lower YTMs than lower-coupon bonds of the same maturity. That difference is called the **coupon effect**.
+
+## 3. Par rates
+### Definition
+A **par rate** for a maturity is the coupon rate at which a bond of that maturity would be priced exactly at par, given the spot curve. For maturity N, it is the rate PMT that solves:
+- 100 = PMT / (1 + S1) + PMT / (1 + S2)² + … + (PMT + 100) / (1 + SN)^N
+
+The **par curve** is what most news reports mean by "the yield curve", because government bonds are usually issued with coupons close to par.
+
+> **Worked example 2: par rates from spot rates**
+> With the same spot curve (3.1%, 3.6%, 4.0%), compute the discount factors: DF1 = 1 / 1.031 = 0.96993, DF2 = 1 / 1.036² = 0.93171, DF3 = 1 / 1.040³ = 0.88900.
+> A handy short cut: par rate for N = (1 − DF_N) / (DF1 + … + DF_N).
+> - 2-year par rate = (1 − 0.93171) / (0.96993 + 0.93171) = **3.59%**
+> - 3-year par rate = (1 − 0.88900) / (0.96993 + 0.93171 + 0.88900) = **3.98%**
+> The 1-year par rate equals the 1-year spot rate, 3.1%. Further out, the par rates lie slightly below the spot rates, because a par bond's earlier coupons are discounted at the lower short rates.
+
+### Bootstrapping: from par rates to spot rates
+In practice we often observe par yields (from bonds trading near par) and need spot rates. **Bootstrapping** builds the spot curve one maturity at a time:
+1. The 1-year spot rate equals the 1-year par rate.
+2. For 2 years, write the par bond's price equation, plug in the 1-year spot rate you already have, and solve for the only unknown, S2.
+3. Repeat for each longer maturity, using all the spot rates found so far.
+
+> **Worked example 3: bootstrapping**
+> Par rates are 3.0% (1 year), 3.5% (2 years) and 3.9% (3 years), annual coupons.
+> - S1 = 3.0%.
+> - 2 years: 100 = 3.5 / 1.03 + 103.5 / (1 + S2)². So 103.5 / (1 + S2)² = 100 − 3.398 = 96.602, (1 + S2)² = 1.07141, **S2 = 3.51%**.
+> - 3 years: 100 = 3.9 / 1.03 + 3.9 / 1.0351² + 103.9 / (1 + S3)³. The first two terms are 3.786 + 3.640 = 7.426, so (1 + S3)³ = 103.9 / 92.574 = 1.12235, **S3 = 3.92%**.
+> On this rising curve, each spot rate sits a little above the par rate for the same maturity.
+
+## 4. Forward rates
+### Definition and notation
+A **forward rate** is an interest rate for a loan that begins at a future date, agreed today. The notation "AyBy" means a B-year rate starting A years from now:
+- **1y1y:** a 1-year rate starting in 1 year.
+- **2y1y:** a 1-year rate starting in 2 years.
+- **1y2y:** a 2-year rate starting in 1 year.
+
+### The no-arbitrage link with spot rates
+An investor with a 2-year horizon can either lock in the 2-year spot rate, or invest at the 1-year spot rate and roll over at the 1y1y forward rate agreed today. Both are riskless, so they must give the same result:
+- (1 + S2)² = (1 + S1) × (1 + 1y1y)
+
+More generally: (1 + S_(A+B))^(A+B) = (1 + S_A)^A × (1 + AyBy)^B.
+
+> **Worked example 4: forward rates from spot rates**
+> With S1 = 3.1%, S2 = 3.6%, S3 = 4.0%:
+> - 1y1y = 1.036² / 1.031 − 1 = **4.10%**
+> - 2y1y = 1.040³ / 1.036² − 1 = **4.80%**
+> - 1y2y = (1.040³ / 1.031)^(1/2) − 1 = **4.45%** (a 2-year rate, so take the square root)
+> The 2-year spot rate (3.6%) is roughly the average of 3.1% and 4.10%: a spot rate is a kind of geometric average of the one-period forward rates up to its maturity.
+
+### Pricing with forward rates
+Since every spot rate is a chain of forwards, you can also discount each cash flow through the forward rates:
+- P = C / (1 + S1) + C / [(1 + S1)(1 + 1y1y)] + (C + FV) / [(1 + S1)(1 + 1y1y)(1 + 2y1y)]
+
+> **Worked example 5: the same price through forwards**
+> The 5% 3-year bond from example 1:
+> - P = 5 / 1.031 + 5 / (1.031 × 1.04102) + 105 / (1.031 × 1.04102 × 1.04805) = **102.85**
+> The same price as with spot rates, as it must be.
+
+### What forward rates mean
+A forward rate is the **breakeven** rate: if the 1-year rate in one year turns out to equal today's 1y1y forward, an investor who rolls over 1-year bills ends up exactly as well off as one who bought the 2-year zero. If the actual future rate is lower than the forward, the 2-year buyer did better.
+
+Forward rates are often read as the market's **expectation** of future short-term rates, but they also include any **term premium** investors demand for holding longer bonds. So a rising forward curve does not necessarily mean the market expects rates to rise; it may just reflect a term premium.
+
+## 5. How the three curves relate
+The shape of the spot curve fixes the positions of the other two:
+- **Upward-sloping spot curve:** forward rates lie **above** the spot curve, and par rates lie slightly **below** it. (In the examples: S3 = 4.0%, the 3-year par rate 3.98%, and the 2y1y forward 4.80%.)
+- **Downward-sloping (inverted) spot curve:** forward rates lie **below** spot rates, and par rates slightly **above**.
+- **Flat curve:** all three coincide.
+
+The reason is the averaging logic. A spot rate is an average of the forwards up to its date; when the curve rises, the latest forward must exceed the average to pull it up. A par rate is an average of spot rates weighted toward maturity, so it lies just inside the spot rate.
+
+## 6. Reading the shape of the yield curve
+- **Upward sloping (normal):** the usual shape. Investors want extra return for lending longer (term premium), and the market may expect rates to rise.
+- **Flat:** short and long rates are similar, often during a transition in the rate cycle.
+- **Inverted (downward sloping):** short rates above long rates. It typically appears when the central bank has raised short rates and markets expect cuts ahead, often before a slowdown or recession.
+- **Humped:** rates rise for intermediate maturities and fall for long ones.
+
+Changes in the curve's shape are described as **parallel shifts** (all rates move by the same amount), **steepening** or **flattening** (the gap between long and short rates widens or narrows), and changes in **curvature**. The risk measures later in this topic handle each type differently.
+
+## Checklist before you answer
+- Spot rate = zero-coupon yield; price a bond by discounting each cash flow at its own spot rate.
+- The YTM of a coupon bond is a weighted average of spot rates, not equal to the spot rate for its maturity.
+- Par rate for N = (1 − DF_N) / (sum of DF1 … DF_N).
+- Bootstrap spot rates from par rates one maturity at a time.
+- (1 + S_(A+B))^(A+B) = (1 + S_A)^A × (1 + AyBy)^B; take the B-th root for a multi-year forward.
+- Pricing with spot rates or with the matching forward rates gives the same price.
+- Rising spot curve: forwards above spot, par slightly below spot. Inverted: the reverse. Flat: all equal.
+- Forward rates are breakeven rates; they include any term premium, so they are not pure forecasts.`,
  ideas:`**Rates differ by maturity. The term structure can be described by three related curves: spot, par and forward.**
 
 ## Spot rates
@@ -19647,6 +20726,101 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Interest Rate Risk and Return",
  core:/sources of return|reinvestment risk|reinvest(ed|ment) (the |of )?coupons|investment horizon|holding period|Macaulay|duration gap|immuniz|horizon (yield|return)|carrying value|market price risk|coupon reinvestment/,
  match:/return|reinvest|horizon|holding|Macaulay|duration|gap|immuniz|price risk|sell|coupon|capital gain|capital loss|yield (rises|falls|increases|decreases)/,
+ lesson:`## 1. Where a bond's return comes from
+Buy a fixed-rate bond and hold it for some period. Your total return comes from three sources:
+1. **Coupons** received.
+2. **Reinvestment income**: interest earned by reinvesting those coupons until the end of your horizon.
+3. **Capital gain or loss**: the difference between what the bond is worth when you sell it (or when it matures) and what you paid. Part of this is the predictable **pull to par**; the rest comes from changes in yield.
+
+If yields never change after you buy, the coupons are reinvested at the original YTM, and the bond's price moves only along its pull-to-par path, then your realized return over **any** horizon equals the YTM you bought at. Interest rate risk is everything that happens when yields move.
+
+> **Worked example 1: a stable world**
+> You buy a 6-year bond with a 4% annual coupon at a yield of 4.6%: \`N = 6\`, \`I/Y = 4.6\`, \`PMT = 4\`, \`FV = 100\`, \`CPT PV\` → **96.92**.
+> If yields stay at 4.6% and you sell after 2 years:
+> - Coupons: 4 + 4 = 8.00; reinvestment of the first coupon for one year at 4.6%: 0.18. Total from coupons = 8.18
+> - Sale price with 4 years left at 4.6%: 97.85
+> - Total = 106.04, and (106.04 / 96.92)^(1/2) − 1 = **4.60%** a year
+> Exactly the YTM: the investor got the yield they bought.
+
+## 2. Two risks that pull in opposite directions
+Now suppose yields change right after you buy and stay at the new level. Two effects work against each other:
+- **Market price risk:** if yields rise, the bond's price falls, so you get less when you sell. If yields fall, the price rises.
+- **Coupon reinvestment risk:** if yields rise, your coupons earn more when reinvested. If yields fall, they earn less.
+
+Which effect wins depends on how long you hold the bond:
+- Over a **short horizon**, few coupons are reinvested and there is little time to earn on them, but you must sell the bond, at a price that has moved. **Price risk dominates.**
+- Over a **long horizon** (holding to maturity), the sale price is par whatever happens, and many coupons are reinvested for many years. **Reinvestment risk dominates.**
+
+> **Worked example 2: the same bond, three horizons**
+> The bond from example 1 (bought at 96.92, yield 4.6%). Right after purchase, yields jump to 5.6% or drop to 3.6% and stay there.
+> - **Sell after 1 year:** yield 5.6% → realized return **0.28%**; yield 3.6% → **9.17%**. A rise in yields is painful: the price drop swamps everything.
+> - **Hold 5 years:** yield 5.6% → **4.51%**; yield 3.6% → **4.69%**. The two effects almost cancel.
+> - **Hold to maturity (6 years):** yield 5.6% → **4.69%**; yield 3.6% → **4.51%**. Now a rise in yields **helps**: the sale price is par regardless, and coupons earn more.
+> For a one-year investor, higher rates are bad news; for a six-year investor, they are good news. Somewhere in between, the two risks balance.
+
+## 3. Macaulay duration
+### Definition
+The balance point is the bond's **Macaulay duration**: the **weighted average time** until the bond's cash flows are received, where each cash flow's weight is its share of the bond's price (its present value divided by the total price).
+- Macaulay duration = Σ t × [PV(CF_t) / P]
+
+> **Worked example 3: computing Macaulay duration**
+> The 6-year, 4% bond priced at 96.92 (yield 4.6%). Present values of each cash flow at 4.6%, and their weights:
+> - Year 1: 4 → 3.824 (weight 0.0395); Year 2: 3.656 (0.0377); Year 3: 3.495 (0.0361); Year 4: 3.341 (0.0345); Year 5: 3.194 (0.0330); Year 6: 104 → 79.404 (0.8193)
+> - Macaulay duration = 1 × 0.0395 + 2 × 0.0377 + 3 × 0.0361 + 4 × 0.0345 + 5 × 0.0330 + 6 × 0.8193 = **5.44 years**
+> Most of the value comes from the final payment, so the duration is close to, but below, the 6-year maturity. The BA II Plus Bond worksheet gives duration directly (it shows modified duration; Macaulay = modified × (1 + yield per period)).
+
+Key facts:
+- A **zero-coupon** bond's Macaulay duration equals its maturity: there is only one cash flow.
+- A coupon bond's Macaulay duration is **less than** its maturity, because some money comes back earlier.
+- Duration is measured in **years** (or periods, which you then convert to years).
+
+### Why duration is the balance point
+If your **investment horizon equals the Macaulay duration**, then for a one-time, parallel change in yields right after purchase, the price effect and the reinvestment effect roughly **offset**, and your realized return stays close to the original YTM. In example 2, the 5-year horizon was close to the 5.44-year duration, and the realized returns (4.51% and 4.69%) stayed close to 4.6%.
+
+This is the idea behind **immunization**: an investor who must pay a fixed amount on a future date (a pension payment, an insurance claim) can protect it from interest rate changes by holding bonds whose Macaulay duration matches that date.
+
+## 4. Duration gap
+The **duration gap** compares the bond's duration with the investor's horizon:
+- duration gap = Macaulay duration − investment horizon
+
+- **Positive gap** (duration longer than the horizon): the investor will sell before price risk and reinvestment risk balance, so price risk dominates. They lose if **yields rise**.
+- **Negative gap** (duration shorter than the horizon): reinvestment risk dominates. They lose if **yields fall**.
+- **Zero gap:** approximately immunized against a one-time parallel shift.
+
+> **Worked example 4: reading the gap**
+> Three investors hold the bond from example 3 (Macaulay duration 5.44 years):
+> - Horizon 1 year: gap = +4.44. Worried about rising yields, which would cut the sale price.
+> - Horizon 6 years: gap = −0.56. Worried about falling yields, which would cut reinvestment income.
+> - Horizon 5.44 years: gap = 0. Largely protected against a single shift in yields.
+
+## 5. Limits of the duration-matching idea
+Matching duration to horizon works only under strict assumptions:
+- The yield change is **one-time** and happens right after purchase. If yields keep moving, the duration also changes as time passes and yields change, so the portfolio must be **rebalanced** to keep the match.
+- The change is a **parallel shift**: all yields move by the same amount. If short and long rates move differently, the protection is imperfect.
+- The bond **does not default** and has **no embedded options** that change its cash flows.
+
+It also protects only against changes in the general level of rates. A change in the issuer's credit spread moves the price in the same way as a change in yields and must be added to the picture.
+
+## 6. Accounting views of return
+For investors who report bonds at **amortized cost** rather than market value, there is a difference between economic and accounting gains:
+- The **carrying value** of a bond is its purchase price adjusted each period by the amortization of its discount or premium, moving it toward par along the original yield.
+- When the bond is sold, the gain or loss for accounting purposes is the sale price minus the carrying value, not minus the original purchase price.
+
+> **Worked example 5: a gain against carrying value**
+> The bond from example 1 was bought at 96.92 and is sold after 1 year at 101.80 (yields fell to 3.6%). With yields unchanged, its carrying value after 1 year would have been 97.37 (the pull-to-par value at 4.6%).
+> - Capital gain against carrying value = 101.80 − 97.37 = **4.43**
+> - The other 0.45 of the price rise (97.37 − 96.92) is amortization of the discount: it is part of interest income, not a gain.
+> This split matters for companies and funds whose accounts separate interest income from capital gains.
+
+## Checklist before you answer
+- Return sources: coupons, reinvestment income, capital gain or loss.
+- With yields unchanged and coupons reinvested at the YTM, realized return = YTM for any horizon.
+- Short horizon: market price risk dominates. Long horizon: reinvestment risk dominates.
+- Macaulay duration = weighted average time to the cash flows, weights = PV share of price.
+- A zero's Macaulay duration = its maturity; a coupon bond's is shorter.
+- Horizon = Macaulay duration: approximately immunized against one parallel shift.
+- Duration gap = Macaulay duration − horizon. Positive: hurt by rising yields. Negative: hurt by falling yields.
+- Immunization needs rebalancing and assumes parallel shifts and no default.`,
  ideas:`**A bondholder's return has three sources, and the investment horizon decides which interest rate risk matters most.**
 
 ## Sources of return
@@ -19681,6 +20855,118 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Yield-Based Bond Duration Measures and Properties",
  core:/modified duration|money duration|\bPVBP\b|price value of a basis point|basis point value|\bBPV\b|\bDV01\b|duration (is|of|increases|decreases|rises|falls|will)|higher duration|lower duration|longer duration|shorter duration/,
  match:/duration|modified|money duration|PVBP|basis point|BPV|DV01|maturity|coupon|yield level|interest rate risk|price change|sensitiv/,
+ lesson:`## 1. From time to sensitivity
+The previous module defined Macaulay duration as a weighted average **time**. Its most important use is different: it tells you how much a bond's price will change when its yield changes. That is what risk managers, traders and portfolio managers use every day. This module turns duration into a price-sensitivity tool and explains what makes it larger or smaller.
+
+## 2. Modified duration
+**Modified duration** converts Macaulay duration into a price sensitivity:
+- modified duration = Macaulay duration / (1 + r)
+
+where r is the **yield per period**. For an annual-pay bond, r is the annual yield; for a semi-annual bond, it is half the annual yield. Then:
+- %ΔP ≈ −modified duration × Δy
+
+where Δy is the change in the annual yield, written as a decimal. The minus sign says that price and yield move in opposite directions.
+
+> **Worked example 1: modified duration of a semi-annual bond**
+> A 10-year bond with a 4.5% semi-annual coupon yields 5.0%.
+> - Price: \`N = 20\`, \`I/Y = 2.5\`, \`PMT = 2.25\`, \`FV = 100\`, \`CPT PV\` → **96.10**
+> - Macaulay duration (computed as in the previous module, in half-years, then divided by 2) = **8.12 years**
+> - Modified duration = 8.12 / 1.025 = **7.92**
+> If the yield rises by 50 basis points, the price falls by about 7.92 × 0.005 = **3.96%**. The exact fall (repricing at 5.5%) is 3.87%: the estimate is close but slightly too pessimistic, because of convexity (next module).
+
+The common error is dividing by (1 + 0.05) instead of (1 + 0.025). For a semi-annual bond, always use the yield per half-year.
+
+### Approximate modified duration
+You do not need to compute Macaulay duration first. **Reprice** the bond at a slightly lower and a slightly higher yield and measure the slope:
+- approximate modified duration = (PV− − PV+) / (2 × Δy × PV0)
+
+where PV− is the price after the yield falls by Δy, PV+ the price after it rises by Δy, and PV0 the current price.
+
+> **Worked example 2: duration by repricing**
+> The same bond, with the yield moved 10 basis points each way:
+> - At 4.9%: \`N = 20\`, \`I/Y = 2.45\`, \`PMT = 2.25\`, \`FV = 100\`, \`CPT PV\` → PV− = 96.8674
+> - At 5.1%: \`I/Y = 2.55\` → PV+ = 95.3453
+> - Approximate modified duration = (96.8674 − 95.3453) / (2 × 0.001 × 96.1027) = **7.92**
+> The same answer as the formula. This method works for any bond whose price you can compute at two yields, which is why it generalizes to bonds with options (the curve-based module).
+
+## 3. Money duration and the price value of a basis point
+Percentage changes are useful for comparing bonds; for managing a position you need **money** amounts.
+
+### Money duration
+- money duration = modified duration × full price
+
+It is expressed per 100 of par or for a whole position. Multiply by Δy to get the estimated change in value:
+- ΔPV ≈ −money duration × Δy
+
+### Price value of a basis point (PVBP)
+The **PVBP** (also called the basis point value, BPV, or DV01) is the change in value for a **1 basis point** change in yield:
+- PVBP ≈ money duration × 0.0001
+
+It can also be estimated directly: PVBP = (PV− − PV+) / 2, with the yields moved by 1 basis point each way.
+
+> **Worked example 3: risk in money terms**
+> A fund holds 2,000,000 par of the bond from example 1 (full price 96.10, modified duration 7.92).
+> - Market value = 2,000,000 × 96.1027% = 1,922,054
+> - Money duration of the position = 7.919 × 1,922,054 = **15.22 million**
+> - PVBP = 15.22 million × 0.0001 = **1,522**: every basis point rise in yield costs the fund about 1,522
+> - A 25 basis point rise: about 25 × 1,522 = 38,050 lost
+> Traders hedge by matching PVBPs: to offset this position with a futures or swap position, they need one whose PVBP is also about 1,522, in the opposite direction.
+
+## 4. What makes duration larger or smaller
+Duration grows when more of a bond's value lies far in the future, and when that distant value is discounted less heavily. Holding everything else equal:
+
+### Maturity
+**Longer maturity → higher duration.** For coupon bonds this almost always holds; an exception exists for very long, deep-discount bonds, whose duration can fall slightly as maturity extends further. A **perpetual bond**, which never repays principal, has a finite Macaulay duration of (1 + r) / r: at a 5% yield, 1.05 / 0.05 = 21 years.
+
+### Coupon
+**Lower coupon → higher duration.** With smaller coupons, a larger share of the value comes from the principal at maturity. A **zero-coupon bond** has the highest duration for its maturity: its Macaulay duration equals its maturity.
+
+### Yield level
+**Lower yield → higher duration.** Distant cash flows are discounted less, so they carry more weight.
+
+> **Worked example 4: duration across bonds**
+> Semi-annual bonds, Macaulay duration (years) and modified duration:
+> - 10 years, 4.5% coupon, 5% yield: 8.12 / 7.92 (the base case)
+> - Coupon changed: 0% coupon → 10.00 / 9.76; 8% coupon → 7.39 / 7.21
+> - Maturity changed: 5 years → 4.53 / 4.42; 30 years → 16.19 / 15.79
+> - Yield changed: 3% → 8.29 / 8.17; 7% → 7.93 / 7.66
+> Every change moves duration in the direction the rules predict. Maturity has by far the biggest effect; coupon and yield matter less but do matter.
+
+### Embedded options
+- A **call** option lowers duration. As yields fall, the bond is more likely to be called, its price is capped near the call price, and it behaves like a shorter bond.
+- A **put** option also lowers duration. As yields rise, the investor is likely to put the bond back, so it behaves like a shorter bond in that direction.
+
+The yield-based durations in this module ignore those effects, which is why bonds with options need the curve-based measures of a later module.
+
+### Time and coupon dates
+As time passes, duration generally falls. Between coupon dates, though, Macaulay duration falls smoothly as the next coupon approaches, then **jumps up** right after the coupon is paid, because a near cash flow has dropped out of the average. Plotted over time, it looks like a saw-tooth.
+
+## 5. Interpreting duration correctly
+Duration has several meanings, and exam questions use all of them:
+- **Macaulay duration:** the weighted average time to the cash flows, in years; and the horizon at which price and reinvestment risk balance.
+- **Modified duration:** the approximate percentage price change for a 100 basis point (1 percentage point) change in yield.
+- **Money duration and PVBP:** the same sensitivity in money terms.
+
+What duration is **not**: it is not the time until the bond matures, nor the time to "get your money back" (except for a zero-coupon bond).
+
+### Limits of the duration estimate
+The estimate %ΔP ≈ −modified duration × Δy is **linear**, a straight line touching a curved price-yield relationship. It works well for small yield changes and becomes less accurate as the change grows. The next module adds the correction for curvature.
+
+> **Worked example 5: how far the straight line holds**
+> For the bond in example 1 (modified duration 7.92):
+> - +50 bp: duration estimate −3.96%, actual −3.87%
+> - −50 bp: duration estimate +3.96%, actual +4.06%
+> The errors are under 0.1% here; for a 150 bp move they grow to almost 1% (shown in the next module). Duration underestimates gains and overestimates losses for an option-free bond.
+
+## Checklist before you answer
+- Modified duration = Macaulay duration / (1 + yield per period).
+- %ΔP ≈ −modified duration × Δy, with Δy in decimals (50 bp = 0.005).
+- Approximate modified duration = (PV− − PV+) / (2 × Δy × PV0).
+- Money duration = modified duration × full price; PVBP ≈ money duration × 0.0001.
+- Longer maturity, lower coupon and lower yield all raise duration; a zero's Macaulay duration = its maturity.
+- Perpetual bond: Macaulay duration = (1 + r) / r.
+- Calls and puts both shorten effective duration.
+- Duration is a linear estimate: good for small moves, and too pessimistic for both directions of large moves on option-free bonds.`,
  ideas:`**Duration turns a change in yield into an estimated change in price.**
 
 ## Modified duration
@@ -19716,6 +21002,102 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Yield-Based Bond Convexity and Portfolio Properties",
  core:/(?<!effective |negative )convexity|convexity adjustment|portfolio duration|portfolio convexity|weighted average (of the )?(durations?)|duration of (the|a|this) portfolio/,
  match:/convexity|curvature|duration|portfolio|weighted|parallel|cash flow yield|limitation|price change|large change/,
+ lesson:`## 1. Why duration is not enough
+Duration estimates a bond's price change as if the price-yield relationship were a straight line. It is not: for an option-free bond the line **bends upward**. As yields fall, the price rises faster and faster; as yields rise, the price falls more and more slowly. The straight line of duration touches this curve at the current yield and lies **below** it everywhere else.
+
+**Convexity** measures that bend. Adding it to the estimate fixes most of duration's error for large yield changes, and it explains why investors pay for bonds with more of it.
+
+## 2. The convexity adjustment
+The estimated percentage price change becomes:
+- %ΔP ≈ −modified duration × Δy + ½ × convexity × (Δy)²
+
+Two details decide most exam answers:
+- The convexity term uses **(Δy)²**, so it is always **positive**, whatever the direction of the yield change (for a bond with positive convexity). It **adds** to gains when yields fall and **reduces** losses when yields rise.
+- Use **decimals**: a 100 basis point change is Δy = 0.01, and (Δy)² = 0.0001. Forgetting to square, or forgetting the ½, are the classic errors.
+
+### Approximate convexity
+Like duration, convexity can be estimated by repricing the bond at yields slightly below and above the current one:
+- approximate convexity = (PV− + PV+ − 2 × PV0) / [(Δy)² × PV0]
+
+The numerator measures how much the two repriced values together exceed twice the current price: zero for a straight line, positive for an upward bend.
+
+> **Worked example 1: approximate convexity**
+> The 10-year, 4.5% semi-annual bond from the previous module, yield 5.0%. Prices at ±10 basis points: PV0 = 96.1027, PV− = 96.8674 (at 4.9%), PV+ = 95.3453 (at 5.1%).
+> - Approximate convexity = (96.8674 + 95.3453 − 2 × 96.1027) / (0.001² × 96.1027) = **75.3**
+> - The approximate modified duration from the same prices is 7.92.
+> Keep enough decimals in the prices: the numerator here is only 0.0073, so rounding prices to two decimals would give a badly wrong answer.
+
+> **Worked example 2: duration alone versus duration plus convexity**
+> Same bond, yields move 150 basis points (Δy = 0.015):
+> - Yields rise: duration alone −7.92 × 0.015 = −11.88%; convexity adds ½ × 75.3 × 0.015² = +0.85%; estimate **−11.03%**. Actual (repriced at 6.5%): −11.07%.
+> - Yields fall: duration alone +11.88%; plus 0.85% → estimate **+12.73%**. Actual (repriced at 3.5%): +12.77%.
+> Duration alone missed by almost 0.9% in each direction; with convexity the error is under 0.05%.
+
+## 3. Money convexity
+For changes in money value, use **money convexity** = convexity × full price (per 100 of par or for a whole position):
+- ΔPV ≈ −money duration × Δy + ½ × money convexity × (Δy)²
+
+> **Worked example 3: a position in money terms**
+> The fund holds 2,000,000 par of the bond (market value 1,922,054; money duration 15.22 million; convexity 75.3).
+> - Money convexity = 75.3 × 1,922,054 = 144.7 million
+> - For a 150 bp rise: −15.22 million × 0.015 + ½ × 144.7 million × 0.015² = −228,300 + 16,280 = about **−212,000**
+> That is the −11.03% from example 2 applied to the position's value.
+
+## 4. What drives convexity
+Convexity rises with the same features that raise duration, and also with **dispersion**:
+- **Longer maturity** → more convexity (it grows roughly with the square of time).
+- **Lower coupon** → more convexity for a given maturity.
+- **Lower yield** → more convexity.
+- **More dispersed cash flows** → more convexity for the **same duration**.
+
+The last point is the important new one. Two portfolios can have the same duration but very different convexity:
+- A **bullet** portfolio holds bonds concentrated around one maturity (say, all 7-year bonds).
+- A **barbell** portfolio holds short and long bonds whose average duration is also 7 (say, 2-year and 15-year bonds).
+
+The barbell's cash flows are spread out more, so it has **higher convexity**. If yields move a lot in a parallel way, the barbell outperforms. Markets know this, so higher convexity usually comes at a price: a slightly lower yield.
+
+## 5. Why investors value convexity
+For two bonds with the same duration and yield, the one with more convexity gains more when yields fall and loses less when yields rise. That asymmetry is valuable when rates are **volatile**. So:
+- Positive convexity is a desirable feature, and investors give up some yield to get it.
+- Callable bonds have the opposite property at low yields (**negative convexity**: their gains are capped). Investors demand a higher yield for accepting it. This is covered in the next module.
+
+## 6. Portfolio duration and convexity
+### The weighted-average approach
+In practice, a portfolio's duration is computed as the **market-value-weighted average** of the durations of its bonds, and its convexity likewise:
+- portfolio duration = Σ w_i × D_i, with w_i = market value of bond i / total market value
+
+> **Worked example 4: a three-bond portfolio**
+> - Bond A: market value 4.0 million, modified duration 3.2, convexity 14
+> - Bond B: market value 2.5 million, modified duration 7.9, convexity 75
+> - Bond C: market value 3.5 million, modified duration 12.6, convexity 190
+> Total 10.0 million; weights 0.40, 0.25, 0.35.
+> - Portfolio duration = 0.40 × 3.2 + 0.25 × 7.9 + 0.35 × 12.6 = **7.665**
+> - Portfolio convexity = 0.40 × 14 + 0.25 × 75 + 0.35 × 190 = **90.85**
+> - Estimated change for a 100 bp parallel rise: −7.665% + ½ × 90.85 × 0.0001 = **−7.21%**, about −721,000 on 10 million.
+> Use market values, not par values, as weights: a bond trading at 80 counts for less than one at 110 with the same par.
+
+The approach is simple and works with any mix of bonds, including those with options (using their effective durations). Its main limitation is that it **assumes a parallel shift**: every bond's yield changes by the same amount. If short rates rise and long rates fall, bond A loses and bond C gains, and the single portfolio duration says little about the result.
+
+### The cash flow yield approach
+The theoretically correct alternative treats the portfolio as one big bond: combine all its cash flows, find the single discount rate that equates their present value to the portfolio's value (the **cash flow yield**), and compute duration from those cash flows. It is consistent but rarely used: it does not work for bonds with options (their cash flows are uncertain), and a change in the portfolio's cash flow yield is hard to relate to market yields.
+
+## 7. A full picture of a bond's price change
+Putting the pieces of the last three modules together, the change in a bond's price over a short period comes from:
+1. The passage of time: the pull to par plus the coupon accrual, earning the yield.
+2. The change in the benchmark yield, measured by duration and convexity.
+3. The change in the credit spread, which also works through duration and convexity (spread duration), as long as the spread change is the same at all maturities.
+
+The credit risk modules use this to estimate the return on corporate bonds when spreads widen or narrow.
+
+## Checklist before you answer
+- %ΔP ≈ −ModDur × Δy + ½ × Convexity × (Δy)², with Δy in decimals.
+- For positive convexity, the convexity term is added whether yields rise or fall.
+- Approximate convexity = (PV− + PV+ − 2PV0) / [(Δy)² × PV0]; keep many decimals in the prices.
+- Money convexity = convexity × full price.
+- Longer maturity, lower coupon, lower yield and more dispersed cash flows raise convexity.
+- Same duration: barbell > bullet in convexity.
+- Duration alone overstates losses and understates gains for option-free bonds.
+- Portfolio duration and convexity: market-value-weighted averages, valid for parallel shifts only.`,
  ideas:`**Duration draws a straight line through a curved price-yield relationship; convexity measures the curve.**
 
 ## Convexity
@@ -19746,6 +21128,113 @@ CFA_DATA.learn(1,"Fixed Income","LM-FI",[
 {name:"Curve-Based and Empirical Fixed-Income Risk Measures",
  core:/effective duration|effective convexity|negative convexity|embedded option|key rate|partial duration|empirical duration|analytical duration|benchmark (yield )?curve|parallel shift|non-parallel|shaping risk|curve duration/,
  match:/effective|negative convexity|embedded|callable|putable|option|key rate|partial|empirical|analytical|benchmark|parallel|shift|steepen|flatten|curve/,
+ lesson:`## 1. When yield-based measures break down
+Modified duration and convexity, as computed so far, rest on two assumptions:
+1. The bond's **cash flows are fixed**: they do not change when rates change.
+2. Rates change through the bond's **own yield**, by the same amount for every cash flow.
+
+Both fail often. A callable bond's cash flows depend on whether the issuer calls, which depends on rates. A mortgage-backed security's cash flows depend on how fast homeowners refinance. And real yield curves rarely shift in parallel: short and long rates usually move by different amounts. This module covers the measures built for those cases: **effective duration and convexity**, **key rate durations**, and **empirical duration**.
+
+## 2. Effective duration
+### The idea
+Instead of using the bond's own yield, shift the **benchmark yield curve** (government or swap) up and down by the same small amount, revalue the bond each time **with a model that lets its cash flows respond** (for example, a model that calls the bond when it pays the issuer to do so), and measure the change in price:
+- effective duration = (PV− − PV+) / (2 × Δcurve × PV0)
+
+The formula looks like the approximate modified duration, but the inputs differ: Δcurve is a shift in the **benchmark curve**, and PV− and PV+ come from a pricing model, not from simply discounting fixed cash flows at a new yield.
+
+> **Worked example 1: effective duration of a callable bond**
+> A callable bond is priced at 101.40. A valuation model reprices it after shifting the government curve by 30 basis points: 102.62 after a fall, 100.06 after a rise.
+> - Effective duration = (102.62 − 100.06) / (2 × 0.003 × 101.40) = **4.21**
+> An otherwise identical option-free bond might have a duration near 6. The call shortens the bond's effective life: if rates fall, it is likely to be repaid early.
+
+### When effective duration is the right measure
+- **Bonds with embedded options** (callable, putable): their cash flows change with rates.
+- **Mortgage-backed and other securitized bonds**, whose prepayments rise when rates fall.
+- **Floating-rate notes**, whose coupons change with the reference rate.
+- Any bond whose price comes from a model rather than a simple yield.
+
+For an option-free bond, effective duration and modified duration are nearly equal, and either can be used.
+
+## 3. Effective convexity
+In the same way:
+- effective convexity = (PV− + PV+ − 2 × PV0) / [(Δcurve)² × PV0]
+
+and the price change estimate becomes:
+- %ΔP ≈ −effective duration × Δcurve + ½ × effective convexity × (Δcurve)²
+
+### Negative convexity of callable bonds
+For the callable bond in example 1:
+- effective convexity = (102.62 + 100.06 − 2 × 101.40) / (0.003² × 101.40) = −0.12 / 0.0009126 = **−131.5**
+
+The sign is **negative**. When rates fall, the price rises less than it falls when rates rise by the same amount, because the call option becomes more valuable to the issuer and caps the bond's price near the call price. This is **negative convexity**, and it happens when yields are low relative to the coupon (the call is likely to be used). When yields are high and a call is unlikely, the callable bond behaves like a straight bond, with positive convexity.
+
+> **Worked example 2: the asymmetry reversed**
+> For the callable bond (effective duration 4.21, effective convexity −131.5), estimate the change for a 100 bp shift in the curve:
+> - Curve up 100 bp: −4.21 × 0.01 + ½ × (−131.5) × 0.0001 = **−4.87%**
+> - Curve down 100 bp: +4.21 × 0.01 − 0.66% = **+3.55%**
+> The investor loses more on a rise than they gain on an equal fall: the opposite of an option-free bond. This is the cost of having sold the call option to the issuer, and the reason callable bonds must offer a higher yield.
+
+### Putable bonds
+A put option **adds** convexity. When rates rise, the investor's right to sell at par supports the price, so losses are limited; when rates fall, the bond behaves like a straight bond. A putable bond therefore has **more** positive convexity than an otherwise identical option-free bond, at least when rates are high enough that the put is valuable.
+
+> **Worked example 3: a putable bond**
+> A putable bond is priced at 98.60; after a 30 bp fall in the curve, the model gives 100.05; after a 30 bp rise, 97.25.
+> - Effective duration = (100.05 − 97.25) / (2 × 0.003 × 98.60) = **4.73**
+> - Effective convexity = (100.05 + 97.25 − 197.20) / (0.003² × 98.60) = **112.7**
+> Positive and fairly large: the put cushions the downside, which the investor pays for with a lower yield.
+
+## 4. Key rate durations
+### Why a single duration is not enough
+Effective duration still assumes a **parallel shift** of the whole curve. In reality, curves steepen (long rates rise more than short ones), flatten, or twist. Two portfolios with the same effective duration can react very differently: one concentrated in 5-year bonds, another split between 1-year and 30-year bonds.
+
+### Definition
+A **key rate duration** (or partial duration) measures a bond's or portfolio's sensitivity to a change in the benchmark rate at **one maturity**, holding all other maturities fixed. Analysts choose a set of key maturities (for example 2, 5, 10 and 30 years), shift each in turn and record the price change.
+
+Two properties:
+- The key rate durations **add up to the effective duration** (a parallel shift is all key rates moving together).
+- They reveal **shaping risk**: the exposure to changes in the shape of the curve.
+
+> **Worked example 4: a steepening curve**
+> A portfolio has key rate durations of 0.4 (2-year), 1.1 (5-year), 2.3 (10-year) and 0.9 (30-year). Its effective duration is 0.4 + 1.1 + 2.3 + 0.9 = **4.7**.
+> The curve steepens: the 2-year rate falls 20 bp, the 5-year is unchanged, the 10-year rises 15 bp and the 30-year rises 25 bp.
+> - %ΔP ≈ −[0.4 × (−0.0020) + 1.1 × 0 + 2.3 × 0.0015 + 0.9 × 0.0025] = −(−0.0008 + 0.00345 + 0.00225) = **−0.49%**
+> A parallel 10 bp rise would have cost 4.7 × 0.001 = 0.47%. The two numbers are close here by coincidence; what matters is that the key rate durations show where the risk sits: mostly at the 10-year point.
+
+Managers use key rate durations to position a portfolio for an expected change in the curve's shape (for example, holding less 10-year exposure if they expect the curve to steepen) or to match the shape of their liabilities.
+
+## 5. Empirical versus analytical duration
+### Analytical duration
+Every duration so far is **analytical**: it comes from a formula or a model. These models usually assume that the benchmark rate and the bond's credit spread move **independently**: if government yields rise by 1%, the bond's yield rises by 1%.
+
+### Empirical duration
+**Empirical duration** is estimated from data: regress the bond's (or index's) actual returns on changes in the benchmark yield over many periods. The slope tells you how the price has actually responded.
+
+The two can differ a lot, because spreads and government yields are often **correlated**:
+- In a downturn, government yields typically **fall** (investors buy safe bonds, central banks cut rates) while credit spreads **widen** (default risk rises). For a high-yield bond, the spread widening offsets part of the benefit of lower government yields, so its price rises less than its analytical duration suggests.
+- So **empirical duration is usually lower than analytical duration for high-yield bonds**, and sometimes much lower.
+- For government bonds, which carry no credit spread, empirical and analytical durations are close.
+
+> **Worked example 5: two durations for one bond fund**
+> A high-yield bond fund reports an analytical duration of 4.5. A regression of its monthly returns on changes in the 5-year government yield gives a slope of −3.1, so its empirical duration is 3.1.
+> - Model estimate for a 50 bp fall in government yields: +4.5 × 0.005 = +2.25%
+> - Historical response: about +3.1 × 0.005 = +1.55%
+> The gap is the spread widening that tends to come with falling government yields. A manager hedging this fund with government bond futures would overhedge if they used the analytical figure.
+
+Empirical duration has its own limits: it depends on the past period chosen, and the relationship between spreads and government yields can change, for instance when inflation rather than recession drives rates.
+
+## 6. Choosing the right measure
+1. Option-free bond, parallel shift: **modified duration** (and convexity).
+2. Bond with embedded options, MBS, floaters: **effective duration and convexity** from a model and the benchmark curve.
+3. Risk from changes in the curve's shape: **key rate durations**.
+4. How a credit-risky bond has actually behaved when government yields moved: **empirical duration**.
+
+## Checklist before you answer
+- Effective duration = (PV− − PV+) / (2 × Δcurve × PV0), with prices from a model and shifts in the benchmark curve.
+- Use effective, not modified, duration for callables, putables, MBS and floaters.
+- Callable bonds show negative convexity when yields are low: gains are capped, losses are not.
+- Putable bonds have more positive convexity than straight bonds.
+- Key rate durations sum to the effective duration and measure shaping risk.
+- Empirical duration comes from regressions; for high-yield bonds it is usually below analytical duration because spreads widen when government yields fall.`,
  ideas:`**Bonds with embedded options, and real-world yield curves, need risk measures based on the benchmark curve rather than on the bond's own yield.**
 
 ## Effective duration and convexity
