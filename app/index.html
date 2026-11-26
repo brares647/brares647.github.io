@@ -19980,6 +19980,114 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Equity Instrument Features",
  core:/common (stock|shares?)(holders)? (have|give|are|is)|preferred (stock|shares?)|cumulative|participating|convertible preferred|callable (common|preferred)|putable|retractable|residual claim|limited liability|private (equity )?(company|companies|securities)|publicly (listed|traded)|depositary receipt|depository receipt|\bADRs?\b|\bGDRs?\b/,
  match:/common|preferred|cumulative|participating|convertible|callable|putable|residual|liquidation|private|public|listed|depositary|depository|ADR|GDR|sponsored|unsponsored|limited liability|preemptive/,
+ lesson:`## 1. What owning equity means
+A bondholder lends money; a shareholder **owns** part of the company. That difference shapes everything about equity:
+- Shareholders have a **residual claim**: they are entitled to what is left after everyone else (employees, suppliers, tax authorities, lenders, preferred shareholders) has been paid. If the company does well, the residual can grow without limit; if it does badly, it can shrink to nothing.
+- They usually have a **say** in how the company is run, through voting.
+- They have **limited liability**: the most a shareholder can lose is what they paid for the shares. Creditors of a failed company cannot claim shareholders' personal assets.
+
+Equity is therefore the riskiest claim on a company, and the one with the highest expected return.
+
+## 2. Common shares
+**Common shares** (ordinary shares) are the standard form of ownership. Their holders have:
+- **A share in profits**, through dividends, which the board decides whether and how much to pay. There is no legal obligation to pay a dividend, unlike a bond coupon.
+- **Voting rights** to elect the board of directors and approve major decisions (mergers, changes to the articles, issuing new shares in some countries).
+- **A residual claim in liquidation**: they are paid last, after creditors and preferred shareholders.
+- In some jurisdictions, **preemptive rights**: the right to buy a proportional part of any new shares the company issues, before outsiders, so that existing holders can avoid dilution.
+
+### Callable and putable common shares
+- **Callable** common shares give the **issuer** the right to buy them back at a set price. It benefits the company (it can retire shares when it suits it), so investors pay less for such shares.
+- **Putable** common shares give the **holder** the right to sell them back to the company at a set price. It protects the investor's downside, so investors pay more; the company receives more capital at issue but takes on an obligation.
+
+## 3. Preferred shares
+**Preferred shares** (preference shares) sit between bonds and common shares:
+- They pay a **fixed dividend**, usually a percentage of par, like a coupon.
+- Preferred dividends must be paid **before** any common dividend, and preferred holders are paid **before** common holders in liquidation (but after all creditors).
+- They usually carry **no voting rights**, except on matters that affect them directly or when dividends are missed.
+- Unlike a coupon, a missed preferred dividend is **not a default**.
+
+### Cumulative or not
+- **Cumulative** preferred: missed dividends accumulate as **arrears**, which must be paid in full before any common dividend can be paid.
+- **Non-cumulative** preferred: a missed dividend is lost forever.
+
+> **Worked example 1: dividend arrears**
+> A company has 200,000 cumulative preferred shares, par 50, with a 6% dividend. It skips the preferred dividend for two years during a downturn.
+> - Annual preferred dividend = 6% × 50 × 200,000 = 600,000
+> - Arrears after two years = **1,200,000**
+> Before it can pay any dividend to common shareholders, the company must pay the 1,200,000 of arrears plus the current year's 600,000. Had the shares been non-cumulative, it could resume common dividends after paying only the current year's preferred dividend.
+
+### Other features
+- **Participating** preferred: in addition to the fixed dividend, holders receive extra dividends if profits exceed a set level, and may share in liquidation proceeds above par. Common in venture capital deals.
+- **Convertible** preferred: can be exchanged for a set number of common shares. It gives the investor the safety of a fixed dividend and the upside of common equity, and is widely used in venture capital and private equity financings.
+- **Callable** preferred: the issuer can redeem it at a set price, usually after a few years. **Putable** preferred: the holder can sell it back.
+
+### Where the risk sits
+From least to most risky for the investor: bonds of the same company, then preferred shares (cumulative less risky than non-cumulative), then common shares. Preferred shares' fixed dividend gives them a bond-like price behaviour, sensitive to interest rates.
+
+## 4. Public and private equity
+### Public equity
+Shares traded on a stock exchange:
+- **Liquid**: they can be sold quickly at a visible price.
+- **Transparent**: listed companies must publish regular, audited financial statements and disclose material events.
+- **Widely held**: many small shareholders, each with little influence.
+- Management faces pressure from quarterly results and daily price moves.
+
+### Private equity
+Ownership stakes in companies whose shares do not trade on a public market:
+- **Venture capital**: minority stakes in young, growing companies.
+- **Buyouts**: purchases of mature companies, often with substantial debt (leveraged buyouts); a **management buyout** is led by the company's own managers.
+- **Private investment in public equity (PIPE)**: a listed company sells a block of shares privately, often to raise money quickly.
+
+Characteristics:
+- **Illiquid**: investors usually commit capital for many years and cannot easily sell.
+- **Less disclosure**: information goes only to the investors, not the public.
+- **Valuation** from transactions and models, not market prices.
+- **Active ownership**: investors often hold board seats or control and work closely with management.
+- Management can take a **long-term view** without quarterly pressure, which proponents see as a key advantage; the cost is reduced liquidity and transparency.
+
+> **Worked example 2: why a company might go private**
+> A listed manufacturer needs a costly five-year restructuring that will depress profits before it pays off. Its share price falls each quarter as investors react to weak results.
+> A buyout firm offers to buy all its shares, take the company private, carry out the restructuring away from market pressure, and sell or relist it later. The selling shareholders receive a premium today; the buyout investors take on illiquidity and the risk of the plan in exchange for a higher expected return.
+
+## 5. Investing in foreign shares
+Investors increasingly hold shares of foreign companies, for diversification and access to growth. Ways to do it:
+- **Direct investing** on the foreign exchange, in the local currency. The investor deals with foreign settlement, custody, taxes and currency exchange.
+- **Depositary receipts (DRs)**: a bank (the depositary) holds the foreign company's shares and issues receipts that trade on the investor's local market, in the local currency. Each receipt represents a set number of shares.
+  - **Sponsored** DRs are set up with the foreign company's participation: holders receive voting rights and full information, and the company meets the local market's disclosure rules.
+  - **Unsponsored** DRs are set up by a bank without the company's involvement: the depositary keeps the voting rights, and disclosure is more limited.
+  - **American depositary receipts (ADRs)** trade in the US; **global depositary receipts (GDRs)** trade outside both the US and the company's home market (often in London or Luxembourg).
+- **Funds and ETFs** that invest in foreign markets.
+
+> **Worked example 3: pricing a depositary receipt**
+> A company's shares trade at 36.40 euros. Each depositary receipt represents 3 shares, and one euro buys 1.085 US dollars.
+> - Fair DR price = 3 × 36.40 × 1.085 = **118.48 dollars**
+> If the DR traded far from this level, arbitrageurs would buy the cheaper side and sell the dearer one (creating or cancelling receipts through the depositary), pulling the prices back together. The DR holder still bears **currency risk**: if the euro weakens against the dollar, the DR falls even if the share price in euros is unchanged.
+
+### Risks of foreign equity
+- **Currency risk**: returns in the investor's currency depend on exchange rates.
+- **Different accounting, disclosure and governance standards**, which can make analysis harder.
+- **Political and legal risk**: expropriation, capital controls, weaker protection for minority shareholders.
+- **Tax**: dividends may be subject to withholding tax in the source country.
+
+## 6. The role of equity for the company
+Companies issue equity to:
+- Raise **permanent capital** that never has to be repaid, to fund growth, acquisitions and research.
+- Strengthen the **balance sheet**: more equity means lower leverage and a lower risk of financial distress.
+- Provide **currency** for acquisitions (paying with shares) and for employee compensation (share options and awards).
+- Give owners **liquidity** and a visible value through a listing.
+
+The cost of equity is usually the highest cost of capital, because shareholders bear the most risk. The company must earn returns above that cost to create value.
+
+## Checklist before you answer
+- Equity = residual claim, voting rights, limited liability, highest risk and expected return.
+- Common dividends are discretionary; missing them is not a default.
+- Preemptive rights protect existing holders from dilution.
+- Callable shares favour the issuer (lower price); putable shares favour the holder (higher price).
+- Preferred: fixed dividend, priority over common in dividends and liquidation, usually no vote.
+- Cumulative preferred builds arrears that must be paid before common dividends; non-cumulative does not.
+- Participating and convertible preferred add upside for the investor.
+- Private equity: illiquid, less disclosure, active ownership, long-term focus.
+- DRs: sponsored (votes, full disclosure) vs unsponsored (depositary keeps votes); ADRs in the US, GDRs elsewhere; DR holders still carry currency risk.`,
  ideas:`**Equity is ownership: a residual claim on a company's assets and earnings after all creditors have been paid.**
 
 ## Common shares
@@ -20017,6 +20125,93 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Equity Jurisdictions, Classes, and the Voting Process",
  core:/\bvot(e|es|ing)\b|proxy|proxies|dual-class|class (A|B) (shares|stock)|super-?voting|proxy advis|stewardship|annual (general )?meeting|shareholder (meeting|proposal|resolution)|jurisdiction/,
  match:/vot|proxy|dual|class|board|shareholder|meeting|stewardship|engagement|asset owner|asset manager|jurisdiction|minority|control|activis|resolution/,
+ lesson:`## 1. Not all shares are equal
+"One share, one vote" is the textbook model, but many companies depart from it. The same company can issue classes of shares with different voting power or economic rights, and the protection shareholders enjoy depends heavily on the country whose law governs the company. This module covers those differences and the practical process through which shareholders actually vote.
+
+## 2. Share classes and voting rights
+### Dual-class and multiple-class structures
+A **dual-class** structure issues two classes of common shares:
+- One class (often held by founders, a family or the state) carries **more votes per share**, for example 10 votes.
+- The other class (sold to the public) carries **one vote or none**.
+Dividends and other economic rights are often the same per share.
+
+The effect is to separate **control** from **ownership**: insiders can control the company while owning a minority of its capital.
+
+> **Worked example 1: control without majority ownership**
+> A technology company has 20 million Class A shares (10 votes each) held by its founders and 80 million Class B shares (1 vote each) held by public investors.
+> - Founders' share of the capital = 20 / 100 = **20%**
+> - Founders' share of the votes = (20 × 10) / (20 × 10 + 80 × 1) = 200 / 280 = **71.4%**
+> The founders can elect the whole board and block any takeover, though public investors provide 80% of the capital.
+
+Arguments for and against:
+- **For:** founders can pursue a long-term vision without pressure from short-term investors or hostile bidders.
+- **Against:** management is less accountable; outside shareholders cannot remove a poor board; control can pass to heirs regardless of competence. Shares with weaker votes often trade at a **discount**, and some index providers and investors limit their holdings of such companies.
+
+### Statutory and cumulative voting
+How votes are counted in board elections matters a great deal for minority shareholders.
+- **Statutory (straight) voting:** each share gives one vote **for each seat**, and votes must be spread one per seat. A majority holder wins every seat.
+- **Cumulative voting:** each share gives as many votes as there are seats, and the holder can **concentrate** all of them on one candidate. This lets a sizeable minority elect at least one director.
+
+> **Worked example 2: winning a seat with a minority stake**
+> A company with 10,000 voting shares elects 4 directors. A minority investor owns 2,600 shares; the majority holder owns the rest.
+> - Statutory voting: for each seat, the minority has 2,600 votes against 7,400. It wins **no** seats.
+> - Cumulative voting: total votes = 10,000 × 4 = 40,000; the minority has 2,600 × 4 = 10,400 votes to place on one candidate. To be sure of one seat out of four, a candidate needs more than 40,000 / 5 = 8,000 votes (the majority cannot place five candidates all above 8,000). With 10,400 votes, the minority is **guaranteed one seat**.
+> A rule of thumb: to guarantee one seat out of n under cumulative voting, you need just over 1 / (n + 1) of the shares; here, more than 20%.
+
+## 3. Differences between jurisdictions
+The country where a company is incorporated (and where it is listed) shapes shareholders' rights.
+
+### Legal protection
+- **Common law** countries (such as the US and UK) are often credited with strong protection of minority shareholders: disclosure rules, the ability to sue directors, and active courts.
+- **Civil law** countries (much of continental Europe, Latin America, parts of Asia) traditionally rely more on codified rules and concentrated ownership, though many have strengthened minority protections.
+- Rules differ on: how easily shareholders can call meetings or file proposals; whether major transactions need a shareholder vote; takeover rules (for example, mandatory bids when a stake exceeds a threshold); and rights to new shares.
+
+### Board structures
+- **One-tier (unitary) boards** combine executive and non-executive directors in one board (US, UK).
+- **Two-tier boards** separate a **management board** (executives) from a **supervisory board** (non-executives, sometimes including employee representatives) that appoints and oversees it (Germany, the Netherlands).
+
+### Say on pay and other rights
+Many countries require shareholder votes on **executive pay**, binding in some markets and advisory in others. Some require **independent directors** or committees (audit, remuneration, nomination).
+
+### Ownership patterns
+- In the US and UK, ownership is typically **dispersed**: no single holder controls the company, and the main governance problem is between shareholders and **managers** (who may act in their own interest).
+- In many other markets, ownership is **concentrated** in families, the state or other companies (sometimes through cross-holdings or pyramids). The main problem shifts to **controlling versus minority shareholders**: the controller may benefit at the minority's expense through related-party transactions.
+
+> **Worked example 3: one problem, two settings**
+> - Company X has no shareholder above 3%. Its chief executive pushes for an acquisition that will enlarge his empire but destroy value. Investors' protection: an independent board, shareholder votes, and the threat of a takeover.
+> - Company Y is 55% owned by a family. The family has Y buy supplies at high prices from another company it owns outright. Investors' protection: rules requiring approval of related-party transactions by independent directors or minority shareholders, and disclosure.
+> The governance question to ask depends on the ownership structure.
+
+## 4. The voting process
+### Annual and special meetings
+Shareholders vote at the **annual general meeting (AGM)** on routine matters (electing directors, appointing the auditor, approving accounts, say on pay) and at **extraordinary (special) meetings** on major matters (mergers, changes to the articles, large share issues). Some matters need a simple majority, others a **supermajority**, such as two-thirds.
+
+### Proxy voting
+Most shareholders do not attend. They vote by **proxy**: they authorize someone else (often the board, or a person of their choosing) to vote their shares according to their instructions. Companies send a **proxy statement** describing the resolutions before the meeting.
+
+**Proxy contests** occur when a group of shareholders (often an activist investor) seeks to replace directors by soliciting other shareholders' proxies for its own candidates.
+
+### Who does what
+- **Management** prepares the meeting materials, the proposals and the proxy statement.
+- The **board** recommends how shareholders should vote and oversees management. Independent directors play a key role on pay, audit and nominations.
+- **Shareholders** vote and can file their own **shareholder proposals** (for example, on climate disclosure or board independence), subject to ownership thresholds.
+- **Proxy advisors** (proxy advisory firms) research resolutions at thousands of companies and recommend how to vote. Many institutional investors rely on them, which gives them significant influence; critics question their accuracy and possible conflicts of interest.
+- **Asset managers** vote the shares held in their funds on behalf of their clients. They have a fiduciary duty to vote in their clients' interests and usually publish voting policies and records.
+- **Asset owners** (pension funds, insurers, endowments, sovereign wealth funds) either vote themselves or delegate voting to their asset managers, often with instructions.
+- **Stewardship codes** in many countries ask institutional investors to engage with companies and vote responsibly, and to report on how they do it.
+
+> **Worked example 4: a contested vote**
+> An activist fund owning 4% of a company proposes two new directors to push for a sale of an underperforming division. The board opposes. Two large proxy advisors back the activist's candidates. Index funds holding 25% of the shares weigh both views and vote according to their own policies.
+> The outcome depends heavily on the index funds and on investors who follow the proxy advisors: a small shareholder can win a contest if it persuades them.
+
+## Checklist before you answer
+- Dual-class structures separate control from ownership; lower-vote shares often trade at a discount.
+- Votes share = votes held / total votes, not shares held / total shares.
+- Statutory voting: one vote per share per seat, majority wins every seat.
+- Cumulative voting: votes = shares × seats, can be concentrated; guarantee one of n seats with just over 1/(n + 1) of shares.
+- Jurisdictions differ in minority protection, board structure (one-tier vs two-tier), say on pay and takeover rules.
+- Dispersed ownership → manager vs shareholder conflict; concentrated ownership → controller vs minority conflict.
+- Proxy voting lets shareholders vote without attending; proxy advisors recommend votes; asset managers vote for clients in their interest; stewardship codes ask investors to engage.`,
  ideas:`**Shares of the same company can carry different economic and voting rights, and those rights also depend on the country where the company is incorporated.**
 
 ## Share classes and voting rights
@@ -20050,6 +20245,115 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Equity Issuance and Trading",
  core:/primary market|secondary market|initial public offering|\bIPO\b|seasoned offering|follow-on offering|secondary offering|rights offering|private placement|shelf registration|underwrit|over-the-counter|\bOTC\b|dark pool|bid-ask|market maker|\bdealers?\b|\bbrokers?\b|free float|\bfloat\b|average daily volume|margin|short sale|short sell|sold short|sells? short|limit order|stop order|market order|stop-loss|order-driven|quote-driven|\bindex\b|indexes|indices|price-weighted|equal-weighted|cap(italization)?-weighted/,
  match:/primary|secondary|offering|IPO|placement|underwrit|exchange|OTC|over-the-counter|dark pool|order|bid|ask|spread|dealer|broker|float|volume|liquid|margin|short|leverage|index|weighted|rebalanc|reconstitut|ETF/,
+ lesson:`## 1. Two markets for the same shares
+Shares change hands in two very different settings:
+- In the **primary market**, a company **sells new shares** and receives the money.
+- In the **secondary market**, investors **trade existing shares** among themselves; the company receives nothing.
+
+The secondary market still matters to the company: because investors know they can sell easily later, they are willing to pay more for new shares, which lowers the company's cost of raising equity. A liquid secondary market also gives a continuous, visible price, which helps the company with acquisitions, employee pay and borrowing.
+
+## 2. The primary market
+### Initial public offering
+An **initial public offering (IPO)** is the first sale of a company's shares to the public, usually with a listing on an exchange. The process:
+1. The company hires **investment banks** (underwriters), which help prepare the prospectus and assess demand.
+2. The banks market the shares to investors in a **roadshow** and collect indications of interest (**book building**).
+3. The offer price is set, shares are allocated, and trading begins.
+
+In an **underwritten** offer the banks guarantee the price by buying the shares and reselling them; in a **best-efforts** offer they act only as agents. IPOs are often priced slightly below the expected trading price (**underpricing**), so first-day returns are on average positive: this rewards investors for the uncertainty and helps the banks sell the issue.
+
+### Other ways to issue or list
+- **Seasoned (follow-on) offering:** a listed company sells additional new shares. Existing holders are diluted unless they buy.
+- **Rights offering:** existing shareholders receive **rights** to buy new shares in proportion to their holdings, at a price below the market. Holders who exercise keep their ownership share; those who do not can sell their rights. It protects shareholders from dilution and is cheap to run.
+- **Private placement:** new shares sold to a small number of qualified investors, without a public offering. It is faster and cheaper, but investors demand a discount for lower liquidity and less disclosure.
+- **Direct listing:** the company lists its existing shares on an exchange without selling new ones. It raises no money and avoids underwriting fees; trading simply begins.
+- **Special purpose acquisition company (SPAC):** a listed shell company that raises cash and then merges with a private company, bringing it to market.
+
+## 3. The secondary market
+### Market structures
+- **Order-driven markets:** buyers' and sellers' orders are collected and matched by rules, usually price priority (best price first) and then time priority (earliest first). Most stock exchanges work this way, with an electronic order book.
+- **Quote-driven (dealer) markets:** dealers post **bid** (buy) and **ask** (sell) prices and trade from their own inventory. Common for bonds and for less liquid shares.
+- **Brokered markets:** brokers search for counterparties for unusual or large trades (for example, a large block or a real estate deal).
+
+### Trading venues
+- **Exchanges:** regulated markets with listing rules and public price information.
+- **Alternative trading systems** and **multilateral trading facilities**: electronic venues that match orders but are not exchanges.
+- **Dark pools:** venues where orders are not displayed before execution. They let large investors trade blocks without revealing their intentions and moving the price, at the cost of less pre-trade transparency.
+- **Over-the-counter** trading through dealers for unlisted or rarely traded shares.
+
+### Types of orders
+- **Market order:** buy or sell immediately at the best available price. Execution is almost certain; the price is not.
+- **Limit order:** buy at no more than, or sell at no less than, a stated price. The price is certain; execution is not.
+- **Stop order (stop-loss):** becomes a market order once a trigger price is reached, for example "sell if the price falls to 85". It limits losses but can execute well below the trigger in a fast-falling market.
+- Orders also carry **validity instructions**: day orders, good-till-cancelled, fill-or-kill, and so on.
+
+> **Worked example 1: market versus limit**
+> A share's order book shows a best bid of 24.18 and a best ask of 24.22, with only 300 shares offered at 24.22 and 2,000 more at 24.30.
+> - A market order to buy 1,000 shares fills 300 at 24.22 and 700 at 24.30: an average of about 24.28, more than expected.
+> - A limit order to buy 1,000 at 24.22 fills 300 shares now and waits for the rest, which may never fill if the price rises.
+> Market orders buy certainty of execution; limit orders buy certainty of price.
+
+## 4. Positions: long, short and leveraged
+### Buying on margin
+Investors can **borrow** part of the purchase price from their broker, putting up the rest as **equity**. The **initial margin** is the minimum equity percentage at purchase; the **maintenance margin** is the minimum equity percentage the account must keep. If equity falls below it, the broker issues a **margin call** and the investor must add money or the position is sold.
+
+The price that triggers a margin call:
+- P_call = P0 × (1 − initial margin) / (1 − maintenance margin)
+
+> **Worked example 2: leverage at work**
+> An investor buys 500 shares at 40 (cost 20,000) with an initial margin of 50%, borrowing 10,000 at 6% a year. The maintenance margin is 25%.
+> - Margin call price = 40 × (1 − 0.50) / (1 − 0.25) = **26.67**
+> - If the price rises to 46 after a year: gain 3,000, less interest 600 = 2,400 on 10,000 of equity = **+24%** (without leverage: 3,000 / 20,000 = +15%)
+> - If the price falls to 34: loss 3,000, plus interest 600 = −3,600 on 10,000 = **−36%** (without leverage: −15%)
+> Leverage multiplies gains and losses in both directions.
+
+### Short selling
+A **short sale** is selling shares you do not own: you borrow them (through your broker, from another investor), sell them, and later buy them back to return them. You profit if the price falls. Points to know:
+- The short seller must pay the lender any **dividends** paid while the shares are borrowed, and a borrowing fee.
+- The potential loss is **unlimited**, because the price can rise without limit.
+- Short positions also need margin, and can be forced to close if the lender recalls the shares (a **short squeeze** can follow when many short sellers must buy at once).
+
+## 5. Liquidity
+**Liquidity** is the ability to trade quickly, in size, at low cost, without moving the price much. Three practical measures:
+- **Bid-ask spread:** narrower is more liquid.
+- **Float:** the number of shares available for public trading = shares outstanding minus shares held by insiders, founders, governments and strategic holders who are unlikely to sell. A larger float means more shares can change hands.
+- **Average daily trading volume (ADV):** more shares traded per day means a large order is easier to absorb.
+
+> **Worked example 3: float and volume**
+> A company has 250 million shares outstanding. The founding family holds 62 million and a government fund holds 18 million as strategic stakes. Daily volume over a week was 2.4, 1.9, 3.1, 2.2 and 1.4 million shares.
+> - Float = 250 − 62 − 18 = **170 million**
+> - ADV = (2.4 + 1.9 + 3.1 + 2.2 + 1.4) / 5 = **2.2 million shares**
+> A fund wanting to buy 11 million shares would need about five full days of average volume: it would likely spread the order over weeks or use a block trade.
+
+Index providers use the float, not total shares outstanding, to weight companies (float adjustment), because only floating shares are available to investors.
+
+## 6. Equity indexes
+### Types
+- **Broad market** indexes cover most of a market's value; **sector** indexes one industry; **style** indexes value or growth, large or small companies; **country and regional** indexes one geography; **thematic** indexes a theme (clean energy, sustainability).
+
+### Weighting methods
+- **Price-weighted:** each share counts in proportion to its price (sum of prices / divisor). A high-priced share dominates regardless of company size.
+- **Equal-weighted:** each share gets the same weight; it tilts toward small companies and needs frequent rebalancing.
+- **Market-capitalization weighted** (usually **float-adjusted**): each company counts in proportion to its market value. The most common approach; it tilts toward the largest companies and needs little rebalancing.
+- **Fundamental-weighted:** weights by sales, earnings, book value or dividends; it tilts toward value shares.
+
+> **Worked example 4: the same move, two indexes**
+> Three shares: A (price 50, 10 million shares), B (price 20, 100 million shares), C (price 100, 5 million shares). Share C rises 10% to 110.
+> - Price-weighted (divisor 3): from (50 + 20 + 100) / 3 = 56.67 to (50 + 20 + 110) / 3 = 60.00, a rise of **5.88%**.
+> - Cap-weighted: total value from 500 + 2,000 + 500 = 3,000 million to 3,050 million, a rise of **1.67%**.
+> C is the highest-priced share but only a sixth of the market's value, so it moves the price-weighted index far more.
+
+### Uses
+Indexes serve as **benchmarks** for managers, as the basis for **index funds and ETFs**, as measures of market performance and risk (for computing betas), and as models for asset allocation.
+
+## Checklist before you answer
+- Primary market: the company sells new shares and gets the money (IPO, seasoned offering, rights offering, private placement); direct listings raise no money.
+- Rights offerings protect existing holders from dilution.
+- Order-driven markets match orders by price, then time; quote-driven markets use dealers' bids and asks.
+- Market order: certain execution, uncertain price. Limit order: certain price, uncertain execution. Stop order: triggered at a price.
+- Margin call price = P0 × (1 − initial margin) / (1 − maintenance margin); leverage magnifies returns both ways.
+- Short selling: borrow, sell, buy back; unlimited loss potential; pays dividends to the lender.
+- Float = shares outstanding − strategic/insider holdings; liquidity also from spread and ADV.
+- Price-weighted indexes are driven by high-priced shares; cap-weighted by large companies.`,
  ideas:`**The primary market is where companies sell new shares; the secondary market is where investors trade existing ones.**
 
 ## Primary market
@@ -20090,6 +20394,112 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Sources of Equity Returns",
  core:/dividends? (yield|payment|policy|chronology|per share)|ex-dividend|record date|payment date|declaration date|share repurchase|buyback|buy back|repurchas|stock split|reverse (stock )?split|stock dividend|total return|price return|special dividend|tender offer|Dutch auction/,
  match:/dividend|ex-|record|declar|repurchas|buyback|buy back|split|total return|price return|capital gain|reinvest|tender|Dutch|EPS|book value per share/,
+ lesson:`## 1. Where a shareholder's return comes from
+A shareholder makes money in two ways:
+- **Price changes** (capital gains or losses) as the market's view of the company changes.
+- **Cash returned by the company**, through dividends or share repurchases.
+
+The company also takes actions that change the number of shares without changing its value, such as splits and stock dividends. This module explains each and how they affect returns.
+
+### Measuring the return
+- **Price return** = (P1 − P0) / P0
+- **Total return** = (P1 − P0 + D) / P0, where D is dividends received during the period.
+
+> **Worked example 1: price return versus total return**
+> A share bought at 55.00 pays dividends of 1.65 during the year and ends at 57.80.
+> - Price return = (57.80 − 55.00) / 55.00 = **5.09%**
+> - Total return = (57.80 − 55.00 + 1.65) / 55.00 = **8.09%**
+> Over decades, reinvested dividends have made up a large part of equity investors' total returns, which is why total return indexes, not price indexes, are used to judge long-term performance.
+
+## 2. Dividends
+### Cash dividends
+A **cash dividend** is a payment from the company's profits (or retained earnings) to shareholders. It reduces the company's cash and its equity by the same amount. Types:
+- **Regular dividends**, paid on a schedule (quarterly, semi-annually or annually), which companies try to keep stable or rising.
+- **Special (extra) dividends**, one-off payments, for example after an exceptionally good year or an asset sale.
+- **Liquidating dividends**, which return capital when a company sells a business or winds down; they are a return of investment rather than of profits.
+
+### What dividends signal
+Managers are reluctant to cut dividends, so they raise them only when they expect higher earnings to be sustainable. Investors read changes as **signals**: an increase suggests confidence; a cut is usually bad news, and the share price often falls sharply. Initiating a first dividend can be seen positively (the company is generating surplus cash) or as a sign that growth opportunities are drying up.
+
+### Stock dividends
+A **stock dividend** pays shareholders in additional shares instead of cash: for example, a 5% stock dividend gives 5 new shares for every 100 held.
+- No cash leaves the company; total equity is unchanged (some is reclassified from retained earnings to paid-in capital).
+- Every shareholder keeps the same percentage of ownership.
+- The share price falls in proportion, so the investor's total value is unchanged.
+
+## 3. The dividend timeline
+Four dates matter:
+1. **Declaration date:** the board announces the dividend, its amount and the other dates. The company now has a liability to pay it.
+2. **Ex-dividend date:** the first day on which a buyer of the shares will **not** receive the dividend. Because the next owner will not get it, the share price usually falls by about the dividend amount at the open on this date.
+3. **Holder-of-record date:** the company pays the dividend to shareholders registered on this date.
+4. **Payment date:** the cash is paid.
+
+The ex-dividend date is set relative to the record date by the market's **settlement cycle**. With settlement one business day after the trade (T+1), a buyer on the day before the record date would not be registered in time, so the ex-dividend date is the record date itself or a day before, depending on the market's rules.
+
+> **Worked example 2: who gets the dividend?**
+> A company declares a dividend of 0.80 with an ex-dividend date of Wednesday. An investor buys on Tuesday; another buys on Wednesday.
+> - The Tuesday buyer owns the shares before the ex-date and receives the 0.80.
+> - The Wednesday buyer does not; the seller keeps the right to it.
+> - If the shares closed at 42.00 on Tuesday, with no other news they would be expected to open near 41.20 on Wednesday.
+
+## 4. Share repurchases
+### Methods
+A **share repurchase** (buyback) is the company buying its own shares, which are then cancelled or held as treasury shares. Methods:
+- **Open market purchases:** buying gradually on the exchange at market prices. The most common and most flexible method: the company can stop at any time.
+- **Fixed-price tender offer:** offering to buy a set number of shares at a set price (usually above the market) on a set date.
+- **Dutch auction tender offer:** shareholders state the prices at which they are willing to sell; the company buys at the lowest price that gets it the number of shares it wants.
+- **Direct negotiation:** buying a block from a large shareholder, sometimes at a premium (which can raise fairness concerns).
+
+### Effect on earnings per share
+A buyback reduces the number of shares, but the money used either comes from cash (which would have earned interest) or borrowing (which costs interest). EPS rises if the company's **earnings yield** (E/P) is greater than the **after-tax cost of the funds** used.
+
+> **Worked example 3: a buyback financed with debt**
+> A company earns net income of 50 million on 20 million shares (EPS 2.50), and the share price is 30. It borrows 45 million at an after-tax cost of 4% to buy back 1.5 million shares.
+> - After-tax interest cost = 45 × 4% = 1.8 million
+> - New EPS = (50 − 1.8) / (20 − 1.5) = 48.2 / 18.5 = **2.605**, up from 2.50
+> - Check with the rule: earnings yield = 2.50 / 30 = 8.33%, above the 4% cost, so EPS rises.
+> Had the after-tax cost of borrowing exceeded 8.33%, EPS would have fallen.
+
+### Effect on book value per share
+- If the company pays **more** than book value per share, book value per share **falls**.
+- If it pays **less**, book value per share **rises**.
+
+> **Worked example 4: book value per share after the buyback**
+> The company in example 3 has book value of equity of 400 million (BVPS = 20.00). It pays 30 per share, above BVPS.
+> - New BVPS = (400 − 45) / 18.5 = **19.19**, down from 20.00
+
+### Why companies buy back shares
+- **Signalling:** management believes the shares are undervalued.
+- **Flexibility:** unlike a regular dividend, a buyback does not create an expectation of repetition.
+- **Offsetting dilution** from employee share options and awards.
+- **Tax:** in some countries capital gains are taxed more lightly than dividends, and shareholders who do not sell pay no tax.
+- **Changing the capital structure:** using debt to buy back shares increases leverage.
+
+### Dividends versus buybacks: the same value
+In a world without taxes and trading costs, distributing the same amount of cash by a dividend or by a buyback leaves shareholders' total wealth unchanged.
+
+> **Worked example 5: two ways to return 10 million**
+> A company has 10 million shares at 25 (market value 250 million) and 10 million of surplus cash.
+> - Dividend: each share receives 1.00 and the price falls to 24.00. Wealth per share = 24 + 1 = 25.
+> - Buyback: the company buys 400,000 shares at 25. Value falls to 240 million, spread over 9.6 million shares = 25.00 per share. Selling shareholders received 25 each.
+> Either way, shareholders' wealth stays at 25 per share. Taxes, signals and the price paid make the practical difference.
+
+## 5. Splits and reverse splits
+- A **stock split** increases the number of shares and reduces the price in proportion: a 2-for-1 split doubles the shares and halves the price. Nothing of economic value changes: the company's value, each holder's ownership percentage and the dividend per original share stay the same. Companies split to keep the price in a range that is convenient for investors.
+- A **reverse split** reduces the number of shares and raises the price: a 1-for-10 reverse split turns 10 shares at 0.80 into 1 share at 8.00. Companies do this to meet an exchange's minimum price rule or to escape the stigma of a very low price.
+
+A stock dividend is economically like a small split.
+
+## Checklist before you answer
+- Total return = (P1 − P0 + D) / P0; price return omits dividends.
+- Cash dividends reduce cash and equity; stock dividends and splits change only the number of shares and the price.
+- Dividend increases signal confidence; cuts are usually bad news.
+- Ex-dividend date: first day a buyer does not get the dividend; the price falls by about the dividend. The record date determines who is paid; settlement rules link the two.
+- Buyback methods: open market (most flexible), fixed-price tender, Dutch auction, direct negotiation.
+- EPS rises after a buyback if earnings yield > after-tax cost of funds.
+- BVPS falls if the buyback price is above BVPS, rises if below.
+- Without taxes and costs, dividends and buybacks of the same amount leave shareholder wealth unchanged.
+- Reverse splits raise the price per share, often to meet listing rules.`,
  ideas:`**Shareholders earn returns from price changes and from dividends; companies return cash through dividends and buybacks, and change their share count through splits.**
 
 ## Dividends
@@ -20132,6 +20542,104 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Introduction to Equity Valuation",
  core:/intrinsic value|undervalued|overvalued|price (and|versus|vs\.?) value|book value of equity|market capitalization|enterprise value|valuation models?|asset-based|efficient market|market efficiency|weak[- ]form|semi-?strong|strong[- ]form|anomal|mispric/,
  match:/intrinsic|value|undervalued|overvalued|book value|market cap|enterprise value|\bEV\b|model|asset-based|efficient|weak|strong|anomal|mispric|behavioral|calendar|momentum|january|fundamental analysis|technical analysis/,
+ lesson:`## 1. Price and value are different things
+The **price** of a share is a fact: it is what buyers and sellers agree on in the market right now. Its **intrinsic value** is an estimate: what an analyst believes the share is worth, given the cash flows it is expected to produce and their risk, based on a complete understanding of the company. Equity valuation is the work of estimating intrinsic value and comparing it with price:
+- **Value > price:** the share looks **undervalued**: a candidate to buy.
+- **Value < price:** it looks **overvalued**: a candidate to sell or avoid.
+- **Value ≈ price:** it looks **fairly valued**.
+
+### How much to trust the gap
+A difference between value and price can mean two things: the market is wrong, or the analyst is. Before acting, an analyst should ask:
+- How **confident** am I in the model and its inputs? Small changes in growth or discount-rate assumptions can move value a lot.
+- Does the market know something I do not? Large, liquid, heavily followed shares are less likely to be badly mispriced than small, obscure ones.
+- What will make the price move toward value, and when? (A **catalyst**: an earnings release, a restructuring, a change of management.)
+
+In markets that are largely efficient, prices quickly reflect public information, so large, lasting gaps between value and price should be rare. A big gap is a reason to re-check one's own work first.
+
+> **Worked example 1: a gap worth checking**
+> An analyst estimates the intrinsic value of a large, widely followed bank at 64 per share. It trades at 48: a 33% gap.
+> Before recommending a strong buy, she checks: Are her loan-loss assumptions far more optimistic than consensus? Has the market priced in a regulatory change she has ignored? If her assumptions hold up, the gap may be real; if she finds the market is worried about a risk she had not modelled, her value should come down. For a small, rarely covered company, the same gap would be more plausible.
+
+## 2. Three measures of size
+### Book value of equity
+**Book value** = total assets − total liabilities, as shown on the balance sheet. It is an accounting measure:
+- It records many assets at **historical cost** less depreciation, not at current value.
+- It leaves out most **internally generated intangible assets**: brands, customer relationships, know-how, research built in-house. For a technology or consumer brand company, the most valuable assets may not be on the balance sheet at all.
+- It reflects **past** transactions, while value depends on **future** cash flows.
+
+So book value is usually a poor guide to intrinsic value, except for companies whose assets are mostly financial and close to market value, such as **banks** and insurers. The **price-to-book** ratio compares the two: a high ratio means the market expects returns well above what the accounting equity alone would suggest.
+
+### Market capitalization
+**Market capitalization** = share price × shares outstanding. It is the market's current price for the whole equity, not necessarily its intrinsic value.
+
+### Enterprise value
+**Enterprise value (EV)** measures the value of the **operating business** to all its capital providers:
+- EV = market value of equity + market value of debt + preferred shares + noncontrolling interests − cash and short-term investments
+
+Cash is subtracted because a buyer of the whole company would get the cash and could use it to pay down debt; it is not part of the operating business.
+
+> **Worked example 2: from market cap to enterprise value**
+> A company has 600 million shares at 14.50. It has debt of 2,100 million, preferred shares of 150 million, noncontrolling interests of 80 million and cash of 900 million.
+> - Market capitalization = 600 × 14.50 = **8,700 million**
+> - EV = 8,700 + 2,100 + 150 + 80 − 900 = **10,130 million**
+> EV is larger than the market cap here because the company's debt exceeds its cash. A company with net cash would have an EV below its market cap.
+
+EV is useful for comparing companies with **different capital structures**: two businesses with the same operations but different amounts of debt have similar EVs, though very different market caps. It pairs with measures of operating performance that come **before** interest, such as EBITDA or sales.
+
+## 3. Families of valuation models
+Analysts use three broad families. Most use more than one and compare the results.
+
+### Present value models (discounted cash flow)
+Value = the present value of the future cash flows a shareholder can expect, discounted at a rate that reflects their risk. Variants:
+- **Dividend discount models (DDM):** cash flow = dividends.
+- **Free cash flow models:** cash flow = free cash flow to equity (FCFE) or to the firm (FCFF).
+- **Residual income models:** value = book value + present value of future earnings in excess of the required return on equity.
+
+Strengths: grounded in finance theory, based on the company's own fundamentals. Weaknesses: highly sensitive to assumptions about growth and the discount rate, and need long-range forecasts.
+
+### Multiplier models (relative valuation)
+Value = a multiple × a measure of performance, using multiples of comparable companies or the company's own history. Examples:
+- **Price multiples:** price-to-earnings (P/E), price-to-book (P/B), price-to-sales (P/S), price-to-cash flow (P/CF).
+- **Enterprise value multiples:** EV/EBITDA, EV/sales.
+
+Strengths: quick, intuitive, based on market prices. Weakness: they show only whether a share is cheap or dear **relative** to its peers; if the whole sector is overvalued, a share can look cheap and still be overvalued.
+
+### Asset-based models
+Value = the market (or fair) value of the assets minus the market value of the liabilities. Suits:
+- **Natural resource** companies (oil and gas reserves, mines, timber) whose assets can be valued with reference to market prices.
+- **Holding companies and investment companies** whose assets are stakes in other businesses.
+- Companies being **liquidated**, or financial firms whose assets are marked to market.
+It works poorly for companies whose value lies in intangibles and future growth.
+
+## 4. Choosing a model
+The model should fit the company and the purpose:
+- **Mature companies with steady, meaningful dividends** that reflect their earnings power: a **dividend discount model**.
+- **Companies that pay no or little dividend**, or whose dividends differ from what they could pay, or valuations from the viewpoint of an acquirer who would control the cash: **free cash flow** models.
+- **Companies with negative or volatile free cash flow**, or **financial institutions**: **residual income** or price-to-book.
+- **Companies with high or changing debt**: FCFF and EV multiples, which are less affected by capital structure.
+- **Loss-making companies**: P/S or EV/sales, since P/E is meaningless.
+- **Natural resource or holding companies**: asset-based models.
+
+> **Worked example 3: matching companies to models**
+> - A regulated water utility paying 70% of steady earnings as dividends → dividend discount model.
+> - A fast-growing software company that pays no dividend and reinvests everything → free cash flow (FCFF or FCFE) with a multistage forecast, cross-checked with EV/sales.
+> - A regional bank → residual income or P/B, since its assets are mostly loans and securities close to fair value, and free cash flow is hard to define for a bank.
+> - A company holding listed stakes in five other businesses → sum-of-the-parts using the market values of its holdings (asset-based).
+
+## 5. A few practical points
+- **Going concern versus liquidation value:** most valuations assume the business continues indefinitely. Liquidation value (selling the assets piecemeal) is relevant for distressed companies and sets a rough floor.
+- **Fair market value** is the price a willing, informed buyer and seller would agree on; **investment value** is the value to a particular buyer, which can be higher (because of synergies).
+- **Sensitivity analysis** shows how much the value changes with the key assumptions. Presenting a range is more honest than a single number.
+- The quality of a valuation depends more on **understanding the business** (its industry, competitive position, management) than on the sophistication of the model.
+
+## Checklist before you answer
+- Intrinsic value is an estimate; price is a fact. Value > price → undervalued.
+- Before acting on a gap, question your own inputs; large, liquid shares are rarely far mispriced.
+- Book value uses historical cost and misses internal intangibles; it fits banks better than most firms.
+- Market cap = price × shares; EV = equity + debt + preferred + noncontrolling interests − cash.
+- EV suits comparing firms with different leverage, paired with pre-interest measures (EBITDA, sales).
+- Model families: present value (DDM, FCFE, FCFF, residual income), multiples (P/E, P/B, P/S, EV/EBITDA), asset-based.
+- Match the model: dividend payers → DDM; no dividends or control view → FCF; banks → residual income/P/B; losses → P/S; resource or holding companies → asset-based.`,
  ideas:`**Price is what the market pays today; intrinsic value is what an analyst estimates the share is worth from its expected cash flows and risk.**
 
 ## Price versus value
@@ -20166,6 +20674,104 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Discounted Cash Flow (DCF) and Growth Models",
  core:/dividend discount|\bDDM\b|Gordon|constant[- ]growth|multistage|multi-stage|two-stage|terminal value|\bFCFE\b|\bFCFF\b|free cash flow|residual income|preferred (stock|shares?)'?s? (value|is worth|valued|intrinsic)|value (of|per) (a|the|each) preferred|sustainable growth|retention (ratio|rate)/,
  match:/dividend|discount|Gordon|growth|stage|terminal|FCFE|FCFF|free cash|residual income|present value|preferred|required (rate of )?return|retention|payout|ROE|intrinsic value/,
+ lesson:`## 1. Value as the present value of future cash
+The central idea of equity valuation: a share is worth the **present value of the cash flows** its owner can expect, discounted at the **required return on equity** (r), the return investors demand for the share's risk. The previous module introduced the families of models; this one shows how to compute values with them.
+
+The general form:
+- V0 = CF1 / (1 + r) + CF2 / (1 + r)² + CF3 / (1 + r)³ + …
+
+The cash flow can be defined in different ways, each with its own discount rate.
+
+## 2. Which cash flow?
+- **Dividends (DDM):** what shareholders actually receive. Discounted at the **cost of equity**. Best for companies with stable dividends that reflect their earning power.
+- **Free cash flow to equity (FCFE):** the cash available to shareholders after operating expenses, taxes, investment in working capital and fixed assets, and net borrowing. Discounted at the **cost of equity**. Best when dividends differ from capacity to pay, or for a controlling investor who could change the dividend.
+- **Free cash flow to the firm (FCFF):** the cash available to **all** capital providers (debt and equity) before debt payments. Discounted at the **weighted average cost of capital (WACC)** to give the value of the firm; subtract the market value of debt (and other non-equity claims) to get equity value. Best for companies with high or changing leverage.
+- **Residual income:** earnings minus a charge for the cost of equity on book value. Value = current book value + present value of future residual income. Best for companies with no dividends, negative free cash flow, or financial institutions.
+
+Consistency rule: **equity cash flows at the cost of equity, firm cash flows at the WACC**. Mixing them is a classic error.
+
+## 3. The constant growth (Gordon) model
+If dividends are expected to grow at a constant rate g forever, and r > g, the infinite stream collapses to:
+- V0 = D1 / (r − g), where D1 = D0 × (1 + g) is **next year's** dividend.
+
+> **Worked example 1: valuing a steady dividend payer**
+> A utility just paid a dividend of 1.50 (D0). Dividends are expected to grow 5% a year forever, and the required return is 9.5%.
+> - D1 = 1.50 × 1.05 = 1.575
+> - V0 = 1.575 / (0.095 − 0.05) = **35.00**
+> The most common mistake is dividing D0 instead of D1, which would give 33.33.
+
+### What drives the value
+The denominator (r − g) makes the model very sensitive:
+
+> **Worked example 2: sensitivity to the spread**
+> Same D1 = 1.575:
+> - r − g = 4.0% (say g = 5.5%): V0 = **39.38**
+> - r − g = 4.5% (base case): V0 = **35.00**
+> - r − g = 5.0% (say g = 4.5%): V0 = **31.50**
+> A change of half a percentage point in the growth assumption moves the value by 10% to 12.5%. Always test the result for sensitivity to g and r.
+
+### Rearranging the model
+- **Implied growth:** g = r − D1 / P0. The market price tells you what growth the market expects. If a share trades at 48 with D1 = 2.40 and r = 10%, the implied growth is 10% − 2.40 / 48 = **5.0%**.
+- **Implied required return:** r = D1 / P0 + g, the dividend yield plus growth.
+
+### Where growth comes from
+A company grows its earnings and dividends by reinvesting part of its profits. The **sustainable growth rate**, the rate it can grow without raising new equity or changing its leverage:
+- g = b × ROE, where b is the **retention ratio** (1 − payout ratio) and ROE is the return on equity.
+
+A company that retains 65% of its earnings and earns a 14% ROE can grow at about 0.65 × 14% = **9.1%** a year.
+
+### When the model fits
+The Gordon model suits **mature** companies growing roughly with the economy: utilities, consumer staples, large banks. It fails when growth is high (g close to or above r gives absurd or negative values) or irregular.
+
+The same formula works for FCFE: V0 = FCFE1 / (r − g), and for FCFF with the WACC: firm value = FCFF1 / (WACC − g).
+
+## 4. Multistage models
+Many companies grow fast now and will slow down later. A **two-stage** model:
+1. Forecast dividends (or free cash flows) year by year for the high-growth period.
+2. At the end of it, compute a **terminal value**: the value of all dividends after that point, using the Gordon formula on the first dividend of the stable period.
+3. Discount every dividend and the terminal value to today.
+
+> **Worked example 3: high growth, then stable**
+> D0 = 1.00. Dividends grow 15% a year for three years, then 5% forever. Required return 11%.
+> - D1 = 1.1500, D2 = 1.3225, D3 = 1.5209
+> - Present values: 1.15 / 1.11 = 1.0360; 1.3225 / 1.11² = 1.0734; 1.5209 / 1.11³ = 1.1121; total 3.2215
+> - D4 = 1.5209 × 1.05 = 1.5969; terminal value at the end of year 3 = 1.5969 / (0.11 − 0.05) = 26.615
+> - Present value of the terminal value = 26.615 / 1.11³ = 19.461
+> - V0 = 3.2215 + 19.461 = **22.68**
+> The terminal value is about 86% of the total: typical, and a reason to be careful with long-term growth assumptions.
+
+Common errors: discounting the terminal value by four years instead of three (it is a value **at the end of year 3**), or computing it from D3 instead of D4.
+
+## 5. Limitations of DCF models
+- **Sensitivity:** small changes in r, g or margins change the value a lot.
+- **Constant growth forever** is unrealistic for young companies; the sudden switch from high to stable growth in a two-stage model is artificial (three-stage models phase growth down).
+- **Terminal value dominance:** most of the value often comes from years beyond the forecast.
+- **Forecast uncertainty:** distant cash flows are hard to estimate.
+- **Dividend models** do not suit companies that pay no dividends; FCF models need careful definitions; residual income relies on accounting quality.
+
+## 6. Valuing preferred shares
+A preferred share with a fixed dividend D and no maturity is a **perpetuity**:
+- V0 = D / r
+
+> **Worked example 4: a perpetual preferred share**
+> A non-callable, non-convertible preferred share pays 4.25 a year; investors require 7.5%.
+> - V0 = 4.25 / 0.075 = **56.67**
+> If required returns rise to 8.5%, the value falls to 50.00: preferred shares behave much like long-term bonds when rates change.
+
+Embedded features change the value:
+- **Callable** preferred: the issuer can redeem it at a set price, typically when rates fall. The call caps the investor's upside, so the share is worth **less** than an equivalent non-callable share.
+- **Putable (retractable)** preferred: the investor can sell it back at a set price, protecting against rising rates. Worth **more**.
+- **Convertible** preferred: can be exchanged for common shares; worth at least as much as the common shares it converts into, and at least as much as a straight preferred.
+- Preferred with a **maturity** is valued like a bond: present value of dividends plus the redemption value.
+
+## Checklist before you answer
+- Equity cash flows (dividends, FCFE) at the cost of equity; FCFF at the WACC, then subtract debt.
+- Gordon model: V0 = D1 / (r − g), with D1 = D0 × (1 + g) and r > g.
+- Implied growth g = r − D1 / P0; required return r = D1 / P0 + g.
+- Sustainable growth g = retention ratio × ROE.
+- Multistage: PV of explicit dividends + PV of terminal value; terminal value = D(n+1) / (r − g) at time n.
+- Value is very sensitive to r − g; terminal value is often most of the total.
+- Perpetual preferred: V0 = D / r; call feature lowers value, put feature raises it.`,
  ideas:`**Present value models estimate intrinsic value as the discounted value of the cash flows a shareholder can expect.**
 
 ## Choosing the cash flow
@@ -20206,6 +20812,116 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Relative Value Equity Valuation Approaches",
  core:/multiples?\b|P\/E|price-to-earnings|price-earnings|price-to-book|P\/B\b|price-to-sales|P\/S\b|price-to-cash|EV\/EBITDA|EV\/sales|EBITDA multiple|comparables|comparable companies|peer group|justified|trailing|forward (P\/E|earnings)|forecasted fundamentals|\bPEG\b/,
  match:/multiple|P\/E|P\/B|P\/S|EBITDA|EV\/|price-to|comparab|peer|justified|trailing|forward|earnings yield|PEG|benchmark|cheap|expensive|relative/,
+ lesson:`## 1. Valuing by comparison
+Estate agents value a flat by looking at what similar flats nearby sold for, per square metre. **Relative valuation** does the same with shares: it expresses price as a **multiple** of some measure of performance (earnings, book value, sales, cash flow, EBITDA) and compares that multiple with similar companies or with what the company's fundamentals justify.
+
+Multiples are the most widely used valuation tool in practice: they are quick, easy to explain and rooted in actual market prices. Their weakness is that they tell you whether a share is cheap or expensive **relative to something else**, which might itself be mispriced.
+
+## 2. Two ways to use multiples
+### The method of comparables
+Compare the company's multiple with a **benchmark**:
+- the multiples of **peer companies** (often the median, which is less affected by outliers than the mean),
+- the **industry or sector** average,
+- the broad **market**, or
+- the company's own **historical** average.
+
+A multiple **below** the benchmark suggests the share is relatively **undervalued**; above, relatively overvalued. The method assumes the benchmark itself is fairly priced (the "law of one price" applied to similar assets) and that differences in growth and risk have been accounted for.
+
+### The method of forecasted fundamentals
+Derive the multiple that a **discounted cash flow model** justifies, given the company's growth, payout and required return. Using the Gordon model, V0 = D1 / (r − g). Divide both sides by next year's earnings E1:
+- **Justified forward P/E** = (D1 / E1) / (r − g) = payout ratio / (r − g)
+- **Justified trailing P/E** = payout ratio × (1 + g) / (r − g)
+- **Justified P/B** = (ROE − g) / (r − g)
+
+> **Worked example 1: justified multiples**
+> A company pays out 55% of its earnings, its required return is 9%, its sustainable growth rate is 4%, and its ROE is 13%.
+> - Justified forward P/E = 0.55 / (0.09 − 0.04) = **11.0**
+> - Justified trailing P/E = 0.55 × 1.04 / 0.05 = **11.4**
+> - Justified P/B = (0.13 − 0.04) / (0.09 − 0.04) = **1.8**
+> If the share trades at 15× forward earnings, the market is either expecting more growth or less risk than these inputs, or it is overvaluing the share.
+
+The justified P/B formula shows an important fact: a company deserves to trade **above book value** only if its ROE exceeds its required return. With ROE = r, the justified P/B is exactly 1.
+
+## 3. Price multiples
+### Price-to-earnings (P/E)
+The most widely used multiple.
+- **Trailing P/E** = price / earnings per share of the last 12 months: based on reported figures, but may be out of date.
+- **Forward (leading) P/E** = price / forecast EPS for the next year: reflects the future, but depends on the forecast.
+- Strengths: earnings drive value, and P/E is widely understood.
+- Weaknesses: meaningless when earnings are **negative**; distorted by **one-off items** and **accounting choices**; very volatile for **cyclical** companies (P/E is often highest at the bottom of the cycle, when earnings are depressed). Analysts use **normalized earnings** (average earnings over a cycle, or earnings at normal margins) for cyclicals.
+
+### Price-to-book (P/B)
+- Book value is usually positive and more stable than earnings, so P/B works when earnings are negative.
+- Best for companies whose assets are mostly financial and carried near market value: **banks, insurers**.
+- Weaknesses: book value misses internally created intangibles (brands, research), differs with accounting rules, and can be negative after large losses or buybacks.
+
+### Price-to-sales (P/S)
+- Sales are positive even for loss-making companies and harder to manipulate than earnings.
+- Useful for **young companies** and **cyclicals** at the bottom of the cycle.
+- Weakness: ignores costs and profitability; two companies with the same sales but very different margins deserve very different multiples.
+
+### Price-to-cash flow (P/CF)
+- Cash flow is harder to manipulate than earnings and less affected by accounting choices like depreciation.
+- Different definitions (operating cash flow, free cash flow, earnings plus non-cash charges) must be applied consistently.
+
+## 4. Enterprise value multiples
+**EV/EBITDA** is the leading example:
+- EV = market value of equity + debt + preferred + noncontrolling interests − cash.
+- EBITDA = earnings before interest, taxes, depreciation and amortization.
+
+Advantages:
+- It is **neutral to capital structure**: EV includes debt and EBITDA is before interest, so companies with different leverage can be compared.
+- It is less affected by different **depreciation** policies.
+- EBITDA is positive for more companies than net income.
+
+Weaknesses: EBITDA ignores **capital spending** (a capital-intensive company may have high EBITDA but little free cash), working capital needs and taxes.
+
+**The matching rule:** numerator and denominator must refer to the same claimants.
+- **Equity value** (price, market cap) goes with **equity measures**: earnings, book value of equity, FCFE.
+- **Enterprise value** goes with **pre-interest measures**: EBITDA, EBIT, sales, FCFF.
+P/EBITDA, for example, is a mismatch: EBITDA belongs to both debt and equity holders.
+
+> **Worked example 2: valuing with an EV multiple**
+> Comparable companies trade at a median EV/EBITDA of 9.5×. The target has EBITDA of 420 million, debt of 1,150 million, cash of 200 million and 150 million shares.
+> - Implied EV = 9.5 × 420 = 3,990 million
+> - Implied equity value = 3,990 − 1,150 + 200 = 3,040 million
+> - Value per share = 3,040 / 150 = **20.27**
+> If the share trades at 17, it looks undervalued relative to its peers, provided its growth and risk are comparable.
+
+## 5. Choosing and adjusting peers
+### Choosing comparables
+Start from an **industry classification** (such as GICS or ICB), then refine by the drivers of value:
+- **Growth** prospects, **profitability** (margins, ROE), **risk** (leverage, earnings volatility), **size**, **business model** and **geography**.
+A company in the same industry code may be a poor comparable if it has a very different business mix.
+
+### Adjusting for growth: the PEG ratio
+A company with faster expected growth deserves a higher P/E. The **PEG ratio** divides P/E by expected growth (in percentage points):
+- PEG = P/E / g
+
+> **Worked example 3: comparing on PEG**
+> Company A trades at 18× earnings with expected growth of 12% a year; Company B at 14× with growth of 6%.
+> - PEG A = 18 / 12 = **1.50**; PEG B = 14 / 6 = **2.33**
+> A looks more expensive on P/E but cheaper once growth is considered. PEG assumes a linear relation between P/E and growth and ignores differences in risk, so it is a rough tool.
+
+## 6. Past, current and future values
+- **Trailing** multiples use the last reported 12 months: objective, but may not reflect the future (after an acquisition, for example).
+- **Forward** multiples use forecasts: they look ahead but depend on the quality of the forecasts.
+- Whichever is chosen, apply the **same basis to every company** compared.
+- For **cyclical** companies, use **normalized** figures across a cycle.
+- For valuing the whole company in a sale, multiples paid in **precedent transactions** include a control premium, so they are usually higher than trading multiples.
+
+### Terminal value with a multiple
+In a DCF model, the terminal value can be estimated with an **exit multiple** (for example, EV/EBITDA applied to the final year's EBITDA) instead of the Gordon formula. It is easy and market-based, but imports today's market valuation into a value far in the future.
+
+## Checklist before you answer
+- Method of comparables: compare with peers (median), industry, market or history; assumes the benchmark is fairly valued.
+- Justified forward P/E = payout / (r − g); trailing = payout × (1 + g) / (r − g); P/B = (ROE − g) / (r − g).
+- P/B > 1 only if ROE > r.
+- P/E fails with negative earnings and swings for cyclicals (use normalized earnings); P/B fits banks; P/S fits loss-makers but ignores margins.
+- EV/EBITDA is neutral to leverage and depreciation but ignores capex.
+- Match equity value with equity measures, EV with pre-interest measures.
+- PEG = P/E / growth; lower PEG = cheaper per unit of growth.
+- Use the same basis (trailing or forward) for all peers.`,
  ideas:`**Multiples value a share by comparing it with similar companies, or with the multiple its fundamentals justify.**
 
 ## Two methods
@@ -20244,6 +20960,103 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Financial Statement Forecasting in Equity Valuation",
  core:/forecast(ing)? (model|revenue|sales|the income|earnings)|pro forma|financial (statement )?model|forecast horizon|explicit forecast|scenario analysis|sensitivity analysis|sum of the parts|exit multiple/,
  match:/forecast|pro forma|model|projection|horizon|scenario|sensitivity|assumption|driver|segment|normaliz|exit multiple|terminal/,
+ lesson:`## 1. Why analysts forecast financial statements
+A share's value depends on what the company will earn and generate in cash **in the future**. Historical statements show where the company has been; a **forecast model** projects where it is going. A good model:
+- Links **operating drivers** (volumes, prices, costs, investment) to all three statements: income statement, balance sheet and cash flow statement.
+- Keeps them **consistent**: the balance sheet balances, retained earnings grow by net income minus dividends, and the cash flow statement reconciles the change in cash.
+- Produces the inputs for valuation: earnings, free cash flow, dividends, and the balance sheet items needed for enterprise value.
+- Allows **scenario and sensitivity analysis**: what happens if growth is slower, margins thinner, or rates higher?
+
+## 2. Building the forecast, line by line
+### Revenue
+Revenue is usually the starting point and the most important driver. Approaches:
+- **Top-down:** start from the economy or the industry (GDP growth, market size, market share). Revenue = market size × company's share.
+- **Bottom-up:** start from the company's own drivers: number of stores × sales per store, subscribers × average revenue per user, units × price.
+- **Hybrid:** combine both and check that they agree.
+
+Break revenue down by **segment** and **geography** when the parts grow at different rates.
+
+### Costs and margins
+- Separate **variable costs** (which move with sales, such as materials) from **fixed costs** (rent, salaries, depreciation). A company with high fixed costs has high **operating leverage**: its operating profit grows faster than sales when sales rise, and falls faster when they fall.
+- Use history and industry comparisons to judge whether margins can expand (scale, pricing power) or will be competed away.
+- **Economies of scale** can lower unit costs as volume grows.
+
+### Working capital
+Forecast receivables, inventory and payables with **days ratios** tied to sales or cost of sales:
+- Receivables = sales × days sales outstanding / 365
+- Inventory = cost of sales × days of inventory / 365
+- Payables = cost of sales × days payable / 365
+
+A growing company ties up more cash in working capital each year.
+
+### Capital spending and depreciation
+- Split capital spending into **maintenance** (keeping existing capacity) and **growth** (new capacity).
+- Depreciation follows the asset base. In the long run, a company that is not growing spends roughly its depreciation on maintenance; a growing company spends more.
+
+### Financing, taxes and shares
+- **Debt:** interest expense depends on the debt level and its cost; new borrowing or repayments follow the company's financing plans.
+- **Dividends and buybacks:** based on payout policy.
+- **Tax rate:** usually the **effective** rate, adjusted for known changes.
+- **Share count:** for per-share figures, include expected buybacks and dilution from options and convertibles.
+
+> **Worked example 1: a one-year forecast**
+> A retailer had sales of 2,000 million last year. Assumptions for next year: sales growth 6%, gross margin 40%, operating expenses (excluding depreciation) 22% of sales, depreciation 60 million, interest 25 million, tax rate 25%, days sales outstanding 10, days of inventory 75, days payable 45, capital spending 95 million.
+> - Sales = 2,000 × 1.06 = 2,120.0; cost of sales = 2,120 × 0.60 = 1,272.0
+> - EBITDA = 2,120 × (0.40 − 0.22) = 381.6; EBIT = 381.6 − 60 = 321.6
+> - Net income = (321.6 − 25) × 0.75 = 222.45
+> - Receivables = 2,120 × 10 / 365 = 58.1; inventory = 1,272 × 75 / 365 = 261.4; payables = 1,272 × 45 / 365 = 156.8; net working capital = 162.6 (unrounded parts)
+> Comparing net working capital with last year's tells you how much cash growth absorbs, which feeds into free cash flow.
+
+## 3. Matching the model to the company
+Not all companies should be modelled the same way. Put the effort where value is decided.
+- **Mature, stable companies:** a few drivers and steady growth; the main questions are margins and capital returns.
+- **Cyclical companies** (steel, chemicals, autos, airlines): forecast across a full **cycle** with **normalized margins**. Extending the latest year (whether boom or bust) is the common mistake.
+- **Young, fast-growing companies:** focus on unit economics (customer acquisition cost, lifetime value), the path to profitability, and how long until growth slows to a steady state. Forecast horizons are longer.
+- **Banks and insurers:** driven by the **balance sheet**: loan growth, deposits, net interest margin, credit losses, capital requirements. Free cash flow is hard to define; residual income or dividend models fit better.
+- **Conglomerates:** model each **segment** separately and value them as a **sum of the parts**.
+- **Companies after a major event** (acquisition, restructuring): use pro forma figures that show the business as it now is.
+
+### Level of detail
+Model the **key drivers** carefully and treat minor lines simply (for example, as a percentage of sales). A model with hundreds of lines is not more accurate if the important assumptions are weak.
+
+## 4. Behavioural traps in forecasting
+- **Overconfidence:** ranges that are too narrow; scenarios cluster around the base case.
+- **Anchoring:** sticking too closely to last year's figures or management's guidance.
+- **Confirmation bias:** seeking evidence that supports one's thesis.
+- **Illusion of control:** believing that more detail means more accuracy.
+Remedies: build bear and bull cases with genuine differences, compare with base rates (how fast do companies in this industry usually grow?), and ask what would prove the thesis wrong.
+
+## 5. From the forecast to a value
+### Free cash flow
+From the forecast:
+- **FCFF** = EBIT × (1 − tax rate) + depreciation − capital spending − increase in working capital
+- **FCFE** = FCFF − interest × (1 − tax rate) + net borrowing
+
+> **Worked example 2: FCFF from the forecast**
+> Continuing example 1: EBIT 321.6, tax rate 25%, depreciation 60, capital spending 95. Net working capital rises from 150.0 to 162.6 (an increase of 12.6).
+> - FCFF = 321.6 × 0.75 + 60 − 95 − 12.6 = 241.2 + 60 − 95 − 12.6 = **193.6 million**
+
+### Terminal value and the equity value per share
+1. Forecast FCFF for an **explicit period** (often 5 to 10 years), until the company reaches a steady state.
+2. Estimate a **terminal value** at the end: either the Gordon formula with a long-term growth rate (FCFF(n+1) / (WACC − g)) or an **exit multiple** (such as EV/EBITDA).
+3. Discount everything at the WACC to get the **firm value**.
+4. Subtract debt and other non-equity claims, add non-operating assets (excess cash, investments) to get **equity value**.
+5. Divide by the **diluted** number of shares.
+
+### Checks
+- Cross-check the result with **multiples**: does the implied EV/EBITDA or P/E make sense against peers?
+- Run **scenarios** (base, optimistic, pessimistic) and weight them by probability.
+- Use **sensitivity tables** for the key assumptions (WACC, terminal growth, margins) to see which ones drive value most.
+- Check that long-term assumptions are plausible: terminal growth should not exceed the long-run growth of the economy; returns on capital should drift toward the cost of capital as competition works.
+
+## Checklist before you answer
+- Forecasts link drivers to all three statements and keep them consistent.
+- Revenue: top-down (market × share), bottom-up (units × price), or both.
+- Fixed costs create operating leverage; days ratios drive working capital; capex = maintenance + growth.
+- Cyclicals need normalized margins over a cycle; banks are balance-sheet driven; conglomerates use sum of the parts.
+- Watch for overconfidence, anchoring and confirmation bias; build real bull and bear cases.
+- FCFF = EBIT(1 − t) + D&A − capex − ΔNWC; discount at WACC; subtract debt; divide by diluted shares.
+- Terminal value: Gordon with modest long-run growth, or exit multiple; cross-check with multiples and run sensitivities.`,
  ideas:`**A forecast model projects a company's financial statements so the analyst can estimate the earnings or cash flows that drive its value.**
 
 ## Why build one, and how
@@ -20279,6 +21092,103 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Industry and Competitive Analysis",
  core:/industry (analysis|classification|life[- ]cycle|structure|concentration|growth|size)|\bGICS\b|\bICB\b|sector classification|five forces|Porter|PESTLE|PEST\b|barriers? to entry|market share|life[- ]cycle|cyclical (industry|company|companies|firms?)|defensive (industry|company|companies|sector)|concentration ratio|\bHHI\b|Herfindahl|shakeout|embryonic/,
  match:/industry|sector|GICS|ICB|classif|five forces|Porter|PESTLE|barrier|entry|substitut|supplier|buyer|bargaining|rival|market share|life cycle|embryonic|growth stage|mature|decline|shakeout|cyclical|defensive|concentrat|HHI|Herfindahl|commodit|regulat|demograph/,
+ lesson:`## 1. Why start with the industry
+A company's results depend heavily on the industry it competes in. An average company in an attractive industry often earns more than an excellent company in a terrible one. Industry analysis answers questions that every forecast needs:
+- How **big** is the market, and how fast is it **growing**?
+- How **profitable** is the industry, and why?
+- How intense is **competition**, and is it getting stronger or weaker?
+- Which **external forces** (regulation, technology, demographics) will change it?
+
+The answers set the limits within which the company's own revenue growth, margins and returns can plausibly move.
+
+## 2. The process
+1. **Define the industry:** which products or services, which customers, which geography. A definition that is too broad ("technology") or too narrow ("left-handed scissors") gives misleading results.
+2. **Measure size and growth**, past and expected.
+3. **Analyse the structure:** concentration, competitive forces, life-cycle stage, profitability.
+4. **Analyse external influences** (PESTLE).
+5. **Position the company** within the industry: market share, strategy, competitive advantages (the next module).
+6. **Feed the conclusions into forecasts**: growth rates, margins, returns on capital.
+
+## 3. Classifying companies
+### Commercial classification systems
+Index providers and data vendors classify companies into sectors and industries:
+- **GICS** (Global Industry Classification Standard) and **ICB** (Industry Classification Benchmark) are the most widely used.
+- They assign each company by its **principal business activity**, mainly the source of most of its **revenue** (and sometimes earnings).
+- They have several levels, from broad **sectors** (such as Financials, Health Care, Energy) down to **sub-industries**.
+
+### Other approaches
+- **Business cycle sensitivity:**
+  - **Cyclical** companies' earnings swing with the economy: autos, construction, airlines, luxury goods, industrial materials.
+  - **Defensive** (non-cyclical) companies are much less affected: food, household products, utilities, health care.
+- **Statistical approaches** group companies whose share returns move together; they can find unexpected similarities, but the groups may change over time and lack an economic explanation.
+
+### Limits of classification
+A conglomerate or a company with several significant businesses fits no single code. For valuation, peers should share the **drivers of value** (growth, risk, business model), not just a classification code.
+
+## 4. Size, growth and the life cycle
+### Measuring size and growth
+Analysts use historical sales data, industry associations, regulators and research firms, and project growth from **drivers**: population and income growth, technology adoption, price trends, regulation.
+
+### The industry life cycle
+Industries tend to pass through stages, each with typical features:
+- **Embryonic:** a new product, slow growth, high prices, little scale, high risk of failure.
+- **Growth:** rapidly rising demand, falling prices as scale improves, rising profits, relatively mild competition because the market expands for everyone.
+- **Shakeout:** growth slows, capacity overshoots demand, competition intensifies, prices fall, weaker firms fail or are acquired.
+- **Mature:** slow growth roughly with the economy, consolidation into a few leaders, stable market shares, strong cash generation, often high dividends.
+- **Decline:** demand shrinks (substitutes, changing tastes), overcapacity, price wars, exits.
+
+The stage shapes forecasts: assuming high growth for a mature industry, or stable profits for one entering shakeout, is a common error. External shocks (new technology, regulation) can push a mature industry back into growth or into decline.
+
+## 5. Concentration and profitability
+### Measuring concentration
+- **N-firm concentration ratio:** the combined market share of the largest N firms (for example, the top four).
+- **Herfindahl-Hirschman index (HHI):** the sum of the squared market shares (in percent) of all firms. It ranges from near 0 (many tiny firms) to 10,000 (a monopoly) and gives more weight to the largest firms.
+
+> **Worked example 1: two ways to measure concentration**
+> Five firms have market shares of 40%, 30%, 15%, 10% and 5%.
+> - Four-firm concentration ratio = 40 + 30 + 15 + 10 = **95%**
+> - HHI = 40² + 30² + 15² + 10² + 5² = 1,600 + 900 + 225 + 100 + 25 = **2,850**
+> An HHI above about 2,500 is usually considered highly concentrated. The concentration ratio would not change if the leader's share rose to 55% at the expense of the fourth firm, but the HHI would rise sharply.
+
+Higher concentration often, but not always, means less price competition and higher margins. A concentrated industry can still be fiercely competitive if products are identical and capacity is high (airlines on some routes).
+
+### Profitability
+Compare margins and **returns on invested capital** across the industry and over time. An industry where returns stay well above the cost of capital for years usually has **barriers** that keep competitors out.
+
+## 6. Porter's five forces
+Michael Porter identified five forces that determine how much of the value an industry creates is kept by its firms. The stronger the forces, the lower the industry's long-run profitability.
+1. **Threat of new entrants.** Low if **barriers to entry** are high: economies of scale, large capital requirements, strong brands, patents, regulation and licences, access to distribution, network effects.
+2. **Threat of substitutes.** Products from other industries that meet the same need (video calls versus business travel). Strong substitutes cap prices.
+3. **Bargaining power of buyers.** High when buyers are few and large, products are standardized, switching costs are low, or buyers can make the product themselves.
+4. **Bargaining power of suppliers.** High when suppliers are few, their inputs are critical or differentiated, and switching is costly.
+5. **Rivalry among existing competitors.** Intense when competitors are many and similar in size, growth is slow, fixed costs are high (pushing firms to cut prices to fill capacity), products are undifferentiated, and exit is costly.
+
+> **Worked example 2: two industries through the five forces**
+> - **Commodity airline routes:** low barriers on many routes (leased aircraft), strong substitutes (trains, video calls) on short routes, price-sensitive buyers comparing fares online, powerful suppliers (two aircraft makers, unions, airports), and fierce rivalry with high fixed costs. Result: low long-run returns.
+> - **A dominant software platform for a profession:** high switching costs, network effects, scale, few substitutes, fragmented buyers, many suppliers of computing services. Result: high and lasting returns.
+
+## 7. PESTLE: external influences
+Industries are shaped by forces outside them. **PESTLE** organizes them:
+- **Political:** government policy, trade tariffs, subsidies, political stability.
+- **Economic:** GDP growth, interest rates, inflation, exchange rates, the business cycle.
+- **Social:** demographics (ageing, urbanization), lifestyles, consumer preferences.
+- **Technological:** innovation, automation, digital disruption.
+- **Legal:** regulation, competition law, product liability, labour law.
+- **Environmental:** climate policy, carbon prices, resource scarcity, physical climate risks.
+
+> **Worked example 3: PESTLE for car makers**
+> Political: subsidies for electric vehicles and tariffs on imports. Economic: car purchases depend on interest rates and consumer confidence. Social: urban young people buy fewer cars. Technological: batteries and software change what makes a car competitive. Legal: safety and emissions rules. Environmental: combustion-engine bans in several regions.
+> Each factor feeds directly into forecasts of volumes, prices, capital spending and margins.
+
+## Checklist before you answer
+- Define the industry carefully; then size, growth, structure, external forces, company position, forecasts.
+- GICS and ICB classify by principal business activity (mainly revenue source).
+- Cyclical vs defensive: sensitivity of earnings to the economy.
+- Life cycle: embryonic, growth, shakeout, mature, decline; match forecasts to the stage.
+- HHI = sum of squared market shares; above ~2,500 is highly concentrated; it reacts to the leader's share, unlike the N-firm ratio.
+- Five forces: new entrants, substitutes, buyers, suppliers, rivalry; stronger forces → lower profitability.
+- High barriers to entry and switching costs protect returns.
+- PESTLE: Political, Economic, Social, Technological, Legal, Environmental.`,
  ideas:`**Industry analysis explains the environment a company competes in: how big the market is, how fast it grows, how profitable it is, and which forces shape it.**
 
 ## The process
@@ -20317,6 +21227,116 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Company Analysis: Past, Present, and Future",
  core:/competitive (strategy|advantage|position)|cost leadership|differentiation|focus strategy|pricing power|revenue drivers?|operating (profitability|leverage)|unit economics|return on invested capital|\bROIC\b|company analysis|moat|switching costs|network effect/,
  match:/strategy|cost leader|differentiat|focus|pricing power|revenue|driver|margin|profitab|working capital|capex|capital expenditure|capital structure|leverage|return on (invested )?capital|ROIC|DuPont|moat|brand|patent|scale|switching|network/,
+ lesson:`## 1. From the industry to the company
+Industry analysis shows the terrain; company analysis asks how one company moves across it. The questions:
+- What is the company's **strategy**, and does it have a lasting **competitive advantage**?
+- What drives its **revenue**, and how much **pricing power** does it have?
+- How **profitable** is it, and how sensitive are its profits to changes in sales?
+- How much **capital** does it need (working capital and fixed assets), and does it earn more than that capital costs?
+- How is it **financed**, and is the financing safe?
+
+The answers become the assumptions in the forecast model and the valuation.
+
+## 2. Strategy and competitive position
+### Porter's generic strategies
+- **Cost leadership:** be the lowest-cost producer in the industry and compete on price, usually through scale, efficient processes or cheap inputs. Works best for standardized products where buyers compare prices.
+- **Differentiation:** offer something customers value and will pay more for: quality, brand, design, service, technology.
+- **Focus:** serve a **niche** (a region, a customer group, a product segment) using either cost leadership or differentiation within that niche.
+
+A company that tries to do everything and achieves neither low cost nor real differentiation is "**stuck in the middle**" and usually earns below-average returns.
+
+### Sources of lasting advantage
+A competitive advantage matters only if competitors cannot easily copy it. Sources that tend to last (often called a "**moat**"):
+- **Brands and reputation** that let the company charge more.
+- **Patents, licences and regulation** that legally limit competition.
+- **Network effects:** the product becomes more valuable as more people use it (payment networks, marketplaces).
+- **Switching costs:** customers find it costly or disruptive to change supplier (enterprise software).
+- **Economies of scale** that new entrants cannot match.
+- **Unique resources** (a low-cost mine, a prime location).
+
+Without a moat, high returns attract competitors, and returns fall toward the cost of capital.
+
+## 3. Revenue drivers and pricing power
+### Breaking revenue down
+- Revenue = **volume × price**, broken down by product, segment, region and customer type.
+- Growth can come from the **market growing** or from **gaining market share**, and from **price** or **volume**. Each has different sustainability: share gains are limited; price increases depend on pricing power.
+- **Recurring** revenue (subscriptions, contracts, consumables) is more predictable and usually valued more highly than one-off sales.
+
+### Pricing power
+**Pricing power** is the ability to raise prices without losing much volume. It depends on:
+- **Demand elasticity:** inelastic demand (necessities, products with few substitutes) supports pricing power.
+- **Competitive position:** a strong brand or few competitors.
+- **Market structure:** monopolies and oligopolies have more than firms in perfect competition.
+Pricing power is especially valuable when **costs rise**: a company that can pass inflation on to customers protects its margins.
+
+## 4. Operating profitability
+### Margins
+Analyse gross, operating (EBIT) and net margins over time and against peers. Ask what drives differences: scale, product mix, pricing, cost efficiency.
+
+### Cost structure and operating leverage
+- **Variable costs** move with sales; **fixed costs** do not (in the short run).
+- A high share of fixed costs means high **operating leverage**: a small change in sales causes a large change in operating profit.
+- **Degree of operating leverage (DOL)** = % change in EBIT / % change in sales, or at a given level of sales: contribution margin / EBIT.
+
+> **Worked example 1: operating leverage**
+> A company has sales of 1,000, variable costs of 60% of sales and fixed costs of 250.
+> - EBIT = 1,000 × 0.40 − 250 = **150**
+> - If sales rise 10% to 1,100: EBIT = 1,100 × 0.40 − 250 = **190**, a rise of 26.7%
+> - DOL = 26.7% / 10% = 2.67, or contribution margin / EBIT = 400 / 150 = **2.67**
+> The same leverage works in reverse: a 10% fall in sales would cut EBIT by 26.7%. Companies with high fixed costs (airlines, semiconductor makers) see profits swing sharply over the cycle.
+
+### Economies of scale
+As volume grows, fixed costs are spread over more units and purchasing power improves, so unit costs fall. Scale advantages can become a barrier to entry.
+
+## 5. Working capital
+Growth needs cash for **working capital** before it produces cash from sales. Key measures:
+- **Days of inventory on hand (DOH)**, **days sales outstanding (DSO)**, **days payable outstanding (DPO)**.
+- **Cash conversion cycle** = DOH + DSO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers.
+
+> **Worked example 2: cash tied up in operations**
+> A company holds inventory for 45 days, collects from customers in 60 days and pays suppliers in 38 days.
+> - Cash conversion cycle = 45 + 60 − 38 = **67 days**
+> If annual cost of sales is 730 million (2 million a day), shortening the cycle by 10 days would free about 20 million of cash. A growing company with a long cycle can be profitable and still short of cash.
+
+## 6. Capital investment and returns
+### Maintenance versus growth
+- **Maintenance capital spending** keeps existing capacity working; over time it tends to be close to depreciation.
+- **Growth capital spending** adds capacity, new products or markets.
+- Comparing capital spending with depreciation over several years shows whether the company is investing for growth or under-investing.
+
+### Return on invested capital
+The key test of whether investment creates value:
+- **ROIC** = NOPAT / invested capital, where NOPAT is net operating profit after tax (EBIT × (1 − tax rate)) and invested capital is the operating assets financed by debt and equity.
+- Growth **creates value only if ROIC exceeds the cost of capital**. Growth at returns below the cost of capital **destroys** value, even though it raises revenue and perhaps earnings.
+
+> **Worked example 3: value-creating growth?**
+> A company earns NOPAT of 84 million on invested capital of 700 million; its WACC is 9%.
+> - ROIC = 84 / 700 = **12%**, above the 9% cost of capital: each unit invested creates value.
+> If new projects would earn only 7%, expanding would destroy value even if sales grew strongly. Good analysts look at returns on **incremental** capital, not just the average.
+
+## 7. Capital structure
+- **Leverage:** debt relative to equity, EBITDA or capital. Debt raises **ROE** (as DuPont analysis shows: ROE = margin × turnover × financial leverage) but also raises risk and the cost of equity.
+- **Coverage:** EBIT or EBITDA relative to interest. Low coverage leaves little room for a downturn.
+- **Debt maturities and liquidity:** large amounts of debt coming due soon create refinancing risk.
+- **Sustainable growth** = retention ratio × ROE: the growth the company can finance without new equity and without changing leverage.
+
+## 8. Bringing it together
+A good company analysis connects these pieces into a story that explains the numbers:
+1. The **strategy** and **moat** explain why margins and returns are what they are and whether they can last.
+2. **Revenue drivers** and **pricing power** set the growth forecast.
+3. **Cost structure** and **operating leverage** translate sales scenarios into profit scenarios.
+4. **Working capital** and **capital spending** show how much cash growth needs.
+5. **ROIC versus cost of capital** shows whether growth creates value.
+6. **Capital structure** shows how much risk the shareholders carry.
+
+## Checklist before you answer
+- Generic strategies: cost leadership, differentiation, focus; "stuck in the middle" is the weak position.
+- Lasting advantages: brands, patents and regulation, network effects, switching costs, scale, unique resources.
+- Revenue = volume × price; recurring revenue is more valuable; pricing power protects margins when costs rise.
+- DOL = %ΔEBIT / %Δsales = contribution margin / EBIT; high fixed costs → high operating leverage.
+- Cash conversion cycle = DOH + DSO − DPO.
+- ROIC = NOPAT / invested capital; growth creates value only if ROIC > cost of capital.
+- Debt raises ROE and risk; sustainable growth = retention × ROE.`,
  ideas:`**Company analysis connects the industry picture to one company: its strategy, how it earns its revenue and profit, and how it uses capital.**
 
 ## Strategy and competitive position
@@ -20350,6 +21370,102 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"Equity Analyst Research Reports",
  core:/research report|sell-side|buy-side|analyst('s)? report|investment thesis|target price|price target|rating (of )?(buy|sell|hold)|buy rating|sell rating/,
  match:/report|sell-side|buy-side|analyst|recommend|target|thesis|rating|assumption|catalyst|value range|disclos/,
+ lesson:`## 1. The purpose of a research report
+All the analysis of the previous modules (industry, company, forecasts, valuation) ends in a document someone will act on: a **research report**. Its job is to communicate a conclusion clearly enough that the reader can understand it, judge how much to trust it, and disagree with specific assumptions if they wish. A good report is not the longest one; it is the one that makes the reasoning **transparent**.
+
+## 2. What a full company report contains
+### The headline: recommendation and target
+- A **recommendation**: buy, hold or sell; or relative ratings such as overweight, equal-weight, underweight (relative to a benchmark or sector).
+- A **target price** or a **range of values**, with a **time horizon** (typically 12 months).
+- Usually a one-page **summary** with the key points, forecasts and valuation.
+
+### The investment thesis
+The core of the report: **why** the analyst believes the share is mispriced. A good thesis:
+- States what the market currently believes (the consensus view) and why the analyst disagrees.
+- Identifies **catalysts**: events that could make the price move toward the analyst's value (results, product launches, regulatory decisions, restructuring).
+- Is specific and testable: "Margins will expand by 300 basis points over two years as the new plant reaches full capacity," not "The company is well managed."
+
+### Business and industry analysis
+A description of the company, its competitive position, its industry and the forces acting on it, focused on what matters for the thesis.
+
+### Financial analysis and forecasts
+Historical performance and the forecasts for revenue, margins, earnings and cash flows, with the **key assumptions** stated explicitly.
+
+### Valuation
+- The **methods** used (DCF, multiples, sum of the parts) and why they fit.
+- The **key inputs**: discount rate, growth rates, multiples applied.
+- **Sensitivity analysis** showing how the value changes with the main assumptions, and often **scenarios** (bull, base, bear) with probabilities.
+
+### Risks
+What could prove the thesis wrong: the main **risks** to the recommendation, both company-specific (execution, competition, management) and external (economy, regulation, interest rates). Honest risk sections are a mark of quality.
+
+### ESG considerations
+Where relevant, environmental, social and governance factors that could affect value: carbon exposure, labour practices, board independence, related-party transactions.
+
+### Disclosures
+Conflicts of interest (the firm's investment banking relationships, the analyst's holdings), the rating system, and the history of ratings and targets, as required by regulation and by the Code and Standards.
+
+### Qualities of a good report
+- **Separates facts from opinions** and labels forecasts as forecasts.
+- States **assumptions** clearly, so readers can change them.
+- Is **consistent**: the thesis, forecasts, valuation and recommendation tell the same story.
+- Is **timely** and concise.
+
+> **Worked example 1: making assumptions visible**
+> An analyst values a company with a Gordon-style terminal value. Next year's free cash flow to equity per share is 3.20 and the cost of equity is 9%.
+> - With long-term growth of 3%: value = 3.20 / (0.09 − 0.03) = **53.33**
+> - With long-term growth of 4%: value = 3.20 / (0.09 − 0.04) = **64.00**
+> A one-point difference in a single assumption moves the value by 20%. A report that shows this sensitivity lets a reader who believes in 3% growth reach their own conclusion; a report that shows only "target price 64" hides the most important judgment.
+
+## 3. Sell-side and buy-side research
+### Sell-side analysts
+Work for **brokers and investment banks** and publish research for many clients (institutional investors, sometimes the public).
+- Reports are **formal and detailed**, follow a standard format and cover many companies in a sector.
+- They support the firm's **trading and client relationships**: good research brings commission business and access.
+- They face **conflicts of interest**: their firms may earn investment banking fees from the companies they cover, and companies may restrict access for analysts with negative views. Historically, ratings have leaned heavily toward "buy". Regulations require separation between research and investment banking and disclosure of conflicts.
+- Their output is often measured by influence, rankings and client votes.
+
+### Buy-side analysts
+Work for **asset managers, hedge funds, pension funds and insurers**, and write for their own **portfolio managers**.
+- Reports are **shorter and informal**, focused on a **decision**: should the portfolio hold this share, how much, versus the benchmark?
+- They are **not published** externally.
+- They often use sell-side research as **one input** and build their own models.
+- They are judged by the **performance** of their recommendations in the portfolio.
+
+### Why their conclusions differ
+- **Purpose:** the sell side must say something about every company it covers; the buy side focuses on decisions for its own portfolio.
+- **Benchmark view:** a buy-side analyst may call a good company "underweight" if it is already a large part of the benchmark and fully priced.
+- **Horizon and risk:** a long-only fund, a hedge fund and a pension fund have different horizons and constraints.
+- **Incentives:** different pay structures and pressures shape conclusions.
+
+## 4. Why analysts' values differ
+Two competent analysts using the same model can reach very different values. The differences come from **assumptions**, mainly:
+- **Revenue growth:** market growth, market share, pricing.
+- **Margins:** cost structure, competition, operating leverage.
+- **Reinvestment:** capital spending and working capital needed to grow.
+- **Financing:** leverage, buybacks, dilution.
+- **Discount rate:** beta, equity risk premium, cost of debt.
+- **Long-term growth** and **terminal value**.
+
+Small differences in long-run assumptions compound into large differences in value, as example 1 showed.
+
+> **Worked example 2: two analysts, one company**
+> Analyst A expects revenue growth of 8% a year for five years, a stable 15% operating margin and long-term growth of 3%. Analyst B expects 5% growth, margins falling to 12% as a competitor enters, and long-term growth of 2%. Both use the same discount rate.
+> A might value the company 40% or more above B. Neither model is "wrong": the disagreement is about the competitive future. The useful debate is about which assumption the evidence supports, not about the valuation formula.
+
+### Using research well
+As a reader of research:
+- Look past the **rating** to the **thesis and assumptions**.
+- Compare the analyst's forecasts with **consensus** and with the company's history.
+- Check the **sensitivity**: is the conclusion robust, or does it rest on one optimistic input?
+- Note the **disclosures**: what conflicts might affect the view?
+
+## Checklist before you answer
+- A report contains: recommendation and target with horizon, investment thesis with catalysts, business and industry analysis, forecasts with stated assumptions, valuation with sensitivity, risks, ESG where relevant, disclosures.
+- Good reports separate fact from opinion, show assumptions and are internally consistent.
+- Sell-side: published, formal, broad coverage, conflicts from investment banking and trading, ratings skewed toward buy.
+- Buy-side: internal, short, decision-focused, relative to a benchmark, judged by portfolio results.
+- Value differences come from assumptions on growth, margins, reinvestment, financing, discount rate and long-term growth.`,
  ideas:`**A research report turns analysis into a recommendation that its readers can follow and challenge.**
 
 ## What a detailed company report covers
@@ -20383,6 +21499,115 @@ CFA_DATA.learn(1,"Equities","LM-EQ",[
 {name:"The Capital Asset Pricing Model, Market Model, and Other Factor-Based Equity Models",
  core:/\bCAPM\b|capital asset pricing|market model|\bbetas?\b|arbitrage pricing|\bAPT\b|multi-?factor|factor model|Fama|equity risk premium|cost of equity|required return on equity|smart beta/,
  match:/CAPM|capital asset|market model|beta|alpha|arbitrage pricing|APT|factor|Fama|French|premium|risk-free|cost of equity|required return|systematic|diversifiable|SML|security market line/,
+ lesson:`## 1. The required return on equity
+Every valuation model of the previous modules needs a **required return on equity**: the discount rate for dividends or FCFE, and an input into the WACC. It is the return investors demand to hold the share, given its risk. But which risk? Portfolio theory gives the key insight:
+- Part of a share's risk is **specific** to the company (a failed product, a lawsuit, a strike). In a diversified portfolio these risks largely cancel out, so investors need not be paid for them.
+- Part is **systematic** (market) risk: recessions, interest rate moves, market-wide falls. It cannot be diversified away, so investors demand compensation for bearing it.
+
+The models in this module measure systematic risk and turn it into a required return.
+
+## 2. The capital asset pricing model (CAPM)
+### The formula
+- E(Ri) = Rf + βi × [E(Rm) − Rf]
+
+where:
+- **Rf** is the risk-free rate;
+- **E(Rm) − Rf** is the **equity risk premium (ERP)**: the extra return the market as a whole offers over the risk-free rate;
+- **βi** (beta) measures the share's sensitivity to market movements: its systematic risk relative to the market. The market has a beta of 1; a beta of 1.3 means the share tends to move 1.3% when the market moves 1%.
+
+> **Worked example 1: a required return**
+> The risk-free rate is 3.5%, the equity risk premium is 5.5%, and a consumer staples company has a beta of 0.9.
+> - Required return = 3.5% + 0.9 × 5.5% = **8.45%**
+> Its low beta reflects defensive earnings: investors need less than the market's expected return of 9.0% to hold it.
+
+### Assumptions
+The CAPM rests on simplifying assumptions:
+- Investors are **risk-averse** and hold **diversified** portfolios.
+- They have **the same expectations** about returns and risks.
+- They can **borrow and lend** unlimited amounts at the risk-free rate.
+- There are **no taxes, transaction costs** or other frictions.
+- Investment horizons are a **single period**.
+- All assets are traded and investors are **price takers**.
+
+None hold exactly, but the model is widely used because it is simple and captures the main idea: only systematic risk is rewarded.
+
+### Estimating the inputs
+- **Risk-free rate:** the yield on government bonds in the same **currency** as the cash flows, with a maturity that matches the investment horizon (often a 10-year government bond for long-term equity valuation).
+- **Equity risk premium:**
+  - **Historical**: the average excess return of equities over government bonds or bills in the past. Results depend on the period, the country and the averaging method.
+  - **Forward-looking**: implied from current prices (for example, using a dividend discount model on the whole market: ERP ≈ dividend yield + expected growth − risk-free rate) or from surveys.
+- **Beta:** estimated by regressing the share's returns on a market index's returns (see the market model below). For an **unlisted company** or a division, use the betas of **comparable listed companies** (a pure-play approach), adjusted for differences in financial leverage: unlever the peers' betas to remove their debt, then relever at the target's capital structure.
+
+## 3. The market model and estimating beta
+### The regression
+The **market model** relates a share's returns to the market's:
+- Ri = αi + βi × Rm + εi
+
+- **βi** (the slope) estimates beta.
+- **αi** (the intercept) is the share's return when the market's return is zero; in an efficient market, its expected value after adjusting for risk is close to zero.
+- **εi** (the residual) captures firm-specific returns: the diversifiable risk.
+
+### Choices that affect the estimate
+- **Period**: typically two to five years. Longer periods give more data but may include a company that has changed.
+- **Frequency**: daily, weekly or monthly returns. Monthly is common; for illiquid shares, daily data can understate beta.
+- **Index**: a broad local index or a global index; the choice should match the investor's diversified portfolio.
+
+### Adjusted beta
+Betas estimated from past data tend to **move toward 1** over time: companies with extreme betas tend to become more average. Many analysts therefore use an **adjusted beta**:
+- adjusted beta = (2/3) × raw beta + (1/3) × 1
+
+> **Worked example 2: raw versus adjusted beta**
+> A share's regression beta is 1.45. Risk-free rate 3.5%, ERP 5.5%.
+> - Adjusted beta = (2/3) × 1.45 + (1/3) × 1 = **1.30**
+> - Required return with the raw beta: 3.5% + 1.45 × 5.5% = about **11.5%**
+> - With the adjusted beta: 3.5% + 1.30 × 5.5% = **10.65%**
+> The adjustment lowers the required return for high-beta shares and raises it for low-beta shares.
+
+## 4. Arbitrage pricing theory (APT)
+The CAPM uses one source of systematic risk: the market. The **arbitrage pricing theory** allows several:
+- E(Ri) = Rf + βi,1 × λ1 + βi,2 × λ2 + … + βi,k × λk
+
+where each **λ** is the **risk premium** for one factor (the extra return per unit of exposure) and each **β** is the share's sensitivity to that factor.
+
+Features:
+- It is based on the absence of **arbitrage**: two portfolios with the same factor exposures must offer the same expected return, otherwise traders would profit risklessly.
+- It needs **fewer assumptions** than the CAPM: no market portfolio, no assumption that all investors hold the same portfolio.
+- But it **does not say which factors** to use: that is left to empirical work.
+
+> **Worked example 3: a three-factor APT**
+> Rf = 3%. Factor premiums: GDP growth surprise 4.5%, inflation surprise 1.0%, credit spread change 2.0%. A share's sensitivities: 1.2 to GDP, −0.4 to inflation, 0.8 to credit spreads.
+> - E(R) = 3% + 1.2 × 4.5% + (−0.4) × 1.0% + 0.8 × 2.0% = 3% + 5.4% − 0.4% + 1.6% = **9.6%**
+> A negative sensitivity lowers the required return: this share tends to do relatively well when inflation surprises upward, which makes it a partial hedge.
+
+## 5. Multifactor models in practice
+Practitioners use three kinds:
+- **Macroeconomic factor models:** factors are surprises in economic variables: GDP growth, inflation, interest rates, credit spreads, oil prices.
+- **Fundamental factor models:** factors are company characteristics that explain returns: **size** (small companies have historically earned more), **value** (low price-to-book), **momentum** (recent winners keep winning for a while), **quality** (profitability, stable earnings), **low volatility**.
+- **Statistical factor models:** factors extracted from historical returns by statistical methods; they explain the data well but may be hard to interpret.
+
+The best-known fundamental model is the **Fama-French three-factor model**: market, size (small minus big) and value (high minus low book-to-market). A **momentum** factor is often added (the Carhart four-factor model), and later versions add profitability and investment factors.
+
+### Why factor models matter
+- **Better explanation** of returns than the single-factor CAPM.
+- **Risk analysis**: they show which systematic risks a portfolio is exposed to, and how much.
+- **Performance evaluation**: they separate returns earned from factor exposures (which can be bought cheaply) from genuine **alpha** (skill).
+- **Investment products**: "smart beta" or factor funds deliberately tilt toward factors such as value, size or quality.
+
+## 6. Choosing a model
+- The **CAPM** is simple, widely understood and used by most practitioners for the cost of equity, but it relies on strict assumptions and a single factor, and beta estimates are noisy.
+- **Multifactor models** fit returns better but need more inputs, and the factors and their premiums can change over time.
+- For an analyst valuing a company, the CAPM with a sensible ERP and an adjusted or peer-based beta is the usual starting point; multifactor models are more common in portfolio risk management.
+
+## Checklist before you answer
+- Only systematic (non-diversifiable) risk earns a premium.
+- CAPM: E(R) = Rf + β × ERP; the market beta is 1.
+- CAPM assumptions: risk-averse diversified investors, same expectations, borrowing and lending at Rf, no frictions, single period.
+- Risk-free rate in the cash flows' currency and matching the horizon; ERP historical or forward-looking.
+- Market model regression: slope = beta, intercept = alpha, residual = specific risk.
+- Adjusted beta = 2/3 × raw + 1/3 × 1.
+- Unlisted companies: use comparable companies' betas adjusted for leverage.
+- APT: E(R) = Rf + Σ β × λ; based on no arbitrage; does not name the factors.
+- Factor types: macroeconomic, fundamental (size, value, momentum, quality), statistical; Fama-French adds size and value.`,
  ideas:`**The required return on equity is the return investors demand for the risk they cannot diversify away.**
 
 ## The CAPM
